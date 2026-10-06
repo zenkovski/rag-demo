@@ -1,4 +1,6 @@
 {
+ "model": "deepseek/deepseek-v4.1-flash",
+ "mode": "hybrid_rewrite",
  "rows": [
   {
    "id": 1,
@@ -8,6 +10,7 @@
    "chunks": [
     "§ 212 odst. 1"
    ],
+   "rewritten": "Jaká je minimální výměra dovolené v kalendářním roce?",
    "top": [
     {
      "id": "§ 212 odst. 1",
@@ -31,15 +34,17 @@
     }
    ],
    "hit3": true,
-   "answer": "Minimální výměra dovolené činí nejméně 4 týdny v kalendářním roce [1].",
+   "answer": "Obecně platí, že výměra dovolené činí nejméně 4 týdny v kalendářním roce [1]. Pro zaměstnance uvedené v § 109 odst. 3 činí 5 týdnů v kalendářním roce [2] a pro pedagogické pracovníky a akademické pracovníky vysokých škol 8 týdnů v kalendářním roce [3].",
    "cited": [
-    "§ 212 odst. 1"
+    "§ 212 odst. 1",
+    "§ 212 odst. 2",
+    "§ 212 odst. 3"
    ],
    "said_nevim": false,
    "judge": {
     "correct": true,
     "grounded": true,
-    "reason": "Odpověď asistenta přesně uvádí minimální výměru dovolené 4 týdny v kalendářním roce, což odpovídá zlaté odpovědi a je podloženo citovaným § 212 odst. 1."
+    "reason": "Asistent správně uvádí obecné minimum 4 týdny a doplňující zákonné výjimky, které jsou podloženy citovanými úseky."
    }
   },
   {
@@ -50,40 +55,42 @@
    "chunks": [
     "§ 35 odst. 2"
    ],
+   "rewritten": "Jaká je nejdelší přípustná délka zkušební doby u zaměstnance, který není vedoucím zaměstnancem?",
    "top": [
     {
      "id": "§ 35 odst. 2",
      "score": 0.891
     },
     {
-     "id": "§ 35 odst. 5",
-     "score": 0.881
+     "id": "§ 35 odst. 1",
+     "score": 0.87
     },
     {
-     "id": "§ 35 odst. 4",
-     "score": 0.878
+     "id": "§ 35 odst. 5",
+     "score": 0.881
     },
     {
      "id": "§ 35 odst. 3",
      "score": 0.873
     },
     {
-     "id": "§ 35 odst. 1",
-     "score": 0.87
+     "id": "§ 35 odst. 4",
+     "score": 0.878
     }
    ],
    "hit3": true,
-   "answer": "Zkušební doba u běžného (nevedoucího) zaměstnance nesmí být sjednána na dobu delší než čtyři měsíce po sobě jdoucí ode dne vzniku pracovního poměru [1]. Tato délka je maximální základní hranice; případné prodloužení je možné jen v souladu s dalšími ustanoveními (např. za překážky v práci nebo písemnou dohodou) [2], [4]. Pokud není pracovní poměr na dobu určitou, platí právě tento čtyřměsíční limit.",
+   "answer": "U běžného zaměstnance nesmí být zkušební doba sjednána na dobu delší než 4 měsíce po sobě jdoucí ode dne vzniku pracovního poměru [1]. Musí být sjednána písemně nejpozději v den vzniku pracovního poměru [2]. U pracovního poměru na dobu určitou navíc nesmí být delší než polovina sjednané doby jeho trvání [4]. Za jejího trvání může být dodatečně prodloužena v těchto mezích písemnou dohodou [5].",
    "cited": [
     "§ 35 odst. 2",
-    "§ 35 odst. 5",
-    "§ 35 odst. 3"
+    "§ 35 odst. 1",
+    "§ 35 odst. 3",
+    "§ 35 odst. 4"
    ],
    "said_nevim": false,
    "judge": {
     "correct": true,
     "grounded": true,
-    "reason": "Odpověď správně uvádí maximální čtyřměsíční limit a doplňující informace jsou podloženy citovanými paragrafy."
+    "reason": "Asistent správně uvádí maximální délku 4 měsíce pro běžného zaměstnance a jeho doplňující tvrzení jsou podložena dodanými úseky zákona."
    }
   },
   {
@@ -94,30 +101,31 @@
    "chunks": [
     "§ 66 odst. 1"
    ],
+   "rewritten": "Může zaměstnavatel se mnou ve zkušební době zrušit pracovní poměr bez uvedení důvodu?",
    "top": [
     {
      "id": "§ 66 odst. 1",
      "score": 0.864
     },
     {
-     "id": "§ 35 odst. 1",
-     "score": 0.853
+     "id": "§ 59",
+     "score": 0.837
     },
     {
-     "id": "§ 35 odst. 2",
-     "score": 0.852
+     "id": "§ 58 odst. 1",
+     "score": 0.834
     },
     {
-     "id": "§ 55 odst. 1",
-     "score": 0.842
+     "id": "§ 56 odst. 1",
+     "score": 0.833
     },
     {
-     "id": "§ 35 odst. 4",
-     "score": 0.838
+     "id": "§ 48 odst. 1",
+     "score": 0.835
     }
    ],
    "hit3": true,
-   "answer": "Ano, zaměstnavatel může ve zkušební době zrušit pracovní poměr bez udání důvodu – podle § 66 odst. 1 zákoníku práce platí, že zaměstnavatel i zaměstnanec mohou zrušit pracovní poměr ve zkušební době z jakéhokoliv důvodu nebo bez uvedení důvodu. [1]",
+   "answer": "Ano, zaměstnavatel může ve zkušební době zrušit pracovní poměr z jakéhokoliv důvodu nebo bez uvedení důvodu [1]. Nesmí tak ale učinit v době prvních 14 kalendářních dnů trvání dočasné pracovní neschopnosti (karantény) zaměstnance [1].",
    "cited": [
     "§ 66 odst. 1"
    ],
@@ -125,7 +133,7 @@
    "judge": {
     "correct": true,
     "grounded": true,
-    "reason": "Asistent správně citoval § 66 odst. 1, který potvrzuje možnost zrušení pracovního poměru ve zkušební době bez udání důvodu; opomenutí výjimky o prvních 14 dnech neschopnosti je pouze vedlejší detail, který nezmění podstatu odpovědi."
+    "reason": "Odpověď správně uvádí, že zaměstnavatel může ve zkušební době zrušit pracovní poměr bez důvodu, s výjimkou prvních 14 dnů pracovní neschopnosti, a opírá se o dodaný § 66."
    }
   },
   {
@@ -136,15 +144,8 @@
    "chunks": [
     "§ 51 odst. 2"
    ],
+   "rewritten": "Jaká je délka výpovědní doby?",
    "top": [
-    {
-     "id": "§ 51 odst. 2",
-     "score": 0.879
-    },
-    {
-     "id": "§ 51 odst. 3",
-     "score": 0.854
-    },
     {
      "id": "§ 51 odst. 1",
      "score": 0.852
@@ -156,20 +157,28 @@
     {
      "id": "§ 87a odst. 3",
      "score": 0.845
+    },
+    {
+     "id": "§ 51 odst. 2",
+     "score": 0.879
+    },
+    {
+     "id": "§ 51 odst. 3",
+     "score": 0.854
     }
    ],
-   "hit3": true,
-   "answer": "Výpovědní doba činí nejméně **2 měsíce** (§ 51 odst. 2) – tato délka platí obecně. Výjimkou je výpověď daná zaměstnanci z důvodů uvedených v § 52 písm. f) až h), kde je výpovědní doba nejméně **1 měsíc** (§ 51 odst. 2, písm. a). Dále lze výpovědní dobu prodloužit nebo její běh změnit písemnou dohodou mezi zaměstnavatelem a zaměstnancem (§ 51 odst. 3). Pokud není dohodnuto jinak, platí výše uvedené minimální lhůty. [1][2][3]",
+   "hit3": false,
+   "answer": "Výpovědní doba činí nejméně 2 měsíce, s výjimkou výpovědi dané zaměstnanci z důvodu uvedeného v § 52 písm. f) až h), kde činí nejméně 1 měsíc, a výpovědi dané zaměstnavateli podle § 51a [4]. Písemnou dohodou mezi zaměstnavatelem a zaměstnancem lze výpovědní dobu prodloužit nebo změnit její běh, přičemž musí být sjednány stejně pro obě strany, kromě výpovědi podle § 52 písm. f) až h) [5]. Výpovědní doba začíná dnem doručení výpovědi druhé smluvní straně a končí dnem, který se s tímto dnem číslem shoduje; není-li takový den v posledním měsíci, připadne konec na poslední den měsíce [1].",
    "cited": [
+    "§ 51 odst. 1",
     "§ 51 odst. 2",
-    "§ 51 odst. 3",
-    "§ 51 odst. 1"
+    "§ 51 odst. 3"
    ],
    "said_nevim": false,
    "judge": {
     "correct": true,
     "grounded": true,
-    "reason": "Odpověď přesně uvádí minimální výpovědní dobu a výjimku podle § 51 odst. 2 a doplňuje informaci o možnosti prodloužení podle § 51 odst. 3, což je v souladu s předloženými úseky."
+    "reason": "Odpověď správně uvádí nejméně 2 měsíce i výjimku 1 měsíc pro § 52 písm. f) až h) a všechna tvrzení jsou podložena dodanými úseky."
    }
   },
   {
@@ -180,30 +189,31 @@
    "chunks": [
     "§ 51 odst. 1"
    ],
+   "rewritten": "Kterým dnem počíná běžet výpovědní doba?",
    "top": [
-    {
-     "id": "§ 51 odst. 2",
-     "score": 0.857
-    },
     {
      "id": "§ 51 odst. 1",
      "score": 0.853
+    },
+    {
+     "id": "§ 51 odst. 2",
+     "score": 0.857
     },
     {
      "id": "§ 87a odst. 3",
      "score": 0.838
     },
     {
-     "id": "§ 51 odst. 3",
-     "score": 0.838
-    },
-    {
      "id": "§ 53 odst. 2",
      "score": 0.836
+    },
+    {
+     "id": "§ 51 odst. 3",
+     "score": 0.838
     }
    ],
    "hit3": true,
-   "answer": "Výpovědní doba začíná dnem, v němž byla výpověď doručena druhé smluvní straně. [2]",
+   "answer": "Výpovědní doba začíná dnem, v němž byla výpověď doručena druhé smluvní straně [1]. Končí dnem, který se číslem shoduje se dnem doručení; pokud takový den v posledním měsíci není, připadne konec výpovědní doby na poslední den měsíce [1].",
    "cited": [
     "§ 51 odst. 1"
    ],
@@ -211,7 +221,7 @@
    "judge": {
     "correct": true,
     "grounded": true,
-    "reason": "Asistent správně uvádí, že výpovědní doba začíná dnem doručení výpovědi druhé straně, což je v souladu s § 51 odst. 1 (úsek [2])."
+    "reason": "Odpověď přesně vystihuje začátek i konec výpovědní doby podle § 51 odst. 1 a opírá se o dodaný úsek."
    }
   },
   {
@@ -223,6 +233,7 @@
     "§ 75 odst. 1",
     "§ 75 odst. 2"
    ],
+   "rewritten": "Jaký je nejvyšší přípustný rozsah práce vykonávané v kalendářním roce na základě dohody o provedení práce?",
    "top": [
     {
      "id": "§ 75 odst. 1",
@@ -237,24 +248,25 @@
      "score": 0.855
     },
     {
-     "id": "§ 77 odst. 4",
-     "score": 0.854
+     "id": "§ 75 odst. 2",
+     "score": 0.845
     },
     {
-     "id": "§ 77 odst. 8",
+     "id": "§ 93 odst. 4",
      "score": 0.852
     }
    ],
    "hit3": true,
-   "answer": "Na dohodu o provedení práce můžete odpracovat nejvýše 300 hodin v kalendářním roce. [1]",
+   "answer": "Na dohodu o provedení práce můžete odpracovat nejvýše 300 hodin v kalendářním roce [1]. Do tohoto rozsahu se započítává i doba práce, kterou jste v témže kalendářním roce vykonali pro stejného zaměstnavatele na základě jiné dohody o provedení práce [4].",
    "cited": [
-    "§ 75 odst. 1"
+    "§ 75 odst. 1",
+    "§ 75 odst. 2"
    ],
    "said_nevim": false,
    "judge": {
     "correct": true,
     "grounded": true,
-    "reason": "Asistent správně uvádí limit 300 hodin ročně a opírá ho o § 75 odst. 1, který tuto hranici stanoví."
+    "reason": "Asistent správně uvádí limit 300 hodin ročně na DPP a doplňuje započítání dalších DPP u téhož zaměstnavatele podle dodaných úseků."
    }
   },
   {
@@ -265,40 +277,40 @@
    "chunks": [
     "§ 76 odst. 2"
    ],
+   "rewritten": "Jaký je nejvyšší přípustný rozsah pracovní doby v kalendářním týdnu při výkonu práce na základě dohody o pracovní činnosti?",
    "top": [
-    {
-     "id": "§ 76 odst. 1",
-     "score": 0.885
-    },
     {
      "id": "§ 76 odst. 3",
      "score": 0.867
-    },
-    {
-     "id": "§ 77 odst. 8",
-     "score": 0.866
     },
     {
      "id": "§ 76 odst. 2",
      "score": 0.866
     },
     {
-     "id": "§ 76 odst. 4",
-     "score": 0.866
+     "id": "§ 76 odst. 1",
+     "score": 0.885
+    },
+    {
+     "id": "§ 86 odst. 4",
+     "score": 0.86
+    },
+    {
+     "id": "§ 75 odst. 1",
+     "score": 0.859
     }
    ],
-   "hit3": false,
-   "answer": "Na dohodu o pracovní činnosti můžete pracovat nejvýše v průměru polovinu stanovené týdenní pracovní doby. Při běžné 40hodinové týdenní pracovní době to znamená maximálně **20 hodin týdně** (průměrně přes celé období dohody, nejdéle však za 52 týdnů) [2]. Zároveň platí roční omezení – v jednom kalendářním roce nesmí rozsah práce překročit 300 hodin [1]. Pro účely dovolené se týdenní pracovní doba u dohody o pracovní činnosti považuje za 20 hodin týdně [3]. Takže týdně lze pracovat nejvýše 20 hodin (průměrně), přičemž celoročně nesmíte překročit 300 hodin.",
+   "hit3": true,
+   "answer": "Na dohodu o pracovní činnosti nemůžete pracovat v rozsahu, který by v průměru překročil polovinu stanovené týdenní pracovní doby [2]. Dodržení tohoto rozsahu se posuzuje za celou dobu, na kterou byla dohoda uzavřena, nejdéle však za 52 týdnů [1]. Nejde tedy o pevný týdenní limit, ale o průměr za uvedené období.",
    "cited": [
-    "§ 76 odst. 1",
     "§ 76 odst. 3",
-    "§ 77 odst. 8"
+    "§ 76 odst. 2"
    ],
    "said_nevim": false,
    "judge": {
     "correct": true,
     "grounded": true,
-    "reason": "Asistent správně uvádí, že na dohodu o pracovní činnosti lze pracovat nejvýše v průměru polovinu stanovené týdenní pracovní doby (tj. obvykle 20 hodin týdně) a podporuje toto tvrzení příslušnými ustanoveními § 76 odst. 2, § 76 odst. 3, § 76 odst. 1 a § 77 odst. 8. Další informace o ročním limitu a dovolené jsou také v souladu s uvedenými úseky a nezavádějí žádné nesprávné tvrzení."
+    "reason": "Asistent správně uvádí průměrný limit poloviny stanovené týdenní pracovní doby a jeho posuzování za období až 52 týdnů, což odpovídá zákonu i zlaté odpovědi."
    }
   },
   {
@@ -309,14 +321,11 @@
    "chunks": [
     "§ 88 odst. 1"
    ],
+   "rewritten": "Po jaké době nepřetržité práce vzniká zaměstnanci nárok na přestávku v práci na jídlo a oddech?",
    "top": [
     {
      "id": "§ 88 odst. 1",
      "score": 0.871
-    },
-    {
-     "id": "§ 88 odst. 2",
-     "score": 0.86
     },
     {
      "id": "§ 88 odst. 4",
@@ -329,10 +338,14 @@
     {
      "id": "§ 88 odst. 3",
      "score": 0.853
+    },
+    {
+     "id": "§ 88 odst. 2",
+     "score": 0.86
     }
    ],
    "hit3": true,
-   "answer": "Nárok na pauzu na jídlo vzniká nejdéle po 6 hodinách nepřetržité práce (u mladistvých zaměstnanců po 4,5 hodinách) – zaměstnavatel je povinen poskytnout přestávku v práci na jídlo a oddech v trvání nejméně 30 minut [1].",
+   "answer": "Zaměstnavatel vám musí poskytnout přestávku na jídlo a oddech nejdéle po 6 hodinách nepřetržité práce, a to v trvání nejméně 30 minut [1]. Pokud jste mladistvý zaměstnanec, musí být tato přestávka poskytnuta nejdéle po 4,5 hodinách nepřetržité práce [1].",
    "cited": [
     "§ 88 odst. 1"
    ],
@@ -340,7 +353,7 @@
    "judge": {
     "correct": true,
     "grounded": true,
-    "reason": "Odpověď asistenta přesně odpovídá citovanému ustanovení § 88 odst. 1 a obsahuje všechny podstatné informace ze zlaté odpovědi."
+    "reason": "Odpověď přesně vystihuje pravidlo ze zákona včetně výjimky pro mladistvé a opírá se o dodaný úsek [1]."
    }
   },
   {
@@ -353,39 +366,41 @@
     "§ 93 odst. 3",
     "§ 93 odst. 4"
    ],
+   "rewritten": "V jakém maximálním rozsahu může zaměstnavatel zaměstnanci nařídit práci přesčas?",
    "top": [
     {
      "id": "§ 93 odst. 2",
      "score": 0.872
     },
     {
-     "id": "§ 93 odst. 4",
-     "score": 0.863
-    },
-    {
      "id": "§ 93 odst. 3",
      "score": 0.851
     },
     {
-     "id": "§ 88 odst. 1",
-     "score": 0.848
+     "id": "§ 93 odst. 4",
+     "score": 0.863
     },
     {
-     "id": "§ 94 odst. 1",
-     "score": 0.843
+     "id": "§ 99",
+     "score": 0.839
+    },
+    {
+     "id": "§ 91 odst. 4",
+     "score": 0.836
     }
    ],
    "hit3": true,
-   "answer": "Zaměstnavatel může nařídit přesčas pouze v rozsahu nejvýše **8 hodin v jednotlivém týdnu** a celkem nejvýše **150 hodin za kalendářní rok** [1]. Zároveň musí být průměrný rozsah přesčasu nepřesahující **8 hodin týdně** v období až 26 týdnů po sobě jdoucích (kolektivní smlouva může toto období prodloužit nejvýše na 52 týdnů) [2]. Tedy nařízený přesčas je omezen jak týdenním, tak ročním limitem a průměrným týdenním limitem v uvedeném období.",
+   "answer": "Zaměstnavatel vám může nařídit práci přesčas jen z vážných provozních důvodů, a to maximálně 8 hodin v jednotlivých týdnech a 150 hodin v kalendářním roce [1]. Nad tento rozsah může požadovat přesčas jen na základě dohody s vámi [2]. Celkový rozsah práce přesčas navíc nesmí činit v průměru více než 8 hodin týdně v období nejvýše 26 týdnů po sobě jdoucích, případně až 52 týdnů, pokud to určí kolektivní smlouva [3].",
    "cited": [
     "§ 93 odst. 2",
+    "§ 93 odst. 3",
     "§ 93 odst. 4"
    ],
    "said_nevim": false,
    "judge": {
     "correct": true,
     "grounded": true,
-    "reason": "Odpověď správně uvádí, že nařízený přesčas může činit nejvýše 8 hodin týdně a 150 hodin za rok (§93 odst. 2) a doplňuje informaci o průměrném týdenním limitu v období až 26 týdnů (§93 odst. 4), což odpovídá zlaté odpovědi a je podloženo uvedenými úseky."
+    "reason": "Asistent správně uvádí limit nařízené přesčasové práce i možnost dalšího přesčasu jen po dohodě a doplňující údaj o průměrném rozsahu je podložený dodanými úseky."
    }
   },
   {
@@ -396,14 +411,19 @@
    "chunks": [
     "§ 90 odst. 1"
    ],
+   "rewritten": "Jaká je minimální délka nepřetržitého odpočinku zaměstnance mezi koncem jedné směny a začátkem následující směny?",
    "top": [
-    {
-     "id": "§ 88 odst. 2",
-     "score": 0.855
-    },
     {
      "id": "§ 94 odst. 1",
      "score": 0.847
+    },
+    {
+     "id": "§ 85 odst. 3",
+     "score": 0.84
+    },
+    {
+     "id": "§ 90 odst. 2",
+     "score": 0.842
     },
     {
      "id": "§ 90 odst. 1",
@@ -412,22 +432,19 @@
     {
      "id": "§ 92 odst. 2",
      "score": 0.846
-    },
-    {
-     "id": "§ 97 odst. 4",
-     "score": 0.845
     }
    ],
-   "hit3": true,
-   "answer": "Mezi dvěma směnami musíte mít nepřetržitý denní odpočinek alespoň **11 hodin** během 24 hodin po sobě jdoucích. Pro mladistvé zaměstnance je tato doba delší – nejméně **12 hodin**, a pro mladistvé uvedené v § 79a odst. 1 pak nejméně **14 hodin** během 24 hodin po sobě jdoucích[3].",
+   "hit3": false,
+   "answer": "Podle § 90 odst. 1 musí zaměstnavatel poskytnout nepřetržitý denní odpočinek alespoň 11 hodin během 24 hodin po sobě jdoucích [4]. Mladistvému zaměstnanci pak alespoň 12 hodin, případně 14 hodin, jde-li o mladistvého uvedeného v § 79a odst. 1 [4]. Za podmínek § 90 odst. 2 může být tento odpočinek zkrácen až na 8 hodin, pokud je zaměstnanec starší 18 let a následující odpočinek se mu prodlouží o dobu zkrácení [3].",
    "cited": [
+    "§ 90 odst. 2",
     "§ 90 odst. 1"
    ],
    "said_nevim": false,
    "judge": {
     "correct": true,
     "grounded": true,
-    "reason": "Asistent správně uvádí, že mezi směnami je třeba nepřetržitý denní odpočinek alespoň 11 hodin během 24 hodin, že pro mladistvé je to nejméně 12 hodin a že pro mladistvé dle § 79a odst. 1 platí 14 hodin, což přesně odpovídá úseku § 90 odst. 1 poskytnutých zákonů."
+    "reason": "Odpověď správně uvádí 11 hodin, u mladistvých 12/14 hodin a zákonné zkrácení až na 8 hodin podle § 90 odst. 2; všechny údaje mají oporu v dodaných úsecích."
    }
   },
   {
@@ -438,39 +455,39 @@
    "chunks": [
     "§ 67 odst. 1"
    ],
+   "rewritten": "Jaká je výše odstupného podle § 67 zákoníku práce náležejícího zaměstnanci, jehož pracovní poměr u zaměstnavatele trvá jeden a půl roku a s nímž je rozvázán pracovní poměr výpovědí z důvodu nadbytečnosti podle § 52 písm. c) zákoníku práce?",
    "top": [
     {
      "id": "§ 67 odst. 1",
      "score": 0.845
     },
     {
-     "id": "§ 68 odst. 2",
-     "score": 0.84
-    },
-    {
      "id": "§ 67 odst. 3",
      "score": 0.839
+    },
+    {
+     "id": "§ 57 odst. 1",
+     "score": 0.823
     },
     {
      "id": "§ 68 odst. 1",
      "score": 0.836
     },
     {
-     "id": "§ 67 odst. 4",
-     "score": 0.835
+     "id": "§ 67 odst. 5",
+     "score": 0.825
     }
    ],
    "hit3": true,
-   "answer": "Podle § 67 odst. 1 písm. b) zákoníku práce přísluší zaměstnanci, jehož pracovní poměr trval alespoň 1 rok a méně než 2 roky a který je propuštěn z důvodu nadbytečnosti (§ 52 písm. a)–c)), odstupné ve výši nejméně dvojnásobku jeho průměrného výdělku. Průměrným výdělkem se pro tyto účely rozumí průměrný měsíční výdělek (§ 67 odst. 4).  \n\nTakže při vaší délce pracovního poměru 1,5 roku máte nárok na odstupné alespoň ve výši dvou násobků vašeho průměrného měsíčního výdělku. [1][4]",
+   "answer": "Jestliže jde o výpověď z důvodů uvedených v § 52 písm. a) až c), pak při trvání pracovního poměru alespoň 1 rok a méně než 2 roky vám přísluší odstupné nejméně ve výši dvojnásobku průměrného výdělku [1]. Váš případ 1,5 roku do této doby trvání spadá [1].",
    "cited": [
-    "§ 67 odst. 1",
-    "§ 68 odst. 1"
+    "§ 67 odst. 1"
    ],
    "said_nevim": false,
    "judge": {
     "correct": true,
     "grounded": true,
-    "reason": "Asistent správně uvádí, že při pracovním poměru 1–2 roky a výpovědi z důvodu nadbytečnosti náleží odstupné ve výši nejméně dvojnásobku průměrného výdělku, což vyplývá z § 67 odst. 1 písm. b) a § 67 odst. 4 zákoníku práce."
+    "reason": "Asistent správně určil dvojnásobek průměrného výdělku pro pracovní poměr 1 až 2 roky při výpovědi podle § 52 písm. a) až c), což odpovídá zlaté odpovědi i dodanému § 67 odst. 1."
    }
   },
   {
@@ -482,6 +499,7 @@
     "§ 50 odst. 2",
     "§ 52"
    ],
+   "rewritten": "Může zaměstnavatel dát zaměstnanci výpověď z pracovního poměru z jakéhokoli důvodu, například z důvodu, že zaměstnanec nevyhovuje jeho subjektivním požadavkům?",
    "top": [
     {
      "id": "§ 50 odst. 3",
@@ -496,8 +514,8 @@
      "score": 0.87
     },
     {
-     "id": "§ 50 odst. 4",
-     "score": 0.87
+     "id": "§ 50 odst. 2",
+     "score": 0.866
     },
     {
      "id": "§ 58 odst. 1",
@@ -505,16 +523,16 @@
     }
    ],
    "hit3": true,
-   "answer": "Ne, zaměstnavatel nemůže dát výpověď jen proto, že se mu nelíbíte. Podle § 52 může zaměstnavatel výpověď dát pouze z výslovně uvedených důvodů (a–h), například pro nadbytečnost, porušení povinností zvlášť hrubým způsobem nebo jiné zákonem stanovené důvody. Osobní nelibost není mezi těmito důvody uvedena, a proto taková výpověď by nebyla v souladu se zákoníkem práce. [3]  \n\n(Pro srovnání: zaměstnanec může dát výpověď z jakéhokoli důvodu nebo bez uvedení důvodu podle § 50 odst. 3, ale toto právo se nevztahuje na zaměstnavatele.) [1]",
+   "answer": "Ne. Zaměstnavatel může dát výpověď jen z důvodu výslovně stanoveného v § 52 [4]. Tyto důvody jsou v zákoně vyjmenované, například rušení zaměstnavatele, nadbytečnost nebo neuspokojivé pracovní výsledky [3]. To, že se mu zaměstnanec „nelíbí“, mezi nimi není.",
    "cited": [
-    "§ 50 odst. 3",
-    "§ 52"
+    "§ 52",
+    "§ 50 odst. 2"
    ],
    "said_nevim": false,
    "judge": {
     "correct": true,
     "grounded": true,
-    "reason": "Odpověď správně uvádí, že výpověď zaměstnavatele je omezena na důvody § 52 a osobní nelibost mezi nimi není, což odpovídá zlaté odpovědi a je podloženo uvedenými paragrafy."
+    "reason": "Asistent správně uvádí, že zaměstnavatel může dát výpověď jen z důvodů výslovně stanovených v § 52, a jeho tvrzení jsou podložena dodanými úseky."
    }
   },
   {
@@ -525,30 +543,31 @@
    "chunks": [
     "§ 72"
    ],
+   "rewritten": "V jaké lhůtě může zaměstnanec uplatnit neplatnost výpovědi u soudu?",
    "top": [
     {
      "id": "§ 72",
      "score": 0.858
     },
     {
-     "id": "§ 51 odst. 2",
-     "score": 0.851
-    },
-    {
-     "id": "§ 51a odst. 2",
-     "score": 0.837
-    },
-    {
-     "id": "§ 57 odst. 1",
-     "score": 0.837
-    },
-    {
      "id": "§ 61 odst. 4",
      "score": 0.836
+    },
+    {
+     "id": "§ 71",
+     "score": 0.821
+    },
+    {
+     "id": "§ 69 odst. 3",
+     "score": 0.829
+    },
+    {
+     "id": "§ 51 odst. 3",
+     "score": 0.832
     }
    ],
    "hit3": true,
-   "answer": "Neplatnou výpověď lze napadnout u soudu nejpozději do dvou měsíců ode dne, kdy měl pracovní poměr skončit tímto rozvázáním. [1]",
+   "answer": "Neplatnost výpovědi můžete u soudu uplatnit nejpozději ve lhůtě 2 měsíců ode dne, kdy měl pracovní poměr touto výpovědí skončit [1]. Tuto lhůtu může využít jak zaměstnavatel, tak zaměstnanec [1].",
    "cited": [
     "§ 72"
    ],
@@ -556,7 +575,7 @@
    "judge": {
     "correct": true,
     "grounded": true,
-    "reason": "Asistent správně uvádí lhůtu dvou měsíců ode dne, kdy měl pracovní poměr skončit, což přesně odpovídá zlaté odpovědi a je podloženo úsekem [1] (§ 72)."
+    "reason": "Asistent správně uvádí dvouměsíční lhůtu od dne, kdy měl pracovní poměr výpovědí skončit, což odpovídá zlaté odpovědi i citovanému § 72."
    }
   },
   {
@@ -567,38 +586,41 @@
    "chunks": [
     "§ 222 odst. 2"
    ],
+   "rewritten": "Mám vůči zaměstnavateli nárok na náhradu mzdy za nevyčerpanou dovolenou?",
    "top": [
     {
-     "id": "§ 217 odst. 1",
-     "score": 0.867
-    },
-    {
-     "id": "§ 218 odst. 4",
-     "score": 0.86
+     "id": "§ 222 odst. 2",
+     "score": 0.858
     },
     {
      "id": "§ 217 odst. 3",
      "score": 0.859
     },
     {
-     "id": "§ 218 odst. 1",
-     "score": 0.858
+     "id": "§ 222 odst. 3",
+     "score": 0.847
     },
     {
-     "id": "§ 222 odst. 2",
-     "score": 0.858
+     "id": "§ 222 odst. 5",
+     "score": 0.849
+    },
+    {
+     "id": "§ 221",
+     "score": 0.854
     }
    ],
-   "hit3": false,
-   "answer": "Zaměstnavatel vám proplatí nevyčerpanou dovolenou jen v případě, že skončí váš pracovní poměr. Jinak nárok na náhradu mzdy nebo platu za nevyčerpanou dovolenou nevzniká. [5]",
+   "hit3": true,
+   "answer": "Náhradu mzdy nebo platu za nevyčerpanou dovolenou vám zaměstnavatel poskytne pouze při skončení pracovního poměru [1]. Pokud na ni vznikne právo, přísluší ve výši průměrného výdělku [3]. U dodatkové dovolené ji ale poskytnout nelze, tato dovolená se musí vždy vyčerpat, a to přednostně [4].",
    "cited": [
-    "§ 222 odst. 2"
+    "§ 222 odst. 2",
+    "§ 222 odst. 3",
+    "§ 222 odst. 5"
    ],
    "said_nevim": false,
    "judge": {
     "correct": true,
     "grounded": true,
-    "reason": "Odpověď asistenta přesně odpovídá zlaté odpovědi a je podpořena citovaným úsekem [5], který uvádí, že náhrada za nevyčerpanou dovolenou přísluší pouze při skončení pracovního poměru."
+    "reason": "Odpověď správně uvádí, že náhrada za nevyčerpanou dovolenou přísluší pouze při skončení pracovního poměru, a její doplňující tvrzení odpovídají dodaným úsekům."
    }
   },
   {
@@ -609,38 +631,40 @@
    "chunks": [
     "§ 56 odst. 1"
    ],
+   "rewritten": "Může zaměstnanec okamžitě zrušit pracovní poměr, jestliže mu zaměstnavatel nevyplatil mzdu po dobu jednoho měsíce?",
    "top": [
     {
-     "id": "§ 67 odst. 5",
-     "score": 0.839
+     "id": "§ 59",
+     "score": 0.831
     },
     {
-     "id": "§ 70 odst. 2",
-     "score": 0.832
+     "id": "§ 58 odst. 1",
+     "score": 0.827
     },
     {
      "id": "§ 72",
      "score": 0.832
     },
     {
-     "id": "§ 59",
-     "score": 0.831
+     "id": "§ 55 odst. 1",
+     "score": 0.826
     },
     {
-     "id": "§ 69 odst. 3",
-     "score": 0.831
+     "id": "§ 56 odst. 1",
+     "score": 0.815
     }
    ],
    "hit3": false,
-   "answer": "Ano, podle § 59 zákoníku práce může zaměstnanec pracovní poměr okamžitě zrušit pouze tehdy, pokud se o důvodu k okamžitému zrušení (např. nevyplacení mzdy) dověděl, a to nejpozději do 2 měsíců ode dne, kdy se o tomto důvodu dozvěděl, a současně nejpozději do 1 roku ode dne, kdy tento důvod vznikl. Pokud tyto lhůty dodržíte, můžete dát výpověď ihned; pokud je překročíte, právo na okamžité ukončení zanikne. [4]",
+   "answer": "Ano, pokud vám zaměstnavatel nevyplatil mzdu nebo její část do 15 dnů po uplynutí období splatnosti, můžete pracovní poměr okamžitě zrušit [5]. Musíte to ale stihnout pouze do 2 měsíců ode dne, kdy jste se o tomto důvodu dověděl, nejpozději do 1 roku ode dne, kdy důvod vznikl [1].",
    "cited": [
-    "§ 59"
+    "§ 59",
+    "§ 56 odst. 1"
    ],
    "said_nevim": false,
    "judge": {
-    "correct": false,
+    "correct": true,
     "grounded": true,
-    "reason": "Asistent uvádí pouze lhůty pro uplatnění práva na okamžité zrušení podle § 59, ale opomíjí podmínku, že zaměstnanec může poměr okamžitě zrušit pouze pokud mu zaměstnavatel nevyplatil mzdu nebo její část do 15 dnů po uplynutí období splatnosti, a navíc zaměňuje výpověď s okamžitým zrušením, což neodpovídá zlaté odpovědi."
+    "reason": "Odpověď správně uvádí důvod i lhůty podle § 56 a § 59 a opírá se pouze o dodané úseky."
    }
   },
   {
@@ -651,6 +675,7 @@
    "chunks": [
     "§ 39 odst. 2"
    ],
+   "rewritten": "Kolikrát lze opakovaně sjednat pracovní poměr na dobu určitou, případně jej prodloužit?",
    "top": [
     {
      "id": "§ 39 odst. 2",
@@ -661,20 +686,20 @@
      "score": 0.847
     },
     {
-     "id": "§ 93 odst. 4",
-     "score": 0.843
-    },
-    {
      "id": "§ 39 odst. 5",
      "score": 0.841
     },
     {
-     "id": "§ 77 odst. 4",
-     "score": 0.841
+     "id": "§ 39 odst. 1",
+     "score": 0.833
+    },
+    {
+     "id": "§ 39 odst. 4",
+     "score": 0.833
     }
    ],
    "hit3": true,
-   "answer": "Mezi týmiž smluvními stranami lze pracovní poměr na dobu určitou opakovat (tj. prodloužit) nejvýše dvakrát; za opakování se považuje rovněž prodloužení smlouvy. To znamená, že kromě původní smlouvy můžete mít nejvýše dvě další prodloužení (celkem tedy tři pracovní poměry na dobu určitou) – viz § 39 odst. 2 [1].  \n\nVýjimku tvoří případ náhrady za dočasně nepřítomného zaměstnance (mateřská, otcovská, rodičovská dovolená apod.), kdy lze pracovní poměr na dobu určitou sjednávat bez omezení počtu opakování – rovněž podle § 39 odst. 2 [1]. Celková doba všech takových poměrů pak nesmí přesáhnout 9 let ode dne vzniku prvního pracovního poměru na dobu určitou.",
+   "answer": "Podle § 39 odst. 2 může být pracovní poměr na dobu určitou mezi týmiž stranami opakován nejvýše dvakrát a prodloužení se počítá jako opakování [1]. Celková doba takových pracovních poměrů nesmí přesáhnout 9 let od vzniku prvního pracovního poměru na dobu určitou [1]. Výjimkou je náhrada za dočasně nepřítomného zaměstnance po dobu mateřské, otcovské a rodičovské dovolené a dovolené podle § 217 odst. 5, kdy lze pracovní poměr na dobu určitou sjednávat bez omezení počtu opakování [1].",
    "cited": [
     "§ 39 odst. 2"
    ],
@@ -682,7 +707,7 @@
    "judge": {
     "correct": true,
     "grounded": true,
-    "reason": "Asistent správně uvádí, že mezi týmiž stranami lze pracovní poměr na dobu určitou opakovat (tj. prodloužit) nejvýše dvakrát, což odpovídá zlaté odpovědi, a své tvrzení opírá o citaci § 39 odst. 2 z poskytnutých úseků."
+    "reason": "Asistent správně uvádí, že opakování včetně prodloužení je možné nejvýše dvakrát, a jeho tvrzení jsou podložena § 39 odst. 2."
    }
   },
   {
@@ -691,26 +716,27 @@
    "q": "Jaká je minimální mzda v roce 2026?",
    "gold": "NEVÍM – výše minimální mzdy není ve vybraných úsecích zákona (stanoví ji nařízení vlády).",
    "chunks": [],
+   "rewritten": "Jaká je výše minimální mzdy pro kalendářní rok 2026?",
    "top": [
     {
-     "id": "§ 67 odst. 4",
-     "score": 0.804
+     "id": "§ 212 odst. 1",
+     "score": 0.791
     },
     {
-     "id": "§ 80",
-     "score": 0.799
+     "id": "§ 212 odst. 4",
+     "score": 0.787
     },
     {
-     "id": "§ 67 odst. 1",
-     "score": 0.794
+     "id": "§ 213 odst. 5",
+     "score": 0.783
     },
     {
      "id": "§ 37 odst. 1",
      "score": 0.793
     },
     {
-     "id": "§ 62 odst. 1",
-     "score": 0.792
+     "id": "§ 213 odst. 4",
+     "score": 0.785
     }
    ],
    "hit3": null,
@@ -720,7 +746,7 @@
    "judge": {
     "correct": true,
     "grounded": true,
-    "reason": "Asistent správně uvádí, že výše minimální mzdy pro rok 2026 není obsažena v předložených úsecích zákona, což odpovídá zlaté odpovědi."
+    "reason": "Asistent správně odmítl odpovědět, protože minimální mzda není v dodaných úsecích zákona upravena."
    }
   },
   {
@@ -729,6 +755,7 @@
    "q": "Jak dlouho trvá mateřská dovolená?",
    "gold": "NEVÍM – mateřská dovolená (§ 195) není ve vybrané části zákona.",
    "chunks": [],
+   "rewritten": "Po jakou dobu se poskytuje mateřská dovolená?",
    "top": [
     {
      "id": "§ 217 odst. 5",
@@ -739,16 +766,16 @@
      "score": 0.849
     },
     {
-     "id": "§ 212 odst. 1",
-     "score": 0.846
-    },
-    {
      "id": "§ 218 odst. 5",
      "score": 0.843
     },
     {
-     "id": "§ 53 odst. 1",
-     "score": 0.842
+     "id": "§ 219 odst. 1",
+     "score": 0.84
+    },
+    {
+     "id": "§ 55 odst. 2",
+     "score": 0.839
     }
    ],
    "hit3": null,
@@ -758,7 +785,7 @@
    "judge": {
     "correct": true,
     "grounded": true,
-    "reason": "Asistent správně uvedl, že v poskytnutých úsecích není informace o délce mateřské dovolené, což odpovídá zlaté odpovědi."
+    "reason": "Asistent správně odmítl odpovědět, protože délka mateřské dovolené není v dodaných úsecích zákona."
    }
   },
   {
@@ -767,26 +794,27 @@
    "q": "Za jakých podmínek můžu pracovat z domova na home office?",
    "gold": "NEVÍM – práce na dálku (§ 317) není ve vybrané části zákona.",
    "chunks": [],
+   "rewritten": "Za jakých podmínek je zaměstnanec oprávněn vykonávat práci na dálku?",
    "top": [
     {
-     "id": "§ 85 odst. 2",
-     "score": 0.823
-    },
-    {
-     "id": "§ 77b odst. 4",
-     "score": 0.823
-    },
-    {
-     "id": "§ 76 odst. 1",
-     "score": 0.822
-    },
-    {
-     "id": "§ 95 odst. 3",
-     "score": 0.821
+     "id": "§ 77b odst. 1",
+     "score": 0.816
     },
     {
      "id": "§ 76 odst. 2",
      "score": 0.82
+    },
+    {
+     "id": "§ 215 odst. 3",
+     "score": 0.81
+    },
+    {
+     "id": "§ 38 odst. 1",
+     "score": 0.814
+    },
+    {
+     "id": "§ 39 odst. 4",
+     "score": 0.819
     }
    ],
    "hit3": null,
@@ -796,7 +824,7 @@
    "judge": {
     "correct": true,
     "grounded": true,
-    "reason": "Asistent správně uvádí, že v poskytnutých úsecích zákona není informace o home office, což odpovídá zlaté odpovědi 'NEVÍM'."
+    "reason": "Asistent správně odmítl odpovědět, protože home office ani § 317 není v dodaných úsecích zákona."
    }
   },
   {
@@ -805,6 +833,7 @@
    "q": "Kolik peněz dostanu, když budu na nemocenské?",
    "gold": "NEVÍM – náhrada mzdy při nemoci (§ 192) ani nemocenské dávky nejsou ve vybrané části zákona.",
    "chunks": [],
+   "rewritten": "V jaké výši náleží zaměstnanci nemocenské po dobu dočasné pracovní neschopnosti?",
    "top": [
     {
      "id": "§ 53 odst. 1",
@@ -815,16 +844,16 @@
      "score": 0.809
     },
     {
-     "id": "§ 88 odst. 4",
-     "score": 0.808
+     "id": "§ 67 odst. 1",
+     "score": 0.797
     },
     {
-     "id": "§ 215 odst. 4",
-     "score": 0.806
+     "id": "§ 67 odst. 3",
+     "score": 0.795
     },
     {
-     "id": "§ 83a odst. 1",
-     "score": 0.805
+     "id": "§ 56 odst. 2",
+     "score": 0.789
     }
    ],
    "hit3": null,
@@ -834,10 +863,9 @@
    "judge": {
     "correct": true,
     "grounded": true,
-    "reason": "Asistent správně uvedl, že informace o výši nemocenské není v poskytnutých úsecích zákona, což odpovídá zlaté odpovědi 'NEVÍM'."
+    "reason": "Asistent správně odmítl odpovědět, protože v dodaných úsecích zákona není úprava nemocenské ani náhrady mzdy při nemoci."
    }
   }
  ],
- "tokens_in": 41288,
- "tokens_out": 17870
+ "cost_usd_new_calls": 0.01528
 }

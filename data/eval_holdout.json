@@ -1,0 +1,518 @@
+{
+ "v1": [
+  {
+   "id": 21,
+   "level": "střední",
+   "q": "Kolik hodin volna v kuse musím mít aspoň jednou za týden?",
+   "gold": "Nepřetržitý odpočinek v týdnu nejméně 24 hodin, na který bezprostředně navazuje nepřetržitý denní odpočinek (zaměstnanec starší 18 let).",
+   "chunks": [
+    "§ 92 odst. 1"
+   ],
+   "rewritten": null,
+   "top": [
+    "§ 79 odst. 1",
+    "§ 92 odst. 2",
+    "§ 88 odst. 1",
+    "§ 93 odst. 4",
+    "§ 92 odst. 1"
+   ],
+   "answer": "Alespoň 24 hodin nepřetržitého volna v týdnu musí zaměstnavatel poskytnout zaměstnanci staršímu 18 let (tato doba spolu s denním odpočinkem tvoří nepřetržitý odpočinek v týdnu)[5].",
+   "said_nevim": false,
+   "hit3": false,
+   "hit5": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "reason": "Asistent správně uvádí alespoň 24 hodin týdenního odpočinku pro zaměstnance staršího 18 let podle § 92 odst. 1, což odpovídá zlaté odpovědi a je podloženo citovaným úsekem."
+   }
+  },
+  {
+   "id": 22,
+   "level": "snadná",
+   "q": "Musí mi šéf dovolenou oznámit dopředu?",
+   "gold": "Ano, určenou dobu čerpání dovolené musí zaměstnavatel písemně oznámit alespoň 14 dnů předem, pokud se nedohodnou na kratší době.",
+   "chunks": [
+    "§ 217 odst. 1"
+   ],
+   "rewritten": null,
+   "top": [
+    "§ 218 odst. 4",
+    "§ 217 odst. 1",
+    "§ 216 odst. 4",
+    "§ 62 odst. 2",
+    "§ 54"
+   ],
+   "answer": "Ano, zaměstnavatel je povinen vám oznámit dobu čerpání dovolené písemně alespoň 14 dnů předem, pokud se s ním nedohodnete na kratší lhůtě. Toto vyplývá z § 217 odst. 1 zákoníku práce. [2]",
+   "said_nevim": false,
+   "hit3": true,
+   "hit5": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "reason": "Odpověď věcně odpovídá zlaté odpovědi a je podložena citovaným § 217 odst. 1."
+   }
+  },
+  {
+   "id": 23,
+   "level": "těžká",
+   "q": "Mám smlouvu jen na 4 měsíce. Jak dlouhou zkušební dobu mi můžou dát?",
+   "gold": "Nejvýše polovinu sjednané doby trvání pracovního poměru na dobu určitou, tedy nejvýše 2 měsíce.",
+   "chunks": [
+    "§ 35 odst. 3"
+   ],
+   "rewritten": null,
+   "top": [
+    "§ 35 odst. 2",
+    "§ 35 odst. 4",
+    "§ 77 odst. 4",
+    "§ 35 odst. 3",
+    "§ 35 odst. 1"
+   ],
+   "answer": "Zkušební doba nesmí být delší než polovina sjednané doby trvání pracovního poměru na dobu určitou (§ 35 odst. 3) [3]. U smlouvy na 4 měsíce je tedy maximální možná délka zkušební doby 2 měsíce. (Zároveň platí obecné horní limity 4 měsíce, resp. 8 měsíce u vedoucího zaměstnance (§ 35 odst. 2) [1], ale pro váš případ je přísnější omezení poloviny sjednané doby.) Zkušební dobu je třeba sjednat písemně (§ 35 odst. 1) [5].",
+   "said_nevim": false,
+   "hit3": false,
+   "hit5": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "reason": "Odpověď věcně odpovídá zlaté odpovědi a opírá se o dodané úseky, pouze odkaz [3] je zjevně chybně přiřazen místo [4]."
+   }
+  },
+  {
+   "id": 24,
+   "level": "střední",
+   "q": "Jeden den jsem nepřišel do práce a neomluvil se. Může mi šéf vzít dovolenou?",
+   "gold": "Ano, za neomluveně zameškanou směnu může zaměstnavatel dovolenou krátit, a to o počet neomluveně zameškaných hodin.",
+   "chunks": [
+    "§ 223 odst. 1"
+   ],
+   "rewritten": null,
+   "top": [
+    "§ 221",
+    "§ 219 odst. 2",
+    "§ 219 odst. 1",
+    "§ 217 odst. 1",
+    "§ 91 odst. 2"
+   ],
+   "answer": "Nevím, v dostupných úsecích zákona to není.",
+   "said_nevim": true,
+   "hit3": false,
+   "hit5": false,
+   "judge": {
+    "correct": false,
+    "grounded": true,
+    "reason": "Asistent neodpovídá zlaté odpovědi, ale správně uvádí, že v poskytnutých úsecích chybí příslušné ustanovení o krácení dovolené."
+   }
+  },
+  {
+   "id": 25,
+   "level": "střední",
+   "q": "Kdy mi přijdou peníze za odstupné?",
+   "gold": "Po skončení pracovního poměru v nejbližším výplatním termínu, pokud se se zaměstnavatelem písemně nedohodnou na výplatě v den skončení nebo na pozdějším termínu.",
+   "chunks": [
+    "§ 67 odst. 5"
+   ],
+   "rewritten": null,
+   "top": [
+    "§ 67 odst. 5",
+    "§ 68 odst. 1",
+    "§ 67 odst. 4",
+    "§ 67 odst. 1",
+    "§ 68 odst. 2"
+   ],
+   "answer": "Odstupné vám zaměstnavatel vyplatí po skončení pracovního poměru v nejbližším výplatním termínu, který u něj platí pro výplatu mzdy nebo platu, pokud se s ním písemně nedohodnete na výplatě již v den skončení pracovního poměru nebo na pozdějším termínu. [1]",
+   "said_nevim": false,
+   "hit3": true,
+   "hit5": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "reason": "Odpověď věcně odpovídá § 67 odst. 5 i zlaté odpovědi a opírá se výhradně o dodaný úsek [1]."
+   }
+  },
+  {
+   "id": 26,
+   "level": "snadná",
+   "q": "Když se se šéfem domluvíme na konci práce, musí to být na papíře?",
+   "gold": "Ano, dohoda o rozvázání pracovního poměru musí být písemná.",
+   "chunks": [
+    "§ 49 odst. 2"
+   ],
+   "rewritten": null,
+   "top": [
+    "§ 49 odst. 2",
+    "§ 34 odst. 2",
+    "§ 74 odst. 2",
+    "§ 73a odst. 1",
+    "§ 77 odst. 1"
+   ],
+   "answer": "Ano, pokud se se zaměstnavatelem dohodnete na ukončení pracovního poměru, tato dohoda musí být uzavřena písemně. Toto vyplývá z § 49 odst. 2 zákoníku práce, který stanoví, že dohoda o rozvázání pracovního poměru musí být písemná [1]. Bez písemné formy taková dohoda není platná.",
+   "said_nevim": false,
+   "hit3": true,
+   "hit5": true,
+   "judge": {
+    "correct": true,
+    "grounded": false,
+    "reason": "Odpověď věcně odpovídá zlaté odpovědi, ale tvrzení o neplatnosti ústní dohody nemá oporu v dodaném § 49 odst. 2."
+   }
+  },
+  {
+   "id": 27,
+   "level": "těžká",
+   "q": "Jsem těhotná. Může mě zaměstnavatel vyhodit ze dne na den?",
+   "gold": "Ne, zaměstnavatel nesmí okamžitě zrušit pracovní poměr s těhotnou zaměstnankyní.",
+   "chunks": [
+    "§ 55 odst. 2"
+   ],
+   "rewritten": null,
+   "top": [
+    "§ 55 odst. 2",
+    "§ 53 odst. 1",
+    "§ 54",
+    "§ 56 odst. 1",
+    "§ 58 odst. 1"
+   ],
+   "answer": "Ne, zaměstnavatel vás nemůže okamžitě vyhodit ze dne na den, protože podle § 55 odst. 2 zákoníku práce zaměstnavatel nesmí okamžitě zrušit pracovní poměr s těhotnou zaměstnankyní [1] a podle § 53 odst. 1 písm. d) je v ochranné době také těhotná zaměstnankyně, během níž se výpověď zakazuje [2]. Tedy okamžité zrušení pracovního poměru v těhotenství není přípustné.",
+   "said_nevim": false,
+   "hit3": true,
+   "hit5": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "reason": "Asistent správně uvádí, že těhotná zaměstnankyně je chráněna před okamžitým zrušením pracovního poměru podle § 55 odst. 2 a jeho tvrzení odpovídají dodaným úsekům."
+   }
+  },
+  {
+   "id": 28,
+   "level": "střední",
+   "q": "Do kdy si musím vybrat letošní dovolenou?",
+   "gold": "Zaměstnavatel má čerpání určit tak, aby se dovolená vyčerpala v kalendářním roce, ve kterém právo vzniklo, ledaže tomu brání překážky v práci na straně zaměstnance nebo naléhavé provozní důvody.",
+   "chunks": [
+    "§ 218 odst. 1"
+   ],
+   "rewritten": null,
+   "top": [
+    "§ 217 odst. 1",
+    "§ 212 odst. 1",
+    "§ 218 odst. 4",
+    "§ 218 odst. 3",
+    "§ 218 odst. 5"
+   ],
+   "answer": "Letošní dovolenou je třeba vyčerpat nejpozději do konce následujícího kalendářního roku, tedy do 31. 12. roku následujícího po roce, za který dovolená náleží, pokud se se zaměstnavatelem nedohodnete na dřívějším čerpání. Pokud zaměstnavatel neurčí čerpání dovolené nejpozději do 30. června následujícího roku, máte právo určit si její čerpání sami a musíte jej písemně oznámit zaměstnavateli alespoň 14 dnů předem. [3][4]",
+   "said_nevim": false,
+   "hit3": false,
+   "hit5": false,
+   "judge": {
+    "correct": false,
+    "grounded": false,
+    "reason": "Asistent obecně uvádí až náhradní lhůtu do konce následujícího roku, opomíjí základní pravidlo čerpání v témže roce a první tvrzení nemá oporu v dodaných úsecích."
+   }
+  },
+  {
+   "id": 29,
+   "level": "bez odpovědi",
+   "q": "Kolik je stravenkový paušál na jeden den?",
+   "gold": "NEVÍM – stravování a stravenkový paušál nejsou ve vybrané části zákona.",
+   "chunks": [],
+   "rewritten": null,
+   "top": [
+    "§ 90 odst. 1",
+    "§ 88 odst. 1",
+    "§ 90 odst. 2",
+    "§ 90a",
+    "§ 88 odst. 2"
+   ],
+   "answer": "Nevím, v dostupných úsecích zákona to není.",
+   "said_nevim": true,
+   "hit3": null,
+   "hit5": null,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "reason": "Asistent správně odmítl odpovědět, protože stravenkový paušál se v dodaných úsecích zákona nevyskytuje."
+   }
+  },
+  {
+   "id": 30,
+   "level": "bez odpovědi",
+   "q": "Kolik dní placeného volna dostanu na vlastní svatbu?",
+   "gold": "NEVÍM – překážky v práci na straně zaměstnance nejsou ve vybrané části zákona.",
+   "chunks": [],
+   "rewritten": null,
+   "top": [
+    "§ 77 odst. 4",
+    "§ 212 odst. 1",
+    "§ 91 odst. 2",
+    "§ 77 odst. 8",
+    "§ 77a odst. 1"
+   ],
+   "answer": "Nevím, v dostupných úsecích zákona to není.",
+   "said_nevim": true,
+   "hit3": null,
+   "hit5": null,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "reason": "Asistent správně odmítl odpovědět, protože požadované ustanovení o překážkách v práci na straně zaměstnance není v dodaných úsecích zákona."
+   }
+  }
+ ],
+ "v2": [
+  {
+   "id": 21,
+   "level": "střední",
+   "q": "Kolik hodin volna v kuse musím mít aspoň jednou za týden?",
+   "gold": "Nepřetržitý odpočinek v týdnu nejméně 24 hodin, na který bezprostředně navazuje nepřetržitý denní odpočinek (zaměstnanec starší 18 let).",
+   "chunks": [
+    "§ 92 odst. 1"
+   ],
+   "rewritten": "Jaká je minimální délka nepřetržitého odpočinku v týdnu, jenž musí být zaměstnanci poskytnut nejméně jednou za týden?",
+   "top": [
+    "§ 92 odst. 2",
+    "§ 92 odst. 1",
+    "§ 92 odst. 6",
+    "§ 92 odst. 5",
+    "§ 92 odst. 4"
+   ],
+   "answer": "Pokud jste starší 18 let, musí vám zaměstnavatel v rámci týdne poskytnout nepřetržitý odpočinek v trvání alespoň 24 hodin spolu s nepřetržitým denním odpočinkem, na který musí bezprostředně navazovat; celková doba těchto odpočinků je nepřetržitým odpočinkem v týdnu [2]. Mladistvému zaměstnanci musí být poskytnut nepřetržitý odpočinek v týdnu alespoň 48 hodin [1]. Ve zdravotnictví, zemědělství nebo u některých nepřerušených technologických procesů se však délka může za zákonných podmínek upravit [3][4][5].",
+   "said_nevim": false,
+   "hit3": true,
+   "hit5": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "reason": "Odpověď správně uvádí pro zaměstnance staršího 18 let týdenní odpočinek alespoň 24 hodin s bezprostředně navazujícím denním odpočinkem a všechny doplňující údaje jsou podloženy dodanými úseky."
+   }
+  },
+  {
+   "id": 22,
+   "level": "snadná",
+   "q": "Musí mi šéf dovolenou oznámit dopředu?",
+   "gold": "Ano, určenou dobu čerpání dovolené musí zaměstnavatel písemně oznámit alespoň 14 dnů předem, pokud se nedohodnou na kratší době.",
+   "chunks": [
+    "§ 217 odst. 1"
+   ],
+   "rewritten": "Je zaměstnavatel povinen zaměstnanci předem oznámit určení doby čerpání dovolené?",
+   "top": [
+    "§ 218 odst. 4",
+    "§ 217 odst. 1",
+    "§ 218 odst. 1",
+    "§ 217 odst. 5",
+    "§ 54"
+   ],
+   "answer": "Ano. Dobu čerpání dovolené určuje zaměstnavatel a je povinen vám ji písemně oznámit alespoň 14 dnů předem, pokud se nedohodnete na kratší době [2]. Pokud by čerpání nebylo určeno do 30. června následujícího roku, může si čerpání určit i zaměstnanec, ale musí to zaměstnavateli písemně oznámit alespoň 14 dnů předem, pokud se nedohodnete jinak [1].",
+   "said_nevim": false,
+   "hit3": true,
+   "hit5": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "reason": "Asistent správně uvádí, že zaměstnavatel musí písemně oznámit určenou dobu čerpání dovolené alespoň 14 dnů předem, a jeho tvrzení jsou podložena dodanými úseky."
+   }
+  },
+  {
+   "id": 23,
+   "level": "těžká",
+   "q": "Mám smlouvu jen na 4 měsíce. Jak dlouhou zkušební dobu mi můžou dát?",
+   "gold": "Nejvýše polovinu sjednané doby trvání pracovního poměru na dobu určitou, tedy nejvýše 2 měsíce.",
+   "chunks": [
+    "§ 35 odst. 3"
+   ],
+   "rewritten": "Byl-li pracovní poměr založen pracovní smlouvou na dobu určitou v trvání čtyř měsíců, na jakou nejdelší dobu lze sjednat zkušební dobu?",
+   "top": [
+    "§ 35 odst. 2",
+    "§ 35 odst. 3",
+    "§ 35 odst. 1",
+    "§ 35 odst. 4",
+    "§ 77 odst. 4"
+   ],
+   "answer": "U smlouvy na dobu určitou 4 měsíce může být zkušební doba maximálně 2 měsíce, protože nesmí přesáhnout polovinu sjednané doby trvání pracovního poměru [2]. Musí být sjednána písemně nejpozději v den vzniku pracovního poměru [3].",
+   "said_nevim": false,
+   "hit3": true,
+   "hit5": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "reason": "Asistent správně uvádí maximálně 2 měsíce podle poloviny sjednané doby a doplňuje písemné sjednání nejpozději v den vzniku pracovního poměru, což odpovídá dodaným úsekům."
+   }
+  },
+  {
+   "id": 24,
+   "level": "střední",
+   "q": "Jeden den jsem nepřišel do práce a neomluvil se. Může mi šéf vzít dovolenou?",
+   "gold": "Ano, za neomluveně zameškanou směnu může zaměstnavatel dovolenou krátit, a to o počet neomluveně zameškaných hodin.",
+   "chunks": [
+    "§ 223 odst. 1"
+   ],
+   "rewritten": "Může zaměstnavatel zaměstnanci za neomluvené zameškání jedné pracovní směny krátit dovolenou?",
+   "top": [
+    "§ 223 odst. 1",
+    "§ 221",
+    "§ 219 odst. 2",
+    "§ 217 odst. 1",
+    "§ 219 odst. 1"
+   ],
+   "answer": "Podle § 223 odst. 1 [1] může zaměstnavatel krátit dovolenou jen za neomluveně zameškanou směnu, a to o počet neomluveně zameškaných hodin. Pokud jste tedy neomluveně zameškal celou směnu, může vám dovolenou krátit o hodiny této směny. Neomluvená zameškání kratších částí směn lze sčítat [1].",
+   "said_nevim": false,
+   "hit3": true,
+   "hit5": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "reason": "Odpověď věcně odpovídá zlaté odpovědi a opírá se o citovaný § 223 odst. 1."
+   }
+  },
+  {
+   "id": 25,
+   "level": "střední",
+   "q": "Kdy mi přijdou peníze za odstupné?",
+   "gold": "Po skončení pracovního poměru v nejbližším výplatním termínu, pokud se se zaměstnavatelem písemně nedohodnou na výplatě v den skončení nebo na pozdějším termínu.",
+   "chunks": [
+    "§ 67 odst. 5"
+   ],
+   "rewritten": "V jaké lhůtě je zaměstnavatel povinen poskytnout zaměstnanci odstupné?",
+   "top": [
+    "§ 67 odst. 5",
+    "§ 68 odst. 1",
+    "§ 67 odst. 3",
+    "§ 67 odst. 1",
+    "§ 67 odst. 2"
+   ],
+   "answer": "Odstupné vám zaměstnavatel musí vyplatit po skončení pracovního poměru, a to v nejbližším výplatním termínu, který má určený pro výplatu mzdy nebo platu [1]. Můžete se však se zaměstnavatelem písemně dohodnout, že vám odstupné vyplatí už v den skončení pracovního poměru, případně v pozdějším termínu [1].",
+   "said_nevim": false,
+   "hit3": true,
+   "hit5": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "reason": "Odpověď věcně odpovídá zákonné úpravě i zlaté odpovědi a obě tvrzení jsou podložena úsekem [1]."
+   }
+  },
+  {
+   "id": 26,
+   "level": "snadná",
+   "q": "Když se se šéfem domluvíme na konci práce, musí to být na papíře?",
+   "gold": "Ano, dohoda o rozvázání pracovního poměru musí být písemná.",
+   "chunks": [
+    "§ 49 odst. 2"
+   ],
+   "rewritten": "Musí být dohoda o rozvázání pracovního poměru uzavřená mezi zaměstnancem a zaměstnavatelem v písemné formě?",
+   "top": [
+    "§ 49 odst. 2",
+    "§ 34 odst. 2",
+    "§ 77 odst. 1",
+    "§ 49 odst. 1",
+    "§ 70 odst. 2"
+   ],
+   "answer": "Ano, když se se zaměstnavatelem dohodnete na rozvázání pracovního poměru, musí být tato dohoda písemná [1]. Pokud se dohodnete, pracovní poměr končí sjednaným dnem [4].",
+   "said_nevim": false,
+   "hit3": true,
+   "hit5": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "reason": "Asistent správně uvádí, že dohoda o rozvázání pracovního poměru musí být písemná, a opírá se o dodané úseky."
+   }
+  },
+  {
+   "id": 27,
+   "level": "těžká",
+   "q": "Jsem těhotná. Může mě zaměstnavatel vyhodit ze dne na den?",
+   "gold": "Ne, zaměstnavatel nesmí okamžitě zrušit pracovní poměr s těhotnou zaměstnankyní.",
+   "chunks": [
+    "§ 55 odst. 2"
+   ],
+   "rewritten": "Je zaměstnavatel oprávněn okamžitě zrušit pracovní poměr s těhotnou zaměstnankyní?",
+   "top": [
+    "§ 55 odst. 2",
+    "§ 58 odst. 1",
+    "§ 59",
+    "§ 54",
+    "§ 56 odst. 1"
+   ],
+   "answer": "Ne, zaměstnavatel nesmí okamžitě zrušit pracovní poměr s těhotnou zaměstnankyní [1]. Ze dne na den vás tedy vyhodit nemůže.",
+   "said_nevim": false,
+   "hit3": true,
+   "hit5": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "reason": "Odpověď správně a v souladu s dodaným § 55 odst. 2 uvádí, že zaměstnavatel nesmí okamžitě zrušit pracovní poměr s těhotnou zaměstnankyní."
+   }
+  },
+  {
+   "id": 28,
+   "level": "střední",
+   "q": "Do kdy si musím vybrat letošní dovolenou?",
+   "gold": "Zaměstnavatel má čerpání určit tak, aby se dovolená vyčerpala v kalendářním roce, ve kterém právo vzniklo, ledaže tomu brání překážky v práci na straně zaměstnance nebo naléhavé provozní důvody.",
+   "chunks": [
+    "§ 218 odst. 1"
+   ],
+   "rewritten": "V jaké lhůtě je zaměstnanec povinen čerpat dovolenou za příslušný kalendářní rok?",
+   "top": [
+    "§ 218 odst. 4",
+    "§ 213 odst. 1",
+    "§ 213 odst. 3",
+    "§ 213 odst. 2",
+    "§ 218 odst. 2"
+   ],
+   "answer": "Podle § 218 odst. 4 platí, že pokud čerpání dovolené není určeno nejpozději do 30. června následujícího kalendářního roku, má právo určit čerpání dovolené i zaměstnanec [1]. Čerpání pak musíte písemně oznámit zaměstnavateli alespoň 14 dnů předem, pokud se nedohodnete na jiné době oznámení [1].",
+   "said_nevim": false,
+   "hit3": false,
+   "hit5": false,
+   "judge": {
+    "correct": false,
+    "grounded": true,
+    "reason": "Asistent sice věrně cituje § 218 odst. 4, ale neodpovídá zlaté odpovědi, která vyžaduje, aby zaměstnavatel určil čerpání dovolené v témže kalendářním roce, nestojí-li v cestě uvedené výjimky."
+   }
+  },
+  {
+   "id": 29,
+   "level": "bez odpovědi",
+   "q": "Kolik je stravenkový paušál na jeden den?",
+   "gold": "NEVÍM – stravování a stravenkový paušál nejsou ve vybrané části zákona.",
+   "chunks": [],
+   "rewritten": "Jaká je výše příspěvku na stravování poskytovaného zaměstnanci na jednu pracovní směnu?",
+   "top": [
+    "§ 88 odst. 1",
+    "§ 88 odst. 4",
+    "§ 77a odst. 1",
+    "§ 37 odst. 1",
+    "§ 83a odst. 1"
+   ],
+   "answer": "Nevím, v dostupných úsecích zákona to není.",
+   "said_nevim": true,
+   "hit3": null,
+   "hit5": null,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "reason": "Zlatá odpověď je NEVÍM a asistent správně odmítl odpovědět s odůvodněním, že stravenkový paušál v dodaných úsecích není."
+   }
+  },
+  {
+   "id": 30,
+   "level": "bez odpovědi",
+   "q": "Kolik dní placeného volna dostanu na vlastní svatbu?",
+   "gold": "NEVÍM – překážky v práci na straně zaměstnance nejsou ve vybrané části zákona.",
+   "chunks": [],
+   "rewritten": "Na kolik dnů pracovního volna s náhradou mzdy má zaměstnanec nárok při vlastní svatbě?",
+   "top": [
+    "§ 37 odst. 1",
+    "§ 69 odst. 2",
+    "§ 77a odst. 1",
+    "§ 219 odst. 2",
+    "§ 63"
+   ],
+   "answer": "Nevím, v dostupných úsecích zákona to není.",
+   "said_nevim": true,
+   "hit3": null,
+   "hit5": null,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "reason": "Asistent správně odmítl odpovědět, protože překážky v práci na straně zaměstnance nejsou v dodaných úsecích zákona."
+   }
+  }
+ ]
+}

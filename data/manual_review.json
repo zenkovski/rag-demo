@@ -1,8 +1,7 @@
 {
- "2": {"correct": true, "note": "Správně (4 měsíce). Drobnost: u věty o prodloužení cituje [4] (§ 35 odst. 3) místo [3] (§ 35 odst. 4)."},
- "3": {"correct": true, "note": "Správně. Vynechal ale výjimku: zaměstnavatel nesmí zrušit poměr v prvních 14 dnech pracovní neschopnosti."},
- "7": {"correct": false, "note": "Hlavní číslo (20 hodin týdně) správně, ale přidal nepravdu: „za rok nesmíte překročit 300 hodin“. Limit 300 h platí pro DPP; § 76 odst. 1 říká opak. AI soudce chybu nepoznal."},
- "10": {"correct": true, "note": "Správně (11 hodin, mladiství 12). Citaci napsal jako 【3】, web ji převádí na [3]."},
- "11": {"correct": true, "note": "Správně (nejméně dvojnásobek průměrného výdělku). Drobnost: § 67 odst. 4 cituje jako [4] místo [5]."},
- "15": {"correct": false, "note": "Chyba vyhledávání: správný § 56 odst. 1 nebyl mezi nalezenými úseky (otázka mluví o „výplatě“ a „odejít“, zákon o „mzdě“ a „okamžitém zrušení“). Model pak odpověděl jen lhůtami z § 59 a podmínku 15 dnů po splatnosti vynechal."}
+ "4": {"correct": true, "note": "Správně (nejméně 2 měsíce, výjimka 1 měsíc). Správný § 51 odst. 2 byl až 4. nalezený, model ho přesto použil."},
+ "7": {"correct": true, "note": "Správně: v průměru nejvýše polovina stanovené týdenní pracovní doby. Chyba z v1 (300 hodin) zmizela; konkrétní číslo 20 hodin ale nenapsal."},
+ "10": {"correct": true, "note": "Správně (11 hodin, mladiství 12). Správný § 90 odst. 1 byl až 4. nalezený."},
+ "15": {"correct": true, "note": "V1 chyba, teď správně: přepis otázky do jazyka zákona („okamžitě zrušit“, „nevyplatil mzdu“) dostal § 56 odst. 1 mezi nalezené úseky (5. místo)."},
+ "16": {"correct": true, "note": "Správně (nejvýše dvakrát, prodloužení se počítá). Vynechal, že jeden poměr smí trvat nejdéle 3 roky."}
 }

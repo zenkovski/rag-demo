@@ -1324,5 +1324,3385 @@
     "audio_tokens": 0
    }
   }
+ },
+ "b5a82f59b2457e91ba87bfb54b1108c5bd24e3eb2cb808064319d8da1a9e425b": {
+  "text": "Jaká je minimální výměra dovolené v kalendářním roce?",
+  "usage": {
+   "prompt_tokens": 124,
+   "completion_tokens": 419,
+   "total_tokens": 543,
+   "cost": 0.00029715,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.00029715,
+    "upstream_inference_prompt_cost": 2.48e-05,
+    "upstream_inference_completions_cost": 0.00027235
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 399,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "a2b1eef1decdd02ab9491a3c1b0eba25ea666e37e030de1ffa02f6363f72697f": {
+  "text": "Jaká je nejdelší přípustná délka zkušební doby u zaměstnance, který není vedoucím zaměstnancem?",
+  "usage": {
+   "prompt_tokens": 129,
+   "completion_tokens": 755,
+   "total_tokens": 884,
+   "cost": 0.00051655,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.00051655,
+    "upstream_inference_prompt_cost": 2.58e-05,
+    "upstream_inference_completions_cost": 0.00049075
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 717,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "950189a4860b4964f8c172e051970408a1b5c9d1e124867fcc78d07aa8454934": {
+  "text": "Může zaměstnavatel se mnou ve zkušební době zrušit pracovní poměr bez uvedení důvodu?",
+  "usage": {
+   "prompt_tokens": 131,
+   "completion_tokens": 757,
+   "total_tokens": 888,
+   "cost": 0.00051825,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.00051825,
+    "upstream_inference_prompt_cost": 2.62e-05,
+    "upstream_inference_completions_cost": 0.00049205
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 724,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "f38c138132447049997e93dc40ba3aae197b810d41f2de64c5b26d35e2660c83": {
+  "text": "Jaká je délka výpovědní doby?",
+  "usage": {
+   "prompt_tokens": 120,
+   "completion_tokens": 789,
+   "total_tokens": 909,
+   "cost": 0.00053685,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.00053685,
+    "upstream_inference_prompt_cost": 2.4e-05,
+    "upstream_inference_completions_cost": 0.00051285
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 774,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "6cd43f982c0afd527646514aa6eee3403c3798aa91b60aacd953f854d5efb9e4": {
+  "text": "Kterým dnem počíná běžet výpovědní doba?",
+  "usage": {
+   "prompt_tokens": 124,
+   "completion_tokens": 743,
+   "total_tokens": 867,
+   "cost": 0.00055728,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.00055728,
+    "upstream_inference_prompt_cost": 2.232e-05,
+    "upstream_inference_completions_cost": 0.00053496
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 722,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "b98a94e409e16b16f580bd655fe6bba7f4da4db1ae1c4ab83b25f48b01d46e7e": {
+  "text": "Jaký je nejvyšší přípustný rozsah práce vykonávané v kalendářním roce na základě dohody o provedení práce?",
+  "usage": {
+   "prompt_tokens": 131,
+   "completion_tokens": 1088,
+   "total_tokens": 1219,
+   "cost": 0.0007334,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.0007334,
+    "upstream_inference_prompt_cost": 2.62e-05,
+    "upstream_inference_completions_cost": 0.0007072
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 1054,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "385c0f4f317697350fd7a4059fabe4e084d64f4588a06c6287293b747322ddcb": {
+  "text": "Jaký je nejvyšší přípustný rozsah pracovní doby v kalendářním týdnu při výkonu práce na základě dohody o pracovní činnosti?",
+  "usage": {
+   "prompt_tokens": 130,
+   "completion_tokens": 773,
+   "total_tokens": 903,
+   "cost": 0.000932735,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.000932735,
+    "upstream_inference_prompt_cost": 5.135e-06,
+    "upstream_inference_completions_cost": 0.0009276
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 610,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "19f6c34ec32ef2294a44a746bdba9fdf46e68c4eb9e46be15167703943a0864e": {
+  "text": "Po jaké době nepřetržité práce vzniká zaměstnanci nárok na přestávku v práci na jídlo a oddech?",
+  "usage": {
+   "prompt_tokens": 127,
+   "completion_tokens": 387,
+   "total_tokens": 514,
+   "cost": 0.00027695,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.00027695,
+    "upstream_inference_prompt_cost": 2.54e-05,
+    "upstream_inference_completions_cost": 0.00025155
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 353,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "87ee2bd6686070f6f192ee711d3a106d945b1fa18e9917412852f3c3e806446c": {
+  "text": "V jakém maximálním rozsahu může zaměstnavatel zaměstnanci nařídit práci přesčas?",
+  "usage": {
+   "prompt_tokens": 123,
+   "completion_tokens": 500,
+   "total_tokens": 623,
+   "cost": 0.0003496,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.0003496,
+    "upstream_inference_prompt_cost": 2.46e-05,
+    "upstream_inference_completions_cost": 0.000325
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 472,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "af76cae5318b0302a73656a40145a762a019aa6c3500eb785e2f3c54ada17e2f": {
+  "text": "Jaká je minimální délka nepřetržitého odpočinku zaměstnance mezi koncem jedné směny a začátkem následující směny?",
+  "usage": {
+   "prompt_tokens": 128,
+   "completion_tokens": 383,
+   "total_tokens": 511,
+   "cost": 0.0002988,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.0002988,
+    "upstream_inference_prompt_cost": 2.304e-05,
+    "upstream_inference_completions_cost": 0.00027576
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 341,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "a9d337365eb88630ff9da6a4867623f901adcf57d174436977a48da659a4fe6a": {
+  "text": "Jaká je výše odstupného podle § 67 zákoníku práce náležejícího zaměstnanci, jehož pracovní poměr u zaměstnavatele trvá jeden a půl roku a s nímž je rozvázán pracovní poměr výpovědí z důvodu nadbytečnosti podle § 52 písm. c) zákoníku práce?",
+  "usage": {
+   "prompt_tokens": 138,
+   "completion_tokens": 1661,
+   "total_tokens": 1799,
+   "cost": 0.00110725,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.00110725,
+    "upstream_inference_prompt_cost": 2.76e-05,
+    "upstream_inference_completions_cost": 0.00107965
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 1569,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "fa7ea1bd1456611a0f82b1cf4c67965ab86297f75ca3cbac9720614d18925121": {
+  "text": "Může zaměstnavatel dát zaměstnanci výpověď z pracovního poměru z jakéhokoli důvodu, například z důvodu, že zaměstnanec nevyhovuje jeho subjektivním požadavkům?",
+  "usage": {
+   "prompt_tokens": 138,
+   "completion_tokens": 1220,
+   "total_tokens": 1358,
+   "cost": 0.0008206,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.0008206,
+    "upstream_inference_prompt_cost": 2.76e-05,
+    "upstream_inference_completions_cost": 0.000793
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 1161,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "721ffa9c6a6ba6295e8673a77e0d6e325921585f8ecb42c0cbbe61f6e8dfbd5b": {
+  "text": "V jaké lhůtě může zaměstnanec uplatnit neplatnost výpovědi u soudu?",
+  "usage": {
+   "prompt_tokens": 128,
+   "completion_tokens": 655,
+   "total_tokens": 783,
+   "cost": 0.00045135,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.00045135,
+    "upstream_inference_prompt_cost": 2.56e-05,
+    "upstream_inference_completions_cost": 0.00042575
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 630,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "6547ffe010bfa8d79f279ba26c6b3caa9c55280ca221c315ca3e408781414268": {
+  "text": "Mám vůči zaměstnavateli nárok na náhradu mzdy za nevyčerpanou dovolenou?",
+  "usage": {
+   "prompt_tokens": 127,
+   "completion_tokens": 1441,
+   "total_tokens": 1568,
+   "cost": 0.00096205,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.00096205,
+    "upstream_inference_prompt_cost": 2.54e-05,
+    "upstream_inference_completions_cost": 0.00093665
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 1413,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "3413bc503dd146b1c07fbdf27893b756dd84309081dbf8bf5c97861ee11b43df": {
+  "text": "Může zaměstnanec okamžitě zrušit pracovní poměr, jestliže mu zaměstnavatel nevyplatil mzdu po dobu jednoho měsíce?",
+  "usage": {
+   "prompt_tokens": 132,
+   "completion_tokens": 637,
+   "total_tokens": 769,
+   "cost": 0.00044045,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.00044045,
+    "upstream_inference_prompt_cost": 2.64e-05,
+    "upstream_inference_completions_cost": 0.00041405
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 593,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "64533298ad50fde1af9c659c7b396e42c6f5921ae955cf7848bf5d09304cc360": {
+  "text": "Kolikrát lze opakovaně sjednat pracovní poměr na dobu určitou, případně jej prodloužit?",
+  "usage": {
+   "prompt_tokens": 127,
+   "completion_tokens": 874,
+   "total_tokens": 1001,
+   "cost": 0.0005935,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.0005935,
+    "upstream_inference_prompt_cost": 2.54e-05,
+    "upstream_inference_completions_cost": 0.0005681
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 844,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "88cc27cc4870726e559f9721407d3009fe6f34d8c5aa25263fe3cedc17f83be8": {
+  "text": "Jaká je výše minimální mzdy pro kalendářní rok 2026?",
+  "usage": {
+   "prompt_tokens": 122,
+   "completion_tokens": 1226,
+   "total_tokens": 1348,
+   "cost": 0.00037634,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.00037634,
+    "upstream_inference_prompt_cost": 8.54e-06,
+    "upstream_inference_completions_cost": 0.0003678
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 1204,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "aabc4c5bc3796df41104634768b6e8ec72576398b874903d81c723448aa904ca": {
+  "text": "Po jakou dobu se poskytuje mateřská dovolená?",
+  "usage": {
+   "prompt_tokens": 121,
+   "completion_tokens": 619,
+   "total_tokens": 740,
+   "cost": 0.000366177,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.000366177,
+    "upstream_inference_prompt_cost": 1.7061e-05,
+    "upstream_inference_completions_cost": 0.000349116
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 601,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "ddae9c5402d6e01063806eedffae9ead941258add468fe381bf9c7e4f028dcfd": {
+  "text": "Za jakých podmínek je zaměstnanec oprávněn vykonávat práci na dálku?",
+  "usage": {
+   "prompt_tokens": 125,
+   "completion_tokens": 1061,
+   "total_tokens": 1186,
+   "cost": 0.0013107,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.0013107,
+    "upstream_inference_prompt_cost": 3.75e-05,
+    "upstream_inference_completions_cost": 0.0012732
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 1032,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "831fa83a85ad3396024875c114bf2fb790cf1cb3d88fbd0779a863975315580a": {
+  "text": "V jaké výši náleží zaměstnanci nemocenské po dobu dočasné pracovní neschopnosti?",
+  "usage": {
+   "prompt_tokens": 125,
+   "completion_tokens": 470,
+   "total_tokens": 595,
+   "cost": 0.0006015,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.0006015,
+    "upstream_inference_prompt_cost": 3.75e-05,
+    "upstream_inference_completions_cost": 0.000564
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 439,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "3b4228a8f2091fae661875f3ef2ea08335a92fd233a3f21b94ed449ae00ba7e0": {
+  "text": "Může zaměstnavatel rozvázat pracovní poměr výpovědí se zaměstnancem v době jeho dočasné pracovní neschopnosti?",
+  "usage": {
+   "prompt_tokens": 127,
+   "completion_tokens": 882,
+   "total_tokens": 1009,
+   "cost": 0.000515355,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.000515355,
+    "upstream_inference_prompt_cost": 1.7907e-05,
+    "upstream_inference_completions_cost": 0.000497448
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 843,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "8ec6f3daaec108116b1c4d958d841607ac1cccf841341f119fa9629dd99e965f": {
+  "text": "Obecně platí, že výměra dovolené činí nejméně 4 týdny v kalendářním roce [1]. Pro zaměstnance uvedené v § 109 odst. 3 činí 5 týdnů v kalendářním roce [2] a pro pedagogické pracovníky a akademické pracovníky vysokých škol 8 týdnů v kalendářním roce [3].",
+  "usage": {
+   "prompt_tokens": 781,
+   "completion_tokens": 710,
+   "total_tokens": 1491,
+   "cost": 0.000510561,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.000510561,
+    "upstream_inference_prompt_cost": 0.000110121,
+    "upstream_inference_completions_cost": 0.00040044
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 612,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "63e6eb31c9f643e9b9e4e9c405ce586af6f5f58b5fcaba29ead1e0133e51fca8": {
+  "text": "{\"correct\": true, \"grounded\": true, \"reason\": \"Asistent správně uvádí obecné minimum 4 týdny a doplňující zákonné výjimky, které jsou podloženy citovanými úseky.\"}",
+  "usage": {
+   "prompt_tokens": 796,
+   "completion_tokens": 251,
+   "total_tokens": 1047,
+   "cost": 0.00054,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.00054,
+    "upstream_inference_prompt_cost": 0.0002388,
+    "upstream_inference_completions_cost": 0.0003012
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 192,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "85df37c3b0e3491e349ec6af2a7eb69ff161ea36b4f9e88dac3b6fbc3799b296": {
+  "text": "U běžného zaměstnance nesmí být zkušební doba sjednána na dobu delší než 4 měsíce po sobě jdoucí ode dne vzniku pracovního poměru [1]. Musí být sjednána písemně nejpozději v den vzniku pracovního poměru [2]. U pracovního poměru na dobu určitou navíc nesmí být delší než polovina sjednané doby jeho trvání [4]. Za jejího trvání může být dodatečně prodloužena v těchto mezích písemnou dohodou [5].",
+  "usage": {
+   "prompt_tokens": 752,
+   "completion_tokens": 393,
+   "total_tokens": 1145,
+   "cost": 0.00017054,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.00017054,
+    "upstream_inference_prompt_cost": 5.264e-05,
+    "upstream_inference_completions_cost": 0.0001179
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 242,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "4561eaafc932f1eabb367191c617eb9fc6f507f4dbe2aacfd0d2445336d9f1fd": {
+  "text": "{\"correct\": true, \"grounded\": true, \"reason\": \"Asistent správně uvádí maximální délku 4 měsíce pro běžného zaměstnance a jeho doplňující tvrzení jsou podložena dodanými úseky zákona.\"}",
+  "usage": {
+   "prompt_tokens": 857,
+   "completion_tokens": 268,
+   "total_tokens": 1125,
+   "cost": 0.00014039,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.00014039,
+    "upstream_inference_prompt_cost": 5.999e-05,
+    "upstream_inference_completions_cost": 8.04e-05
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 203,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "c7bb0a47f47a3d951e8f6103e343c473060ea90a16288c94f5e07fafc4f671a6": {
+  "text": "Ano, zaměstnavatel může ve zkušební době zrušit pracovní poměr z jakéhokoliv důvodu nebo bez uvedení důvodu [1]. Nesmí tak ale učinit v době prvních 14 kalendářních dnů trvání dočasné pracovní neschopnosti (karantény) zaměstnance [1].",
+  "usage": {
+   "prompt_tokens": 1096,
+   "completion_tokens": 299,
+   "total_tokens": 1395,
+   "cost": 0.000402092,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.000402092,
+    "upstream_inference_prompt_cost": 4.3292e-05,
+    "upstream_inference_completions_cost": 0.0003588
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 206,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "e81195559a233da263706dd2e66dbcba9309f974a37d5e8a5aef0d942604116e": {
+  "text": "{\"correct\": true, \"grounded\": true, \"reason\": \"Odpověď správně uvádí, že zaměstnavatel může ve zkušební době zrušit pracovní poměr bez důvodu, s výjimkou prvních 14 dnů pracovní neschopnosti, a opírá se o dodaný § 66.\"}",
+  "usage": {
+   "prompt_tokens": 1119,
+   "completion_tokens": 205,
+   "total_tokens": 1324,
+   "cost": 0.00034902,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.00034902,
+    "upstream_inference_prompt_cost": 0.00020142,
+    "upstream_inference_completions_cost": 0.0001476
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 120,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "89c863a8fb9599e5582f6ea029c96a6c3e78c275460f7e1d970f7bbcf302c5d0": {
+  "text": "Výpovědní doba činí nejméně 2 měsíce, s výjimkou výpovědi dané zaměstnanci z důvodu uvedeného v § 52 písm. f) až h), kde činí nejméně 1 měsíc, a výpovědi dané zaměstnavateli podle § 51a [4]. Písemnou dohodou mezi zaměstnavatelem a zaměstnancem lze výpovědní dobu prodloužit nebo změnit její běh, přičemž musí být sjednány stejně pro obě strany, kromě výpovědi podle § 52 písm. f) až h) [5]. Výpovědní doba začíná dnem doručení výpovědi druhé smluvní straně a končí dnem, který se s tímto dnem číslem shoduje; není-li takový den v posledním měsíci, připadne konec na poslední den měsíce [1].",
+  "usage": {
+   "prompt_tokens": 1038,
+   "completion_tokens": 1458,
+   "total_tokens": 2496,
+   "cost": 0.000496748,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 256,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.000496748,
+    "upstream_inference_prompt_cost": 5.9348e-05,
+    "upstream_inference_completions_cost": 0.0004374
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 1215,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "7a83d49f56aa1415ad3b5901c629207a063b35ef5a434a97636f3638ff60beae": {
+  "text": "{\"correct\":true,\"grounded\":true,\"reason\":\"Odpověď správně uvádí nejméně 2 měsíce i výjimku 1 měsíc pro § 52 písm. f) až h) a všechna tvrzení jsou podložena dodanými úseky.\"}",
+  "usage": {
+   "prompt_tokens": 1242,
+   "completion_tokens": 664,
+   "total_tokens": 1906,
+   "cost": 0.0011694,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.0011694,
+    "upstream_inference_prompt_cost": 0.0003726,
+    "upstream_inference_completions_cost": 0.0007968
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 592,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "3820d6d7f60a280b0caf15c82f1e9b926b372fd6aa8c9fb5749110ffa38a6c81": {
+  "text": "Výpovědní doba začíná dnem, v němž byla výpověď doručena druhé smluvní straně [1]. Končí dnem, který se číslem shoduje se dnem doručení; pokud takový den v posledním měsíci není, připadne konec výpovědní doby na poslední den měsíce [1].",
+  "usage": {
+   "prompt_tokens": 1042,
+   "completion_tokens": 388,
+   "total_tokens": 1430,
+   "cost": 0.000365754,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.000365754,
+    "upstream_inference_prompt_cost": 0.000146922,
+    "upstream_inference_completions_cost": 0.000218832
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 294,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "15b0ef0f8bd10ca6ec004af8ba282f50ecd39d8f2d4a9f2b0de713ab32a11536": {
+  "text": "{\"correct\": true, \"grounded\": true, \"reason\": \"Odpověď přesně vystihuje začátek i konec výpovědní doby podle § 51 odst. 1 a opírá se o dodaný úsek.\"}",
+  "usage": {
+   "prompt_tokens": 1088,
+   "completion_tokens": 266,
+   "total_tokens": 1354,
+   "cost": 0.0006456,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.0006456,
+    "upstream_inference_prompt_cost": 0.0003264,
+    "upstream_inference_completions_cost": 0.0003192
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 205,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "751f93cb845a7e9c7c747d92ea45ce925ebdb7972e3aa2554f946ccbe651ef8d": {
+  "text": "Na dohodu o provedení práce můžete odpracovat nejvýše 300 hodin v kalendářním roce [1]. Do tohoto rozsahu se započítává i doba práce, kterou jste v témže kalendářním roce vykonali pro stejného zaměstnavatele na základě jiné dohody o provedení práce [4].",
+  "usage": {
+   "prompt_tokens": 769,
+   "completion_tokens": 169,
+   "total_tokens": 938,
+   "cost": 9.1218e-05,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 256,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 9.1218e-05,
+    "upstream_inference_prompt_cost": 4.0518e-05,
+    "upstream_inference_completions_cost": 5.07e-05
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 83,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "1cede69b8b33a122bcd77875f6f0aa6d494e8ccb4da524bc77aebb0e8ced9f22": {
+  "text": "{\"correct\": true, \"grounded\": true, \"reason\": \"Asistent správně uvádí limit 300 hodin ročně na DPP a doplňuje započítání dalších DPP u téhož zaměstnavatele podle dodaných úseků.\"}",
+  "usage": {
+   "prompt_tokens": 792,
+   "completion_tokens": 359,
+   "total_tokens": 1151,
+   "cost": 0.00016314,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.00016314,
+    "upstream_inference_prompt_cost": 5.544e-05,
+    "upstream_inference_completions_cost": 0.0001077
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 294,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "b8d45473ada0dca3ce9d456fdcf3d8d53201ae9aab4b7ad9fbea97cf99a14710": {
+  "text": "Na dohodu o pracovní činnosti nemůžete pracovat v rozsahu, který by v průměru překročil polovinu stanovené týdenní pracovní doby [2]. Dodržení tohoto rozsahu se posuzuje za celou dobu, na kterou byla dohoda uzavřena, nejdéle však za 52 týdnů [1]. Nejde tedy o pevný týdenní limit, ale o průměr za uvedené období.",
+  "usage": {
+   "prompt_tokens": 767,
+   "completion_tokens": 575,
+   "total_tokens": 1342,
+   "cost": 0.000212878,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 256,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.000212878,
+    "upstream_inference_prompt_cost": 4.0378e-05,
+    "upstream_inference_completions_cost": 0.0001725
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 458,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "e92fdfd548890475714263b504b146f5e37e4cf341b3d144bd980e12157da57f": {
+  "text": "{\"correct\": true, \"grounded\": true, \"reason\": \"Asistent správně uvádí průměrný limit poloviny stanovené týdenní pracovní doby a jeho posuzování za období až 52 týdnů, což odpovídá zákonu i zlaté odpovědi.\"}",
+  "usage": {
+   "prompt_tokens": 834,
+   "completion_tokens": 345,
+   "total_tokens": 1179,
+   "cost": 0.00016188,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.00016188,
+    "upstream_inference_prompt_cost": 5.838e-05,
+    "upstream_inference_completions_cost": 0.0001035
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 271,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "45ec02195b73d6337ba21559fbcb0800cb0361c0449c18b34c47c48e355f735d": {
+  "text": "Zaměstnavatel vám musí poskytnout přestávku na jídlo a oddech nejdéle po 6 hodinách nepřetržité práce, a to v trvání nejméně 30 minut [1]. Pokud jste mladistvý zaměstnanec, musí být tato přestávka poskytnuta nejdéle po 4,5 hodinách nepřetržité práce [1].",
+  "usage": {
+   "prompt_tokens": 899,
+   "completion_tokens": 194,
+   "total_tokens": 1093,
+   "cost": 0.000107818,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 256,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.000107818,
+    "upstream_inference_prompt_cost": 4.9618e-05,
+    "upstream_inference_completions_cost": 5.82e-05
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 89,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "8f11e095855e47cc37c3d48b1f014893cc45c56c5fbf6e15a11c520e5298ddc9": {
+  "text": "{\"correct\": true, \"grounded\": true, \"reason\": \"Odpověď přesně vystihuje pravidlo ze zákona včetně výjimky pro mladistvé a opírá se o dodaný úsek [1].\"}",
+  "usage": {
+   "prompt_tokens": 872,
+   "completion_tokens": 119,
+   "total_tokens": 991,
+   "cost": 0.0004044,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.0004044,
+    "upstream_inference_prompt_cost": 0.0002616,
+    "upstream_inference_completions_cost": 0.0001428
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 57,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "aee4bc0ff61dfcc6e26c4e620aeed220ca971d7705b692c8818ab271ee9e345f": {
+  "text": "Zaměstnavatel vám může nařídit práci přesčas jen z vážných provozních důvodů, a to maximálně 8 hodin v jednotlivých týdnech a 150 hodin v kalendářním roce [1]. Nad tento rozsah může požadovat přesčas jen na základě dohody s vámi [2]. Celkový rozsah práce přesčas navíc nesmí činit v průměru více než 8 hodin týdně v období nejvýše 26 týdnů po sobě jdoucích, případně až 52 týdnů, pokud to určí kolektivní smlouva [3].",
+  "usage": {
+   "prompt_tokens": 859,
+   "completion_tokens": 507,
+   "total_tokens": 1366,
+   "cost": 0.0008661,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.0008661,
+    "upstream_inference_prompt_cost": 0.0002577,
+    "upstream_inference_completions_cost": 0.0006084
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 352,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "91eb612b3b5fe6d1da1a1546e588a8cf484e8c7115187db539cb2516a6d5d162": {
+  "text": "{\"correct\": true, \"grounded\": true, \"reason\": \"Asistent správně uvádí limit nařízené přesčasové práce i možnost dalšího přesčasu jen po dohodě a doplňující údaj o průměrném rozsahu je podložený dodanými úseky.\"}",
+  "usage": {
+   "prompt_tokens": 951,
+   "completion_tokens": 298,
+   "total_tokens": 1249,
+   "cost": 0.00015597,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.00015597,
+    "upstream_inference_prompt_cost": 6.657e-05,
+    "upstream_inference_completions_cost": 8.94e-05
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 222,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "edd205406a0ab10789284265462558e56411b4dc0c702177b99127f8d0eb345c": {
+  "text": "Podle § 90 odst. 1 musí zaměstnavatel poskytnout nepřetržitý denní odpočinek alespoň 11 hodin během 24 hodin po sobě jdoucích [4]. Mladistvému zaměstnanci pak alespoň 12 hodin, případně 14 hodin, jde-li o mladistvého uvedeného v § 79a odst. 1 [4]. Za podmínek § 90 odst. 2 může být tento odpočinek zkrácen až na 8 hodin, pokud je zaměstnanec starší 18 let a následující odpočinek se mu prodlouží o dobu zkrácení [3].",
+  "usage": {
+   "prompt_tokens": 1054,
+   "completion_tokens": 550,
+   "total_tokens": 1604,
+   "cost": 0.000900936,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 256,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.000900936,
+    "upstream_inference_prompt_cost": 0.000240936,
+    "upstream_inference_completions_cost": 0.00066
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 382,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "c81e85277082df79562bd2631f6c0b477ba98fc737d5e91f1209a7e34cd5ed5c": {
+  "text": "{\"correct\": true, \"grounded\": true, \"reason\": \"Odpověď správně uvádí 11 hodin, u mladistvých 12/14 hodin a zákonné zkrácení až na 8 hodin podle § 90 odst. 2; všechny údaje mají oporu v dodaných úsecích.\"}",
+  "usage": {
+   "prompt_tokens": 1161,
+   "completion_tokens": 466,
+   "total_tokens": 1627,
+   "cost": 0.000426525,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.000426525,
+    "upstream_inference_prompt_cost": 0.000163701,
+    "upstream_inference_completions_cost": 0.000262824
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 384,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "e67f532df6d69f536be46affc1eb1ba6fe6d4e8b6ee59873a13192b3bb2a6c1d": {
+  "text": "Jestliže jde o výpověď z důvodů uvedených v § 52 písm. a) až c), pak při trvání pracovního poměru alespoň 1 rok a méně než 2 roky vám přísluší odstupné nejméně ve výši dvojnásobku průměrného výdělku [1]. Váš případ 1,5 roku do této doby trvání spadá [1].",
+  "usage": {
+   "prompt_tokens": 1182,
+   "completion_tokens": 2920,
+   "total_tokens": 4102,
+   "cost": 0.000945428,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 256,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.000945428,
+    "upstream_inference_prompt_cost": 6.9428e-05,
+    "upstream_inference_completions_cost": 0.000876
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 2809,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "2d5363d8077c9a34f9b055e343c3ba4bb0558b8fd84a3ba794c7dcbd0aecdd04": {
+  "text": "{\"correct\": true, \"grounded\": true, \"reason\": \"Asistent správně určil dvojnásobek průměrného výdělku pro pracovní poměr 1 až 2 roky při výpovědi podle § 52 písm. a) až c), což odpovídá zlaté odpovědi i dodanému § 67 odst. 1.\"}",
+  "usage": {
+   "prompt_tokens": 1279,
+   "completion_tokens": 262,
+   "total_tokens": 1541,
+   "cost": 0.0006981,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.0006981,
+    "upstream_inference_prompt_cost": 0.0003837,
+    "upstream_inference_completions_cost": 0.0003144
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 171,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "02e3f3a7c14ad79e41490ca2b31820500b22918b5c66ab866b9790cbe9402c03": {
+  "text": "Ne. Zaměstnavatel může dát výpověď jen z důvodu výslovně stanoveného v § 52 [4]. Tyto důvody jsou v zákoně vyjmenované, například rušení zaměstnavatele, nadbytečnost nebo neuspokojivé pracovní výsledky [3]. To, že se mu zaměstnanec „nelíbí“, mezi nimi není.",
+  "usage": {
+   "prompt_tokens": 1500,
+   "completion_tokens": 123,
+   "total_tokens": 1623,
+   "cost": 0.000128588,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 256,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.000128588,
+    "upstream_inference_prompt_cost": 9.1688e-05,
+    "upstream_inference_completions_cost": 3.69e-05
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 30,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "49f14f4b1d232e77506c43446c8b005e2987f75c1ec8f2ce40c48dbf5713ed26": {
+  "text": "{\"correct\": true, \"grounded\": true, \"reason\": \"Asistent správně uvádí, že zaměstnavatel může dát výpověď jen z důvodů výslovně stanovených v § 52, a jeho tvrzení jsou podložena dodanými úseky.\"}",
+  "usage": {
+   "prompt_tokens": 1558,
+   "completion_tokens": 276,
+   "total_tokens": 1834,
+   "cost": 0.00019186,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.00019186,
+    "upstream_inference_prompt_cost": 0.00010906,
+    "upstream_inference_completions_cost": 8.28e-05
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 205,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "725f332dafff7112315058a49870eaa56519a627702d76c0ec44adce5ab6a233": {
+  "text": "Neplatnost výpovědi můžete u soudu uplatnit nejpozději ve lhůtě 2 měsíců ode dne, kdy měl pracovní poměr touto výpovědí skončit [1]. Tuto lhůtu může využít jak zaměstnavatel, tak zaměstnanec [1].",
+  "usage": {
+   "prompt_tokens": 1083,
+   "completion_tokens": 218,
+   "total_tokens": 1301,
+   "cost": 0.000127898,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 256,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.000127898,
+    "upstream_inference_prompt_cost": 6.2498e-05,
+    "upstream_inference_completions_cost": 6.54e-05
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 140,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "dfb0d51cc62897ce926722eb358dcbbdc4e12ecdb74d483d03d606f7469277b9": {
+  "text": "{\"correct\": true, \"grounded\": true, \"reason\": \"Asistent správně uvádí dvouměsíční lhůtu od dne, kdy měl pracovní poměr výpovědí skončit, což odpovídá zlaté odpovědi i citovanému § 72.\"}",
+  "usage": {
+   "prompt_tokens": 1077,
+   "completion_tokens": 190,
+   "total_tokens": 1267,
+   "cost": 0.00013239,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.00013239,
+    "upstream_inference_prompt_cost": 7.539e-05,
+    "upstream_inference_completions_cost": 5.7e-05
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 117,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "0681e9248fbfe09005e40ee1f7a6b168e7788f46e47db6ec9c58c660a58a7f26": {
+  "text": "Náhradu mzdy nebo platu za nevyčerpanou dovolenou vám zaměstnavatel poskytne pouze při skončení pracovního poměru [1]. Pokud na ni vznikne právo, přísluší ve výši průměrného výdělku [3]. U dodatkové dovolené ji ale poskytnout nelze, tato dovolená se musí vždy vyčerpat, a to přednostně [4].",
+  "usage": {
+   "prompt_tokens": 816,
+   "completion_tokens": 312,
+   "total_tokens": 1128,
+   "cost": 0.000137408,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 256,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.000137408,
+    "upstream_inference_prompt_cost": 4.3808e-05,
+    "upstream_inference_completions_cost": 9.36e-05
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 201,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "70ac733cb94a4347b36d745e08a842bb3db914374664617496e425a84292b5a1": {
+  "text": "{\"correct\": true, \"grounded\": true, \"reason\": \"Odpověď správně uvádí, že náhrada za nevyčerpanou dovolenou přísluší pouze při skončení pracovního poměru, a její doplňující tvrzení odpovídají dodaným úsekům.\"}",
+  "usage": {
+   "prompt_tokens": 877,
+   "completion_tokens": 342,
+   "total_tokens": 1219,
+   "cost": 0.00047145,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.00047145,
+    "upstream_inference_prompt_cost": 0.00018417,
+    "upstream_inference_completions_cost": 0.00028728
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 264,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "a3133feeaa8e4925b6afd570ab0b78ed4dbe01f01356418b538bc6d9de5b0ee8": {
+  "text": "Ano, pokud vám zaměstnavatel nevyplatil mzdu nebo její část do 15 dnů po uplynutí období splatnosti, můžete pracovní poměr okamžitě zrušit [5]. Musíte to ale stihnout pouze do 2 měsíců ode dne, kdy jste se o tomto důvodu dověděl, nejpozději do 1 roku ode dne, kdy důvod vznikl [1].",
+  "usage": {
+   "prompt_tokens": 1233,
+   "completion_tokens": 503,
+   "total_tokens": 1736,
+   "cost": 0.000457545,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.000457545,
+    "upstream_inference_prompt_cost": 0.000173853,
+    "upstream_inference_completions_cost": 0.000283692
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 401,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "a6d0914d2dd359843328a88317c133829aa271c6dea12245ab293c08efef66e6": {
+  "text": "{\"correct\": true, \"grounded\": true, \"reason\": \"Odpověď správně uvádí důvod i lhůty podle § 56 a § 59 a opírá se pouze o dodané úseky.\"}",
+  "usage": {
+   "prompt_tokens": 1254,
+   "completion_tokens": 418,
+   "total_tokens": 1672,
+   "cost": 0.0001881,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.0001881,
+    "upstream_inference_prompt_cost": 0.00011286,
+    "upstream_inference_completions_cost": 7.524e-05
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 328,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "dcaf37e615de47581181fc5af02a8feb7f6887f3d3f975b9ef7aa54269323b68": {
+  "text": "Podle § 39 odst. 2 může být pracovní poměr na dobu určitou mezi týmiž stranami opakován nejvýše dvakrát a prodloužení se počítá jako opakování [1]. Celková doba takových pracovních poměrů nesmí přesáhnout 9 let od vzniku prvního pracovního poměru na dobu určitou [1]. Výjimkou je náhrada za dočasně nepřítomného zaměstnance po dobu mateřské, otcovské a rodičovské dovolené a dovolené podle § 217 odst. 5, kdy lze pracovní poměr na dobu určitou sjednávat bez omezení počtu opakování [1].",
+  "usage": {
+   "prompt_tokens": 1368,
+   "completion_tokens": 742,
+   "total_tokens": 2110,
+   "cost": 0.000611376,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.000611376,
+    "upstream_inference_prompt_cost": 0.000192888,
+    "upstream_inference_completions_cost": 0.000418488
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 562,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "bae20c721a07f33a4b159b4c1a5522ed3bf6b14b638ddc1ec590ce93ddc85cd8": {
+  "text": "{\"correct\": true, \"grounded\": true, \"reason\": \"Asistent správně uvádí, že opakování včetně prodloužení je možné nejvýše dvakrát, a jeho tvrzení jsou podložena § 39 odst. 2.\"}",
+  "usage": {
+   "prompt_tokens": 1511,
+   "completion_tokens": 325,
+   "total_tokens": 1836,
+   "cost": 0.0008433,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.0008433,
+    "upstream_inference_prompt_cost": 0.0004533,
+    "upstream_inference_completions_cost": 0.00039
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 261,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "28e478edbd7bbeb1692da94ee12acbcb9476026a8e4745333de726fcacecbf14": {
+  "text": "Nevím, v dostupných úsecích zákona to není.",
+  "usage": {
+   "prompt_tokens": 1336,
+   "completion_tokens": 60,
+   "total_tokens": 1396,
+   "cost": 9.8208e-05,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 256,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 9.8208e-05,
+    "upstream_inference_prompt_cost": 8.0208e-05,
+    "upstream_inference_completions_cost": 1.8e-05
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 41,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "d9c649ebc4f757898d5a7d5f30030b36def998ea61ec3878061045f70da92759": {
+  "text": "{\"correct\": true, \"grounded\": true, \"reason\": \"Asistent správně odmítl odpovědět, protože minimální mzda není v dodaných úsecích zákona upravena.\"}",
+  "usage": {
+   "prompt_tokens": 1285,
+   "completion_tokens": 152,
+   "total_tokens": 1437,
+   "cost": 0.0005679,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.0005679,
+    "upstream_inference_prompt_cost": 0.0003855,
+    "upstream_inference_completions_cost": 0.0001824
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 101,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "2e7ce4ba77cdd07d3ca2007bbcddc78ed750071f34f98150020afe35779da6a0": {
+  "text": "Nevím, v dostupných úsecích zákona to není.",
+  "usage": {
+   "prompt_tokens": 1715,
+   "completion_tokens": 69,
+   "total_tokens": 1784,
+   "cost": 0.000280731,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.000280731,
+    "upstream_inference_prompt_cost": 0.000241815,
+    "upstream_inference_completions_cost": 3.8916e-05
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 51,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "1e8d402c5bcf05f49bec4bb8d876a1d39e0b323025a6dbdb1fad5c9ee27094bc": {
+  "text": "{\"correct\": true, \"grounded\": true, \"reason\": \"Asistent správně odmítl odpovědět, protože délka mateřské dovolené není v dodaných úsecích zákona.\"}",
+  "usage": {
+   "prompt_tokens": 1659,
+   "completion_tokens": 138,
+   "total_tokens": 1797,
+   "cost": 0.00015753,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.00015753,
+    "upstream_inference_prompt_cost": 0.00011613,
+    "upstream_inference_completions_cost": 4.14e-05
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 86,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "9360ef3e0a7821530aa3575739c228d7ddc2bafe33e78061fd39d9932fdaca44": {
+  "text": "Nevím, v dostupných úsecích zákona to není.",
+  "usage": {
+   "prompt_tokens": 1273,
+   "completion_tokens": 101,
+   "total_tokens": 1374,
+   "cost": 0.000236457,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.000236457,
+    "upstream_inference_prompt_cost": 0.000179493,
+    "upstream_inference_completions_cost": 5.6964e-05
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 83,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "699012ca7ab31bb7407a4ca8927ea9c18da45afca792c14d1b33682cec98ea5d": {
+  "text": "{\"correct\": true, \"grounded\": true, \"reason\": \"Asistent správně odmítl odpovědět, protože home office ani § 317 není v dodaných úsecích zákona.\"}",
+  "usage": {
+   "prompt_tokens": 1187,
+   "completion_tokens": 131,
+   "total_tokens": 1318,
+   "cost": 0.000241251,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.000241251,
+    "upstream_inference_prompt_cost": 0.000167367,
+    "upstream_inference_completions_cost": 7.3884e-05
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 83,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "0bc2066ba55fe4213f44cc0d2d3ba2c1003d76a49b27d0f8991e032c0fba2e72": {
+  "text": "Nevím, v dostupných úsecích zákona to není.",
+  "usage": {
+   "prompt_tokens": 1812,
+   "completion_tokens": 89,
+   "total_tokens": 1901,
+   "cost": 0.000305688,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.000305688,
+    "upstream_inference_prompt_cost": 0.000255492,
+    "upstream_inference_completions_cost": 5.0196e-05
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 71,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "7d348baf5a22e58dcb081bacaff4feeaf8791f5a1dabe62b2360754579812c92": {
+  "text": "{\"correct\": true, \"grounded\": true, \"reason\": \"Asistent správně odmítl odpovědět, protože v dodaných úsecích zákona není úprava nemocenské ani náhrady mzdy při nemoci.\"}",
+  "usage": {
+   "prompt_tokens": 1778,
+   "completion_tokens": 176,
+   "total_tokens": 1954,
+   "cost": 0.00017726,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.00017726,
+    "upstream_inference_prompt_cost": 0.00012446,
+    "upstream_inference_completions_cost": 5.28e-05
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 117,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "7f40393cf704c7ea6fb627c9f8a5c10438ba2f9d837fb731f7fd449668f92cd9": {
+  "text": "Alespoň 24 hodin nepřetržitého volna v týdnu musí zaměstnavatel poskytnout zaměstnanci staršímu 18 let (tato doba spolu s denním odpočinkem tvoří nepřetržitý odpočinek v týdnu)【5】.",
+  "usage": {
+   "prompt_tokens": 801,
+   "completion_tokens": 216,
+   "total_tokens": 1017,
+   "cost": 0,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0,
+    "upstream_inference_prompt_cost": 0,
+    "upstream_inference_completions_cost": 0
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 142,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "7cb1c998649cafa874be8194bb92515c91f93034797900d811f72d5d6b557d5e": {
+  "text": "{\"correct\": true, \"grounded\": true, \"reason\": \"Asistent správně uvádí alespoň 24 hodin týdenního odpočinku pro zaměstnance staršího 18 let podle § 92 odst. 1, což odpovídá zlaté odpovědi a je podloženo citovaným úsekem.\"}",
+  "usage": {
+   "prompt_tokens": 968,
+   "completion_tokens": 525,
+   "total_tokens": 1493,
+   "cost": 0.000432588,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.000432588,
+    "upstream_inference_prompt_cost": 0.000136488,
+    "upstream_inference_completions_cost": 0.0002961
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 441,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "e1a368291299456ad27edd33a12e6918239e495a82244aa65c557f064bb9b4e0": {
+  "text": "Ano, zaměstnavatel je povinen vám oznámit dobu čerpání dovolené písemně alespoň 14 dnů předem, pokud se s ním nedohodnete na kratší lhůtě. Toto vyplývá z § 217 odst. 1 zákoníku práce. [2]",
+  "usage": {
+   "prompt_tokens": 1546,
+   "completion_tokens": 251,
+   "total_tokens": 1797,
+   "cost": 0,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0,
+    "upstream_inference_prompt_cost": 0,
+    "upstream_inference_completions_cost": 0
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 170,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "174ca6d4fecaf1aecfe6d0c86ed0acd39ac395c477ebce3eef1168ee2af114d7": {
+  "text": "{\"correct\": true, \"grounded\": true, \"reason\": \"Odpověď věcně odpovídá zlaté odpovědi a je podložena citovaným § 217 odst. 1.\"}",
+  "usage": {
+   "prompt_tokens": 1831,
+   "completion_tokens": 264,
+   "total_tokens": 2095,
+   "cost": 0.000282398,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.000282398,
+    "upstream_inference_prompt_cost": 0.000179438,
+    "upstream_inference_completions_cost": 0.00010296
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 212,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "a923a68543d051084dc853939851ddd9b1dbd0f7511bc0ca459ddab914e1a045": {
+  "text": "Zkušební doba nesmí být delší než polovina sjednané doby trvání pracovního poměru na dobu určitou (§ 35 odst. 3) [3]. U smlouvy na 4 měsíce je tedy maximální možná délka zkušební doby 2 měsíce. (Zároveň platí obecné horní limity 4 měsíce, resp. 8 měsíce u vedoucího zaměstnance (§ 35 odst. 2) [1], ale pro váš případ je přísnější omezení poloviny sjednané doby.) Zkušební dobu je třeba sjednat písemně (§ 35 odst. 1) [5].",
+  "usage": {
+   "prompt_tokens": 684,
+   "completion_tokens": 388,
+   "total_tokens": 1072,
+   "cost": 0,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0,
+    "upstream_inference_prompt_cost": 0,
+    "upstream_inference_completions_cost": 0
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 205,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "a8b775cb0213486d2e355ed9e30c7ca1ce4309f563b24e80d5e13b483d4487ff": {
+  "text": "{\"correct\":true,\"grounded\":true,\"reason\":\"Odpověď věcně odpovídá zlaté odpovědi a opírá se o dodané úseky, pouze odkaz [3] je zjevně chybně přiřazen místo [4].\"}",
+  "usage": {
+   "prompt_tokens": 971,
+   "completion_tokens": 2479,
+   "total_tokens": 3450,
+   "cost": 0.00081167,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.00081167,
+    "upstream_inference_prompt_cost": 6.797e-05,
+    "upstream_inference_completions_cost": 0.0007437
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 2413,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "7a8337407b14da197d5de8dc73206c33a5b5c9b229fac8bfb1eaaf9f22208074": {
+  "text": "Nevím, v dostupných úsecích zákona to není.",
+  "usage": {
+   "prompt_tokens": 1114,
+   "completion_tokens": 190,
+   "total_tokens": 1304,
+   "cost": 0,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0,
+    "upstream_inference_prompt_cost": 0,
+    "upstream_inference_completions_cost": 0
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 171,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "6280164105e95faf88568e203c9acdbb9de28b424c39de5c4bbd9fecbf509e27": {
+  "text": "{\"correct\": false, \"grounded\": true, \"reason\": \"Asistent neodpovídá zlaté odpovědi, ale správně uvádí, že v poskytnutých úsecích chybí příslušné ustanovení o krácení dovolené.\"}",
+  "usage": {
+   "prompt_tokens": 1288,
+   "completion_tokens": 599,
+   "total_tokens": 1887,
+   "cost": 0.00026986,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.00026986,
+    "upstream_inference_prompt_cost": 9.016e-05,
+    "upstream_inference_completions_cost": 0.0001797
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 528,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "e32a2777ba02be9b7160841a5b8466699ffdd4e894a919b7e691bd2a623e98af": {
+  "text": "Odstupné vám zaměstnavatel vyplatí po skončení pracovního poměru v nejbližším výplatním termínu, který u něj platí pro výplatu mzdy nebo platu, pokud se s ním písemně nedohodnete na výplatě již v den skončení pracovního poměru nebo na pozdějším termínu. [1]",
+  "usage": {
+   "prompt_tokens": 858,
+   "completion_tokens": 200,
+   "total_tokens": 1058,
+   "cost": 0,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0,
+    "upstream_inference_prompt_cost": 0,
+    "upstream_inference_completions_cost": 0
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 108,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "c5ec4b7c9cbadb89a683a210f0cea81bcc38fe4fa82f82ca30f7d590267c3fcd": {
+  "text": "{\"correct\": true, \"grounded\": true, \"reason\": \"Odpověď věcně odpovídá § 67 odst. 5 i zlaté odpovědi a opírá se výhradně o dodaný úsek [1].\"}",
+  "usage": {
+   "prompt_tokens": 1101,
+   "completion_tokens": 100,
+   "total_tokens": 1201,
+   "cost": 0.000211641,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.000211641,
+    "upstream_inference_prompt_cost": 0.000155241,
+    "upstream_inference_completions_cost": 5.64e-05
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 39,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "42ba4b1ef9e4c3713bc665f6396a396bd4c1ce61932c8823c2d3bc525cc2c4fb": {
+  "text": "Ano, pokud se se zaměstnavatelem dohodnete na ukončení pracovního poměru, tato dohoda musí být uzavřena písemně. Toto vyplývá z § 49 odst. 2 zákoníku práce, který stanoví, že dohoda o rozvázání pracovního poměru musí být písemná [1]. Bez písemné formy taková dohoda není platná.",
+  "usage": {
+   "prompt_tokens": 654,
+   "completion_tokens": 288,
+   "total_tokens": 942,
+   "cost": 0,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0,
+    "upstream_inference_prompt_cost": 0,
+    "upstream_inference_completions_cost": 0
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 186,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "90993138a65b46fd0367ed46f225acd17c97b9e34d4909bef7f4645575c047a9": {
+  "text": "{\"correct\": true, \"grounded\": false, \"reason\": \"Odpověď věcně odpovídá zlaté odpovědi, ale tvrzení o neplatnosti ústní dohody nemá oporu v dodaném § 49 odst. 2.\"}",
+  "usage": {
+   "prompt_tokens": 791,
+   "completion_tokens": 7529,
+   "total_tokens": 8320,
+   "cost": 0.00231407,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.00231407,
+    "upstream_inference_prompt_cost": 5.537e-05,
+    "upstream_inference_completions_cost": 0.0022587
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 7463,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "051b3a1584b974703dd3569a54bdd76383f58e2c5841c69912f263732c07f6f0": {
+  "text": "Ne, zaměstnavatel vás nemůže okamžitě vyhodit ze dne na den, protože podle § 55 odst. 2 zákoníku práce zaměstnavatel nesmí okamžitě zrušit pracovní poměr s těhotnou zaměstnankyní [1] a podle § 53 odst. 1 písm. d) je v ochranné době také těhotná zaměstnankyně, během níž se výpověď zakazuje [2]. Tedy okamžité zrušení pracovního poměru v těhotenství není přípustné.",
+  "usage": {
+   "prompt_tokens": 1944,
+   "completion_tokens": 252,
+   "total_tokens": 2196,
+   "cost": 0,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0,
+    "upstream_inference_prompt_cost": 0,
+    "upstream_inference_completions_cost": 0
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 111,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "b8b37d3af563bd87652242a663585be843f14adde22fa237847b67494dc75438": {
+  "text": "{\"correct\": true, \"grounded\": true, \"reason\": \"Asistent správně uvádí, že těhotná zaměstnankyně je chráněna před okamžitým zrušením pracovního poměru podle § 55 odst. 2 a jeho tvrzení odpovídají dodaným úsekům.\"}",
+  "usage": {
+   "prompt_tokens": 2218,
+   "completion_tokens": 306,
+   "total_tokens": 2524,
+   "cost": 0.0010326,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.0010326,
+    "upstream_inference_prompt_cost": 0.0006654,
+    "upstream_inference_completions_cost": 0.0003672
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 226,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "52c8fdf51c3778c97536a132b87ab55e9d9dbe67e3d1de1e7040de0a504874bd": {
+  "text": "Letošní dovolenou je třeba vyčerpat nejpozději do konce následujícího kalendářního roku, tedy do 31. 12. roku následujícího po roce, za který dovolená náleží, pokud se se zaměstnavatelem nedohodnete na dřívějším čerpání. Pokud zaměstnavatel neurčí čerpání dovolené nejpozději do 30. června následujícího roku, máte právo určit si její čerpání sami a musíte jej písemně oznámit zaměstnavateli alespoň 14 dnů předem. [3][4]",
+  "usage": {
+   "prompt_tokens": 790,
+   "completion_tokens": 514,
+   "total_tokens": 1304,
+   "cost": 0,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0,
+    "upstream_inference_prompt_cost": 0,
+    "upstream_inference_completions_cost": 0
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 356,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "e96566150bcd527c1bb65518cd47c1fafb7e3771ffd0e7b76204179e4d7a095a": {
+  "text": "{\"correct\": false, \"grounded\": false, \"reason\": \"Asistent obecně uvádí až náhradní lhůtu do konce následujícího roku, opomíjí základní pravidlo čerpání v témže roce a první tvrzení nemá oporu v dodaných úsecích.\"}",
+  "usage": {
+   "prompt_tokens": 1107,
+   "completion_tokens": 621,
+   "total_tokens": 1728,
+   "cost": 0.0010773,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.0010773,
+    "upstream_inference_prompt_cost": 0.0003321,
+    "upstream_inference_completions_cost": 0.0007452
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 545,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "a1aa2f70f5d71b00f11ed5332243110bbc53e6a29ac4930c795db40ca186992d": {
+  "text": "Nevím, v dostupných úsecích zákona to není.",
+  "usage": {
+   "prompt_tokens": 979,
+   "completion_tokens": 93,
+   "total_tokens": 1072,
+   "cost": 0,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0,
+    "upstream_inference_prompt_cost": 0,
+    "upstream_inference_completions_cost": 0
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 74,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "4b5977a777ec30a3f317fbc22548af4821f65571ebd4b782b7038394d3427aea": {
+  "text": "{\"correct\": true, \"grounded\": true, \"reason\": \"Asistent správně odmítl odpovědět, protože stravenkový paušál se v dodaných úsecích zákona nevyskytuje.\"}",
+  "usage": {
+   "prompt_tokens": 1047,
+   "completion_tokens": 159,
+   "total_tokens": 1206,
+   "cost": 0.0005049,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.0005049,
+    "upstream_inference_prompt_cost": 0.0003141,
+    "upstream_inference_completions_cost": 0.0001908
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 105,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "c3a3c98b136a3c55bd4b37f9937ce7972888889e30a39cbef319176b1bf9d076": {
+  "text": "Nevím, v dostupných úsecích zákona to není.",
+  "usage": {
+   "prompt_tokens": 1103,
+   "completion_tokens": 108,
+   "total_tokens": 1211,
+   "cost": 0,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0,
+    "upstream_inference_prompt_cost": 0,
+    "upstream_inference_completions_cost": 0
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 89,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "7e20484d1c5e3c975500fa1d2f22589d8ddf0a95c1bd909eeb50d76ab8e34471": {
+  "text": "{\"correct\":true,\"grounded\":true,\"reason\":\"Asistent správně odmítl odpovědět, protože požadované ustanovení o překážkách v práci na straně zaměstnance není v dodaných úsecích zákona.\"}",
+  "usage": {
+   "prompt_tokens": 1204,
+   "completion_tokens": 175,
+   "total_tokens": 1379,
+   "cost": 0.000268464,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.000268464,
+    "upstream_inference_prompt_cost": 0.000169764,
+    "upstream_inference_completions_cost": 9.87e-05
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 113,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "54da051a198d72c19d8aa5620fbe65a4c1a9d2dfc7a89292346cf8d5f4b762b7": {
+  "text": "Jaká je minimální délka nepřetržitého odpočinku v týdnu, jenž musí být zaměstnanci poskytnut nejméně jednou za týden?",
+  "usage": {
+   "prompt_tokens": 129,
+   "completion_tokens": 636,
+   "total_tokens": 765,
+   "cost": 0.0008019,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.0008019,
+    "upstream_inference_prompt_cost": 3.87e-05,
+    "upstream_inference_completions_cost": 0.0007632
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 589,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "cb27db6a48de3c793aee8078b68e8cf2c876da37c64e6a03d383899c138f14d2": {
+  "text": "Pokud jste starší 18 let, musí vám zaměstnavatel v rámci týdne poskytnout nepřetržitý odpočinek v trvání alespoň 24 hodin spolu s nepřetržitým denním odpočinkem, na který musí bezprostředně navazovat; celková doba těchto odpočinků je nepřetržitým odpočinkem v týdnu [2]. Mladistvému zaměstnanci musí být poskytnut nepřetržitý odpočinek v týdnu alespoň 48 hodin [1]. Ve zdravotnictví, zemědělství nebo u některých nepřerušených technologických procesů se však délka může za zákonných podmínek upravit [3][4][5].",
+  "usage": {
+   "prompt_tokens": 1361,
+   "completion_tokens": 1566,
+   "total_tokens": 2927,
+   "cost": 0.002212236,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 256,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.002212236,
+    "upstream_inference_prompt_cost": 0.000333036,
+    "upstream_inference_completions_cost": 0.0018792
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 1371,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "397c16147dc30ff5e3418ce2dc3951260deb6d9ccf59853fabdb698257a84d29": {
+  "text": "{\"correct\":true,\"grounded\":true,\"reason\":\"Odpověď správně uvádí pro zaměstnance staršího 18 let týdenní odpočinek alespoň 24 hodin s bezprostředně navazujícím denním odpočinkem a všechny doplňující údaje jsou podloženy dodanými úseky.\"}",
+  "usage": {
+   "prompt_tokens": 1490,
+   "completion_tokens": 352,
+   "total_tokens": 1842,
+   "cost": 0.000408618,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.000408618,
+    "upstream_inference_prompt_cost": 0.00021009,
+    "upstream_inference_completions_cost": 0.000198528
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 264,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "b9389bb85cd60f3054e76e2e361745a7b917d369d537c0ba37d072e92df637d5": {
+  "text": "Je zaměstnavatel povinen zaměstnanci předem oznámit určení doby čerpání dovolené?",
+  "usage": {
+   "prompt_tokens": 125,
+   "completion_tokens": 769,
+   "total_tokens": 894,
+   "cost": 0.0009603,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.0009603,
+    "upstream_inference_prompt_cost": 3.75e-05,
+    "upstream_inference_completions_cost": 0.0009228
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 738,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "78e224b2402b0af261766912a14400285847baccf2bb0f7dd3e58b3f814f64c3": {
+  "text": "Ano. Dobu čerpání dovolené určuje zaměstnavatel a je povinen vám ji písemně oznámit alespoň 14 dnů předem, pokud se nedohodnete na kratší době [2]. Pokud by čerpání nebylo určeno do 30. června následujícího roku, může si čerpání určit i zaměstnanec, ale musí to zaměstnavateli písemně oznámit alespoň 14 dnů předem, pokud se nedohodnete jinak [1].",
+  "usage": {
+   "prompt_tokens": 1629,
+   "completion_tokens": 317,
+   "total_tokens": 1946,
+   "cost": 0.000408477,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.000408477,
+    "upstream_inference_prompt_cost": 0.000229689,
+    "upstream_inference_completions_cost": 0.000178788
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 185,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "d0570b5ac6d41e9b2b0bef77c1603bbff2dec7e0d13e9eea73651ac2ab2163f5": {
+  "text": "{\"correct\": true, \"grounded\": true, \"reason\": \"Asistent správně uvádí, že zaměstnavatel musí písemně oznámit určenou dobu čerpání dovolené alespoň 14 dnů předem, a jeho tvrzení jsou podložena dodanými úseky.\"}",
+  "usage": {
+   "prompt_tokens": 1720,
+   "completion_tokens": 539,
+   "total_tokens": 2259,
+   "cost": 0.000546516,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.000546516,
+    "upstream_inference_prompt_cost": 0.00024252,
+    "upstream_inference_completions_cost": 0.000303996
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 460,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "11569182c59b401299030fc55c737a6c517cbb3847499fb7b29dfc9b62aec5ef": {
+  "text": "Byl-li pracovní poměr založen pracovní smlouvou na dobu určitou v trvání čtyř měsíců, na jakou nejdelší dobu lze sjednat zkušební dobu?",
+  "usage": {
+   "prompt_tokens": 135,
+   "completion_tokens": 404,
+   "total_tokens": 539,
+   "cost": 0.000246891,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.000246891,
+    "upstream_inference_prompt_cost": 1.9035e-05,
+    "upstream_inference_completions_cost": 0.000227856
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 351,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "d12be4301ad8b1927b811ecc204b8bed37227634c10bf7326f0d1f58c8b1084c": {
+  "text": "U smlouvy na dobu určitou 4 měsíce může být zkušební doba maximálně 2 měsíce, protože nesmí přesáhnout polovinu sjednané doby trvání pracovního poměru [2]. Musí být sjednána písemně nejpozději v den vzniku pracovního poměru [3].",
+  "usage": {
+   "prompt_tokens": 829,
+   "completion_tokens": 551,
+   "total_tokens": 1380,
+   "cost": 0.000834636,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 256,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.000834636,
+    "upstream_inference_prompt_cost": 0.000173436,
+    "upstream_inference_completions_cost": 0.0006612
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 461,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "9f1dca84dbb0fda534742b142e76be6334bae5586a41a32f535b38fcb47ef497": {
+  "text": "{\"correct\":true,\"grounded\":true,\"reason\":\"Asistent správně uvádí maximálně 2 měsíce podle poloviny sjednané doby a doplňuje písemné sjednání nejpozději v den vzniku pracovního poměru, což odpovídá dodaným úsekům.\"}",
+  "usage": {
+   "prompt_tokens": 863,
+   "completion_tokens": 224,
+   "total_tokens": 1087,
+   "cost": 0.0005277,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.0005277,
+    "upstream_inference_prompt_cost": 0.0002589,
+    "upstream_inference_completions_cost": 0.0002688
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 146,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "a5b3b8cc8dd4ef0ae08227dff8c49b30da66250b68e0c7e12ce5b7d55f6041a2": {
+  "text": "Může zaměstnavatel zaměstnanci za neomluvené zameškání jedné pracovní směny krátit dovolenou?",
+  "usage": {
+   "prompt_tokens": 139,
+   "completion_tokens": 1365,
+   "total_tokens": 1504,
+   "cost": 0.00025821,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.00025821,
+    "upstream_inference_prompt_cost": 1.251e-05,
+    "upstream_inference_completions_cost": 0.0002457
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 1028,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "f0673227ee905a04e43ee9f56bd50613b5fc470cec6e5a4892514a569dad04c5": {
+  "text": "Podle § 223 odst. 1 [1] může zaměstnavatel krátit dovolenou jen za neomluveně zameškanou směnu, a to o počet neomluveně zameškaných hodin. Pokud jste tedy neomluveně zameškal celou směnu, může vám dovolenou krátit o hodiny této směny. Neomluvená zameškání kratších částí směn lze sčítat [1].",
+  "usage": {
+   "prompt_tokens": 1355,
+   "completion_tokens": 617,
+   "total_tokens": 1972,
+   "cost": 0.00023301,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.00023301,
+    "upstream_inference_prompt_cost": 0.00012195,
+    "upstream_inference_completions_cost": 0.00011106
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 418,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "266ac2ba14c574a1591c1b6fbe79d3eb073b67e2e6de6a600bb989e9f4b0dd70": {
+  "text": "{\"correct\": true, \"grounded\": true, \"reason\": \"Odpověď věcně odpovídá zlaté odpovědi a opírá se o citovaný § 223 odst. 1.\"}",
+  "usage": {
+   "prompt_tokens": 1439,
+   "completion_tokens": 251,
+   "total_tokens": 1690,
+   "cost": 0.0007329,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.0007329,
+    "upstream_inference_prompt_cost": 0.0004317,
+    "upstream_inference_completions_cost": 0.0003012
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 199,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "20f6a4f76752179758e24adff28221b0f01792b9d7a03fee7a22de2e834f84e6": {
+  "text": "V jaké lhůtě je zaměstnavatel povinen poskytnout zaměstnanci odstupné?",
+  "usage": {
+   "prompt_tokens": 122,
+   "completion_tokens": 1121,
+   "total_tokens": 1243,
+   "cost": 0.000649446,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.000649446,
+    "upstream_inference_prompt_cost": 1.7202e-05,
+    "upstream_inference_completions_cost": 0.000632244
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 1094,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "0e100d618e1e49e4857b05b83b1d50d153f447a9243372588637a3add8d497c7": {
+  "text": "Odstupné vám zaměstnavatel musí vyplatit po skončení pracovního poměru, a to v nejbližším výplatním termínu, který má určený pro výplatu mzdy nebo platu [1]. Můžete se však se zaměstnavatelem písemně dohodnout, že vám odstupné vyplatí už v den skončení pracovního poměru, případně v pozdějším termínu [1].",
+  "usage": {
+   "prompt_tokens": 1130,
+   "completion_tokens": 309,
+   "total_tokens": 1439,
+   "cost": 0.000333606,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.000333606,
+    "upstream_inference_prompt_cost": 0.00015933,
+    "upstream_inference_completions_cost": 0.000174276
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 198,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "681b97d4323619d3df4e4e088f1f3916f0700c61ea1eb544f8b3d95f42d2611c": {
+  "text": "{\"correct\": true, \"grounded\": true, \"reason\": \"Odpověď věcně odpovídá zákonné úpravě i zlaté odpovědi a obě tvrzení jsou podložena úsekem [1].\"}",
+  "usage": {
+   "prompt_tokens": 1240,
+   "completion_tokens": 248,
+   "total_tokens": 1488,
+   "cost": 0.000314712,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.000314712,
+    "upstream_inference_prompt_cost": 0.00017484,
+    "upstream_inference_completions_cost": 0.000139872
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 189,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "00bd7b4b992fdd7332ae4e93b5e197fd5c4cd87c7a1e10c444f04ea2a344c506": {
+  "text": "Musí být dohoda o rozvázání pracovního poměru uzavřená mezi zaměstnancem a zaměstnavatelem v písemné formě?",
+  "usage": {
+   "prompt_tokens": 133,
+   "completion_tokens": 713,
+   "total_tokens": 846,
+   "cost": 0.000420885,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.000420885,
+    "upstream_inference_prompt_cost": 1.8753e-05,
+    "upstream_inference_completions_cost": 0.000402132
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 671,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "bbe72ec0f3e6a6e89586d77f21f48c3622530815ff51893aeb3e5cfe7ed57876": {
+  "text": "Ano, když se se zaměstnavatelem dohodnete na rozvázání pracovního poměru, musí být tato dohoda písemná [1]. Pokud se dohodnete, pracovní poměr končí sjednaným dnem [4].",
+  "usage": {
+   "prompt_tokens": 759,
+   "completion_tokens": 195,
+   "total_tokens": 954,
+   "cost": 0.000216999,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.000216999,
+    "upstream_inference_prompt_cost": 0.000107019,
+    "upstream_inference_completions_cost": 0.00010998
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 133,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "315ee318c735faccde1e24830a51dcf6f101ce129cf49c4c334138ac24afe80a": {
+  "text": "{\"correct\": true, \"grounded\": true, \"reason\": \"Asistent správně uvádí, že dohoda o rozvázání pracovního poměru musí být písemná, a opírá se o dodané úseky.\"}",
+  "usage": {
+   "prompt_tokens": 725,
+   "completion_tokens": 235,
+   "total_tokens": 960,
+   "cost": 0.0004995,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.0004995,
+    "upstream_inference_prompt_cost": 0.0002175,
+    "upstream_inference_completions_cost": 0.000282
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 175,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "4b8f4f8c16bfb26a00ea097da5429c9c3e8fa159b222ef68f07feb578edd2814": {
+  "text": "Je zaměstnavatel oprávněn okamžitě zrušit pracovní poměr s těhotnou zaměstnankyní?",
+  "usage": {
+   "prompt_tokens": 129,
+   "completion_tokens": 673,
+   "total_tokens": 802,
+   "cost": 0.000397761,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.000397761,
+    "upstream_inference_prompt_cost": 1.8189e-05,
+    "upstream_inference_completions_cost": 0.000379572
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 639,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "67675a4d278eaea675cc67a71436132bc63d340d4b9373b1b5afa5d91d1d9ab3": {
+  "text": "Ne, zaměstnavatel nesmí okamžitě zrušit pracovní poměr s těhotnou zaměstnankyní [1]. Ze dne na den vás tedy vyhodit nemůže.",
+  "usage": {
+   "prompt_tokens": 1667,
+   "completion_tokens": 471,
+   "total_tokens": 2138,
+   "cost": 0.00066522,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.00066522,
+    "upstream_inference_prompt_cost": 0.00010002,
+    "upstream_inference_completions_cost": 0.0005652
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 423,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "97245634098dc4f081de2df6b6655aa3786b469db7615c3d49134af172a2ba36": {
+  "text": "{\"correct\": true, \"grounded\": true, \"reason\": \"Odpověď správně a v souladu s dodaným § 55 odst. 2 uvádí, že zaměstnavatel nesmí okamžitě zrušit pracovní poměr s těhotnou zaměstnankyní.\"}",
+  "usage": {
+   "prompt_tokens": 1615,
+   "completion_tokens": 224,
+   "total_tokens": 1839,
+   "cost": 0.000354051,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.000354051,
+    "upstream_inference_prompt_cost": 0.000227715,
+    "upstream_inference_completions_cost": 0.000126336
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 151,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "73667e66de3c4e846253517d6f9b30a27fa38480bd00c1ff892a24af6675a5ec": {
+  "text": "V jaké lhůtě je zaměstnanec povinen čerpat dovolenou za příslušný kalendářní rok?",
+  "usage": {
+   "prompt_tokens": 125,
+   "completion_tokens": 657,
+   "total_tokens": 782,
+   "cost": 0.0008259,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.0008259,
+    "upstream_inference_prompt_cost": 3.75e-05,
+    "upstream_inference_completions_cost": 0.0007884
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 622,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "84cb2cb34805539af80d8c61f430f4cde6d69fa0bcc130e5a15244b4f227dcc5": {
+  "text": "Podle § 218 odst. 4 platí, že pokud čerpání dovolené není určeno nejpozději do 30. června následujícího kalendářního roku, má právo určit čerpání dovolené i zaměstnanec [1]. Čerpání pak musíte písemně oznámit zaměstnavateli alespoň 14 dnů předem, pokud se nedohodnete na jiné době oznámení [1].",
+  "usage": {
+   "prompt_tokens": 1012,
+   "completion_tokens": 572,
+   "total_tokens": 1584,
+   "cost": 0.000914736,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 256,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.000914736,
+    "upstream_inference_prompt_cost": 0.000228336,
+    "upstream_inference_completions_cost": 0.0006864
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 456,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "ffa5d7f6d659589504f47904389830419f7119bb5e67a3f6447833ffc2f37e0d": {
+  "text": "{\"correct\": false, \"grounded\": true, \"reason\": \"Asistent sice věrně cituje § 218 odst. 4, ale neodpovídá zlaté odpovědi, která vyžaduje, aby zaměstnavatel určil čerpání dovolené v témže kalendářním roce, nestojí-li v cestě uvedené výjimky.\"}",
+  "usage": {
+   "prompt_tokens": 1089,
+   "completion_tokens": 467,
+   "total_tokens": 1556,
+   "cost": 0.000416937,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.000416937,
+    "upstream_inference_prompt_cost": 0.000153549,
+    "upstream_inference_completions_cost": 0.000263388
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 372,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "6894ba22ced9d29f1175ac8734512236bc802448f81e513a5e1947d340666586": {
+  "text": "Jaká je výše příspěvku na stravování poskytovaného zaměstnanci na jednu pracovní směnu?",
+  "usage": {
+   "prompt_tokens": 122,
+   "completion_tokens": 3461,
+   "total_tokens": 3583,
+   "cost": 0.001969206,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.001969206,
+    "upstream_inference_prompt_cost": 1.7202e-05,
+    "upstream_inference_completions_cost": 0.001952004
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 3429,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "d5ea8d2da8aa9d5aec4226c1b9669f8d21190ba1db0745367555882bacfb54cb": {
+  "text": "Nevím, v dostupných úsecích zákona to není.",
+  "usage": {
+   "prompt_tokens": 2007,
+   "completion_tokens": 82,
+   "total_tokens": 2089,
+   "cost": 0.000329235,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.000329235,
+    "upstream_inference_prompt_cost": 0.000282987,
+    "upstream_inference_completions_cost": 4.6248e-05
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 64,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "af554478004ca38b921923a20ddde485b98eb0cb1552c61cb2cfebf0b4267bc1": {
+  "text": "{\"correct\": true, \"grounded\": true, \"reason\": \"Zlatá odpověď je NEVÍM a asistent správně odmítl odpovědět s odůvodněním, že stravenkový paušál v dodaných úsecích není.\"}",
+  "usage": {
+   "prompt_tokens": 1907,
+   "completion_tokens": 211,
+   "total_tokens": 2118,
+   "cost": 0.000387891,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.000387891,
+    "upstream_inference_prompt_cost": 0.000268887,
+    "upstream_inference_completions_cost": 0.000119004
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 147,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "0c455f6337eec9dfde042c3ca3c2963c964688dbd5f03d896709955d3e58ded7": {
+  "text": "Na kolik dnů pracovního volna s náhradou mzdy má zaměstnanec nárok při vlastní svatbě?",
+  "usage": {
+   "prompt_tokens": 126,
+   "completion_tokens": 1281,
+   "total_tokens": 1407,
+   "cost": 0.00039312,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.00039312,
+    "upstream_inference_prompt_cost": 8.82e-06,
+    "upstream_inference_completions_cost": 0.0003843
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 1247,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "096269ce2a4161f369390b568bae398b261c79818a01a66bb1f3cfed6cbdfff3": {
+  "text": "Nevím, v dostupných úsecích zákona to není.",
+  "usage": {
+   "prompt_tokens": 2025,
+   "completion_tokens": 82,
+   "total_tokens": 2107,
+   "cost": 0.000331773,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.000331773,
+    "upstream_inference_prompt_cost": 0.000285525,
+    "upstream_inference_completions_cost": 4.6248e-05
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 64,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "b0280be5d1d3e59e70a8624a7353959bc990a194edb0938efcb0642cf41682ac": {
+  "text": "{\"correct\": true, \"grounded\": true, \"reason\": \"Asistent správně odmítl odpovědět, protože překážky v práci na straně zaměstnance nejsou v dodaných úsecích zákona.\"}",
+  "usage": {
+   "prompt_tokens": 1960,
+   "completion_tokens": 183,
+   "total_tokens": 2143,
+   "cost": 0.000379572,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.000379572,
+    "upstream_inference_prompt_cost": 0.00027636,
+    "upstream_inference_completions_cost": 0.000103212
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 126,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "9e2fb6ec184b259c9b7425292baa1f0b629378149e2c2a1ac29e47982798450a": {
+  "text": "Je zaměstnavatel povinen výpověď z pracovního poměru učinit v písemné formě?",
+  "usage": {
+   "prompt_tokens": 125,
+   "completion_tokens": 472,
+   "total_tokens": 597,
+   "cost": 0.0006039,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.0006039,
+    "upstream_inference_prompt_cost": 3.75e-05,
+    "upstream_inference_completions_cost": 0.0005664
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 442,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "015859cde56f84a9d426392b2a98564757f9432bfb05202888f0223a09699eed": {
+  "text": "Ano, výpověď z pracovního poměru musí být písemná, jinak se k ní nepřihlíží [1]. To platí i pro výpověď, kterou dává zaměstnavatel.",
+  "usage": {
+   "prompt_tokens": 1258,
+   "completion_tokens": 283,
+   "total_tokens": 1541,
+   "cost": 0.00033699,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.00033699,
+    "upstream_inference_prompt_cost": 0.000177378,
+    "upstream_inference_completions_cost": 0.000159612
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 229,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "e589bf8a9e5046accbd54dc07db96ed3d003ef02ed7ba748208b26371f51053b": {
+  "text": "Kolik hodin činí stanovená týdenní pracovní doba?",
+  "usage": {
+   "prompt_tokens": 123,
+   "completion_tokens": 469,
+   "total_tokens": 592,
+   "cost": 0.0005997,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.0005997,
+    "upstream_inference_prompt_cost": 3.69e-05,
+    "upstream_inference_completions_cost": 0.0005628
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 449,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "e9ccc4f50768928a2c21def5281d33f5a78dcb91eeca1af23a38d992b206502e": {
+  "text": "Normální (stanovená) týdenní pracovní doba činí 40 hodin týdně [1]. U některých zaměstnanců je kratší, například v podzemí, při vícesměnném nebo nepřetržitém režimu 37,5 hodiny a při dvousměnném režimu 38,75 hodiny týdně [2].",
+  "usage": {
+   "prompt_tokens": 831,
+   "completion_tokens": 239,
+   "total_tokens": 1070,
+   "cost": 0.000460836,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 256,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.000460836,
+    "upstream_inference_prompt_cost": 0.000174036,
+    "upstream_inference_completions_cost": 0.0002868
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 147,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "f6fc96941e677e855a2b1ffa62eb9a578434593274853634679ffcb3af886c2e": {
+  "text": "Může zaměstnavatel zaměstnanci určit čerpání dovolené v době, kterou sám stanoví?",
+  "usage": {
+   "prompt_tokens": 128,
+   "completion_tokens": 806,
+   "total_tokens": 934,
+   "cost": 0.0010056,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.0010056,
+    "upstream_inference_prompt_cost": 3.84e-05,
+    "upstream_inference_completions_cost": 0.0009672
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 774,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "78194874ff744298a188b33d2379dcffb0ad9a2b0b64899f8c6466ead3cdc085": {
+  "text": "Ano, dobu čerpání dovolené určuje zaměstnavatel, takže ji může určit i podle svých potřeb [2]. Musí ale přihlížet nejen k provozním důvodům, ale i k vašim oprávněným zájmům [2]. Určenou dobu vám musí písemně oznámit alespoň 14 dnů předem, pokud se nedohodnete na kratší době [2].",
+  "usage": {
+   "prompt_tokens": 1091,
+   "completion_tokens": 545,
+   "total_tokens": 1636,
+   "cost": 0.000461211,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.000461211,
+    "upstream_inference_prompt_cost": 0.000153831,
+    "upstream_inference_completions_cost": 0.00030738
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 436,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "20d990d35067571bfe94edd90687a8c49a5f09d6ad70cc30489330e15a6bd734": {
+  "text": "Může zaměstnavatel zaměstnanci dovolenou krátit?",
+  "usage": {
+   "prompt_tokens": 123,
+   "completion_tokens": 1610,
+   "total_tokens": 1733,
+   "cost": 0.000925383,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.000925383,
+    "upstream_inference_prompt_cost": 1.7343e-05,
+    "upstream_inference_completions_cost": 0.00090804
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 1591,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "4ad4a2361074d715bf9705a6895c5a3b030be00e3914f249abf4575ae9a62e3f": {
+  "text": "Ano, ale jen za neomluveně zameškanou směnu, a to o počet neomluveně zameškaných hodin; neomluvená zameškání kratších částí jednotlivých směn lze sčítat [1]. Pokud váš pracovní poměr k témuž zaměstnavateli trval po celý kalendářní rok, musí vám při krácení zůstat dovolená alespoň v délce 2 týdnů [5].",
+  "usage": {
+   "prompt_tokens": 978,
+   "completion_tokens": 456,
+   "total_tokens": 1434,
+   "cost": 0.000395082,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.000395082,
+    "upstream_inference_prompt_cost": 0.000137898,
+    "upstream_inference_completions_cost": 0.000257184
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 333,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "b45aeefc0f316ce6fe7eab7a1c35616992bd9b6a41c053fd4951bb759c4d8544": {
+  "text": "Jaká je nejdelší přípustná délka zkušební doby u vedoucího zaměstnance?",
+  "usage": {
+   "prompt_tokens": 129,
+   "completion_tokens": 535,
+   "total_tokens": 664,
+   "cost": 0.0006807,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.0006807,
+    "upstream_inference_prompt_cost": 3.87e-05,
+    "upstream_inference_completions_cost": 0.000642
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 504,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "90b19c34f3d5ff97c733d79db096f345880bf73b1cdcc94f403d38523fd801ba": {
+  "text": "U vedoucího zaměstnance nesmí být zkušební doba sjednána na dobu delší než 8 měsíců po sobě jdoucích ode dne vzniku pracovního poměru [1]. Pokud je pracovní poměr na dobu určitou, nesmí být delší než polovina sjednané doby jeho trvání [4]. Musí být sjednána písemně nejpozději v den vzniku pracovního poměru [2].",
+  "usage": {
+   "prompt_tokens": 752,
+   "completion_tokens": 630,
+   "total_tokens": 1382,
+   "cost": 0.000461352,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.000461352,
+    "upstream_inference_prompt_cost": 0.000106032,
+    "upstream_inference_completions_cost": 0.00035532
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 510,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "3d9be3e523f6439d91eb78f6195e2f48a79730a4d4f0060a77c5c798c5b6728a": {
+  "text": "Jak končí pracovní poměr, dohodnou-li se zaměstnanec a zaměstnavatel na jeho rozvázání?",
+  "usage": {
+   "prompt_tokens": 128,
+   "completion_tokens": 1013,
+   "total_tokens": 1141,
+   "cost": 0.00058938,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.00058938,
+    "upstream_inference_prompt_cost": 1.8048e-05,
+    "upstream_inference_completions_cost": 0.000571332
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 983,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "8a181b2268bc7bb7716d6e201718895581e37715b90d8f06db52997532023c05": {
+  "text": "Když se se šéfem dohodnete na rozvázání pracovního poměru, končí pracovní poměr sjednaným dnem [1]. Tato dohoda musí být písemná [5]. Pracovní poměr může být rozvázán dohodou [2].",
+  "usage": {
+   "prompt_tokens": 661,
+   "completion_tokens": 211,
+   "total_tokens": 872,
+   "cost": 0.000376236,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 256,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.000376236,
+    "upstream_inference_prompt_cost": 0.000123036,
+    "upstream_inference_completions_cost": 0.0002532
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 140,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "75caeefdf6f98838c1a5ebfeab97f9c7f837b47bb6249da89ed53887b6469f6b": {
+  "text": "V jaké lhůtě je zaměstnavatel povinen vyplatit zaměstnanci odstupné?",
+  "usage": {
+   "prompt_tokens": 123,
+   "completion_tokens": 1833,
+   "total_tokens": 1956,
+   "cost": 0.001051155,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.001051155,
+    "upstream_inference_prompt_cost": 1.7343e-05,
+    "upstream_inference_completions_cost": 0.001033812
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 1806,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "d9781b3e9b5f603d6dbb80ef8b7662bd805335410fe1befc70cd8828506a9000": {
+  "text": "Odstupné vám zaměstnavatel musí vyplatit po skončení pracovního poměru v nejbližším výplatním termínu, který má určený pro výplatu mzdy nebo platu [1]. Jinak se s ním můžete písemně dohodnout, že odstupné dostanete už v den skončení pracovního poměru, případně v pozdějším termínu [1].",
+  "usage": {
+   "prompt_tokens": 1637,
+   "completion_tokens": 299,
+   "total_tokens": 1936,
+   "cost": 0.000774636,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 256,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.000774636,
+    "upstream_inference_prompt_cost": 0.000415836,
+    "upstream_inference_completions_cost": 0.0003588
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 196,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "9b1f4c4c58dc71cf19a9c20e553ae291659553667248bb2eb3981dde5db72ea1": {
+  "text": "Za jakých podmínek je zaměstnavatel oprávněn okamžitě zrušit pracovní poměr?",
+  "usage": {
+   "prompt_tokens": 128,
+   "completion_tokens": 909,
+   "total_tokens": 1037,
+   "cost": 0.000530724,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.000530724,
+    "upstream_inference_prompt_cost": 1.8048e-05,
+    "upstream_inference_completions_cost": 0.000512676
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 880,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "ad0ed6fc98b48aa276a393f7b810f0becdcbb2d71ead86787893446e6b27e1ad": {
+  "text": "Zaměstnavatel může výjimečně okamžitě zrušit pracovní poměr jen tehdy, byl-li zaměstnanec pravomocně odsouzen pro úmyslný trestný čin k nepodmíněnému trestu odnětí svobody za podmínek uvedených v zákoně, nebo porušil-li zaměstnanec povinnost vyplývající z právních předpisů vztahujících se k vykonávané práci zvlášť hrubým způsobem [5]. Učinit tak může pouze do 3 měsíců ode dne, kdy se o důvodu dověděl, nejpozději do 15 měsíců ode dne, kdy důvod vznikl [2]. Nesmí tak ale učinit s těhotnou zaměstnankyní, zaměstnankyní na mateřské dovolené, zaměstnancem na otcovské dovolené nebo zaměstnancem či zaměstnankyní čerpajícími rodičovskou dovolenou [4].",
+  "usage": {
+   "prompt_tokens": 1231,
+   "completion_tokens": 451,
+   "total_tokens": 1682,
+   "cost": 0.000427935,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.000427935,
+    "upstream_inference_prompt_cost": 0.000173571,
+    "upstream_inference_completions_cost": 0.000254364
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 198,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "910fb514e441eb48b325fc2d1eb7fb6630835119b15470663666c5e0b764bdb7": {
+  "text": "Je zaměstnavatel povinen pro zaměstnance pracujícího na základě dohody o provedení práce písemně rozvrhnout pracovní dobu?",
+  "usage": {
+   "prompt_tokens": 124,
+   "completion_tokens": 726,
+   "total_tokens": 850,
+   "cost": 0.0009084,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.0009084,
+    "upstream_inference_prompt_cost": 3.72e-05,
+    "upstream_inference_completions_cost": 0.0008712
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 686,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "dd1bee5e50ec2d1490a8a20d1ff4a29e0d6db90d4081e07894eb3601202ba5ff": {
+  "text": "Ano. U dohody o provedení práce je zaměstnavatel povinen předem rozvrhnout pracovní dobu v písemném rozvrhu a seznámit s ním zaměstnance nejpozději 3 dny před začátkem směny nebo období, na něž je pracovní doba rozvržena, pokud se nedohodne se zaměstnancem na jiné době seznámení [1].",
+  "usage": {
+   "prompt_tokens": 1095,
+   "completion_tokens": 314,
+   "total_tokens": 1409,
+   "cost": 0.000630036,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 256,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.000630036,
+    "upstream_inference_prompt_cost": 0.000253236,
+    "upstream_inference_completions_cost": 0.0003768
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 208,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "8e2e55df6a5a1282805da4d77354d31a0fc2af3d3f9e32595017cf5149cc4bf4": {
+  "text": "V době, kdy jste uznán dočasně práce neschopným, se zaměstnavateli zakazuje dát vám výpověď, protože jde o ochrannou dobu [5]. Zákaz neplatí, pokud jste si neschopnost úmyslně přivodil nebo vznikla jako bezprostřední následek opilosti či zneužití návykových látek [5]. Jinak tedy během nemoci výpověď dostat nemůžete.",
+  "usage": {
+   "prompt_tokens": 1547,
+   "completion_tokens": 675,
+   "total_tokens": 2222,
+   "cost": 0.000598827,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.000598827,
+    "upstream_inference_prompt_cost": 0.000218127,
+    "upstream_inference_completions_cost": 0.0003807
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 562,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
  }
 }

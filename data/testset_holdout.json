@@ -1,0 +1,12 @@
+[
+ {"id": 21, "level": "střední", "q": "Kolik hodin volna v kuse musím mít aspoň jednou za týden?", "gold": "Nepřetržitý odpočinek v týdnu nejméně 24 hodin, na který bezprostředně navazuje nepřetržitý denní odpočinek (zaměstnanec starší 18 let).", "chunks": ["§ 92 odst. 1"]},
+ {"id": 22, "level": "snadná", "q": "Musí mi šéf dovolenou oznámit dopředu?", "gold": "Ano, určenou dobu čerpání dovolené musí zaměstnavatel písemně oznámit alespoň 14 dnů předem, pokud se nedohodnou na kratší době.", "chunks": ["§ 217 odst. 1"]},
+ {"id": 23, "level": "těžká", "q": "Mám smlouvu jen na 4 měsíce. Jak dlouhou zkušební dobu mi můžou dát?", "gold": "Nejvýše polovinu sjednané doby trvání pracovního poměru na dobu určitou, tedy nejvýše 2 měsíce.", "chunks": ["§ 35 odst. 3"]},
+ {"id": 24, "level": "střední", "q": "Jeden den jsem nepřišel do práce a neomluvil se. Může mi šéf vzít dovolenou?", "gold": "Ano, za neomluveně zameškanou směnu může zaměstnavatel dovolenou krátit, a to o počet neomluveně zameškaných hodin.", "chunks": ["§ 223 odst. 1"]},
+ {"id": 25, "level": "střední", "q": "Kdy mi přijdou peníze za odstupné?", "gold": "Po skončení pracovního poměru v nejbližším výplatním termínu, pokud se se zaměstnavatelem písemně nedohodnou na výplatě v den skončení nebo na pozdějším termínu.", "chunks": ["§ 67 odst. 5"]},
+ {"id": 26, "level": "snadná", "q": "Když se se šéfem domluvíme na konci práce, musí to být na papíře?", "gold": "Ano, dohoda o rozvázání pracovního poměru musí být písemná.", "chunks": ["§ 49 odst. 2"]},
+ {"id": 27, "level": "těžká", "q": "Jsem těhotná. Může mě zaměstnavatel vyhodit ze dne na den?", "gold": "Ne, zaměstnavatel nesmí okamžitě zrušit pracovní poměr s těhotnou zaměstnankyní.", "chunks": ["§ 55 odst. 2"]},
+ {"id": 28, "level": "střední", "q": "Do kdy si musím vybrat letošní dovolenou?", "gold": "Zaměstnavatel má čerpání určit tak, aby se dovolená vyčerpala v kalendářním roce, ve kterém právo vzniklo, ledaže tomu brání překážky v práci na straně zaměstnance nebo naléhavé provozní důvody.", "chunks": ["§ 218 odst. 1"]},
+ {"id": 29, "level": "bez odpovědi", "q": "Kolik je stravenkový paušál na jeden den?", "gold": "NEVÍM – stravování a stravenkový paušál nejsou ve vybrané části zákona.", "chunks": []},
+ {"id": 30, "level": "bez odpovědi", "q": "Kolik dní placeného volna dostanu na vlastní svatbu?", "gold": "NEVÍM – překážky v práci na straně zaměstnance nejsou ve vybrané části zákona.", "chunks": []}
+]

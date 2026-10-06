@@ -1,13 +1,14 @@
 # -*- coding: utf-8 -*-
-"""Krok 6: předpočítá vše pro web -> site/data.json (úseky, hrany grafu, odpovědi, výsledky měření).
-Spuštění (až po tools/evaluate.py):  .venv/Scripts/python tools/build_data.py"""
+"""Předpočítá vše pro web -> site/data.json (úseky, hrany grafu, odpovědi v2, výsledky měření v1 i v2).
+Spuštění (až po tools/evaluate.py, --holdout a --retrieval):  .venv/Scripts/python tools/build_data.py"""
 import json
 import numpy as np
 import rag
+import evaluate as E
 
 ROOT = rag.ROOT
 
-# 10 ukázkových otázek navíc (mimo testovací sadu)
+# 10 ukázkových otázek navíc (mimo obě testovací sady)
 DEMO = [
     "Musí mi zaměstnavatel dát výpověď písemně?",
     "Kolik hodin týdně je normální pracovní doba?",
@@ -21,13 +22,13 @@ DEMO = [
     "Může mi zaměstnavatel dát výpověď, když jsem nemocný?",
 ]
 
-# ruční kontrola ukázkových odpovědí (nejsou v testovací sadě, ale na webu je vidět i tohle)
+# ruční kontrola ukázkových odpovědí v2 (nejsou v testovacích sadách, ale na webu je vidět i tohle)
 DEMO_REVIEW = {
     "Může mi zaměstnavatel dát výpověď, když jsem nemocný?":
-        (False, "Zavádějící. Vyhledávání nenašlo § 53 odst. 1, který výpověď během pracovní neschopnosti zakazuje (ochranná doba). Model pak odpověděl na jinou otázku: výpověď kvůli dlouhodobé ztrátě zdravotní způsobilosti."),
+        (False, "Jádro správně: v pracovní neschopnosti je ochranná doba (§ 53). Závěr „během nemoci výpověď dostat nemůžete“ je ale moc silný: § 54 má výjimky, např. když se zaměstnavatel ruší. Ten se mezi nalezené úseky nedostal."),
 }
 
-def edges(vecs, chunks, k=2, min_sim=0.84):
+def edges(vecs, chunks, k=2):
     """Hrany grafu: sousední odstavce téhož § + k nejpodobnějších úseků (podle embeddingů)."""
     out = set()
     for a in range(len(chunks) - 1):
@@ -37,47 +38,62 @@ def edges(vecs, chunks, k=2, min_sim=0.84):
     np.fill_diagonal(sims, -1)
     for a in range(len(chunks)):
         for b in np.argsort(-sims[a])[:k]:
-            if sims[a, b] >= min_sim:
-                out.add((min(a, int(b)), max(a, int(b))))
+            out.add((min(a, int(b)), max(a, int(b))))
     return sorted(out)
 
 def main():
     meta = json.loads((ROOT / "data" / "chunks.json").read_text(encoding="utf-8"))
     chunks = meta["chunks"]
-    vecs = rag.index()
-    ev = json.loads((ROOT / "data" / "eval.json").read_text(encoding="utf-8"))
-    mp = ROOT / "data" / "manual_review.json"
-    manual = json.loads(mp.read_text(encoding="utf-8")) if mp.exists() else {}
     ids = {c["id"]: n for n, c in enumerate(chunks)}
+    v2, v1 = E.load("eval.json"), E.load("eval_v1.json")
+    m2, m1 = E.load("manual_review.json"), E.load("manual_review_v1.json")
+    s2, s1 = E.summarize(v2, m2), E.summarize(v1, m1)
+    ho, mh = E.load("eval_holdout.json"), E.load("manual_review_holdout.json")
+    rc = E.load("retrieval_compare.json")
+    v1rows = {r["id"]: r for r in v1["rows"]}
 
-    questions = []
-    for r in ev["rows"]:                                   # testovací otázky (s hodnocením)
+    def test_q(r, set_name, manual, v1_ok=None, v1_answer=None):
         m = manual.get(str(r["id"]), {})
-        questions.append({"q": r["q"], "answer": r["answer"], "hits": [[ids[t["id"]], t["score"]] for t in r["top"]],
-                          "test": {"id": r["id"], "level": r["level"], "gold": r["gold"], "gold_chunks": r["chunks"],
-                                   "hit3": r["hit3"], "correct": m.get("correct", r["judge"]["correct"]),
-                                   "judge": r["judge"]["correct"], "note": m.get("note") or r["judge"]["reason"]}})
-    for q in DEMO:                                         # ukázkové otázky
-        hits = rag.search(q)
+        top = [t["id"] if isinstance(t, dict) else t for t in r["top"]]
+        hits, _ = rag.search(r["q"])                       # stejné pořadí jako při měření (přepis je v cache)
+        assert [chunks[i]["id"] for i, _ in hits] == top, r["id"]
+        return {"q": r["q"], "answer": r["answer"], "rewritten": r.get("rewritten"),
+                "hits": [[i, round(s, 3)] for i, s in hits],
+                "test": {"set": set_name, "id": r["id"], "level": r["level"], "gold": r["gold"],
+                         "gold_chunks": r["chunks"], "hit3": r["hit3"],
+                         "correct": m.get("correct", r["judge"]["correct"]), "judge": r["judge"]["correct"],
+                         "note": m.get("note") or r["judge"]["reason"], "v1_correct": v1_ok, "v1_answer": v1_answer}}
+
+    questions = [test_q(r, "test", m2, s1["final"][r["id"]], v1rows[r["id"]]["answer"]) for r in v2["rows"]]
+    h1 = {r["id"]: r for r in ho["v1"]}
+    for r in ho["v2"]:
+        ok1 = mh.get("v1", {}).get(str(r["id"]), {}).get("correct", h1[r["id"]]["judge"]["correct"])
+        questions.append(test_q(r, "holdout", mh.get("v2", {}), ok1, h1[r["id"]]["answer"]))
+    for q in DEMO:
+        hits, rw = rag.search(q)
         text, _ = rag.answer(q, hits, chunks)
         ok, note = DEMO_REVIEW.get(q, (True, "Ručně ověřeno proti textu zákona."))
-        questions.append({"q": q, "answer": text, "hits": [[i, round(s, 3)] for i, s in hits], "test": None,
-                          "review": {"ok": ok, "note": note}})
-        print("ok", q, flush=True)
+        questions.append({"q": q, "answer": text, "rewritten": rw, "hits": [[i, round(s, 3)] for i, s in hits],
+                          "test": None, "review": {"ok": ok, "note": note}})
+        print("demo", q, flush=True)
 
-    rows = ev["rows"]
-    ans = [r for r in rows if r["chunks"]]
-    final = [q["test"]["correct"] for q in questions if q["test"]]
-    summary = {"n": len(rows), "correct": sum(final), "hit3": sum(r["hit3"] for r in ans), "n_answerable": len(ans),
-               "nevim_ok": sum(r["said_nevim"] for r in rows if not r["chunks"]), "n_unanswerable": len(rows) - len(ans),
-               "judge_agree": sum(q["test"]["correct"] == q["test"]["judge"] for q in questions if q["test"])}
+    def hold(name):
+        rows, man = ho[name], mh.get(name, {})
+        return {"correct": sum(man.get(str(r["id"]), {}).get("correct", r["judge"]["correct"]) for r in rows),
+                "n": len(rows), "hit5": sum(r["hit5"] for r in rows if r["chunks"]),
+                "n_answerable": sum(1 for r in rows if r["chunks"])}
+    strip = lambda s: {k: v for k, v in s.items() if k != "final"}
     data = {"source": meta["source"], "version": meta["version"], "downloaded": meta["downloaded"],
-            "llm": rag.LLM_MODEL, "embeddings": rag.EMB_MODEL, "top_k": rag.TOP_K, "summary": summary,
+            "llm": rag.LLM_MODEL, "llm_v1": E.V1["model"], "embeddings": rag.EMB_MODEL, "top_k": rag.TOP_K,
+            "v1": strip(s1), "v2": strip(s2), "holdout": {"v1": hold("v1"), "v2": hold("v2")},
+            "retrieval": {m: {"hit3": rc[m]["hit3"], "hit5": rc[m]["hit5"], "n": rc[m]["n"]} for m in rag.MODES},
+            "cost_usd": v2.get("cost_usd_new_calls"),
             "chunks": [{k: c[k] for k in ("id", "title", "topic", "text")} for c in chunks],
-            "edges": edges(vecs, chunks), "questions": questions}
+            "edges": edges(rag.index(), chunks), "questions": questions}
     (ROOT / "site").mkdir(exist_ok=True)
     (ROOT / "site" / "data.json").write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
-    print(f"site/data.json: {len(chunks)} úseků, {len(data['edges'])} hran, {len(questions)} otázek, {summary}")
+    print(f"site/data.json: {len(chunks)} úseků, {len(data['edges'])} hran, {len(questions)} otázek")
+    print("v1", strip(s1)); print("v2", strip(s2)); print("holdout", data["holdout"])
 
 if __name__ == "__main__":
     main()
