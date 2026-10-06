@@ -1,7 +1,7 @@
 # Výsledky měření
 
 Zdroj: 4 předpisy, 2 475 úseků (celý zákoník práce, zákon o zaměstnanosti, zákon o nemocenském pojištění,
-nařízení vlády o překážkách v práci). 66 testovacích otázek ve 4 sadách, 56 má odpověď v předpisech, 10 záměrně ne.
+nařízení vlády o překážkách v práci). 66 testovacích otázek v 5 sadách, 56 má odpověď v předpisech, 10 záměrně ne.
 Verdikt „správně“ je po ruční kontrole všech odpovědí proti textu zákona.
 
 ## v1 → v2 → v3

@@ -139,7 +139,7 @@ def report():
     row = lambda label, key, nkey: f"| {label} | " + " | ".join(f"{a[v][key]} z {a[v][nkey]}" for v in VERSIONS) + " |"
     L = ["# Výsledky měření", "",
          "Zdroj: 4 předpisy, 2 475 úseků (celý zákoník práce, zákon o zaměstnanosti, zákon o nemocenském pojištění,",
-         f"nařízení vlády o překážkách v práci). {a['v3']['n']} testovacích otázek ve 4 sadách, {a['v3']['n_answerable']} má odpověď v předpisech, {a['v3']['n_unanswerable']} záměrně ne.",
+         f"nařízení vlády o překážkách v práci). {a['v3']['n']} testovacích otázek v 5 sadách, {a['v3']['n_answerable']} má odpověď v předpisech, {a['v3']['n_unanswerable']} záměrně ne.",
          "Verdikt „správně“ je po ruční kontrole všech odpovědí proti textu zákona.", "",
          "## v1 → v2 → v3", "",
          "| Měřítko | v1 | v2 | v3 |", "|---|---|---|---|",

@@ -88,7 +88,7 @@ Stejný postup napsaný idiomaticky v LangChainu 1.x: `Document`, vlastní `Embe
 ## 8. Web a živé otázky · `site/`, `site/api/ask.js`
 Stránka + jedna serverová funkce na Vercelu pro vlastní otázky. Připravené otázky s měřením jsou předpočítané v `data.json`. Funkce dělá totéž co Python, jen v JavaScriptu (přepis → embeddingy → BM25 → RRF → odpověď).
 
-**Jak bráníš zneužití?** Klíč jen na serveru; 10 otázek na IP za den; proof of work (prohlížeč musí spočítat hash se 4 nulami, robotům to prodraží hromadné dotazy); kontrola původu požadavku; skryté pole jako past; a hlavně pevný limit 0,50 $ na klíči. Slabina: počítadla jsou v paměti funkce, ne v databázi.
+**Jak bráníš zneužití?** Klíč jen na serveru; 10 otázek na IP za den; proof of work (prohlížeč musí spočítat hash se 4 nulami, robotům to prodraží hromadné dotazy); kontrola původu požadavku; skryté pole jako past; a hlavně pevný limit 0,75 $ na klíči. Slabina: počítadla jsou v paměti funkce, ne v databázi.
 
 **Co je ta animace v mapě?** Skutečné mezivýsledky hledání: nejdřív kandidáti podle významu, pak podle slov, pak spojení RRF, nakonec citované odstavce. Žádná vymyšlená animace. Graf (D3) ukazuje všech 2 475 úseků, barva = oblast, vazby = sousední odstavce a nejpodobnější úseky. Rozložení počítám předem v Pythonu (numpy, stejný silový algoritmus jako d3-force, ~3 min), v prohlížeči by to trvalo dlouho. Všechny vazby kreslím jako jednu SVG cestu, ať je mapa plynulá. Po otázce se rozsvítí přesně ty úseky, které vyhledávání vrátilo; citované plně, necitované obrysem.
 
@@ -106,7 +106,7 @@ Opravy: výběr přes LLM z 20 kandidátů (hledání), poznámka u úseku „pl
 
 **Co se rozbilo?** Jedna otázka, která ve v2 fungovala („odpočinek mezi směnami“): výběr vzal odstavce o zkrácení odpočinku a vyhodil základní pravidlo. Proto měřím všechno znovu, ne jen opravené otázky. Regrese se jinak nepozná. Opravil jsem to deterministicky: k vybranému odstavci 2, 3… se vždy přidá odstavec 1 téhož paragrafu. Poctivě: tahle druhá oprava už nebyla ověřená na nových otázkách.
 
-**Poslední chyba (nemocenská)?** Odpověď byla rozdělená: § 192 odst. 1 říká jen „ve výši podle odstavce 2“ a 60 % je až v odstavci 2. Přidal jsem dohledání odkazů na odstavce téhož paragrafu. Nemocenská se opravila, ale u posudku se vrátila chyba „nesmí“ × „nemusí“. Podklady se tam změnily jen nepatrně. **Poučení:** levný model nečte stabilně. Pravidly se opraví hledání, ale ne čtení.
+**Chyba v nemocenské?** Odpověď byla rozdělená: § 192 odst. 1 říká jen „ve výši podle odstavce 2“ a 60 % je až v odstavci 2. Přidal jsem dohledání odkazů na odstavce téhož paragrafu. Nemocenská se opravila, ale u posudku se vrátila chyba „nesmí“ × „nemusí“. Podklady se tam změnily jen nepatrně. **Poučení:** levný model nečte stabilně. Pravidly se opraví hledání, ale ne čtení. Posudek opravil až silnější model ve v3.1.
 
 **v3.1: proč pořád říkal „nevím“?** Na webu odpověděl „nevím“ na „Mám nárok na lékaře?“, i když měl správný bod nařízení před sebou. Levný model byl moc opatrný (zadání říkalo „když si nejsi jistý, vynech“). Udělal jsem malý pokus na 5 problémových otázkách: samotná úprava zadání spravila 3, samotný silnější model 3, kombinace všech 5 a pasti dál odmítá. Proto odpověď píše DeepSeek v4 Pro a zadání chce před „nevím“ projít každý úsek. Pak jsem napsal dalších 10 otázek předem: všechny verze 10 z 10, sada vyšla lehká. Poctivé číslo za obě předem napsané sady: v3.1 20 z 20, v2 18 z 20.
 
@@ -118,6 +118,5 @@ Opravy: výběr přes LLM z 20 kandidátů (hledání), poznámka u úseku „pl
 
 ## 11. Co bych udělal dál
 - cross-encoder místo LLM pro výběr (levnější, stabilnější),
-- úseky s odkazy („podle § 26“) doplnit o odkazovaný odstavec,
 - větší testovací sada ze skutečných otázek a měření rozptylu,
 - počítadla limitů v Redis, pgvector místo numpy při dalším růstu.

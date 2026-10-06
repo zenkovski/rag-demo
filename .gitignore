@@ -6,3 +6,4 @@ data/raw/
 data/embeddings.npy
 .tmp/
 PLAN.md
+.tmp_*
