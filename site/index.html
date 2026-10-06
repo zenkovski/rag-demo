@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zákoník práce RAG</title>
+<meta name="description" content="Ukázka RAG asistenta nad zákoníkem práce: odpovědi s citacemi, graf nalezených úseků a poctivé měření kvality.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0e11; --surface:#10161a; --surface-2:#151d22; --line:#1f2a31; --line-2:#2b3842;
+  --text:#d9e2e7; --muted:#81909a; --faint:#4f5d66;
+  --accent:#5eead4; --accent-dim:rgba(94,234,212,.14); --bad:#f2a07b; --bad-dim:rgba(242,160,123,.12);
+  --shadow:4px 4px 0 #030506;
+  --sans:"IBM Plex Sans",system-ui,sans-serif; --mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%}
+body{background:var(--bg);color:var(--text);font:15px/1.55 var(--sans);-webkit-font-smoothing:antialiased}
+button{font:inherit;color:inherit;cursor:pointer}
+.mono{font-family:var(--mono)}
+
+/* horní lišta */
+header{display:flex;align-items:center;gap:16px;flex-wrap:wrap;padding:14px 20px;border-bottom:1px solid var(--line)}
+header h1{font-size:17px;font-weight:600;margin:0;letter-spacing:.01em}
+header h1 span{color:var(--muted);font-weight:400}
+.spacer{flex:1}
+.quality{display:flex;align-items:center;gap:12px;background:var(--surface);border:1px solid var(--line-2);padding:8px 14px;box-shadow:var(--shadow)}
+.quality:hover{border-color:var(--accent)}
+.quality b{color:var(--accent);font-weight:500;white-space:nowrap}
+.quality .sep{width:1px;height:16px;background:var(--line-2)}
+.quality small{font-family:var(--mono);font-size:12px;color:var(--muted)}
+
+/* tři sloupce */
+main{display:grid;grid-template-columns:minmax(300px,380px) 1fr minmax(280px,360px);height:calc(100vh - 62px - 38px);min-height:560px}
+section{min-width:0;min-height:0;display:flex;flex-direction:column}
+.chat{border-right:1px solid var(--line)}
+.card{border-left:1px solid var(--line)}
+.panel-h{font-family:var(--mono);font-size:12px;color:var(--muted);padding:12px 16px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:8px}
+
+/* chat */
+.log{flex:1;overflow:auto;padding:16px;display:flex;flex-direction:column;gap:14px}
+.msg{max-width:100%}
+.msg.user{align-self:flex-end;background:var(--surface-2);border:1px solid var(--line-2);padding:8px 12px}
+.msg.bot{background:var(--surface);border:1px solid var(--line);padding:12px 14px;box-shadow:var(--shadow)}
+.msg.bot p{margin:0}
+.cite{font-family:var(--mono);font-size:12px;background:var(--accent-dim);color:var(--accent);border:1px solid rgba(94,234,212,.35);padding:0 5px;margin:0 1px;vertical-align:1px}
+.cite:hover,.cite.on{background:var(--accent);color:#06201c}
+.verdict{margin-top:10px;padding-top:10px;border-top:1px dashed var(--line-2);font-size:13px;color:var(--muted)}
+.tag{font-family:var(--mono);font-size:11px;padding:1px 6px;border:1px solid var(--line-2);margin-right:6px}
+.tag.ok{color:var(--accent);border-color:rgba(94,234,212,.4)}
+.tag.bad{color:var(--bad);border-color:rgba(242,160,123,.45)}
+.intro{color:var(--muted);font-size:14px}
+.intro strong{color:var(--text);font-weight:500}
+.ask{border-top:1px solid var(--line);padding:12px 16px;display:flex;flex-direction:column;gap:10px;max-height:46%}
+.ask input{width:100%;background:var(--bg);border:1px solid var(--line-2);color:var(--text);font:inherit;padding:9px 11px;outline:none}
+.ask input:focus{border-color:var(--accent)}
+.qs{overflow:auto;display:flex;flex-direction:column;gap:4px}
+.q{text-align:left;background:none;border:1px solid transparent;padding:6px 8px;font-size:14px;color:var(--text);display:flex;gap:8px;align-items:baseline}
+.q:hover{background:var(--surface-2);border-color:var(--line-2)}
+.q .n{font-family:var(--mono);font-size:11px;color:var(--faint);min-width:26px}
+.q.done{color:var(--muted)}
+.empty{font-size:13px;color:var(--muted);padding:4px 8px}
+
+/* graf */
+.graph{position:relative;background:radial-gradient(ellipse at 50% 45%,#0f171c 0%,var(--bg) 70%)}
+.graph svg{flex:1;width:100%;height:100%;display:block;cursor:grab}
+.legend{position:absolute;left:12px;bottom:12px;font-family:var(--mono);font-size:11px;color:var(--muted);display:flex;flex-direction:column;gap:4px;background:rgba(10,14,17,.85);padding:8px 10px;border:1px solid var(--line)}
+.legend i{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:7px;vertical-align:-1px}
+.zoomhint{position:absolute;right:12px;bottom:12px;font-family:var(--mono);font-size:11px;color:var(--faint)}
+.link{stroke:#26333b;stroke-width:.8}
+.node{stroke:var(--bg);stroke-width:1;cursor:pointer}
+.node.hit{fill:var(--accent)!important;stroke:#06201c}
+.node.near{fill:#1d4a44!important;stroke:var(--accent);stroke-width:1.2}
+.node.sel{stroke:#fff;stroke-width:2}
+.qlink{stroke:var(--accent);stroke-width:1.4;stroke-opacity:.75}
+.qlink.near{stroke-dasharray:3 4;stroke-opacity:.45}
+.qnode{fill:var(--bg);stroke:var(--accent);stroke-width:2}
+.lbl{font:11px var(--mono);fill:var(--text);paint-order:stroke;stroke:var(--bg);stroke-width:3px;pointer-events:none}
+.lbl.q{fill:var(--accent)}
+.dimmed .node:not(.hit):not(.near){opacity:.35}
+.dimmed .link{stroke-opacity:.45}
+@media (prefers-reduced-motion:no-preference){
+  .node{transition:opacity .35s,fill .35s}
+  .qlink{stroke-dashoffset:0;animation:draw .6s ease-out}
+  @keyframes draw{from{stroke-opacity:0}to{stroke-opacity:.75}}
+}
+
+/* karta zdroje */
+.src{flex:1;overflow:auto;padding:16px}
+.src .id{font-family:var(--mono);font-size:20px;color:var(--accent)}
+.src h2{font-size:16px;font-weight:500;margin:4px 0 2px}
+.src .topic{font-size:13px;color:var(--muted);margin-bottom:14px}
+.src blockquote{margin:0;padding:12px 14px;background:var(--surface);border:1px solid var(--line-2);box-shadow:var(--shadow);white-space:pre-line}
+.src .score{margin-top:12px;font-family:var(--mono);font-size:12px;color:var(--muted)}
+.src .hits{margin-top:18px;display:flex;flex-direction:column;gap:4px}
+.src .hits button{display:flex;justify-content:space-between;gap:8px;background:none;border:1px solid var(--line);padding:6px 9px;font-family:var(--mono);font-size:12px;color:var(--muted);text-align:left}
+.src .hits button:hover,.src .hits button.on{border-color:var(--accent);color:var(--text)}
+.src .hits .c{color:var(--accent)}
+.placeholder{color:var(--muted);font-size:14px}
+
+footer{height:38px;display:flex;align-items:center;gap:18px;padding:0 20px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);font-family:var(--mono);overflow:hidden;white-space:nowrap}
+footer a{color:var(--muted)}
+footer strong{color:var(--bad);font-weight:500}
+
+/* dialog kvality */
+dialog{background:var(--surface);color:var(--text);border:1px solid var(--line-2);box-shadow:8px 8px 0 #030506;padding:0;width:min(980px,calc(100vw - 32px));max-height:calc(100vh - 48px)}
+dialog::backdrop{background:rgba(3,5,6,.75)}
+.dlg-h{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;padding:18px 20px;border-bottom:1px solid var(--line)}
+.dlg-h h2{margin:0;font-size:20px;font-weight:600}
+.close{background:none;border:1px solid var(--line-2);padding:4px 10px;font-family:var(--mono);font-size:12px}
+.close:hover{border-color:var(--accent)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--line)}
+.stat{padding:14px 20px;border-right:1px solid var(--line)}
+.stat:last-child{border-right:0}
+.stat .v{font-family:var(--mono);font-size:22px;color:var(--accent)}
+.stat .l{font-size:13px;color:var(--muted)}
+.how{padding:14px 20px;font-size:14px;color:var(--muted);border-bottom:1px solid var(--line)}
+.rows{padding:8px 12px 16px}
+.row{display:grid;grid-template-columns:34px 1fr 92px 92px;gap:12px;align-items:start;padding:10px 8px;border-bottom:1px solid var(--line);cursor:pointer}
+.row:hover{background:var(--surface-2)}
+.row .n{font-family:var(--mono);color:var(--faint);font-size:13px}
+.row .qq{font-size:14px}
+.row .note{font-size:13px;color:var(--muted);margin-top:3px}
+.row.bad .qq{color:var(--bad)}
+.row .st{font-family:var(--mono);font-size:12px}
+.rows .hdr{cursor:default;font-family:var(--mono);font-size:11px;color:var(--faint)}
+.rows .hdr:hover{background:none}
+
+/* mobil */
+.tabs{display:none}
+@media (max-width:900px){
+  header{padding:12px 16px}
+  .quality{width:100%;justify-content:space-between}
+  main{display:block;height:auto}
+  section{border:0!important}
+  .graph svg{height:56vh;flex:none}
+  .chat .log{max-height:none;min-height:200px}
+  .ask{max-height:none}
+  .qs{max-height:260px}
+  .legend{position:static;margin:0;border:0;border-top:1px solid var(--line);flex-direction:row;flex-wrap:wrap;gap:4px 12px}
+  .zoomhint{display:none}
+  .graph{height:auto;border-top:1px solid var(--line)!important;border-bottom:1px solid var(--line)!important}
+  .src{min-height:240px}
+  footer{height:auto;flex-wrap:wrap;white-space:normal;padding:12px 16px;gap:6px 14px}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .stat:nth-child(2){border-right:0}
+  .stat:nth-child(-n+2){border-bottom:1px solid var(--line)}
+  .row{grid-template-columns:28px 1fr;}
+  .row .st{grid-column:2}
+  .rows .hdr{display:none}
+}
+</style>
+</head>
+<body>
+<header>
+  <h1>Zákoník práce <span>· RAG asistent s citacemi</span></h1>
+  <div class="spacer"></div>
+  <button class="quality" id="qbtn" aria-haspopup="dialog">
+    <span>Kvalita: <b id="q-correct">…</b></span><span class="sep"></span>
+    <small id="q-sub">načítám</small>
+  </button>
+</header>
+
+<main>
+  <section class="chat">
+    <div class="panel-h"><span>Otázka a odpověď</span><span id="model"></span></div>
+    <div class="log" id="log">
+      <div class="intro">
+        <p><strong>Zeptej se na zákoník práce.</strong> Asistent najde nejpodobnější úseky zákona, odpoví jen z nich a každou větu ocituje. Když v textu odpověď není, řekne „nevím“.</p>
+        <p>Web je statický: odpovědi jsou předpočítané, aby tu nebyl žádný API klíč. Vyber otázku dole.</p>
+      </div>
+    </div>
+    <div class="ask">
+      <input id="filter" type="search" placeholder="Hledej mezi otázkami, např. dovolená" autocomplete="off" aria-label="Hledat otázku">
+      <div class="qs" id="qs"></div>
+    </div>
+  </section>
+
+  <section class="graph" id="graphWrap">
+    <div class="panel-h"><span>Graf úseků zákona</span><span id="gstat"></span></div>
+    <svg id="graph" role="img" aria-label="Graf úseků zákona a jejich podobnosti"></svg>
+    <div class="legend" id="legend"></div>
+    <div class="zoomhint">kolečko = zoom · táhni = posun</div>
+  </section>
+
+  <section class="card">
+    <div class="panel-h"><span>Zdroj</span><span id="srcnav"></span></div>
+    <div class="src" id="src"><p class="placeholder">Klikni na citaci v odpovědi nebo na tečku v grafu. Tady uvidíš původní text paragrafu.</p></div>
+  </section>
+</main>
+
+<footer>
+  <strong>Není to právní porada.</strong>
+  <span id="srcinfo"></span>
+  <a href="https://github.com/zenkovski/rag-demo">GitHub</a>
+  <span>Postaveno s AI</span>
+</footer>
+
+<dialog id="dlg" aria-labelledby="dlg-title">
+  <div class="dlg-h">
+    <div><h2 id="dlg-title">Měření kvality na 20 testovacích otázkách</h2></div>
+    <button class="close" id="dlgclose">zavřít ✕</button>
+  </div>
+  <div class="stats" id="stats"></div>
+  <div class="how">Každá otázka má zlatou odpověď a správné paragrafy. Měřím dvě věci: jestli vyhledávání najde správný úsek mezi prvními třemi (hit@3), a jestli je odpověď správná. Odpověď hodnotí AI soudce a pak ji kontroluje člověk. Čtyři otázky záměrně nemají odpověď ve zdroji, správně je „nevím“. Chyby nechávám vidět.</div>
+  <div class="rows" id="rows"></div>
+</dialog>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script>
+const TOPIC_COLORS = ["#6f8fb0","#a088b8","#7fa287","#b39a6b","#b57f88"];
+const $ = s => document.querySelector(s);
+const esc = s => s.replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+let D, cur = null, selChunk = null, G = {};
+
+fetch("data.json").then(r => r.json()).then(d => { D = d; init(); });
+
+function init(){
+  const s = D.summary;
+  $("#q-correct").textContent = `${s.correct} z ${s.n} správně`;
+  $("#q-sub").textContent = `vyhledávání ${s.hit3}/${s.n_answerable} · „nevím“ ${s.nevim_ok}/${s.n_unanswerable}`;
+  $("#model").textContent = D.llm.split("/").pop().replace(":free","");
+  $("#srcinfo").textContent = `Zdroj: zákon č. 262/2006 Sb., ${D.version.replace("Aktuální znění ","znění ")}, staženo ${D.downloaded}`;
+  renderQuestions(""); renderDialog(); drawGraph();
+  $("#filter").addEventListener("input", e => renderQuestions(e.target.value));
+  $("#qbtn").addEventListener("click", () => $("#dlg").showModal());
+  $("#dlgclose").addEventListener("click", () => $("#dlg").close());
+}
+
+const norm = s => s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"");
+function renderQuestions(f){
+  const nf = norm(f.trim());
+  const list = D.questions.map((q,i)=>({q,i})).filter(o => !nf || norm(o.q.q).includes(nf));
+  $("#qs").innerHTML = list.length ? list.map(({q,i}) =>
+    `<button class="q${q.done?" done":""}" data-i="${i}"><span class="n">${q.test?"T"+q.test.id:"U"+(i-19)}</span><span>${esc(q.q)}</span></button>`).join("")
+    : `<div class="empty">Tuhle otázku předpočítanou nemám. Web je statický, zkus jiné slovo.</div>`;
+  $("#qs").querySelectorAll(".q").forEach(b => b.addEventListener("click", () => ask(+b.dataset.i)));
+}
+
+function ask(i){
+  const q = D.questions[i]; q.done = true; cur = q;
+  const log = $("#log");
+  const ans = esc(q.answer).replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>").replace(/\n+/g, "<br>").replace(/\[(\d+)\]/g, (m,n) =>
+    q.hits[n-1] ? `<button class="cite" data-c="${q.hits[n-1][0]}" title="${esc(D.chunks[q.hits[n-1][0]].id)}">${n}</button>` : m);
+  let verdict = "";
+  if (q.test){
+    const t = q.test;
+    verdict = `<div class="verdict"><span class="tag ${t.correct?"ok":"bad"}">test ${t.id}: ${t.correct?"správně":"chyba"}</span>`+
+      `<span class="tag ${t.hit3===false?"bad":"ok"}">${t.hit3===null?"bez odpovědi ve zdroji":t.hit3?"úsek v top 3":"úsek není v top 3"}</span>`+
+      `<div style="margin-top:6px">${esc(t.note)}</div></div>`;
+  } else if (q.review){
+    verdict = `<div class="verdict"><span class="tag ${q.review.ok?"ok":"bad"}">ukázka: ${q.review.ok?"ověřeno ručně":"chyba"}</span>`+
+      (q.review.ok ? "" : `<div style="margin-top:6px">${esc(q.review.note)}</div>`) + `</div>`;
+  }
+  log.insertAdjacentHTML("beforeend", `<div class="msg user">${esc(q.q)}</div><div class="msg bot"><p>${ans}</p>${verdict}</div>`);
+  log.querySelectorAll(".msg.bot:last-child .cite").forEach(b => b.addEventListener("click", () => showChunk(+b.dataset.c)));
+  log.scrollTop = log.scrollHeight;
+  renderQuestions($("#filter").value);
+  highlight(q);
+  const firstCite = (q.answer.match(/\[(\d+)\]/)||[])[1];
+  showChunk(firstCite && q.hits[firstCite-1] ? q.hits[firstCite-1][0] : q.hits[0][0]);
+  if (matchMedia("(max-width:900px)").matches) $("#graphWrap").scrollIntoView({behavior:"auto",block:"start"});
+}
+
+function citedSet(q){ return new Set([...q.answer.matchAll(/\[(\d+)\]/g)].map(m => q.hits[m[1]-1]).filter(Boolean).map(h => h[0])); }
+
+function showChunk(ci){
+  selChunk = ci;
+  const c = D.chunks[ci];
+  let hitsHtml = "", scoreHtml = "";
+  if (cur){
+    const cs = citedSet(cur);
+    const h = cur.hits.find(h => h[0]===ci);
+    if (h) scoreHtml = `<div class="score">podobnost s otázkou: ${h[1].toFixed(3)} · pořadí ${cur.hits.indexOf(h)+1} z ${cur.hits.length}${cs.has(ci)?" · citováno":""}</div>`;
+    hitsHtml = `<div class="hits">${cur.hits.map((h,k) => `<button data-c="${h[0]}" class="${h[0]===ci?"on":""}"><span>[${k+1}] ${esc(D.chunks[h[0]].id)}</span><span class="${cs.has(h[0])?"c":""}">${cs.has(h[0])?"citováno":"nalezeno"} ${h[1].toFixed(3)}</span></button>`).join("")}</div>`;
+  }
+  $("#src").innerHTML = `<div class="id">${esc(c.id)}</div><h2>${esc(c.title)}</h2><div class="topic">${esc(c.topic)}</div>`+
+    `<blockquote>${esc(c.text).replace(/([,:]) ([a-z]\)) /g,"$1\n$2 ")}</blockquote>${scoreHtml}${hitsHtml}`;
+  $("#src").querySelectorAll(".hits button").forEach(b => b.addEventListener("click", () => showChunk(+b.dataset.c)));
+  document.querySelectorAll(".cite").forEach(b => b.classList.toggle("on", +b.dataset.c===ci && b.closest(".msg")===document.querySelector("#log .msg.bot:last-child")));
+  if (G.nodes) G.nodes.classed("sel", d => d.i===ci);
+}
+
+function drawGraph(){
+  const svg = d3.select("#graph");
+  const topics = [...new Set(D.chunks.map(c => c.topic))];
+  const color = t => TOPIC_COLORS[topics.indexOf(t) % TOPIC_COLORS.length];
+  $("#legend").innerHTML = topics.map(t => `<span><i style="background:${color(t)}"></i>${esc(t)}</span>`).join("") +
+    `<span><i style="background:var(--accent)"></i>citováno v odpovědi</span><span><i style="background:#1d4a44;border:1px solid var(--accent)"></i>nalezeno, necitováno</span>`;
+  const nodes = D.chunks.map((c,i) => ({i, topic:c.topic}));
+  const links = D.edges.map(([s,t]) => ({source:s, target:t}));
+  // rozložení se spočítá hned celé (bez animace), takže graf funguje i s vypnutými animacemi
+  const sim = d3.forceSimulation(nodes)
+    .force("link", d3.forceLink(links).distance(22).strength(.6))
+    .force("charge", d3.forceManyBody().strength(-28))
+    .force("x", d3.forceX(0).strength(.06)).force("y", d3.forceY(0).strength(.06))
+    .force("collide", d3.forceCollide(5)).stop();
+  for (let k=0;k<400;k++) sim.tick();
+  const g = svg.append("g");
+  g.append("g").selectAll("line").data(links).join("line").attr("class","link")
+    .attr("x1",d=>d.source.x).attr("y1",d=>d.source.y).attr("x2",d=>d.target.x).attr("y2",d=>d.target.y);
+  G.q = g.append("g");
+  G.nodes = g.append("g").selectAll("circle").data(nodes).join("circle").attr("class","node")
+    .attr("r",3.6).attr("cx",d=>d.x).attr("cy",d=>d.y).attr("fill",d=>color(d.topic))
+    .on("click",(e,d) => showChunk(d.i));
+  G.nodes.append("title").text(d => D.chunks[d.i].id + " · " + D.chunks[d.i].title);
+  G.lbl = g.append("g");
+  G.g = g; G.svg = svg; G.nodesData = nodes;
+  const zoom = d3.zoom().scaleExtent([.3,6]).on("zoom", e => { g.attr("transform", e.transform); scaleMarks(e.transform.k); });
+  svg.call(zoom); G.zoom = zoom;
+  fit(nodes);
+  $("#gstat").textContent = `${nodes.length} úseků · ${links.length} vazeb`;
+  new ResizeObserver(() => fit(cur ? G.focus : nodes)).observe($("#graph"));
+}
+
+function fit(pts){
+  if (!pts || !pts.length) return;
+  const el = $("#graph"), w = el.clientWidth, h = el.clientHeight;
+  if (!w || !h) return;
+  const xs = pts.map(p=>p.x), ys = pts.map(p=>p.y);
+  const x0=Math.min(...xs), x1=Math.max(...xs), y0=Math.min(...ys), y1=Math.max(...ys);
+  const pad = pts.length > 20 ? 30 : 110;
+  const k = Math.min(2.4, (w-pad*2)/Math.max(1,x1-x0), (h-pad*2)/Math.max(1,y1-y0));
+  const t = d3.zoomIdentity.translate(w/2 - k*(x0+x1)/2, h/2 - k*(y0+y1)/2).scale(k);
+  G.svg.call(G.zoom.transform, t);
+}
+
+// tečky a popisky drží stejnou velikost na obrazovce, ať je zoom jakýkoli
+function scaleMarks(k){
+  const f = 1/Math.sqrt(k);
+  G.nodes.attr("r", 3.6*f);
+  G.g.selectAll(".lbl").style("font-size", (11/k)+"px").style("stroke-width", (3/k)+"px");
+  G.g.selectAll(".qnode").attr("r", 6/k);
+  G.g.selectAll(".link,.qlink,.node,.qnode").style("vector-effect","non-scaling-stroke");
+}
+
+function highlight(q){
+  const cs = citedSet(q), all = new Set(q.hits.map(h=>h[0]));
+  G.nodes.classed("hit", d => cs.has(d.i)).classed("near", d => all.has(d.i) && !cs.has(d.i)).classed("sel", false);
+  G.svg.classed("dimmed", true);
+  const hp = q.hits.map(h => G.nodesData[h[0]]);
+  const cx = d3.mean(hp,p=>p.x), cy = d3.mean(hp,p=>p.y);
+  // uzel otázky: kousek od těžiště nalezených úseků, směrem od středu grafu
+  const len = Math.hypot(cx,cy) || 1, qx = cx + cx/len*40, qy = cy + cy/len*40 - (len<1?40:0);
+  G.q.selectAll("*").remove(); G.lbl.selectAll("*").remove();
+  G.q.selectAll("line").data(q.hits).join("line").attr("class",h => "qlink"+(cs.has(h[0])?"":" near"))
+    .attr("x1",qx).attr("y1",qy).attr("x2",h=>G.nodesData[h[0]].x).attr("y2",h=>G.nodesData[h[0]].y);
+  G.q.append("circle").attr("class","qnode").attr("r",6).attr("cx",qx).attr("cy",qy);
+  G.lbl.append("text").attr("class","lbl q").attr("x",qx+9).attr("y",qy+4).text("otázka");
+  G.lbl.selectAll("text.h").data(q.hits).join("text").attr("class","lbl h")
+    .attr("x",h=>G.nodesData[h[0]].x+7).attr("y",h=>G.nodesData[h[0]].y-6).text(h => D.chunks[h[0]].id);
+  G.nodes.filter(d => all.has(d.i)).raise();
+  G.focus = [...hp, {x:qx,y:qy}];
+  fit(G.focus);
+  scaleMarks(d3.zoomTransform(G.svg.node()).k);
+}
+
+function renderDialog(){
+  const s = D.summary;
+  $("#stats").innerHTML = [
+    [`${s.correct}/${s.n}`, "odpovědí správně (ruční kontrola)"],
+    [`${s.hit3}/${s.n_answerable}`, "správný úsek v top 3"],
+    [`${s.nevim_ok}/${s.n_unanswerable}`, "řekl „nevím“, když zdroj mlčí"],
+    [`${s.judge_agree}/${s.n}`, "AI soudce se shodl s člověkem"],
+  ].map(([v,l]) => `<div class="stat"><div class="v">${v}</div><div class="l">${l}</div></div>`).join("");
+  const tests = D.questions.map((q,i)=>({q,i})).filter(o => o.q.test);
+  $("#rows").innerHTML = `<div class="row hdr"><span>#</span><span>otázka a poznámka</span><span>vyhledávání</span><span>odpověď</span></div>` +
+    tests.map(({q,i}) => { const t=q.test;
+      return `<div class="row ${t.correct?"":"bad"}" data-i="${i}"><span class="n">${t.id}</span>`+
+        `<div><div class="qq">${esc(q.q)}</div><div class="note">${esc(t.note)}</div></div>`+
+        `<span class="st" style="color:${t.hit3===false?"var(--bad)":"var(--muted)"}">${t.hit3===null?"bez odpovědi":t.hit3?"top 3":"mimo top 3"}</span>`+
+        `<span class="st" style="color:${t.correct?"var(--accent)":"var(--bad)"}">${t.correct?"správně":"chyba"}</span></div>`; }).join("");
+  $("#rows").querySelectorAll(".row[data-i]").forEach(r => r.addEventListener("click", () => { $("#dlg").close(); ask(+r.dataset.i); }));
+}
+</script>
+</body>
+</html>
