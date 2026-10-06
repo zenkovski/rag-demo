@@ -11,13 +11,13 @@
 <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
 <style>
 :root{
-  /* paleta 1 „Charcoal Navy + Sandy Tan + Steel Blue“: teplá, elegantní (výchozí) */
-  --bg:#0b0b10; --bg-2:#0f0f15; --panel:#15141b; --panel-2:#1b1a23; --line:#25242f; --line-2:#33313f;
-  --text:#eeedf2; --soft:#c3c1cc; --muted:#8c8a98; --faint:#5a5866;
-  --accent:#E19C63; --accent-rgb:225 156 99; --accent-2:#c9834a; --accent-hi:#ecb68a; --accent-ink:#2a1607;
-  --ice:#8BA5BE; --ice-rgb:139 165 190; --bg-rgb:11 11 16; --aur2:139 165 190; --aur3:110 80 140; --tint-rgb:39 38 46;
-  --grid-rgb:175 170 195; --wire:#363444; --link:#1f1e28; --near:#4a2f18;
-  --bad:#ff6f86; --bad-rgb:255 111 134; --bad-dim:rgb(var(--bad-rgb) / .12);
+  /* paleta 14 „Bright Leaf + Emerald Green“: klid (výchozí) */
+  --bg:#040a0b; --bg-2:#071113; --panel:#0c191b; --panel-2:#102124; --line:#182b2e; --line-2:#21393d;
+  --text:#e6f1ec; --soft:#b5c8c2; --muted:#7e958f; --faint:#4e6460;
+  --accent:#CDFF9B; --accent-rgb:205 255 155; --accent-2:#a5d86f; --accent-hi:#ddffbb; --accent-ink:#142a05;
+  --ice:#9fd8e0; --ice-rgb:159 216 224; --bg-rgb:4 10 11; --aur2:40 140 120; --aur3:60 120 90; --tint-rgb:32 61 67;
+  --grid-rgb:150 190 180; --wire:#244043; --link:#14262a; --near:#2b4519;
+  --bad:#f6a77f; --bad-rgb:246 167 127; --bad-dim:rgb(var(--bad-rgb) / .12);
   --glow:rgb(var(--accent-rgb) / .35); --accent-dim:rgb(var(--accent-rgb) / .10);
   --r:14px; --r-sm:9px;
   --display:"Bricolage Grotesque",system-ui,sans-serif; --sans:"Onest",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,monospace;
@@ -39,14 +39,14 @@
   --ice:#e4e2ff; --ice-rgb:228 226 255; --bg-rgb:7 7 12; --aur2:70 60 170; --aur3:28 28 90; --tint-rgb:28 28 40;
   --grid-rgb:160 160 200; --wire:#2c2c42; --link:#1c1c2a; --near:#0c3a3d;
 }
-/* paleta 14 „Bright Leaf + Emerald Green“: klid (jako zenn.studio) */
-:root[data-paleta="14"]{
-  --bad:#f6a77f; --bad-rgb:246 167 127;
-  --bg:#040a0b; --bg-2:#071113; --panel:#0c191b; --panel-2:#102124; --line:#182b2e; --line-2:#21393d;
-  --text:#e6f1ec; --soft:#b5c8c2; --muted:#7e958f; --faint:#4e6460;
-  --accent:#CDFF9B; --accent-rgb:205 255 155; --accent-2:#a5d86f; --accent-hi:#ddffbb; --accent-ink:#142a05;
-  --ice:#9fd8e0; --ice-rgb:159 216 224; --bg-rgb:4 10 11; --aur2:32 61 67; --aur3:60 120 90; --tint-rgb:32 61 67;
-  --grid-rgb:150 190 180; --wire:#244043; --link:#14262a; --near:#2b4519;
+/* paleta 1 „Charcoal Navy + Sandy Tan + Steel Blue“: teplá */
+:root[data-paleta="1"]{
+  --bg:#0b0b10; --bg-2:#0f0f15; --panel:#15141b; --panel-2:#1b1a23; --line:#25242f; --line-2:#33313f;
+  --text:#eeedf2; --soft:#c3c1cc; --muted:#8c8a98; --faint:#5a5866;
+  --accent:#E19C63; --accent-rgb:225 156 99; --accent-2:#c9834a; --accent-hi:#ecb68a; --accent-ink:#2a1607;
+  --ice:#8BA5BE; --ice-rgb:139 165 190; --bg-rgb:11 11 16; --aur2:139 165 190; --aur3:110 80 140; --tint-rgb:39 38 46;
+  --grid-rgb:175 170 195; --wire:#363444; --link:#1f1e28; --near:#4a2f18;
+  --bad:#ff6f86; --bad-rgb:255 111 134;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -83,7 +83,9 @@ a{color:inherit}
 }
 
 /* ---------- navigace nahoře ---------- */
-.nav{position:sticky;top:12px;z-index:30;display:flex;justify-content:center;pointer-events:none;margin-top:12px}
+.nav{position:sticky;top:12px;z-index:30;display:flex;justify-content:center;pointer-events:none;margin-top:12px;transition:transform .35s ease,opacity .35s ease}
+.nav.hide{transform:translateY(-140%);opacity:0}
+.nav.hide .pill{pointer-events:none}
 .nav .pill{pointer-events:auto;display:flex;align-items:center;gap:4px;background:rgb(var(--bg-rgb) / .94);border:1px solid var(--line-2);border-radius:999px;padding:6px 6px 6px 14px;box-shadow:0 10px 40px rgba(0,0,0,.5)}
 .logo{display:flex;align-items:center;gap:9px;font-family:var(--display);font-weight:700;font-size:15px;margin-right:10px;text-decoration:none}
 .logo .m{width:26px;height:26px;border-radius:8px;display:grid;place-items:center;background:linear-gradient(140deg,var(--accent),var(--accent-2));color:var(--accent-ink);font-size:15px;box-shadow:0 0 18px var(--glow)}
@@ -176,7 +178,7 @@ a{color:inherit}
 .fn.ice.on .t i{color:var(--ice)}
 
 /* tři panely */
-.desk{display:grid;grid-template-columns:minmax(320px,390px) minmax(0,1fr) minmax(290px,360px);height:max(500px,min(800px,calc(100vh - 340px)))}
+.desk{display:grid;grid-template-columns:minmax(320px,390px) minmax(0,1fr) minmax(290px,360px);height:max(470px,min(800px,calc(100vh - 410px)))}
 .desk > section{min-width:0;min-height:0;display:flex;flex-direction:column}
 .chat{border-right:1px solid var(--line)}
 .card{border-left:1px solid var(--line)}
@@ -256,6 +258,11 @@ details.v1 .old{margin-top:6px;font-size:13px;color:var(--muted);background:var(
 .graph svg#graph:active{cursor:grabbing}
 .legend{position:absolute;left:12px;bottom:12px;font-family:var(--mono);font-size:10.5px;color:var(--muted);display:flex;flex-direction:column;gap:4px;background:rgb(var(--bg-rgb) / .9);padding:9px 11px;border:1px solid var(--line);border-radius:10px}
 .legend i{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:7px;vertical-align:0}
+.tlegend{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;padding:10px 16px;border-top:1px solid var(--line);font-size:12.5px;color:var(--muted)}
+.tlegend b{font-weight:600;color:var(--soft)}
+.tlegend span{display:inline-flex;align-items:center;gap:7px}
+.tlegend i{width:9px;height:9px;border-radius:50%;flex:none}
+.tlegend .sp{flex:1}
 .gtools{position:absolute;right:12px;top:52px;display:flex;flex-direction:column;gap:4px}
 .gtools button{width:30px;height:30px;display:grid;place-items:center;background:var(--panel);border:1px solid var(--line-2);border-radius:8px;color:var(--muted);font-size:15px}
 .gtools button:hover{color:var(--text);border-color:var(--accent)}
@@ -369,8 +376,10 @@ footer strong{color:var(--bad);font-weight:500}
 .dock a:hover,.dock button:hover{width:54px;height:54px;color:var(--accent);background:var(--panel-2);border-color:rgb(var(--accent-rgb) / .4)}
 .dock .tip{position:absolute;bottom:calc(100% + 10px);left:50%;transform:translateX(-50%);white-space:nowrap;font-family:var(--mono);font-size:11px;background:var(--panel-2);border:1px solid var(--line-2);border-radius:7px;padding:3px 8px;color:var(--text);opacity:0;pointer-events:none}
 .dock a:hover .tip,.dock button:hover .tip{opacity:1}
+.dock{transition:transform .35s ease,opacity .35s ease}
+.dock.hide{transform:translate(-50%,160%);opacity:0;pointer-events:none}
 .dock .sep{width:1px;height:30px;background:var(--line-2);align-self:center;margin:0 3px}
-@media (prefers-reduced-motion:reduce){ .dock a,.dock button{transition:none} }
+@media (prefers-reduced-motion:reduce){ .dock a,.dock button,.dock,.nav{transition:none} }
 
 /* ---------- dialog výsledků ---------- */
 dialog{background:var(--panel);color:var(--text);border:1px solid var(--line-2);border-radius:18px;box-shadow:0 30px 100px rgba(0,0,0,.7);padding:0;width:min(1040px,calc(100vw - 24px));max-height:calc(100vh - 32px)}
@@ -493,7 +502,7 @@ dialog::backdrop{background:rgba(2,4,5,.8)}
   </div>
 </header>
 
-<section class="wrap" id="app" style="scroll-margin-top:80px">
+<section class="wrap" id="app" style="scroll-margin-top:16px">
   <div class="app">
     <div class="apphead"><span class="dot"></span><span>rag-demo / zákoník práce</span><span class="sp"></span><span class="pill2 hide-m" id="modelName"></span><span class="pill2" id="gstat"></span></div>
 
@@ -543,6 +552,7 @@ dialog::backdrop{background:rgba(2,4,5,.8)}
         <div class="src" id="src"><p class="placeholder"><b>Tady uvidíš původní text.</b> Klikni na citaci [1] v odpovědi nebo na tečku v mapě.</p></div>
       </section>
     </div>
+    <div class="tlegend" id="tlegend"></div>
   </div>
 
   <div class="quick" id="quick">
@@ -601,7 +611,7 @@ dialog::backdrop{background:rgba(2,4,5,.8)}
   </div>
 </footer>
 
-<nav class="dock" aria-label="Rychlá navigace">
+<nav class="dock hide" aria-label="Rychlá navigace">
   <a href="#top"><i class="ph ph-house"></i><span class="tip">Nahoru</span></a>
   <a href="#app"><i class="ph ph-chat-circle-dots"></i><span class="tip">Zeptat se</span></a>
   <a href="#graphWrap"><i class="ph ph-graph"></i><span class="tip">Mapa zákona</span></a>
@@ -630,19 +640,19 @@ dialog::backdrop{background:rgba(2,4,5,.8)}
 <script>
 // palety z Lukášovy sbírky (knowledge-base: color-palettes-collection); volba se pamatuje v prohlížeči
 const PALETY = [
+  ["14","Smaragd","Bright Leaf + Emerald Green",["#203D43","#CDFF9B","#9fd8e0"]],
   ["1","Písek","Charcoal Navy + Sandy Tan + Steel Blue",["#27262E","#E19C63","#8BA5BE"]],
   ["16","Zlato","Honey Gold + Deep Navy",["#04123F","#FEC40B","#9fb8ff"]],
   ["9","Cyan","Deep Navy + Cyan",["#1C1C28","#1EC1CB","#e4e2ff"]],
-  ["14","Lístek","Bright Leaf + Emerald Green",["#203D43","#CDFF9B","#9fd8e0"]],
 ];
 function setPaleta(id){
-  if (id === "1") delete document.documentElement.dataset.paleta; else document.documentElement.dataset.paleta = id;
-  try { localStorage.setItem("ragPaleta", id); } catch(e) {}
+  if (id === "14") delete document.documentElement.dataset.paleta; else document.documentElement.dataset.paleta = id;
+  try { localStorage.setItem("ragPaleta2", id); } catch(e) {}
   const p = PALETY.find(x => x[0]===id) || PALETY[0];
   const sw = document.getElementById("palSw"); if (sw) sw.innerHTML = p[3].map(c => `<i style="background:${c}"></i>`).join("");
   document.querySelectorAll("#palMenu button").forEach(b => b.classList.toggle("on", b.dataset.p===id));
 }
-try { const pl = new URLSearchParams(location.search).get("paleta") || localStorage.getItem("ragPaleta"); if (pl && pl !== "1") document.documentElement.dataset.paleta = pl; } catch(e) {}
+try { const pl = new URLSearchParams(location.search).get("paleta") || localStorage.getItem("ragPaleta2"); if (pl && pl !== "14") document.documentElement.dataset.paleta = pl; } catch(e) {}
 const TOPIC_COLORS = ["#6f8fb0","#a088b8","#7fa287","#b39a6b","#b57f88"];
 const $ = s => document.querySelector(s);
 const $$ = s => [...document.querySelectorAll(s)];
@@ -668,7 +678,12 @@ function init(){
   $$("#palMenu button").forEach(b => b.addEventListener("click", () => { setPaleta(b.dataset.p); $("#pal").classList.remove("open"); $("#palBtn").setAttribute("aria-expanded","false"); }));
   $("#palBtn").addEventListener("click", e => { e.stopPropagation(); const o = $("#pal").classList.toggle("open"); $("#palBtn").setAttribute("aria-expanded", o); });
   document.addEventListener("click", e => { if (!$("#pal").contains(e.target)) $("#pal").classList.remove("open"); });
-  setPaleta(document.documentElement.dataset.paleta || "1");
+  setPaleta(document.documentElement.dataset.paleta || "14");
+  // na úvodu je vidět horní menu, níž na stránce jen spodní dock
+  const navSwap = () => { const onHero = $(".hero").getBoundingClientRect().bottom > 140;
+    $(".nav").classList.toggle("hide", !onHero); $(".dock").classList.toggle("hide", onHero);
+    if (!onHero) $("#pal").classList.remove("open"); };
+  addEventListener("scroll", navSwap, {passive:true}); navSwap();
   $("#dockRes").addEventListener("click", () => $("#dlg").showModal());
   $("#liveForm").addEventListener("submit", e => { e.preventDefault(); liveAsk($("#liveForm")); });
   $("#heroForm").addEventListener("submit", e => { e.preventDefault(); liveAsk($("#heroForm")); });
@@ -827,6 +842,8 @@ function drawGraph(){
   const svg = d3.select("#graph");
   const topics = [...new Set(D.chunks.map(c => c.topic))];
   const color = t => TOPIC_COLORS[topics.indexOf(t) % TOPIC_COLORS.length];
+  $("#tlegend").innerHTML = `<b>Témata zákoníku v mapě:</b>` + topics.map(t => `<span><i style="background:${color(t)}"></i>${esc(t.split(",")[0])}</span>`).join("") +
+    `<span class="sp"></span><b>Hledání:</b><span><i style="background:var(--accent);box-shadow:0 0 6px var(--accent)"></i>význam · citace</span><span><i style="background:var(--ice)"></i>slova</span>`;
   const deg = new Array(D.chunks.length).fill(0); D.edges.forEach(([a,b]) => { deg[a]++; deg[b]++; });
   const nodes = D.chunks.map((c,i) => ({i, topic:c.topic, deg:deg[i]}));
   const links = D.edges.map(([s,t]) => ({source:s, target:t}));
