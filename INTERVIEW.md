@@ -120,3 +120,14 @@ Opravy: výběr přes LLM z 20 kandidátů (hledání), poznámka u úseku „pl
 - cross-encoder místo LLM pro výběr (levnější, stabilnější),
 - větší testovací sada ze skutečných otázek a měření rozptylu,
 - počítadla limitů v Redis, pgvector místo numpy při dalším růstu.
+
+**Zákony se mění. Jak by se to aktualizovalo?** Pro demo to není potřeba: data jsou zmrazená k 6. 10. 2026 a je to tak napsané. V provozu bych:
+1. jednou denně porovnal číslo verze předpisu na zakonyprolidi.cz s uloženým,
+2. při změně stáhl jen změněný předpis a znovu ho rozdělil (`chunk.py`),
+3. přepočítal embeddingy jen u změněných odstavců (cache podle textu to umí už teď),
+4. spustil měření (`evaluate.py`) a nasadil jen tehdy, když výsledek neklesne.
+
+**Co kdyby bylo 100× víc dat?** Teď je 2 475 odstavců a hledání je jedno násobení matice v paměti (pod 10 ms). Při stovkách tisíc úseků bych vektory dal do databáze (pgvector nebo Qdrant) a BM25 do fulltextu (Postgres nebo Elasticsearch). Postup RRF → výběr přes LLM → odpověď zůstane stejný.
+
+## 12. Testy · `tests/`
+14 testů bez volání API (nic nestojí, běží pod 1 s): dělení slov pro BM25, RRF, výběr čísel z odpovědi modelu, pravidla `with_odst1` a `with_refs`, převod int8 tam a zpět, poznámka mzda × plat a kontrola, že správné úseky z testovacích sad v datech opravdu jsou. Jeden test spustí webovou funkci v Node.js a ověří, že hledá stejně jako Python. GitHub je spouští po každém nahrání (`.github/workflows/tests.yml`).

@@ -164,7 +164,7 @@ module.exports = async (req, res) => {
     answer = answer.replace(/【(\d+)】/g, "[$1]");
     return send(200, { q, rewritten, hits, trace, answer, remaining: PER_IP_PER_DAY - used - 1 });
   } catch (e) {
-    ipLog.set(ip, used);                       // nepovedené volání se nepočítá
+    ipLog.set(ip, Math.max(0, (ipLog.get(ip) || 1) - 1));   // nepovedené volání se nepočítá (souběžné dotazy zůstanou započtené)
     if (e.budget) return send(503, { error: "Rozpočet na živé otázky je vyčerpaný. Předpočítané otázky fungují dál." });
     return send(502, { error: "Model teď neodpovídá, zkus to za chvíli." });
   }

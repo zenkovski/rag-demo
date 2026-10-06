@@ -1,5 +1,7 @@
 # RAG asistent nad pracovním právem
 
+[![tests](https://github.com/zenkovski/rag-demo/actions/workflows/tests.yml/badge.svg)](https://github.com/zenkovski/rag-demo/actions/workflows/tests.yml)
+
 Odpovídá česky na otázky z pracovního práva. Odpovídá jen z textu zákona, každou odpověď ocituje a když odpověď v zákoně není, řekne „nevím“.
 
 *Czech RAG assistant over 4 labour-law acts (2,475 paragraphs): hybrid search, LLM reranking, cited answers, measured on 66 hand-checked questions.*
@@ -56,6 +58,7 @@ Stejné hledání je napsané třikrát: ručně v Pythonu, v LangChainu a v Jav
 | `site/api/ask.js` | serverová funkce pro vlastní otázky (Vercel) |
 | `data/testset*.json` | testovací otázky se správnými odpověďmi |
 | `data/manual_review.json` | ruční verdikty |
+| `tests/` | 14 testů bez API, včetně kontroly, že web hledá stejně jako Python |
 
 Další dokumenty:
 - [RESULTS.md](RESULTS.md): výsledky otázku po otázce.
@@ -74,6 +77,7 @@ copy .env.example .env                                   # doplň OPENROUTER_API
 .venv/Scripts/python tools/evaluate.py                    # měření -> RESULTS.md
 .venv/Scripts/python tools/rag_langchain.py --compare     # LangChain = stejné výsledky?
 .venv/Scripts/python tools/build_data.py                  # data pro web (~3 min)
+.venv/Scripts/python -m pytest tests                      # testy (bez API, zdarma)
 ```
 
 ## Ochrana webu
@@ -87,7 +91,7 @@ copy .env.example .env                                   # doplň OPENROUTER_API
 - Živé otázky na webu nikdo nekontroluje. Model se může splést, proto jsou u odpovědí citace.
 - Asistent nezná výši minimální mzdy. Nařízení 567/2006 je zrušené a výši teď vyhlašuje ministerstvo sdělením.
 - Počítadla limitů jsou v paměti funkce, ne v databázi.
-- Zákony se mění. Data jsou ze 6. 10. 2026. Aktualizace není automatická: znovu spustit `chunk.py`, `build_data.py` a `evaluate.py` a nasadit.
+- Zákony se mění. Data jsou zmrazená k 6. 10. 2026. Pro demo automatická aktualizace není potřeba. Jak by fungovala v provozu: [INTERVIEW.md](INTERVIEW.md#11-co-bych-udělal-dál).
 
 ## Zdroje a autorství
 

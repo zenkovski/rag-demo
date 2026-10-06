@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
 """Jádro RAG: vyhledání úseků a odpověď s citacemi (LLM přes OpenRouter).
 
-Vyhledávání (v2) = hybrid:
+Vyhledávání (v3) = hybrid + výběr:
   1. LLM přepíše laickou otázku do jazyka zákona ("výplata" -> "mzda"),
-  2. pro původní i přepsanou otázku hledám dvakrát: podle významu (embeddingy) a podle slov (BM25),
-  3. čtyři pořadí spojím metodou RRF (reciprocal rank fusion) a vezmu top 5.
+  2. hledám podle významu (embeddingy, původní i přepsaná otázka) a podle slov (BM25, přepsaná otázka),
+  3. tři pořadí spojím metodou RRF (reciprocal rank fusion) -> 20 kandidátů,
+  4. LLM z nich vybere 5; pevná pravidla doplní odstavec 1 téhož § a odstavce, na které úsek odkazuje.
 Vyzkoušení:  .venv/Scripts/python tools/rag.py "Nezaplatili mi výplatu, můžu odejít?" """
 import json, math, os, re, sys, unicodedata
 from collections import Counter
@@ -96,14 +97,15 @@ STOP = set("a i k o s u v z ve se na do za po od je jsou byl být by aby ale ani
            "co to ten ta tím tak také jen již už mi mě mne mu jsem jsi jste můžu může mohu musí podle při pro "
            "než jeho jejich který která které této tohoto".split())
 
+def strip_diacritics(text):
+    return "".join(ch for ch in unicodedata.normalize("NFD", text) if unicodedata.category(ch) != "Mn")
+
+STOP_ASCII = {strip_diacritics(s) for s in STOP}
+
 def tokens(text):
     """Malá písmena, bez diakritiky, kořen = prvních 5 znaků (hrubý stemmer pro češtinu: mzda/mzdu/mzdy -> mzda/mzdu…)."""
-    t = unicodedata.normalize("NFD", text.lower())
-    t = "".join(ch for ch in t if unicodedata.category(ch) != "Mn")
-    words = re.findall(r"[a-z0-9]+", t)
-    raw_stop = {unicodedata.normalize("NFD", s) for s in STOP}
-    raw_stop = {"".join(ch for ch in s if unicodedata.category(ch) != "Mn") for s in raw_stop}
-    return [w[:5] for w in words if len(w) > 2 and w not in raw_stop]
+    words = re.findall(r"[a-z0-9]+", strip_diacritics(text.lower()))
+    return [w[:5] for w in words if len(w) > 2 and w not in STOP_ASCII]
 
 _bm25 = None
 def bm25_scores(text, k1=1.5, b=0.75):
@@ -257,6 +259,7 @@ def llm(system, user, model=None, reasoning=True):
     load_dotenv(ROOT / ".env")
     model = model or LLM_MODEL
     # cache: stejný model + stejný vstup = uložená odpověď (opakovaný běh nic nestojí a čísla se nemění)
+    # („|False“ v klíči je pozůstatek staršího parametru; nechávám ho, jinak by se uložené odpovědi musely platit znovu)
     cache_file = ROOT / "data" / "llm_cache.json"
     cache = json.loads(cache_file.read_text(encoding="utf-8")) if cache_file.exists() else {}
     global COST

@@ -7,3 +7,4 @@ data/embeddings.npy
 .tmp/
 PLAN.md
 .tmp_*
+.pytest_cache/
