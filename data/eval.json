@@ -6128,22 +6128,23 @@
       "score": 0.867
      },
      {
-      "id": "ZZ § 78 odst. 7",
-      "score": 0.879
+      "id": "ZP § 87a odst. 1",
+      "score": 0.787
      }
     ],
     "hit3": true,
     "hit5": true,
-    "answer": "Obecně činí výpovědní doba nejméně 2 měsíce [1]. Výjimkou je výpověď daná zaměstnanci z důvodu uvedeného v § 52 písm. f) až h), kde činí nejméně 1 měsíc [1]. U dohody o uznání zaměstnavatele za zaměstnavatele na chráněném trhu práce činí výpovědní doba 2 měsíce a počíná běžet prvním dnem kalendářního měsíce následujícího po doručení výpovědi [5].",
+    "answer": "Obecně činí výpovědní doba nejméně 2 měsíce [1]. Ve dvou případech je kratší, nejméně 1 měsíc: při výpovědi dané zaměstnanci z důvodu uvedeného v § 52 písm. f) až h) a při výpovědi dané zaměstnavateli podle § 51a [1]. Písemnou dohodou mezi zaměstnavatelem a zaměstnancem lze výpovědní dobu prodloužit nebo změnit její běh [3].\n\nMyslel jste výpovědní dobu u pracovního poměru, nebo u dohody o rozvržení pracovní doby podle § 87a, kde činí 15 dnů [4]?",
     "cited": [
      "ZP § 51 odst. 2",
-     "ZZ § 78 odst. 7"
+     "ZP § 51 odst. 3",
+     "ZP § 87a odst. 3"
     ],
     "said_nevim": false,
     "judge": {
      "correct": true,
      "grounded": true,
-     "reason": "Asistent správně uvádí obecnou dvouměsíční výpovědní dobu i výjimku jednoho měsíce podle § 52 písm. f) až h) a obě tvrzení se opírají o dodané úseky."
+     "reason": "Asistent správně uvádí obecnou dvouměsíční výpovědní dobu i výjimku jednoho měsíce podle § 52 písm. f) až h), což odpovídá zlaté odpovědi, a všechna tvrzení jsou podložena dodanými úseky."
     }
    },
    {
@@ -6866,31 +6867,32 @@
       "score": 0.851
      },
      {
+      "id": "ZP § 192 odst. 2",
+      "score": 0.85
+     },
+     {
       "id": "ZNP § 23",
       "score": 0.867
      },
      {
       "id": "ZNP § 110a",
       "score": 0.861
-     },
-     {
-      "id": "ZNP § 31",
-      "score": 0.854
      }
     ],
     "hit3": true,
     "hit5": true,
-    "answer": "Nemocenské za kalendářní den činí 60 % denního vyměřovacího základu do 30. kalendářního dne, 66 % od 31. do 60. dne a 72 % od 61. dne trvání pracovní neschopnosti nebo karantény [1]. Nárok na nemocenské má pojištěnec, trvá-li neschopnost déle než 14 kalendářních dní [3]. Pokud si neschopnost přivodíte například účastí ve rvačce, následkem opilosti nebo při úmyslném trestném činu, činí nemocenské 50 % částky podle § 29 [5].",
+    "answer": "Nemocenské za kalendářní den činí 60 % denního vyměřovacího základu do 30. kalendářního dne trvání pracovní neschopnosti, 66 % od 31. do 60. dne a 72 % od 61. dne [1]. Nárok na nemocenské má pojištěnec, jen pokud pracovní neschopnost trvá déle než 14 kalendářních dní [4]. Za prvních 14 kalendářních dnů náleží místo nemocenského náhrada mzdy nebo platu ve výši 60 % průměrného výdělku, a to jen za pracovní dny a svátky, kdy trvá pracovní poměr a jsou splněny podmínky nároku na nemocenské [2][3].",
     "cited": [
      "ZNP § 29 odst. 1",
-     "ZNP § 23",
-     "ZNP § 31"
+     "ZP § 192 odst. 1",
+     "ZP § 192 odst. 2",
+     "ZNP § 23"
     ],
     "said_nevim": false,
     "judge": {
-     "correct": false,
+     "correct": true,
      "grounded": true,
-     "reason": "Asistent vynechal náhradu mzdy 60 % od zaměstnavatele za prvních 14 dnů, což je klíčová část zlaté odpovědi."
+     "reason": "Odpověď věcně odpovídá zlaté odpovědi (14 dní náhrada 60 %, poté nemocenské 60/66/72 %) a všechna tvrzení jsou podložena dodanými úseky."
     }
    },
    {
@@ -7235,31 +7237,31 @@
       "score": 0.854
      },
      {
+      "id": "ZP § 218 odst. 2",
+      "score": 0.848
+     },
+     {
       "id": "ZP § 218 odst. 5",
       "score": 0.847
      },
      {
       "id": "ZP § 218 odst. 4",
       "score": 0.855
-     },
-     {
-      "id": "ZP § 218 odst. 2",
-      "score": 0.848
      }
     ],
     "hit3": true,
     "hit5": true,
-    "answer": "Zaměstnavatel je povinen určit čerpání dovolené tak, abyste ji vyčerpal v kalendářním roce, ve kterém právo na dovolenou vzniklo, ledaže tomu brání překážky v práci na vaší straně nebo naléhavé provozní důvody [1]. Nemůže-li být dovolená takto vyčerpána, je zaměstnavatel povinen určit ji nejpozději do konce následujícího kalendářního roku [2]. Pokud ji nevyčerpáte ani do konce následujícího roku kvůli dočasné pracovní neschopnosti nebo čerpání mateřské či rodičovské dovolené, určí zaměstnavatel dobu čerpání po skončení těchto překážek [3].",
+    "answer": "Zaměstnavatel je povinen určit čerpání dovolené tak, abyste ji vyčerpal v kalendářním roce, ve kterém právo na dovolenou vzniklo, ledaže v tom brání překážky v práci na vaší straně nebo naléhavé provozní důvody [1]. Nemůže-li být dovolená vyčerpána v tomto roce, je zaměstnavatel povinen určit ji tak, aby byla vyčerpána nejpozději do konce následujícího kalendářního roku, není-li stanoveno jinak [2]. Pokud jde o část dovolené přesahující 4 týdny (u pedagogických a akademických pracovníků 6 týdnů), lze ji na základě vaší písemné žádosti převést do následujícího roku [3].",
     "cited": [
      "ZP § 218 odst. 1",
      "ZP § 218 odst. 3",
-     "ZP § 218 odst. 5"
+     "ZP § 218 odst. 2"
     ],
     "said_nevim": false,
     "judge": {
      "correct": true,
      "grounded": true,
-     "reason": "Odpověď věcně odpovídá zlaté odpovědi a všechna tvrzení jsou podložena citovanými úseky zákona."
+     "reason": "Odpověď vystihuje hlavní pravidlo ze zlaté odpovědi a je plně podložena dodanými úseky zákona."
     }
    },
    {
@@ -7463,21 +7465,21 @@
       "score": 0.819
      },
      {
+      "id": "ZZ § 25 odst. 4",
+      "score": 0.838
+     },
+     {
       "id": "ZZ § 50 odst. 2",
       "score": 0.838
      },
      {
       "id": "ZZ § 25 odst. 6",
       "score": 0.842
-     },
-     {
-      "id": "ZZ § 25 odst. 5",
-      "score": 0.838
      }
     ],
     "hit3": true,
     "hit5": true,
-    "answer": "V evidenci uchazečů o zaměstnání můžete pracovat na pracovní nebo služební poměr, pokud měsíční výdělek nepřesáhne polovinu minimální mzdy, nebo na dohodu o pracovní činnosti, pokud měsíční odměna nepřesáhne polovinu minimální mzdy [1]. Výkon této činnosti jste povinen oznámit krajské pobočce Úřadu práce bez ohledu na výši výdělku, a to při podání žádosti o zprostředkování zaměstnání nebo nejpozději v den nástupu k výkonu této činnosti [1]. Pokud vykonáváte více činností, měsíční výdělky (odměny) se sčítají [1].",
+    "answer": "V evidenci uchazečů o zaměstnání můžete mít příjem z pracovního nebo služebního poměru, pokud měsíční výdělek nepřesáhne polovinu minimální mzdy [1]. Stejně tak můžete mít příjem z dohody o pracovní činnosti, pokud měsíční odměna nepřesáhne polovinu minimální mzdy [1]. Výkon této činnosti jste povinen oznámit krajské pobočce Úřadu práce, a to bez ohledu na výši výdělku [1].",
     "cited": [
      "ZZ § 25 odst. 3"
     ],
@@ -7485,7 +7487,7 @@
     "judge": {
      "correct": true,
      "grounded": true,
-     "reason": "Odpověď věcně odpovídá zlaté odpovědi a všechna tvrzení jsou podložena dodaným úsekem zákona [1]."
+     "reason": "Odpověď správně uvádí limit poloviny minimální mzdy pro pracovní poměr i DPČ a povinnost oznámení úřadu práce, vše podloženo citovaným § 25 odst. 3."
     }
    },
    {
@@ -7560,27 +7562,28 @@
       "score": 0.86
      },
      {
-      "id": "ZNP § 172 odst. 1",
-      "score": 0.885
+      "id": "ZP § 192 odst. 2",
+      "score": 0.85
      },
      {
-      "id": "ZNP § 26 odst. 2",
-      "score": 0.877
+      "id": "ZNP § 172 odst. 1",
+      "score": 0.885
      }
     ],
     "hit3": true,
     "hit5": true,
-    "answer": "Nemocenské se vyplácí od 15. kalendářního dne trvání dočasné pracovní neschopnosti nebo nařízené karantény [2]. Nárok na nemocenské vzniká, jen trvá-li neschopnost déle než 14 kalendářních dní [1]. Za prvních 14 kalendářních dnů přísluší zaměstnanci náhrada mzdy nebo platu, pokud splňuje podmínky nároku na nemocenské [3].",
+    "answer": "Nemocenské se vyplácí od 15. kalendářního dne trvání dočasné pracovní neschopnosti nebo karantény [2]. Nárok na nemocenské vzniká, jen trvá-li pracovní neschopnost nebo karanténa déle než 14 kalendářních dní [1]. Za prvních 14 kalendářních dnů přísluší zaměstnanci náhrada mzdy nebo platu ve výši 60 % průměrného výdělku [3][4].",
     "cited": [
      "ZNP § 23",
      "ZNP § 26 odst. 1",
-     "ZP § 192 odst. 1"
+     "ZP § 192 odst. 1",
+     "ZP § 192 odst. 2"
     ],
     "said_nevim": false,
     "judge": {
      "correct": true,
      "grounded": true,
-     "reason": "Odpověď správně uvádí 15. kalendářní den i náhradu mzdy za prvních 14 dnů a všechna tvrzení jsou podložena dodanými úseky."
+     "reason": "Asistent správně uvádí, že nemocenské se platí od 15. kalendářního dne a prvních 14 dnů náleží náhrada mzdy, což odpovídá zlaté odpovědi i dodaným úsekům."
     }
    },
    {
@@ -7799,13 +7802,13 @@
       "score": 0.88
      },
      {
-      "id": "ZP § 315",
-      "score": 0.896
+      "id": "ZNP § 62 odst. 1",
+      "score": 0.839
      }
     ],
     "hit3": true,
     "hit5": true,
-    "answer": "Zaměstnavatel je povinen vydat pracovní posudek do 15 dnů, pokud o něj zaměstnanec požádá [2]. Není však povinen vydat jej dříve než v době 2 měsíců před skončením zaměstnání [2].",
+    "answer": "Zaměstnavatel je povinen vydat pracovní posudek do 15 dnů, pokud o něj zaměstnanec požádá [2]. Nesmí jej však vydat dříve než v době 2 měsíců před skončením zaměstnání [2].",
     "cited": [
      "ZP § 314 odst. 1"
     ],
@@ -7813,7 +7816,7 @@
     "judge": {
      "correct": true,
      "grounded": true,
-     "reason": "Odpověď přesně vystihuje lhůtu 15 dnů i omezení 2 měsíců před skončením zaměstnání a obě tvrzení se opírají o § 314 odst. 1."
+     "reason": "Asistent správně uvádí lhůtu 15 dnů od žádosti i zákaz vydání dříve než 2 měsíce před skončením zaměstnání, obojí opřené o § 314 odst. 1."
     }
    },
    {
@@ -7844,13 +7847,13 @@
       "score": 0.879
      },
      {
-      "id": "ZP § 218 odst. 5",
-      "score": 0.869
+      "id": "ZP § 197 odst. 1",
+      "score": 0.865
      }
     ],
     "hit3": true,
     "hit5": true,
-    "answer": "Žádost o rodičovskou dovolenou podává zaměstnanec alespoň 30 dnů před nástupem na rodičovskou dovolenou, nebrání-li tomu vážné důvody na jeho straně [1]. Žádost musí obsahovat dobu trvání rodičovské dovolené a lze ji podávat i opakovaně [1].",
+    "answer": "Žádost o rodičovskou dovolenou podává zaměstnanec alespoň 30 dnů před nástupem na rodičovskou dovolenou, nebrání-li tomu vážné důvody na jeho straně [1].",
     "cited": [
      "ZP § 196 odst. 2"
     ],
@@ -7858,7 +7861,7 @@
     "judge": {
      "correct": true,
      "grounded": true,
-     "reason": "Odpověď správně uvádí lhůtu 30 dnů i výjimku vážných důvodů a opírá se o dodaný úsek [1]."
+     "reason": "Asistent správně uvádí lhůtu 30 dnů i výjimku vážných důvodů podle § 196 odst. 2, byť opomíjí požadavek písemnosti."
     }
    },
    {
@@ -8010,12 +8013,12 @@
       "score": 0.848
      },
      {
-      "id": "ZZ § 78 odst. 7",
-      "score": 0.839
+      "id": "ZP § 317a odst. 1",
+      "score": 0.788
      },
      {
-      "id": "ZP § 87a odst. 3",
-      "score": 0.836
+      "id": "ZZ § 78 odst. 7",
+      "score": 0.839
      }
     ],
     "hit3": null,
@@ -8026,7 +8029,7 @@
     "judge": {
      "correct": true,
      "grounded": true,
-     "reason": "Asistent správně odmítl odpovědět, protože dodané úseky upravují výpovědní dobu jen v pracovněprávních vztazích, nikoli nájem bytu."
+     "reason": "Asistent správně odmítl odpovědět, protože dodané úseky neobsahují úpravu nájmu bytu (pouze zákoník práce a služební zákon), a věcně tak odpovídá zlaté odpovědi."
     }
    },
    {
@@ -8051,12 +8054,12 @@
       "score": 0.821
      },
      {
-      "id": "ZNP § 17 odst. 1",
-      "score": 0.801
+      "id": "ZP § 324a odst. 1",
+      "score": 0.796
      },
      {
-      "id": "ZZ § 113 odst. 5",
-      "score": 0.812
+      "id": "ZNP § 17 odst. 1",
+      "score": 0.801
      }
     ],
     "hit3": null,
@@ -8067,7 +8070,7 @@
     "judge": {
      "correct": true,
      "grounded": true,
-     "reason": "Asistent správně odmítl odpovědět, protože sleva na dani na poplatníka není v dodaných úsecích zákona upravena."
+     "reason": "Asistent odpovídá, že informaci nemá, což odpovídá zlaté odpovědi a dodané úseky se slevou na dani na poplatníka skutečně nesouvisí."
     }
    },
    {
@@ -8139,21 +8142,21 @@
       "score": 0.89
      },
      {
+      "id": "ZNP § 38a odst. 2",
+      "score": 0.881
+     },
+     {
       "id": "ZP § 195a",
       "score": 0.872
      },
      {
       "id": "ZNP § 38b odst. 2",
       "score": 0.889
-     },
-     {
-      "id": "ZNP § 38b odst. 1",
-      "score": 0.876
      }
     ],
     "hit3": true,
     "hit5": true,
-    "answer": "Nástup na otcovskou musí nastat v období 6 týdnů ode dne narození dítěte [1]. Toto období se prodlužuje o kalendářní dny, po které bylo dítě hospitalizováno ze zdravotních důvodů na straně dítěte nebo matky a které spadají do období 6 týdnů ode dne narození [1].",
+    "answer": "Pokud jste otec dítěte, na jehož péči má vzniknout nárok podle § 38a odst. 1, musí nástup na otcovskou nastat v období 6 týdnů ode dne narození dítěte [1]. Toto období se prodlužuje o kalendářní dny hospitalizace dítěte ze zdravotních důvodů na straně dítěte nebo matky, které spadají do těchto 6 týdnů [1]. Pokud jde o otcovskou podle § 38a odst. 2 (dítě se narodilo mrtvé nebo zemřelo v období 6 týdnů ode dne narození), platí, že nástup musí nastat v období 6 týdnů ode dne narození dítěte, a bylo-li by období ode dne úmrtí dítěte kratší než 2 týdny, pak v období 2 týdnů ode dne úmrtí dítěte [1].",
     "cited": [
      "ZNP § 38a odst. 4"
     ],
@@ -8161,7 +8164,7 @@
     "judge": {
      "correct": true,
      "grounded": true,
-     "reason": "Odpověď správně uvádí lhůtu 6 týdnů i prodloužení o dny hospitalizace, což plně odpovídá zlaté odpovědi i citovaným úsekům."
+     "reason": "Odpověď správně uvádí lhůtu 6 týdnů od narození včetně prodloužení o dny hospitalizace a všechny údaje vycházejí z dodaného § 38a."
     }
    },
    {
@@ -8377,22 +8380,21 @@
       "score": 0.836
      },
      {
-      "id": "ZNP § 12",
-      "score": 0.835
+      "id": "ZZ § 75 odst. 1",
+      "score": 0.814
      }
     ],
     "hit3": true,
     "hit5": true,
-    "answer": "Pokud jste zaměstnán v základním pracovněprávním vztahu, můžete vedle něj vykonávat výdělečnou činnost shodnou s předmětem činnosti svého zaměstnavatele jen s jeho předchozím písemným souhlasem [1]. Pokud jste u téhož zaměstnavatele v dalším základním pracovněprávním vztahu, nesmíte vykonávat práce stejně druhově vymezené, s výjimkou uvedenou v zákoně [3].",
+    "answer": "Pokud jste zaměstnán v základním pracovněprávním vztahu, můžete vedle něj vykonávat výdělečnou činnost shodnou s předmětem činnosti svého zaměstnavatele jen s jeho předchozím písemným souhlasem [1]. Jiná ustanovení v dodaných úsecích tuto situaci neupravují.",
     "cited": [
-     "ZP § 304 odst. 1",
-     "ZP § 34b odst. 2"
+     "ZP § 304 odst. 1"
     ],
     "said_nevim": false,
     "judge": {
      "correct": true,
      "grounded": true,
-     "reason": "Asistent správně uvádí, že vedlejší výdělečná činnost shodná s předmětem činnosti zaměstnavatele vyžaduje předchozí písemný souhlas, což odpovídá zlaté odpovědi i citovanému § 304 odst. 1 ZP."
+     "reason": "Asistent správně uvádí, že je třeba předchozí písemný souhlas zaměstnavatele, což odpovídá § 304 odst. 1 ZP i zlaté odpovědi."
     }
    },
    {
@@ -8423,24 +8425,23 @@
       "score": 0.874
      },
      {
-      "id": "ZP § 33 odst. 1",
-      "score": 0.862
+      "id": "ZZ § 91 odst. 2",
+      "score": 0.841
      }
     ],
     "hit3": true,
     "hit5": true,
-    "answer": "Pracovní smlouva musí obsahovat druh práce, místo nebo místa výkonu práce a den nástupu do práce [1]. Musí být uzavřena písemně [2] a každá smluvní strana musí obdržet jedno vyhotovení [3]. Pracovní poměr se zakládá pracovní smlouvou mezi zaměstnavatelem a zaměstnancem, není-li v zákoně stanoveno jinak [5].",
+    "answer": "Pracovní smlouva musí obsahovat druh práce, místo nebo místa výkonu práce a den nástupu do práce [1]. Musí být uzavřena písemně [2] a každá smluvní strana musí obdržet jedno vyhotovení [3].",
     "cited": [
      "ZP § 34 odst. 1",
      "ZP § 34 odst. 2",
-     "ZP § 34 odst. 5",
-     "ZP § 33 odst. 1"
+     "ZP § 34 odst. 5"
     ],
     "said_nevim": false,
     "judge": {
      "correct": true,
      "grounded": true,
-     "reason": "Asistent správně uvedl všechny tři povinné náležitosti dle § 34 odst. 1 a doplňující tvrzení jsou podložena dodanými úseky."
+     "reason": "Asistent správně uvedl všechny tři povinné náležitosti dle § 34 odst. 1 ZP a dodatky o písemné formě a vyhotoveních jsou věcně správné a podložené dodanými úseky."
     }
    },
    {
@@ -8461,16 +8462,16 @@
       "score": 0.824
      },
      {
+      "id": "ZZ § 78a odst. 6",
+      "score": 0.833
+     },
+     {
       "id": "ZZ § 113 odst. 5",
       "score": 0.827
      },
      {
       "id": "ZZ § 78c odst. 6",
       "score": 0.822
-     },
-     {
-      "id": "ZZ § 112 odst. 2",
-      "score": 0.82
      }
     ],
     "hit3": null,
@@ -8481,7 +8482,7 @@
     "judge": {
      "correct": true,
      "grounded": true,
-     "reason": "Asistent správně odmítl odpovědět, protože v dodaných úsecích není úprava příspěvku na bydlení podle zákona o státní sociální podpoře."
+     "reason": "Asistent správně odmítl odpovědět, protože dodané úseky příspěvek na bydlení podle zákona o státní sociální podpoře neobsahují."
     }
    },
    {
@@ -8502,12 +8503,12 @@
       "score": 0.848
      },
      {
-      "id": "ZZ § 48",
-      "score": 0.841
-     },
-     {
       "id": "ZZ § 49 odst. 1",
       "score": 0.844
+     },
+     {
+      "id": "ZZ § 48",
+      "score": 0.841
      },
      {
       "id": "ZZ § 39 odst. 1",
@@ -8522,11 +8523,11 @@
     "judge": {
      "correct": true,
      "grounded": true,
-     "reason": "Asistent správně odmítl odpovědět, protože dodané úseky neobsahují zákon o důchodovém pojištění a podmínky nároku na důchod."
+     "reason": "Asistent správně odmítl odpovědět, protože dodané úseky neupravují podmínky nároku na starobní důchod a zlatá odpověď je NEVÍM."
     }
    }
   ],
-  "cost_usd_new_calls": 0.0211,
-  "cost_usd_full": 0.0514
+  "cost_usd_new_calls": 0.02492,
+  "cost_usd_full": 0.0552
  }
 }

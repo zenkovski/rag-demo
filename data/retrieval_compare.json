@@ -3218,7 +3218,7 @@
      "ZP § 51 odst. 1",
      "ZP § 51 odst. 3",
      "ZP § 87a odst. 3",
-     "ZZ § 78 odst. 7"
+     "ZP § 87a odst. 1"
     ],
     "rewritten": "Jaká je délka výpovědní doby?",
     "hit3": true,
@@ -3440,9 +3440,9 @@
     "top": [
      "ZNP § 29 odst. 1",
      "ZP § 192 odst. 1",
+     "ZP § 192 odst. 2",
      "ZNP § 23",
-     "ZNP § 110a",
-     "ZNP § 31"
+     "ZNP § 110a"
     ],
     "rewritten": "Jaká je výše dávky nemocenského pojištění poskytované zaměstnanci v případě dočasné pracovní neschopnosti?",
     "hit3": true,
@@ -3552,9 +3552,9 @@
     "top": [
      "ZP § 218 odst. 1",
      "ZP § 218 odst. 3",
+     "ZP § 218 odst. 2",
      "ZP § 218 odst. 5",
-     "ZP § 218 odst. 4",
-     "ZP § 218 odst. 2"
+     "ZP § 218 odst. 4"
     ],
     "rewritten": "Do kdy je zaměstnanec povinen vyčerpat dovolenou za příslušný kalendářní rok?",
     "hit3": true,
@@ -3622,9 +3622,9 @@
     "top": [
      "ZZ § 25 odst. 3",
      "ZZ § 25 odst. 1",
+     "ZZ § 25 odst. 4",
      "ZZ § 50 odst. 2",
-     "ZZ § 25 odst. 6",
-     "ZZ § 25 odst. 5"
+     "ZZ § 25 odst. 6"
     ],
     "rewritten": "Jaká je maximální přípustná výše příjmu z výdělečné činnosti po dobu vedení v evidenci uchazečů o zaměstnání?",
     "hit3": true,
@@ -3651,8 +3651,8 @@
      "ZNP § 23",
      "ZNP § 26 odst. 1",
      "ZP § 192 odst. 1",
-     "ZNP § 172 odst. 1",
-     "ZNP § 26 odst. 2"
+     "ZP § 192 odst. 2",
+     "ZNP § 172 odst. 1"
     ],
     "rewritten": "Od kterého dne trvání dočasné pracovní neschopnosti vzniká nárok na nemocenské?",
     "hit3": true,
@@ -3722,7 +3722,7 @@
      "ZP § 314 odst. 1",
      "ZZ § 27 odst. 3",
      "ZNP § 62 odst. 2",
-     "ZP § 315"
+     "ZNP § 62 odst. 1"
     ],
     "rewritten": "V jaké lhůtě je zaměstnavatel povinen vydat zaměstnanci potvrzení o zaměstnání?",
     "hit3": true,
@@ -3736,7 +3736,7 @@
      "ZP § 196 odst. 1",
      "ZP § 217 odst. 5",
      "ZP § 197 odst. 3",
-     "ZP § 218 odst. 5"
+     "ZP § 197 odst. 1"
     ],
     "rewritten": "V jakém časovém předstihu je zaměstnanec povinen požádat zaměstnavatele o poskytnutí rodičovské dovolené?",
     "hit3": true,
@@ -3791,8 +3791,8 @@
      "ZP § 51 odst. 2",
      "ZP § 51 odst. 1",
      "ZP § 317a odst. 5",
-     "ZZ § 78 odst. 7",
-     "ZP § 87a odst. 3"
+     "ZP § 317a odst. 1",
+     "ZZ § 78 odst. 7"
     ],
     "rewritten": "Jaká je výpovědní doba z nájmu bytu?",
     "hit3": null,
@@ -3805,8 +3805,8 @@
      "ZZ § 109b",
      "ZP § 180",
      "ZP § 324a odst. 7",
-     "ZNP § 17 odst. 1",
-     "ZZ § 113 odst. 5"
+     "ZP § 324a odst. 1",
+     "ZNP § 17 odst. 1"
     ],
     "rewritten": "Jaká je výše slevy na dani na poplatníka?",
     "hit3": null,
@@ -3832,9 +3832,9 @@
     "top": [
      "ZNP § 38a odst. 4",
      "ZNP § 38a odst. 1",
+     "ZNP § 38a odst. 2",
      "ZP § 195a",
-     "ZNP § 38b odst. 2",
-     "ZNP § 38b odst. 1"
+     "ZNP § 38b odst. 2"
     ],
     "rewritten": "Do kdy po narození dítěte je zaměstnanec povinen nastoupit na otcovskou dovolenou?",
     "hit3": true,
@@ -3904,7 +3904,7 @@
      "ZZ § 113 odst. 6",
      "ZP § 34b odst. 2",
      "ZZ § 75 odst. 9",
-     "ZNP § 12"
+     "ZZ § 75 odst. 1"
     ],
     "rewritten": "Může zaměstnanec vykonávat vedle pracovněprávního vztahu samostatnou výdělečnou činnost ve stejném oboru činnosti jako zaměstnavatel?",
     "hit3": true,
@@ -3918,7 +3918,7 @@
      "ZP § 34 odst. 2",
      "ZP § 34 odst. 5",
      "ZZ § 91 odst. 4",
-     "ZP § 33 odst. 1"
+     "ZZ § 91 odst. 2"
     ],
     "rewritten": "Jaké náležitosti musí obsahovat pracovní smlouva?",
     "hit3": true,
@@ -3930,9 +3930,9 @@
     "top": [
      "ZNP § 41e odst. 4",
      "ZZ § 78a odst. 2",
+     "ZZ § 78a odst. 6",
      "ZZ § 113 odst. 5",
-     "ZZ § 78c odst. 6",
-     "ZZ § 112 odst. 2"
+     "ZZ § 78c odst. 6"
     ],
     "rewritten": "Jaká je výše příspěvku na bydlení podle zákona o státní sociální podpoře?",
     "hit3": null,
@@ -3944,8 +3944,8 @@
     "top": [
      "ZP § 271b odst. 6",
      "ZZ § 49 odst. 2",
-     "ZZ § 48",
      "ZZ § 49 odst. 1",
+     "ZZ § 48",
      "ZZ § 39 odst. 1"
     ],
     "rewritten": "Kolik let důchodového pojištění je třeba získat pro nárok na starobní důchod?",

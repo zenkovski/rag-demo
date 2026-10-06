@@ -106,6 +106,8 @@ Opravy: výběr přes LLM z 20 kandidátů (hledání), poznámka u úseku „pl
 
 **Co se rozbilo?** Jedna otázka, která ve v2 fungovala („odpočinek mezi směnami“): výběr vzal odstavce o zkrácení odpočinku a vyhodil základní pravidlo. Proto měřím všechno znovu, ne jen opravené otázky. Regrese se jinak nepozná. Opravil jsem to deterministicky: k vybranému odstavci 2, 3… se vždy přidá odstavec 1 téhož paragrafu. Poctivě: tahle druhá oprava už nebyla ověřená na nových otázkách.
 
+**Poslední chyba (nemocenská)?** Odpověď byla rozdělená: § 192 odst. 1 říká jen „ve výši podle odstavce 2“ a 60 % je až v odstavci 2. Přidal jsem dohledání odkazů na odstavce téhož paragrafu. Nemocenská se opravila, ale u posudku se vrátila chyba „nesmí“ × „nemusí“. Podklady se tam změnily jen nepatrně. **Poučení:** levný model nečte stabilně. Pravidly se opraví hledání, ale ne čtení. Na to je potřeba silnější model nebo kontrola odpovědi druhým modelem.
+
 **Co mě stálo nejvíc?** Skryté přemýšlení modelu (reasoning). DeepSeek u každého kroku „přemýšlel“ tisíce slov: krok trval 30 s a měření stálo desetkrát víc. Vypnul jsem ho přes `reasoning: {enabled: false}`: krok trvá 1,5 s. Poučení: u každého modelu hlídat počet výstupních tokenů, ne jen cenu za token.
 
 ## 11. Co bych udělal dál

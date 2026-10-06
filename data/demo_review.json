@@ -60,7 +60,7 @@
   "Pořád chyba, i ve v3: § 39 odst. 2 ZZ byl mezi úseky a vyjmenovává, kdy nárok na podporu není. Vlastní výpověď mezi těmi důvody není, model to ale nevyvodil a řekl „nevím“. Kde se to pokazilo: čtení."
  ],
  "Kolik dní volna dostanu na stěhování?": [
-  true,
-  "Ručně ověřeno proti textu zákona."
+  false,
+  "Chyba čtení: správný bod (NV 590 příloha bod 10: nejvýše 2 dny) měl model jako úsek [1], a přesto řekl „nevím“. V předchozím běhu se stejným bodem odpověděl správně; změnil se jen pátý, nejméně důležitý úsek. Ukázka, že levný model není při čtení stabilní."
  ]
 }

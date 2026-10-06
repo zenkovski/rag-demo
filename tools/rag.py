@@ -185,6 +185,32 @@ def with_odst1(picked, cands):
         out += [x for x in (i, j) if x is not None and x not in out and (x == i or x not in picked)]
     return out[:TOP_K]
 
+_refs = None
+def refs(i):
+    """Odstavce téhož §, na které úsek odkazuje slovy („ve výši podle odstavce 2“). Zkratky „§ 52 odst. 2“
+    míří jinam (do jiného §), ty se nepočítají."""
+    global _refs
+    if _refs is None:
+        chunks = load_chunks()
+        ids = {c["id"]: n for n, c in enumerate(chunks)}
+        _refs = {}
+        for n, c in enumerate(chunks):
+            m = re.match(r"(.+ § \S+) odst\. \d+$", c["id"])
+            if not m:
+                continue
+            nums = re.findall(r"\bodstavc(?:e|i|ů|ích) (\d+)", c["text"])
+            _refs[n] = [ids[f"{m.group(1)} odst. {x}"] for x in dict.fromkeys(nums)
+                        if f"{m.group(1)} odst. {x}" in ids and ids[f"{m.group(1)} odst. {x}"] != n]
+    return _refs.get(i, [])
+
+def with_refs(hits):
+    """v3: za úsek přidá odstavce, na které odkazuje (oprava „nemocenské“: § 192 odst. 1 říká jen
+    „ve výši podle odstavce 2“, číslo 60 % je až v odstavci 2). Celkem zůstane 5 úseků."""
+    out = []
+    for i in hits:
+        out += [x for x in [i] + refs(i) if x not in out]
+    return out[:TOP_K]
+
 def rerank(question, rewritten, cands):
     """v3: LLM přečte 20 kandidátů z RRF a vybere ty, které k odpovědi opravdu patří."""
     text, _ = llm(RERANK, rerank_prompt(question, rewritten, cands, load_chunks()), reasoning=False)
@@ -212,6 +238,7 @@ def search(question, k=TOP_K, mode=MODE, trace=False):
         steps["rerank"] = picked
         # vybrané první, zbytek do 5 doplní pořadí z RRF (model dostane vždy 5 úseků)
         order = [(i, 0.0) for i in picked] + [(i, s) for i, s in fused if i not in picked]
+        order = [(i, 0.0) for i in with_refs([i for i, _ in order[:k]])]
     hits = [(int(i), float(d[i])) for i, _ in order[:k]]
     if not trace:
         return hits, rewritten

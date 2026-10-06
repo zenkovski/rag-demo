@@ -83,9 +83,15 @@ function withOdst1(picked, cands) {
   }
   return out.slice(0, IDX.top_k);
 }
+// za úsek přidá odstavce téhož §, na které odkazuje („podle odstavce 2“), shodné s rag.with_refs
+function withRefs(hits) {
+  const out = [];
+  for (const i of hits) for (const x of [i, ...(IDX.chunks[i].refs || [])]) if (!out.includes(x)) out.push(x);
+  return out.slice(0, IDX.top_k);
+}
 function finalHits(d, fused, picked) {
   const order = [...picked, ...fused.map(([i]) => i).filter(i => !picked.includes(i))];
-  return order.slice(0, IDX.top_k).map(i => [i, Math.round(d[i] * 1000) / 1000]);
+  return withRefs(order.slice(0, IDX.top_k)).map(i => [i, Math.round(d[i] * 1000) / 1000]);
 }
 
 // ---------- OpenRouter ----------
@@ -164,4 +170,4 @@ module.exports = async (req, res) => {
   }
 };
 module.exports.config = { maxDuration: 60 };
-module.exports.core = { tokens, bm25, top, rrf, search, rerankPrompt, parsePick, withOdst1, finalHits, N };
+module.exports.core = { tokens, bm25, top, rrf, search, rerankPrompt, parsePick, withOdst1, withRefs, finalHits, N };

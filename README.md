@@ -50,10 +50,14 @@ Každá chyba vznikne v jednom ze dvou kroků. Na webu je u chyby štítek a ten
 
 | Chyba ve v2 | Krok | Oprava ve v3 | Výsledek |
 |---|---|---|---|
-| Nemocenská: kolik peněz | hledání (§ 29 ZNP byl až 11.) | LLM vybere 5 z 20 kandidátů | výše 60/66/72 % už je, chybí prvních 14 dní od zaměstnavatele (jediná chyba v3) |
+| Nemocenská: kolik peněz | hledání (§ 29 ZNP byl až 11., § 192 odst. 2 chyběl) | LLM vybere 5 z 20 + dohledání odkazu „podle odstavce 2“ | opraveno |
 | Otcovská: délka i výše | hledání (§ 38c byl až 10.) | LLM vybere 5 z 20 | opraveno |
 | Noční práce 20 % místo 10 % | čtení (mzda × plat) | úsek nese poznámku „platí pro mzdu / plat“, model uvede obě varianty | opraveno |
-| Posudek „nesmí“ místo „nemusí“ | čtení | pravidlo: „není povinen“ = nemusí, ne nesmí | opraveno |
+| Posudek „nesmí“ místo „nemusí“ | čtení | pravidlo: „není povinen“ = nemusí, ne nesmí | opraveno, ale po další změně podkladů **znovu chyba** (jediná chyba v3) |
+
+**Dvě pevná pravidla navíc (bez AI, zdarma):** k vybranému odstavci 2, 3… se vždy přidá odstavec 1 téhož paragrafu (oprava regrese u odpočinku mezi směnami) a dohledají se odstavce, na které úsek odkazuje („ve výši podle odstavce 2“).
+
+**Co se nedá opravit pravidlem: nestabilní čtení.** Levný model čte stejný odstavec jednou správně a jindy špatně. Stačí, aby se změnil pátý, nejméně důležitý úsek v podkladech. Tak se vrátila chyba u posudku a u ukázky „volno na stěhování“ řekl „nevím“, i když měl správný bod jako první úsek. Pomohl by silnější model pro krok odpovědi.
 
 Navíc se v3 u nejasné otázky **doptá** („Myslel jste mzdu, nebo plat?“) a odpoví na každou možnost zvlášť.
 

@@ -110,7 +110,7 @@
  "v3": {
   "4": {
    "correct": true,
-   "note": "Správně (2 měsíce, výjimka 1 měsíc). Přidal zbytečnou větu o chráněném trhu práce ze zákona o zaměstnanosti."
+   "note": "Správně (2 měsíce, výjimky 1 měsíc), doptal se, jestli nejde o dohodu podle § 87a."
   },
   "5": {
    "correct": true,
@@ -125,9 +125,8 @@
    "note": "Správně, s příklady důvodů z § 52."
   },
   "20": {
-   "correct": false,
-   "fail": "hledání",
-   "note": "Lepší než ve v2: výši nemocenského (60/66/72 %) už našel. Chybí ale, že prvních 14 dní platí zaměstnavatel náhradu mzdy 60 % (§ 192 odst. 2 nebyl mezi 5 úseky). Odpověď je proto neúplná."
+   "correct": true,
+   "note": "Opraveno pravidlem odkazů: § 192 odst. 1 říká jen „ve výši podle odstavce 2“, asistent si teď odstavec 2 dohledá. Odpověď má 60 % od zaměstnavatele za prvních 14 dní i nemocenské 60/66/72 %."
   },
   "36": {
    "correct": true,
@@ -142,8 +141,9 @@
    "note": "Správně, rozlišil mzdu a plat a na konci se doptal, co uživatel myslel."
   },
   "40": {
-   "correct": true,
-   "note": "Opraveno ve v3: „není povinen vydat dříve“ už nepřevrací na „nesmí“ (pravidlo 8)."
+   "correct": false,
+   "fail": "čtení",
+   "note": "Znovu chyba: po přidání pravidla odkazů se podklady trochu změnily a model zase napsal „nesmí vydat dříve“ místo „není povinen vydat dříve“. Pravidlo 8 tedy nefunguje spolehlivě: stejný model na skoro stejném vstupu čte jednou správně, jindy ne. AI soudce chybu přehlédl."
   },
   "47": {
    "correct": true,

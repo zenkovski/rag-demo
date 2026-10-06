@@ -130,7 +130,8 @@ def main():
     live = {"emb_model": rag.EMB_MODEL, "llm": rag.LLM_MODEL, "top_k": rag.TOP_K, "dim": int(q8.shape[1]),
             "system": rag.SYSTEM_V3, "rewrite": rag.REWRITE, "rerank": rag.RERANK, "n_cand": rag.N_CAND, "stop": sorted(rag.STOP),
             "chunks": [{"id": c["id"], "title": c["title"], "text": c["text"], **({"note": rag.note(c)} if rag.note(c) else {}),
-                        **({"o1": rag.odst1(n)} if rag.odst1(n) is not None else {})} for n, c in enumerate(chunks)],
+                        **({"o1": rag.odst1(n)} if rag.odst1(n) is not None else {}),
+                        **({"refs": rag.refs(n)} if rag.refs(n) else {})} for n, c in enumerate(chunks)],
             "vectors": base64.b64encode(q8.tobytes()).decode(),
             "scales": base64.b64encode(scale.astype("<f4").tobytes()).decode()}
     (ROOT / "site" / "api").mkdir(exist_ok=True)

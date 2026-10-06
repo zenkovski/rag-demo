@@ -24230,5 +24230,811 @@
     "audio_tokens": 0
    }
   }
+ },
+ "e013b8c1ed1b55f81c1689d93bcebb61470bec0301e20ce7db40cc60f3dcdc83": {
+  "text": "Obecně činí výpovědní doba nejméně 2 měsíce [1]. Ve dvou případech je kratší, nejméně 1 měsíc: při výpovědi dané zaměstnanci z důvodu uvedeného v § 52 písm. f) až h) a při výpovědi dané zaměstnavateli podle § 51a [1]. Písemnou dohodou mezi zaměstnavatelem a zaměstnancem lze výpovědní dobu prodloužit nebo změnit její běh [3].\n\nMyslel jste výpovědní dobu u pracovního poměru, nebo u dohody o rozvržení pracovní doby podle § 87a, kde činí 15 dnů [4]?",
+  "usage": {
+   "prompt_tokens": 1203,
+   "completion_tokens": 188,
+   "total_tokens": 1391,
+   "cost": 0.000110535,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.000110535,
+    "upstream_inference_prompt_cost": 5.4135e-05,
+    "upstream_inference_completions_cost": 5.64e-05
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "0e553e6dcdf860e13ad799ff3fa916c62b30eb64cff407623105e3ff483c3c9a": {
+  "text": "{\"correct\": true, \"grounded\": true, \"reason\": \"Asistent správně uvádí obecnou dvouměsíční výpovědní dobu i výjimku jednoho měsíce podle § 52 písm. f) až h), což odpovídá zlaté odpovědi, a všechna tvrzení jsou podložena dodanými úseky.\"}",
+  "usage": {
+   "prompt_tokens": 1093,
+   "completion_tokens": 90,
+   "total_tokens": 1183,
+   "cost": 0.00021795,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.00021795,
+    "upstream_inference_prompt_cost": 0.00016395,
+    "upstream_inference_completions_cost": 5.4e-05
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "a01d657a70820e53a09262882419516ac4b302c8df8da2a0b14032e967fd7991": {
+  "text": "Nemocenské za kalendářní den činí 60 % denního vyměřovacího základu do 30. kalendářního dne trvání pracovní neschopnosti, 66 % od 31. do 60. dne a 72 % od 61. dne [1]. Nárok na nemocenské má pojištěnec, jen pokud pracovní neschopnost trvá déle než 14 kalendářních dní [4]. Za prvních 14 kalendářních dnů náleží místo nemocenského náhrada mzdy nebo platu ve výši 60 % průměrného výdělku, a to jen za pracovní dny a svátky, kdy trvá pracovní poměr a jsou splněny podmínky nároku na nemocenské [2][3].",
+  "usage": {
+   "prompt_tokens": 1999,
+   "completion_tokens": 193,
+   "total_tokens": 2192,
+   "cost": 0.00049878,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.00049878,
+    "upstream_inference_prompt_cost": 0.00035982,
+    "upstream_inference_completions_cost": 0.00013896
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "7948eaf8888ff3fa859a60c08dc157c95595fe4b5f6f08f8768855d444b88c5e": {
+  "text": "{\"correct\": true, \"grounded\": true, \"reason\": \"Odpověď věcně odpovídá zlaté odpovědi (14 dní náhrada 60 %, poté nemocenské 60/66/72 %) a všechna tvrzení jsou podložena dodanými úseky.\"}",
+  "usage": {
+   "prompt_tokens": 1853,
+   "completion_tokens": 75,
+   "total_tokens": 1928,
+   "cost": 0.00017824,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.00017824,
+    "upstream_inference_prompt_cost": 0.00014824,
+    "upstream_inference_completions_cost": 3e-05
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "c2a6edb88bcd398f4a7725abc82a8f61b86121e39b86282dcd61fede8fbcd35f": {
+  "text": "Zaměstnavatel je povinen určit čerpání dovolené tak, abyste ji vyčerpal v kalendářním roce, ve kterém právo na dovolenou vzniklo, ledaže v tom brání překážky v práci na vaší straně nebo naléhavé provozní důvody [1]. Nemůže-li být dovolená vyčerpána v tomto roce, je zaměstnavatel povinen určit ji tak, aby byla vyčerpána nejpozději do konce následujícího kalendářního roku, není-li stanoveno jinak [2]. Pokud jde o část dovolené přesahující 4 týdny (u pedagogických a akademických pracovníků 6 týdnů), lze ji na základě vaší písemné žádosti převést do následujícího roku [3].",
+  "usage": {
+   "prompt_tokens": 1185,
+   "completion_tokens": 199,
+   "total_tokens": 1384,
+   "cost": 0.000443772,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 512,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.000443772,
+    "upstream_inference_prompt_cost": 0.000204972,
+    "upstream_inference_completions_cost": 0.0002388
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "e91914e671228fe60b879e821ef7a34a659edda0924a477e8d9685faa1383a71": {
+  "text": "{\n  \"correct\": true,\n  \"grounded\": true,\n  \"reason\": \"Odpověď vystihuje hlavní pravidlo ze zlaté odpovědi a je plně podložena dodanými úseky zákona.\"\n}",
+  "usage": {
+   "prompt_tokens": 1106,
+   "completion_tokens": 59,
+   "total_tokens": 1165,
+   "cost": 0.00024156,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.00024156,
+    "upstream_inference_prompt_cost": 0.00019908,
+    "upstream_inference_completions_cost": 4.248e-05
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "e229e1ba3eee28678fac23a8796744995e86af695c5231e911c491e35c2d7a52": {
+  "text": "V evidenci uchazečů o zaměstnání můžete mít příjem z pracovního nebo služebního poměru, pokud měsíční výdělek nepřesáhne polovinu minimální mzdy [1]. Stejně tak můžete mít příjem z dohody o pracovní činnosti, pokud měsíční odměna nepřesáhne polovinu minimální mzdy [1]. Výkon této činnosti jste povinen oznámit krajské pobočce Úřadu práce, a to bez ohledu na výši výdělku [1].",
+  "usage": {
+   "prompt_tokens": 2597,
+   "completion_tokens": 134,
+   "total_tokens": 2731,
+   "cost": 0.000337788,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 2048,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.000337788,
+    "upstream_inference_prompt_cost": 0.000176988,
+    "upstream_inference_completions_cost": 0.0001608
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "b09454a8aa4479fdafd00428d27ea2fff18bb9b30186fac1d26cb7431f71fdf2": {
+  "text": "{\"correct\": true, \"grounded\": true, \"reason\": \"Odpověď správně uvádí limit poloviny minimální mzdy pro pracovní poměr i DPČ a povinnost oznámení úřadu práce, vše podloženo citovaným § 25 odst. 3.\"}",
+  "usage": {
+   "prompt_tokens": 2413,
+   "completion_tokens": 72,
+   "total_tokens": 2485,
+   "cost": 0.00048618,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.00048618,
+    "upstream_inference_prompt_cost": 0.00043434,
+    "upstream_inference_completions_cost": 5.184e-05
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "e8c9db7d5f087ff9c29864bd5036bfc4d6989e1522c3edcd7224881785ecfe4d": {
+  "text": "Nemocenské se vyplácí od 15. kalendářního dne trvání dočasné pracovní neschopnosti nebo karantény [2]. Nárok na nemocenské vzniká, jen trvá-li pracovní neschopnost nebo karanténa déle než 14 kalendářních dní [1]. Za prvních 14 kalendářních dnů přísluší zaměstnanci náhrada mzdy nebo platu ve výši 60 % průměrného výdělku [3][4].",
+  "usage": {
+   "prompt_tokens": 2005,
+   "completion_tokens": 124,
+   "total_tokens": 2129,
+   "cost": 0.000599772,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 512,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.000599772,
+    "upstream_inference_prompt_cost": 0.000450972,
+    "upstream_inference_completions_cost": 0.0001488
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "040cbad26df01a7437aa8d4503358c7e698c7fe166eb4d9c1524331f511a9c01": {
+  "text": "{\"correct\": true, \"grounded\": true, \"reason\": \"Asistent správně uvádí, že nemocenské se platí od 15. kalendářního dne a prvních 14 dnů náleží náhrada mzdy, což odpovídá zlaté odpovědi i dodaným úsekům.\"}",
+  "usage": {
+   "prompt_tokens": 1748,
+   "completion_tokens": 78,
+   "total_tokens": 1826,
+   "cost": 0.000618,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.000618,
+    "upstream_inference_prompt_cost": 0.0005244,
+    "upstream_inference_completions_cost": 9.36e-05
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "5c1f6f15453b911db9305f79962c1b778363d334ce8e98bb240cef8e26cf311f": {
+  "text": "Zaměstnavatel je povinen vydat pracovní posudek do 15 dnů, pokud o něj zaměstnanec požádá [2]. Nesmí jej však vydat dříve než v době 2 měsíců před skončením zaměstnání [2].",
+  "usage": {
+   "prompt_tokens": 1925,
+   "completion_tokens": 67,
+   "total_tokens": 1992,
+   "cost": 0.00039474,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.00039474,
+    "upstream_inference_prompt_cost": 0.0003465,
+    "upstream_inference_completions_cost": 4.824e-05
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "e4263a26facd9f1f588314bfc0dfcd0b89cbb183f844a892d4da4810f89fb96e": {
+  "text": "{\"correct\": true, \"grounded\": true, \"reason\": \"Asistent správně uvádí lhůtu 15 dnů od žádosti i zákaz vydání dříve než 2 měsíce před skončením zaměstnání, obojí opřené o § 314 odst. 1.\"}",
+  "usage": {
+   "prompt_tokens": 1597,
+   "completion_tokens": 74,
+   "total_tokens": 1671,
+   "cost": 0.00034074,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.00034074,
+    "upstream_inference_prompt_cost": 0.00028746,
+    "upstream_inference_completions_cost": 5.328e-05
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "51363e07b67f8d4ed4be69f37d9550776ab796d0e74d7d727bb7cfd9684c50c1": {
+  "text": "Žádost o rodičovskou dovolenou podává zaměstnanec alespoň 30 dnů před nástupem na rodičovskou dovolenou, nebrání-li tomu vážné důvody na jeho straně [1].",
+  "usage": {
+   "prompt_tokens": 1407,
+   "completion_tokens": 62,
+   "total_tokens": 1469,
+   "cost": 0.0002979,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.0002979,
+    "upstream_inference_prompt_cost": 0.00025326,
+    "upstream_inference_completions_cost": 4.464e-05
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "60f779cdace59aef7d1fadb7b581322393ff189436fa35459a6c9d85558c76ba": {
+  "text": "{\"correct\": true, \"grounded\": true, \"reason\": \"Asistent správně uvádí lhůtu 30 dnů i výjimku vážných důvodů podle § 196 odst. 2, byť opomíjí požadavek písemnosti.\"}",
+  "usage": {
+   "prompt_tokens": 1120,
+   "completion_tokens": 68,
+   "total_tokens": 1188,
+   "cost": 0.0004176,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.0004176,
+    "upstream_inference_prompt_cost": 0.000336,
+    "upstream_inference_completions_cost": 8.16e-05
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "c5f0b372bbd50b89c3cefee9b2f74b0d0ec6d6fd4b327b15b4fcb74ad312a1ff": {
+  "text": "Nevím, v dostupných úsecích zákona to není.",
+  "usage": {
+   "prompt_tokens": 1353,
+   "completion_tokens": 18,
+   "total_tokens": 1371,
+   "cost": 0.0001661832,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 512,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.0001661832,
+    "upstream_inference_prompt_cost": 0.0001532232,
+    "upstream_inference_completions_cost": 1.296e-05
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "0416c02d89b3ef9b79955d7df1bdc8a77a7cab844ee2f76702f13718fe107f1c": {
+  "text": "{\n  \"correct\": true,\n  \"grounded\": true,\n  \"reason\": \"Asistent správně odmítl odpovědět, protože dodané úseky neobsahují úpravu nájmu bytu (pouze zákoník práce a služební zákon), a věcně tak odpovídá zlaté odpovědi.\"\n}",
+  "usage": {
+   "prompt_tokens": 1045,
+   "completion_tokens": 82,
+   "total_tokens": 1127,
+   "cost": 0.00024714,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.00024714,
+    "upstream_inference_prompt_cost": 0.0001881,
+    "upstream_inference_completions_cost": 5.904e-05
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "6a317e576c02153b6392d6aae9e7487994eab5df6624189db4b4b43988a33d16": {
+  "text": "Nevím, v dostupných úsecích zákona to není.",
+  "usage": {
+   "prompt_tokens": 1419,
+   "completion_tokens": 18,
+   "total_tokens": 1437,
+   "cost": 0.0001780632,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 512,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.0001780632,
+    "upstream_inference_prompt_cost": 0.0001651032,
+    "upstream_inference_completions_cost": 1.296e-05
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "10a72aaad92ebb1cf778d333a726a01fb7c25941c9d0317865b17e15e9bc8298": {
+  "text": "{\"correct\": true, \"grounded\": true, \"reason\": \"Asistent odpovídá, že informaci nemá, což odpovídá zlaté odpovědi a dodané úseky se slevou na dani na poplatníka skutečně nesouvisí.\"}",
+  "usage": {
+   "prompt_tokens": 1033,
+   "completion_tokens": 66,
+   "total_tokens": 1099,
+   "cost": 0.00023346,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.00023346,
+    "upstream_inference_prompt_cost": 0.00018594,
+    "upstream_inference_completions_cost": 4.752e-05
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "8274ba4c826f82e7e66c50d557203430b1b9c355c6542c580038755defcc67f7": {
+  "text": "Pokud jste otec dítěte, na jehož péči má vzniknout nárok podle § 38a odst. 1, musí nástup na otcovskou nastat v období 6 týdnů ode dne narození dítěte [1]. Toto období se prodlužuje o kalendářní dny hospitalizace dítěte ze zdravotních důvodů na straně dítěte nebo matky, které spadají do těchto 6 týdnů [1]. Pokud jde o otcovskou podle § 38a odst. 2 (dítě se narodilo mrtvé nebo zemřelo v období 6 týdnů ode dne narození), platí, že nástup musí nastat v období 6 týdnů ode dne narození dítěte, a bylo-li by období ode dne úmrtí dítěte kratší než 2 týdny, pak v období 2 týdnů ode dne úmrtí dítěte [1].",
+  "usage": {
+   "prompt_tokens": 1521,
+   "completion_tokens": 223,
+   "total_tokens": 1744,
+   "cost": 0.000340233,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.000340233,
+    "upstream_inference_prompt_cost": 0.000214461,
+    "upstream_inference_completions_cost": 0.000125772
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "631a39f844b03453d1cea7b005bc68dcfbc9462bade6bea739fabcdc0f3fdf37": {
+  "text": "{\"correct\": true, \"grounded\": true, \"reason\": \"Odpověď správně uvádí lhůtu 6 týdnů od narození včetně prodloužení o dny hospitalizace a všechny údaje vycházejí z dodaného § 38a.\"}",
+  "usage": {
+   "prompt_tokens": 1412,
+   "completion_tokens": 70,
+   "total_tokens": 1482,
+   "cost": 0.0005076,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.0005076,
+    "upstream_inference_prompt_cost": 0.0004236,
+    "upstream_inference_completions_cost": 8.4e-05
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "6cfc8c84f3d68e84e855556d3f19b6fa13e33b78d6a832a59dbb854145768463": {
+  "text": "Pokud jste zaměstnán v základním pracovněprávním vztahu, můžete vedle něj vykonávat výdělečnou činnost shodnou s předmětem činnosti svého zaměstnavatele jen s jeho předchozím písemným souhlasem [1]. Jiná ustanovení v dodaných úsecích tuto situaci neupravují.",
+  "usage": {
+   "prompt_tokens": 1376,
+   "completion_tokens": 96,
+   "total_tokens": 1472,
+   "cost": 0.0003168,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.0003168,
+    "upstream_inference_prompt_cost": 0.00024768,
+    "upstream_inference_completions_cost": 6.912e-05
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "1f53dd7c617331e08dc63508de260a14d4ef9cd3ff965ac02b6b871415d79793": {
+  "text": "{\"correct\": true, \"grounded\": true, \"reason\": \"Asistent správně uvádí, že je třeba předchozí písemný souhlas zaměstnavatele, což odpovídá § 304 odst. 1 ZP i zlaté odpovědi.\"}",
+  "usage": {
+   "prompt_tokens": 1076,
+   "completion_tokens": 66,
+   "total_tokens": 1142,
+   "cost": 0.000402,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.000402,
+    "upstream_inference_prompt_cost": 0.0003228,
+    "upstream_inference_completions_cost": 7.92e-05
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "b694956295c885c5ef26e6781889cbad5003c2a6a3cde7ec8e0fa5d2848677a6": {
+  "text": "Pracovní smlouva musí obsahovat druh práce, místo nebo místa výkonu práce a den nástupu do práce [1]. Musí být uzavřena písemně [2] a každá smluvní strana musí obdržet jedno vyhotovení [3].",
+  "usage": {
+   "prompt_tokens": 1211,
+   "completion_tokens": 68,
+   "total_tokens": 1279,
+   "cost": 0.000294372,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 512,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.000294372,
+    "upstream_inference_prompt_cost": 0.000212772,
+    "upstream_inference_completions_cost": 8.16e-05
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "3d57d1a5ea990af20413ab3383ef05249850259d3d2b6b5165586fd4ff0952fe": {
+  "text": "{\"correct\": true, \"grounded\": true, \"reason\": \"Asistent správně uvedl všechny tři povinné náležitosti dle § 34 odst. 1 ZP a dodatky o písemné formě a vyhotoveních jsou věcně správné a podložené dodanými úseky.\"}",
+  "usage": {
+   "prompt_tokens": 858,
+   "completion_tokens": 76,
+   "total_tokens": 934,
+   "cost": 0.0001640016,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 256,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.0001640016,
+    "upstream_inference_prompt_cost": 0.0001092816,
+    "upstream_inference_completions_cost": 5.472e-05
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "e35c0bc133b90f2faeea6ca23943cfd0b0bcb2ec931178e049a73b0aef86c5e4": {
+  "text": "Nevím, v dostupných úsecích zákona to není.",
+  "usage": {
+   "prompt_tokens": 1665,
+   "completion_tokens": 18,
+   "total_tokens": 1683,
+   "cost": 0.000370572,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 512,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.000370572,
+    "upstream_inference_prompt_cost": 0.000348972,
+    "upstream_inference_completions_cost": 2.16e-05
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "25f7381aee2e7bfe22f9475ac822f979829f303f0ac4dd0d8896de75752a8085": {
+  "text": "{\"correct\": true, \"grounded\": true, \"reason\": \"Asistent správně odmítl odpovědět, protože dodané úseky příspěvek na bydlení podle zákona o státní sociální podpoře neobsahují.\"}",
+  "usage": {
+   "prompt_tokens": 1291,
+   "completion_tokens": 59,
+   "total_tokens": 1350,
+   "cost": 0.00027486,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.00027486,
+    "upstream_inference_prompt_cost": 0.00023238,
+    "upstream_inference_completions_cost": 4.248e-05
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "47269b1f6e4950ea2454349f33689c5cb19778c5b74d68aa66b514c0ef42b9e7": {
+  "text": "Nevím, v dostupných úsecích zákona to není.",
+  "usage": {
+   "prompt_tokens": 1701,
+   "completion_tokens": 18,
+   "total_tokens": 1719,
+   "cost": 0.0002288232,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 512,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.0002288232,
+    "upstream_inference_prompt_cost": 0.0002158632,
+    "upstream_inference_completions_cost": 1.296e-05
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "acf3e9f04fc2ea8a694377b82154ccd3725d0114be2a41092578366ded007c1b": {
+  "text": "{\"correct\": true, \"grounded\": true, \"reason\": \"Asistent správně odmítl odpovědět, protože dodané úseky neupravují podmínky nároku na starobní důchod a zlatá odpověď je NEVÍM.\"}",
+  "usage": {
+   "prompt_tokens": 1308,
+   "completion_tokens": 64,
+   "total_tokens": 1372,
+   "cost": 0.00028152,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.00028152,
+    "upstream_inference_prompt_cost": 0.00023544,
+    "upstream_inference_completions_cost": 4.608e-05
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "17028bc4948e8c2d074dca03a61ab6bc362e908f961263bab197594f3ea2b336": {
+  "text": "Ano, výpověď z pracovního poměru musí být písemná, jinak se k ní nepřihlíží [1]. To platí pro výpověď z pracovního poměru obecně.",
+  "usage": {
+   "prompt_tokens": 1400,
+   "completion_tokens": 53,
+   "total_tokens": 1453,
+   "cost": 0.00031445,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.00031445,
+    "upstream_inference_prompt_cost": 0.00028,
+    "upstream_inference_completions_cost": 3.445e-05
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "40c9c15d023a24e23ad7e471bea47f4edc9784ad0d704350c0462bc0480f4874": {
+  "text": "Výše peněžité pomoci v mateřství za kalendářní den činí 70 % denního vyměřovacího základu [1]. Podmínkou nároku je účast na pojištění alespoň po dobu 270 kalendářních dní v posledních dvou letech přede dnem nástupu na peněžitou pomoc v mateřství [3].",
+  "usage": {
+   "prompt_tokens": 1507,
+   "completion_tokens": 95,
+   "total_tokens": 1602,
+   "cost": 0.00036315,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.00036315,
+    "upstream_inference_prompt_cost": 0.0003014,
+    "upstream_inference_completions_cost": 6.175e-05
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "5522a0a31e098ce6abd65db232c858651fc8c9c70203cad33427c69222f3813a": {
+  "text": "Nevím, v dostupných úsecích zákona to není.",
+  "usage": {
+   "prompt_tokens": 1338,
+   "completion_tokens": 18,
+   "total_tokens": 1356,
+   "cost": 6.561e-05,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 6.561e-05,
+    "upstream_inference_prompt_cost": 6.021e-05,
+    "upstream_inference_completions_cost": 5.4e-06
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
  }
 }
