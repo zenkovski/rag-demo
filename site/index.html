@@ -11,16 +11,24 @@
 <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
 <style>
 :root{
-  /* paleta 16 „Honey Gold + Deep Navy“: prémiové, důvěra (výchozí) */
+  /* paleta 1 „Charcoal Navy + Sandy Tan + Steel Blue“: teplá, elegantní (výchozí) */
+  --bg:#0b0b10; --bg-2:#0f0f15; --panel:#15141b; --panel-2:#1b1a23; --line:#25242f; --line-2:#33313f;
+  --text:#eeedf2; --soft:#c3c1cc; --muted:#8c8a98; --faint:#5a5866;
+  --accent:#E19C63; --accent-rgb:225 156 99; --accent-2:#c9834a; --accent-hi:#ecb68a; --accent-ink:#2a1607;
+  --ice:#8BA5BE; --ice-rgb:139 165 190; --bg-rgb:11 11 16; --aur2:139 165 190; --aur3:110 80 140; --tint-rgb:39 38 46;
+  --grid-rgb:175 170 195; --wire:#363444; --link:#1f1e28; --near:#4a2f18;
+  --bad:#ff6f86; --bad-rgb:255 111 134; --bad-dim:rgb(var(--bad-rgb) / .12);
+  --glow:rgb(var(--accent-rgb) / .35); --accent-dim:rgb(var(--accent-rgb) / .10);
+  --r:14px; --r-sm:9px;
+  --display:"Bricolage Grotesque",system-ui,sans-serif; --sans:"Onest",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,monospace;
+}
+/* paleta 16 „Honey Gold + Deep Navy“: prémiové, důvěra */
+:root[data-paleta="16"]{
   --bg:#04070f; --bg-2:#070c18; --panel:#0b1222; --panel-2:#0f182d; --line:#18223a; --line-2:#24314f;
   --text:#e9edf6; --soft:#b8c1d6; --muted:#8089a2; --faint:#4f5874;
   --accent:#FEC40B; --accent-rgb:254 196 11; --accent-2:#d9a300; --accent-hi:#ffd54a; --accent-ink:#1d1500;
   --ice:#9fb8ff; --ice-rgb:159 184 255; --bg-rgb:4 7 15; --aur2:2 69 236; --aur3:40 80 190; --tint-rgb:22 36 74;
   --grid-rgb:150 165 205; --wire:#27344f; --link:#172038; --near:#3d3108;
-  --bad:#ff6f86; --bad-rgb:255 111 134; --bad-dim:rgb(var(--bad-rgb) / .12);
-  --glow:rgb(var(--accent-rgb) / .35); --accent-dim:rgb(var(--accent-rgb) / .10);
-  --r:14px; --r-sm:9px;
-  --display:"Bricolage Grotesque",system-ui,sans-serif; --sans:"Onest",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,monospace;
 }
 /* paleta 9 „Deep Navy + Cyan“: tech */
 :root[data-paleta="9"]{
@@ -43,13 +51,36 @@
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-body{margin:0;background:var(--bg);color:var(--text);font:15px/1.6 var(--sans);-webkit-font-smoothing:antialiased;padding-bottom:96px}
+body{margin:0;background:var(--bg);position:relative;color:var(--text);font:15px/1.6 var(--sans);-webkit-font-smoothing:antialiased;padding-bottom:96px}
 button{font:inherit;color:inherit;cursor:pointer}
 a{color:inherit}
 .wrap{max-width:1480px;margin:0 auto;padding:0 24px}
 .mono{font-family:var(--mono)}
 .ok{color:var(--accent)} .bad{color:var(--bad)} .mut{color:var(--muted)}
 .only-m{display:none}
+
+/* ---------- pozadí: pohyblivá mřížka + záblesky po linkách ---------- */
+.bg{position:fixed;inset:0;z-index:-5;overflow:hidden;pointer-events:none;background:
+  radial-gradient(900px 500px at 85% 10%,rgb(var(--aur2) / .10),transparent 70%),
+  radial-gradient(800px 600px at 10% 90%,rgb(var(--accent-rgb) / .07),transparent 70%),var(--bg)}
+.bg .grid{position:absolute;inset:-64px;
+  background-image:linear-gradient(rgb(var(--grid-rgb) / .07) 1px,transparent 1px),linear-gradient(90deg,rgb(var(--grid-rgb) / .07) 1px,transparent 1px);
+  background-size:64px 64px;mask-image:radial-gradient(ellipse 85% 75% at 50% 40%,#000 25%,transparent 85%)}
+.bg .grid::after{content:"";position:absolute;inset:0;
+  background-image:radial-gradient(rgb(var(--grid-rgb) / .22) 1.2px,transparent 1.6px);background-size:64px 64px;background-position:-.5px -.5px}
+.bg .beam{position:absolute;height:1px;width:220px;background:linear-gradient(90deg,transparent,rgb(var(--accent-rgb) / .9),transparent);opacity:0}
+.bg .beam.v{width:1px;height:220px;background:linear-gradient(180deg,transparent,rgb(var(--ice-rgb) / .9),transparent)}
+@media (prefers-reduced-motion:no-preference){
+  .bg .grid{animation:gridmove 14s linear infinite}
+  @keyframes gridmove{to{transform:translate3d(64px,64px,0)}}
+  .bg .beam{animation:beamx 9s linear infinite}
+  .bg .beam.v{animation:beamy 11s linear infinite}
+  .bg .beam:nth-child(3){animation-delay:-3s;animation-duration:12s}
+  .bg .beam:nth-child(4){animation-delay:-6s}
+  .bg .beam:nth-child(5){animation-delay:-2s;animation-duration:14s}
+  @keyframes beamx{0%{transform:translateX(-260px);opacity:0}8%{opacity:1}92%{opacity:1}100%{transform:translateX(110vw);opacity:0}}
+  @keyframes beamy{0%{transform:translateY(-260px);opacity:0}8%{opacity:1}92%{opacity:1}100%{transform:translateY(110vh);opacity:0}}
+}
 
 /* ---------- navigace nahoře ---------- */
 .nav{position:sticky;top:12px;z-index:30;display:flex;justify-content:center;pointer-events:none;margin-top:12px}
@@ -58,6 +89,18 @@ a{color:inherit}
 .logo .m{width:26px;height:26px;border-radius:8px;display:grid;place-items:center;background:linear-gradient(140deg,var(--accent),var(--accent-2));color:var(--accent-ink);font-size:15px;box-shadow:0 0 18px var(--glow)}
 .nav a.l,.nav button.l{font-size:13.5px;color:var(--soft);text-decoration:none;background:none;border:0;padding:7px 12px;border-radius:999px}
 .nav a.l:hover,.nav button.l:hover{background:var(--panel-2);color:var(--text)}
+.pal{position:relative;margin-left:4px}
+.pal > button{display:flex;align-items:center;gap:6px;background:var(--panel-2);border:1px solid var(--line-2);border-radius:999px;padding:6px 10px;font-size:13px;color:var(--soft)}
+.pal > button:hover{color:var(--text);border-color:rgb(var(--accent-rgb) / .5)}
+.sw{display:inline-flex}
+.sw i{width:11px;height:11px;border-radius:50%;border:1.5px solid var(--bg);margin-left:-4px}
+.sw i:first-child{margin-left:0}
+.pal .menu{position:absolute;right:0;top:calc(100% + 8px);background:var(--panel);border:1px solid var(--line-2);border-radius:14px;padding:6px;min-width:320px;box-shadow:0 20px 50px rgba(0,0,0,.6);display:none}
+.pal.open .menu{display:block}
+.pal .menu button{display:flex;align-items:center;gap:10px;width:100%;background:none;border:0;border-radius:9px;padding:8px 10px;text-align:left;font-size:13.5px;color:var(--soft)}
+.pal .menu button:hover{background:var(--panel-2);color:var(--text)}
+.pal .menu button.on{background:var(--panel-2);color:var(--text);box-shadow:inset 0 0 0 1px var(--line-2)}
+.pal .menu small{display:block;font-size:11px;color:var(--muted)}
 .nav .gh{display:flex;align-items:center;gap:6px;background:var(--text);color:var(--bg);border-radius:999px;padding:7px 14px;font-size:13.5px;font-weight:600;text-decoration:none;margin-left:6px}
 .nav .gh:hover{background:#fff}
 
@@ -76,10 +119,6 @@ a{color:inherit}
   @keyframes drift2{to{transform:translate(-14vw,8vw) scale(.9)}}
   @keyframes drift3{to{transform:translate(-8vw,-4vw) scale(1.25)}}
 }
-.hero::before{content:"";position:absolute;inset:0;z-index:-1;
-  background-image:linear-gradient(rgb(var(--grid-rgb) / .06) 1px,transparent 1px),linear-gradient(90deg,rgb(var(--grid-rgb) / .06) 1px,transparent 1px);
-  background-size:56px 56px;mask-image:radial-gradient(ellipse 70% 60% at 50% 30%,#000 30%,transparent 75%)}
-.hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:160px;z-index:-1;background:linear-gradient(transparent,var(--bg))}
 .hero .wrap{text-align:center}
 .badge{display:inline-flex;align-items:center;gap:8px;border:1px solid rgb(var(--accent-rgb) / .35);background:rgb(var(--accent-rgb) / .08);border-radius:999px;padding:5px 12px 5px 6px;font-size:13px;color:var(--soft);margin-bottom:22px}
 .badge b{background:var(--accent);color:var(--accent-ink);border-radius:999px;padding:1px 8px;font-size:12px;font-weight:600}
@@ -203,6 +242,7 @@ details.v1 .old{margin-top:6px;font-size:13px;color:var(--muted);background:var(
 .qb .dot{width:7px;height:7px;border-radius:50%;flex:none;background:var(--accent);box-shadow:0 0 6px var(--accent)}
 .qb .dot.bad{background:var(--bad);box-shadow:0 0 6px var(--bad)}
 .qb.done{opacity:.6}
+.qb .nt{font-family:var(--mono);font-size:10px;color:var(--ice);border:1px solid rgb(var(--ice-rgb) / .4);border-radius:999px;padding:1px 7px;white-space:nowrap}
 .qnote{margin-top:12px;font-size:12.5px;color:var(--muted)}
 .scope{display:flex;justify-content:center;flex-wrap:wrap;gap:6px;margin-top:16px;font-size:12.5px;color:var(--muted)}
 .scope span{border:1px solid var(--line-2);border-radius:999px;padding:3px 10px;background:rgb(var(--bg-rgb) / .7)}
@@ -418,6 +458,7 @@ dialog::backdrop{background:rgba(2,4,5,.8)}
 </style>
 </head>
 <body>
+<div class="bg" aria-hidden="true"><div class="grid"></div><i class="beam" style="top:192px"></i><i class="beam" style="top:448px"></i><i class="beam v" style="left:320px"></i><i class="beam v" style="left:72%"></i></div>
 
 <nav class="nav" aria-label="Hlavní menu">
   <div class="pill">
@@ -426,7 +467,8 @@ dialog::backdrop{background:rgba(2,4,5,.8)}
     <a class="l" href="#vysledky">Výsledky</a>
     <a class="l" href="#proc">Proč věřit</a>
     <a class="l" href="#stack">Stack</a>
-    <a class="gh" href="https://github.com/zenkovski/rag-demo"><i class="ph ph-github-logo"></i>GitHub</a>
+    <div class="pal" id="pal"><button id="palBtn" aria-haspopup="true" aria-expanded="false" title="Barevná paleta"><span class="sw" id="palSw"></span><span class="hide-m">Paleta</span></button><div class="menu" id="palMenu" role="menu"></div></div>
+    <a class="gh" href="https://github.com/zenkovski/rag-demo"><i class="ph ph-github-logo"></i><span class="hide-m">GitHub</span></a>
   </div>
 </nav>
 
@@ -494,7 +536,6 @@ dialog::backdrop{background:rgba(2,4,5,.8)}
           <defs><filter id="glow" x="-200%" y="-200%" width="500%" height="500%"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
         </svg>
         <div class="gtools"><button id="zin" aria-label="Přiblížit"><i class="ph ph-plus"></i></button><button id="zout" aria-label="Oddálit"><i class="ph ph-minus"></i></button><button id="zfit" aria-label="Celý graf"><i class="ph ph-arrows-out"></i></button></div>
-        <div class="legend" id="legend"></div>
       </section>
 
       <section class="card">
@@ -515,7 +556,7 @@ dialog::backdrop{background:rgba(2,4,5,.8)}
       <input id="filter" type="search" placeholder="Hledej, např. dovolená" autocomplete="off" aria-label="Hledat otázku">
     </div>
     <div class="qgrid" id="qs"></div>
-    <div class="qnote">Tečka = výsledek ruční kontroly: <span class="ok">●</span> správně, <span class="bad">●</span> chyba. Odpovědi jsou předpočítané a nespotřebují tvůj limit 10 otázek.</div>
+    <div class="qnote">Tečka = výsledek ruční kontroly: <span class="ok">●</span> správně, <span class="bad">●</span> chyba. Otázky se štítkem <b>test „nevím“</b> zákon schválně neřeší: zkouší, jestli asistent přizná, že neví, místo aby si vymýšlel. Odpovědi jsou předpočítané a nespotřebují tvůj limit 10 otázek.</div>
   </div>
 </section>
 
@@ -587,7 +628,21 @@ dialog::backdrop{background:rgba(2,4,5,.8)}
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
 <script>
-try { const pl = new URLSearchParams(location.search).get("paleta"); if (pl) document.documentElement.dataset.paleta = pl; } catch(e) {}
+// palety z Lukášovy sbírky (knowledge-base: color-palettes-collection); volba se pamatuje v prohlížeči
+const PALETY = [
+  ["1","Písek","Charcoal Navy + Sandy Tan + Steel Blue",["#27262E","#E19C63","#8BA5BE"]],
+  ["16","Zlato","Honey Gold + Deep Navy",["#04123F","#FEC40B","#9fb8ff"]],
+  ["9","Cyan","Deep Navy + Cyan",["#1C1C28","#1EC1CB","#e4e2ff"]],
+  ["14","Lístek","Bright Leaf + Emerald Green",["#203D43","#CDFF9B","#9fd8e0"]],
+];
+function setPaleta(id){
+  if (id === "1") delete document.documentElement.dataset.paleta; else document.documentElement.dataset.paleta = id;
+  try { localStorage.setItem("ragPaleta", id); } catch(e) {}
+  const p = PALETY.find(x => x[0]===id) || PALETY[0];
+  const sw = document.getElementById("palSw"); if (sw) sw.innerHTML = p[3].map(c => `<i style="background:${c}"></i>`).join("");
+  document.querySelectorAll("#palMenu button").forEach(b => b.classList.toggle("on", b.dataset.p===id));
+}
+try { const pl = new URLSearchParams(location.search).get("paleta") || localStorage.getItem("ragPaleta"); if (pl && pl !== "1") document.documentElement.dataset.paleta = pl; } catch(e) {}
 const TOPIC_COLORS = ["#6f8fb0","#a088b8","#7fa287","#b39a6b","#b57f88"];
 const $ = s => document.querySelector(s);
 const $$ = s => [...document.querySelectorAll(s)];
@@ -609,6 +664,11 @@ function init(){
   $$("#seg button").forEach(b => b.addEventListener("click", () => {
     group = b.dataset.g; $$("#seg button").forEach(x => x.classList.toggle("on", x===b)); renderQuestions(); }));
   $("#dlgClose").addEventListener("click", () => $("#dlg").close());
+  $("#palMenu").innerHTML = PALETY.map(([id,n,d,c]) => `<button role="menuitemradio" data-p="${id}"><span class="sw">${c.map(x => `<i style="background:${x}"></i>`).join("")}</span><span>${n}<small>paleta ${id} · ${d}</small></span></button>`).join("");
+  $$("#palMenu button").forEach(b => b.addEventListener("click", () => { setPaleta(b.dataset.p); $("#pal").classList.remove("open"); $("#palBtn").setAttribute("aria-expanded","false"); }));
+  $("#palBtn").addEventListener("click", e => { e.stopPropagation(); const o = $("#pal").classList.toggle("open"); $("#palBtn").setAttribute("aria-expanded", o); });
+  document.addEventListener("click", e => { if (!$("#pal").contains(e.target)) $("#pal").classList.remove("open"); });
+  setPaleta(document.documentElement.dataset.paleta || "1");
   $("#dockRes").addEventListener("click", () => $("#dlg").showModal());
   $("#liveForm").addEventListener("submit", e => { e.preventDefault(); liveAsk($("#liveForm")); });
   $("#heroForm").addEventListener("submit", e => { e.preventDefault(); liveAsk($("#heroForm")); });
@@ -691,12 +751,12 @@ function renderQuestions(){
   const nf = norm($("#filter").value.trim());
   const list = D.questions.map((q,i)=>({q,i})).filter(o => o.q.group===group && (!nf || norm(o.q.q).includes(nf)));
   $("#qs").innerHTML = list.length ? list.map(({q,i}) =>
-    `<button class="qb${q.done?" done":""}" data-i="${i}"><span class="dot ${qStatus(q)}"></span><span class="n">${qLabel(q,i)}</span><span>${esc(q.q)}</span></button>`).join("")
+    `<button class="qb${q.done?" done":""}" data-i="${i}"><span class="dot ${qStatus(q)}"></span><span class="n">${qLabel(q,i)}</span><span>${esc(q.q)}</span>${q.test && !q.test.gold_chunks.length ? '<span class="nt">test „nevím“</span>' : ""}</button>`).join("")
     : `<div class="empty">Tady taková otázka není. Zkus jiné slovo, nebo ji napiš nahoru jako vlastní.</div>`;
   $$("#qs .qb").forEach(b => b.addEventListener("click", () => ask(+b.dataset.i, true)));
 }
 function renderChips(){
-  const pick = ["Firma mi už měsíc nezaplatila výplatu. Můžu hned odejít?","Jsem těhotná. Může mě zaměstnavatel vyhodit ze dne na den?","Kolik hodin ročně můžu odpracovat na dohodu o provedení práce (DPP)?","Kolik přesčasů mi může zaměstnavatel nařídit?","Jeden den jsem nepřišel do práce a neomluvil se. Může mi šéf vzít dovolenou?","Jaká je minimální mzda v roce 2026?"];
+  const pick = ["Firma mi už měsíc nezaplatila výplatu. Můžu hned odejít?","Jsem těhotná. Může mě zaměstnavatel vyhodit ze dne na den?","Kolik hodin ročně můžu odpracovat na dohodu o provedení práce (DPP)?","Kolik přesčasů mi může zaměstnavatel nařídit?","Jeden den jsem nepřišel do práce a neomluvil se. Může mi šéf vzít dovolenou?","Ve firmě jsem rok a půl a propouštějí mě, protože jsem nadbytečný. Kolik dostanu odstupné?"];
   $("#chips").innerHTML = pick.map(t => { const i = D.questions.findIndex(q => q.q===t); return i<0 ? "" : `<button data-i="${i}">${esc(t)}</button>`; }).join("");
   $$("#chips button").forEach(b => b.addEventListener("click", () => { const q = D.questions[+b.dataset.i];
     group = q.group; $$("#seg button").forEach(x => x.classList.toggle("on", x.dataset.g===group)); ask(+b.dataset.i, true); }));
@@ -767,8 +827,6 @@ function drawGraph(){
   const svg = d3.select("#graph");
   const topics = [...new Set(D.chunks.map(c => c.topic))];
   const color = t => TOPIC_COLORS[topics.indexOf(t) % TOPIC_COLORS.length];
-  $("#legend").innerHTML = topics.map(t => `<span><i style="background:${color(t)}"></i>${esc(t)}</span>`).join("") +
-    `<span><i style="background:var(--accent);box-shadow:0 0 6px var(--accent)"></i>podle významu / citováno</span><span><i style="background:var(--ice)"></i>podle slov</span>`;
   const deg = new Array(D.chunks.length).fill(0); D.edges.forEach(([a,b]) => { deg[a]++; deg[b]++; });
   const nodes = D.chunks.map((c,i) => ({i, topic:c.topic, deg:deg[i]}));
   const links = D.edges.map(([s,t]) => ({source:s, target:t}));
