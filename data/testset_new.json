@@ -1,0 +1,18 @@
+[
+ {"id": 31, "level": "snadná", "q": "Jak dlouho dostanu podporu v nezaměstnanosti, když mi je 35 let?", "gold": "5 měsíců (podpůrčí doba do 52 let věku).", "chunks": ["ZZ § 43 odst. 1"]},
+ {"id": 32, "level": "střední", "q": "Kolik procent z výplaty dostanu jako podporu v nezaměstnanosti?", "gold": "Do 52 let: první 2 měsíce 80 %, další 2 měsíce 50 % a zbytek doby 40 % průměrného měsíčního čistého výdělku. Nad 52 let je to 3 + 3 měsíce a pak 40 %.", "chunks": ["ZZ § 50 odst. 3"]},
+ {"id": 33, "level": "střední", "q": "Kolik si můžu přivydělat, když jsem v evidenci na úřadu práce?", "gold": "Pracovní poměr nebo DPČ s měsíčním výdělkem do poloviny minimální mzdy evidenci nebrání. Činnost je nutné úřadu práce oznámit.", "chunks": ["ZZ § 25 odst. 3"]},
+ {"id": 34, "level": "střední", "q": "Jak dlouho musím předtím pracovat, abych měl nárok na podporu v nezaměstnanosti?", "gold": "Aspoň 12 měsíců důchodového pojištění ze zaměstnání nebo jiné výdělečné činnosti za poslední 2 roky před zařazením do evidence.", "chunks": ["ZZ § 39 odst. 1", "ZZ § 41 odst. 1"]},
+ {"id": 35, "level": "snadná", "q": "Od kolikátého dne nemoci se platí nemocenská?", "gold": "Od 15. kalendářního dne dočasné pracovní neschopnosti, nejdéle 380 dnů. (Prvních 14 dnů platí zaměstnavatel náhradu mzdy.)", "chunks": ["ZNP § 26 odst. 1"]},
+ {"id": 36, "level": "snadná", "q": "Jak dlouho trvá otcovská a kolik se na ní dostává?", "gold": "2 týdny, 70 % denního vyměřovacího základu.", "chunks": ["ZNP § 38b odst. 1", "ZNP § 38c"]},
+ {"id": 37, "level": "střední", "q": "Jak dlouho můžu být doma s nemocným dítětem na ošetřovném?", "gold": "Nejdéle 9 kalendářních dnů; osamělý rodič s dítětem do 16 let nejdéle 16 dnů.", "chunks": ["ZNP § 40 odst. 1"]},
+ {"id": 38, "level": "snadná", "q": "Dostanu příplatek za práci v noci?", "gold": "Ano, nejméně 10 % průměrného výdělku, pokud se nesjedná jiná výše.", "chunks": ["ZP § 116"]},
+ {"id": 39, "level": "snadná", "q": "Kolik příplatku dostanu za přesčas?", "gold": "Nejméně 25 % průměrného výdělku, pokud se se zaměstnavatelem nedohodnete na náhradním volnu místo příplatku.", "chunks": ["ZP § 114 odst. 1"]},
+ {"id": 40, "level": "střední", "q": "Do kdy mi musí zaměstnavatel vydat pracovní posudek?", "gold": "Do 15 dnů od žádosti; dříve než 2 měsíce před skončením zaměstnání ho vydat nemusí.", "chunks": ["ZP § 314 odst. 1"]},
+ {"id": 41, "level": "střední", "q": "Jak dlouho dopředu musím požádat o rodičovskou dovolenou?", "gold": "Alespoň 30 dnů před nástupem, pokud tomu nebrání vážné důvody. Žádost musí být písemná.", "chunks": ["ZP § 196 odst. 2"]},
+ {"id": 42, "level": "střední", "q": "Kolik dní volna dostanu, když mi zemře máma?", "gold": "1 den s náhradou mzdy na pohřeb a další den, pokud pohřeb obstarávám. Navíc až 5 dnů volna bez náhrady mzdy.", "chunks": ["NV 590 příloha bod 7"]},
+ {"id": 43, "level": "bez odpovědi", "q": "Kolik peněz dostanu celkem na rodičovském příspěvku?", "gold": "NEVÍM – rodičovský příspěvek upravuje zákon o státní sociální podpoře, ten v aplikaci není.", "chunks": []},
+ {"id": 44, "level": "bez odpovědi", "q": "Kolik zaplatím jako OSVČ měsíčně na sociálním pojištění?", "gold": "NEVÍM – pojistné OSVČ upravuje zákon o pojistném na sociální zabezpečení, ten v aplikaci není.", "chunks": []},
+ {"id": 45, "level": "bez odpovědi", "q": "Jak dlouhá je výpovědní doba z nájmu bytu?", "gold": "NEVÍM – nájem bytu upravuje občanský zákoník, ten v aplikaci není. Výpovědní doba ze zákoníku práce sem nepatří.", "chunks": []},
+ {"id": 46, "level": "bez odpovědi", "q": "Kolik je sleva na dani na poplatníka?", "gold": "NEVÍM – daně upravuje zákon o daních z příjmů, ten v aplikaci není.", "chunks": []}
+]

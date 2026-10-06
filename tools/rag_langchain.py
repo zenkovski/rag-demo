@@ -6,7 +6,7 @@ idiomaticky v LangChainu: dokumenty, retrievery, Runnable řetězy a model přes
 langchain-community (kde býval BM25Retriever) se ukončuje, proto jsou retrievery vlastní třídy nad langchain-core.
 
   .venv/Scripts/python tools/rag_langchain.py "Nezaplatili mi výplatu, můžu odejít?"
-  .venv/Scripts/python tools/rag_langchain.py --compare     # stejné výsledky jako rag.py? (30 otázek)
+  .venv/Scripts/python tools/rag_langchain.py --compare     # stejné výsledky jako rag.py? (46 otázek)
 """
 import json, os, sys
 from typing import List
@@ -30,9 +30,10 @@ CHUNKS = rag.load_chunks()
 DOCS = [Document(page_content=c["text"], metadata={"i": i, "id": c["id"], "title": c["title"]}) for i, c in enumerate(CHUNKS)]
 
 class E5Embeddings(Embeddings):
-    """e5-large přes OpenRouter. E5 chce předponu "query: " u otázky; dokumenty už předponu "passage: " mají."""
+    """e5-large přes OpenRouter. E5 chce předponu "query: " u otázky; dokumenty už předponu "passage: " mají.
+    Vektory dokumentů jsou zaokrouhlené na int8 stejně jako v rag.py a na webu, ať všechny tři verze hledají stejně."""
     def embed_documents(self, texts: List[str]) -> List[List[float]]:
-        return rag.embed_api(texts).tolist()
+        return rag.dequantize(*rag.quantize(rag.embed_api(texts))).tolist()
     def embed_query(self, text: str) -> List[float]:
         return rag.embed_api([f"query: {text}"])[0].tolist()
 
@@ -87,8 +88,8 @@ answer_chain = retrieve_chain | RunnablePassthrough.assign(
 def compare():
     """1) Hledání: dostane-li LangChain stejný přepis jako rag.py, najde stejných 5 úseků?
     2) Přepis: vyjde nové volání modelu stejně jako uložené? (teplota 0 ≠ vždy stejný text)"""
-    tests = json.loads((rag.ROOT / "data" / "testset.json").read_text(encoding="utf-8")) + \
-            json.loads((rag.ROOT / "data" / "testset_holdout.json").read_text(encoding="utf-8"))
+    import evaluate
+    tests = evaluate.tests()
     same = same_rw = 0
     for t in tests:
         hits, rw = rag.search(t["q"])                       # přepis z rag.py (uložený)

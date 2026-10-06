@@ -1,7 +1,90 @@
 {
- "4": {"correct": true, "note": "Správně (nejméně 2 měsíce, výjimka 1 měsíc). Přidal i zvláštní případ § 51a (15 dnů), to v textu je, ale na běžnou otázku je to zbytečné."},
- "7": {"correct": true, "note": "Správně: v průměru nejvýše polovina stanovené týdenní pracovní doby. Poctivě napsal, že konkrétní počet hodin z dodaných úseků nevyplývá (40 h je v § 79, který se nenašel)."},
- "10": {"correct": true, "note": "Správně (11 hodin, mladiství 12). Správný § 90 odst. 1 byl až 4. nalezený."},
- "15": {"correct": true, "note": "V1 chyba, teď správně: přepis otázky do jazyka zákona dostal § 56 odst. 1 na 1. místo (ve v1 byl 28.)."},
- "16": {"correct": true, "note": "Správně (nejvýše dvakrát, prodloužení se počítá). Vynechal, že jeden poměr smí trvat nejdéle 3 roky."}
+ "v2": {
+  "16": {
+   "correct": true,
+   "note": "Správně (nejvýše dvakrát, prodloužení se počítá). Navíc uvedl strop 9 let, ten v textu opravdu je. Vynechal, že jedna smlouva smí být nejdéle na 3 roky."
+  },
+  "17": {
+   "correct": true,
+   "note": "Správně „nevím“: konkrétní částka v předpisech není, § 111 odst. 7 jen říká, že ji vyhlašuje MPSV sdělením. Lepší odpověď by tohle vysvětlila."
+  },
+  "20": {
+   "correct": false,
+   "note": "Hledání nenašlo § 192 ZP ani § 29 ZNP: zákon o nemocenském pojištění má stovky podobných odstavců. Model proto řekl „nevím“. Bezpečné, ale neužitečné. Ve verzi s 5 tématy to byl test „nevím“."
+  },
+  "27": {
+   "correct": true,
+   "note": "Správně. Poslední věta („výpověď tyto úseky neupravují“) je zbytečná, AI soudce ji označil jako nepodloženou."
+  },
+  "36": {
+   "correct": false,
+   "note": "Půl odpovědi: délku 2 týdny našel, výši 70 % ne (§ 38c ZNP nebyl mezi 5 úseky). Poctivě napsal, že výše v úsecích není."
+  },
+  "38": {
+   "correct": false,
+   "note": "Smíchal mzdu a plat: 20 % podle § 125 platí jen pro plat ve veřejné sféře. Pro běžnou mzdu je to nejméně 10 % (§ 116), to uvedl až jako druhé."
+  },
+  "40": {
+   "correct": false,
+   "note": "Obrátil význam: zákon říká, že zaměstnavatel posudek nemusí vydat dřív než 2 měsíce před koncem zaměstnání. Model napsal, že nesmí."
+  }
+ },
+ "v1": {
+  "7": {
+   "correct": false,
+   "note": "Stejná chyba jako ve verzi s 5 tématy: k DPČ přidal „300 hodin ročně“, to platí jen pro DPP."
+  },
+  "10": {
+   "correct": false,
+   "note": "§ 90 odst. 1 se nenašel, model řekl „nevím“."
+  },
+  "15": {
+   "correct": false,
+   "note": "Laická slova „výplata“ a „odejít“: hledání podle významu nenašlo § 56, model řekl „nevím“."
+  },
+  "20": {
+   "correct": false,
+   "note": "§ 192 ZP ani § 29 ZNP se nenašly, model řekl „nevím“."
+  },
+  "21": {
+   "correct": false,
+   "note": "Našel jen odstavec o mladistvých (48 hodin), pravidlo pro dospělé (24 hodin) mu chybělo."
+  },
+  "24": {
+   "correct": false,
+   "note": "§ 223 odst. 1 (krácení dovolené) se nenašel, model řekl „nevím“."
+  },
+  "25": {
+   "correct": true,
+   "note": "Věcně správně, ale na konec přilepil větu „Nevím, v dostupných úsecích zákona to není.“ Model zdarma pravidlo o „nevím“ splete."
+  },
+  "26": {
+   "correct": true,
+   "note": "Věcně správně, ale opět přidal nesmyslnou větu s „Nevím“."
+  },
+  "28": {
+   "correct": false,
+   "note": "§ 218 odst. 1 se nenašel. Napsal „musíte vyčerpat do konce roku“, zákon ale ukládá povinnost zaměstnavateli určit čerpání."
+  },
+  "35": {
+   "correct": true,
+   "note": "Správně (od 15. dne), i když hledání nenašlo zlatý § 26 odst. 1: stejnou informaci má § 23."
+  },
+  "36": {
+   "correct": false,
+   "note": "Délka 2 týdny správně, výše 70 % chybí (§ 38c nebyl mezi úseky)."
+  },
+  "38": {
+   "correct": false,
+   "note": "Jako první uvedl 20 % podle § 125, to platí jen pro plat ve veřejné sféře. Pro mzdu je to nejméně 10 %."
+  },
+  "39": {
+   "correct": false,
+   "note": "Smíchal mzdu a plat: 50 % za přesčas v den odpočinku platí jen u platu. Poslední věta o náhradním volnu je nepodložená."
+  },
+  "40": {
+   "correct": true,
+   "note": "Správně, a to i tam, kde v2 udělala chybu (v1 správně napsal „není povinen“)."
+  }
+ }
 }

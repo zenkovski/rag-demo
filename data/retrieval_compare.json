@@ -1,17 +1,18 @@
 {
  "dense": {
-  "hit3": 13,
-  "hit5": 15,
-  "n": 16,
+  "hit3": 29,
+  "hit5": 33,
+  "n": 40,
   "rows": [
    {
     "id": 1,
+    "set": "test",
     "top": [
-     "§ 212 odst. 1",
-     "§ 212 odst. 2",
-     "§ 212 odst. 3",
-     "§ 213 odst. 4",
-     "§ 213 odst. 5"
+     "ZP § 212 odst. 1",
+     "ZP § 212 odst. 2",
+     "ZP § 212 odst. 3",
+     "ZP § 213 odst. 5",
+     "ZP § 213 odst. 4"
     ],
     "rewritten": null,
     "hit3": true,
@@ -19,12 +20,13 @@
    },
    {
     "id": 2,
+    "set": "test",
     "top": [
-     "§ 35 odst. 2",
-     "§ 35 odst. 5",
-     "§ 35 odst. 4",
-     "§ 35 odst. 3",
-     "§ 35 odst. 1"
+     "ZP § 35 odst. 2",
+     "ZP § 35 odst. 5",
+     "ZP § 35 odst. 3",
+     "ZP § 35 odst. 4",
+     "ZP § 35 odst. 1"
     ],
     "rewritten": null,
     "hit3": true,
@@ -32,12 +34,13 @@
    },
    {
     "id": 3,
+    "set": "test",
     "top": [
-     "§ 66 odst. 1",
-     "§ 35 odst. 1",
-     "§ 35 odst. 2",
-     "§ 55 odst. 1",
-     "§ 35 odst. 4"
+     "ZP § 66 odst. 1",
+     "ZP § 35 odst. 1",
+     "ZP § 35 odst. 2",
+     "ZP § 55 odst. 1",
+     "ZP § 35 odst. 3"
     ],
     "rewritten": null,
     "hit3": true,
@@ -45,12 +48,13 @@
    },
    {
     "id": 4,
+    "set": "test",
     "top": [
-     "§ 51 odst. 2",
-     "§ 51 odst. 3",
-     "§ 51 odst. 1",
-     "§ 53 odst. 2",
-     "§ 87a odst. 3"
+     "ZP § 51 odst. 2",
+     "ZZ § 78 odst. 7",
+     "ZP § 51 odst. 3",
+     "ZP § 51 odst. 1",
+     "ZP § 53 odst. 2"
     ],
     "rewritten": null,
     "hit3": true,
@@ -58,12 +62,13 @@
    },
    {
     "id": 5,
+    "set": "test",
     "top": [
-     "§ 51 odst. 2",
-     "§ 51 odst. 1",
-     "§ 87a odst. 3",
-     "§ 51 odst. 3",
-     "§ 53 odst. 2"
+     "ZZ § 78 odst. 7",
+     "ZP § 51 odst. 2",
+     "ZP § 51 odst. 1",
+     "ZP § 51 odst. 3",
+     "ZP § 87a odst. 3"
     ],
     "rewritten": null,
     "hit3": true,
@@ -71,12 +76,13 @@
    },
    {
     "id": 6,
+    "set": "test",
     "top": [
-     "§ 75 odst. 1",
-     "§ 76 odst. 1",
-     "§ 76 odst. 3",
-     "§ 77 odst. 4",
-     "§ 77 odst. 8"
+     "ZP § 75 odst. 1",
+     "ZP § 76 odst. 1",
+     "ZP § 76 odst. 3",
+     "ZP § 77 odst. 4",
+     "ZP § 93 odst. 4"
     ],
     "rewritten": null,
     "hit3": true,
@@ -84,25 +90,27 @@
    },
    {
     "id": 7,
+    "set": "test",
     "top": [
-     "§ 76 odst. 1",
-     "§ 76 odst. 3",
-     "§ 77 odst. 8",
-     "§ 76 odst. 2",
-     "§ 76 odst. 4"
+     "ZP § 76 odst. 1",
+     "ZP § 76 odst. 3",
+     "ZP § 76 odst. 2",
+     "ZP § 76 odst. 4",
+     "ZP § 77 odst. 8"
     ],
     "rewritten": null,
-    "hit3": false,
+    "hit3": true,
     "hit5": true
    },
    {
     "id": 8,
+    "set": "test",
     "top": [
-     "§ 88 odst. 1",
-     "§ 88 odst. 2",
-     "§ 88 odst. 4",
-     "§ 89 odst. 2",
-     "§ 88 odst. 3"
+     "ZP § 88 odst. 1",
+     "ZP § 88 odst. 2",
+     "ZP § 176 odst. 4",
+     "ZP § 176 odst. 3",
+     "ZP § 88 odst. 4"
     ],
     "rewritten": null,
     "hit3": true,
@@ -110,12 +118,13 @@
    },
    {
     "id": 9,
+    "set": "test",
     "top": [
-     "§ 93 odst. 2",
-     "§ 93 odst. 4",
-     "§ 93 odst. 3",
-     "§ 88 odst. 1",
-     "§ 94 odst. 1"
+     "ZP § 93 odst. 2",
+     "ZP § 93 odst. 4",
+     "ZP § 127 odst. 3",
+     "ZP § 93 odst. 3",
+     "ZP § 114 odst. 3"
     ],
     "rewritten": null,
     "hit3": true,
@@ -123,51 +132,55 @@
    },
    {
     "id": 10,
+    "set": "test",
     "top": [
-     "§ 88 odst. 2",
-     "§ 94 odst. 1",
-     "§ 90 odst. 1",
-     "§ 92 odst. 2",
-     "§ 97 odst. 4"
+     "ZP § 88 odst. 2",
+     "ZZ § 123 odst. 2",
+     "ZP § 94 odst. 1",
+     "ZP § 130 odst. 2",
+     "ZP § 97 odst. 4"
     ],
     "rewritten": null,
-    "hit3": true,
-    "hit5": true
+    "hit3": false,
+    "hit5": false
    },
    {
     "id": 11,
+    "set": "test",
     "top": [
-     "§ 67 odst. 1",
-     "§ 68 odst. 2",
-     "§ 67 odst. 3",
-     "§ 68 odst. 1",
-     "§ 67 odst. 4"
+     "ZNP § 127 odst. 3",
+     "ZNP § 138a odst. 2",
+     "ZNP § 140 odst. 2",
+     "ZP § 68 odst. 2",
+     "ZP § 67 odst. 1"
     ],
     "rewritten": null,
-    "hit3": true,
+    "hit3": false,
     "hit5": true
    },
    {
     "id": 12,
+    "set": "test",
     "top": [
-     "§ 50 odst. 3",
-     "§ 57 odst. 1",
-     "§ 52",
-     "§ 50 odst. 4",
-     "§ 58 odst. 1"
+     "ZP § 50 odst. 3",
+     "ZP § 57 odst. 1",
+     "ZP § 50 odst. 4",
+     "ZP § 52",
+     "ZP § 58 odst. 1"
     ],
     "rewritten": null,
-    "hit3": true,
+    "hit3": false,
     "hit5": true
    },
    {
     "id": 13,
+    "set": "test",
     "top": [
-     "§ 72",
-     "§ 51 odst. 2",
-     "§ 51a odst. 2",
-     "§ 57 odst. 1",
-     "§ 61 odst. 4"
+     "ZP § 72",
+     "ZP § 315",
+     "ZP § 51 odst. 2",
+     "ZZ § 60 odst. 5",
+     "ZP § 285 odst. 2"
     ],
     "rewritten": null,
     "hit3": true,
@@ -175,25 +188,27 @@
    },
    {
     "id": 14,
+    "set": "test",
     "top": [
-     "§ 217 odst. 1",
-     "§ 218 odst. 4",
-     "§ 217 odst. 3",
-     "§ 218 odst. 1",
-     "§ 222 odst. 2"
+     "ZP § 217 odst. 1",
+     "ZP § 218 odst. 4",
+     "ZP § 222 odst. 2",
+     "ZP § 217 odst. 3",
+     "ZP § 218 odst. 1"
     ],
     "rewritten": null,
-    "hit3": false,
+    "hit3": true,
     "hit5": true
    },
    {
     "id": 15,
+    "set": "test",
     "top": [
-     "§ 67 odst. 5",
-     "§ 70 odst. 2",
-     "§ 72",
-     "§ 59",
-     "§ 69 odst. 3"
+     "ZP § 67 odst. 5",
+     "ZP § 271m odst. 2",
+     "ZP § 34 odst. 4",
+     "ZP § 70 odst. 2",
+     "ZZ § 78c odst. 1"
     ],
     "rewritten": null,
     "hit3": false,
@@ -201,12 +216,13 @@
    },
    {
     "id": 16,
+    "set": "test",
     "top": [
-     "§ 39 odst. 2",
-     "§ 51 odst. 3",
-     "§ 93 odst. 4",
-     "§ 39 odst. 5",
-     "§ 77 odst. 4"
+     "ZP § 39 odst. 2",
+     "ZP § 26 odst. 1",
+     "ZP § 29",
+     "ZP § 51 odst. 3",
+     "ZP § 93 odst. 4"
     ],
     "rewritten": null,
     "hit3": true,
@@ -214,12 +230,13 @@
    },
    {
     "id": 17,
+    "set": "test",
     "top": [
-     "§ 67 odst. 4",
-     "§ 80",
-     "§ 67 odst. 1",
-     "§ 37 odst. 1",
-     "§ 62 odst. 1"
+     "ZP § 111 odst. 3",
+     "ZP § 111 odst. 1",
+     "ZP § 111 odst. 7",
+     "ZP § 111 odst. 9",
+     "ZP § 117 odst. 2"
     ],
     "rewritten": null,
     "hit3": null,
@@ -227,38 +244,405 @@
    },
    {
     "id": 18,
+    "set": "test",
     "top": [
-     "§ 217 odst. 5",
-     "§ 54",
-     "§ 212 odst. 1",
-     "§ 218 odst. 5",
-     "§ 53 odst. 1"
+     "ZP § 195 odst. 1",
+     "ZP § 195 odst. 5",
+     "ZP § 197 odst. 2",
+     "ZP § 195 odst. 4",
+     "ZP § 195 odst. 2"
     ],
     "rewritten": null,
-    "hit3": null,
-    "hit5": null
+    "hit3": true,
+    "hit5": true
    },
    {
     "id": 19,
+    "set": "test",
     "top": [
-     "§ 85 odst. 2",
-     "§ 77b odst. 4",
-     "§ 76 odst. 1",
-     "§ 95 odst. 3",
-     "§ 76 odst. 2"
+     "ZP § 240 odst. 1",
+     "ZP § 317 odst. 1",
+     "NV 590 příloha bod 4",
+     "ZP § 317 odst. 3",
+     "ZP § 41 odst. 5"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 20,
+    "set": "test",
+    "top": [
+     "ZNP § 111 odst. 1",
+     "ZNP § 19 odst. 12",
+     "ZNP § 23",
+     "ZNP § 25",
+     "ZNP § 169 odst. 1"
+    ],
+    "rewritten": null,
+    "hit3": false,
+    "hit5": false
+   },
+   {
+    "id": 21,
+    "set": "holdout",
+    "top": [
+     "ZP § 79 odst. 1",
+     "ZP § 92 odst. 2",
+     "ZP § 93 odst. 4",
+     "ZP § 88 odst. 2",
+     "ZP § 88 odst. 1"
+    ],
+    "rewritten": null,
+    "hit3": false,
+    "hit5": false
+   },
+   {
+    "id": 22,
+    "set": "holdout",
+    "top": [
+     "ZP § 218 odst. 4",
+     "ZP § 217 odst. 1",
+     "ZP § 196 odst. 2",
+     "ZP § 186",
+     "ZP § 216 odst. 4"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 23,
+    "set": "holdout",
+    "top": [
+     "ZP § 35 odst. 2",
+     "ZP § 35 odst. 4",
+     "ZP § 77 odst. 4",
+     "ZP § 35 odst. 3",
+     "ZP § 35 odst. 1"
+    ],
+    "rewritten": null,
+    "hit3": false,
+    "hit5": true
+   },
+   {
+    "id": 24,
+    "set": "holdout",
+    "top": [
+     "ZP § 34 odst. 3",
+     "ZP § 191",
+     "ZP § 221",
+     "ZP § 196 odst. 2",
+     "ZP § 219 odst. 2"
+    ],
+    "rewritten": null,
+    "hit3": false,
+    "hit5": false
+   },
+   {
+    "id": 25,
+    "set": "holdout",
+    "top": [
+     "ZP § 67 odst. 5",
+     "ZP § 68 odst. 1",
+     "ZP § 67 odst. 4",
+     "ZP § 68 odst. 2",
+     "ZNP § 177"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 26,
+    "set": "holdout",
+    "top": [
+     "ZP § 278 odst. 3",
+     "ZP § 31",
+     "ZP § 317a odst. 2",
+     "ZP § 49 odst. 2",
+     "ZP § 34 odst. 2"
+    ],
+    "rewritten": null,
+    "hit3": false,
+    "hit5": true
+   },
+   {
+    "id": 27,
+    "set": "holdout",
+    "top": [
+     "ZNP § 42 odst. 1",
+     "ZP § 239 odst. 1",
+     "ZP § 55 odst. 2",
+     "ZP § 238 odst. 2",
+     "ZP § 41 odst. 1"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 28,
+    "set": "holdout",
+    "top": [
+     "ZP § 217 odst. 1",
+     "ZP § 218 odst. 4",
+     "ZP § 212 odst. 1",
+     "ZP § 218 odst. 3",
+     "ZP § 218 odst. 5"
+    ],
+    "rewritten": null,
+    "hit3": false,
+    "hit5": false
+   },
+   {
+    "id": 29,
+    "set": "holdout",
+    "top": [
+     "ZP § 163 odst. 1",
+     "ZP § 176 odst. 1",
+     "ZP § 190a odst. 3",
+     "ZP § 189 odst. 3",
+     "ZP § 163 odst. 2"
     ],
     "rewritten": null,
     "hit3": null,
     "hit5": null
    },
    {
-    "id": 20,
+    "id": 30,
+    "set": "holdout",
     "top": [
-     "§ 53 odst. 1",
-     "§ 219 odst. 1",
-     "§ 88 odst. 4",
-     "§ 215 odst. 4",
-     "§ 83a odst. 1"
+     "NV 590 příloha bod 5",
+     "ZZ § 114 odst. 3",
+     "ZNP § 38a odst. 3",
+     "ZNP § 39 odst. 3",
+     "ZP § 115 odst. 1"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 31,
+    "set": "new",
+    "top": [
+     "ZZ § 43 odst. 1",
+     "ZZ § 50 odst. 3",
+     "ZZ § 51a",
+     "ZZ § 51 odst. 1",
+     "ZZ § 42 odst. 4"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 32,
+    "set": "new",
+    "top": [
+     "ZZ § 50 odst. 3",
+     "ZZ § 50 odst. 1",
+     "ZZ § 50 odst. 7",
+     "ZZ § 50 odst. 6",
+     "ZZ § 51 odst. 1"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 33,
+    "set": "new",
+    "top": [
+     "ZZ § 102 odst. 1",
+     "ZZ § 84 odst. 4",
+     "ZZ § 25 odst. 3",
+     "ZNP § 95 odst. 4",
+     "ZZ § 109a odst. 9"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 34,
+    "set": "new",
+    "top": [
+     "ZZ § 41 odst. 1",
+     "ZZ § 48",
+     "ZZ § 49 odst. 1",
+     "ZZ § 39 odst. 1",
+     "ZZ § 43 odst. 1"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 35,
+    "set": "new",
+    "top": [
+     "ZNP § 172 odst. 1",
+     "ZNP § 23",
+     "ZNP § 29 odst. 1",
+     "ZNP § 169 odst. 1",
+     "ZNP § 28 odst. 1"
+    ],
+    "rewritten": null,
+    "hit3": false,
+    "hit5": false
+   },
+   {
+    "id": 36,
+    "set": "new",
+    "top": [
+     "ZNP § 38b odst. 1",
+     "ZNP § 38b odst. 4",
+     "ZNP § 38b odst. 2",
+     "ZNP § 38a odst. 4",
+     "ZNP § 38b odst. 5"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 37,
+    "set": "new",
+    "top": [
+     "ZNP § 40 odst. 1",
+     "ZNP § 40 odst. 8",
+     "ZNP § 39 odst. 1",
+     "ZNP § 41c odst. 2",
+     "NV 590 příloha bod 8"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 38,
+    "set": "new",
+    "top": [
+     "ZP § 125",
+     "ZP § 116",
+     "ZP § 94 odst. 4",
+     "ZP § 94 odst. 3",
+     "ZP § 94 odst. 2"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 39,
+    "set": "new",
+    "top": [
+     "ZP § 127 odst. 1",
+     "ZP § 114 odst. 1",
+     "ZP § 127 odst. 2",
+     "ZP § 127 odst. 3",
+     "ZP § 114 odst. 2"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 40,
+    "set": "new",
+    "top": [
+     "ZP § 314 odst. 1",
+     "ZP § 315",
+     "ZP § 314 odst. 2",
+     "ZZ § 78 odst. 7",
+     "ZP § 63"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 41,
+    "set": "new",
+    "top": [
+     "ZP § 196 odst. 2",
+     "ZP § 196 odst. 1",
+     "ZP § 195 odst. 1",
+     "ZP § 195 odst. 2",
+     "ZP § 195 odst. 3"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 42,
+    "set": "new",
+    "top": [
+     "ZP § 198 odst. 4",
+     "ZNP § 35 odst. 2",
+     "NV 590 příloha bod 7",
+     "ZP § 195 odst. 4",
+     "ZNP § 38a odst. 2"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 43,
+    "set": "new",
+    "top": [
+     "ZNP § 44 odst. 2",
+     "ZNP § 174 odst. 7",
+     "ZNP § 37",
+     "ZNP § 44 odst. 1",
+     "ZNP § 32 odst. 6"
+    ],
+    "rewritten": null,
+    "hit3": null,
+    "hit5": null
+   },
+   {
+    "id": 44,
+    "set": "new",
+    "top": [
+     "ZNP § 178 odst. 3",
+     "ZZ § 78a odst. 3",
+     "ZNP § 18 odst. 5",
+     "ZNP § 6 odst. 2",
+     "ZZ § 78c odst. 6"
+    ],
+    "rewritten": null,
+    "hit3": null,
+    "hit5": null
+   },
+   {
+    "id": 45,
+    "set": "new",
+    "top": [
+     "ZP § 51 odst. 2",
+     "ZZ § 78 odst. 7",
+     "ZP § 177 odst. 2",
+     "ZP § 26 odst. 1",
+     "ZZ § 96 odst. 2"
+    ],
+    "rewritten": null,
+    "hit3": null,
+    "hit5": null
+   },
+   {
+    "id": 46,
+    "set": "new",
+    "top": [
+     "ZNP § 19 odst. 9",
+     "ZP § 163 odst. 1",
+     "ZNP § 22 odst. 2",
+     "ZNP § 41",
+     "ZNP § 183"
     ],
     "rewritten": null,
     "hit3": null,
@@ -267,18 +651,19 @@
   ]
  },
  "dense_large": {
-  "hit3": 14,
-  "hit5": 15,
-  "n": 16,
+  "hit3": 35,
+  "hit5": 37,
+  "n": 40,
   "rows": [
    {
     "id": 1,
+    "set": "test",
     "top": [
-     "§ 212 odst. 1",
-     "§ 223 odst. 3",
-     "§ 212 odst. 2",
-     "§ 213 odst. 1",
-     "§ 213 odst. 4"
+     "ZP § 212 odst. 1",
+     "ZP § 223 odst. 3",
+     "ZP § 212 odst. 2",
+     "ZP § 213 odst. 4",
+     "ZP § 213 odst. 1"
     ],
     "rewritten": null,
     "hit3": true,
@@ -286,12 +671,13 @@
    },
    {
     "id": 2,
+    "set": "test",
     "top": [
-     "§ 35 odst. 2",
-     "§ 35 odst. 3",
-     "§ 66 odst. 1",
-     "§ 35 odst. 4",
-     "§ 35 odst. 5"
+     "ZP § 35 odst. 2",
+     "ZP § 35 odst. 3",
+     "ZP § 66 odst. 1",
+     "ZP § 35 odst. 5",
+     "ZP § 35 odst. 4"
     ],
     "rewritten": null,
     "hit3": true,
@@ -299,12 +685,13 @@
    },
    {
     "id": 3,
+    "set": "test",
     "top": [
-     "§ 66 odst. 1",
-     "§ 35 odst. 2",
-     "§ 35 odst. 1",
-     "§ 50 odst. 3",
-     "§ 35 odst. 4"
+     "ZP § 66 odst. 1",
+     "ZP § 35 odst. 2",
+     "ZP § 35 odst. 1",
+     "ZP § 50 odst. 3",
+     "ZP § 35 odst. 4"
     ],
     "rewritten": null,
     "hit3": true,
@@ -312,12 +699,13 @@
    },
    {
     "id": 4,
+    "set": "test",
     "top": [
-     "§ 51 odst. 2",
-     "§ 51a odst. 1",
-     "§ 51 odst. 1",
-     "§ 87a odst. 3",
-     "§ 51a odst. 2"
+     "ZP § 51 odst. 2",
+     "ZZ § 78 odst. 7",
+     "ZP § 51 odst. 1",
+     "ZP § 87a odst. 3",
+     "ZP § 51a odst. 1"
     ],
     "rewritten": null,
     "hit3": true,
@@ -325,12 +713,13 @@
    },
    {
     "id": 5,
+    "set": "test",
     "top": [
-     "§ 51 odst. 1",
-     "§ 51 odst. 2",
-     "§ 51a odst. 1",
-     "§ 51a odst. 2",
-     "§ 87a odst. 3"
+     "ZP § 51 odst. 1",
+     "ZZ § 78 odst. 7",
+     "ZP § 51 odst. 2",
+     "ZP § 51a odst. 1",
+     "ZP § 51a odst. 2"
     ],
     "rewritten": null,
     "hit3": true,
@@ -338,12 +727,13 @@
    },
    {
     "id": 6,
+    "set": "test",
     "top": [
-     "§ 75 odst. 1",
-     "§ 76 odst. 1",
-     "§ 77 odst. 8",
-     "§ 76 odst. 3",
-     "§ 75 odst. 2"
+     "ZP § 75 odst. 1",
+     "ZP § 76 odst. 1",
+     "ZP § 77 odst. 8",
+     "ZP § 76 odst. 3",
+     "ZP § 75 odst. 2"
     ],
     "rewritten": null,
     "hit3": true,
@@ -351,12 +741,13 @@
    },
    {
     "id": 7,
+    "set": "test",
     "top": [
-     "§ 76 odst. 3",
-     "§ 76 odst. 1",
-     "§ 77 odst. 8",
-     "§ 75 odst. 1",
-     "§ 76 odst. 2"
+     "ZP § 76 odst. 1",
+     "ZP § 76 odst. 3",
+     "ZP § 77 odst. 8",
+     "ZP § 75 odst. 1",
+     "ZP § 76 odst. 2"
     ],
     "rewritten": null,
     "hit3": false,
@@ -364,12 +755,13 @@
    },
    {
     "id": 8,
+    "set": "test",
     "top": [
-     "§ 88 odst. 1",
-     "§ 88 odst. 2",
-     "§ 88 odst. 3",
-     "§ 88 odst. 4",
-     "§ 90 odst. 1"
+     "ZP § 88 odst. 1",
+     "ZP § 88 odst. 2",
+     "ZP § 176 odst. 4",
+     "ZP § 179 odst. 4",
+     "ZP § 242 odst. 2"
     ],
     "rewritten": null,
     "hit3": true,
@@ -377,12 +769,13 @@
    },
    {
     "id": 9,
+    "set": "test",
     "top": [
-     "§ 93 odst. 2",
-     "§ 93 odst. 4",
-     "§ 93 odst. 3",
-     "§ 98 odst. 1",
-     "§ 81 odst. 2"
+     "ZP § 93 odst. 2",
+     "ZP § 93 odst. 4",
+     "ZP § 93 odst. 3",
+     "ZP § 88 odst. 1",
+     "ZP § 98 odst. 1"
     ],
     "rewritten": null,
     "hit3": true,
@@ -390,25 +783,27 @@
    },
    {
     "id": 10,
+    "set": "test",
     "top": [
-     "§ 90 odst. 1",
-     "§ 88 odst. 2",
-     "§ 100 odst. 2",
-     "§ 92 odst. 1",
-     "§ 94 odst. 1"
+     "ZP § 130 odst. 2",
+     "ZP § 242 odst. 2",
+     "ZP § 88 odst. 2",
+     "ZP § 90 odst. 1",
+     "ZP § 88 odst. 1"
     ],
     "rewritten": null,
-    "hit3": true,
+    "hit3": false,
     "hit5": true
    },
    {
     "id": 11,
+    "set": "test",
     "top": [
-     "§ 67 odst. 1",
-     "§ 67 odst. 3",
-     "§ 68 odst. 2",
-     "§ 68 odst. 1",
-     "§ 62 odst. 1"
+     "ZP § 67 odst. 1",
+     "ZP § 67 odst. 3",
+     "ZP § 68 odst. 2",
+     "ZP § 68 odst. 1",
+     "ZP § 165 odst. 1"
     ],
     "rewritten": null,
     "hit3": true,
@@ -416,12 +811,13 @@
    },
    {
     "id": 12,
+    "set": "test",
     "top": [
-     "§ 50 odst. 3",
-     "§ 52",
-     "§ 57 odst. 1",
-     "§ 50 odst. 2",
-     "§ 50 odst. 4"
+     "ZP § 50 odst. 3",
+     "ZP § 57 odst. 1",
+     "ZP § 50 odst. 2",
+     "ZP § 317a odst. 5",
+     "ZP § 50 odst. 4"
     ],
     "rewritten": null,
     "hit3": true,
@@ -429,12 +825,13 @@
    },
    {
     "id": 13,
+    "set": "test",
     "top": [
-     "§ 72",
-     "§ 51 odst. 2",
-     "§ 70 odst. 1",
-     "§ 69 odst. 2",
-     "§ 57 odst. 2"
+     "ZP § 72",
+     "ZP § 315",
+     "ZP § 285 odst. 2",
+     "ZP § 285 odst. 3",
+     "ZP § 51 odst. 2"
     ],
     "rewritten": null,
     "hit3": true,
@@ -442,12 +839,13 @@
    },
    {
     "id": 14,
+    "set": "test",
     "top": [
-     "§ 222 odst. 2",
-     "§ 222 odst. 5",
-     "§ 218 odst. 5",
-     "§ 218 odst. 6",
-     "§ 218 odst. 1"
+     "ZP § 222 odst. 2",
+     "ZP § 222 odst. 5",
+     "ZP § 222 odst. 3",
+     "ZP § 218 odst. 5",
+     "ZP § 218 odst. 6"
     ],
     "rewritten": null,
     "hit3": true,
@@ -455,12 +853,13 @@
    },
    {
     "id": 15,
+    "set": "test",
     "top": [
-     "§ 50 odst. 3",
-     "§ 57 odst. 2",
-     "§ 58 odst. 1",
-     "§ 67 odst. 5",
-     "§ 70 odst. 1"
+     "ZP § 310 odst. 5",
+     "ZP § 324a odst. 3",
+     "ZP § 57 odst. 2",
+     "ZP § 141 odst. 5",
+     "ZP § 67 odst. 5"
     ],
     "rewritten": null,
     "hit3": false,
@@ -468,12 +867,13 @@
    },
    {
     "id": 16,
+    "set": "test",
     "top": [
-     "§ 39 odst. 2",
-     "§ 39 odst. 5",
-     "§ 39 odst. 1",
-     "§ 65 odst. 1",
-     "§ 93 odst. 4"
+     "ZP § 39 odst. 2",
+     "ZP § 39 odst. 5",
+     "ZZ § 78 odst. 3",
+     "ZP § 26 odst. 1",
+     "ZP § 39 odst. 1"
     ],
     "rewritten": null,
     "hit3": true,
@@ -481,12 +881,13 @@
    },
    {
     "id": 17,
+    "set": "test",
     "top": [
-     "§ 69 odst. 2",
-     "§ 67 odst. 4",
-     "§ 56 odst. 2",
-     "§ 67 odst. 1",
-     "§ 80"
+     "ZP § 111 odst. 3",
+     "ZP § 111 odst. 7",
+     "ZP § 111 odst. 1",
+     "ZP § 111 odst. 6",
+     "ZP § 111 odst. 9"
     ],
     "rewritten": null,
     "hit3": null,
@@ -494,38 +895,405 @@
    },
    {
     "id": 18,
+    "set": "test",
     "top": [
-     "§ 218 odst. 5",
-     "§ 212 odst. 1",
-     "§ 217 odst. 5",
-     "§ 217 odst. 4",
-     "§ 39 odst. 2"
+     "ZP § 195 odst. 1",
+     "ZP § 195 odst. 5",
+     "ZP § 197 odst. 2",
+     "ZP § 197 odst. 3",
+     "ZP § 195 odst. 3"
     ],
     "rewritten": null,
-    "hit3": null,
-    "hit5": null
+    "hit3": true,
+    "hit5": true
    },
    {
     "id": 19,
+    "set": "test",
     "top": [
-     "§ 97 odst. 1",
-     "§ 216 odst. 2",
-     "§ 75 odst. 1",
-     "§ 77 odst. 8",
-     "§ 216 odst. 3"
+     "ZP § 317 odst. 1",
+     "ZP § 241a",
+     "ZP § 190a odst. 3",
+     "ZP § 240 odst. 1",
+     "ZP § 190a odst. 2"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 20,
+    "set": "test",
+    "top": [
+     "ZNP § 28 odst. 2",
+     "ZNP § 28 odst. 3",
+     "ZNP § 23",
+     "ZNP § 111 odst. 1",
+     "ZNP § 28 odst. 6"
+    ],
+    "rewritten": null,
+    "hit3": false,
+    "hit5": false
+   },
+   {
+    "id": 21,
+    "set": "holdout",
+    "top": [
+     "ZP § 92 odst. 2",
+     "ZP § 92 odst. 1",
+     "ZP § 93 odst. 4",
+     "ZP § 77 odst. 8",
+     "ZP § 79 odst. 1"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 22,
+    "set": "holdout",
+    "top": [
+     "ZP § 218 odst. 4",
+     "ZP § 217 odst. 1",
+     "ZP § 206 odst. 1",
+     "ZP § 317a odst. 3",
+     "ZP § 218 odst. 1"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 23,
+    "set": "holdout",
+    "top": [
+     "ZP § 35 odst. 2",
+     "ZP § 35 odst. 3",
+     "ZP § 35 odst. 4",
+     "ZP § 66 odst. 1",
+     "ZP § 35 odst. 1"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 24,
+    "set": "holdout",
+    "top": [
+     "ZP § 191",
+     "ZP § 218 odst. 4",
+     "ZP § 223 odst. 1",
+     "ZP § 217 odst. 3",
+     "ZP § 191a"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 25,
+    "set": "holdout",
+    "top": [
+     "ZP § 67 odst. 5",
+     "ZP § 68 odst. 1",
+     "ZP § 67 odst. 3",
+     "ZP § 67 odst. 4",
+     "ZP § 67 odst. 1"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 26,
+    "set": "holdout",
+    "top": [
+     "ZP § 49 odst. 2",
+     "ZZ § 142c",
+     "ZP § 73a odst. 1",
+     "ZP § 252 odst. 4",
+     "ZP § 21 odst. 1"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 27,
+    "set": "holdout",
+    "top": [
+     "ZP § 55 odst. 2",
+     "ZP § 239 odst. 1",
+     "ZP § 238 odst. 1",
+     "ZP § 240 odst. 1",
+     "ZP § 238 odst. 2"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 28,
+    "set": "holdout",
+    "top": [
+     "ZP § 218 odst. 4",
+     "ZP § 218 odst. 3",
+     "ZP § 218 odst. 1",
+     "ZP § 217 odst. 2",
+     "ZP § 218 odst. 2"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 29,
+    "set": "holdout",
+    "top": [
+     "ZP § 163 odst. 1",
+     "ZP § 176 odst. 1",
+     "ZP § 190a odst. 3",
+     "ZP § 176 odst. 4",
+     "ZP § 189 odst. 3"
     ],
     "rewritten": null,
     "hit3": null,
     "hit5": null
    },
    {
-    "id": 20,
+    "id": 30,
+    "set": "holdout",
     "top": [
-     "§ 222 odst. 1",
-     "§ 219 odst. 1",
-     "§ 222 odst. 2",
-     "§ 95 odst. 1",
-     "§ 67 odst. 4"
+     "NV 590 příloha bod 5",
+     "ZP § 201 odst. 3",
+     "ZP § 135 odst. 2",
+     "NV 590 příloha bod 7",
+     "NV 590 příloha bod 6"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 31,
+    "set": "new",
+    "top": [
+     "ZZ § 43 odst. 1",
+     "ZZ § 50 odst. 3",
+     "ZZ § 55 odst. 3",
+     "ZZ § 51 odst. 1",
+     "ZZ § 54 odst. 4"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 32,
+    "set": "new",
+    "top": [
+     "ZZ § 50 odst. 1",
+     "ZZ § 50 odst. 3",
+     "ZZ § 50 odst. 6",
+     "ZZ § 53 odst. 1",
+     "ZZ § 53 odst. 2"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 33,
+    "set": "new",
+    "top": [
+     "ZZ § 25 odst. 3",
+     "ZZ § 20 odst. 2",
+     "ZZ § 25 odst. 6",
+     "ZP § 355 odst. 1",
+     "ZZ § 102 odst. 4"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 34,
+    "set": "new",
+    "top": [
+     "ZZ § 41 odst. 1",
+     "ZZ § 43 odst. 1",
+     "ZZ § 49 odst. 1",
+     "ZZ § 51 odst. 1",
+     "ZZ § 39 odst. 1"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 35,
+    "set": "new",
+    "top": [
+     "ZNP § 28 odst. 2",
+     "ZNP § 172 odst. 1",
+     "ZNP § 23",
+     "ZNP § 28 odst. 7",
+     "ZNP § 28 odst. 6"
+    ],
+    "rewritten": null,
+    "hit3": false,
+    "hit5": false
+   },
+   {
+    "id": 36,
+    "set": "new",
+    "top": [
+     "ZNP § 38b odst. 1",
+     "ZNP § 38a odst. 4",
+     "ZNP § 38b odst. 2",
+     "ZNP § 38b odst. 4",
+     "ZNP § 38a odst. 1"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 37,
+    "set": "new",
+    "top": [
+     "ZNP § 40 odst. 1",
+     "ZNP § 40 odst. 8",
+     "ZNP § 39 odst. 1",
+     "ZP § 53 odst. 1",
+     "ZNP § 39 odst. 7"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 38,
+    "set": "new",
+    "top": [
+     "ZP § 125",
+     "ZP § 116",
+     "ZP § 126 odst. 1",
+     "ZP § 94 odst. 3",
+     "ZP § 118 odst. 1"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 39,
+    "set": "new",
+    "top": [
+     "ZP § 114 odst. 1",
+     "ZP § 127 odst. 1",
+     "ZP § 114 odst. 2",
+     "ZP § 127 odst. 3",
+     "ZP § 127 odst. 2"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 40,
+    "set": "new",
+    "top": [
+     "ZP § 314 odst. 1",
+     "ZP § 315",
+     "ZNP § 62 odst. 2",
+     "ZP § 247 odst. 3",
+     "ZP § 314 odst. 2"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 41,
+    "set": "new",
+    "top": [
+     "ZP § 196 odst. 2",
+     "ZP § 196 odst. 1",
+     "ZP § 197 odst. 2",
+     "ZP § 197 odst. 3",
+     "ZP § 195 odst. 5"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 42,
+    "set": "new",
+    "top": [
+     "ZP § 198 odst. 4",
+     "ZP § 195 odst. 4",
+     "NV 590 příloha bod 7",
+     "ZP § 195 odst. 1",
+     "ZP § 195 odst. 5"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 43,
+    "set": "new",
+    "top": [
+     "ZNP § 43 odst. 1",
+     "ZNP § 37",
+     "ZNP § 44 odst. 2",
+     "ZNP § 47 odst. 1",
+     "ZNP § 44 odst. 1"
+    ],
+    "rewritten": null,
+    "hit3": null,
+    "hit5": null
+   },
+   {
+    "id": 44,
+    "set": "new",
+    "top": [
+     "ZP § 356 odst. 3",
+     "ZZ § 78a odst. 3",
+     "ZNP § 178 odst. 3",
+     "ZZ § 113 odst. 5",
+     "ZZ § 78c odst. 6"
+    ],
+    "rewritten": null,
+    "hit3": null,
+    "hit5": null
+   },
+   {
+    "id": 45,
+    "set": "new",
+    "top": [
+     "ZP § 51 odst. 2",
+     "ZP § 317a odst. 5",
+     "ZP § 51 odst. 1",
+     "ZP § 51a odst. 1",
+     "ZP § 57 odst. 1"
+    ],
+    "rewritten": null,
+    "hit3": null,
+    "hit5": null
+   },
+   {
+    "id": 46,
+    "set": "new",
+    "top": [
+     "ZP § 324a odst. 7",
+     "ZZ § 113 odst. 5",
+     "ZNP § 47 odst. 1",
+     "ZP § 356 odst. 3",
+     "ZZ § 114 odst. 5"
     ],
     "rewritten": null,
     "hit3": null,
@@ -534,18 +1302,19 @@
   ]
  },
  "hybrid": {
-  "hit3": 13,
-  "hit5": 14,
-  "n": 16,
+  "hit3": 28,
+  "hit5": 32,
+  "n": 40,
   "rows": [
    {
     "id": 1,
+    "set": "test",
     "top": [
-     "§ 223 odst. 3",
-     "§ 213 odst. 1",
-     "§ 213 odst. 3",
-     "§ 213 odst. 5",
-     "§ 212 odst. 2"
+     "ZP § 223 odst. 3",
+     "ZP § 213 odst. 1",
+     "ZP § 213 odst. 3",
+     "ZP § 218 odst. 2",
+     "ZP § 195 odst. 1"
     ],
     "rewritten": null,
     "hit3": false,
@@ -553,12 +1322,13 @@
    },
    {
     "id": 2,
+    "set": "test",
     "top": [
-     "§ 35 odst. 4",
-     "§ 35 odst. 2",
-     "§ 35 odst. 3",
-     "§ 35 odst. 5",
-     "§ 66 odst. 1"
+     "ZP § 35 odst. 2",
+     "ZP § 35 odst. 4",
+     "ZP § 35 odst. 3",
+     "ZP § 35 odst. 5",
+     "ZP § 35 odst. 1"
     ],
     "rewritten": null,
     "hit3": true,
@@ -566,12 +1336,13 @@
    },
    {
     "id": 3,
+    "set": "test",
     "top": [
-     "§ 66 odst. 1",
-     "§ 50 odst. 3",
-     "§ 35 odst. 1",
-     "§ 35 odst. 5",
-     "§ 35 odst. 4"
+     "ZP § 66 odst. 1",
+     "ZP § 35 odst. 1",
+     "ZP § 50 odst. 3",
+     "ZP § 35 odst. 5",
+     "ZP § 35 odst. 4"
     ],
     "rewritten": null,
     "hit3": true,
@@ -579,12 +1350,13 @@
    },
    {
     "id": 4,
+    "set": "test",
     "top": [
-     "§ 51 odst. 2",
-     "§ 51 odst. 1",
-     "§ 87a odst. 3",
-     "§ 51 odst. 3",
-     "§ 53 odst. 2"
+     "ZP § 51 odst. 2",
+     "ZP § 51 odst. 1",
+     "ZP § 87a odst. 3",
+     "ZZ § 78 odst. 7",
+     "ZP § 51 odst. 3"
     ],
     "rewritten": null,
     "hit3": true,
@@ -592,12 +1364,13 @@
    },
    {
     "id": 5,
+    "set": "test",
     "top": [
-     "§ 51 odst. 1",
-     "§ 51 odst. 2",
-     "§ 87a odst. 3",
-     "§ 51a odst. 2",
-     "§ 53 odst. 2"
+     "ZP § 51 odst. 1",
+     "ZZ § 78 odst. 7",
+     "ZP § 51 odst. 2",
+     "ZP § 87a odst. 3",
+     "ZP § 53 odst. 2"
     ],
     "rewritten": null,
     "hit3": true,
@@ -605,12 +1378,13 @@
    },
    {
     "id": 6,
+    "set": "test",
     "top": [
-     "§ 75 odst. 1",
-     "§ 77 odst. 8",
-     "§ 76 odst. 1",
-     "§ 75 odst. 2",
-     "§ 75 odst. 3"
+     "ZP § 75 odst. 1",
+     "ZP § 77 odst. 8",
+     "ZP § 75 odst. 2",
+     "ZP § 76 odst. 1",
+     "ZP § 86 odst. 4"
     ],
     "rewritten": null,
     "hit3": true,
@@ -618,25 +1392,27 @@
    },
    {
     "id": 7,
+    "set": "test",
     "top": [
-     "§ 77 odst. 8",
-     "§ 76 odst. 1",
-     "§ 76 odst. 3",
-     "§ 76 odst. 2",
-     "§ 79 odst. 1"
+     "ZP § 77 odst. 8",
+     "ZP § 76 odst. 1",
+     "ZP § 79 odst. 1",
+     "ZP § 79a odst. 1",
+     "ZP § 79 odst. 2"
     ],
     "rewritten": null,
     "hit3": false,
-    "hit5": true
+    "hit5": false
    },
    {
     "id": 8,
+    "set": "test",
     "top": [
-     "§ 88 odst. 1",
-     "§ 88 odst. 4",
-     "§ 89 odst. 2",
-     "§ 88 odst. 3",
-     "§ 88 odst. 2"
+     "ZP § 88 odst. 1",
+     "ZP § 176 odst. 3",
+     "ZP § 89 odst. 2",
+     "ZP § 88 odst. 2",
+     "ZP § 88 odst. 3"
     ],
     "rewritten": null,
     "hit3": true,
@@ -644,12 +1420,13 @@
    },
    {
     "id": 9,
+    "set": "test",
     "top": [
-     "§ 93 odst. 2",
-     "§ 93 odst. 3",
-     "§ 93 odst. 4",
-     "§ 98 odst. 1",
-     "§ 78 odst. 1"
+     "ZP § 93 odst. 2",
+     "ZP § 93 odst. 3",
+     "ZP § 240 odst. 3",
+     "ZP § 93 odst. 4",
+     "ZP § 127 odst. 3"
     ],
     "rewritten": null,
     "hit3": true,
@@ -657,12 +1434,13 @@
    },
    {
     "id": 10,
+    "set": "test",
     "top": [
-     "§ 90 odst. 1",
-     "§ 78 odst. 2",
-     "§ 92 odst. 1",
-     "§ 92 odst. 2",
-     "§ 92 odst. 5"
+     "ZP § 130 odst. 2",
+     "ZP § 90 odst. 1",
+     "ZZ § 123 odst. 5",
+     "ZP § 92 odst. 2",
+     "ZP § 92 odst. 1"
     ],
     "rewritten": null,
     "hit3": true,
@@ -670,12 +1448,13 @@
    },
    {
     "id": 11,
+    "set": "test",
     "top": [
-     "§ 67 odst. 1",
-     "§ 68 odst. 2",
-     "§ 67 odst. 4",
-     "§ 62 odst. 2",
-     "§ 68 odst. 1"
+     "ZP § 67 odst. 1",
+     "ZP § 68 odst. 2",
+     "ZP § 67 odst. 4",
+     "ZP § 67 odst. 3",
+     "ZP § 68 odst. 1"
     ],
     "rewritten": null,
     "hit3": true,
@@ -683,12 +1462,13 @@
    },
    {
     "id": 12,
+    "set": "test",
     "top": [
-     "§ 50 odst. 3",
-     "§ 50 odst. 2",
-     "§ 57 odst. 1",
-     "§ 87a odst. 3",
-     "§ 52"
+     "ZP § 50 odst. 3",
+     "ZP § 50 odst. 2",
+     "ZP § 57 odst. 1",
+     "ZP § 317a odst. 5",
+     "ZP § 87a odst. 3"
     ],
     "rewritten": null,
     "hit3": true,
@@ -696,12 +1476,13 @@
    },
    {
     "id": 13,
+    "set": "test",
     "top": [
-     "§ 72",
-     "§ 70 odst. 1",
-     "§ 71",
-     "§ 69 odst. 3",
-     "§ 51 odst. 2"
+     "ZP § 72",
+     "ZNP § 154 odst. 2",
+     "ZP § 285 odst. 2",
+     "ZP § 71",
+     "ZP § 70 odst. 1"
     ],
     "rewritten": null,
     "hit3": true,
@@ -709,12 +1490,13 @@
    },
    {
     "id": 14,
+    "set": "test",
     "top": [
-     "§ 222 odst. 2",
-     "§ 222 odst. 5",
-     "§ 222 odst. 3",
-     "§ 218 odst. 6",
-     "§ 218 odst. 1"
+     "ZP § 222 odst. 2",
+     "ZP § 222 odst. 5",
+     "ZP § 222 odst. 3",
+     "ZP § 218 odst. 6",
+     "ZP § 218 odst. 1"
     ],
     "rewritten": null,
     "hit3": true,
@@ -722,12 +1504,13 @@
    },
    {
     "id": 15,
+    "set": "test",
     "top": [
-     "§ 67 odst. 5",
-     "§ 57 odst. 2",
-     "§ 58 odst. 1",
-     "§ 59",
-     "§ 51 odst. 2"
+     "ZP § 141 odst. 5",
+     "ZP § 271m odst. 2",
+     "ZP § 67 odst. 5",
+     "ZNP § 147 odst. 2",
+     "ZP § 142 odst. 4"
     ],
     "rewritten": null,
     "hit3": false,
@@ -735,12 +1518,13 @@
    },
    {
     "id": 16,
+    "set": "test",
     "top": [
-     "§ 39 odst. 2",
-     "§ 39 odst. 1",
-     "§ 65 odst. 1",
-     "§ 39 odst. 5",
-     "§ 65 odst. 2"
+     "ZP § 39 odst. 2",
+     "ZP § 26 odst. 1",
+     "ZZ § 94 odst. 1",
+     "ZP § 65 odst. 1",
+     "ZP § 39 odst. 1"
     ],
     "rewritten": null,
     "hit3": true,
@@ -748,12 +1532,13 @@
    },
    {
     "id": 17,
+    "set": "test",
     "top": [
-     "§ 80",
-     "§ 76 odst. 1",
-     "§ 216 odst. 3",
-     "§ 216 odst. 2",
-     "§ 212 odst. 1"
+     "ZP § 111 odst. 1",
+     "ZP § 111 odst. 3",
+     "ZP § 111 odst. 4",
+     "ZP § 111 odst. 6",
+     "ZP § 111 odst. 8"
     ],
     "rewritten": null,
     "hit3": null,
@@ -761,38 +1546,405 @@
    },
    {
     "id": 18,
+    "set": "test",
     "top": [
-     "§ 217 odst. 5",
-     "§ 218 odst. 5",
-     "§ 219 odst. 1",
-     "§ 217 odst. 4",
-     "§ 55 odst. 2"
+     "ZP § 195 odst. 1",
+     "ZP § 195 odst. 4",
+     "ZP § 195 odst. 3",
+     "ZP § 195 odst. 5",
+     "ZP § 197 odst. 3"
     ],
     "rewritten": null,
-    "hit3": null,
-    "hit5": null
+    "hit3": true,
+    "hit5": true
    },
    {
     "id": 19,
+    "set": "test",
     "top": [
-     "§ 83 odst. 2",
-     "§ 90 odst. 3",
-     "§ 215 odst. 3",
-     "§ 85 odst. 2",
-     "§ 93 odst. 2"
+     "ZP § 224 odst. 1",
+     "ZP § 110 odst. 4",
+     "ZP § 102 odst. 7",
+     "ZP § 102 odst. 1",
+     "ZP § 317 odst. 1"
+    ],
+    "rewritten": null,
+    "hit3": false,
+    "hit5": true
+   },
+   {
+    "id": 20,
+    "set": "test",
+    "top": [
+     "ZNP § 110 odst. 2",
+     "ZNP § 15a",
+     "ZNP § 110 odst. 6",
+     "ZNP § 28 odst. 5",
+     "ZNP § 47 odst. 1"
+    ],
+    "rewritten": null,
+    "hit3": false,
+    "hit5": false
+   },
+   {
+    "id": 21,
+    "set": "holdout",
+    "top": [
+     "ZP § 79 odst. 1",
+     "ZP § 79a odst. 1",
+     "ZP § 79a odst. 2",
+     "ZP § 77 odst. 8",
+     "ZZ § 123 odst. 5"
+    ],
+    "rewritten": null,
+    "hit3": false,
+    "hit5": false
+   },
+   {
+    "id": 22,
+    "set": "holdout",
+    "top": [
+     "ZP § 218 odst. 4",
+     "ZP § 217 odst. 1",
+     "ZP § 218 odst. 1",
+     "ZP § 217 odst. 3",
+     "ZP § 217 odst. 5"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 23,
+    "set": "holdout",
+    "top": [
+     "ZP § 35 odst. 2",
+     "ZP § 35 odst. 3",
+     "ZP § 35 odst. 1",
+     "ZP § 35 odst. 4",
+     "ZP § 66 odst. 1"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 24,
+    "set": "holdout",
+    "top": [
+     "ZP § 223 odst. 1",
+     "ZP § 219 odst. 2",
+     "ZP § 218 odst. 5",
+     "ZP § 218 odst. 4",
+     "NV 590 příloha bod 4"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 25,
+    "set": "holdout",
+    "top": [
+     "ZP § 67 odst. 5",
+     "ZP § 67 odst. 4",
+     "ZP § 68 odst. 1",
+     "ZP § 68 odst. 2",
+     "ZP § 67 odst. 3"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 26,
+    "set": "holdout",
+    "top": [
+     "ZP § 73a odst. 1",
+     "ZP § 49 odst. 1",
+     "ZP § 75 odst. 3",
+     "ZP § 49 odst. 2",
+     "ZP § 309 odst. 3"
+    ],
+    "rewritten": null,
+    "hit3": false,
+    "hit5": true
+   },
+   {
+    "id": 27,
+    "set": "holdout",
+    "top": [
+     "ZP § 239 odst. 1",
+     "ZNP § 19 odst. 6",
+     "ZNP § 43 odst. 1",
+     "ZP § 55 odst. 2",
+     "ZP § 238 odst. 2"
+    ],
+    "rewritten": null,
+    "hit3": false,
+    "hit5": true
+   },
+   {
+    "id": 28,
+    "set": "holdout",
+    "top": [
+     "ZP § 218 odst. 1",
+     "ZP § 218 odst. 4",
+     "ZP § 218 odst. 5",
+     "ZP § 223 odst. 3",
+     "ZP § 212 odst. 1"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 29,
+    "set": "holdout",
+    "top": [
+     "ZP § 163 odst. 1",
+     "ZP § 176 odst. 1",
+     "ZP § 179 odst. 1",
+     "ZP § 190a odst. 3",
+     "ZP § 182 odst. 1"
     ],
     "rewritten": null,
     "hit3": null,
     "hit5": null
    },
    {
-    "id": 20,
+    "id": 30,
+    "set": "holdout",
     "top": [
-     "§ 219 odst. 1",
-     "§ 53 odst. 1",
-     "§ 222 odst. 1",
-     "§ 37a odst. 1",
-     "§ 222 odst. 2"
+     "NV 590 příloha bod 5",
+     "ZP § 135 odst. 3",
+     "ZP § 199 odst. 3",
+     "ZP § 135 odst. 2",
+     "ZP § 115 odst. 2"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 31,
+    "set": "new",
+    "top": [
+     "ZZ § 43 odst. 1",
+     "ZZ § 50 odst. 3",
+     "ZZ § 54 odst. 4",
+     "ZZ § 55 odst. 3",
+     "ZZ § 56 odst. 3"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 32,
+    "set": "new",
+    "top": [
+     "ZZ § 50 odst. 3",
+     "ZZ § 50 odst. 1",
+     "ZZ § 50 odst. 2",
+     "ZZ § 53 odst. 1",
+     "ZZ § 53 odst. 2"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 33,
+    "set": "new",
+    "top": [
+     "ZZ § 27 odst. 2",
+     "ZZ § 123 odst. 10",
+     "ZZ § 26 odst. 3",
+     "ZZ § 102 odst. 4",
+     "ZZ § 32 odst. 2"
+    ],
+    "rewritten": null,
+    "hit3": false,
+    "hit5": false
+   },
+   {
+    "id": 34,
+    "set": "new",
+    "top": [
+     "ZZ § 41 odst. 1",
+     "ZZ § 54 odst. 4",
+     "ZZ § 39 odst. 1",
+     "ZZ § 48",
+     "ZZ § 42 odst. 4"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 35,
+    "set": "new",
+    "top": [
+     "ZNP § 28 odst. 2",
+     "ZNP § 29 odst. 1",
+     "ZNP § 26 odst. 1",
+     "ZNP § 28 odst. 3",
+     "ZNP § 28 odst. 1"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 36,
+    "set": "new",
+    "top": [
+     "ZNP § 38b odst. 5",
+     "ZNP § 38b odst. 2",
+     "ZNP § 38b odst. 1",
+     "ZNP § 38b odst. 4",
+     "ZNP § 38a odst. 4"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 37,
+    "set": "new",
+    "top": [
+     "ZNP § 41c odst. 2",
+     "ZNP § 41a odst. 8",
+     "ZNP § 110 odst. 10",
+     "ZNP § 154 odst. 1",
+     "ZNP § 41e odst. 3"
+    ],
+    "rewritten": null,
+    "hit3": false,
+    "hit5": false
+   },
+   {
+    "id": 38,
+    "set": "new",
+    "top": [
+     "ZP § 125",
+     "ZP § 126 odst. 1",
+     "ZP § 126 odst. 2",
+     "ZP § 116",
+     "ZP § 118 odst. 1"
+    ],
+    "rewritten": null,
+    "hit3": false,
+    "hit5": true
+   },
+   {
+    "id": 39,
+    "set": "new",
+    "top": [
+     "ZP § 127 odst. 1",
+     "ZP § 114 odst. 1",
+     "ZP § 127 odst. 2",
+     "ZP § 114 odst. 2",
+     "ZP § 127 odst. 3"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 40,
+    "set": "new",
+    "top": [
+     "ZP § 314 odst. 1",
+     "ZNP § 62 odst. 2",
+     "ZP § 315",
+     "ZP § 314 odst. 2",
+     "ZP § 247 odst. 3"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 41,
+    "set": "new",
+    "top": [
+     "ZP § 196 odst. 1",
+     "ZP § 196 odst. 2",
+     "ZP § 197 odst. 3",
+     "ZP § 217 odst. 5",
+     "ZP § 198 odst. 4"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 42,
+    "set": "new",
+    "top": [
+     "ZP § 198 odst. 4",
+     "ZNP § 38b odst. 4",
+     "ZP § 199 odst. 3",
+     "ZNP § 35 odst. 2",
+     "ZP § 271h odst. 1"
+    ],
+    "rewritten": null,
+    "hit3": false,
+    "hit5": false
+   },
+   {
+    "id": 43,
+    "set": "new",
+    "top": [
+     "ZNP § 4",
+     "ZNP § 37",
+     "ZNP § 43 odst. 2",
+     "ZP § 197 odst. 4",
+     "ZNP § 109 odst. 4"
+    ],
+    "rewritten": null,
+    "hit3": null,
+    "hit5": null
+   },
+   {
+    "id": 44,
+    "set": "new",
+    "top": [
+     "ZP § 356 odst. 3",
+     "ZNP § 167d",
+     "ZNP § 18 odst. 4",
+     "ZZ § 113 odst. 5",
+     "ZNP § 18 odst. 5"
+    ],
+    "rewritten": null,
+    "hit3": null,
+    "hit5": null
+   },
+   {
+    "id": 45,
+    "set": "new",
+    "top": [
+     "ZP § 51 odst. 2",
+     "ZP § 51 odst. 1",
+     "ZZ § 78 odst. 7",
+     "ZP § 317 odst. 2",
+     "ZP § 87a odst. 3"
+    ],
+    "rewritten": null,
+    "hit3": null,
+    "hit5": null
+   },
+   {
+    "id": 46,
+    "set": "new",
+    "top": [
+     "ZP § 324a odst. 7",
+     "ZZ § 61 odst. 8",
+     "ZZ § 113 odst. 5",
+     "ZZ § 101",
+     "ZNP § 47 odst. 1"
     ],
     "rewritten": null,
     "hit3": null,
@@ -801,31 +1953,33 @@
   ]
  },
  "hybrid_rewrite": {
-  "hit3": 14,
-  "hit5": 16,
-  "n": 16,
+  "hit3": 37,
+  "hit5": 39,
+  "n": 40,
   "rows": [
    {
     "id": 1,
+    "set": "test",
     "top": [
-     "§ 212 odst. 1",
-     "§ 212 odst. 2",
-     "§ 213 odst. 4",
-     "§ 213 odst. 1",
-     "§ 212 odst. 3"
+     "ZP § 212 odst. 1",
+     "ZP § 212 odst. 2",
+     "ZP § 213 odst. 4",
+     "ZP § 213 odst. 1",
+     "ZP § 212 odst. 3"
     ],
-    "rewritten": "Jaká je minimální výměra dovolené v kalendářním roce?",
+    "rewritten": "Jaká je minimální výměra dovolené zaměstnance v kalendářním roce?",
     "hit3": true,
     "hit5": true
    },
    {
     "id": 2,
+    "set": "test",
     "top": [
-     "§ 35 odst. 2",
-     "§ 35 odst. 3",
-     "§ 35 odst. 1",
-     "§ 35 odst. 5",
-     "§ 35 odst. 4"
+     "ZP § 35 odst. 2",
+     "ZP § 35 odst. 1",
+     "ZP § 35 odst. 3",
+     "ZP § 35 odst. 5",
+     "ZP § 35 odst. 4"
     ],
     "rewritten": "Jaká je nejdelší přípustná délka zkušební doby u zaměstnance, který není vedoucím zaměstnancem?",
     "hit3": true,
@@ -833,38 +1987,41 @@
    },
    {
     "id": 3,
+    "set": "test",
     "top": [
-     "§ 66 odst. 1",
-     "§ 48 odst. 1",
-     "§ 59",
-     "§ 50 odst. 3",
-     "§ 58 odst. 1"
+     "ZP § 66 odst. 1",
+     "ZP § 48 odst. 1",
+     "ZP § 72",
+     "ZP § 35 odst. 2",
+     "ZP § 35 odst. 1"
     ],
-    "rewritten": "Může zaměstnavatel se mnou ve zkušební době zrušit pracovní poměr bez uvedení důvodu?",
+    "rewritten": "Může zaměstnavatel rozvázat pracovní poměr se zaměstnancem ve zkušební době bez uvedení důvodu?",
     "hit3": true,
     "hit5": true
    },
    {
     "id": 4,
+    "set": "test",
     "top": [
-     "§ 51 odst. 1",
-     "§ 87a odst. 3",
-     "§ 51 odst. 2",
-     "§ 51a odst. 2",
-     "§ 53 odst. 2"
+     "ZP § 51 odst. 1",
+     "ZP § 87a odst. 3",
+     "ZZ § 78 odst. 7",
+     "ZP § 51 odst. 2",
+     "ZP § 317 odst. 2"
     ],
     "rewritten": "Jaká je délka výpovědní doby?",
-    "hit3": true,
+    "hit3": false,
     "hit5": true
    },
    {
     "id": 5,
+    "set": "test",
     "top": [
-     "§ 51 odst. 1",
-     "§ 51 odst. 2",
-     "§ 51a odst. 1",
-     "§ 51a odst. 2",
-     "§ 87a odst. 3"
+     "ZP § 51 odst. 1",
+     "ZZ § 78 odst. 7",
+     "ZP § 51 odst. 2",
+     "ZP § 87a odst. 3",
+     "ZP § 51a odst. 2"
     ],
     "rewritten": "Kterým dnem počíná běžet výpovědní doba?",
     "hit3": true,
@@ -872,51 +2029,55 @@
    },
    {
     "id": 6,
+    "set": "test",
     "top": [
-     "§ 75 odst. 1",
-     "§ 76 odst. 1",
-     "§ 75 odst. 2",
-     "§ 76 odst. 3",
-     "§ 76 odst. 2"
+     "ZP § 75 odst. 1",
+     "ZP § 76 odst. 1",
+     "ZP § 75 odst. 2",
+     "ZP § 76 odst. 3",
+     "ZNP § 7a odst. 3"
     ],
-    "rewritten": "Jaký je nejvyšší přípustný rozsah práce vykonávané v kalendářním roce na základě dohody o provedení práce?",
+    "rewritten": "Jaký je nejvyšší přípustný rozsah práce, který může zaměstnanec vykonat na základě dohody o provedení práce v kalendářním roce?",
     "hit3": true,
     "hit5": true
    },
    {
     "id": 7,
+    "set": "test",
     "top": [
-     "§ 76 odst. 3",
-     "§ 76 odst. 1",
-     "§ 75 odst. 1",
-     "§ 76 odst. 2",
-     "§ 77 odst. 8"
+     "ZP § 76 odst. 3",
+     "ZP § 76 odst. 1",
+     "ZP § 76 odst. 2",
+     "ZP § 75 odst. 1",
+     "ZP § 93 odst. 4"
     ],
-    "rewritten": "Jaký je nejvyšší přípustný rozsah pracovní doby v kalendářním týdnu při výkonu práce na základě dohody o pracovní činnosti?",
-    "hit3": false,
+    "rewritten": "V jakém nejvyšším rozsahu může zaměstnanec vykonávat práci na základě dohody o pracovní činnosti v kalendářním týdnu?",
+    "hit3": true,
     "hit5": true
    },
    {
     "id": 8,
+    "set": "test",
     "top": [
-     "§ 88 odst. 1",
-     "§ 88 odst. 3",
-     "§ 88 odst. 2",
-     "§ 88 odst. 4",
-     "§ 89 odst. 2"
+     "ZP § 88 odst. 1",
+     "ZP § 88 odst. 2",
+     "ZP § 88 odst. 3",
+     "ZP § 88 odst. 4",
+     "ZP § 89 odst. 2"
     ],
-    "rewritten": "Po jaké době nepřetržité práce vzniká zaměstnanci nárok na přestávku v práci na jídlo a oddech?",
+    "rewritten": "Po kolika hodinách nepřetržitého výkonu práce vzniká zaměstnanci nárok na přestávku v práci na jídlo a oddech?",
     "hit3": true,
     "hit5": true
    },
    {
     "id": 9,
+    "set": "test",
     "top": [
-     "§ 93 odst. 2",
-     "§ 93 odst. 3",
-     "§ 93 odst. 4",
-     "§ 99",
-     "§ 78 odst. 1"
+     "ZP § 93 odst. 2",
+     "ZP § 93 odst. 3",
+     "ZP § 240 odst. 3",
+     "ZP § 93 odst. 4",
+     "ZP § 127 odst. 3"
     ],
     "rewritten": "V jakém maximálním rozsahu může zaměstnavatel zaměstnanci nařídit práci přesčas?",
     "hit3": true,
@@ -924,103 +2085,111 @@
    },
    {
     "id": 10,
+    "set": "test",
     "top": [
-     "§ 92 odst. 1",
-     "§ 90a",
-     "§ 94 odst. 1",
-     "§ 90 odst. 1",
-     "§ 92 odst. 2"
+     "ZP § 92 odst. 2",
+     "ZP § 92 odst. 1",
+     "ZP § 90 odst. 1",
+     "ZP § 130 odst. 2",
+     "ZP § 78 odst. 2"
     ],
-    "rewritten": "Jaká je minimální délka nepřetržitého odpočinku zaměstnance mezi koncem jedné směny a začátkem následující směny?",
-    "hit3": false,
+    "rewritten": "Jaká je minimální délka nepřetržitého odpočinku zaměstnance mezi dvěma směnami?",
+    "hit3": true,
     "hit5": true
    },
    {
     "id": 11,
+    "set": "test",
     "top": [
-     "§ 67 odst. 3",
-     "§ 67 odst. 1",
-     "§ 57 odst. 1",
-     "§ 68 odst. 1",
-     "§ 62 odst. 1"
+     "ZP § 67 odst. 1",
+     "ZP § 67 odst. 3",
+     "ZP § 57 odst. 1",
+     "ZP § 68 odst. 1",
+     "ZP § 339a odst. 2"
     ],
-    "rewritten": "Jaká je výše odstupného podle § 67 zákoníku práce náležejícího zaměstnanci, jehož pracovní poměr u zaměstnavatele trvá jeden a půl roku a s nímž je rozvázán pracovní poměr výpovědí z důvodu nadbytečnosti podle § 52 písm. c) zákoníku práce?",
+    "rewritten": "Jaká je výše odstupného náležejícího zaměstnanci, jehož pracovní poměr u zaměstnavatele trval po dobu jednoho a půl roku a byl rozvázán výpovědí ze strany zaměstnavatele z důvodu nadbytečnosti zaměstnance?",
     "hit3": true,
     "hit5": true
    },
    {
     "id": 12,
+    "set": "test",
     "top": [
-     "§ 50 odst. 3",
-     "§ 57 odst. 1",
-     "§ 52",
-     "§ 50 odst. 2",
-     "§ 58 odst. 1"
+     "ZP § 50 odst. 3",
+     "ZP § 57 odst. 1",
+     "ZP § 50 odst. 2",
+     "ZP § 58 odst. 1",
+     "ZP § 52"
     ],
-    "rewritten": "Může zaměstnavatel dát zaměstnanci výpověď z pracovního poměru z jakéhokoli důvodu, například z důvodu, že zaměstnanec nevyhovuje jeho subjektivním požadavkům?",
+    "rewritten": "Je zaměstnavatel oprávněn dát zaměstnanci výpověď z pracovního poměru z libovolného důvodu, popřípadě z důvodu osobní nesympatie?",
     "hit3": true,
     "hit5": true
    },
    {
     "id": 13,
+    "set": "test",
     "top": [
-     "§ 72",
-     "§ 71",
-     "§ 70 odst. 1",
-     "§ 51 odst. 2",
-     "§ 70 odst. 2"
+     "ZP § 72",
+     "ZP § 285 odst. 2",
+     "ZP § 339a odst. 1",
+     "ZP § 71",
+     "ZP § 70 odst. 1"
     ],
-    "rewritten": "V jaké lhůtě může zaměstnanec uplatnit neplatnost výpovědi u soudu?",
+    "rewritten": "V jaké lhůtě může zaměstnanec podat k soudu návrh na určení neplatnosti výpovědi z pracovního poměru?",
     "hit3": true,
     "hit5": true
    },
    {
     "id": 14,
+    "set": "test",
     "top": [
-     "§ 222 odst. 2",
-     "§ 222 odst. 5",
-     "§ 222 odst. 3",
-     "§ 218 odst. 6",
-     "§ 222 odst. 1"
+     "ZP § 222 odst. 2",
+     "ZP § 222 odst. 5",
+     "ZP § 222 odst. 3",
+     "ZP § 222 odst. 1",
+     "ZP § 222 odst. 4"
     ],
-    "rewritten": "Mám vůči zaměstnavateli nárok na náhradu mzdy za nevyčerpanou dovolenou?",
+    "rewritten": "Je zaměstnavatel povinen zaměstnanci poskytnout náhradu mzdy nebo platu za nevyčerpanou dovolenou?",
     "hit3": true,
     "hit5": true
    },
    {
     "id": 15,
+    "set": "test",
     "top": [
-     "§ 56 odst. 1",
-     "§ 58 odst. 1",
-     "§ 59",
-     "§ 56 odst. 2",
-     "§ 72"
+     "ZP § 58 odst. 1",
+     "ZP § 59",
+     "ZP § 56 odst. 1",
+     "ZP § 324a odst. 3",
+     "ZP § 141 odst. 5"
     ],
-    "rewritten": "Může zaměstnanec okamžitě zrušit pracovní poměr, jestliže mu zaměstnavatel nevyplatil mzdu po dobu jednoho měsíce?",
+    "rewritten": "Zaměstnavatel nevyplatil zaměstnanci mzdu po dobu jednoho měsíce; může zaměstnanec okamžitě zrušit pracovní poměr?",
     "hit3": true,
     "hit5": true
    },
    {
     "id": 16,
+    "set": "test",
     "top": [
-     "§ 39 odst. 2",
-     "§ 39 odst. 1",
-     "§ 39 odst. 5",
-     "§ 39 odst. 4",
-     "§ 65 odst. 1"
+     "ZP § 39 odst. 2",
+     "ZP § 39 odst. 5",
+     "ZP § 39 odst. 1",
+     "ZP § 65 odst. 1",
+     "ZP § 65 odst. 2"
     ],
-    "rewritten": "Kolikrát lze opakovaně sjednat pracovní poměr na dobu určitou, případně jej prodloužit?",
+    "rewritten": "Kolikrát může být pracovní poměr na dobu určitou opakovaně sjednán?",
     "hit3": true,
     "hit5": true
    },
    {
     "id": 17,
+    "set": "test",
     "top": [
-     "§ 56 odst. 2",
-     "§ 69 odst. 2",
-     "§ 67 odst. 1",
-     "§ 216 odst. 2",
-     "§ 69 odst. 1"
+     "ZP § 111 odst. 3",
+     "ZP § 111 odst. 7",
+     "ZP § 111 odst. 4",
+     "ZP § 111 odst. 1",
+     "ZP § 111 odst. 6"
     ],
     "rewritten": "Jaká je výše minimální mzdy pro kalendářní rok 2026?",
     "hit3": null,
@@ -1028,40 +2197,407 @@
    },
    {
     "id": 18,
+    "set": "test",
     "top": [
-     "§ 218 odst. 5",
-     "§ 217 odst. 5",
-     "§ 217 odst. 4",
-     "§ 39 odst. 2",
-     "§ 219 odst. 1"
+     "ZP § 195 odst. 1",
+     "ZP § 197 odst. 2",
+     "ZP § 195 odst. 4",
+     "ZP § 195 odst. 3",
+     "ZP § 197 odst. 3"
     ],
-    "rewritten": "Po jakou dobu se poskytuje mateřská dovolená?",
-    "hit3": null,
-    "hit5": null
+    "rewritten": "Po jakou dobu přísluší zaměstnankyni mateřská dovolená?",
+    "hit3": true,
+    "hit5": true
    },
    {
     "id": 19,
+    "set": "test",
     "top": [
-     "§ 216 odst. 2",
-     "§ 215 odst. 3",
-     "§ 76 odst. 2",
-     "§ 216 odst. 3",
-     "§ 97 odst. 1"
+     "ZP § 317 odst. 1",
+     "ZP § 317 odst. 3",
+     "ZP § 190a odst. 7",
+     "ZP § 190a odst. 2",
+     "ZP § 317 odst. 2"
     ],
     "rewritten": "Za jakých podmínek je zaměstnanec oprávněn vykonávat práci na dálku?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 20,
+    "set": "test",
+    "top": [
+     "ZNP § 110a",
+     "ZNP § 23",
+     "ZNP § 172 odst. 1",
+     "ZNP § 26 odst. 2",
+     "ZNP § 48 odst. 2"
+    ],
+    "rewritten": "V jaké výši náleží pojištěnci nemocenské po dobu dočasné pracovní neschopnosti?",
+    "hit3": false,
+    "hit5": false
+   },
+   {
+    "id": 21,
+    "set": "holdout",
+    "top": [
+     "ZP § 92 odst. 2",
+     "ZP § 92 odst. 1",
+     "ZP § 92 odst. 4",
+     "ZP § 92 odst. 5",
+     "ZP § 90 odst. 1"
+    ],
+    "rewritten": "Jaká je minimální délka nepřetržitého odpočinku v týdnu, který je zaměstnavatel povinen poskytnout zaměstnanci alespoň jednou za týden?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 22,
+    "set": "holdout",
+    "top": [
+     "ZP § 218 odst. 4",
+     "ZP § 217 odst. 1",
+     "ZP § 218 odst. 1",
+     "ZP § 217 odst. 3",
+     "ZP § 218 odst. 5"
+    ],
+    "rewritten": "Je zaměstnavatel povinen zaměstnanci předem oznámit dobu čerpání dovolené?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 23,
+    "set": "holdout",
+    "top": [
+     "ZP § 35 odst. 2",
+     "ZP § 35 odst. 3",
+     "ZP § 35 odst. 1",
+     "ZP § 66 odst. 1",
+     "ZP § 177 odst. 2"
+    ],
+    "rewritten": "Jaká je maximální délka zkušební doby, kterou lze sjednat v pracovním poměru na dobu určitou sjednaném na čtyři měsíce?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 24,
+    "set": "holdout",
+    "top": [
+     "ZP § 223 odst. 1",
+     "ZP § 191",
+     "ZP § 218 odst. 1",
+     "ZP § 218 odst. 6",
+     "ZP § 218 odst. 5"
+    ],
+    "rewritten": "Může zaměstnavatel krátit dovolenou zaměstnanci z důvodu neomluvené nepřítomnosti v práci v rozsahu jednoho dne?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 25,
+    "set": "holdout",
+    "top": [
+     "ZP § 67 odst. 5",
+     "ZP § 68 odst. 1",
+     "ZP § 67 odst. 3",
+     "ZP § 68 odst. 2",
+     "ZP § 67 odst. 1"
+    ],
+    "rewritten": "Kdy je zaměstnavatel povinen vyplatit zaměstnanci odstupné?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 26,
+    "set": "holdout",
+    "top": [
+     "ZP § 49 odst. 2",
+     "ZP § 49 odst. 1",
+     "ZP § 77 odst. 1",
+     "ZP § 49 odst. 3",
+     "ZP § 317a odst. 5"
+    ],
+    "rewritten": "Musí být dohoda o rozvázání pracovního poměru mezi zaměstnancem a zaměstnavatelem uzavřena v písemné formě?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 27,
+    "set": "holdout",
+    "top": [
+     "ZP § 55 odst. 2",
+     "ZP § 58 odst. 1",
+     "ZP § 59",
+     "ZP § 56 odst. 1",
+     "ZP § 55 odst. 1"
+    ],
+    "rewritten": "Může zaměstnavatel s těhotnou zaměstnankyní rozvázat pracovní poměr okamžitým zrušením?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 28,
+    "set": "holdout",
+    "top": [
+     "ZP § 218 odst. 3",
+     "ZP § 218 odst. 1",
+     "ZP § 218 odst. 5",
+     "ZP § 218 odst. 4",
+     "ZP § 218 odst. 2"
+    ],
+    "rewritten": "V jaké lhůtě je zaměstnanec povinen vyčerpat dovolenou za příslušný kalendářní rok?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 29,
+    "set": "holdout",
+    "top": [
+     "ZP § 190a odst. 3",
+     "ZP § 176 odst. 1",
+     "ZP § 163 odst. 1",
+     "ZP § 176 odst. 3",
+     "ZP § 236 odst. 2"
+    ],
+    "rewritten": "Jaká je výše peněžitého příspěvku na stravování poskytovaného formou stravenkového paušálu za jednu pracovní směnu?",
     "hit3": null,
     "hit5": null
    },
    {
-    "id": 20,
+    "id": 30,
+    "set": "holdout",
     "top": [
-     "§ 219 odst. 1",
-     "§ 53 odst. 1",
-     "§ 218 odst. 5",
-     "§ 95 odst. 1",
-     "§ 56 odst. 2"
+     "NV 590 příloha bod 5",
+     "NV 590 příloha bod 7",
+     "NV 590 příloha bod 6",
+     "NV 590 příloha bod 11",
+     "NV 590 příloha bod 10"
     ],
-    "rewritten": "V jaké výši náleží zaměstnanci nemocenské po dobu dočasné pracovní neschopnosti?",
+    "rewritten": "V jakém rozsahu přísluší zaměstnanci pracovní volno s náhradou mzdy nebo platu při překážce v práci na straně zaměstnance spočívající v uzavření manželství?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 31,
+    "set": "new",
+    "top": [
+     "ZZ § 43 odst. 1",
+     "ZZ § 50 odst. 3",
+     "ZZ § 51 odst. 1",
+     "ZZ § 54 odst. 4",
+     "ZZ § 39 odst. 1"
+    ],
+    "rewritten": "Na jakou dobu se poskytuje podpora v nezaměstnanosti uchazeči o zaměstnání ve věku 35 let?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 32,
+    "set": "new",
+    "top": [
+     "ZZ § 50 odst. 3",
+     "ZZ § 50 odst. 2",
+     "ZZ § 50 odst. 1",
+     "ZZ § 51 odst. 1",
+     "ZZ § 53 odst. 3"
+    ],
+    "rewritten": "V jaké procentní výši z vyměřovacího základu náleží podpora v nezaměstnanosti?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 33,
+    "set": "new",
+    "top": [
+     "ZZ § 25 odst. 3",
+     "ZZ § 50 odst. 2",
+     "ZZ § 25 odst. 6",
+     "ZZ § 25 odst. 4",
+     "ZZ § 32 odst. 2"
+    ],
+    "rewritten": "Jaká je maximální výše měsíčního příjmu z výdělečné činnosti, kterou může uchazeč o zaměstnání vedený v evidenci uchazečů o zaměstnání dosáhnout, aniž by přestal být veden v evidenci uchazečů o zaměstnání?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 34,
+    "set": "new",
+    "top": [
+     "ZZ § 48",
+     "ZZ § 49 odst. 1",
+     "ZZ § 39 odst. 1",
+     "ZZ § 49 odst. 2",
+     "ZZ § 41 odst. 1"
+    ],
+    "rewritten": "Jaká je minimální délka doby důchodového pojištění získané zaměstnáním nebo jinou výdělečnou činností v rozhodném období pro vznik nároku na podporu v nezaměstnanosti?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 35,
+    "set": "new",
+    "top": [
+     "ZNP § 172 odst. 1",
+     "ZNP § 23",
+     "ZNP § 26 odst. 1",
+     "ZNP § 28 odst. 1",
+     "ZNP § 26 odst. 2"
+    ],
+    "rewritten": "Od kterého kalendářního dne trvání dočasné pracovní neschopnosti vzniká nárok na nemocenské?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 36,
+    "set": "new",
+    "top": [
+     "ZNP § 38b odst. 4",
+     "ZNP § 38a odst. 4",
+     "ZNP § 4",
+     "ZNP § 38b odst. 5",
+     "ZNP § 38b odst. 1"
+    ],
+    "rewritten": "Po jakou dobu a v jaké výši náleží dávka otcovská?",
+    "hit3": false,
+    "hit5": true
+   },
+   {
+    "id": 37,
+    "set": "new",
+    "top": [
+     "ZNP § 40 odst. 8",
+     "ZNP § 40 odst. 1",
+     "ZNP § 41a odst. 2",
+     "ZNP § 40 odst. 3",
+     "ZNP § 68 odst. 3"
+    ],
+    "rewritten": "Po jakou nejdelší dobu náleží ošetřovné při ošetřování nemocného dítěte?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 38,
+    "set": "new",
+    "top": [
+     "ZP § 125",
+     "ZP § 126 odst. 1",
+     "ZP § 116",
+     "ZP § 126 odst. 2",
+     "ZP § 118 odst. 1"
+    ],
+    "rewritten": "Náleží zaměstnanci příplatek za práci v noci?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 39,
+    "set": "new",
+    "top": [
+     "ZP § 114 odst. 2",
+     "ZP § 127 odst. 1",
+     "ZP § 114 odst. 1",
+     "ZP § 127 odst. 3",
+     "ZP § 127 odst. 2"
+    ],
+    "rewritten": "Jaká je výše příplatku ke mzdě nebo platu náležejícího zaměstnanci za práci přesčas?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 40,
+    "set": "new",
+    "top": [
+     "ZP § 314 odst. 1",
+     "ZNP § 62 odst. 2",
+     "ZP § 315",
+     "ZP § 247 odst. 3",
+     "ZP § 314 odst. 2"
+    ],
+    "rewritten": "V jaké lhůtě je zaměstnavatel povinen vydat zaměstnanci pracovní posudek?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 41,
+    "set": "new",
+    "top": [
+     "ZP § 196 odst. 1",
+     "ZP § 196 odst. 2",
+     "ZP § 217 odst. 5",
+     "ZP § 197 odst. 3",
+     "ZP § 198 odst. 4"
+    ],
+    "rewritten": "V jaké lhůtě předem je zaměstnanec povinen požádat zaměstnavatele o poskytnutí rodičovské dovolené?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 42,
+    "set": "new",
+    "top": [
+     "NV 590 příloha bod 7",
+     "ZP § 199 odst. 3",
+     "NV 590 příloha bod 6",
+     "NV 590 příloha bod 5",
+     "NV 590 příloha bod 10"
+    ],
+    "rewritten": "Na kolik dnů pracovního volna s náhradou mzdy nebo platu mi vzniká nárok v případě úmrtí matky?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 43,
+    "set": "new",
+    "top": [
+     "ZZ § 78a odst. 3",
+     "ZZ § 120d odst. 2",
+     "ZNP § 44 odst. 1",
+     "ZNP § 32 odst. 6",
+     "ZNP § 43 odst. 1"
+    ],
+    "rewritten": "Jaká je celková výše rodičovského příspěvku náležejícího oprávněné osobě?",
+    "hit3": null,
+    "hit5": null
+   },
+   {
+    "id": 44,
+    "set": "new",
+    "top": [
+     "ZP § 356 odst. 3",
+     "ZZ § 113 odst. 5",
+     "ZZ § 78c odst. 6",
+     "ZNP § 183",
+     "ZZ § 112 odst. 2"
+    ],
+    "rewritten": "Jaká je měsíční výše pojistného na sociální zabezpečení a příspěvku na státní politiku zaměstnanosti hrazeného osobou samostatně výdělečně činnou?",
+    "hit3": null,
+    "hit5": null
+   },
+   {
+    "id": 45,
+    "set": "new",
+    "top": [
+     "ZP § 51 odst. 1",
+     "ZZ § 78 odst. 7",
+     "ZP § 87a odst. 3",
+     "ZP § 51 odst. 2",
+     "ZP § 317 odst. 2"
+    ],
+    "rewritten": "Jaká je délka výpovědní doby při výpovědi nájmu bytu?",
+    "hit3": null,
+    "hit5": null
+   },
+   {
+    "id": 46,
+    "set": "new",
+    "top": [
+     "ZZ § 109b",
+     "ZP § 180",
+     "ZP § 324a odst. 7",
+     "ZNP § 17 odst. 1",
+     "ZZ § 113 odst. 5"
+    ],
+    "rewritten": "Jaká je výše slevy na dani na poplatníka?",
     "hit3": null,
     "hit5": null
    }

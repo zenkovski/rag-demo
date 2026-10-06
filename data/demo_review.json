@@ -1,0 +1,66 @@
+{
+ "Musí mi zaměstnavatel dát výpověď písemně?": [
+  true,
+  "Ručně ověřeno proti textu zákona."
+ ],
+ "Kolik hodin týdně je normální pracovní doba?": [
+  true,
+  "Ručně ověřeno proti textu zákona."
+ ],
+ "Může mi šéf určit dovolenou, kdy se mu to hodí?": [
+  true,
+  "Ručně ověřeno proti textu zákona."
+ ],
+ "Může mi zaměstnavatel krátit dovolenou?": [
+  true,
+  "Ručně ověřeno proti textu zákona."
+ ],
+ "Jak dlouhá je zkušební doba u vedoucího zaměstnance?": [
+  true,
+  "Ručně ověřeno proti textu zákona."
+ ],
+ "Jak skončí pracovní poměr, když se se šéfem dohodneme?": [
+  true,
+  "Ručně ověřeno proti textu zákona."
+ ],
+ "Kdy mi musí zaměstnavatel vyplatit odstupné?": [
+  true,
+  "Ručně ověřeno proti textu zákona."
+ ],
+ "Kdy může zaměstnavatel okamžitě zrušit pracovní poměr?": [
+  true,
+  "Ručně ověřeno proti textu zákona."
+ ],
+ "Musím mít na DPP písemný rozvrh směn?": [
+  true,
+  "Ručně ověřeno proti textu zákona."
+ ],
+ "Může mi zaměstnavatel dát výpověď, když jsem nemocný?": [
+  false,
+  "Hlavní pravidlo chybí: § 53 odst. 1 zakazuje výpověď v době pracovní neschopnosti (ochranná doba). Ten se mezi 5 úseků nedostal, model proto odpověděl jen okrajově."
+ ],
+ "Kolik dostanu za práci o víkendu?": [
+  false,
+  "Smíchal mzdu a plat: 25 % podle § 126 platí jen pro plat ve veřejné sféře. Pro mzdu je to nejméně 10 % (§ 118)."
+ ],
+ "Může mi zaměstnavatel nařídit práci z domova?": [
+  true,
+  "Ručně ověřeno proti textu zákona."
+ ],
+ "Jak dlouho můžu být maximálně na nemocenské?": [
+  false,
+  "Neúplné: základních 380 dnů (§ 26 ZNP) se nenašlo. Model to poctivě řekl a uvedl jen prodloužení o 350 dnů podle § 27."
+ ],
+ "Kolik peněz dostanu na mateřské?": [
+  true,
+  "Ručně ověřeno proti textu zákona."
+ ],
+ "Dostanu podporu v nezaměstnanosti, když jsem dal výpověď sám?": [
+  false,
+  "Zbytečné „nevím“: § 39 odst. 2 ZZ byl mezi úseky a vyjmenovává, kdy nárok na podporu není. Vlastní výpověď mezi těmi důvody není."
+ ],
+ "Kolik dní volna dostanu na stěhování?": [
+  true,
+  "Ručně ověřeno proti textu zákona."
+ ]
+}

@@ -56,12 +56,24 @@ def embed_api(texts):
         np.savez(cache_file, **cache)
     return np.stack([cache[t] for t in texts])
 
+def quantize(vecs):
+    """Vektory na int8 + 1 měřítko na vektor (4× menší soubor pro webovou funkci).
+    Python i web počítají se stejnými zaokrouhlenými čísly, takže najdou stejné úseky."""
+    scale = (np.abs(vecs).max(axis=1) / 127).astype(np.float32)
+    q = np.round(vecs / scale[:, None]).astype(np.int8)
+    return q, scale
+
+def dequantize(q, scale):
+    """Zpět na float32 a znovu na délku 1 (kosinová podobnost = skalární součin, stejně jako v LangChainu)."""
+    v = q.astype(np.float32) * scale[:, None]
+    return (v / np.linalg.norm(v.astype(np.float64), axis=1)[:, None]).astype(np.float32)
+
 _index = {}
 def index(model="large"):
     """Matice vektorů všech úseků (normalizované -> cosine = skalární součin)."""
     if model not in _index:
         if model == "large":
-            _index[model] = embed_api([passage(c) for c in load_chunks()])
+            _index[model] = dequantize(*quantize(embed_api([passage(c) for c in load_chunks()])))
         else:
             p = ROOT / "data" / "embeddings.npy"
             if not p.exists():
@@ -111,7 +123,7 @@ def bm25_scores(text, k1=1.5, b=0.75):
     return s
 
 # ---------- přepis otázky ----------
-REWRITE = """Přepiš otázku laika do formulace, jakou by použil český zákoník práce.
+REWRITE = """Přepiš otázku laika do formulace, jakou by použil český právní předpis (zákoník práce, zákon o zaměstnanosti, zákon o nemocenském pojištění).
 Použij odborné právní pojmy místo hovorových slov. Nic nepřidávej a na otázku neodpovídej.
 Vrať jen jednu přepsanou větu."""
 
@@ -186,7 +198,7 @@ def llm(system, user, model=None):
         return text, usage
     raise RuntimeError(f"OpenRouter: {r.status_code} {r.text[:200]}")
 
-SYSTEM = """Jsi asistent, který odpovídá na otázky o českém zákoníku práce.
+SYSTEM = """Jsi asistent, který odpovídá na otázky o českém pracovním právu: zákoník práce, zákon o zaměstnanosti, zákon o nemocenském pojištění a nařízení vlády o překážkách v práci.
 Pravidla:
 1. Odpovídej POUZE z dodaných úseků zákona. Nic nedoplňuj z vlastní paměti.
 2. Každé tvrzení musí přímo vyplývat z úseku, který za ním citujete. Citace piš ve tvaru [1], [2].
@@ -195,7 +207,7 @@ Pravidla:
 5. Pokud úseky na otázku neodpovídají, napiš přesně: "Nevím, v dostupných úsecích zákona to není." a nic dalšího.
 Piš česky, stručně (2–4 věty), srozumitelně pro laika. Bez nadpisů a bez tučného písma."""
 
-SYSTEM_V1 = """Jsi asistent, který odpovídá na otázky o českém zákoníku práce.
+SYSTEM_V1 = """Jsi asistent, který odpovídá na otázky o českém pracovním právu: zákoník práce, zákon o zaměstnanosti, zákon o nemocenském pojištění a nařízení vlády o překážkách v práci.
 Odpovídej POUZE z dodaných úseků zákona. Nic si nedomýšlej z vlastní paměti.
 Za každou větu, která vychází z úseku, dej citaci ve tvaru [1], [2] podle čísla úseku.
 Pokud úseky na otázku neodpovídají, napiš přesně: "Nevím, v dostupných úsecích zákona to není." a nic dalšího.

@@ -1,0 +1,1070 @@
+{
+ "dense": {
+  "hit3": 13,
+  "hit5": 15,
+  "n": 16,
+  "rows": [
+   {
+    "id": 1,
+    "top": [
+     "§ 212 odst. 1",
+     "§ 212 odst. 2",
+     "§ 212 odst. 3",
+     "§ 213 odst. 4",
+     "§ 213 odst. 5"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 2,
+    "top": [
+     "§ 35 odst. 2",
+     "§ 35 odst. 5",
+     "§ 35 odst. 4",
+     "§ 35 odst. 3",
+     "§ 35 odst. 1"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 3,
+    "top": [
+     "§ 66 odst. 1",
+     "§ 35 odst. 1",
+     "§ 35 odst. 2",
+     "§ 55 odst. 1",
+     "§ 35 odst. 4"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 4,
+    "top": [
+     "§ 51 odst. 2",
+     "§ 51 odst. 3",
+     "§ 51 odst. 1",
+     "§ 53 odst. 2",
+     "§ 87a odst. 3"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 5,
+    "top": [
+     "§ 51 odst. 2",
+     "§ 51 odst. 1",
+     "§ 87a odst. 3",
+     "§ 51 odst. 3",
+     "§ 53 odst. 2"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 6,
+    "top": [
+     "§ 75 odst. 1",
+     "§ 76 odst. 1",
+     "§ 76 odst. 3",
+     "§ 77 odst. 4",
+     "§ 77 odst. 8"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 7,
+    "top": [
+     "§ 76 odst. 1",
+     "§ 76 odst. 3",
+     "§ 77 odst. 8",
+     "§ 76 odst. 2",
+     "§ 76 odst. 4"
+    ],
+    "rewritten": null,
+    "hit3": false,
+    "hit5": true
+   },
+   {
+    "id": 8,
+    "top": [
+     "§ 88 odst. 1",
+     "§ 88 odst. 2",
+     "§ 88 odst. 4",
+     "§ 89 odst. 2",
+     "§ 88 odst. 3"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 9,
+    "top": [
+     "§ 93 odst. 2",
+     "§ 93 odst. 4",
+     "§ 93 odst. 3",
+     "§ 88 odst. 1",
+     "§ 94 odst. 1"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 10,
+    "top": [
+     "§ 88 odst. 2",
+     "§ 94 odst. 1",
+     "§ 90 odst. 1",
+     "§ 92 odst. 2",
+     "§ 97 odst. 4"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 11,
+    "top": [
+     "§ 67 odst. 1",
+     "§ 68 odst. 2",
+     "§ 67 odst. 3",
+     "§ 68 odst. 1",
+     "§ 67 odst. 4"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 12,
+    "top": [
+     "§ 50 odst. 3",
+     "§ 57 odst. 1",
+     "§ 52",
+     "§ 50 odst. 4",
+     "§ 58 odst. 1"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 13,
+    "top": [
+     "§ 72",
+     "§ 51 odst. 2",
+     "§ 51a odst. 2",
+     "§ 57 odst. 1",
+     "§ 61 odst. 4"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 14,
+    "top": [
+     "§ 217 odst. 1",
+     "§ 218 odst. 4",
+     "§ 217 odst. 3",
+     "§ 218 odst. 1",
+     "§ 222 odst. 2"
+    ],
+    "rewritten": null,
+    "hit3": false,
+    "hit5": true
+   },
+   {
+    "id": 15,
+    "top": [
+     "§ 67 odst. 5",
+     "§ 70 odst. 2",
+     "§ 72",
+     "§ 59",
+     "§ 69 odst. 3"
+    ],
+    "rewritten": null,
+    "hit3": false,
+    "hit5": false
+   },
+   {
+    "id": 16,
+    "top": [
+     "§ 39 odst. 2",
+     "§ 51 odst. 3",
+     "§ 93 odst. 4",
+     "§ 39 odst. 5",
+     "§ 77 odst. 4"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 17,
+    "top": [
+     "§ 67 odst. 4",
+     "§ 80",
+     "§ 67 odst. 1",
+     "§ 37 odst. 1",
+     "§ 62 odst. 1"
+    ],
+    "rewritten": null,
+    "hit3": null,
+    "hit5": null
+   },
+   {
+    "id": 18,
+    "top": [
+     "§ 217 odst. 5",
+     "§ 54",
+     "§ 212 odst. 1",
+     "§ 218 odst. 5",
+     "§ 53 odst. 1"
+    ],
+    "rewritten": null,
+    "hit3": null,
+    "hit5": null
+   },
+   {
+    "id": 19,
+    "top": [
+     "§ 85 odst. 2",
+     "§ 77b odst. 4",
+     "§ 76 odst. 1",
+     "§ 95 odst. 3",
+     "§ 76 odst. 2"
+    ],
+    "rewritten": null,
+    "hit3": null,
+    "hit5": null
+   },
+   {
+    "id": 20,
+    "top": [
+     "§ 53 odst. 1",
+     "§ 219 odst. 1",
+     "§ 88 odst. 4",
+     "§ 215 odst. 4",
+     "§ 83a odst. 1"
+    ],
+    "rewritten": null,
+    "hit3": null,
+    "hit5": null
+   }
+  ]
+ },
+ "dense_large": {
+  "hit3": 14,
+  "hit5": 15,
+  "n": 16,
+  "rows": [
+   {
+    "id": 1,
+    "top": [
+     "§ 212 odst. 1",
+     "§ 223 odst. 3",
+     "§ 212 odst. 2",
+     "§ 213 odst. 1",
+     "§ 213 odst. 4"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 2,
+    "top": [
+     "§ 35 odst. 2",
+     "§ 35 odst. 3",
+     "§ 66 odst. 1",
+     "§ 35 odst. 4",
+     "§ 35 odst. 5"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 3,
+    "top": [
+     "§ 66 odst. 1",
+     "§ 35 odst. 2",
+     "§ 35 odst. 1",
+     "§ 50 odst. 3",
+     "§ 35 odst. 4"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 4,
+    "top": [
+     "§ 51 odst. 2",
+     "§ 51a odst. 1",
+     "§ 51 odst. 1",
+     "§ 87a odst. 3",
+     "§ 51a odst. 2"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 5,
+    "top": [
+     "§ 51 odst. 1",
+     "§ 51 odst. 2",
+     "§ 51a odst. 1",
+     "§ 51a odst. 2",
+     "§ 87a odst. 3"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 6,
+    "top": [
+     "§ 75 odst. 1",
+     "§ 76 odst. 1",
+     "§ 77 odst. 8",
+     "§ 76 odst. 3",
+     "§ 75 odst. 2"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 7,
+    "top": [
+     "§ 76 odst. 3",
+     "§ 76 odst. 1",
+     "§ 77 odst. 8",
+     "§ 75 odst. 1",
+     "§ 76 odst. 2"
+    ],
+    "rewritten": null,
+    "hit3": false,
+    "hit5": true
+   },
+   {
+    "id": 8,
+    "top": [
+     "§ 88 odst. 1",
+     "§ 88 odst. 2",
+     "§ 88 odst. 3",
+     "§ 88 odst. 4",
+     "§ 90 odst. 1"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 9,
+    "top": [
+     "§ 93 odst. 2",
+     "§ 93 odst. 4",
+     "§ 93 odst. 3",
+     "§ 98 odst. 1",
+     "§ 81 odst. 2"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 10,
+    "top": [
+     "§ 90 odst. 1",
+     "§ 88 odst. 2",
+     "§ 100 odst. 2",
+     "§ 92 odst. 1",
+     "§ 94 odst. 1"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 11,
+    "top": [
+     "§ 67 odst. 1",
+     "§ 67 odst. 3",
+     "§ 68 odst. 2",
+     "§ 68 odst. 1",
+     "§ 62 odst. 1"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 12,
+    "top": [
+     "§ 50 odst. 3",
+     "§ 52",
+     "§ 57 odst. 1",
+     "§ 50 odst. 2",
+     "§ 50 odst. 4"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 13,
+    "top": [
+     "§ 72",
+     "§ 51 odst. 2",
+     "§ 70 odst. 1",
+     "§ 69 odst. 2",
+     "§ 57 odst. 2"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 14,
+    "top": [
+     "§ 222 odst. 2",
+     "§ 222 odst. 5",
+     "§ 218 odst. 5",
+     "§ 218 odst. 6",
+     "§ 218 odst. 1"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 15,
+    "top": [
+     "§ 50 odst. 3",
+     "§ 57 odst. 2",
+     "§ 58 odst. 1",
+     "§ 67 odst. 5",
+     "§ 70 odst. 1"
+    ],
+    "rewritten": null,
+    "hit3": false,
+    "hit5": false
+   },
+   {
+    "id": 16,
+    "top": [
+     "§ 39 odst. 2",
+     "§ 39 odst. 5",
+     "§ 39 odst. 1",
+     "§ 65 odst. 1",
+     "§ 93 odst. 4"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 17,
+    "top": [
+     "§ 69 odst. 2",
+     "§ 67 odst. 4",
+     "§ 56 odst. 2",
+     "§ 67 odst. 1",
+     "§ 80"
+    ],
+    "rewritten": null,
+    "hit3": null,
+    "hit5": null
+   },
+   {
+    "id": 18,
+    "top": [
+     "§ 218 odst. 5",
+     "§ 212 odst. 1",
+     "§ 217 odst. 5",
+     "§ 217 odst. 4",
+     "§ 39 odst. 2"
+    ],
+    "rewritten": null,
+    "hit3": null,
+    "hit5": null
+   },
+   {
+    "id": 19,
+    "top": [
+     "§ 97 odst. 1",
+     "§ 216 odst. 2",
+     "§ 75 odst. 1",
+     "§ 77 odst. 8",
+     "§ 216 odst. 3"
+    ],
+    "rewritten": null,
+    "hit3": null,
+    "hit5": null
+   },
+   {
+    "id": 20,
+    "top": [
+     "§ 222 odst. 1",
+     "§ 219 odst. 1",
+     "§ 222 odst. 2",
+     "§ 95 odst. 1",
+     "§ 67 odst. 4"
+    ],
+    "rewritten": null,
+    "hit3": null,
+    "hit5": null
+   }
+  ]
+ },
+ "hybrid": {
+  "hit3": 13,
+  "hit5": 14,
+  "n": 16,
+  "rows": [
+   {
+    "id": 1,
+    "top": [
+     "§ 223 odst. 3",
+     "§ 213 odst. 1",
+     "§ 213 odst. 3",
+     "§ 213 odst. 5",
+     "§ 212 odst. 2"
+    ],
+    "rewritten": null,
+    "hit3": false,
+    "hit5": false
+   },
+   {
+    "id": 2,
+    "top": [
+     "§ 35 odst. 4",
+     "§ 35 odst. 2",
+     "§ 35 odst. 3",
+     "§ 35 odst. 5",
+     "§ 66 odst. 1"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 3,
+    "top": [
+     "§ 66 odst. 1",
+     "§ 50 odst. 3",
+     "§ 35 odst. 1",
+     "§ 35 odst. 5",
+     "§ 35 odst. 4"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 4,
+    "top": [
+     "§ 51 odst. 2",
+     "§ 51 odst. 1",
+     "§ 87a odst. 3",
+     "§ 51 odst. 3",
+     "§ 53 odst. 2"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 5,
+    "top": [
+     "§ 51 odst. 1",
+     "§ 51 odst. 2",
+     "§ 87a odst. 3",
+     "§ 51a odst. 2",
+     "§ 53 odst. 2"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 6,
+    "top": [
+     "§ 75 odst. 1",
+     "§ 77 odst. 8",
+     "§ 76 odst. 1",
+     "§ 75 odst. 2",
+     "§ 75 odst. 3"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 7,
+    "top": [
+     "§ 77 odst. 8",
+     "§ 76 odst. 1",
+     "§ 76 odst. 3",
+     "§ 76 odst. 2",
+     "§ 79 odst. 1"
+    ],
+    "rewritten": null,
+    "hit3": false,
+    "hit5": true
+   },
+   {
+    "id": 8,
+    "top": [
+     "§ 88 odst. 1",
+     "§ 88 odst. 4",
+     "§ 89 odst. 2",
+     "§ 88 odst. 3",
+     "§ 88 odst. 2"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 9,
+    "top": [
+     "§ 93 odst. 2",
+     "§ 93 odst. 3",
+     "§ 93 odst. 4",
+     "§ 98 odst. 1",
+     "§ 78 odst. 1"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 10,
+    "top": [
+     "§ 90 odst. 1",
+     "§ 78 odst. 2",
+     "§ 92 odst. 1",
+     "§ 92 odst. 2",
+     "§ 92 odst. 5"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 11,
+    "top": [
+     "§ 67 odst. 1",
+     "§ 68 odst. 2",
+     "§ 67 odst. 4",
+     "§ 62 odst. 2",
+     "§ 68 odst. 1"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 12,
+    "top": [
+     "§ 50 odst. 3",
+     "§ 50 odst. 2",
+     "§ 57 odst. 1",
+     "§ 87a odst. 3",
+     "§ 52"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 13,
+    "top": [
+     "§ 72",
+     "§ 70 odst. 1",
+     "§ 71",
+     "§ 69 odst. 3",
+     "§ 51 odst. 2"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 14,
+    "top": [
+     "§ 222 odst. 2",
+     "§ 222 odst. 5",
+     "§ 222 odst. 3",
+     "§ 218 odst. 6",
+     "§ 218 odst. 1"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 15,
+    "top": [
+     "§ 67 odst. 5",
+     "§ 57 odst. 2",
+     "§ 58 odst. 1",
+     "§ 59",
+     "§ 51 odst. 2"
+    ],
+    "rewritten": null,
+    "hit3": false,
+    "hit5": false
+   },
+   {
+    "id": 16,
+    "top": [
+     "§ 39 odst. 2",
+     "§ 39 odst. 1",
+     "§ 65 odst. 1",
+     "§ 39 odst. 5",
+     "§ 65 odst. 2"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 17,
+    "top": [
+     "§ 80",
+     "§ 76 odst. 1",
+     "§ 216 odst. 3",
+     "§ 216 odst. 2",
+     "§ 212 odst. 1"
+    ],
+    "rewritten": null,
+    "hit3": null,
+    "hit5": null
+   },
+   {
+    "id": 18,
+    "top": [
+     "§ 217 odst. 5",
+     "§ 218 odst. 5",
+     "§ 219 odst. 1",
+     "§ 217 odst. 4",
+     "§ 55 odst. 2"
+    ],
+    "rewritten": null,
+    "hit3": null,
+    "hit5": null
+   },
+   {
+    "id": 19,
+    "top": [
+     "§ 83 odst. 2",
+     "§ 90 odst. 3",
+     "§ 215 odst. 3",
+     "§ 85 odst. 2",
+     "§ 93 odst. 2"
+    ],
+    "rewritten": null,
+    "hit3": null,
+    "hit5": null
+   },
+   {
+    "id": 20,
+    "top": [
+     "§ 219 odst. 1",
+     "§ 53 odst. 1",
+     "§ 222 odst. 1",
+     "§ 37a odst. 1",
+     "§ 222 odst. 2"
+    ],
+    "rewritten": null,
+    "hit3": null,
+    "hit5": null
+   }
+  ]
+ },
+ "hybrid_rewrite": {
+  "hit3": 14,
+  "hit5": 16,
+  "n": 16,
+  "rows": [
+   {
+    "id": 1,
+    "top": [
+     "§ 212 odst. 1",
+     "§ 212 odst. 2",
+     "§ 213 odst. 4",
+     "§ 213 odst. 1",
+     "§ 212 odst. 3"
+    ],
+    "rewritten": "Jaká je minimální výměra dovolené v kalendářním roce?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 2,
+    "top": [
+     "§ 35 odst. 2",
+     "§ 35 odst. 3",
+     "§ 35 odst. 1",
+     "§ 35 odst. 5",
+     "§ 35 odst. 4"
+    ],
+    "rewritten": "Jaká je nejdelší přípustná délka zkušební doby u zaměstnance, který není vedoucím zaměstnancem?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 3,
+    "top": [
+     "§ 66 odst. 1",
+     "§ 48 odst. 1",
+     "§ 59",
+     "§ 50 odst. 3",
+     "§ 58 odst. 1"
+    ],
+    "rewritten": "Může zaměstnavatel se mnou ve zkušební době zrušit pracovní poměr bez uvedení důvodu?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 4,
+    "top": [
+     "§ 51 odst. 1",
+     "§ 87a odst. 3",
+     "§ 51 odst. 2",
+     "§ 51a odst. 2",
+     "§ 53 odst. 2"
+    ],
+    "rewritten": "Jaká je délka výpovědní doby?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 5,
+    "top": [
+     "§ 51 odst. 1",
+     "§ 51 odst. 2",
+     "§ 51a odst. 1",
+     "§ 51a odst. 2",
+     "§ 87a odst. 3"
+    ],
+    "rewritten": "Kterým dnem počíná běžet výpovědní doba?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 6,
+    "top": [
+     "§ 75 odst. 1",
+     "§ 76 odst. 1",
+     "§ 75 odst. 2",
+     "§ 76 odst. 3",
+     "§ 76 odst. 2"
+    ],
+    "rewritten": "Jaký je nejvyšší přípustný rozsah práce vykonávané v kalendářním roce na základě dohody o provedení práce?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 7,
+    "top": [
+     "§ 76 odst. 3",
+     "§ 76 odst. 1",
+     "§ 75 odst. 1",
+     "§ 76 odst. 2",
+     "§ 77 odst. 8"
+    ],
+    "rewritten": "Jaký je nejvyšší přípustný rozsah pracovní doby v kalendářním týdnu při výkonu práce na základě dohody o pracovní činnosti?",
+    "hit3": false,
+    "hit5": true
+   },
+   {
+    "id": 8,
+    "top": [
+     "§ 88 odst. 1",
+     "§ 88 odst. 3",
+     "§ 88 odst. 2",
+     "§ 88 odst. 4",
+     "§ 89 odst. 2"
+    ],
+    "rewritten": "Po jaké době nepřetržité práce vzniká zaměstnanci nárok na přestávku v práci na jídlo a oddech?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 9,
+    "top": [
+     "§ 93 odst. 2",
+     "§ 93 odst. 3",
+     "§ 93 odst. 4",
+     "§ 99",
+     "§ 78 odst. 1"
+    ],
+    "rewritten": "V jakém maximálním rozsahu může zaměstnavatel zaměstnanci nařídit práci přesčas?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 10,
+    "top": [
+     "§ 92 odst. 1",
+     "§ 90a",
+     "§ 94 odst. 1",
+     "§ 90 odst. 1",
+     "§ 92 odst. 2"
+    ],
+    "rewritten": "Jaká je minimální délka nepřetržitého odpočinku zaměstnance mezi koncem jedné směny a začátkem následující směny?",
+    "hit3": false,
+    "hit5": true
+   },
+   {
+    "id": 11,
+    "top": [
+     "§ 67 odst. 3",
+     "§ 67 odst. 1",
+     "§ 57 odst. 1",
+     "§ 68 odst. 1",
+     "§ 62 odst. 1"
+    ],
+    "rewritten": "Jaká je výše odstupného podle § 67 zákoníku práce náležejícího zaměstnanci, jehož pracovní poměr u zaměstnavatele trvá jeden a půl roku a s nímž je rozvázán pracovní poměr výpovědí z důvodu nadbytečnosti podle § 52 písm. c) zákoníku práce?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 12,
+    "top": [
+     "§ 50 odst. 3",
+     "§ 57 odst. 1",
+     "§ 52",
+     "§ 50 odst. 2",
+     "§ 58 odst. 1"
+    ],
+    "rewritten": "Může zaměstnavatel dát zaměstnanci výpověď z pracovního poměru z jakéhokoli důvodu, například z důvodu, že zaměstnanec nevyhovuje jeho subjektivním požadavkům?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 13,
+    "top": [
+     "§ 72",
+     "§ 71",
+     "§ 70 odst. 1",
+     "§ 51 odst. 2",
+     "§ 70 odst. 2"
+    ],
+    "rewritten": "V jaké lhůtě může zaměstnanec uplatnit neplatnost výpovědi u soudu?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 14,
+    "top": [
+     "§ 222 odst. 2",
+     "§ 222 odst. 5",
+     "§ 222 odst. 3",
+     "§ 218 odst. 6",
+     "§ 222 odst. 1"
+    ],
+    "rewritten": "Mám vůči zaměstnavateli nárok na náhradu mzdy za nevyčerpanou dovolenou?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 15,
+    "top": [
+     "§ 56 odst. 1",
+     "§ 58 odst. 1",
+     "§ 59",
+     "§ 56 odst. 2",
+     "§ 72"
+    ],
+    "rewritten": "Může zaměstnanec okamžitě zrušit pracovní poměr, jestliže mu zaměstnavatel nevyplatil mzdu po dobu jednoho měsíce?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 16,
+    "top": [
+     "§ 39 odst. 2",
+     "§ 39 odst. 1",
+     "§ 39 odst. 5",
+     "§ 39 odst. 4",
+     "§ 65 odst. 1"
+    ],
+    "rewritten": "Kolikrát lze opakovaně sjednat pracovní poměr na dobu určitou, případně jej prodloužit?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 17,
+    "top": [
+     "§ 56 odst. 2",
+     "§ 69 odst. 2",
+     "§ 67 odst. 1",
+     "§ 216 odst. 2",
+     "§ 69 odst. 1"
+    ],
+    "rewritten": "Jaká je výše minimální mzdy pro kalendářní rok 2026?",
+    "hit3": null,
+    "hit5": null
+   },
+   {
+    "id": 18,
+    "top": [
+     "§ 218 odst. 5",
+     "§ 217 odst. 5",
+     "§ 217 odst. 4",
+     "§ 39 odst. 2",
+     "§ 219 odst. 1"
+    ],
+    "rewritten": "Po jakou dobu se poskytuje mateřská dovolená?",
+    "hit3": null,
+    "hit5": null
+   },
+   {
+    "id": 19,
+    "top": [
+     "§ 216 odst. 2",
+     "§ 215 odst. 3",
+     "§ 76 odst. 2",
+     "§ 216 odst. 3",
+     "§ 97 odst. 1"
+    ],
+    "rewritten": "Za jakých podmínek je zaměstnanec oprávněn vykonávat práci na dálku?",
+    "hit3": null,
+    "hit5": null
+   },
+   {
+    "id": 20,
+    "top": [
+     "§ 219 odst. 1",
+     "§ 53 odst. 1",
+     "§ 218 odst. 5",
+     "§ 95 odst. 1",
+     "§ 56 odst. 2"
+    ],
+    "rewritten": "V jaké výši náleží zaměstnanci nemocenské po dobu dočasné pracovní neschopnosti?",
+    "hit3": null,
+    "hit5": null
+   }
+  ]
+ }
+}

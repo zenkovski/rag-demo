@@ -13,7 +13,16 @@ const ALLOWED_HOSTS = ["lukas-rag.vercel.app", "localhost", "127.0.0.1"];
 
 // ---------- data ----------
 const N = IDX.chunks.length;
-const VEC = new Float32Array(Buffer.from(IDX.vectors, "base64").buffer.slice(0));
+// vektory jsou int8 + 1 měřítko na úsek (4× menší soubor); převod dá přesně stejná čísla jako rag.index() v Pythonu
+const Q8 = new Int8Array(Buffer.from(IDX.vectors, "base64").buffer.slice(0));
+const SCALE = new Float32Array(Buffer.from(IDX.scales, "base64").buffer.slice(0));
+const VEC = new Float32Array(Q8.length);
+for (let i = 0; i < Q8.length; i++) VEC[i] = Q8[i] * SCALE[Math.floor(i / IDX.dim)];
+for (let i = 0; i < IDX.chunks.length; i++) {            // znovu na délku 1 (jako rag.dequantize)
+  const v = VEC.subarray(i * IDX.dim, (i + 1) * IDX.dim); let n = 0;
+  for (let j = 0; j < v.length; j++) n += v[j] * v[j];
+  n = Math.sqrt(n); for (let j = 0; j < v.length; j++) v[j] = v[j] / n;
+}
 const vecOf = i => VEC.subarray(i * IDX.dim, (i + 1) * IDX.dim);
 
 // ---------- BM25 (shodné s tools/rag.py) ----------
