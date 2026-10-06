@@ -130,7 +130,7 @@ a{color:inherit}
 .askbig{max-width:720px;margin:0 auto;position:relative}
 .askbig form{display:flex;align-items:center;gap:8px;background:rgb(var(--bg-rgb) / .92);border:1px solid var(--line-2);border-radius:18px;padding:8px 8px 8px 18px;box-shadow:0 0 0 1px rgb(var(--accent-rgb) / .08),0 20px 60px rgba(0,0,0,.55),0 0 60px rgb(var(--accent-rgb) / .10)}
 .askbig form:focus-within{border-color:rgb(var(--accent-rgb) / .6);box-shadow:0 0 0 4px rgb(var(--accent-rgb) / .12),0 20px 60px rgba(0,0,0,.55),0 0 80px rgb(var(--accent-rgb) / .18)}
-.askbig .ph{font-size:20px;color:var(--accent)}
+.askbig form > .ph{font-size:20px;color:var(--accent)}
 .askbig input[name=q]{flex:1;min-width:0;background:none;border:0;outline:none;color:var(--text);font:inherit;font-size:17px;padding:12px 4px}
 .askbig input[name=q]::placeholder{color:var(--faint)}
 .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
@@ -145,7 +145,7 @@ a{color:inherit}
 .warnline{margin-top:20px;font-size:13px;color:var(--bad)}
 
 /* ---------- sekce ---------- */
-.sec{padding-top:84px}
+.sec{margin-top:96px}
 .sec h2{font-family:var(--display);font-weight:760;font-size:clamp(30px,3.6vw,50px);line-height:1.02;letter-spacing:-.03em;margin:0 0 12px;max-width:20ch}
 .sec h2 span{color:var(--accent)}
 .sec p.sub{color:var(--soft);font-size:16.5px;max-width:640px;margin:0 0 34px}
@@ -161,7 +161,10 @@ a{color:inherit}
 .flow{scroll-margin-top:70px;position:relative;padding:16px 18px 14px;border-bottom:1px solid var(--line);background:
   radial-gradient(600px 160px at 50% 0%,rgb(var(--accent-rgb) / .06),transparent)}
 .flow svg.wires{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}
-.wire{fill:none;stroke:var(--wire);stroke-width:1.4;stroke-dasharray:5 6}
+.wire{fill:none;stroke:var(--wire);stroke-width:1.4;stroke-dasharray:5 6;marker-end:url(#arr)}
+.wire.on{marker-end:url(#arrOn)}
+#arr path{fill:var(--wire)}
+#arrOn path{fill:var(--accent)}
 .wire.on{stroke:var(--accent);filter:drop-shadow(0 0 4px var(--glow))}
 @media (prefers-reduced-motion:no-preference){ .wire.on{animation:dash 1s linear infinite} @keyframes dash{to{stroke-dashoffset:-22}} }
 .fgrid{position:relative;display:grid;grid-template-columns:1fr 1fr 1.1fr .9fr 1fr;gap:34px;align-items:center}
@@ -287,7 +290,13 @@ details.v1 .old{margin-top:6px;font-size:13px;color:var(--muted);background:var(
 .graph svg#graph:active{cursor:grabbing}
 .legend{position:absolute;left:12px;bottom:12px;font-family:var(--mono);font-size:10.5px;color:var(--muted);display:flex;flex-direction:column;gap:4px;background:rgb(var(--bg-rgb) / .9);padding:9px 11px;border:1px solid var(--line);border-radius:10px}
 .legend i{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:7px;vertical-align:0}
-.tlegend{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;padding:10px 16px;border-top:1px solid var(--line);font-size:12.5px;color:var(--muted)}
+.tlbox{border-top:1px solid var(--line)}
+.tlbox summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:8px;padding:9px 16px;font-family:var(--mono);font-size:11.5px;color:var(--muted)}
+.tlbox summary::-webkit-details-marker{display:none}
+.tlbox summary:hover{color:var(--text)}
+.tlbox summary .car{margin-left:auto;transition:transform .25s}
+.tlbox[open] summary .car{transform:rotate(180deg)}
+.tlegend{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;padding:0 16px 12px;font-size:12.5px;color:var(--muted)}
 .tlegend b{font-weight:600;color:var(--soft)}
 .tlegend span{display:inline-flex;align-items:center;gap:7px}
 .tlegend i{width:9px;height:9px;border-radius:50%;flex:none}
@@ -439,21 +448,35 @@ dialog::backdrop{background:rgba(2,4,5,.8)}
 
 /* ---------- mobil ---------- */
 @media (max-width:1100px){
-  .fgrid{grid-template-columns:1fr 1fr;gap:12px}
-  .flow svg.wires{display:none}
+  /* postup jako had: otázka → přepis, dolů na dvě hledání, sbíhá se do RRF → odpověď */
+  .fgrid{grid-template-columns:1fr 1fr;grid-template-areas:"q rw" "vec bm" "rrf ans";gap:26px 30px}
+  .fcol{display:contents}
+  #f-q{grid-area:q} #f-rw{grid-area:rw} #f-vec{grid-area:vec} #f-bm{grid-area:bm} #f-rrf{grid-area:rrf} #f-ans{grid-area:ans}
   .bento{grid-template-columns:1fr 1fr}
   .feats{grid-template-columns:1fr 1fr}
   .feat.tall{grid-row:auto;grid-column:span 2}
-  .hub{height:auto;padding:24px 16px;display:grid;grid-template-columns:1fr 1fr;gap:10px}
-  .hub svg,.hub .core{display:none}
-  .hub .it{position:static;transform:none;width:auto}
+  /* stack: jádro nahoře, pod ním páteř uprostřed, dlaždice napojené zleva a zprava */
+  .hub{height:auto;padding:22px 14px;display:grid;grid-template-columns:1fr 1fr;gap:12px 34px}
+  .hub .core{position:relative;left:auto;top:auto;transform:none;grid-column:1/-1;justify-self:center;width:64px;height:64px;font-size:30px;border-radius:16px;margin-bottom:10px;z-index:1}
+  .hub .it{position:relative;left:auto!important;top:auto!important;transform:none;width:auto;z-index:1}
 }
 @media (max-width:900px){
   .wrap{padding:0 16px}
   .only-m{display:inline}
   .hide-m{display:none!important}
-  .nav .pill{padding-left:10px}
+  .nav{padding:0 12px}
+  .nav .pill{width:100%;max-width:520px;justify-content:space-between;padding:6px 6px 6px 10px}
+  .nav .logo{margin-right:auto}
   .nav a.l{display:none}
+  .nav a.l[href="#app"]{display:inline-block;background:var(--accent);color:var(--accent-ink);font-weight:600;padding:7px 13px}
+  .nav .gh{padding:7px 10px;margin-left:2px}
+  .chips{display:none}
+  .sec{margin-top:80px}
+  .feats{grid-template-columns:1fr 1fr;gap:10px}
+  .feat{padding:16px}
+  .feat .ic{width:34px;height:34px;font-size:17px;margin-bottom:12px}
+  .feat h3{font-size:15px}
+  .feat p{font-size:13px}
   .hero{padding:118px 0 40px}
   .hero p.lead{font-size:16px}
   .askbig form{padding:6px 6px 6px 12px;border-radius:14px}
@@ -474,6 +497,8 @@ dialog::backdrop{background:rgba(2,4,5,.8)}
   .t-main,.t-wide{grid-column:span 2}
   .two{grid-template-columns:1fr}
   .tbl .hide-m{display:none}
+  .desk .quick{margin:0;border-radius:0;border-width:1px 0}
+  footer{padding-bottom:100px}
   .dock{bottom:10px;gap:4px;padding:6px}
   .dock a,.dock button{width:40px;height:40px;font-size:19px}
   .dock a:hover,.dock button:hover{width:40px;height:40px}
@@ -482,19 +507,24 @@ dialog::backdrop{background:rgba(2,4,5,.8)}
 @media (max-width:560px){
   .cats{grid-template-columns:repeat(2,minmax(0,1fr))}
   .cat.on::after{display:none}
-  .fgrid{grid-template-columns:1fr 1fr;gap:8px}
-  .fcol{display:contents}
+  .fgrid{gap:22px 26px}
   .fn{padding:8px 10px}
   .fn .t{font-size:12.5px}
   .fn .t i{font-size:15px}
   .fn .d{-webkit-line-clamp:1;min-height:0;font-size:10.5px}
-  #f-ans{grid-column:span 2}
   .apphead #gstat{display:none}
-  .bento{grid-template-columns:1fr}
-  .t-main,.t-wide{grid-column:auto;grid-row:auto}
-  .feats{grid-template-columns:1fr}
-  .feat.tall{grid-column:auto}
-  .hub{grid-template-columns:1fr}
+  .bento{grid-template-columns:1fr 1fr;gap:10px}
+  .t-main,.t-wide{grid-column:span 2;grid-row:auto}
+  .tile{padding:16px}
+  .t-hold .big{font-size:46px}
+  .t-scale .vs{flex-direction:column;gap:6px;margin-top:8px}
+  .t-scale .vs b{font-size:22px}
+  .tile p{font-size:12.5px}
+  .hub{gap:10px 30px}
+  .hub .it{padding:9px 10px;gap:8px}
+  .hub .it i{font-size:16px}
+  .hub .it b{font-size:12.5px}
+  .hub .it span{font-size:10.5px}
   .t-main .big{font-size:96px}
 }
 </style>
@@ -517,7 +547,6 @@ dialog::backdrop{background:rgba(2,4,5,.8)}
 <header class="hero" id="top">
   <div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
   <div class="wrap">
-    <div class="badge"><b>v2</b> 4 předpisy · 2 475 odstavců · měřeno na 46 otázkách</div>
     <h1>Zeptej se na pracovní právo. <span>Každá věta má zdroj.</span></h1>
     <p class="lead">Asistent prohledá celý zákoník práce, zákon o zaměstnanosti, nemocenské pojištění a nařízení o překážkách v práci. Najde odstavce, které k otázce patří, odpoví jen z nich a označí, odkud co má. Když v textu odpověď není, řekne „nevím“.</p>
     <div class="askbig">
@@ -567,7 +596,7 @@ dialog::backdrop{background:rgba(2,4,5,.8)}
               <button class="go" id="liveBtn" type="submit" aria-label="Zeptat se"><i class="ph ph-paper-plane-right"></i></button>
             </form>
           </div>
-          <div class="divider">nebo klikni na rychlou otázku pod oknem</div>
+          <div class="divider">nebo vyber rychlou otázku<span class="hide-m"> pod oknem</span><span class="only-m"> níže</span></div>
         </div>
       </section>
 
@@ -585,7 +614,7 @@ dialog::backdrop{background:rgba(2,4,5,.8)}
         <div class="src" id="src"><p class="placeholder"><b>Tady uvidíš původní text.</b> Klikni na citaci [1] v odpovědi nebo na tečku v mapě.</p></div>
       </section>
     </div>
-    <div class="tlegend" id="tlegend"></div>
+    <details class="tlbox" id="tlbox" open><summary><i class="ph ph-palette"></i>Legenda mapy<span class="hide-m"> · co znamenají barvy</span><i class="ph ph-caret-down car"></i></summary><div class="tlegend" id="tlegend"></div></details>
   </div>
 
   <div class="quick" id="quick">
@@ -600,7 +629,7 @@ dialog::backdrop{background:rgba(2,4,5,.8)}
       </div></div>
       <div class="qgrid" id="qs"></div>
     </div></div>
-    <div class="qnote">Tečka = výsledek ruční kontroly: <span class="ok">●</span> správně, <span class="bad">●</span> chyba. Otázky se štítkem <b>test „nevím“</b> předpisy schválně neřeší: zkouší, jestli asistent přizná, že neví, místo aby si vymýšlel. Odpovědi jsou předpočítané a nespotřebují tvůj limit 10 otázek.</div>
+    <div class="qnote">Tečka = výsledek ruční kontroly: <span class="ok">●</span> správně, <span class="bad">●</span> chyba. Otázky se štítkem <b>test „nevím“</b> předpisy schválně neřeší: zkouší, jestli asistent přizná, že neví, místo aby si vymýšlel. Odpovědi jsou předpočítané a nespotřebují tvůj limit 10 otázek.<br><b>Proč jsou tam chyby?</b> Asistent ví jen to, co najde v textu zákona. Chyba vznikne, když hledání nenajde správný odstavec, nebo když model text špatně přečte (třeba zamění mzdu a plat). Chyby neschovávám: ukazují, co zlepšit.</div>
   </div>
 </section>
 
@@ -639,6 +668,7 @@ dialog::backdrop{background:rgba(2,4,5,.8)}
 <footer>
   <div class="wrap">
     <strong>Není to právní porada.</strong>
+    <span>v2 · 4 předpisy · 2 475 odstavců · měřeno na 46 otázkách</span>
     <span id="srcinfo"></span>
     <a href="https://github.com/zenkovski/rag-demo">GitHub</a>
     <span>Postaveno s AI</span>
@@ -748,6 +778,10 @@ function init(){
   $("#heroForm").addEventListener("submit", e => { e.preventDefault(); liveAsk($("#heroForm")); });
   $("#replay").addEventListener("click", () => cur && think(cur));
   try { const l = localStorage.getItem("ragLeft"); if (l !== null) setLeft(+l); } catch(e) {}
+  if (matchMedia("(max-width:900px)").matches) $("#tlbox").open = false;
+  const mq = matchMedia("(max-width:900px)");
+  const placeQuick = () => { if (mq.matches) $(".chat").after($("#quick")); else $(".app").after($("#quick")); };
+  placeQuick(); mq.addEventListener("change", placeQuick);
   drawWires(); new ResizeObserver(drawWires).observe($("#flow"));
   new ResizeObserver(renderHubWires).observe($("#hub"));
 }
@@ -756,11 +790,17 @@ function setLeft(n){ $$(".leftCount").forEach(e => e.textContent = `dnes zbývá
 /* ---------- schéma postupu ---------- */
 function drawWires(){
   const svg = $("#wires"), box = $("#flow").getBoundingClientRect();
-  const c = id => { const r = $(id).getBoundingClientRect(); return {l:r.left-box.left, r:r.right-box.left, y:r.top-box.top+r.height/2}; };
-  const path = (a,b,id) => { const mx = (a.r+b.l)/2; return `<path class="wire" id="${id}" d="M${a.r},${a.y} C${mx},${a.y} ${mx},${b.y} ${b.l},${b.y}"/>`; };
-  if (getComputedStyle(svg).display === "none") return;
+  const c = id => { const r = $(id).getBoundingClientRect(); return {l:r.left-box.left, r:r.right-box.left, y:r.top-box.top+r.height/2,
+    t:r.top-box.top, b:r.bottom-box.top, cx:r.left-box.left+r.width/2}; };
+  // stejný řádek = vodorovná šipka, jinak šipka dolů (na mobilu se schéma skládá jako had)
+  const path = (a,b,id) => {
+    if (Math.abs(a.y-b.y) < 12){ const [x1,x2] = b.l > a.r ? [a.r,b.l-3] : [a.l,b.r+3], mx = (x1+x2)/2;
+      return `<path class="wire" id="${id}" d="M${x1},${a.y} C${mx},${a.y} ${mx},${b.y} ${x2},${b.y}"/>`; }
+    if (b.t > a.b){ const my = (a.b+b.t)/2; return `<path class="wire" id="${id}" d="M${a.cx},${a.b} C${a.cx},${my} ${b.cx},${my} ${b.cx},${b.t-3}"/>`; }
+    const mx = (a.r+b.l)/2; return `<path class="wire" id="${id}" d="M${a.r},${a.y} C${mx},${a.y} ${mx},${b.y} ${b.l-3},${b.y}"/>`; };
   const q=c("#f-q"), rw=c("#f-rw"), v=c("#f-vec"), bm=c("#f-bm"), rf=c("#f-rrf"), an=c("#f-ans");
-  svg.innerHTML = path(q,rw,"w1")+path(rw,v,"w2")+path(rw,bm,"w3")+path(v,rf,"w4")+path(bm,rf,"w5")+path(rf,an,"w6");
+  const mk = (id,col) => `<marker id="${id}" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L8,4 L0,8 z"/></marker>`;
+  svg.innerHTML = `<defs>${mk("arr")}${mk("arrOn")}</defs>`+path(q,rw,"w1")+path(rw,v,"w2")+path(rw,bm,"w3")+path(v,rf,"w4")+path(bm,rf,"w5")+path(rf,an,"w6");
   setFlow(G.flowStage || 0);
 }
 function setFlow(stage, q){
@@ -911,7 +951,7 @@ function showChunk(ci){
 /* ---------- mapa ---------- */
 function drawGraph(){
   const svg = d3.select("#graph");
-  $("#tlegend").innerHTML = `<b>Barvy v mapě:</b>` + CATS.filter(c => c[1]).map(c => `<span><i style="background:${c[3]}"></i>${esc(c[1])}</span>`).join("") +
+  $("#tlegend").innerHTML = CATS.filter(c => c[1]).map(c => `<span><i style="background:${c[3]}"></i>${esc(c[1])}</span>`).join("") +
     `<span class="sp"></span><b>Hledání:</b><span><i style="background:var(--accent);box-shadow:0 0 6px var(--accent)"></i>význam · citace</span><span><i style="background:var(--ice)"></i>slova</span>`;
   const deg = new Array(D.chunks.length).fill(0); D.edges.forEach(([a,b]) => { deg[a]++; deg[b]++; });
   // rozložení je spočítané předem v Pythonu (tools/build_data.py), mapa proto funguje hned i bez animací
@@ -1102,7 +1142,7 @@ const STACK = [
   ["ph-plugs-connected","OpenRouter","jeden API klíč na modely", .86,.5],
   ["ph-check-square-offset","Měření","46 otázek, AI soudce + člověk", .86,.82],
   ["ph-graph","D3 + Vercel","mapa předpisů, web + serverová funkce", .64,.88],
-  ["ph-link-simple","LangChain","stejný postup v LCEL, shoda 30/30", .36,.88],
+  ["ph-link-simple","LangChain","stejný postup v LCEL, shoda 46/46", .36,.88],
 ];
 function renderHub(){
   $("#hub").insertAdjacentHTML("beforeend", STACK.map(([ic,t,s,x,y]) =>
@@ -1111,7 +1151,14 @@ function renderHub(){
 }
 function renderHubWires(){
   const hub = $("#hub"), svg = $("#hubwires"), W = hub.clientWidth, H = hub.clientHeight;
-  if (getComputedStyle(svg).display === "none") return;
+  if (matchMedia("(max-width:1100px)").matches){
+    // páteř uprostřed od jádra dolů, každá dlaždice se na ni napojí ze strany
+    const box = hub.getBoundingClientRect(), rel = el => { const r = el.getBoundingClientRect(); return {l:r.left-box.left, r:r.right-box.left, y:r.top-box.top+r.height/2, b:r.bottom-box.top}; };
+    const core = rel($("#hub .core")), its = $$("#hub .it").map(rel), sx = W/2, last = Math.max(...its.map(i => i.y));
+    svg.innerHTML = `<path class="hwire" d="M${sx},${core.b} L${sx},${last}"/>` +
+      its.map(i => `<path class="hwire" d="M${i.r < sx ? i.r : i.l},${i.y} L${sx},${i.y}"/><circle cx="${sx}" cy="${i.y}" r="2.5" fill="var(--accent)"/>`).join("");
+    return;
+  }
   const cx = W/2, cy = H/2;
   svg.innerHTML = STACK.map(([,, , x, y]) => { const px = x*W, py = y*H, mx = (px+cx)/2;
     return `<path class="hwire" d="M${cx},${cy} C${mx},${cy} ${mx},${py} ${px},${py}"/>`; }).join("");
