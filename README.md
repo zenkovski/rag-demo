@@ -17,30 +17,33 @@ Postaveno s AI (Claude Code). Kód jsem nepsal ručně; četl jsem ho, kontrolov
 
 ## Výsledky
 
-56 testovacích otázek ve 4 sadách. 48 má odpověď v předpisech, 8 záměrně ne (daně, nájem bytu…), tam je správně „nevím“. Každou odpověď jsem ručně zkontroloval proti textu zákona.
+66 testovacích otázek v 5 sadách. 56 má odpověď v předpisech, 10 záměrně ne (daně, nájem bytu, důchod…), tam je správně „nevím“. Každou odpověď jsem ručně zkontroloval proti textu zákona.
 
-| Měřítko | v1 | v2 | v3 |
+| Měřítko | v1 | v2 | v3.1 |
 |---|---|---|---|
-| **Odpověď správně** | 44 z 56 | 50 z 56 | **55 z 56** |
-| z toho otázky s odpovědí v předpisech | 36 z 48 | 42 z 48 | 47 z 48 |
-| z toho správně „nevím“ | 8 z 8 | 8 z 8 | 8 z 8 |
-| Správný paragraf mezi 5 úseky, které dostane model | 39 z 48 | 45 z 48 | 48 z 48 |
+| **Odpověď správně** | 54 z 66 | 60 z 66 | **66 z 66** |
+| z toho otázky s odpovědí v předpisech | 44 z 56 | 50 z 56 | 56 z 56 |
+| z toho správně „nevím“ | 10 z 10 | 10 z 10 | 10 z 10 |
+| Správný paragraf mezi 5 úseky, které dostane model | 47 z 56 | 53 z 56 | 56 z 56 |
 | „Nevím“, i když odpověď v předpisech byla | 5 | 3 | 0 |
 
-| Sada | v1 | v2 | v3 |
+| Sada | v1 | v2 | v3.1 |
 |---|---|---|---|
-| testovací (1–20), podle ní jsem v2 ladil | 16 z 20 | 19 z 20 | 19 z 20 |
+| testovací (1–20), podle ní jsem v2 ladil | 16 z 20 | 19 z 20 | 20 z 20 |
 | kontrolní (21–30), napsaná po návrhu v2 | 7 z 10 | 10 z 10 | 10 z 10 |
 | nové předpisy (31–46), podle chyb v2 na nich jsem navrhl v3 | 13 z 16 | 13 z 16 | 16 z 16 |
-| **po opravě (47–56)**, napsaná po návrhu v3, ještě před spuštěním | **8 z 10** | **8 z 10** | **10 z 10** |
+| **po opravě (47–56)**, napsaná před prvním spuštěním v3 | **8 z 10** | **8 z 10** | **10 z 10** |
+| **po v3.1 (57–66)**, napsaná před spuštěním v3.1 | 10 z 10 | 10 z 10 | 10 z 10 |
 
 Podrobně otázku po otázce: [RESULTS.md](RESULTS.md).
 
 **Jak číst tato čísla (poctivě):**
-- v3 jsem navrhl podle 4 chyb v2, takže na otázkách 1–46 je zvýhodněná. Poctivé srovnání je sada „po opravě“: 10 otázek, které jsem napsal i se zlatými odpověďmi dřív, než jsem v3 poprvé spustil.
-- **v3 nejdřív jednu věc rozbila:** u „Kolik hodin odpočinku musím mít mezi dvěma směnami?“ vyhodil výběr přes LLM základní odstavec (11 hodin), ve v2 to bylo správně. Opravil jsem to pravidlem: k vybranému odstavci 2, 3… se vždy přidá odstavec 1 téhož paragrafu (v něm bývá základní pravidlo). Tahle oprava už nebyla měřená na čistých otázkách.
-- AI soudce s vypnutým přemýšlením přehlédl 3 chybná „nevím“ (u v1 a v2) a jednu správnou odpověď v3 označil za chybu. Ruční kontrola je proto pořád nutná.
-- Přepis otázky a výběr dělá jazykový model, nové spuštění se může mírně lišit. Čísla platí pro jedno uložené spuštění (`data/llm_cache.json`).
+- **66 z 66 je nadsazené.** Každou verzi jsem ladil podle chyb, které jsem znal. Poctivé jsou jen sady napsané předem (47–66): v3.1 20 z 20, v2 18 z 20, v1 18 z 20.
+- Sada 57–66 vyšla moc lehká: všechny verze 10 z 10, takže rozdíl neukazuje.
+- **Ukázkové otázky mimo testy: 14 z 16.** Dvě chyby jsou vidět na webu: „výpověď, když jsem nemocný“ (hledání nenašlo § 53) a „normální pracovní doba“ (převrácená podmínka u mladistvých).
+- **Živé otázky na webu nikdo nekontroluje.** Model se pořád může splést, proto má každá věta citaci.
+- AI soudce přehlédl několik chybných „nevím“ a jednu správnou odpověď označil za chybu. Ruční kontrola je nutná.
+- Přepis, výběr i odpověď dělá jazykový model, nové spuštění se může mírně lišit. Čísla platí pro jedno uložené spuštění (`data/llm_cache.json`).
 
 ## Kde se to pokazilo: hledání, nebo čtení
 
@@ -57,7 +60,9 @@ Každá chyba vznikne v jednom ze dvou kroků. Na webu je u chyby štítek a ten
 
 **Dvě pevná pravidla navíc (bez AI, zdarma):** k vybranému odstavci 2, 3… se vždy přidá odstavec 1 téhož paragrafu (oprava regrese u odpočinku mezi směnami) a dohledají se odstavce, na které úsek odkazuje („ve výši podle odstavce 2“).
 
-**Co se nedá opravit pravidlem: nestabilní čtení.** Levný model čte stejný odstavec jednou správně a jindy špatně. Stačí, aby se změnil pátý, nejméně důležitý úsek v podkladech. Tak se vrátila chyba u posudku a u ukázky „volno na stěhování“ řekl „nevím“, i když měl správný bod jako první úsek. Pomohl by silnější model pro krok odpovědi.
+**Co pravidlem opravit nejde: nestabilní čtení.** Levný model (DeepSeek v4.1 Flash) četl stejný odstavec jednou správně a jindy špatně. Stačilo, aby se změnil pátý, nejméně důležitý úsek v podkladech. A často zbytečně říkal „nevím“: u „Mám nárok na lékaře?“ měl správný bod nařízení před sebou.
+
+**v3.1:** odpověď píše silnější **DeepSeek v4 Pro** (přepis a výběr dál dělá levný Flash) a zadání říká: než napíšeš „nevím“, projdi každý úsek a odpověz aspoň na část otázky. V pokusu na 5 problémových otázkách to spravila jen kombinace obou změn. Pasti („nájem bytu“, „daně“) dál dostanou „nevím“. Nevýhoda: silnější model dává citace méně často, ne za každou větu.
 
 Navíc se v3 u nejasné otázky **doptá** („Myslel jste mzdu, nebo plat?“) a odpoví na každou možnost zvlášť.
 
@@ -73,7 +78,7 @@ Navíc se v3 u nejasné otázky **doptá** („Myslel jste mzdu, nebo plat?“) 
 | Model e5-base běží jen lokálně (1 GB), na webu ne. | **e5-large přes API** (OpenRouter), stejný model při měření i na webu. |
 | v1 běžel na free `nemotron-3-super`. | v2 používá `deepseek-v4.1-flash` (levný). |
 
-Hledání po krocích (správný paragraf mezi 5 úseky, 48 otázek): e5-base 39 → e5-large 42 → + BM25 nad laickou otázkou **37** (zhoršení: slova „výplata“ v zákoně nejsou) → + přepis otázky 45 → + výběr přes LLM a odstavec 1 **48**.
+Hledání po krocích (správný paragraf mezi 5 úseky, 56 otázek): e5-base 47 → e5-large 50 → + BM25 nad laickou otázkou **44** (zhoršení: slova „výplata“ v zákoně nejsou) → + přepis otázky 53 → + výběr přes LLM, odstavec 1 a odkazy **56** (z 56).
 
 ## Jak to funguje
 
@@ -90,12 +95,12 @@ otázka ─► přepis do jazyka zákona (LLM) ─┬─► vektory e5-large (p�
 | Embeddingy | v1: `multilingual-e5-base` lokálně; v2: `multilingual-e5-large` přes OpenRouter, uložené jako int8 (4× menší) | `tools/rag.py` |
 | Hledání podle slov | BM25 bez knihovny, čeština bez diakritiky, kořen = prvních 5 písmen | `tools/rag.py` |
 | Spojení a výběr | reciprocal rank fusion (RRF) → 20 kandidátů → LLM vybere 5 (v3) | `tools/rag.py` |
-| Odpověď a přepis | `deepseek/deepseek-v4.1-flash` přes OpenRouter, teplota 0 | `tools/rag.py` |
+| Odpověď | `deepseek/deepseek-v4-pro` (v3.1), přepis a výběr `deepseek-v4.1-flash`, teplota 0, skryté přemýšlení vypnuté | `tools/rag.py` |
 | **LangChain verze** | stejný postup v LCEL (langchain-core 1.x) | `tools/rag_langchain.py` |
-| Měření | 56 otázek, AI soudce + ruční kontrola, v1, v2 i v3 | `tools/evaluate.py` |
+| Měření | 66 otázek, AI soudce + ruční kontrola, v1, v2 i v3.1 | `tools/evaluate.py` |
 | Web | statická stránka + serverová funkce, D3 mapa s rozložením spočítaným předem v Pythonu | `site/`, `site/api/ask.js`, `tools/build_data.py` |
 
-**Tři implementace, stejné hledání.** Ruční Python (`rag.py`), LangChain (`rag_langchain.py`) a JavaScript na webu (`site/api/ask.js`) najdou při stejném přepisu otázky stejných 20 kandidátů a při stejném výběru stejných 5 úseků ve stejném pořadí u **56 z 56** otázek. Zaokrouhlené vektory (int8) se ve všech třech verzích převádějí zpět stejně a znovu normalizují. Bez toho se LangChain (kosinová podobnost) lišil u 11 otázek.
+**Tři implementace, stejné hledání.** Ruční Python (`rag.py`), LangChain (`rag_langchain.py`) a JavaScript na webu (`site/api/ask.js`) najdou při stejném přepisu otázky stejných 20 kandidátů a při stejném výběru stejných 5 úseků ve stejném pořadí u **66 z 66** otázek. Zaokrouhlené vektory (int8) se ve všech třech verzích převádějí zpět stejně a znovu normalizují. Bez toho se LangChain (kosinová podobnost) lišil u 11 otázek.
 
 ## Živé otázky na webu a ochrana proti zneužití
 
@@ -112,11 +117,11 @@ otázka ─► přepis do jazyka zákona (LLM) ─┬─► vektory e5-large (p�
 
 ## Jak měřím
 
-- `data/testset.json` (1–20), `data/testset_holdout.json` (21–30), `data/testset_new.json` (31–46), `data/testset_fresh.json` (47–56, napsané před spuštěním v3).
+- `data/testset.json` (1–20), `data/testset_holdout.json` (21–30), `data/testset_new.json` (31–46), `data/testset_fresh.json` (47–56, napsané před spuštěním v3), `data/testset_fresh2.json` (57–66, napsané před spuštěním v3.1).
 - Šest otázek, které měly v první verzi (jen 5 témat zákoníku práce) správnou odpověď „nevím“, má teď odpověď v předpisech (mateřská, home office, svatba…). Dostaly novou zlatou odpověď, původní je v poli `gold_5temat`.
 - **Hledání:** správný paragraf mezi prvními třemi (hit@3) a mezi pěti (hit@5).
 - **Odpověď:** AI soudce + ruční kontrola všech odpovědí. Platí ruční verdikt (`data/manual_review.json`, `data/demo_review.json`).
-- Cena: celý projekt 0,56 $ a tím vyčerpal limit klíče 0,50 $ (OpenRouter dovolí malé přetečení). Většinu spolklo skryté přemýšlení modelu, než jsem ho ve v3 vypnul. Měření v3 od nuly stojí 0,05 $.
+- Cena: celý projekt asi 0,65 $ (limit klíče jsem zvedl z 0,50 na 0,75 $). Většinu spolklo skryté přemýšlení modelu, než jsem ho ve v3 vypnul. Měření v3.1 od nuly stojí asi 0,07 $.
 - Měření první verze (5 témat, 260 odstavců) je v `data/archive_5temat/`.
 
 ## Zdroje dat

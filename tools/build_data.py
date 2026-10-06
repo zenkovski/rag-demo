@@ -117,7 +117,7 @@ def main():
     ed = edges(vecs, chunks)
     pos = layout(vecs, ed)
     data = {"sources": meta["sources"], "downloaded": meta["downloaded"],
-            "llm": rag.LLM_MODEL, "llm_v1": E.V1["model"], "embeddings": rag.EMB_MODEL, "top_k": rag.TOP_K,
+            "llm": rag.ANSWER_MODEL, "llm_steps": rag.LLM_MODEL, "llm_v1": E.V1["model"], "embeddings": rag.EMB_MODEL, "top_k": rag.TOP_K,
             "eval": S, "scale": E.scale(),
             "retrieval": {m: {"hit3": rc[m]["hit3"], "hit5": rc[m]["hit5"], "n": rc[m]["n"]} for m in rag.MODES},
             "cost_usd": ev["v3"].get("cost_usd_full"),
@@ -127,7 +127,7 @@ def main():
     (ROOT / "site" / "data.json").write_text(json.dumps(data, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     # data pro živou funkci (site/api/ask.js): texty úseků, jejich vektory (int8) a prompty; žádná tajemství
     q8, scale = rag.quantize(rag.embed_api([rag.passage(c) for c in chunks]))
-    live = {"emb_model": rag.EMB_MODEL, "llm": rag.LLM_MODEL, "top_k": rag.TOP_K, "dim": int(q8.shape[1]),
+    live = {"emb_model": rag.EMB_MODEL, "llm": rag.LLM_MODEL, "llm_answer": rag.ANSWER_MODEL, "top_k": rag.TOP_K, "dim": int(q8.shape[1]),
             "system": rag.SYSTEM_V3, "rewrite": rag.REWRITE, "rerank": rag.RERANK, "n_cand": rag.N_CAND, "stop": sorted(rag.STOP),
             "chunks": [{"id": c["id"], "title": c["title"], "text": c["text"], **({"note": rag.note(c)} if rag.note(c) else {}),
                         **({"o1": rag.odst1(n)} if rag.odst1(n) is not None else {}),

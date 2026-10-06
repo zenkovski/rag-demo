@@ -63,6 +63,8 @@ def rrf(lists: dict) -> List[Document]:
 # ---------- modely a prompty ----------
 LLM = ChatOpenAI(model=rag.LLM_MODEL, temperature=0, base_url="https://openrouter.ai/api/v1", extra_body={"reasoning": {"enabled": False}},
                  api_key=os.environ["OPENROUTER_API_KEY"])
+LLM_ANSWER = ChatOpenAI(model=rag.ANSWER_MODEL, temperature=0, base_url="https://openrouter.ai/api/v1", extra_body={"reasoning": {"enabled": False}},
+                        api_key=os.environ["OPENROUTER_API_KEY"])   # v3.1: odpověď píše silnější model
 REWRITE = ChatPromptTemplate.from_messages([("system", rag.REWRITE), ("human", "{q}")])
 RERANK = ChatPromptTemplate.from_messages([("system", rag.RERANK), ("human", "{prompt}")])
 ANSWER = ChatPromptTemplate.from_messages([("system", rag.SYSTEM_V3), ("human", "Úseky zákona:\n\n{context}\n\nOtázka: {q}")])
@@ -93,7 +95,7 @@ rerank_chain = RunnablePassthrough.assign(pick=RunnableLambda(
     | RERANK | LLM | StrOutputParser()) | RunnablePassthrough.assign(docs=RunnableLambda(pick))
 retrieve_chain = RunnablePassthrough.assign(rw=rewrite_chain) | search_chain | rerank_chain
 answer_chain = retrieve_chain | RunnablePassthrough.assign(
-    answer=RunnableLambda(lambda x: {"q": x["q"], "context": context(x["docs"])}) | ANSWER | LLM | StrOutputParser())
+    answer=RunnableLambda(lambda x: {"q": x["q"], "context": context(x["docs"])}) | ANSWER | LLM_ANSWER | StrOutputParser())
 
 def compare(check_rewrite=False):
     """1) Hledání: dostane-li LangChain stejný přepis jako rag.py, najde stejných 20 kandidátů z RRF?

@@ -14,7 +14,8 @@ import numpy as np
 ROOT = Path(__file__).resolve().parent.parent
 EMB_MODEL_V1 = "intfloat/multilingual-e5-base"   # v1: lokálně přes sentence-transformers (Hugging Face)
 EMB_MODEL = "intfloat/multilingual-e5-large"     # v2: přes OpenRouter API, aby stejný model běžel i na webu
-LLM_MODEL = "deepseek/deepseek-v4.1-flash"       # přes OpenRouter, ~0,05 $ / 1M vstupních tokenů
+LLM_MODEL = "deepseek/deepseek-v4.1-flash"       # přes OpenRouter, ~0,05 $ / 1M vstupních tokenů (přepis, výběr, soudce)
+ANSWER_MODEL = "deepseek/deepseek-v4-pro"        # v3.1: odpověď píše silnější model (levný říkal zbytečně „nevím“)
 TOP_K = 5                                        # kolik úseků dostane model jako podklad
 MODES = ("dense", "dense_large", "hybrid", "hybrid_rewrite", "hybrid_rerank")   # v1 = dense, v2 = hybrid_rewrite, v3 = hybrid_rerank
 MODE = "hybrid_rerank"
@@ -302,6 +303,11 @@ SYSTEM_V3 = SYSTEM.replace("Piš česky, stručně", """6. Když se pravidla v �
 8. Zachovej přesný význam povinností: „je povinen“ = musí, „není povinen“ = nemusí (to neznamená „nesmí“), „nesmí“ = zákaz. Čísla, procenta a lhůty opiš přesně.
 Piš česky, stručně""")
 
+# v3.1: levný model říkal „nevím“, i když odpověď v úsecích měl (lékař, stěhování) -> před „nevím“ musí projít každý úsek
+SYSTEM_V3 = SYSTEM_V3.replace("5. Pokud úseky na otázku neodpovídají",
+    "5. Než napíšeš „nevím“, projdi každý úsek: když některý odpovídá aspoň na část otázky (i laicky nebo s překlepem položené), "
+    "odpověz z něj a řekni, co v úsecích chybí. Pokud žádný úsek na otázku neodpovídá")
+
 def note(c):
     """v3: komu úsek platí. Zákoník práce má zvlášť mzdu (firmy, § 113–121) a plat (stát, § 122–137)."""
     m = re.match(r"\d+", c.get("para") or "")
@@ -320,6 +326,7 @@ def context(hits, chunks, notes=False):
 
 def answer(question, hits, chunks, system=None, model=None):
     system = system or SYSTEM_V3
+    model = model or (ANSWER_MODEL if system == SYSTEM_V3 else None)
     ctx = context(hits, chunks, notes=system == SYSTEM_V3)
     text, usage = llm(system, f"Úseky zákona:\n\n{ctx}\n\nOtázka: {question}", model, reasoning=system != SYSTEM_V3)
     # model občas píše citace jako 【3】 nebo [1][2] slepené; sjednotím formát (obsah se nemění)

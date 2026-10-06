@@ -108,42 +108,29 @@
   }
  },
  "v3": {
-  "4": {
-   "correct": true,
-   "note": "Správně (2 měsíce, výjimky 1 měsíc), doptal se, jestli nejde o dohodu podle § 87a."
-  },
-  "5": {
-   "correct": true,
-   "note": "Správně. Nově se doptal, jestli jde o obecnou výpověď, nebo zvláštní případ (pravidlo 7 ve v3)."
-  },
   "10": {
    "correct": true,
-   "note": "Opraveno pravidlem „odstavec 1“: výběr přes LLM vzal jen výjimky (§ 90 odst. 2 a 3), pravidlo k nim přidalo § 90 odst. 1 se základními 11 hodinami. Před tou opravou to byla jediná nová chyba v3."
-  },
-  "12": {
-   "correct": true,
-   "note": "Správně, s příklady důvodů z § 52."
+   "note": "Opraveno: ve v3.0 výběr přes LLM vyhodil základní § 90 odst. 1, pravidlo „odstavec 1“ ho vrátilo. Odpověď má 11 hodin i výjimky."
   },
   "20": {
    "correct": true,
-   "note": "Opraveno pravidlem odkazů: § 192 odst. 1 říká jen „ve výši podle odstavce 2“, asistent si teď odstavec 2 dohledá. Odpověď má 60 % od zaměstnavatele za prvních 14 dní i nemocenské 60/66/72 %."
+   "note": "Opraveno: § 192 odst. 1 říká jen „ve výši podle odstavce 2“, dohledání odkazu přidalo odstavec 2 (60 %). Odpověď má náhradu od zaměstnavatele i nemocenské 60/66/72 %."
+  },
+  "28": {
+   "correct": true,
+   "note": "Věcně správně a úplně. Formulace „musíte si vybrat“ je nepřesná: povinnost určit čerpání má zaměstnavatel."
   },
   "36": {
    "correct": true,
-   "note": "Opraveno ve v3: výběr přes LLM přidal § 38c, takže odpověď má délku (2 týdny) i výši (70 %)."
+   "note": "Opraveno ve v3: výběr přes LLM přidal § 38c, odpověď má délku (2 týdny) i výši (70 %)."
   },
   "38": {
    "correct": true,
    "note": "Opraveno ve v3: rozliší mzdu (nejméně 10 %), plat (20 %) i dohody. AI soudce to označil za chybu, protože zlatá odpověď mluví jen o mzdě. Ruční kontrola: správně."
   },
-  "39": {
-   "correct": true,
-   "note": "Správně, rozlišil mzdu a plat a na konci se doptal, co uživatel myslel."
-  },
   "40": {
-   "correct": false,
-   "fail": "čtení",
-   "note": "Znovu chyba: po přidání pravidla odkazů se podklady trochu změnily a model zase napsal „nesmí vydat dříve“ místo „není povinen vydat dříve“. Pravidlo 8 tedy nefunguje spolehlivě: stejný model na skoro stejném vstupu čte jednou správně, jindy ne. AI soudce chybu přehlédl."
+   "correct": true,
+   "note": "Opraveno ve v3.1: silnější model píše správně „nemusí vydat dříve“. Levný model tu větu převracel na „nesmí“, a to nestabilně (jednou správně, jindy špatně)."
   },
   "47": {
    "correct": true,

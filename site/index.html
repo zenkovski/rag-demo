@@ -285,7 +285,13 @@ details.v1 .old{margin-top:6px;font-size:13px;color:var(--muted);background:var(
 .scope{display:flex;justify-content:center;flex-wrap:wrap;gap:6px;margin-top:16px;font-size:12.5px;color:var(--muted)}
 .scope span{border:1px solid var(--line-2);border-radius:999px;padding:3px 10px;background:rgb(var(--bg-rgb) / .7)}
 .scope b{color:var(--soft);font-weight:500;align-self:center;margin-right:2px}
-.outside{margin-top:8px;font-size:12.5px;color:var(--muted);background:var(--bg);border:1px dashed var(--line-2);border-radius:10px;padding:8px 10px}
+.outside{margin-top:8px;font-size:12.5px;color:var(--muted);background:var(--bg);border:1px dashed var(--line-2);border-radius:10px;padding:9px 11px}
+.outside b{color:var(--soft);font-weight:600}
+.nh{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:9px}
+.nh > span{font-family:var(--mono);font-size:10.5px;color:var(--faint);width:100%}
+.nh button{background:var(--panel);border:1px solid var(--line-2);border-radius:9px;padding:5px 9px;font-size:12.5px;color:var(--soft);text-align:left}
+.nh button:hover{border-color:rgb(var(--accent-rgb) / .6);color:var(--text)}
+.nh button.para{font-family:var(--mono);font-size:11px}
 
 /* mapa */
 .graph{position:relative;background:radial-gradient(ellipse at 50% 45%,rgb(var(--tint-rgb) / .45) 0%,transparent 65%),var(--bg)}
@@ -629,7 +635,7 @@ dialog::backdrop{background:rgba(2,4,5,.8)}
     <div class="cats" id="cats" role="tablist" aria-label="Kategorie otázek"></div>
     <div class="qpanel" id="qpanel"><div>
       <div class="qtitle"><span id="qtitle"></span><div class="setf" id="setf">
-        <button data-s="all" class="on">vše</button><button data-s="test">testovací</button><button data-s="holdout">kontrolní</button><button data-s="new">nové předpisy</button><button data-s="fresh">po opravě</button><button data-s="demo">ukázky</button>
+        <button data-s="all" class="on">vše</button><button data-s="test">testovací</button><button data-s="holdout">kontrolní</button><button data-s="new">nové předpisy</button><button data-s="fresh">po opravě</button><button data-s="fresh2">po v3.1</button><button data-s="demo">ukázky</button>
       </div></div>
       <div class="qgrid" id="qs"></div>
     </div></div>
@@ -672,7 +678,7 @@ dialog::backdrop{background:rgba(2,4,5,.8)}
 <footer>
   <div class="wrap">
     <strong>Není to právní porada.</strong>
-    <span>v3 · 4 předpisy · 2 475 odstavců · měřeno na 56 otázkách</span>
+    <span>v3.1 · 4 předpisy · 2 475 odstavců · měřeno na 66 otázkách</span>
     <span id="srcinfo"></span>
     <a href="https://github.com/zenkovski/rag-demo">GitHub</a>
     <span>Postaveno s AI</span>
@@ -698,8 +704,8 @@ dialog::backdrop{background:rgba(2,4,5,.8)}
     <button class="close" id="dlgClose">zavřít ✕</button>
   </div>
   <div class="dsec"><div class="two">
-    <div><h3>v1 → v2 → v3 na 56 testovacích otázkách</h3><div class="rows3" id="cmpTable2"></div></div>
-    <div><h3>Co pomohlo ve vyhledávání</h3><p class="mut" style="margin:0 0 10px;font-size:13px">Správný paragraf mezi 5 úseky, které dostane model (48 otázek s odpovědí).</p><div class="bars2" id="ablation"></div></div>
+    <div><h3>v1 → v2 → v3 na 66 testovacích otázkách</h3><div class="rows3" id="cmpTable2"></div></div>
+    <div><h3>Co pomohlo ve vyhledávání</h3><p class="mut" style="margin:0 0 10px;font-size:13px">Správný paragraf mezi 5 úseky, které dostane model (56 otázek s odpovědí).</p><div class="bars2" id="ablation"></div></div>
   </div></div>
   <div class="dsec"><h3>Otázka po otázce</h3><table class="tbl" id="rows"></table></div>
 </dialog>
@@ -845,18 +851,18 @@ function cmpRows(){
     row("Správný § mezi 5 pro model","hit5","n_answerable")+
     row("Správný § mezi 3 prvními","hit3","n_answerable")+
     row("AI soudce = člověk","judge_agree","n")+
-    `<span class="sep"></span><span class="mut" style="grid-column:1/-1;font-size:12.5px">v1: ${esc(short(D.llm_v1))} (zdarma), jen embeddingy e5-base. v2: ${esc(short(D.llm))}, e5-large + BM25 + přepis otázky. v3: navíc LLM vybere 5 z 20 kandidátů a odpověď rozliší mzdu a plat.</span>`;
+    `<span class="sep"></span><span class="mut" style="grid-column:1/-1;font-size:12.5px">v1: ${esc(short(D.llm_v1))} (zdarma), jen embeddingy e5-base. v2: ${esc(short(D.llm))}, e5-large + BM25 + přepis otázky. v3: navíc LLM vybere 5 z 20 kandidátů, dohledá odkazy, odpověď píše DeepSeek v4 Pro a rozliší mzdu a plat.</span>`;
 }
 function renderBento(){
-  const [v1,v2,v3] = ["v1","v2","v3"].map(v => D.eval[v].all), fr = ["v1","v2","v3"].map(v => D.eval[v].fresh), r = D.retrieval, sc = D.scale;
+  const [v1,v2,v3] = ["v1","v2","v3"].map(v => D.eval[v].all), fr = ["v1","v2","v3"].map(v => ({correct: D.eval[v].fresh.correct + D.eval[v].fresh2.correct, n: D.eval[v].fresh.n + D.eval[v].fresh2.n})), r = D.retrieval, sc = D.scale;
   const bar = (l,a,n,cls) => `<span>${l}</span><div class="bar ${cls||""}"><i style="width:${pct(a,n)}%"></i></div><span class="n">${a}/${n}</span>`;
   $("#bento").innerHTML =
     `<div class="tile t-main"><div><h3>Testovací otázky správně (v3)</h3><div class="big">${v3.correct}<span>/${v3.n}</span></div>`+
       `<div class="split"><span class="chip"><b>${v3.correct_answerable}/${v3.n_answerable}</b> otázek s odpovědí v předpisech</span><span class="chip"><b>${v3.nevim_ok}/${v3.n_unanswerable}</b> správně „nevím“, když předpisy mlčí</span><span class="chip">měření v3 od nuly stojí <b>${(D.cost_usd||0).toFixed(2).replace(".",",")} $</b></span></div></div>`+
       `<div><div class="bars2">${bar("v1",v1.correct,v1.n)}${bar("v2",v2.correct,v2.n)}${bar("v3",v3.correct,v3.n,"v2")}</div>`+
-      `<p class="bad-note"><b>Pozor:</b> v2 i v3 jsem navrhl podle chyb na otázkách 1–46, tam jsou čísla nadsazená. Poctivé srovnání je karta „po opravě“.</p>`+
+      `<p class="bad-note"><b>Pozor:</b> každou verzi jsem ladil podle chyb na starších otázkách, tam jsou čísla nadsazená. Poctivé srovnání je karta „otázky napsané předem“.</p>`+
       `<button class="linkbtn" id="openRes"><i class="ph ph-list-checks"></i>Celé měření otázku po otázce</button></div></div>`+
-    `<div class="tile t-hold"><h3>Po opravě</h3><div class="big">${fr[2].correct}<span>/${fr[2].n}</span></div><p style="margin-top:10px">10 otázek napsaných až po návrhu v3, ještě před spuštěním. v2 na nich ${fr[1].correct}/${fr[1].n}, v1 ${fr[0].correct}/${fr[0].n}.</p></div>`+
+    `<div class="tile t-hold"><h3>Otázky napsané předem</h3><div class="big">${fr[2].correct}<span>/${fr[2].n}</span></div><p style="margin-top:10px">vždy před spuštěním nové verze, bez ladění podle nich. v2 na nich ${fr[1].correct}/${fr[1].n}, v1 ${fr[0].correct}/${fr[0].n}.</p></div>`+
     `<div class="tile t-scale"><h3>10× větší zdroj</h3><div class="vs"><span><b>${sc.small}/${sc.n}</b>260 odstavců</span><span><b>${sc.big}/${sc.n}</b>2 475 odstavců</span></div><p style="margin-top:10px">správný § mezi 5 nalezenými u stejných otázek. Víc textu hledání ${sc.big>=sc.small?"nezhoršilo":"trochu zhoršilo"}.</p></div>`+
     `<div class="tile t-wide"><h3>Co pomohlo ve vyhledávání</h3><p style="margin-bottom:14px">správný paragraf mezi 5 úseky, které dostane model (${r.dense.n} otázek)</p><div class="bars2">`+
       bar("e5-base (v1)", r.dense.hit5, r.dense.n)+bar("e5-large", r.dense_large.hit5, r.dense_large.n)+
@@ -868,7 +874,7 @@ function renderBento(){
 /* ---------- otázky ---------- */
 const norm = s => s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"");
 function qStatus(q){ if (q.test) return q.test.correct ? "" : "bad"; return q.review && !q.review.ok ? "bad" : ""; }
-const SETS = {test:["T","test"], holdout:["K","kontrolní otázka"], new:["N","nový předpis"], fresh:["P","otázka po opravě"]};
+const SETS = {test:["T","test"], holdout:["K","kontrolní otázka"], new:["N","nový předpis"], fresh:["P","otázka po opravě"], fresh2:["Q","otázka po v3.1"]};
 function qLabel(q,i){ return q.test ? SETS[q.test.set][0]+q.test.id : "U"+(i-D.nTests+1); }
 function openCat(id){ cat = (cat===id && !$("#filter").value.trim()) ? null : id; renderQuestions(); }
 function renderQuestions(){
@@ -924,11 +930,12 @@ function ask(i, scroll){
   } else if (q.review){
     verdict = `<div class="verdict"><div class="tags"><span class="tag ${q.review.ok?"ok":"bad"}">ukázka: ${q.review.ok?"ověřeno ručně":"chyba"}</span></div>${esc(q.review.note)}</div>`;
   }
-  if (q.answer.startsWith("Nevím")) verdict = `<div class="outside">Asistent zná 4 předpisy: celý zákoník práce, zákon o zaměstnanosti, zákon o nemocenském pojištění a nařízení o překážkách v práci. Co je jinde (daně, rodičovský příspěvek, nájem bytu, konkrétní výše minimální mzdy z ministerského sdělení), nezná a řekne „nevím“. To je správné chování. Pokud ale odpověď v předpisech je, „nevím“ znamená, že hledání nenašlo správný odstavec.</div>` + verdict;
+  if (q.answer.startsWith("Nevím")) verdict = nevimHelp(q) + verdict;
   const log = $("#log");
   log.insertAdjacentHTML("beforeend", `<div class="msg user">${esc(q.q)}</div><div class="msg bot"><div class="meta"><span><i class="ph ph-sparkle"></i> ${short(D.llm)}</span><span>${q.hits.length} úseků</span></div><p>${fmt(q.answer,q)}</p>${verdict}</div>`);
   const last = log.querySelector(".msg.bot:last-child");
-  last.querySelectorAll(".cite").forEach(b => b.addEventListener("click", () => showChunk(+b.dataset.c)));
+  last.querySelectorAll(".cite,.nh .para").forEach(b => b.addEventListener("click", () => showChunk(+b.dataset.c)));
+  last.querySelectorAll(".nh .sim").forEach(b => b.addEventListener("click", () => { cat = D.questions[+b.dataset.i].cat; ask(+b.dataset.i, true); }));
   log.scrollTop = log.scrollHeight;
   renderQuestions();
   const first = (q.answer.match(/\[(\d+)\]/)||[])[1];
@@ -937,6 +944,26 @@ function ask(i, scroll){
   if (matchMedia("(max-width:900px)").matches) $("#flow").scrollIntoView({block:"start", behavior: REDUCED ? "auto" : "smooth"});
   else if (scroll || Math.abs(top - 80) > 40) $("#app").scrollIntoView({block:"start", behavior: REDUCED ? "auto" : "smooth"});
   think(q);
+}
+
+// „nevím“ nesmí být slepá ulička: ukáže nejbližší nalezené odstavce a podobné připravené otázky, které fungují
+const QSTOP = new Set("kolik jaka jaky jake jake jsem jste muze muzu mohu musi musim mam mate dostanu bude budu kdyz pokud nebo tedy taky jako mezi kterou ktery ktera ktere zamestnavatel prace praci".split(" "));
+const stem = s => (norm(s).match(/[a-z0-9]{4,}/g) || []).filter(w => !QSTOP.has(w)).map(w => w.slice(0,5));
+function similarQuestions(q, n){
+  const hs = new Set(q.hits.map(h => h[0])), ws = new Set(stem(q.q));
+  return D.questions.map((o,i) => ({o,i})).filter(({o}) => o!==q && !o.live && !o.answer.startsWith("Nevím") && (o.test ? o.test.correct : o.review && o.review.ok))
+    .map(x => ({...x, s: 3*x.o.hits.filter(h => hs.has(h[0])).length + stem(x.o.q).filter(w => ws.has(w)).length}))
+    .filter(x => x.s >= 2).sort((a,b) => b.s - a.s).slice(0, n);
+}
+function nevimHelp(q){
+  const sim = similarQuestions(q, 3);
+  const expected = q.test && !q.test.gold_chunks.length;
+  return `<div class="outside">`+
+    (expected ? `<b>Správně „nevím“:</b> tohle v těchto 4 předpisech není. Asistent zná celý zákoník práce, zákon o zaměstnanosti, nemocenské pojištění a nařízení o překážkách v práci.`
+              : `<b>Tohle jsem v předpisech nenašel.</b> Znám celý zákoník práce, zákon o zaměstnanosti, nemocenské pojištění a nařízení o překážkách v práci. Daně, nájem bytu nebo dávky státní sociální podpory v nich nejsou. Pokud odpověď čekáš, zkus otázku napsat jinak nebo konkrétněji.`)+
+    `<div class="nh"><span>nejbližší nalezené odstavce</span>${q.hits.slice(0,3).map(h => `<button class="para" data-c="${h[0]}">${esc(D.chunks[h[0]].id)}</button>`).join("")}</div>`+
+    (sim.length ? `<div class="nh"><span>podobné otázky, na které umím odpovědět</span>${sim.map(({o,i}) => `<button class="sim" data-i="${i}">${esc(o.q)}</button>`).join("")}</div>` : "")+
+    `</div>`;
 }
 
 function citedSet(q){ return new Set([...q.answer.matchAll(/\[(\d+)\]/g)].map(m => q.hits[m[1]-1]).filter(Boolean).map(h => h[0])); }
@@ -1151,11 +1178,11 @@ const STACK = [
   ["ph-cube","Hugging Face e5","multilingual-e5, embeddingy", .14,.5],
   ["ph-magnifying-glass","BM25","hledání podle slov, bez knihovny", .14,.82],
   ["ph-git-merge","RRF","spojí pořadí více hledání", .5,.12],
-  ["ph-brain","DeepSeek v4.1 Flash","přepis, výběr úseků, odpověď", .86,.18],
+  ["ph-brain","DeepSeek v4 Pro + Flash","Flash přepisuje a vybírá, Pro odpovídá", .86,.18],
   ["ph-plugs-connected","OpenRouter","jeden API klíč na modely", .86,.5],
-  ["ph-check-square-offset","Měření","56 otázek, AI soudce + člověk", .86,.82],
+  ["ph-check-square-offset","Měření","66 otázek, AI soudce + člověk", .86,.82],
   ["ph-graph","D3 + Vercel","mapa předpisů, web + serverová funkce", .64,.88],
-  ["ph-link-simple","LangChain","stejný postup v LCEL, shoda 56/56", .36,.88],
+  ["ph-link-simple","LangChain","stejný postup v LCEL, shoda 66/66", .36,.88],
 ];
 function renderHub(){
   $("#hub").insertAdjacentHTML("beforeend", STACK.map(([ic,t,s,x,y]) =>

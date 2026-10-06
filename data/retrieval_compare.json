@@ -1,8 +1,8 @@
 {
  "dense": {
-  "hit3": 34,
-  "hit5": 39,
-  "n": 48,
+  "hit3": 42,
+  "hit5": 47,
+  "n": 56,
   "rows": [
    {
     "id": 1,
@@ -787,13 +787,153 @@
     "rewritten": null,
     "hit3": null,
     "hit5": null
+   },
+   {
+    "id": 57,
+    "set": "fresh2",
+    "top": [
+     "ZP § 42 odst. 1",
+     "ZZ § 93",
+     "ZP § 42 odst. 2",
+     "ZP § 176 odst. 2",
+     "ZP § 274a odst. 2"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 58,
+    "set": "fresh2",
+    "top": [
+     "ZP § 96 odst. 1",
+     "ZP § 96 odst. 2",
+     "ZP § 37 odst. 1",
+     "ZP § 76 odst. 1",
+     "ZP § 77a odst. 1"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 59,
+    "set": "fresh2",
+    "top": [
+     "NV 590 příloha bod 6",
+     "NV 590 příloha bod 5",
+     "NV 590 příloha bod 7",
+     "ZP § 103 odst. 4",
+     "ZP § 195 odst. 1"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 60,
+    "set": "fresh2",
+    "top": [
+     "ZP § 94 odst. 1",
+     "ZP § 239 odst. 1",
+     "ZNP § 42 odst. 3",
+     "ZP § 242 odst. 2",
+     "ZP § 41 odst. 1"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 61,
+    "set": "fresh2",
+    "top": [
+     "ZP § 79a odst. 1",
+     "ZP § 244a",
+     "ZP § 245 odst. 1",
+     "ZZ § 123 odst. 1",
+     "ZZ § 123 odst. 4"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 62,
+    "set": "fresh2",
+    "top": [
+     "ZP § 270 odst. 2",
+     "ZP § 268 odst. 2",
+     "ZP § 257 odst. 2",
+     "ZP § 271r",
+     "ZP § 269 odst. 1"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 63,
+    "set": "fresh2",
+    "top": [
+     "ZNP § 32 odst. 2",
+     "ZNP § 35 odst. 1",
+     "ZNP § 33",
+     "ZNP § 32 odst. 1",
+     "ZNP § 34 odst. 3"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 64,
+    "set": "fresh2",
+    "top": [
+     "ZP § 35 odst. 4",
+     "ZP § 35 odst. 2",
+     "ZP § 37 odst. 1",
+     "ZP § 217 odst. 1",
+     "ZP § 35 odst. 1"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 65,
+    "set": "fresh2",
+    "top": [
+     "ZNP § 16",
+     "ZNP § 109 odst. 8",
+     "ZNP § 32 odst. 1",
+     "ZNP § 48 odst. 3",
+     "ZP § 242 odst. 3"
+    ],
+    "rewritten": null,
+    "hit3": null,
+    "hit5": null
+   },
+   {
+    "id": 66,
+    "set": "fresh2",
+    "top": [
+     "ZZ § 41 odst. 2",
+     "ZNP § 28 odst. 1",
+     "ZP § 271b odst. 6",
+     "ZNP § 192",
+     "ZZ § 48"
+    ],
+    "rewritten": null,
+    "hit3": null,
+    "hit5": null
    }
   ]
  },
  "dense_large": {
-  "hit3": 40,
-  "hit5": 42,
-  "n": 48,
+  "hit3": 48,
+  "hit5": 50,
+  "n": 56,
   "rows": [
    {
     "id": 1,
@@ -1578,13 +1718,153 @@
     "rewritten": null,
     "hit3": null,
     "hit5": null
+   },
+   {
+    "id": 57,
+    "set": "fresh2",
+    "top": [
+     "ZP § 42 odst. 1",
+     "ZP § 42 odst. 2",
+     "ZP § 176 odst. 2",
+     "ZP § 317a odst. 4",
+     "ZP § 217 odst. 4"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 58,
+    "set": "fresh2",
+    "top": [
+     "ZNP § 98 odst. 1",
+     "ZP § 96 odst. 2",
+     "ZP § 96 odst. 1",
+     "ZNP § 95 odst. 4",
+     "ZNP § 94"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 59,
+    "set": "fresh2",
+    "top": [
+     "NV 590 příloha bod 6",
+     "ZP § 195 odst. 1",
+     "ZP § 196 odst. 1",
+     "ZP § 195 odst. 5",
+     "ZP § 195 odst. 2"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 60,
+    "set": "fresh2",
+    "top": [
+     "ZP § 239 odst. 1",
+     "ZNP § 42 odst. 3",
+     "ZP § 241 odst. 1",
+     "ZP § 241 odst. 2",
+     "ZP § 240 odst. 1"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 61,
+    "set": "fresh2",
+    "top": [
+     "ZP § 79a odst. 1",
+     "ZP § 244a",
+     "ZP § 245 odst. 1",
+     "ZZ § 123 odst. 4",
+     "ZZ § 123 odst. 1"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 62,
+    "set": "fresh2",
+    "top": [
+     "ZP § 268 odst. 2",
+     "ZP § 257 odst. 2",
+     "ZP § 271r",
+     "ZP § 271",
+     "ZP § 270 odst. 1"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 63,
+    "set": "fresh2",
+    "top": [
+     "ZNP § 32 odst. 2",
+     "ZNP § 35 odst. 1",
+     "ZNP § 33",
+     "ZNP § 36 odst. 3",
+     "ZNP § 37a odst. 1"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 64,
+    "set": "fresh2",
+    "top": [
+     "ZP § 217 odst. 1",
+     "ZP § 37 odst. 1",
+     "ZP § 218 odst. 4",
+     "ZP § 35 odst. 2",
+     "ZP § 77a odst. 1"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 65,
+    "set": "fresh2",
+    "top": [
+     "ZP § 163 odst. 1",
+     "ZP § 271h odst. 1",
+     "ZNP § 174 odst. 5",
+     "ZP § 271h odst. 2",
+     "ZP § 189 odst. 3"
+    ],
+    "rewritten": null,
+    "hit3": null,
+    "hit5": null
+   },
+   {
+    "id": 66,
+    "set": "fresh2",
+    "top": [
+     "ZNP § 186",
+     "ZNP § 192",
+     "ZNP § 185 odst. 2",
+     "ZNP § 171 odst. 1",
+     "ZNP § 194 odst. 3"
+    ],
+    "rewritten": null,
+    "hit3": null,
+    "hit5": null
    }
   ]
  },
  "hybrid": {
-  "hit3": 33,
-  "hit5": 37,
-  "n": 48,
+  "hit3": 39,
+  "hit5": 44,
+  "n": 56,
   "rows": [
    {
     "id": 1,
@@ -2369,13 +2649,153 @@
     "rewritten": null,
     "hit3": null,
     "hit5": null
+   },
+   {
+    "id": 57,
+    "set": "fresh2",
+    "top": [
+     "ZP § 42 odst. 1",
+     "ZP § 176 odst. 2",
+     "ZP § 163 odst. 6",
+     "ZP § 240 odst. 1",
+     "ZZ § 93"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 58,
+    "set": "fresh2",
+    "top": [
+     "ZP § 86 odst. 4",
+     "ZP § 96 odst. 1",
+     "ZP § 94 odst. 1",
+     "ZP § 353 odst. 2",
+     "ZP § 93 odst. 2"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 59,
+    "set": "fresh2",
+    "top": [
+     "NV 590 příloha bod 6",
+     "NV 590 příloha bod 7",
+     "NV 590 příloha bod 5",
+     "NV 590 příloha bod 8",
+     "ZP § 204 odst. 1"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 60,
+    "set": "fresh2",
+    "top": [
+     "ZP § 239 odst. 1",
+     "ZP § 94 odst. 1",
+     "ZNP § 42 odst. 3",
+     "ZP § 41 odst. 1",
+     "ZNP § 19 odst. 6"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 61,
+    "set": "fresh2",
+    "top": [
+     "ZP § 79a odst. 1",
+     "ZZ § 123 odst. 1",
+     "ZP § 245 odst. 1",
+     "ZP § 244a",
+     "ZZ § 123 odst. 4"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 62,
+    "set": "fresh2",
+    "top": [
+     "ZP § 331",
+     "ZP § 365 odst. 2",
+     "ZP § 268 odst. 2",
+     "ZNP § 126 odst. 4",
+     "ZP § 257 odst. 2"
+    ],
+    "rewritten": null,
+    "hit3": false,
+    "hit5": true
+   },
+   {
+    "id": 63,
+    "set": "fresh2",
+    "top": [
+     "ZNP § 32 odst. 2",
+     "ZNP § 36 odst. 3",
+     "ZNP § 37a odst. 1",
+     "ZNP § 34 odst. 4",
+     "ZNP § 33"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 64,
+    "set": "fresh2",
+    "top": [
+     "ZP § 35 odst. 5",
+     "ZP § 35 odst. 2",
+     "ZP § 35 odst. 4",
+     "ZP § 35 odst. 3",
+     "ZP § 218 odst. 4"
+    ],
+    "rewritten": null,
+    "hit3": false,
+    "hit5": false
+   },
+   {
+    "id": 65,
+    "set": "fresh2",
+    "top": [
+     "ZP § 271h odst. 1",
+     "ZP § 271h odst. 2",
+     "ZP § 271m odst. 2",
+     "ZNP § 32 odst. 7",
+     "ZP § 271h odst. 3"
+    ],
+    "rewritten": null,
+    "hit3": null,
+    "hit5": null
+   },
+   {
+    "id": 66,
+    "set": "fresh2",
+    "top": [
+     "ZP § 271b odst. 6",
+     "ZZ § 41 odst. 2",
+     "ZP § 224 odst. 2",
+     "ZNP § 167d",
+     "ZNP § 25"
+    ],
+    "rewritten": null,
+    "hit3": null,
+    "hit5": null
    }
   ]
  },
  "hybrid_rewrite": {
-  "hit3": 43,
-  "hit5": 45,
-  "n": 48,
+  "hit3": 50,
+  "hit5": 53,
+  "n": 56,
   "rows": [
    {
     "id": 1,
@@ -3160,13 +3580,153 @@
     "rewritten": "Jaká je minimální doba důchodového pojištění nezbytná pro vznik nároku na starobní důchod?",
     "hit3": null,
     "hit5": null
+   },
+   {
+    "id": 57,
+    "set": "fresh2",
+    "top": [
+     "ZP § 42 odst. 1",
+     "ZP § 176 odst. 2",
+     "ZP § 240 odst. 1",
+     "ZZ § 93",
+     "ZP § 163 odst. 6"
+    ],
+    "rewritten": "Je zaměstnavatel oprávněn vyslat zaměstnance na pracovní cestu i bez jeho souhlasu?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 58,
+    "set": "fresh2",
+    "top": [
+     "ZP § 96 odst. 1",
+     "ZP § 87 odst. 1",
+     "ZNP § 95 odst. 4",
+     "ZP § 96 odst. 2",
+     "ZP § 105 odst. 2"
+    ],
+    "rewritten": "Je zaměstnavatel povinen vést evidenci odpracované doby zaměstnance?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 59,
+    "set": "fresh2",
+    "top": [
+     "NV 590 příloha bod 6",
+     "NV 590 příloha bod 7",
+     "NV 590 příloha bod 5",
+     "ZP § 195 odst. 1",
+     "ZP § 204 odst. 2"
+    ],
+    "rewritten": "Náleží zaměstnanci pracovní volno na dobu potřebnou k účasti na porodu manželky?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 60,
+    "set": "fresh2",
+    "top": [
+     "ZP § 239 odst. 1",
+     "ZNP § 42 odst. 3",
+     "ZNP § 19 odst. 6",
+     "ZP § 41 odst. 1",
+     "ZNP § 42 odst. 1"
+    ],
+    "rewritten": "Může těhotná zaměstnankyně, která vykonává práci v noci, požadovat zařazení pouze na denní práci?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 61,
+    "set": "fresh2",
+    "top": [
+     "ZP § 79a odst. 1",
+     "ZP § 245 odst. 1",
+     "ZP § 244a",
+     "ZZ § 123 odst. 4",
+     "ZZ § 123 odst. 1"
+    ],
+    "rewritten": "Jaká je nejvýše přípustná denní pracovní doba mladistvého zaměstnance, který plní povinnou školní docházku?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 62,
+    "set": "fresh2",
+    "top": [
+     "ZP § 257 odst. 2",
+     "ZP § 268 odst. 2",
+     "ZP § 250 odst. 1",
+     "ZP § 265 odst. 1",
+     "ZP § 269 odst. 1"
+    ],
+    "rewritten": "V jaké výši je zaměstnanec povinen nahradit zaměstnavateli škodu, kterou mu způsobil z nedbalosti při plnění pracovních úkolů nebo v přímé souvislosti s nimi?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 63,
+    "set": "fresh2",
+    "top": [
+     "ZNP § 32 odst. 2",
+     "ZNP § 37a odst. 1",
+     "ZNP § 37b",
+     "ZNP § 32 odst. 3",
+     "ZNP § 32 odst. 10"
+    ],
+    "rewritten": "Po jakou dobu musí být pojištěnka účastna nemocenského pojištění, aby jí vznikl nárok na peněžitou pomoc v mateřství?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 64,
+    "set": "fresh2",
+    "top": [
+     "ZP § 35 odst. 3",
+     "ZP § 35 odst. 1",
+     "ZP § 35 odst. 5",
+     "ZP § 37 odst. 1",
+     "ZP § 218 odst. 4"
+    ],
+    "rewritten": "Je zaměstnavatel povinen se zaměstnancem písemně sjednat délku zkušební doby a zaměstnanci písemně určit výměru dovolené?",
+    "hit3": false,
+    "hit5": true
+   },
+   {
+    "id": 65,
+    "set": "fresh2",
+    "top": [
+     "ZP § 271h odst. 1",
+     "ZP § 271h odst. 2",
+     "ZNP § 109 odst. 4",
+     "ZP § 271m odst. 2",
+     "ZNP § 36 odst. 1"
+    ],
+    "rewritten": "Jaká je výše výživného, které je rodič povinen poskytovat nezletilému dítěti?",
+    "hit3": null,
+    "hit5": null
+   },
+   {
+    "id": 66,
+    "set": "fresh2",
+    "top": [
+     "ZNP § 25",
+     "ZP § 224 odst. 2",
+     "ZNP § 15 odst. 5",
+     "ZP § 271b odst. 6",
+     "ZZ § 41 odst. 2"
+    ],
+    "rewritten": "Za jakých podmínek vzniká pojištěnci nárok na předčasný starobní důchod?",
+    "hit3": null,
+    "hit5": null
    }
   ]
  },
  "hybrid_rerank": {
-  "hit3": 48,
-  "hit5": 48,
-  "n": 48,
+  "hit3": 56,
+  "hit5": 56,
+  "n": 56,
   "rows": [
    {
     "id": 1,
@@ -3949,6 +4509,146 @@
      "ZZ § 39 odst. 1"
     ],
     "rewritten": "Kolik let důchodového pojištění je třeba získat pro nárok na starobní důchod?",
+    "hit3": null,
+    "hit5": null
+   },
+   {
+    "id": 57,
+    "set": "fresh2",
+    "top": [
+     "ZP § 42 odst. 1",
+     "ZP § 240 odst. 1",
+     "ZP § 176 odst. 2",
+     "ZP § 176 odst. 1",
+     "ZZ § 93"
+    ],
+    "rewritten": "Může zaměstnavatel vyslat zaměstnance na pracovní cestu i bez jeho souhlasu?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 58,
+    "set": "fresh2",
+    "top": [
+     "ZP § 96 odst. 1",
+     "ZP § 96 odst. 2",
+     "ZNP § 95 odst. 4",
+     "ZNP § 95 odst. 1",
+     "ZP § 87 odst. 1"
+    ],
+    "rewritten": "Je zaměstnavatel povinen vést evidenci pracovní doby a rozsahu práce konané zaměstnancem?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 59,
+    "set": "fresh2",
+    "top": [
+     "NV 590 příloha bod 6",
+     "NV 590 příloha bod 7",
+     "ZP § 195 odst. 1",
+     "NV 590 příloha bod 5",
+     "ZP § 195 odst. 5"
+    ],
+    "rewritten": "Má zaměstnanec nárok na pracovní volno v souvislosti s porodem manželky?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 60,
+    "set": "fresh2",
+    "top": [
+     "ZP § 239 odst. 1",
+     "ZP § 241 odst. 1",
+     "ZNP § 19 odst. 6",
+     "ZNP § 42 odst. 3",
+     "ZP § 241a"
+    ],
+    "rewritten": "Může těhotná zaměstnankyně požadovat zařazení pouze do denních směn?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 61,
+    "set": "fresh2",
+    "top": [
+     "ZP § 79a odst. 1",
+     "ZP § 245 odst. 1",
+     "ZZ § 123 odst. 1",
+     "ZP § 244a",
+     "ZZ § 123 odst. 4"
+    ],
+    "rewritten": "Jaká je maximální délka denní pracovní doby nezletilého zaměstnance, který plní povinnou školní docházku?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 62,
+    "set": "fresh2",
+    "top": [
+     "ZP § 257 odst. 2",
+     "ZP § 250 odst. 1",
+     "ZP § 257 odst. 1",
+     "ZP § 257 odst. 4",
+     "ZP § 259"
+    ],
+    "rewritten": "Jaká je výše náhrady škody, kterou je zaměstnanec povinen uhradit zaměstnavateli v případě zaviněného porušení povinností při plnění pracovních úkolů spočívajícího ve způsobení škody na svěřených hodnotách?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 63,
+    "set": "fresh2",
+    "top": [
+     "ZNP § 32 odst. 2",
+     "ZNP § 32 odst. 1",
+     "ZNP § 32 odst. 8",
+     "ZNP § 37a odst. 1",
+     "ZNP § 37b"
+    ],
+    "rewritten": "Jaká je minimální doba účasti na nemocenském pojištění pro vznik nároku na peněžitou pomoc v mateřství?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 64,
+    "set": "fresh2",
+    "top": [
+     "ZP § 37 odst. 1",
+     "ZP § 35 odst. 1",
+     "ZP § 217 odst. 1",
+     "ZP § 35 odst. 2",
+     "ZP § 218 odst. 4"
+    ],
+    "rewritten": "Je zaměstnavatel povinen písemně určit čerpání dovolené a sjednat zkušební dobu?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 65,
+    "set": "fresh2",
+    "top": [
+     "ZP § 271h odst. 1",
+     "ZP § 271h odst. 2",
+     "ZNP § 32 odst. 7",
+     "ZNP § 32 odst. 1",
+     "ZP § 242 odst. 2"
+    ],
+    "rewritten": "Jaká je výše výživného na nezletilé dítě?",
+    "hit3": null,
+    "hit5": null
+   },
+   {
+    "id": 66,
+    "set": "fresh2",
+    "top": [
+     "ZNP § 25",
+     "ZP § 224 odst. 2",
+     "ZNP § 15 odst. 5",
+     "ZNP § 15 odst. 2",
+     "ZP § 271b odst. 6"
+    ],
+    "rewritten": "Za jakých podmínek vzniká nárok na předčasný starobní důchod?",
     "hit3": null,
     "hit5": null
    }

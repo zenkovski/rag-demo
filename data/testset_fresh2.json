@@ -1,0 +1,12 @@
+[
+ {"id": 57, "level": "snadná", "q": "Může mě šéf poslat na služební cestu, i když nechci?", "gold": "Ne, na pracovní cestu může zaměstnavatel zaměstnance vyslat jen na základě dohody s ním.", "chunks": ["ZP § 42 odst. 1"]},
+ {"id": 58, "level": "snadná", "q": "Musí zaměstnavatel zapisovat, kolik hodin jsem odpracoval?", "gold": "Ano, musí vést evidenci se začátkem a koncem odpracovaných směn, přesčasů, noční práce a pracovní pohotovosti.", "chunks": ["ZP § 96 odst. 1"]},
+ {"id": 59, "level": "střední", "q": "Dostanu volno, když mi manželka rodí?", "gold": "Ano, na nezbytně nutnou dobu: s náhradou mzdy na převoz manželky do porodnice a zpět, bez náhrady mzdy na účast u porodu.", "chunks": ["NV 590 příloha bod 6"]},
+ {"id": 60, "level": "střední", "q": "Jsem těhotná a pracuji v noci. Můžu chtít jen denní směny?", "gold": "Ano, požádá-li těhotná zaměstnankyně pracující v noci o zařazení na denní práci, zaměstnavatel musí vyhovět.", "chunks": ["ZP § 239 odst. 1"]},
+ {"id": 61, "level": "střední", "q": "Kolik hodin denně může pracovat mladistvý, který ještě chodí na povinnou školní docházku?", "gold": "Nejvýše 7 hodin denně a 35 hodin týdně.", "chunks": ["ZP § 79a odst. 1"]},
+ {"id": 62, "level": "střední", "q": "Kolik musím zaplatit, když v práci omylem něco rozbiju?", "gold": "Při škodě z nedbalosti nejvýše čtyřapůlnásobek průměrného měsíčního výdělku. Omezení neplatí při úmyslu nebo opilosti.", "chunks": ["ZP § 257 odst. 2"]},
+ {"id": 63, "level": "snadná", "q": "Jak dlouho musím být pojištěná, abych dostala peněžitou pomoc v mateřství?", "gold": "Alespoň 270 kalendářních dní v posledních 2 letech před nástupem na peněžitou pomoc v mateřství.", "chunks": ["ZNP § 32 odst. 2"]},
+ {"id": 64, "level": "střední", "q": "Musí mi zaměstnavatel písemně říct, kolik mám dovolené a jak dlouhá je zkušební doba?", "gold": "Ano, pokud to není v pracovní smlouvě, musí zaměstnance písemně informovat mimo jiné o výměře dovolené a o zkušební době.", "chunks": ["ZP § 37 odst. 1"]},
+ {"id": 65, "level": "bez odpovědi", "q": "Kolik se platí výživné na dítě?", "gold": "NEVÍM – výživné upravuje občanský zákoník, ten v aplikaci není.", "chunks": []},
+ {"id": 66, "level": "bez odpovědi", "q": "Kdy můžu jít do předčasného důchodu?", "gold": "NEVÍM – důchody upravuje zákon o důchodovém pojištění, ten v aplikaci není.", "chunks": []}
+]

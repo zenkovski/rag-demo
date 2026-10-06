@@ -110,7 +110,7 @@ async function call(path, body) {
   throw new Error("OpenRouter nedostupný");
 }
 // reasoning vypnutý jako v rag.py (v3): bez skrytého přemýšlení je odpověď ~10× rychlejší a levnější
-const chat = async (system, user) => (await call("chat/completions", { model: IDX.llm, temperature: 0, reasoning: { enabled: false },
+const chat = async (system, user, model = IDX.llm) => (await call("chat/completions", { model, temperature: 0, reasoning: { enabled: false },
   messages: [{ role: "system", content: system }, { role: "user", content: user }] })).choices[0].message.content.trim();
 async function embed(texts) {
   const data = await call("embeddings", { model: IDX.emb_model, input: texts });
@@ -160,7 +160,7 @@ module.exports = async (req, res) => {
     trace.rerank = picked;
     const hits = finalHits(d, fused, picked);
     const ctx = hits.map(([i], n) => `[${n + 1}] ${IDX.chunks[i].id} (${IDX.chunks[i].title}${IDX.chunks[i].note || ""}): ${IDX.chunks[i].text}`).join("\n\n");
-    let answer = await chat(IDX.system, `Úseky zákona:\n\n${ctx}\n\nOtázka: ${q}`);
+    let answer = await chat(IDX.system, `Úseky zákona:\n\n${ctx}\n\nOtázka: ${q}`, IDX.llm_answer);   // v3.1: odpověď píše silnější model
     answer = answer.replace(/【(\d+)】/g, "[$1]");
     return send(200, { q, rewritten, hits, trace, answer, remaining: PER_IP_PER_DAY - used - 1 });
   } catch (e) {

@@ -60,7 +60,7 @@ Model dostane 5 úseků očíslovaných [1] až [5] a pravidla: odpovídej jen z
 **Nejčastější chyba v2?** Mzda × plat (ve v3 opravené). Zákoník práce má zvlášť pravidla pro mzdu (soukromé firmy) a plat (stát). U noční práce model napsal 20 % (plat) místo 10 % (mzda). Řešení ve v3: úsek v podkladech nese poznámku „platí pro mzdu / pro plat“ a pravidlo říká: když otázka neříká, která skupina platí, uveď obě varianty. U nejasné otázky se model doptá.
 
 ## 6. Měření kvality · `tools/evaluate.py`
-46 otázek ve 3 sadách, každá se zlatou odpovědí a správnými paragrafy. 6 otázek nemá odpověď v předpisech (správně je „nevím“). Měřím zvlášť vyhledávání (hit@3, hit@5) a odpověď. Odpověď hodnotí AI soudce a pak ji ručně kontroluji. Výsledek: v1 44 z 56, v2 50 z 56, v3 55 z 56.
+46 otázek ve 3 sadách, každá se zlatou odpovědí a správnými paragrafy. 6 otázek nemá odpověď v předpisech (správně je „nevím“). Měřím zvlášť vyhledávání (hit@3, hit@5) a odpověď. Odpověď hodnotí AI soudce a pak ji ručně kontroluji. Výsledek: v1 54 z 66, v2 60 z 66, v3.1 66 z 66 (nadsazené, viz níž).
 
 **Proč tři sady?**
 - testovací (1–20): podle chyb na nich jsem navrhl v2, takže tam je v2 nadsazená (19 z 20),
@@ -79,7 +79,7 @@ Model dostane 5 úseků očíslovaných [1] až [5] a pravidla: odpovídej jen z
 ## 7. LangChain verze · `tools/rag_langchain.py`
 Stejný postup napsaný idiomaticky v LangChainu 1.x: `Document`, vlastní `Embeddings` pro e5, `InMemoryVectorStore`, dva retrievery (`BaseRetriever`), LCEL řetěz s `RunnableParallel` (tři hledání najednou), RRF a `ChatOpenAI` napojený na OpenRouter.
 
-**Proč dvě verze?** Ruční verze ukazuje, že vím, co se děje uvnitř. LangChain verze ukazuje, že umím framework, který firmy používají. Změřil jsem, že při stejném přepisu otázky najdou obě (a JavaScript na webu) stejných 5 úseků u 56 z 56 otázek (při stejném přepisu a stejném výběru). Napoprvé to bylo jen 35 z 46: `InMemoryVectorStore` počítá kosinovou podobnost a zaokrouhlené vektory neměly přesně délku 1. Opravil jsem to normalizací ve všech třech verzích.
+**Proč dvě verze?** Ruční verze ukazuje, že vím, co se děje uvnitř. LangChain verze ukazuje, že umím framework, který firmy používají. Změřil jsem, že při stejném přepisu otázky najdou obě (a JavaScript na webu) stejných 5 úseků u 66 z 66 otázek (při stejném přepisu a stejném výběru). Napoprvé to bylo jen 35 z 46: `InMemoryVectorStore` počítá kosinovou podobnost a zaokrouhlené vektory neměly přesně délku 1. Opravil jsem to normalizací ve všech třech verzích.
 
 **Proč ne `langchain-community`?** Při instalaci hlásil, že se ukončuje. `BM25Retriever` a `EnsembleRetriever` tam byly, teď je to roztroušené. Proto jsem retrievery napsal jako malé vlastní třídy nad `langchain-core`.
 
@@ -106,7 +106,13 @@ Opravy: výběr přes LLM z 20 kandidátů (hledání), poznámka u úseku „pl
 
 **Co se rozbilo?** Jedna otázka, která ve v2 fungovala („odpočinek mezi směnami“): výběr vzal odstavce o zkrácení odpočinku a vyhodil základní pravidlo. Proto měřím všechno znovu, ne jen opravené otázky. Regrese se jinak nepozná. Opravil jsem to deterministicky: k vybranému odstavci 2, 3… se vždy přidá odstavec 1 téhož paragrafu. Poctivě: tahle druhá oprava už nebyla ověřená na nových otázkách.
 
-**Poslední chyba (nemocenská)?** Odpověď byla rozdělená: § 192 odst. 1 říká jen „ve výši podle odstavce 2“ a 60 % je až v odstavci 2. Přidal jsem dohledání odkazů na odstavce téhož paragrafu. Nemocenská se opravila, ale u posudku se vrátila chyba „nesmí“ × „nemusí“. Podklady se tam změnily jen nepatrně. **Poučení:** levný model nečte stabilně. Pravidly se opraví hledání, ale ne čtení. Na to je potřeba silnější model nebo kontrola odpovědi druhým modelem.
+**Poslední chyba (nemocenská)?** Odpověď byla rozdělená: § 192 odst. 1 říká jen „ve výši podle odstavce 2“ a 60 % je až v odstavci 2. Přidal jsem dohledání odkazů na odstavce téhož paragrafu. Nemocenská se opravila, ale u posudku se vrátila chyba „nesmí“ × „nemusí“. Podklady se tam změnily jen nepatrně. **Poučení:** levný model nečte stabilně. Pravidly se opraví hledání, ale ne čtení.
+
+**v3.1: proč pořád říkal „nevím“?** Na webu odpověděl „nevím“ na „Mám nárok na lékaře?“, i když měl správný bod nařízení před sebou. Levný model byl moc opatrný (zadání říkalo „když si nejsi jistý, vynech“). Udělal jsem malý pokus na 5 problémových otázkách: samotná úprava zadání spravila 3, samotný silnější model 3, kombinace všech 5 a pasti dál odmítá. Proto odpověď píše DeepSeek v4 Pro a zadání chce před „nevím“ projít každý úsek. Pak jsem napsal dalších 10 otázek předem: všechny verze 10 z 10, sada vyšla lehká. Poctivé číslo za obě předem napsané sady: v3.1 20 z 20, v2 18 z 20.
+
+**Je 66 z 66 podezřelé?** Ano a říkám to sám: ladil jsem podle chyb, které jsem viděl. Proto ukazuju i ukázky mimo testy (14 z 16, dvě chyby jsou na webu vidět) a sady napsané předem.
+
+**Užitečné „nevím“.** Když asistent odpověď nenajde, web ukáže nejbližší nalezené odstavce a podobné připravené otázky, na které umí odpovědět. Návštěvník neskončí ve slepé uličce.
 
 **Co mě stálo nejvíc?** Skryté přemýšlení modelu (reasoning). DeepSeek u každého kroku „přemýšlel“ tisíce slov: krok trval 30 s a měření stálo desetkrát víc. Vypnul jsem ho přes `reasoning: {enabled: false}`: krok trvá 1,5 s. Poučení: u každého modelu hlídat počet výstupních tokenů, ne jen cenu za token.
 

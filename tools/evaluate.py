@@ -13,8 +13,8 @@ NEVIM = "Nevím"
 JUDGE_MODEL = rag.LLM_MODEL
 
 # sady: testovací (ladil jsem podle ní v2), kontrolní (po návrhu v2), nové předpisy, po opravě (napsané po návrhu v3)
-SETS = [("test", "testset.json"), ("holdout", "testset_holdout.json"), ("new", "testset_new.json"), ("fresh", "testset_fresh.json")]
-SET_NAMES = {"test": "testovací", "holdout": "kontrolní", "new": "nové předpisy", "fresh": "po opravě"}
+SETS = [("test", "testset.json"), ("holdout", "testset_holdout.json"), ("new", "testset_new.json"), ("fresh", "testset_fresh.json"), ("fresh2", "testset_fresh2.json")]
+SET_NAMES = {"test": "testovací", "holdout": "kontrolní", "new": "nové předpisy", "fresh": "po opravě", "fresh2": "po v3.1"}
 VERSIONS = ("v1", "v2", "v3")
 
 JUDGE = """Jsi přísný hodnotitel odpovědí právního asistenta. Dostaneš otázku, správnou (zlatou) odpověď,
@@ -27,7 +27,7 @@ Posuď:
 
 V1 = {"mode": "dense", "model": "nvidia/nemotron-3-super-120b-a12b:free", "system": rag.SYSTEM_V1}
 V2 = {"mode": "hybrid_rewrite", "model": rag.LLM_MODEL, "system": rag.SYSTEM}
-V3 = {"mode": "hybrid_rerank", "model": rag.LLM_MODEL, "system": rag.SYSTEM_V3}
+V3 = {"mode": "hybrid_rerank", "model": rag.ANSWER_MODEL, "system": rag.SYSTEM_V3}
 CFG = {"v1": V1, "v2": V2, "v3": V3}
 
 def load(name):
@@ -78,7 +78,7 @@ def run(versions=("v3", "v2", "v1")):
             hits, rw = rag.search(t["q"], mode=cfg["mode"])
             ids = [chunks[i]["id"] for i, _ in hits]
             text, u1 = rag.answer(t["q"], hits, chunks, system=cfg["system"], model=cfg["model"])
-            verdict, u2 = judge(t, hits, chunks, text, reasoning=not (name == "v3" or t["set"] == "fresh"))
+            verdict, u2 = judge(t, hits, chunks, text, reasoning=not (name == "v3" or t["set"] in ("fresh", "fresh2")))
             cost += (u1.get("cost") or 0) + (u2.get("cost") or 0)
             rows.append({**t, "rewritten": rw, "top": [{"id": chunks[i]["id"], "score": round(s, 3)} for i, s in hits],
                          "hit3": hit(t, ids, 3), "hit5": hit(t, ids, 5), "answer": text,

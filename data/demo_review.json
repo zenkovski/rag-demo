@@ -4,8 +4,8 @@
   "Ručně ověřeno proti textu zákona."
  ],
  "Kolik hodin týdně je normální pracovní doba?": [
-  true,
-  "Ručně ověřeno proti textu zákona."
+  false,
+  "Hlavní číslo správně (40 hodin), ale u mladistvých převrátil podmínku: § 79a odst. 1 platí pro ty, kdo povinnou školní docházku NEukončili, model napsal „po ukončení“. Kde se to pokazilo: čtení."
  ],
  "Může mi šéf určit dovolenou, kdy se mu to hodí?": [
   true,
@@ -37,7 +37,7 @@
  ],
  "Může mi zaměstnavatel dát výpověď, když jsem nemocný?": [
   false,
-  "Pořád chyba, i ve v3: § 53 odst. 1 (zákaz výpovědi v době pracovní neschopnosti) se nedostal ani mezi 20 kandidátů, takže ho výběr přes LLM nemohl zachránit. Model řekl „nevím“. Kde se to pokazilo: hledání."
+  "Pořád chyba: § 53 odst. 1 (zákaz výpovědi v době pracovní neschopnosti) se nedostal ani mezi 20 kandidátů. Odpověď proto zavádějícím způsobem tvrdí, že výpověď v nemoci dát lze. Kde se to pokazilo: hledání."
  ],
  "Kolik dostanu za práci o víkendu?": [
   true,
@@ -56,11 +56,11 @@
   "Ručně ověřeno proti textu zákona."
  ],
  "Dostanu podporu v nezaměstnanosti, když jsem dal výpověď sám?": [
-  false,
-  "Pořád chyba, i ve v3: § 39 odst. 2 ZZ byl mezi úseky a vyjmenovává, kdy nárok na podporu není. Vlastní výpověď mezi těmi důvody není, model to ale nevyvodil a řekl „nevím“. Kde se to pokazilo: čtení."
+  true,
+  "Opraveno ve v3.1: silnější model z § 39 odst. 2 ZZ správně vyvodil, že vlastní výpověď nárok nebere (bere ho jen skončení pro zvlášť hrubé porušení povinností)."
  ],
  "Kolik dní volna dostanu na stěhování?": [
-  false,
-  "Chyba čtení: správný bod (NV 590 příloha bod 10: nejvýše 2 dny) měl model jako úsek [1], a přesto řekl „nevím“. V předchozím běhu se stejným bodem odpověděl správně; změnil se jen pátý, nejméně důležitý úsek. Ukázka, že levný model není při čtení stabilní."
+  true,
+  "Opraveno ve v3.1: nejvýše 2 dny, s náhradou mzdy jen při stěhování v zájmu zaměstnavatele."
  ]
 }
