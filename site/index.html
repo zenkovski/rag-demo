@@ -237,7 +237,35 @@ details.v1 .old{margin-top:6px;font-size:13px;color:var(--muted);background:var(
 .qhead .seg{display:flex;gap:3px}
 .qhead .seg button{padding:6px 12px}
 .qhead #filter{width:220px}
-.qgrid{display:flex;flex-wrap:wrap;gap:8px}
+.qgrid{display:flex;flex-wrap:wrap;gap:8px;padding-top:14px}
+.cats{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px}
+.cat{position:relative;display:flex;flex-direction:column;gap:8px;text-align:left;background:var(--bg);border:1px solid var(--line-2);border-radius:14px;padding:13px 14px 12px;color:var(--soft);transition:border-color .25s,background .25s,transform .25s}
+.cat:hover{border-color:rgb(var(--accent-rgb) / .5);color:var(--text)}
+.cat .top{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.cat .top i{font-size:22px;color:var(--muted);transition:color .25s}
+.cat .cnt{font-family:var(--mono);font-size:11px;color:var(--faint)}
+.cat b{font-size:14px;font-weight:600;color:var(--text);line-height:1.25}
+.cat .dots{display:flex;flex-wrap:wrap;gap:3px}
+.cat .dots i{width:6px;height:6px;border-radius:50%;background:var(--accent);opacity:.75}
+.cat .dots i.bad{background:var(--bad);opacity:1}
+.cat .dots i.nv{background:none;box-shadow:inset 0 0 0 1.2px var(--ice)}
+.cat.on{border-color:rgb(var(--accent-rgb) / .8);background:var(--panel-2);box-shadow:0 0 0 1px rgb(var(--accent-rgb) / .2),0 0 30px rgb(var(--accent-rgb) / .12)}
+.cat.on .top i{color:var(--accent)}
+.cat.on::after{content:"";position:absolute;left:50%;bottom:-11px;width:12px;height:12px;background:var(--panel-2);border-right:1px solid rgb(var(--accent-rgb) / .8);border-bottom:1px solid rgb(var(--accent-rgb) / .8);transform:translateX(-50%) rotate(45deg)}
+.cat.dim{opacity:.4}
+.qpanel{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s ease}
+.qpanel.open{grid-template-rows:1fr}
+.qpanel > div{overflow:hidden;min-height:0}
+.qpanel .qtitle{display:flex;align-items:center;justify-content:space-between;gap:10px;padding-top:16px;font-size:13px;color:var(--muted)}
+.qpanel .qtitle b{color:var(--text);font-weight:600}
+.setf{display:flex;gap:4px;flex-wrap:wrap}
+.setf button{background:none;border:1px solid var(--line-2);border-radius:999px;padding:3px 10px;font-size:12px;color:var(--muted)}
+.setf button.on{background:var(--panel-2);color:var(--text);border-color:rgb(var(--accent-rgb) / .5)}
+@media (prefers-reduced-motion:no-preference){
+  .qpanel.open .qb{animation:qin .4s ease both;animation-delay:calc(var(--d) * 35ms)}
+  @keyframes qin{from{opacity:0;transform:translateY(8px)}}
+}
+@media (prefers-reduced-motion:reduce){ .qpanel,.cat{transition:none} }
 .qb{display:inline-flex;align-items:center;gap:8px;max-width:100%;text-align:left;background:var(--bg);border:1px solid var(--line-2);border-radius:999px;padding:7px 14px 7px 10px;font-size:13.5px;color:var(--soft);line-height:1.35}
 .qb:hover{border-color:rgb(var(--accent-rgb) / .6);color:var(--text);background:var(--panel-2)}
 .qb .n{font-family:var(--mono);font-size:10.5px;color:var(--faint)}
@@ -437,8 +465,7 @@ dialog::backdrop{background:rgba(2,4,5,.8)}
   .legend{position:static;border:0;border-radius:0;border-top:1px solid var(--line);flex-direction:row;flex-wrap:wrap;gap:4px 12px}
   .src{min-height:220px}
   .qhead #filter{width:100%}
-  .qhead .seg{width:100%}
-  .qhead .seg button{flex:1}
+  .cats{grid-template-columns:repeat(3,minmax(0,1fr))}
   .quick{padding:14px 12px}
   .t-main,.t-wide{grid-column:span 2}
   .two{grid-template-columns:1fr}
@@ -449,6 +476,8 @@ dialog::backdrop{background:rgba(2,4,5,.8)}
   .dock .tip{display:none}
 }
 @media (max-width:560px){
+  .cats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .cat.on::after{display:none}
   .fgrid{grid-template-columns:1fr 1fr;gap:8px}
   .fcol{display:contents}
   .fn{padding:8px 10px}
@@ -558,14 +587,15 @@ dialog::backdrop{background:rgba(2,4,5,.8)}
   <div class="quick" id="quick">
     <div class="qhead">
       <h3>Rychlé otázky</h3>
-      <div class="seg" role="tablist" id="seg">
-        <button data-g="test" class="on">Testovací 20</button>
-        <button data-g="holdout">Nové 10</button>
-        <button data-g="demo">Ukázky 10</button>
-      </div>
-      <input id="filter" type="search" placeholder="Hledej, např. dovolená" autocomplete="off" aria-label="Hledat otázku">
+      <input id="filter" type="search" placeholder="Hledej ve všech, např. dovolená" autocomplete="off" aria-label="Hledat otázku">
     </div>
-    <div class="qgrid" id="qs"></div>
+    <div class="cats" id="cats" role="tablist" aria-label="Kategorie otázek"></div>
+    <div class="qpanel" id="qpanel"><div>
+      <div class="qtitle"><span id="qtitle"></span><div class="setf" id="setf">
+        <button data-s="all" class="on">vše</button><button data-s="test">testovací</button><button data-s="holdout">nové</button><button data-s="demo">ukázky</button>
+      </div></div>
+      <div class="qgrid" id="qs"></div>
+    </div></div>
     <div class="qnote">Tečka = výsledek ruční kontroly: <span class="ok">●</span> správně, <span class="bad">●</span> chyba. Otázky se štítkem <b>test „nevím“</b> zákon schválně neřeší: zkouší, jestli asistent přizná, že neví, místo aby si vymýšlel. Odpovědi jsou předpočítané a nespotřebují tvůj limit 10 otázek.</div>
   </div>
 </section>
@@ -661,18 +691,32 @@ const short = m => m.split("/").pop().replace(":free","");
 const plural = (n,a,b,c) => n===1?a:(n>=2&&n<=4?b:c);
 const pct = (a,b) => Math.round(100*a/b);
 const REDUCED = matchMedia("(prefers-reduced-motion: reduce)").matches;
-let D, cur = null, group = "test", G = {};
+let D, cur = null, cat = null, setF = "all", G = {};
+const CATS = [
+  ["vznik", "Vznik a zkušební doba", "Zkušební doba", "ph-handshake"],
+  ["konec", "Skončení pracovního poměru, výpověď, odstupné", "Výpověď a odstupné", "ph-door-open"],
+  ["dohody", "Dohody o pracích mimo pracovní poměr", "DPP a DPČ", "ph-file-text"],
+  ["doba", "Pracovní doba, přestávky, odpočinek, přesčas", "Pracovní doba a přesčasy", "ph-clock"],
+  ["dovolena", "Dovolená", "Dovolená", "ph-sun-horizon"],
+  ["mimo", null, "Mimo zákoník · test „nevím“", "ph-question"],
+];
 
 fetch("data.json").then(r => r.json()).then(d => { D = d; init(); });
 
 function init(){
-  D.questions.forEach(q => q.group = q.test ? q.test.set : "demo");
+  const topicOf = id => (D.chunks.find(c => c.id===id) || {}).topic;
+  D.questions.forEach(q => {
+    q.group = q.test ? q.test.set : "demo";
+    // kategorie = téma správného paragrafu; testy bez odpovědi v zákoně = „mimo“; ukázky = téma 1. nalezeného úseku
+    const topic = q.test ? (q.test.gold_chunks.length ? topicOf(q.test.gold_chunks[0]) : null) : D.chunks[q.hits[0][0]].topic;
+    q.cat = (CATS.find(c => c[1] && c[1]===topic) || CATS[5])[0];
+  });
   renderBento(); renderQuestions(); renderDialog(); drawGraph(); renderHub(); renderChips(); renderDemoCite();
   $("#modelName").textContent = short(D.llm);
   $("#srcinfo").textContent = `Zdroj: zákon č. 262/2006 Sb., ${D.version.replace("Aktuální znění ","znění ")}, staženo ${D.downloaded}`;
   $("#filter").addEventListener("input", renderQuestions);
-  $$("#seg button").forEach(b => b.addEventListener("click", () => {
-    group = b.dataset.g; $$("#seg button").forEach(x => x.classList.toggle("on", x===b)); renderQuestions(); }));
+  $$("#setf button").forEach(b => b.addEventListener("click", () => {
+    setF = b.dataset.s; $$("#setf button").forEach(x => x.classList.toggle("on", x===b)); renderQuestions(); }));
   $("#dlgClose").addEventListener("click", () => $("#dlg").close());
   $("#palMenu").innerHTML = PALETY.map(([id,n,d,c]) => `<button role="menuitemradio" data-p="${id}"><span class="sw">${c.map(x => `<i style="background:${x}"></i>`).join("")}</span><span>${n}<small>paleta ${id} · ${d}</small></span></button>`).join("");
   $$("#palMenu button").forEach(b => b.addEventListener("click", () => { setPaleta(b.dataset.p); $("#pal").classList.remove("open"); $("#palBtn").setAttribute("aria-expanded","false"); }));
@@ -762,19 +806,30 @@ function renderBento(){
 const norm = s => s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"");
 function qStatus(q){ if (q.test) return q.test.correct ? "" : "bad"; return q.review && !q.review.ok ? "bad" : ""; }
 function qLabel(q,i){ return q.test ? (q.test.set==="test"?"T":"N")+q.test.id : "U"+(i-29); }
+function openCat(id){ cat = (cat===id && !$("#filter").value.trim()) ? null : id; renderQuestions(); }
 function renderQuestions(){
   const nf = norm($("#filter").value.trim());
-  const list = D.questions.map((q,i)=>({q,i})).filter(o => o.q.group===group && (!nf || norm(o.q.q).includes(nf)));
-  $("#qs").innerHTML = list.length ? list.map(({q,i}) =>
-    `<button class="qb${q.done?" done":""}" data-i="${i}"><span class="dot ${qStatus(q)}"></span><span class="n">${qLabel(q,i)}</span><span>${esc(q.q)}</span>${q.test && !q.test.gold_chunks.length ? '<span class="nt">test „nevím“</span>' : ""}</button>`).join("")
+  const pool = D.questions.map((q,i)=>({q,i})).filter(o => o.q.group!=="live" && (setF==="all" || o.q.group===setF) && (!nf || norm(o.q.q).includes(nf)));
+  // karty kategorií: počet a tečky výsledků; při hledání se ztlumí ty bez shody
+  $("#cats").innerHTML = CATS.map(([id,,name,icon]) => { const qs = pool.filter(o => o.q.cat===id);
+    const dots = qs.map(({q}) => `<i class="${q.test && !q.test.gold_chunks.length ? "nv" : qStatus(q)}"></i>`).join("");
+    return `<button class="cat${cat===id?" on":""}${nf && !qs.length?" dim":""}" data-c="${id}" role="tab" aria-selected="${cat===id}">`+
+      `<span class="top"><i class="ph ${icon}"></i><span class="cnt">${qs.length}</span></span><b>${name}</b><span class="dots">${dots}</span></button>`; }).join("");
+  $$("#cats .cat").forEach(b => b.addEventListener("click", () => openCat(b.dataset.c)));
+  const list = pool.filter(o => nf ? true : o.q.cat===cat);
+  const open = !!(cat || nf);
+  $("#qpanel").classList.toggle("open", open);
+  const c = CATS.find(x => x[0]===cat);
+  $("#qtitle").innerHTML = nf ? `<b>${list.length}</b> ${plural(list.length,"otázka","otázky","otázek")} pro „${esc($("#filter").value.trim())}“` : c ? `<b>${c[2]}</b> · ${list.length} ${plural(list.length,"otázka","otázky","otázek")}` : "";
+  $("#qs").innerHTML = list.length ? list.map(({q,i},k) =>
+    `<button class="qb${q.done?" done":""}" style="--d:${k}" data-i="${i}"><span class="dot ${qStatus(q)}"></span><span class="n">${qLabel(q,i)}</span><span>${esc(q.q)}</span>${q.test && !q.test.gold_chunks.length ? '<span class="nt">test „nevím“</span>' : ""}</button>`).join("")
     : `<div class="empty">Tady taková otázka není. Zkus jiné slovo, nebo ji napiš nahoru jako vlastní.</div>`;
   $$("#qs .qb").forEach(b => b.addEventListener("click", () => ask(+b.dataset.i, true)));
 }
 function renderChips(){
   const pick = ["Firma mi už měsíc nezaplatila výplatu. Můžu hned odejít?","Jsem těhotná. Může mě zaměstnavatel vyhodit ze dne na den?","Kolik hodin ročně můžu odpracovat na dohodu o provedení práce (DPP)?","Kolik přesčasů mi může zaměstnavatel nařídit?","Jeden den jsem nepřišel do práce a neomluvil se. Může mi šéf vzít dovolenou?","Ve firmě jsem rok a půl a propouštějí mě, protože jsem nadbytečný. Kolik dostanu odstupné?"];
   $("#chips").innerHTML = pick.map(t => { const i = D.questions.findIndex(q => q.q===t); return i<0 ? "" : `<button data-i="${i}">${esc(t)}</button>`; }).join("");
-  $$("#chips button").forEach(b => b.addEventListener("click", () => { const q = D.questions[+b.dataset.i];
-    group = q.group; $$("#seg button").forEach(x => x.classList.toggle("on", x.dataset.g===group)); ask(+b.dataset.i, true); }));
+  $$("#chips button").forEach(b => b.addEventListener("click", () => { cat = D.questions[+b.dataset.i].cat; ask(+b.dataset.i, true); }));
 }
 function renderDemoCite(){
   const q = D.questions.find(q => q.test && q.test.id===15);
@@ -1067,7 +1122,7 @@ function renderDialog(){
         `<td class="st mut hide-m">${t.set==="test"?"testovací":"nová"}</td><td class="st">${st(t.v1_correct)}</td><td class="st">${st(t.correct)}</td></tr>`; }).join("");
   $$("#rows tr.click").forEach(r => r.addEventListener("click", () => {
     $("#dlg").close(); const q = D.questions[+r.dataset.i];
-    group = q.group; $$("#seg button").forEach(x => x.classList.toggle("on", x.dataset.g===group));
+    cat = q.cat;
     ask(+r.dataset.i, true); }));
 }
 </script>
