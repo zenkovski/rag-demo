@@ -1,10 +1,22 @@
 {
  "v1": {
-  "24": {"correct": false, "note": "Vyhledávání nenašlo § 223 odst. 1 (krácení dovolené), model proto řekl „nevím“."},
-  "26": {"correct": true, "note": "Správně, ale přidal větu „bez písemné formy není platná“, která v úseku není."},
-  "28": {"correct": false, "note": "§ 218 odst. 1 se nenašel. Model napsal „do 31. 12. následujícího roku“, to ve zdroji není."}
+  "24": {
+   "correct": false,
+   "note": "Vyhledávání nenašlo § 223 odst. 1 (krácení dovolené), model proto řekl „nevím“."
+  },
+  "26": {
+   "correct": true,
+   "note": "Správně, ale přidal větu „bez písemné formy není platná“, která v úseku není."
+  },
+  "28": {
+   "correct": false,
+   "note": "§ 218 odst. 1 se nenašel. Model napsal „do 31. 12. následujícího roku“, to ve zdroji není."
+  }
  },
  "v2": {
-  "28": {"correct": false, "note": "§ 218 odst. 1 se nenašel ani po přepisu otázky. Odpověď cituje jen pravidlo o 30. červnu a hlavní zásadu (vyčerpat v daném roce) vynechává."}
+  "28": {
+   "correct": true,
+   "note": "V předchozí verzi v2 chyba, teď správně: s embeddingy e5-large se § 218 odst. 1 našel (2. místo)."
+  }
  }
 }

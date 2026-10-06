@@ -12,21 +12,14 @@ from pathlib import Path
 import numpy as np
 
 ROOT = Path(__file__).resolve().parent.parent
-EMB_MODEL = "intfloat/multilingual-e5-base"     # vícejazyčný model z Hugging Face, umí češtinu
-LLM_MODEL = "deepseek/deepseek-v4.1-flash"      # přes OpenRouter, ~0,05 $ / 1M vstupních tokenů
-TOP_K = 5                                       # kolik úseků dostane model jako podklad
-MODES = ("dense", "hybrid", "hybrid_rewrite")   # v1 = dense, v2 = hybrid_rewrite
+EMB_MODEL_V1 = "intfloat/multilingual-e5-base"   # v1: lokálně přes sentence-transformers (Hugging Face)
+EMB_MODEL = "intfloat/multilingual-e5-large"     # v2: přes OpenRouter API, aby stejný model běžel i na webu
+LLM_MODEL = "deepseek/deepseek-v4.1-flash"       # přes OpenRouter, ~0,05 $ / 1M vstupních tokenů
+TOP_K = 5                                        # kolik úseků dostane model jako podklad
+MODES = ("dense", "dense_large", "hybrid", "hybrid_rewrite")   # v1 = dense, v2 = hybrid_rewrite
 MODE = "hybrid_rewrite"
 
 # ---------- data a embeddingy ----------
-_model = None
-def embedder():
-    global _model
-    if _model is None:
-        from sentence_transformers import SentenceTransformer
-        _model = SentenceTransformer(EMB_MODEL)
-    return _model
-
 def load_chunks():
     return json.loads((ROOT / "data" / "chunks.json").read_text(encoding="utf-8"))["chunks"]
 
@@ -34,24 +27,55 @@ def passage(c):
     # E5 modely chtějí předponu "passage: " u dokumentů a "query: " u otázek
     return f"passage: {c['id']} {c['title']}. {c['text']}"
 
-def build_index():
-    """Spočítá vektor pro každý úsek a uloží je (normalizované -> cosine = skalární součin)."""
-    vecs = embedder().encode([passage(c) for c in load_chunks()], normalize_embeddings=True,
-                             batch_size=16, show_progress_bar=True)
-    np.save(ROOT / "data" / "embeddings.npy", vecs.astype(np.float32))
-    return vecs
+_model = None
+def embedder():
+    global _model
+    if _model is None:
+        from sentence_transformers import SentenceTransformer
+        _model = SentenceTransformer(EMB_MODEL_V1)
+    return _model
 
-_index = None
-def index():
-    global _index
-    if _index is None:
-        p = ROOT / "data" / "embeddings.npy"
-        _index = np.load(p) if p.exists() else build_index()
-    return _index
+def embed_api(texts):
+    """Embeddingy přes OpenRouter (e5-large). Výsledky se ukládají, opakovaný běh nic nestojí."""
+    import requests
+    from dotenv import load_dotenv
+    load_dotenv(ROOT / ".env")
+    cache_file = ROOT / "data" / "emb_cache.npz"
+    cache = dict(np.load(cache_file)) if cache_file.exists() else {}
+    todo = [t for t in dict.fromkeys(texts) if t not in cache]
+    for i in range(0, len(todo), 64):
+        batch = todo[i:i + 64]
+        r = requests.post("https://openrouter.ai/api/v1/embeddings", timeout=120,
+                          headers={"Authorization": f"Bearer {os.environ['OPENROUTER_API_KEY']}"},
+                          json={"model": EMB_MODEL, "input": batch})
+        r.raise_for_status()
+        for t, d in zip(batch, r.json()["data"]):
+            v = np.array(d["embedding"], dtype=np.float32)
+            cache[t] = v / np.linalg.norm(v)
+    if todo:
+        np.savez(cache_file, **cache)
+    return np.stack([cache[t] for t in texts])
 
-def dense_scores(text):
-    q = embedder().encode([f"query: {text}"], normalize_embeddings=True)[0]
-    return index() @ q                                 # cosine podobnost se všemi úseky
+_index = {}
+def index(model="large"):
+    """Matice vektorů všech úseků (normalizované -> cosine = skalární součin)."""
+    if model not in _index:
+        if model == "large":
+            _index[model] = embed_api([passage(c) for c in load_chunks()])
+        else:
+            p = ROOT / "data" / "embeddings.npy"
+            if not p.exists():
+                vecs = embedder().encode([passage(c) for c in load_chunks()], normalize_embeddings=True, batch_size=16)
+                np.save(p, vecs.astype(np.float32))
+            _index[model] = np.load(p)
+    return _index[model]
+
+def dense_scores(text, model="large"):
+    if model == "large":
+        q = embed_api([f"query: {text}"])[0]
+    else:
+        q = embedder().encode([f"query: {text}"], normalize_embeddings=True)[0].astype(np.float32)
+    return index(model) @ q                            # cosine podobnost se všemi úseky
 
 # ---------- BM25 (hledání podle slov) ----------
 STOP = set("a i k o s u v z ve se na do za po od je jsou byl být by aby ale ani nebo když pokud jak kdy kolik "
@@ -97,30 +121,41 @@ def rewrite(question):
 
 # ---------- vyhledávání ----------
 def rrf(rankings, k=60):
-    """Reciprocal rank fusion: úsek, který je vysoko ve více pořadích, vyhraje."""
-    score = Counter()
+    """Reciprocal rank fusion: úsek, který je vysoko ve více pořadích, vyhraje.
+    Vrací [(index, skóre)] seřazené od nejlepšího (při shodě vyhrává dřív viděný úsek)."""
+    score = {}
     for ranking in rankings:
         for rank, i in enumerate(ranking):
-            score[i] += 1 / (k + rank + 1)
-    return [i for i, _ in score.most_common()]
+            score[i] = score.get(i, 0) + 1 / (k + rank + 1)
+    return sorted(score.items(), key=lambda x: -x[1])
 
-def search(question, k=TOP_K, mode=MODE):
-    """Vrátí (hits, přepsaná otázka). hits = [(index úseku, cosine podobnost s otázkou), ...]"""
-    d = dense_scores(question)
-    queries, rewritten = [question], None
-    if mode == "dense":
-        order = list(np.argsort(-d))
+def top(scores, n=50):
+    """Pořadí indexů od nejvyššího skóre; stabilní řazení, nulová skóre se nepočítají."""
+    order = np.argsort(-scores, kind="stable")
+    return [int(i) for i in order[:n] if scores[i] > 0]
+
+def search(question, k=TOP_K, mode=MODE, trace=False):
+    """Vrátí (hits, přepsaná otázka[, stopa]). hits = [(index úseku, cosine podobnost s otázkou), ...]
+    stopa = mezikroky pro vizualizaci "přemýšlení" na webu (co našel který způsob hledání)."""
+    model = "base" if mode == "dense" else "large"
+    d = dense_scores(question, model)
+    rewritten, rankings, steps = None, [], {}
+    if mode in ("dense", "dense_large"):
+        order = [(i, 0.0) for i in top(d, len(d))]
     else:
+        rankings.append(top(d)); steps["dense_q"] = rankings[-1]           # význam: původní otázka
         if mode == "hybrid_rewrite":
             rewritten = rewrite(question)
-            queries.append(rewritten)
-        rankings = [list(np.argsort(-d)[:50])]                       # význam: původní otázka
-        if rewritten:
-            rankings.append(list(np.argsort(-dense_scores(rewritten))[:50]))   # význam: přepsaná otázka
+            rankings.append(top(dense_scores(rewritten))); steps["dense_rw"] = rankings[-1]   # význam: přepsaná
         # slova: jen z otázky v jazyce zákona; laická slova ("výplata") v zákoně nejsou a přidávají šum
-        rankings.append(list(np.argsort(-bm25_scores(rewritten or question))[:50]))
+        rankings.append(top(bm25_scores(rewritten or question))); steps["bm25"] = rankings[-1]
         order = rrf(rankings)
-    return [(int(i), float(d[i])) for i in order[:k]], rewritten
+    hits = [(int(i), float(d[i])) for i, _ in order[:k]]
+    if not trace:
+        return hits, rewritten
+    steps = {name: lst[:20] for name, lst in steps.items()}
+    steps["fused"] = [[int(i), round(sc, 5)] for i, sc in order[:12]]
+    return hits, rewritten, steps
 
 # ---------- LLM ----------
 def llm(system, user, model=None):

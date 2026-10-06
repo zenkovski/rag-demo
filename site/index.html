@@ -4,335 +4,496 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Zákoník práce RAG</title>
-<meta name="description" content="RAG asistent nad zákoníkem práce: odpovědi s citacemi, graf nalezených úseků a poctivé měření kvality v1 a v2.">
+<meta name="description" content="RAG asistent nad zákoníkem práce: odpovědi s citacemi, vizualizace hledání a poctivé měření kvality v1 a v2.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=JetBrains+Mono:wght@400;500&family=Onest:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
 <style>
 :root{
-  --bg:#080c0f; --bg-2:#0b1115; --surface:#0f161b; --surface-2:#141d23; --line:#1c272e; --line-2:#29363f;
-  --text:#dbe4e9; --muted:#85949d; --faint:#55636c;
-  --accent:#5eead4; --accent-2:#2dd4bf; --accent-ink:#04211d; --accent-dim:rgba(94,234,212,.12);
-  --bad:#f4a582; --bad-dim:rgba(244,165,130,.12);
-  --shadow:5px 5px 0 #020405; --shadow-sm:3px 3px 0 #020405;
-  --sans:"IBM Plex Sans",system-ui,sans-serif; --mono:"IBM Plex Mono",ui-monospace,monospace;
-  --display:"Archivo","IBM Plex Sans",sans-serif;
+  --bg:#06090b; --bg-2:#0a0f12; --panel:#0d1316; --panel-2:#111a1e; --line:#1a2429; --line-2:#24323a;
+  --text:#e3edf1; --soft:#b3c3ca; --muted:#7f9099; --faint:#4f5f68;
+  --accent:#3ee6c4; --accent-2:#20c9a6; --accent-ink:#022019; --glow:rgba(62,230,196,.35); --accent-dim:rgba(62,230,196,.10);
+  --ice:#dff3ff; --bad:#f6a77f; --bad-dim:rgba(246,167,127,.12);
+  --r:14px; --r-sm:9px;
+  --display:"Bricolage Grotesque",system-ui,sans-serif; --sans:"Onest",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,monospace;
 }
 *{box-sizing:border-box}
-html{scroll-behavior:auto}
-body{margin:0;background:var(--bg);color:var(--text);font:15px/1.55 var(--sans);-webkit-font-smoothing:antialiased}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--text);font:15px/1.6 var(--sans);-webkit-font-smoothing:antialiased;padding-bottom:96px}
 button{font:inherit;color:inherit;cursor:pointer}
 a{color:inherit}
+.wrap{max-width:1480px;margin:0 auto;padding:0 24px}
 .mono{font-family:var(--mono)}
+.ok{color:var(--accent)} .bad{color:var(--bad)} .mut{color:var(--muted)}
 .only-m{display:none}
-@media (max-width:900px){.only-m{display:inline}}
-.wrap{max-width:1560px;margin:0 auto;padding:0 24px}
 
-/* ---------- horní lišta ---------- */
-.top{border-bottom:1px solid var(--line);background:var(--bg)}
-.top .wrap{display:flex;align-items:center;gap:20px;height:56px}
-.brand{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:13px;letter-spacing:.02em}
-.brand .mark{width:22px;height:22px;border:1.5px solid var(--accent);display:grid;place-items:center;color:var(--accent);font-size:12px;box-shadow:2px 2px 0 #020405}
-.top nav{margin-left:auto;display:flex;gap:6px;align-items:center}
-.top nav a,.top nav button{font-family:var(--mono);font-size:12px;color:var(--muted);text-decoration:none;background:none;border:1px solid transparent;padding:6px 10px}
-.top nav a:hover,.top nav button:hover{color:var(--text);border-color:var(--line-2)}
-.top nav .warn{color:var(--bad);border-color:rgba(244,165,130,.3)}
+/* ---------- navigace nahoře ---------- */
+.nav{position:sticky;top:12px;z-index:30;display:flex;justify-content:center;pointer-events:none;margin-top:12px}
+.nav .pill{pointer-events:auto;display:flex;align-items:center;gap:4px;background:rgba(10,15,18,.94);border:1px solid var(--line-2);border-radius:999px;padding:6px 6px 6px 14px;box-shadow:0 10px 40px rgba(0,0,0,.5)}
+.logo{display:flex;align-items:center;gap:9px;font-family:var(--display);font-weight:700;font-size:15px;margin-right:10px;text-decoration:none}
+.logo .m{width:26px;height:26px;border-radius:8px;display:grid;place-items:center;background:linear-gradient(140deg,var(--accent),#1a8f7c);color:var(--accent-ink);font-size:15px;box-shadow:0 0 18px var(--glow)}
+.nav a.l,.nav button.l{font-size:13.5px;color:var(--soft);text-decoration:none;background:none;border:0;padding:7px 12px;border-radius:999px}
+.nav a.l:hover,.nav button.l:hover{background:var(--panel-2);color:var(--text)}
+.nav .gh{display:flex;align-items:center;gap:6px;background:var(--text);color:#071012;border-radius:999px;padding:7px 14px;font-size:13.5px;font-weight:600;text-decoration:none;margin-left:6px}
+.nav .gh:hover{background:#fff}
 
-/* ---------- úvod ---------- */
-.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line);
-  background:
-    radial-gradient(900px 380px at 82% -10%,rgba(45,212,191,.10),transparent 70%),
-    linear-gradient(var(--bg-2),var(--bg))}
-.hero::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.5;
-  background-image:radial-gradient(rgba(130,160,170,.16) 1px,transparent 1px);background-size:22px 22px;
-  mask-image:linear-gradient(90deg,transparent,#000 45%,#000)}
-.hero .wrap{position:relative;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:48px;padding-top:44px;padding-bottom:40px;align-items:end}
-.hero h1{font-family:var(--display);font-stretch:112%;font-weight:750;font-size:clamp(34px,4.4vw,62px);line-height:1.02;letter-spacing:-.02em;margin:0 0 18px}
-.hero h1 em{font-style:normal;color:var(--accent)}
-.hero p.lead{font-size:17px;color:#b6c3ca;max-width:560px;margin:0}
-.score{border:1px solid var(--line-2);background:var(--surface);box-shadow:var(--shadow);padding:20px 22px}
-.score .line{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
-.score .big{font-family:var(--display);font-stretch:112%;font-weight:700;font-size:40px;line-height:1;color:var(--accent)}
-.score .big small{font-size:22px;color:var(--muted);font-weight:600}
-.score .what{font-size:15px}
-.score .split{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 16px}
-.chip{font-family:var(--mono);font-size:12px;border:1px solid var(--line-2);padding:3px 8px;color:var(--muted);background:var(--bg)}
-.chip b{color:var(--text);font-weight:500}
-.chip.ok b{color:var(--accent)}
-.compare{display:grid;grid-template-columns:auto 1fr auto;gap:8px 12px;align-items:center;font-size:13px;color:var(--muted)}
-.bar{height:8px;background:var(--line);position:relative}
-.bar i{position:absolute;inset:0 auto 0 0;background:var(--faint)}
-.bar.v2 i{background:var(--accent)}
-.compare .n{font-family:var(--mono);font-size:12px;color:var(--text);min-width:52px;text-align:right}
-.score .more{margin-top:16px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
-.score .more span{font-size:13px;color:var(--muted)}
-.btn{font-family:var(--mono);font-size:12px;background:var(--accent);color:var(--accent-ink);border:0;padding:8px 14px;box-shadow:var(--shadow-sm);font-weight:500}
-.btn:hover{background:#7ff1df}
-.btn:active{transform:translate(2px,2px);box-shadow:1px 1px 0 #020405}
+/* ---------- úvod s aurorou ---------- */
+.hero{position:relative;overflow:hidden;margin-top:-62px;padding:150px 0 70px;isolation:isolate}
+.aurora{position:absolute;inset:-20% -10% 0;z-index:-2;filter:blur(60px);opacity:.75}
+.aurora i{position:absolute;border-radius:50%;mix-blend-mode:screen}
+.aurora i:nth-child(1){width:52vw;height:38vw;left:8%;top:-6%;background:radial-gradient(closest-side,rgba(62,230,196,.55),transparent)}
+.aurora i:nth-child(2){width:46vw;height:34vw;right:4%;top:2%;background:radial-gradient(closest-side,rgba(40,140,230,.38),transparent)}
+.aurora i:nth-child(3){width:40vw;height:26vw;left:34%;top:18%;background:radial-gradient(closest-side,rgba(120,255,190,.30),transparent)}
+@media (prefers-reduced-motion:no-preference){
+  .aurora i:nth-child(1){animation:drift1 18s ease-in-out infinite alternate}
+  .aurora i:nth-child(2){animation:drift2 22s ease-in-out infinite alternate}
+  .aurora i:nth-child(3){animation:drift3 16s ease-in-out infinite alternate}
+  @keyframes drift1{to{transform:translate(12vw,6vw) scale(1.15)}}
+  @keyframes drift2{to{transform:translate(-14vw,8vw) scale(.9)}}
+  @keyframes drift3{to{transform:translate(-8vw,-4vw) scale(1.25)}}
+}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;
+  background-image:linear-gradient(rgba(150,190,200,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(150,190,200,.06) 1px,transparent 1px);
+  background-size:56px 56px;mask-image:radial-gradient(ellipse 70% 60% at 50% 30%,#000 30%,transparent 75%)}
+.hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:160px;z-index:-1;background:linear-gradient(transparent,var(--bg))}
+.hero .wrap{text-align:center}
+.badge{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(62,230,196,.35);background:rgba(62,230,196,.08);border-radius:999px;padding:5px 12px 5px 6px;font-size:13px;color:var(--soft);margin-bottom:22px}
+.badge b{background:var(--accent);color:var(--accent-ink);border-radius:999px;padding:1px 8px;font-size:12px;font-weight:600}
+.hero h1{font-family:var(--display);font-weight:780;font-size:clamp(40px,6.4vw,92px);line-height:.98;letter-spacing:-.035em;margin:0 auto 20px;max-width:15ch}
+.hero h1 span{color:var(--accent);text-shadow:0 0 40px rgba(62,230,196,.35)}
+.hero p.lead{font-size:18px;color:var(--soft);max-width:640px;margin:0 auto 34px}
+.askbig{max-width:720px;margin:0 auto;position:relative}
+.askbig form{display:flex;align-items:center;gap:8px;background:rgba(10,15,18,.92);border:1px solid var(--line-2);border-radius:18px;padding:8px 8px 8px 18px;box-shadow:0 0 0 1px rgba(62,230,196,.08),0 20px 60px rgba(0,0,0,.55),0 0 60px rgba(62,230,196,.10)}
+.askbig form:focus-within{border-color:rgba(62,230,196,.6);box-shadow:0 0 0 4px rgba(62,230,196,.12),0 20px 60px rgba(0,0,0,.55),0 0 80px rgba(62,230,196,.18)}
+.askbig .ph{font-size:20px;color:var(--accent)}
+.askbig input[name=q]{flex:1;min-width:0;background:none;border:0;outline:none;color:var(--text);font:inherit;font-size:17px;padding:12px 4px}
+.askbig input[name=q]::placeholder{color:var(--faint)}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.go{display:flex;align-items:center;gap:8px;background:var(--accent);color:var(--accent-ink);border:0;border-radius:12px;padding:12px 18px;font-weight:600;font-size:15px;box-shadow:0 0 24px var(--glow)}
+.go:hover{background:#6ff0d6}
+.go:disabled{opacity:.55;cursor:wait}
+.askmeta{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:12px;font-family:var(--mono);font-size:11.5px;color:var(--muted)}
+.askmeta b{color:var(--soft);font-weight:500}
+.chips{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;margin-top:22px}
+.chips button{background:rgba(13,19,22,.85);border:1px solid var(--line-2);border-radius:999px;padding:7px 14px;font-size:13.5px;color:var(--soft)}
+.chips button:hover{border-color:rgba(62,230,196,.5);color:var(--text)}
+.warnline{margin-top:20px;font-size:13px;color:var(--bad)}
 
-/* ---------- postup (pipeline) ---------- */
-.pipe{border-bottom:1px solid var(--line);background:var(--bg)}
-.pipe .wrap{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0}
-.step{position:relative;padding:16px 26px 18px 0;min-width:0}
-.step + .step{padding-left:26px;border-left:1px solid var(--line)}
-.step .h{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:12px;color:var(--muted);margin-bottom:6px}
-.step .num{width:20px;height:20px;display:grid;place-items:center;border:1px solid var(--line-2);font-size:11px;color:var(--muted)}
-.step.on .num{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
-.step.on .h{color:var(--text)}
-.step .b{font-size:14px;color:var(--muted);overflow:hidden;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical}
-.step.on .b{color:var(--text)}
-.step .b code{font-family:var(--mono);font-size:12px;color:var(--accent)}
+/* ---------- sekce ---------- */
+.sec{padding-top:84px}
+.sec h2{font-family:var(--display);font-weight:760;font-size:clamp(30px,3.6vw,50px);line-height:1.02;letter-spacing:-.03em;margin:0 0 12px;max-width:20ch}
+.sec h2 span{color:var(--accent)}
+.sec p.sub{color:var(--soft);font-size:16.5px;max-width:640px;margin:0 0 34px}
 
-/* ---------- pracovní plocha ---------- */
-.desk{display:grid;grid-template-columns:minmax(320px,400px) minmax(0,1fr) minmax(290px,370px);height:calc(100vh - 56px);min-height:620px;max-height:980px;border-bottom:1px solid var(--line)}
-section{min-width:0;min-height:0;display:flex;flex-direction:column}
-.chat{border-right:1px solid var(--line);background:var(--bg-2)}
-.card{border-left:1px solid var(--line);background:var(--bg-2)}
-.ph{font-family:var(--mono);font-size:12px;color:var(--muted);padding:0 16px;height:42px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:8px;flex:none}
-.ph b{color:var(--text);font-weight:500}
+/* ---------- aplikace (dashboard) ---------- */
+.app{border:1px solid var(--line-2);border-radius:20px;background:linear-gradient(180deg,var(--panel),var(--bg-2));box-shadow:0 30px 90px rgba(0,0,0,.55),0 0 0 1px rgba(62,230,196,.04);overflow:hidden}
+.apphead{display:flex;align-items:center;gap:10px;padding:12px 16px;border-bottom:1px solid var(--line);font-family:var(--mono);font-size:12px;color:var(--muted)}
+.apphead .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent)}
+.apphead .sp{flex:1}
+.apphead .pill2{border:1px solid var(--line-2);border-radius:999px;padding:3px 10px}
 
-/* chat */
-.log{flex:1;overflow:auto;padding:16px;display:flex;flex-direction:column;gap:12px}
-.intro{color:var(--muted);font-size:14px;border:1px dashed var(--line-2);padding:14px}
-.intro strong{color:var(--text);font-weight:500}
-.msg.user{align-self:flex-end;max-width:92%;background:var(--surface-2);border:1px solid var(--line-2);padding:9px 12px}
-.msg.bot{background:var(--surface);border:1px solid var(--line-2);box-shadow:var(--shadow);padding:13px 15px}
-.msg.bot .meta{display:flex;justify-content:space-between;gap:8px;font-family:var(--mono);font-size:11px;color:var(--faint);margin-bottom:8px}
+/* schéma postupu (pipeline) */
+.flow{scroll-margin-top:70px;position:relative;padding:16px 18px 14px;border-bottom:1px solid var(--line);background:
+  radial-gradient(600px 160px at 50% 0%,rgba(62,230,196,.06),transparent)}
+.flow svg.wires{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}
+.wire{fill:none;stroke:#2b3d45;stroke-width:1.4;stroke-dasharray:5 6}
+.wire.on{stroke:var(--accent);filter:drop-shadow(0 0 4px var(--glow))}
+@media (prefers-reduced-motion:no-preference){ .wire.on{animation:dash 1s linear infinite} @keyframes dash{to{stroke-dashoffset:-22}} }
+.fgrid{position:relative;display:grid;grid-template-columns:1fr 1fr 1.1fr .9fr 1fr;gap:34px;align-items:center}
+.fcol{display:flex;flex-direction:column;gap:12px}
+.fn{position:relative;background:var(--panel-2);border:1px solid var(--line-2);border-radius:12px;padding:11px 13px;min-width:0;transition:border-color .3s,box-shadow .3s}
+.fn .t{display:flex;align-items:center;gap:8px;font-size:13.5px;font-weight:600}
+.fn .t i{font-size:18px;color:var(--muted);transition:color .3s}
+.fn .d{font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:4px;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;min-height:2.6em}
+.fn.on{border-color:rgba(62,230,196,.7);box-shadow:0 0 0 1px rgba(62,230,196,.25),0 0 26px rgba(62,230,196,.18)}
+.fn.on .t i{color:var(--accent)}
+.fn.done{border-color:rgba(62,230,196,.3)}
+.fn.done .t i{color:var(--accent-2)}
+.fn.ice.on{border-color:rgba(223,243,255,.7);box-shadow:0 0 26px rgba(223,243,255,.15)}
+.fn.ice.on .t i{color:var(--ice)}
+
+/* tři panely */
+.desk{display:grid;grid-template-columns:minmax(320px,390px) minmax(0,1fr) minmax(290px,360px);height:max(500px,min(800px,calc(100vh - 340px)))}
+.desk > section{min-width:0;min-height:0;display:flex;flex-direction:column}
+.chat{border-right:1px solid var(--line)}
+.card{border-left:1px solid var(--line)}
+.ph2{font-family:var(--mono);font-size:11.5px;color:var(--muted);padding:0 14px;height:40px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:8px;flex:none}
+.ph2 b{color:var(--text);font-weight:500}
+.log{flex:1;overflow:auto;padding:14px;display:flex;flex-direction:column;gap:12px}
+.intro{color:var(--muted);font-size:14px;border:1px dashed var(--line-2);border-radius:12px;padding:14px}
+.intro strong{color:var(--text);font-weight:600}
+.msg.user{align-self:flex-end;max-width:92%;background:var(--panel-2);border:1px solid var(--line-2);border-radius:14px 14px 4px 14px;padding:9px 13px}
+.msg.bot{background:var(--panel);border:1px solid var(--line-2);border-radius:14px 14px 14px 4px;padding:13px 15px;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+.msg.bot .meta{display:flex;justify-content:space-between;gap:8px;font-family:var(--mono);font-size:10.5px;color:var(--faint);margin-bottom:8px}
+.msg.bot .meta i{color:var(--accent)}
 .msg.bot p{margin:0}
-.cite{font-family:var(--mono);font-size:11.5px;background:var(--accent-dim);color:var(--accent);border:1px solid rgba(94,234,212,.35);padding:0 5px;margin:0 1px;vertical-align:1px;line-height:1.4}
+.cite{font-family:var(--mono);font-size:11px;background:var(--accent-dim);color:var(--accent);border:1px solid rgba(62,230,196,.35);border-radius:6px;padding:0 5px;margin:0 1px;vertical-align:1px;line-height:1.45}
 .cite:hover,.cite.on{background:var(--accent);color:var(--accent-ink)}
 .verdict{margin-top:11px;padding-top:10px;border-top:1px dashed var(--line-2);font-size:13px;color:var(--muted)}
 .tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:6px}
-.tag{font-family:var(--mono);font-size:11px;padding:1px 6px;border:1px solid var(--line-2)}
-.tag.ok{color:var(--accent);border-color:rgba(94,234,212,.4)}
-.tag.bad{color:var(--bad);border-color:rgba(244,165,130,.45);background:var(--bad-dim)}
+.tag{font-family:var(--mono);font-size:10.5px;padding:2px 7px;border:1px solid var(--line-2);border-radius:999px}
+.tag.ok{color:var(--accent);border-color:rgba(62,230,196,.4)}
+.tag.bad{color:var(--bad);border-color:rgba(246,167,127,.45);background:var(--bad-dim)}
 details.v1{margin-top:9px}
-details.v1 summary{font-family:var(--mono);font-size:11.5px;color:var(--muted);cursor:pointer;list-style:none}
+details.v1 summary{font-family:var(--mono);font-size:11px;color:var(--muted);cursor:pointer;list-style:none}
 details.v1 summary::before{content:"+ "}
 details.v1[open] summary::before{content:"− "}
-details.v1 .old{margin-top:6px;font-size:13px;color:var(--muted);background:var(--bg);border:1px solid var(--line);padding:8px 10px}
+details.v1 .old{margin-top:6px;font-size:13px;color:var(--muted);background:var(--bg);border:1px solid var(--line);border-radius:9px;padding:8px 10px}
+.msg.wait{font-family:var(--mono);font-size:12px;color:var(--muted);border:1px dashed var(--line-2);border-radius:12px;padding:10px 12px;display:flex;gap:8px;align-items:center}
+.msg.wait i{color:var(--accent)}
+@media (prefers-reduced-motion:no-preference){ .msg.wait i{animation:spin 1.2s linear infinite} @keyframes spin{to{transform:rotate(360deg)}} }
+.msg.err{border:1px solid rgba(246,167,127,.45);background:var(--bad-dim);color:var(--bad);border-radius:12px;padding:10px 12px;font-size:13.5px}
 
-.ask{border-top:1px solid var(--line);padding:12px 16px 14px;display:flex;flex-direction:column;gap:10px;max-height:48%;flex:none}
-.seg{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line-2)}
-.seg button{background:none;border:0;padding:7px 4px;font-family:var(--mono);font-size:11.5px;color:var(--muted)}
-.seg button + button{border-left:1px solid var(--line-2)}
-.seg button.on{background:var(--accent);color:var(--accent-ink)}
-.ask input{width:100%;background:var(--bg);border:1px solid var(--line-2);color:var(--text);font:inherit;font-size:14px;padding:8px 11px;outline:none}
-.ask input:focus{border-color:var(--accent)}
+.ask{border-top:1px solid var(--line);padding:12px 14px 14px;display:flex;flex-direction:column;gap:10px;max-height:52%;flex:none}
+.livemini form{display:flex;gap:6px}
+.livemini input[name=q]{flex:1;min-width:0;background:var(--bg);border:1px solid rgba(62,230,196,.45);border-radius:10px;color:var(--text);font:inherit;font-size:14px;padding:9px 11px;outline:none}
+.livemini input[name=q]:focus{box-shadow:0 0 0 3px var(--accent-dim)}
+.livemini .go{padding:9px 13px;font-size:14px;border-radius:10px}
+.divider{font-family:var(--mono);font-size:10.5px;color:var(--faint);display:flex;align-items:center;gap:8px}
+.divider::before,.divider::after{content:"";flex:1;border-top:1px solid var(--line)}
+.seg{display:grid;grid-template-columns:repeat(3,1fr);background:var(--bg);border:1px solid var(--line-2);border-radius:10px;padding:3px;gap:3px}
+.seg button{background:none;border:0;border-radius:7px;padding:6px 4px;font-size:12.5px;color:var(--muted)}
+.seg button.on{background:var(--panel-2);color:var(--text);box-shadow:inset 0 0 0 1px var(--line-2)}
+#filter{width:100%;background:var(--bg);border:1px solid var(--line-2);border-radius:10px;color:var(--text);font:inherit;font-size:13.5px;padding:8px 11px;outline:none}
+#filter:focus{border-color:rgba(62,230,196,.5)}
 .qs{overflow:auto;display:flex;flex-direction:column;gap:2px;min-height:90px}
-.q{text-align:left;background:none;border:1px solid transparent;padding:6px 8px;font-size:14px;display:flex;gap:9px;align-items:baseline}
-.q:hover{background:var(--surface-2);border-color:var(--line-2)}
-.q .n{font-family:var(--mono);font-size:11px;color:var(--faint);min-width:28px}
-.q .dot{width:6px;height:6px;border-radius:50%;flex:none;transform:translateY(-1px);background:var(--accent)}
-.q .dot.bad{background:var(--bad)}
-.q .dot.none{background:var(--line-2)}
+.q{text-align:left;background:none;border:1px solid transparent;border-radius:9px;padding:6px 8px;font-size:13.5px;display:flex;gap:9px;align-items:baseline}
+.q:hover{background:var(--panel-2);border-color:var(--line-2)}
+.q .n{font-family:var(--mono);font-size:10.5px;color:var(--faint);min-width:26px}
+.q .dot{width:6px;height:6px;border-radius:50%;flex:none;transform:translateY(-1px);background:var(--accent);box-shadow:0 0 6px var(--accent)}
+.q .dot.bad{background:var(--bad);box-shadow:0 0 6px var(--bad)}
 .q.done{color:var(--muted)}
 .empty{font-size:13px;color:var(--muted);padding:4px 8px}
 
-/* graf */
-.graph{position:relative;background:
-  radial-gradient(ellipse at 50% 45%,rgba(20,40,46,.55) 0%,transparent 65%),
-  var(--bg)}
-.graph::before{content:"";position:absolute;inset:42px 0 0;pointer-events:none;opacity:.55;
-  background-image:radial-gradient(rgba(130,160,170,.13) 1px,transparent 1px);background-size:26px 26px}
-.graph svg{position:relative;flex:1;width:100%;min-height:0;display:block;cursor:grab}
-.graph svg:active{cursor:grabbing}
-.legend{position:absolute;left:12px;bottom:12px;font-family:var(--mono);font-size:11px;color:var(--muted);display:flex;flex-direction:column;gap:4px;background:rgba(8,12,15,.88);padding:9px 11px;border:1px solid var(--line)}
-.legend i{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:7px;vertical-align:-1px}
-.gtools{position:absolute;right:12px;top:54px;display:flex;flex-direction:column;gap:4px}
-.gtools button{width:30px;height:30px;background:var(--surface);border:1px solid var(--line-2);font-family:var(--mono);font-size:14px;color:var(--muted)}
+/* mapa */
+.graph{position:relative;background:radial-gradient(ellipse at 50% 45%,rgba(20,48,50,.45) 0%,transparent 65%),var(--bg)}
+.graph::before{content:"";position:absolute;inset:40px 0 0;pointer-events:none;opacity:.6;background-image:radial-gradient(rgba(140,175,185,.12) 1px,transparent 1px);background-size:24px 24px}
+.graph svg#graph{position:relative;flex:1;width:100%;min-height:0;display:block;cursor:grab}
+.graph svg#graph:active{cursor:grabbing}
+.legend{position:absolute;left:12px;bottom:12px;font-family:var(--mono);font-size:10.5px;color:var(--muted);display:flex;flex-direction:column;gap:4px;background:rgba(6,9,11,.9);padding:9px 11px;border:1px solid var(--line);border-radius:10px}
+.legend i{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:7px;vertical-align:0}
+.gtools{position:absolute;right:12px;top:52px;display:flex;flex-direction:column;gap:4px}
+.gtools button{width:30px;height:30px;display:grid;place-items:center;background:var(--panel);border:1px solid var(--line-2);border-radius:8px;color:var(--muted);font-size:15px}
 .gtools button:hover{color:var(--text);border-color:var(--accent)}
-.link{stroke:#22303a;stroke-width:.8}
+.replay{display:inline-flex;align-items:center;gap:5px;font-family:var(--mono);font-size:11px;background:var(--panel-2);border:1px solid var(--line-2);border-radius:999px;color:var(--soft);padding:3px 10px}
+.replay:hover{color:var(--text);border-color:var(--accent)}
+.gstatus{position:absolute;left:12px;top:52px;font-family:var(--mono);font-size:12px;color:var(--text);background:rgba(6,9,11,.92);border:1px solid var(--line-2);border-radius:10px;padding:8px 11px;display:none;max-width:calc(100% - 70px)}
+.gstatus.on{display:block}
+.gstatus .bars{display:flex;gap:5px;margin-top:6px}
+.gstatus .bars i{width:22px;height:3px;border-radius:2px;background:var(--line-2)}
+.gstatus .bars i.on{background:var(--accent);box-shadow:0 0 6px var(--accent)}
+.gstatus small{display:block;color:var(--muted);margin-top:3px;font-size:10.5px}
+.link{stroke:#1d2a30;stroke-width:.8}
 .node{stroke:var(--bg);stroke-width:1;cursor:pointer}
 .node:hover{stroke:#fff}
 .node.hit{fill:var(--accent)!important;stroke:var(--accent-ink);filter:url(#glow)}
-.node.near{fill:#16403b!important;stroke:var(--accent);stroke-width:1.2}
+.node.near{fill:#124039!important;stroke:var(--accent);stroke-width:1.2}
 .node.gold{stroke:#fff;stroke-width:1.6}
 .node.sel{stroke:#fff;stroke-width:2.2}
+.node.a1{fill:var(--accent)!important;stroke:none}
+.node.a2{fill:var(--ice)!important;stroke:none}
+.node.a3{fill:var(--accent)!important;stroke:var(--accent-ink);filter:url(#glow)}
 .qlink{stroke:var(--accent);stroke-width:1.5;stroke-opacity:.8}
 .qlink.near{stroke-dasharray:3 4;stroke-opacity:.45}
 .qnode{fill:var(--bg);stroke:var(--accent);stroke-width:2.2;filter:url(#glow)}
+.syn{stroke:var(--accent);stroke-width:.7;stroke-opacity:.22;pointer-events:none}
+.syn.w{stroke:var(--ice);stroke-opacity:.28}
+.syn.f{stroke-opacity:.55;stroke-width:1.1}
 .lbl{font-family:var(--mono);fill:var(--text);paint-order:stroke;stroke:var(--bg);pointer-events:none}
 .lbl.q{fill:var(--accent)}
-.tlbl{font-family:var(--mono);fill:var(--faint);text-anchor:middle;pointer-events:none;letter-spacing:.04em;text-transform:uppercase}
-.dimmed .node:not(.hit):not(.near){opacity:.3}
+.zl{font-family:var(--mono);fill:#a9b8c0;paint-order:stroke;stroke:var(--bg);pointer-events:none}
+.dimmed .node:not(.hit):not(.near):not(.a1):not(.a2):not(.a3){opacity:.22}
 .dimmed .link{stroke-opacity:.35}
-.dimmed .tlbl{opacity:.35}
 @media (prefers-reduced-motion:no-preference){
   .node{transition:opacity .4s,fill .4s}
-  .qlink{animation:fadein .6s ease-out}
+  .qlink,.syn{animation:fadein .5s ease-out}
   @keyframes fadein{from{stroke-opacity:0}}
 }
 
-/* karta zdroje */
-.src{flex:1;overflow:auto;padding:18px 16px}
-.src .id{font-family:var(--display);font-stretch:112%;font-weight:700;font-size:28px;line-height:1.05;color:var(--accent)}
-.src h2{font-size:16px;font-weight:600;margin:8px 0 2px}
-.src .topic{font-size:13px;color:var(--muted);margin-bottom:14px}
-.src blockquote{margin:0;padding:13px 15px;background:var(--surface);border:1px solid var(--line-2);box-shadow:var(--shadow);white-space:pre-line;font-size:14.5px}
-.src .score2{margin-top:12px;font-family:var(--mono);font-size:12px;color:var(--muted)}
-.src .hits{margin-top:18px;display:flex;flex-direction:column;gap:4px}
-.src .hits .lab{font-family:var(--mono);font-size:11px;color:var(--faint);margin-bottom:2px}
-.src .hits button{display:flex;justify-content:space-between;gap:8px;background:var(--bg);border:1px solid var(--line);padding:6px 9px;font-family:var(--mono);font-size:12px;color:var(--muted);text-align:left}
-.src .hits button:hover,.src .hits button.on{border-color:var(--accent);color:var(--text)}
+/* zdroj */
+.src{flex:1;overflow:auto;padding:16px 14px}
+.src .id{font-family:var(--display);font-weight:760;font-size:30px;line-height:1.05;letter-spacing:-.02em;color:var(--accent);text-shadow:0 0 24px rgba(62,230,196,.25)}
+.src h3{font-size:15.5px;font-weight:600;margin:8px 0 2px}
+.src .topic{font-size:12.5px;color:var(--muted);margin-bottom:14px}
+.src blockquote{margin:0;padding:13px 15px;background:var(--panel);border:1px solid var(--line-2);border-radius:12px;white-space:pre-line;font-size:14px;color:var(--soft)}
+.src .score2{margin-top:12px;font-family:var(--mono);font-size:11px;color:var(--muted)}
+.src .hits{margin-top:16px;display:flex;flex-direction:column;gap:4px}
+.src .hits .lab{font-family:var(--mono);font-size:10.5px;color:var(--faint);margin-bottom:2px}
+.src .hits button{display:flex;justify-content:space-between;gap:8px;background:var(--bg);border:1px solid var(--line);border-radius:9px;padding:6px 9px;font-family:var(--mono);font-size:11.5px;color:var(--muted);text-align:left}
+.src .hits button:hover,.src .hits button.on{border-color:rgba(62,230,196,.6);color:var(--text)}
 .src .hits .c{color:var(--accent)}
 .src .hits .g{color:#fff}
 .placeholder{color:var(--muted);font-size:14px}
-.placeholder b{color:var(--text);font-weight:500}
+.placeholder b{color:var(--text);font-weight:600}
 
-/* ---------- jak to funguje ---------- */
-.how{padding:56px 0 64px;border-bottom:1px solid var(--line)}
-.how h2{font-family:var(--display);font-stretch:112%;font-weight:720;font-size:clamp(26px,3vw,38px);line-height:1.05;margin:0 0 26px;letter-spacing:-.01em}
-.how .grid{display:grid;grid-template-columns:1.1fr 1.05fr 1fr;gap:20px}
-.panel{border:1px solid var(--line-2);background:var(--surface);padding:18px 20px;box-shadow:var(--shadow)}
-.panel h3{margin:0 0 10px;font-size:16px;font-weight:600}
-.panel p{margin:0 0 10px;color:#b4c1c8;font-size:14px}
-.panel p:last-child{margin-bottom:0}
-.rows3{display:grid;grid-template-columns:1fr auto auto;gap:7px 14px;font-size:13.5px;align-items:center}
-.rows3 .hd{font-family:var(--mono);font-size:11px;color:var(--faint)}
-.rows3 .v{font-family:var(--mono);font-size:12.5px;text-align:right}
-.rows3 .v.up{color:var(--accent)}
-.rows3 .v.dn{color:var(--bad)}
-.rows3 .sep{grid-column:1/-1;border-top:1px solid var(--line)}
+/* ---------- bento s čísly ---------- */
+.bento{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:minmax(150px,auto);gap:14px}
+.tile{position:relative;background:linear-gradient(180deg,var(--panel),var(--bg-2));border:1px solid var(--line-2);border-radius:var(--r);padding:22px;overflow:hidden}
+.tile::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:radial-gradient(400px 160px at 0% 0%,rgba(62,230,196,.08),transparent)}
+.tile h3{margin:0 0 6px;font-size:15px;font-weight:600}
+.tile p{margin:0;color:var(--muted);font-size:13.5px}
+.tile .big{font-family:var(--display);font-weight:780;letter-spacing:-.04em;line-height:.9;color:var(--text)}
+.tile .big span{color:var(--muted);font-weight:600}
+.t-main{grid-column:span 2;grid-row:span 2;display:flex;flex-direction:column;justify-content:space-between}
+.t-main .big{font-size:clamp(84px,10vw,150px);color:var(--accent);text-shadow:0 0 60px rgba(62,230,196,.3)}
+.t-main .big span{font-size:.45em}
+.t-wide{grid-column:span 2}
+.t-hold .big{font-size:64px}
+.t-cost .big{font-size:48px}
+.split{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 18px}
+.chip{font-family:var(--mono);font-size:11.5px;border:1px solid var(--line-2);border-radius:999px;padding:4px 10px;color:var(--muted);background:var(--bg)}
+.chip b{color:var(--accent);font-weight:500}
+.bars2{display:grid;grid-template-columns:auto 1fr auto;gap:9px 12px;align-items:center;font-size:13px;color:var(--muted)}
+.bar{height:8px;border-radius:999px;background:var(--line);position:relative;overflow:hidden}
+.bar i{position:absolute;inset:0 auto 0 0;border-radius:inherit;background:var(--faint)}
+.bar.v2 i{background:linear-gradient(90deg,var(--accent-2),var(--accent));box-shadow:0 0 12px var(--glow)}
+.bars2 .n{font-family:var(--mono);font-size:12px;color:var(--text);text-align:right;min-width:44px}
+.linkbtn{display:inline-flex;align-items:center;gap:6px;margin-top:16px;background:none;border:1px solid var(--line-2);border-radius:999px;padding:7px 14px;font-size:13px;color:var(--text)}
+.linkbtn:hover{border-color:var(--accent)}
+.bad-note{margin-top:10px;font-size:12.5px;color:var(--muted)}
+.bad-note b{color:var(--bad);font-weight:500}
 
-footer{padding:22px 0 30px;font-family:var(--mono);font-size:12px;color:var(--muted)}
+/* ---------- jak tomu věřit (features) ---------- */
+.feats{display:grid;grid-template-columns:1.25fr 1fr 1fr;gap:14px}
+.feat{background:var(--panel);border:1px solid var(--line-2);border-radius:var(--r);padding:22px;position:relative;overflow:hidden}
+.feat .ic{width:40px;height:40px;border-radius:11px;display:grid;place-items:center;background:var(--accent-dim);border:1px solid rgba(62,230,196,.3);color:var(--accent);font-size:20px;margin-bottom:16px;box-shadow:0 0 20px rgba(62,230,196,.12)}
+.feat h3{margin:0 0 6px;font-size:17px;font-weight:600}
+.feat p{margin:0;color:var(--muted);font-size:14px}
+.feat.tall{grid-row:span 2}
+.demo-cite{margin-top:18px;background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:14px;font-size:13.5px;color:var(--soft)}
+.demo-cite .cite{pointer-events:none}
+.demo-cite .q2{font-family:var(--mono);font-size:11px;color:var(--faint);margin-bottom:6px}
+
+/* ---------- stack (hvězdicové schéma) ---------- */
+.hub{position:relative;height:460px;border:1px solid var(--line-2);border-radius:20px;background:radial-gradient(500px 260px at 50% 50%,rgba(62,230,196,.08),transparent),var(--bg-2);overflow:hidden}
+.hub svg{position:absolute;inset:0;width:100%;height:100%}
+.hub .core{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:96px;height:96px;border-radius:22px;display:grid;place-items:center;background:var(--panel-2);border:1px solid rgba(62,230,196,.6);box-shadow:0 0 0 6px rgba(62,230,196,.05),0 0 50px rgba(62,230,196,.3);color:var(--accent);font-size:42px}
+.hub .it{position:absolute;transform:translate(-50%,-50%);width:186px;background:var(--panel);border:1px solid var(--line-2);border-radius:12px;padding:10px 12px;display:flex;gap:10px;align-items:flex-start}
+.hub .it i{font-size:20px;color:var(--accent);margin-top:2px}
+.hub .it b{display:block;font-size:13.5px;font-weight:600}
+.hub .it span{display:block;font-size:11.5px;color:var(--muted);line-height:1.4}
+.hub .it:hover{border-color:rgba(62,230,196,.6)}
+.hwire{fill:none;stroke:#27363d;stroke-width:1.2;stroke-dasharray:4 6}
+@media (prefers-reduced-motion:no-preference){ .hwire{animation:dash 2.2s linear infinite} }
+
+/* ---------- patička + dock ---------- */
+footer{margin-top:90px;border-top:1px solid var(--line);padding:26px 0 30px;font-family:var(--mono);font-size:11.5px;color:var(--muted)}
 footer .wrap{display:flex;gap:18px;flex-wrap:wrap}
 footer strong{color:var(--bad);font-weight:500}
+.dock{position:fixed;left:50%;bottom:16px;transform:translateX(-50%);z-index:40;display:flex;align-items:flex-end;gap:6px;padding:8px;background:rgba(10,15,18,.95);border:1px solid var(--line-2);border-radius:20px;box-shadow:0 18px 50px rgba(0,0,0,.6)}
+.dock a,.dock button{position:relative;width:44px;height:44px;border-radius:13px;display:grid;place-items:center;background:var(--panel-2);border:1px solid var(--line);color:var(--soft);font-size:21px;text-decoration:none;transition:width .18s,height .18s,background .18s,color .18s}
+.dock a:hover,.dock button:hover{width:54px;height:54px;color:var(--accent);background:#14211f;border-color:rgba(62,230,196,.4)}
+.dock .tip{position:absolute;bottom:calc(100% + 10px);left:50%;transform:translateX(-50%);white-space:nowrap;font-family:var(--mono);font-size:11px;background:var(--panel-2);border:1px solid var(--line-2);border-radius:7px;padding:3px 8px;color:var(--text);opacity:0;pointer-events:none}
+.dock a:hover .tip,.dock button:hover .tip{opacity:1}
+.dock .sep{width:1px;height:30px;background:var(--line-2);align-self:center;margin:0 3px}
+@media (prefers-reduced-motion:reduce){ .dock a,.dock button{transition:none} }
 
 /* ---------- dialog výsledků ---------- */
-dialog{background:var(--surface);color:var(--text);border:1px solid var(--line-2);box-shadow:8px 8px 0 #020405;padding:0;width:min(1040px,calc(100vw - 24px));max-height:calc(100vh - 32px)}
-dialog::backdrop{background:rgba(2,4,5,.78)}
-.dh{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;padding:20px 22px;border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--surface);z-index:1}
-.dh h2{margin:0;font-family:var(--display);font-stretch:112%;font-weight:720;font-size:24px;line-height:1.1}
+dialog{background:var(--panel);color:var(--text);border:1px solid var(--line-2);border-radius:18px;box-shadow:0 30px 100px rgba(0,0,0,.7);padding:0;width:min(1040px,calc(100vw - 24px));max-height:calc(100vh - 32px)}
+dialog::backdrop{background:rgba(2,4,5,.8)}
+.dh{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;padding:20px 22px;border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--panel);z-index:1}
+.dh h2{margin:0;font-family:var(--display);font-weight:760;font-size:26px;letter-spacing:-.02em}
 .dh p{margin:6px 0 0;color:var(--muted);font-size:14px;max-width:720px}
-.close{background:none;border:1px solid var(--line-2);padding:5px 10px;font-family:var(--mono);font-size:12px;flex:none}
+.close{background:none;border:1px solid var(--line-2);border-radius:999px;padding:5px 12px;font-family:var(--mono);font-size:12px;flex:none}
 .close:hover{border-color:var(--accent)}
 .dsec{padding:18px 22px;border-bottom:1px solid var(--line)}
 .dsec h3{margin:0 0 12px;font-size:15px;font-weight:600}
-.dsec .two{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.rows3{display:grid;grid-template-columns:1fr auto auto;gap:7px 14px;font-size:13.5px;align-items:center}
+.rows3 .hd{font-family:var(--mono);font-size:10.5px;color:var(--faint)}
+.rows3 .v{font-family:var(--mono);font-size:12.5px;text-align:right}
+.rows3 .v.up{color:var(--accent)}
+.rows3 .sep{grid-column:1/-1;border-top:1px solid var(--line)}
 .tbl{width:100%;border-collapse:collapse;font-size:13.5px}
-.tbl th{font-family:var(--mono);font-size:11px;color:var(--faint);font-weight:400;text-align:left;padding:6px 8px;border-bottom:1px solid var(--line)}
+.tbl th{font-family:var(--mono);font-size:10.5px;color:var(--faint);font-weight:400;text-align:left;padding:6px 8px;border-bottom:1px solid var(--line)}
 .tbl td{padding:9px 8px;border-bottom:1px solid var(--line);vertical-align:top}
 .tbl tr.click{cursor:pointer}
-.tbl tr.click:hover td{background:var(--surface-2)}
+.tbl tr.click:hover td{background:var(--panel-2)}
 .tbl .note{color:var(--muted);font-size:12.5px;margin-top:3px}
-.tbl .st{font-family:var(--mono);font-size:12px;white-space:nowrap}
-.ok{color:var(--accent)} .bad{color:var(--bad)} .mut{color:var(--muted)}
+.tbl .st{font-family:var(--mono);font-size:11.5px;white-space:nowrap}
 
 /* ---------- mobil ---------- */
 @media (max-width:1100px){
-  .hero .wrap{grid-template-columns:1fr;gap:28px;padding-top:32px}
-  .how .grid{grid-template-columns:1fr}
+  .fgrid{grid-template-columns:1fr 1fr;gap:12px}
+  .flow svg.wires{display:none}
+  .bento{grid-template-columns:1fr 1fr}
+  .feats{grid-template-columns:1fr 1fr}
+  .feat.tall{grid-row:auto;grid-column:span 2}
+  .hub{height:auto;padding:24px 16px;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .hub svg,.hub .core{display:none}
+  .hub .it{position:static;transform:none;width:auto}
 }
 @media (max-width:900px){
   .wrap{padding:0 16px}
+  .only-m{display:inline}
   .hide-m{display:none!important}
-  .top nav{gap:2px}
-  .pipe .wrap{grid-template-columns:1fr 1fr}
-  .step:nth-child(3){border-left:0;padding-left:0}
-  .step:nth-child(n+3){border-top:1px solid var(--line)}
-  .desk{display:block;height:auto;max-height:none}
-  section{border:0!important}
-  .chat .log{min-height:180px;max-height:70vh}
+  .nav .pill{padding-left:10px}
+  .nav a.l{display:none}
+  .hero{padding:118px 0 40px}
+  .hero p.lead{font-size:16px}
+  .askbig form{padding:6px 6px 6px 12px;border-radius:14px}
+  .askbig input[name=q]{font-size:15px}
+  .go span{display:none}
+  .desk{display:block;height:auto}
+  .desk > section{border:0!important}
+  .chat .log{min-height:160px;max-height:70vh}
   .ask{max-height:none}
   .qs{max-height:300px}
   .graph{border-top:1px solid var(--line)!important;border-bottom:1px solid var(--line)!important}
-  .graph svg{height:58vh;flex:none}
-  .legend{position:static;border:0;border-top:1px solid var(--line);flex-direction:row;flex-wrap:wrap;gap:4px 12px}
+  .graph svg#graph{height:58vh;flex:none}
+  .legend{position:static;border:0;border-radius:0;border-top:1px solid var(--line);flex-direction:row;flex-wrap:wrap;gap:4px 12px}
   .src{min-height:220px}
-  .dsec .two{grid-template-columns:1fr}
+  .t-main,.t-wide{grid-column:span 2}
+  .two{grid-template-columns:1fr}
   .tbl .hide-m{display:none}
+  .dock{bottom:10px;gap:4px;padding:6px}
+  .dock a,.dock button{width:40px;height:40px;font-size:19px}
+  .dock a:hover,.dock button:hover{width:40px;height:40px}
+  .dock .tip{display:none}
 }
-@media (max-width:520px){
-  .pipe .wrap{grid-template-columns:1fr}
-  .step,.step + .step{padding:14px 0;border-left:0}
-  .step + .step{border-top:1px solid var(--line)}
-  .hero h1{font-size:34px}
-  .score .big{font-size:34px}
+@media (max-width:560px){
+  .fgrid{grid-template-columns:1fr 1fr;gap:8px}
+  .fcol{display:contents}
+  .fn{padding:8px 10px}
+  .fn .t{font-size:12.5px}
+  .fn .t i{font-size:15px}
+  .fn .d{-webkit-line-clamp:1;min-height:0;font-size:10.5px}
+  #f-ans{grid-column:span 2}
+  .apphead #gstat{display:none}
+  .bento{grid-template-columns:1fr}
+  .t-main,.t-wide{grid-column:auto;grid-row:auto}
+  .feats{grid-template-columns:1fr}
+  .feat.tall{grid-column:auto}
+  .hub{grid-template-columns:1fr}
+  .t-main .big{font-size:96px}
 }
 </style>
 </head>
 <body>
-<header class="top">
+
+<nav class="nav" aria-label="Hlavní menu">
+  <div class="pill">
+    <a class="logo" href="#top"><span class="m">§</span><span>rag<span class="hide-m">·zákoník</span></span></a>
+    <a class="l" href="#app">Vyzkoušet</a>
+    <a class="l" href="#vysledky">Výsledky</a>
+    <a class="l" href="#proc">Proč věřit</a>
+    <a class="l" href="#stack">Stack</a>
+    <a class="gh" href="https://github.com/zenkovski/rag-demo"><i class="ph ph-github-logo"></i>GitHub</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
   <div class="wrap">
-    <div class="brand"><span class="mark">§</span><span>rag-demo<span class="hide-m"> / zákoník práce</span></span></div>
-    <nav>
-      <a class="hide-m" href="#jak">Jak to funguje</a>
-      <button id="openRes">Výsledky měření</button>
-      <a href="https://github.com/zenkovski/rag-demo">GitHub</a>
-      <span class="chip warn hide-m" style="border-color:rgba(244,165,130,.35);color:var(--bad)">není to právní porada</span>
-    </nav>
+    <div class="badge"><b>v2</b> hybridní hledání · měřeno na 30 otázkách</div>
+    <h1>Zeptej se zákoníku práce. <span>Každá věta má zdroj.</span></h1>
+    <p class="lead">Asistent najde odstavce zákona, které k otázce patří, odpoví jen z nich a označí, odkud co má. Když v textu odpověď není, řekne „nevím“.</p>
+    <div class="askbig">
+      <form id="heroForm" autocomplete="off">
+        <i class="ph ph-sparkle"></i>
+        <input name="q" maxlength="300" placeholder="Např. Nezaplatili mi výplatu, můžu hned odejít?" aria-label="Tvoje otázka">
+        <input class="hp" name="website" tabindex="-1" aria-hidden="true">
+        <button class="go" type="submit"><span>Zeptat se</span><i class="ph ph-arrow-right"></i></button>
+      </form>
+      <div class="askmeta"><span>živě přes AI</span><span>max <b>10</b> otázek denně</span><span class="leftCount"></span></div>
+    </div>
+    <div class="chips" id="chips"></div>
+    <div class="warnline">Není to právní porada. Je to technická ukázka RAG a měření kvality.</div>
   </div>
 </header>
 
-<div class="hero">
-  <div class="wrap">
-    <div>
-      <h1>Zeptej se zákoníku práce. <em>Každá věta má zdroj.</em></h1>
-      <p class="lead"><span style="color:var(--bad)" class="only-m">Není to právní porada. </span>Asistent najde odstavce zákona, které k otázce patří, odpoví jen z nich a označí, odkud co má. Když v textu odpověď není, řekne „nevím“. Kvalitu měřím na otázkách se známou správnou odpovědí a chyby nechávám vidět.</p>
+<section class="wrap" id="app" style="scroll-margin-top:80px">
+  <div class="app">
+    <div class="apphead"><span class="dot"></span><span>rag-demo / zákoník práce</span><span class="sp"></span><span class="pill2 hide-m" id="modelName"></span><span class="pill2" id="gstat"></span></div>
+
+    <div class="flow" id="flow">
+      <svg class="wires" id="wires" aria-hidden="true"></svg>
+      <div class="fgrid">
+        <div class="fcol"><div class="fn" id="f-q"><div class="t"><i class="ph ph-chat-circle-text"></i>Otázka</div><div class="d">laická otázka česky</div></div></div>
+        <div class="fcol"><div class="fn" id="f-rw"><div class="t"><i class="ph ph-translate"></i>Přepis do jazyka zákona</div><div class="d">LLM: „výplata“ → „mzda“</div></div></div>
+        <div class="fcol">
+          <div class="fn" id="f-vec"><div class="t"><i class="ph ph-graph"></i>Vektory · význam</div><div class="d">e5-large, kosinová podobnost</div></div>
+          <div class="fn ice" id="f-bm"><div class="t"><i class="ph ph-text-aa"></i>Full-text · slova</div><div class="d">BM25 nad přepsanou otázkou</div></div>
+        </div>
+        <div class="fcol"><div class="fn" id="f-rrf"><div class="t"><i class="ph ph-git-merge"></i>Spojení RRF</div><div class="d">top 5 úseků</div></div></div>
+        <div class="fcol"><div class="fn" id="f-ans"><div class="t"><i class="ph ph-quotes"></i>Odpověď s citacemi</div><div class="d">jen z nalezených úseků</div></div></div>
+      </div>
     </div>
-    <div class="score" id="score"></div>
+
+    <div class="desk">
+      <section class="chat">
+        <div class="ph2"><span>Otázka a odpověď</span><span class="leftCount"></span></div>
+        <div class="log" id="log">
+          <div class="intro"><strong>Zeptej se vlastními slovy</strong>, nebo vyber připravenou otázku. U připravených je změřené, jestli je odpověď správně: tyrkysová tečka = správně, oranžová = chyba. V mapě uprostřed uvidíš, jak asistent hledá.</div>
+        </div>
+        <div class="ask">
+          <div class="livemini">
+            <form id="liveForm" autocomplete="off">
+              <input name="q" id="liveQ" maxlength="300" placeholder="Napiš vlastní otázku…" aria-label="Vlastní otázka">
+              <input class="hp" name="website" tabindex="-1" aria-hidden="true">
+              <button class="go" id="liveBtn" type="submit" aria-label="Zeptat se"><i class="ph ph-paper-plane-right"></i></button>
+            </form>
+          </div>
+          <div class="divider">nebo připravené otázky s měřením</div>
+          <div class="seg" role="tablist" id="seg">
+            <button data-g="test" class="on">Testovací 20</button>
+            <button data-g="holdout">Nové 10</button>
+            <button data-g="demo">Ukázky 10</button>
+          </div>
+          <input id="filter" type="search" placeholder="Hledej, např. dovolená" autocomplete="off" aria-label="Hledat otázku">
+          <div class="qs" id="qs"></div>
+        </div>
+      </section>
+
+      <section class="graph" id="graphWrap">
+        <div class="ph2"><span><b>Mapa zákona</b><span class="hide-m"> · tečka = odstavec · zoomem uvidíš názvy</span></span><button class="replay" id="replay" hidden><i class="ph ph-play"></i>přehrát přemýšlení</button></div>
+        <div class="gstatus" id="gstatus" aria-live="polite"></div>
+        <svg id="graph" role="img" aria-label="Graf odstavců zákona a jejich podobnosti">
+          <defs><filter id="glow" x="-200%" y="-200%" width="500%" height="500%"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+        </svg>
+        <div class="gtools"><button id="zin" aria-label="Přiblížit"><i class="ph ph-plus"></i></button><button id="zout" aria-label="Oddálit"><i class="ph ph-minus"></i></button><button id="zfit" aria-label="Celý graf"><i class="ph ph-arrows-out"></i></button></div>
+        <div class="legend" id="legend"></div>
+      </section>
+
+      <section class="card">
+        <div class="ph2"><span>Zdroj</span><span id="srcmeta"></span></div>
+        <div class="src" id="src"><p class="placeholder"><b>Tady uvidíš původní text.</b> Klikni na citaci [1] v odpovědi nebo na tečku v mapě.</p></div>
+      </section>
+    </div>
   </div>
-</div>
+</section>
 
-<div class="pipe" aria-label="Postup od otázky k odpovědi">
-  <div class="wrap" id="pipe"></div>
-</div>
+<section class="sec wrap" id="vysledky" style="scroll-margin-top:80px">
+  <h2>Měřím to. <span>Včetně chyb.</span></h2>
+  <p class="sub">Každá testovací otázka má známou správnou odpověď. Odpovědi hodnotí AI soudce a pak je všechny kontroluji ručně proti textu zákona. Platí ruční verdikt.</p>
+  <div class="bento" id="bento"></div>
+</section>
 
-<main class="desk">
-  <section class="chat">
-    <div class="ph"><span>Otázka a odpověď</span><span id="modelName"></span></div>
-    <div class="log" id="log">
-      <div class="intro"><strong>Vyber otázku dole.</strong> Web je statický: odpovědi jsou předpočítané, aby tu nebyl žádný API klíč. Tečka u otázky ukazuje výsledek měření: tyrkysová = správně, oranžová = chyba.</div>
+<section class="sec wrap" id="proc" style="scroll-margin-top:80px">
+  <h2>Proč tomu <span>věřit</span> (a kdy ne)</h2>
+  <p class="sub">U práva je špatná sebevědomá odpověď horší než žádná. Proto tu jsou čtyři pojistky.</p>
+  <div class="feats">
+    <div class="feat tall">
+      <div class="ic"><i class="ph ph-quotes"></i></div>
+      <h3>Každá věta má citaci</h3>
+      <p>Model dostane jen 5 nalezených odstavců a za každou větu napíše, ze kterého čerpal. Klikem na číslo vidíš původní text.</p>
+      <div class="demo-cite" id="demoCite"></div>
     </div>
-    <div class="ask">
-      <div class="seg" role="tablist" id="seg">
-        <button data-g="test" class="on">Testovací 20</button>
-        <button data-g="holdout">Nové 10</button>
-        <button data-g="demo">Ukázky 10</button>
-      </div>
-      <input id="filter" type="search" placeholder="Hledej otázku, např. dovolená" autocomplete="off" aria-label="Hledat otázku">
-      <div class="qs" id="qs"></div>
-    </div>
-  </section>
+    <div class="feat"><div class="ic"><i class="ph ph-hand-palm"></i></div><h3>Řekne „nevím“</h3><p>Když zákon odpověď nemá (minimální mzda, home office…), asistent to přizná. Měřím to zvlášť: 4 z 4 otázek bez odpovědi.</p></div>
+    <div class="feat"><div class="ic"><i class="ph ph-gauge"></i></div><h3>Měří se hledání i odpověď</h3><p>Zvlášť: jestli hledání najde správný paragraf, a jestli je odpověď správně. Tak vím, co opravovat.</p></div>
+    <div class="feat"><div class="ic"><i class="ph ph-user-check"></i></div><h3>Člověk kontroluje soudce</h3><p>AI soudce ve v1 přehlédl chybu (DPČ a „300 hodin“). Proto kontroluji všechny odpovědi ručně.</p></div>
+    <div class="feat"><div class="ic"><i class="ph ph-shield-check"></i></div><h3>Bez klíče na webu</h3><p>Klíč je jen na serveru, limit 10 otázek na IP a den, test proti robotům a pevný strop 0,50 $.</p></div>
+  </div>
+</section>
 
-  <section class="graph" id="graphWrap">
-    <div class="ph"><span><b>Mapa zákona</b><span class="hide-m"> · každá tečka je jeden odstavec</span></span><span id="gstat"></span></div>
-    <svg id="graph" role="img" aria-label="Graf odstavců zákona a jejich podobnosti">
-      <defs><filter id="glow" x="-200%" y="-200%" width="500%" height="500%"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
-    </svg>
-    <div class="gtools"><button id="zin" aria-label="Přiblížit">+</button><button id="zout" aria-label="Oddálit">−</button><button id="zfit" aria-label="Celý graf">⤢</button></div>
-    <div class="legend" id="legend"></div>
-  </section>
-
-  <section class="card">
-    <div class="ph"><span>Zdroj</span><span id="srcmeta"></span></div>
-    <div class="src" id="src"><p class="placeholder"><b>Tady uvidíš původní text.</b> Klikni na citaci [1] v odpovědi nebo na tečku v mapě.</p></div>
-  </section>
-</main>
-
-<section class="how" id="jak">
-  <div class="wrap">
-    <h2>Jak to funguje a co se zlepšilo</h2>
-    <div class="grid">
-      <div class="panel">
-        <h3>Čtyři kroky</h3>
-        <p><b>1. Text zákona</b> je rozdělený po odstavcích: 260 úseků z 84 paragrafů, každý s adresou typu § 51 odst. 2.</p>
-        <p><b>2. Přepis otázky.</b> Lidé píšou „výplata“, zákon „mzda“. Jazykový model proto otázku nejdřív přeloží do jazyka zákona.</p>
-        <p><b>3. Hledání dvěma způsoby:</b> podle významu (embeddingy, model e5 z Hugging Face) a podle slov (BM25). Pořadí se spojí a do odpovědi jde 5 úseků.</p>
-        <p><b>4. Odpověď</b> smí použít jen těch 5 úseků a každou větu ocituje. Když tam odpověď není, řekne „nevím“.</p>
-      </div>
-      <div class="panel">
-        <h3>v1 → v2 na 20 testovacích otázkách</h3>
-        <div class="rows3" id="cmpTable"></div>
-      </div>
-      <div class="panel">
-        <h3>Kontrola na nových otázkách</h3>
-        <p>Úpravy v2 jsem navrhl podle chyb na testovacích otázkách. Tam proto může být výsledek přikrášlený. Až potom jsem napsal 10 nových otázek a změřil na nich obě verze beze změn.</p>
-        <div class="rows3" id="holdTable"></div>
-        <p style="margin-top:12px">Zlepšení platí, ale je menší než na testovací sadě. Tohle je poctivější číslo.</p>
-      </div>
-    </div>
+<section class="sec wrap" id="stack" style="scroll-margin-top:80px">
+  <h2>Z čeho je <span>postavený</span></h2>
+  <p class="sub">Žádná krabicová platforma. Každý díl jde vysvětlit a vyměnit.</p>
+  <div class="hub" id="hub">
+    <svg id="hubwires" aria-hidden="true"></svg>
+    <div class="core"><i class="ph ph-scales"></i></div>
   </div>
 </section>
 
@@ -345,17 +506,27 @@ dialog::backdrop{background:rgba(2,4,5,.78)}
   </div>
 </footer>
 
+<nav class="dock" aria-label="Rychlá navigace">
+  <a href="#top"><i class="ph ph-house"></i><span class="tip">Nahoru</span></a>
+  <a href="#app"><i class="ph ph-chat-circle-dots"></i><span class="tip">Zeptat se</span></a>
+  <a href="#graphWrap"><i class="ph ph-graph"></i><span class="tip">Mapa zákona</span></a>
+  <button id="dockRes"><i class="ph ph-chart-bar"></i><span class="tip">Celé měření</span></button>
+  <a href="#stack"><i class="ph ph-stack"></i><span class="tip">Stack</span></a>
+  <span class="sep"></span>
+  <a href="https://github.com/zenkovski/rag-demo"><i class="ph ph-github-logo"></i><span class="tip">GitHub</span></a>
+</nav>
+
 <dialog id="dlg" aria-labelledby="dlgTitle">
   <div class="dh">
     <div>
-      <h2 id="dlgTitle">Výsledky měření</h2>
+      <h2 id="dlgTitle">Celé měření</h2>
       <p>Každá otázka má zlatou (správnou) odpověď a správné paragrafy. Odpovědi hodnotí AI soudce a pak je všechny kontroluji ručně proti textu zákona. Platí ruční verdikt.</p>
     </div>
     <button class="close" id="dlgClose">zavřít ✕</button>
   </div>
   <div class="dsec"><div class="two">
-    <div><h3>v1 → v2</h3><div class="rows3" id="cmpTable2"></div></div>
-    <div><h3>Co pomohlo ve vyhledávání</h3><p class="mut" style="margin:0 0 10px;font-size:13px">Správný paragraf mezi 5 úseky, které dostane model (16 otázek s odpovědí).</p><div class="compare" id="ablation"></div></div>
+    <div><h3>v1 → v2 na 20 testovacích otázkách</h3><div class="rows3" id="cmpTable2"></div></div>
+    <div><h3>Co pomohlo ve vyhledávání</h3><p class="mut" style="margin:0 0 10px;font-size:13px">Správný paragraf mezi 5 úseky, které dostane model (16 otázek s odpovědí).</p><div class="bars2" id="ablation"></div></div>
   </div></div>
   <div class="dsec"><h3>Otázka po otázce</h3><table class="tbl" id="rows"></table></div>
 </dialog>
@@ -364,61 +535,72 @@ dialog::backdrop{background:rgba(2,4,5,.78)}
 <script>
 const TOPIC_COLORS = ["#6f8fb0","#a088b8","#7fa287","#b39a6b","#b57f88"];
 const $ = s => document.querySelector(s);
+const $$ = s => [...document.querySelectorAll(s)];
 const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const short = m => m.split("/").pop().replace(":free","");
+const plural = (n,a,b,c) => n===1?a:(n>=2&&n<=4?b:c);
+const pct = (a,b) => Math.round(100*a/b);
+const REDUCED = matchMedia("(prefers-reduced-motion: reduce)").matches;
 let D, cur = null, group = "test", G = {};
 
 fetch("data.json").then(r => r.json()).then(d => { D = d; init(); });
 
 function init(){
-  D.questions.forEach((q,i) => q.group = q.test ? q.test.set : "demo");
-  renderScore(); renderPipe(null); renderCompare(); renderQuestions(); renderDialog(); drawGraph();
+  D.questions.forEach(q => q.group = q.test ? q.test.set : "demo");
+  renderBento(); renderQuestions(); renderDialog(); drawGraph(); renderHub(); renderChips(); renderDemoCite();
   $("#modelName").textContent = short(D.llm);
   $("#srcinfo").textContent = `Zdroj: zákon č. 262/2006 Sb., ${D.version.replace("Aktuální znění ","znění ")}, staženo ${D.downloaded}`;
   $("#filter").addEventListener("input", renderQuestions);
-  $("#seg").querySelectorAll("button").forEach(b => b.addEventListener("click", () => {
-    group = b.dataset.g; $("#seg").querySelectorAll("button").forEach(x => x.classList.toggle("on", x===b)); renderQuestions(); }));
-  const open = () => $("#dlg").showModal();
-  $("#openRes").addEventListener("click", open);
+  $$("#seg button").forEach(b => b.addEventListener("click", () => {
+    group = b.dataset.g; $$("#seg button").forEach(x => x.classList.toggle("on", x===b)); renderQuestions(); }));
   $("#dlgClose").addEventListener("click", () => $("#dlg").close());
+  $("#dockRes").addEventListener("click", () => $("#dlg").showModal());
+  $("#liveForm").addEventListener("submit", e => { e.preventDefault(); liveAsk($("#liveForm")); });
+  $("#heroForm").addEventListener("submit", e => { e.preventDefault(); liveAsk($("#heroForm")); });
+  $("#replay").addEventListener("click", () => cur && think(cur));
+  try { const l = localStorage.getItem("ragLeft"); if (l !== null) setLeft(+l); } catch(e) {}
+  drawWires(); new ResizeObserver(drawWires).observe($("#flow"));
+  new ResizeObserver(renderHubWires).observe($("#hub"));
+}
+function setLeft(n){ $$(".leftCount").forEach(e => e.textContent = `dnes zbývá ${n}`); }
+
+/* ---------- schéma postupu ---------- */
+function drawWires(){
+  const svg = $("#wires"), box = $("#flow").getBoundingClientRect();
+  const c = id => { const r = $(id).getBoundingClientRect(); return {l:r.left-box.left, r:r.right-box.left, y:r.top-box.top+r.height/2}; };
+  const path = (a,b,id) => { const mx = (a.r+b.l)/2; return `<path class="wire" id="${id}" d="M${a.r},${a.y} C${mx},${a.y} ${mx},${b.y} ${b.l},${b.y}"/>`; };
+  if (getComputedStyle(svg).display === "none") return;
+  const q=c("#f-q"), rw=c("#f-rw"), v=c("#f-vec"), bm=c("#f-bm"), rf=c("#f-rrf"), an=c("#f-ans");
+  svg.innerHTML = path(q,rw,"w1")+path(rw,v,"w2")+path(rw,bm,"w3")+path(v,rf,"w4")+path(bm,rf,"w5")+path(rf,an,"w6");
+  setFlow(G.flowStage || 0);
+}
+function setFlow(stage, q){
+  // stage: 0 nic, 1 otázka, 2 přepis + vektory, 3 slova, 4 RRF, 5 odpověď
+  G.flowStage = stage;
+  const nodes = {q:"#f-q", rw:"#f-rw", vec:"#f-vec", bm:"#f-bm", rrf:"#f-rrf", ans:"#f-ans"};
+  const on = {1:["q"], 2:["rw","vec"], 3:["bm"], 4:["rrf"], 5:["ans"]}[stage] || [];
+  const done = {2:["q"], 3:["q","rw","vec"], 4:["q","rw","vec","bm"], 5:["q","rw","vec","bm","rrf"]}[stage] || [];
+  Object.entries(nodes).forEach(([k,s]) => { $(s).classList.toggle("on", on.includes(k)); $(s).classList.toggle("done", done.includes(k)); });
+  const wires = {2:["w1","w2"], 3:["w3"], 4:["w4","w5"], 5:["w6"]}[stage] || [];
+  $$("#wires .wire").forEach(w => w.classList.toggle("on", wires.includes(w.id)));
+  if (q){
+    const n = citedSet(q).size;
+    $("#f-q .d").textContent = q.q;
+    $("#f-rw .d").textContent = q.rewritten || "bez přepisu";
+    if (q.trace){
+      const dense = new Set([...(q.trace.dense_q||[]), ...(q.trace.dense_rw||[])]);
+      $("#f-vec .d").textContent = `${dense.size} kandidátů podle významu`;
+      $("#f-bm .d").textContent = `${(q.trace.bm25||[]).length} kandidátů podle slov`;
+    }
+    $("#f-rrf .d").textContent = q.hits.map(h => D.chunks[h[0]].id).join(", ");
+    $("#f-ans .d").textContent = q.answer.startsWith("Nevím") ? "řekl „nevím“" : `${short(D.llm)} · ${n} ${plural(n,"citace","citace","citací")}`;
+  }
 }
 
-const pct = (a,b) => Math.round(100*a/b);
-function renderScore(){
-  const v1 = D.v1, v2 = D.v2, h = D.holdout;
-  $("#score").innerHTML =
-    `<div class="line"><span class="big">${v2.correct}<small> z ${v2.n}</small></span><span class="what">testovacích otázek správně (ruční kontrola)</span></div>`+
-    `<div class="split"><span class="chip ok"><b>${v2.correct_answerable} z ${v2.n_answerable}</b> otázek s odpovědí v zákoně</span>`+
-    `<span class="chip ok"><b>${v2.nevim_ok} z ${v2.n_unanswerable}</b> správně „nevím“, když zákon mlčí</span></div>`+
-    `<div class="compare">`+
-      `<span>v1</span><div class="bar"><i style="width:${pct(v1.correct,v1.n)}%"></i></div><span class="n">${v1.correct}/${v1.n}</span>`+
-      `<span>v2</span><div class="bar v2"><i style="width:${pct(v2.correct,v2.n)}%"></i></div><span class="n">${v2.correct}/${v2.n}</span>`+
-      `<span>nové</span><div class="bar v2"><i style="width:${pct(h.v2.correct,h.v2.n)}%"></i></div><span class="n">${h.v2.correct}/${h.v2.n}</span>`+
-    `</div>`+
-    `<div class="more"><span>Na 10 nových otázkách: v1 ${h.v1.correct} z ${h.v1.n}, v2 ${h.v2.correct} z ${h.v2.n}.</span><button class="btn" id="openRes2">Celé měření včetně chyb</button></div>`;
-  $("#openRes2").addEventListener("click", () => $("#dlg").showModal());
-}
-
-function renderPipe(q){
-  const steps = q ? [
-    ["Otázka", esc(q.q)],
-    ["Přepis do jazyka zákona", q.rewritten ? esc(q.rewritten) : "bez přepisu"],
-    ["Hledání: význam + slova", q.hits.map(h => `<code>${esc(D.chunks[h[0]].id)}</code>`).join(", ")],
-    ["Odpověď s citacemi", `${short(D.llm)} · ${citedSet(q).size} ${plural(citedSet(q).size,"citace","citace","citací")}${q.answer.startsWith("Nevím")?" · řekl „nevím“":""}`],
-  ] : [
-    ["Otázka", "Laická otázka česky, například „Nezaplatili mi výplatu, můžu hned odejít?“"],
-    ["Přepis do jazyka zákona", "Model ji přeloží: „Může zaměstnanec okamžitě zrušit pracovní poměr, když mu nebyla vyplacena mzda?“"],
-    ["Hledání: význam + slova", `Embeddingy (${short(D.embeddings)}) + BM25, spojeno metodou RRF. Do odpovědi jde ${D.top_k} úseků.`],
-    ["Odpověď s citacemi", `${short(D.llm)} odpoví jen z nalezených úseků. Každá věta má [číslo] zdroje.`],
-  ];
-  $("#pipe").innerHTML = steps.map(([h,b],i) => `<div class="step${q?" on":""}"><div class="h"><span class="num">${i+1}</span>${h}</div><div class="b">${b}</div></div>`).join("");
-}
-const plural = (n,a,b,c) => n===1?a:(n>=2&&n<=4?b:c);
-
+/* ---------- bento s čísly ---------- */
 function cmpRows(){
   const v1=D.v1, v2=D.v2, r=D.retrieval;
-  const row = (l,a,b,n,higher=true) => { const d=b-a; const cls = d===0?"":((d>0)===higher?"up":"dn");
-    return `<span>${l}</span><span class="v mut">${a}/${n}</span><span class="v ${cls}">${b}/${n}</span>`; };
+  const row = (l,a,b,n) => `<span>${l}</span><span class="v mut">${a}/${n}</span><span class="v ${b>a?"up":""}">${b}/${n}</span>`;
   return `<span class="hd"></span><span class="hd v">v1</span><span class="hd v">v2</span>`+
     row("Odpověď správně", v1.correct, v2.correct, v1.n)+
     row("… otázky s odpovědí", v1.correct_answerable, v2.correct_answerable, v1.n_answerable)+
@@ -427,16 +609,26 @@ function cmpRows(){
     row("Správný § mezi 5 nalezenými", r.dense.hit5, r.hybrid_rewrite.hit5, r.dense.n)+
     row("Správný § mezi 3 prvními", r.dense.hit3, r.hybrid_rewrite.hit3, r.dense.n)+
     row("AI soudce = člověk", v1.judge_agree, v2.judge_agree, v1.n)+
-    `<span class="sep"></span><span class="mut" style="grid-column:1/-1;font-size:12.5px">Model: v1 ${esc(short(D.llm_v1))} (zdarma), v2 ${esc(short(D.llm))}. Vyhledávání: v1 jen embeddingy, v2 embeddingy + BM25 + přepis otázky.</span>`;
+    `<span class="sep"></span><span class="mut" style="grid-column:1/-1;font-size:12.5px">v1: ${esc(short(D.llm_v1))} (zdarma), jen embeddingy e5-base. v2: ${esc(short(D.llm))}, e5-large + BM25 + přepis otázky.</span>`;
 }
-function renderCompare(){
-  $("#cmpTable").innerHTML = cmpRows();
-  const h = D.holdout;
-  $("#holdTable").innerHTML = `<span class="hd"></span><span class="hd v">v1</span><span class="hd v">v2</span>`+
-    `<span>Odpověď správně</span><span class="v mut">${h.v1.correct}/${h.v1.n}</span><span class="v up">${h.v2.correct}/${h.v2.n}</span>`+
-    `<span>Správný § mezi 5 nalezenými</span><span class="v mut">${h.v1.hit5}/${h.v1.n_answerable}</span><span class="v up">${h.v2.hit5}/${h.v2.n_answerable}</span>`;
+function renderBento(){
+  const v1=D.v1, v2=D.v2, h=D.holdout, r=D.retrieval;
+  const bar = (l,a,n,cls) => `<span>${l}</span><div class="bar ${cls||""}"><i style="width:${pct(a,n)}%"></i></div><span class="n">${a}/${n}</span>`;
+  $("#bento").innerHTML =
+    `<div class="tile t-main"><div><h3>Testovací otázky správně (v2)</h3><div class="big">${v2.correct}<span>/${v2.n}</span></div>`+
+      `<div class="split"><span class="chip"><b>${v2.correct_answerable}/${v2.n_answerable}</b> otázek s odpovědí v zákoně</span><span class="chip"><b>${v2.nevim_ok}/${v2.n_unanswerable}</b> správně „nevím“, když zákon mlčí</span></div></div>`+
+      `<div><div class="bars2">${bar("v1",v1.correct,v1.n)}${bar("v2",v2.correct,v2.n,"v2")}</div>`+
+      `<p class="bad-note"><b>Pozor:</b> v2 jsem ladil podle chyb na těchto otázkách, číslo je proto nadsazené. Poctivější je karta „nové otázky“.</p>`+
+      `<button class="linkbtn" id="openRes"><i class="ph ph-list-checks"></i>Celé měření otázku po otázce</button></div></div>`+
+    `<div class="tile t-hold"><h3>Nové otázky</h3><div class="big">${h.v2.correct}<span>/${h.v2.n}</span></div><p style="margin-top:10px">napsané až po návrhu v2. v1 na nich měla ${h.v1.correct}/${h.v1.n}.</p></div>`+
+    `<div class="tile t-cost"><h3>Cena měření v2</h3><div class="big">${(D.cost_usd||0).toFixed(2).replace(".",",")} $</div><p style="margin-top:10px">20 odpovědí + 20 kontrol AI soudcem přes DeepSeek.</p></div>`+
+    `<div class="tile t-wide"><h3>Co pomohlo ve vyhledávání</h3><p style="margin-bottom:14px">správný paragraf mezi 5 úseky, které dostane model</p><div class="bars2">`+
+      bar("e5-base (v1)", r.dense.hit5, r.dense.n)+bar("e5-large", r.dense_large.hit5, r.dense_large.n)+
+      bar("+ BM25 laicky", r.hybrid.hit5, r.hybrid.n)+bar("+ přepis (v2)", r.hybrid_rewrite.hit5, r.hybrid_rewrite.n, "v2")+`</div></div>`;
+  $("#openRes").addEventListener("click", () => $("#dlg").showModal());
 }
 
+/* ---------- otázky ---------- */
 const norm = s => s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"");
 function qStatus(q){ if (q.test) return q.test.correct ? "" : "bad"; return q.review && !q.review.ok ? "bad" : ""; }
 function qLabel(q,i){ return q.test ? (q.test.set==="test"?"T":"N")+q.test.id : "U"+(i-29); }
@@ -445,15 +637,26 @@ function renderQuestions(){
   const list = D.questions.map((q,i)=>({q,i})).filter(o => o.q.group===group && (!nf || norm(o.q.q).includes(nf)));
   $("#qs").innerHTML = list.length ? list.map(({q,i}) =>
     `<button class="q${q.done?" done":""}" data-i="${i}"><span class="dot ${qStatus(q)}"></span><span class="n">${qLabel(q,i)}</span><span>${esc(q.q)}</span></button>`).join("")
-    : `<div class="empty">V téhle skupině taková otázka není. Web je statický, zkus jiné slovo nebo jinou skupinu.</div>`;
-  $("#qs").querySelectorAll(".q").forEach(b => b.addEventListener("click", () => ask(+b.dataset.i)));
+    : `<div class="empty">Tady taková otázka není. Zkus jiné slovo, nebo ji napiš nahoru jako vlastní.</div>`;
+  $$("#qs .q").forEach(b => b.addEventListener("click", () => ask(+b.dataset.i)));
+}
+function renderChips(){
+  const pick = ["Firma mi už měsíc nezaplatila výplatu. Můžu hned odejít?","Jsem těhotná. Může mě zaměstnavatel vyhodit ze dne na den?","Kolik hodin ročně můžu odpracovat na dohodu o provedení práce (DPP)?","Jaká je minimální mzda v roce 2026?"];
+  $("#chips").innerHTML = pick.map(t => { const i = D.questions.findIndex(q => q.q===t); return i<0 ? "" : `<button data-i="${i}">${esc(t)}</button>`; }).join("");
+  $$("#chips button").forEach(b => b.addEventListener("click", () => { const q = D.questions[+b.dataset.i];
+    group = q.group; $$("#seg button").forEach(x => x.classList.toggle("on", x.dataset.g===group)); ask(+b.dataset.i, true); }));
+}
+function renderDemoCite(){
+  const q = D.questions.find(q => q.test && q.test.id===15);
+  if (!q) return;
+  $("#demoCite").innerHTML = `<div class="q2">otázka: ${esc(q.q)}</div>${fmt(q.answer, q)}`;
 }
 
 function fmt(text, q){
   return esc(text).replace(/\*\*(.+?)\*\*/g,"<strong>$1</strong>").replace(/\n+/g,"<br>")
     .replace(/\[(\d+)\]/g, (m,n) => q && q.hits[n-1] ? `<button class="cite" data-c="${q.hits[n-1][0]}" title="${esc(D.chunks[q.hits[n-1][0]].id)}">${n}</button>` : m);
 }
-function ask(i){
+function ask(i, scroll){
   const q = D.questions[i]; q.done = true; cur = q;
   let verdict = "";
   if (q.test){
@@ -462,19 +665,23 @@ function ask(i){
     verdict = `<div class="verdict"><div class="tags"><span class="tag ${t.correct?"ok":"bad"}">${t.set==="test"?"test":"nová otázka"} ${t.id}: ${t.correct?"správně":"chyba"}</span>`+
       `<span class="tag ${r==="správný § nenalezen"?"bad":"ok"}">${r}</span></div>${esc(t.note)}`+
       (t.v1_answer ? `<details class="v1"><summary>porovnat s v1 (${t.v1_correct?"správně":"chyba"})</summary><div class="old">${fmt(t.v1_answer,null)}</div></details>` : "")+`</div>`;
+  } else if (q.live){
+    verdict = `<div class="verdict"><div class="tags"><span class="tag">živá odpověď · neověřeno ručně</span></div>Tahle odpověď vznikla teď. Neprošla měřením ani ruční kontrolou, tak si ji ověř kliknutím na citace.</div>`;
   } else if (q.review){
     verdict = `<div class="verdict"><div class="tags"><span class="tag ${q.review.ok?"ok":"bad"}">ukázka: ${q.review.ok?"ověřeno ručně":"chyba"}</span></div>${q.review.ok?"":esc(q.review.note)}</div>`;
   }
   const log = $("#log");
-  log.insertAdjacentHTML("beforeend", `<div class="msg user">${esc(q.q)}</div><div class="msg bot"><div class="meta"><span>${short(D.llm)}</span><span>${q.hits.length} úseků</span></div><p>${fmt(q.answer,q)}</p>${verdict}</div>`);
+  log.insertAdjacentHTML("beforeend", `<div class="msg user">${esc(q.q)}</div><div class="msg bot"><div class="meta"><span><i class="ph ph-sparkle"></i> ${short(D.llm)}</span><span>${q.hits.length} úseků</span></div><p>${fmt(q.answer,q)}</p>${verdict}</div>`);
   const last = log.querySelector(".msg.bot:last-child");
   last.querySelectorAll(".cite").forEach(b => b.addEventListener("click", () => showChunk(+b.dataset.c)));
   log.scrollTop = log.scrollHeight;
-  renderQuestions(); renderPipe(q); highlight(q);
+  renderQuestions();
   const first = (q.answer.match(/\[(\d+)\]/)||[])[1];
   showChunk(first && q.hits[first-1] ? q.hits[first-1][0] : q.hits[0][0]);
-  if (matchMedia("(max-width:900px)").matches) $("#graphWrap").scrollIntoView({block:"start"});
-  else if ($(".desk").getBoundingClientRect().top < 0 || $(".desk").getBoundingClientRect().top > innerHeight*.5) $(".desk").scrollIntoView({block:"start"});
+  const top = $("#app").getBoundingClientRect().top;
+  if (matchMedia("(max-width:900px)").matches) $("#flow").scrollIntoView({block:"start", behavior: REDUCED ? "auto" : "smooth"});
+  else if (scroll || Math.abs(top - 80) > 40) $("#app").scrollIntoView({block:"start", behavior: REDUCED ? "auto" : "smooth"});
+  think(q);
 }
 
 function citedSet(q){ return new Set([...q.answer.matchAll(/\[(\d+)\]/g)].map(m => q.hits[m[1]-1]).filter(Boolean).map(h => h[0])); }
@@ -490,26 +697,26 @@ function showChunk(ci){
       const id = D.chunks[h[0]].id;
       return `<button data-c="${h[0]}" class="${h[0]===ci?"on":""}"><span>[${k+1}] ${esc(id)}${gold.has(id)?' <span class="g">✓ správný</span>':""}</span><span class="${cs.has(h[0])?"c":""}">${cs.has(h[0])?"citováno":"nepoužito"}</span></button>`; }).join("")}</div>`;
   }
-  $("#src").innerHTML = `<div class="id">${esc(c.id)}</div><h2>${esc(c.title)}</h2><div class="topic">${esc(c.topic)}</div>`+
+  $("#src").innerHTML = `<div class="id">${esc(c.id)}</div><h3>${esc(c.title)}</h3><div class="topic">${esc(c.topic)}</div>`+
     `<blockquote>${esc(c.text).replace(/([,:]) ([a-z]\)) /g,"$1\n$2 ")}</blockquote>${extra}`;
   $("#srcmeta").textContent = c.topic.split(",")[0];
-  $("#src").querySelectorAll(".hits button").forEach(b => b.addEventListener("click", () => showChunk(+b.dataset.c)));
+  $$("#src .hits button").forEach(b => b.addEventListener("click", () => showChunk(+b.dataset.c)));
   const last = document.querySelector("#log .msg.bot:last-child");
-  document.querySelectorAll(".cite").forEach(b => b.classList.toggle("on", +b.dataset.c===ci && b.closest(".msg")===last));
+  $$("#log .cite").forEach(b => b.classList.toggle("on", +b.dataset.c===ci && b.closest(".msg")===last));
   if (G.nodes) G.nodes.classed("sel", d => d.i===ci);
 }
 
-/* ---------- graf ---------- */
+/* ---------- mapa ---------- */
 function drawGraph(){
   const svg = d3.select("#graph");
   const topics = [...new Set(D.chunks.map(c => c.topic))];
   const color = t => TOPIC_COLORS[topics.indexOf(t) % TOPIC_COLORS.length];
   $("#legend").innerHTML = topics.map(t => `<span><i style="background:${color(t)}"></i>${esc(t)}</span>`).join("") +
-    `<span><i style="background:var(--accent);box-shadow:0 0 6px var(--accent)"></i>citováno v odpovědi</span><span><i style="background:#16403b;border:1px solid var(--accent)"></i>nalezeno, nepoužito</span>`;
+    `<span><i style="background:var(--accent);box-shadow:0 0 6px var(--accent)"></i>podle významu / citováno</span><span><i style="background:var(--ice)"></i>podle slov</span>`;
   const deg = new Array(D.chunks.length).fill(0); D.edges.forEach(([a,b]) => { deg[a]++; deg[b]++; });
   const nodes = D.chunks.map((c,i) => ({i, topic:c.topic, deg:deg[i]}));
   const links = D.edges.map(([s,t]) => ({source:s, target:t}));
-  // rozložení se spočítá celé hned (bez animace), takže graf funguje i s vypnutými animacemi
+  // rozložení se spočítá celé hned (bez animace), takže mapa funguje i s vypnutými animacemi
   const sim = d3.forceSimulation(nodes)
     .force("link", d3.forceLink(links).distance(22).strength(.6))
     .force("charge", d3.forceManyBody().strength(-30))
@@ -524,6 +731,8 @@ function drawGraph(){
     .attr("cx",d=>d.x).attr("cy",d=>d.y).attr("fill",d=>color(d.topic))
     .on("click",(e,d) => showChunk(d.i));
   G.nodes.append("title").text(d => D.chunks[d.i].id + " · " + D.chunks[d.i].title);
+  G.zl = g.append("g").selectAll("text").data(nodes).join("text").attr("class","zl")
+    .attr("x",d=>d.x+6).attr("y",d=>d.y+3).style("display","none");
   G.lbl = g.append("g");
   G.g = g; G.svg = svg; G.nodesData = nodes; G.all = nodes;
   const zoom = d3.zoom().scaleExtent([.3,8]).on("zoom", e => { g.attr("transform", e.transform); scaleMarks(e.transform.k); });
@@ -543,7 +752,17 @@ function scaleMarks(k){
   G.g.selectAll(".node.hit").attr("r", 6*f);
   G.g.selectAll(".lbl").style("font-size", (11/k)+"px").style("stroke-width", (3/k)+"px");
   G.g.selectAll(".qnode").attr("r", 7/k);
-  G.g.selectAll(".link,.qlink,.node,.qnode").style("vector-effect","non-scaling-stroke");
+  G.g.selectAll(".link,.qlink,.node,.qnode,.syn").style("vector-effect","non-scaling-stroke");
+  // popisky při přiblížení: od 2,8× číslo paragrafu, od 4,5× i nadpis
+  const mode = k >= 4.5 ? 2 : k >= 2.8 ? 1 : 0;
+  if (mode !== G.zlMode){
+    G.zlMode = mode;
+    G.zl.text(d => { const c = D.chunks[d.i]; if (!mode) return "";
+      if (mode === 1) return c.id; const t = c.title.length > 34 ? c.title.slice(0,33)+"…" : c.title; return `${c.id} · ${t}`; });
+  }
+  const busy = new Set(cur && G.lbl.selectAll("text").size() ? cur.hits.map(h=>h[0]) : []);
+  G.zl.style("display", d => !mode || busy.has(d.i) ? "none" : null);
+  if (mode) G.zl.style("font-size", (10/k)+"px").style("stroke-width", (2.5/k)+"px").attr("x", d => d.x + 6/Math.sqrt(k));
 }
 
 function fit(pts){
@@ -580,23 +799,145 @@ function highlight(q){
   scaleMarks(d3.zoomTransform(G.svg.node()).k);
 }
 
+/* ---------- přemýšlení: postupně ukáže skutečné mezikroky hledání ---------- */
+let thinkTimers = [];
+function think(q){
+  thinkTimers.forEach(clearTimeout); thinkTimers = [];
+  const t = q.trace;
+  $("#replay").hidden = !t;
+  if (!t){ setFlow(5, q); highlight(q); return; }
+  const P = G.nodesData, hp = q.hits.map(h => P[h[0]]);
+  const cx = d3.mean(hp,p=>p.x), cy = d3.mean(hp,p=>p.y);
+  const len = Math.hypot(cx,cy) || 1, qx = cx + cx/len*42, qy = cy + cy/len*42;
+  const dense = [...new Set([...(t.dense_q||[]), ...(t.dense_rw||[])])], words = t.bm25 || [], fused = t.fused.map(f => f[0]);
+  const top5 = new Set(q.hits.map(h=>h[0]));
+  const rankOp = (lst, i) => 1 - .6 * lst.indexOf(i) / Math.max(1, lst.length);
+  const status = (n, title, sub) => { $("#gstatus").className = "gstatus on";
+    $("#gstatus").innerHTML = `${title}<small>${sub}</small><div class="bars">${[1,2,3,4].map(k => `<i class="${k<=n?"on":""}"></i>`).join("")}</div>`; };
+  const syn = (ids, cls) => G.q.selectAll(`line.syn.${cls}`).data(ids, d => d).join("line").attr("class", `syn ${cls}`)
+    .attr("x1",qx).attr("y1",qy).attr("x2",i=>P[i].x).attr("y2",i=>P[i].y);
+  const stepMs = REDUCED ? 1100 : 900;
+  const at = (ms, fn) => thinkTimers.push(setTimeout(fn, ms));
+
+  // fáze 0: otázka
+  G.nodes.classed("hit near gold sel a1 a2 a3", false).style("opacity", null);
+  G.q.selectAll("*").remove(); G.lbl.selectAll("*").remove();
+  G.svg.classed("dimmed", true);
+  G.q.append("circle").attr("class","qnode").attr("cx",qx).attr("cy",qy);
+  G.lbl.append("text").attr("class","lbl q").attr("x",qx+10).attr("y",qy+4).text("otázka");
+  fit(G.all); scaleMarks(d3.zoomTransform(G.svg.node()).k);
+  setFlow(1, q);
+  status(1, "Čtu otázku", q.rewritten ? `přepis do jazyka zákona: ${esc(q.rewritten)}` : "");
+  // fáze 1: hledání podle významu
+  at(stepMs, () => { setFlow(2, q);
+    G.nodes.classed("a1", d => dense.includes(d.i)).style("opacity", d => dense.includes(d.i) ? rankOp(dense, d.i) : null);
+    syn(dense, "d");
+    status(2, `Hledám podle významu · ${dense.length} odstavců`, "embeddingy původní i přepsané otázky; nejpodobnější svítí nejvíc"); });
+  // fáze 2: hledání podle slov
+  at(stepMs*2, () => { setFlow(3, q);
+    G.nodes.classed("a2", d => words.includes(d.i) && !dense.includes(d.i));
+    syn(words, "w");
+    status(2, `Hledám podle slov · ${words.length} odstavců`, "BM25: odstavce se stejnými slovy jako přepsaná otázka (bílé)"); });
+  // fáze 3: spojení pořadí
+  at(stepMs*3, () => { setFlow(4, q);
+    G.q.selectAll("line.syn").remove();
+    G.nodes.classed("a1 a2", false).style("opacity", null).classed("a3", d => fused.includes(d.i));
+    G.q.selectAll("line.syn.f").data(fused).join("line").attr("class","syn f")
+      .attr("x1",qx).attr("y1",qy).attr("x2",i=>P[i].x).attr("y2",i=>P[i].y).style("stroke-opacity", i => top5.has(i) ? .8 : .25);
+    status(3, `Spojuji pořadí (RRF) · vybírám ${q.hits.length} z ${fused.length}`, "vyhrává odstavec, který je vysoko ve více seznamech"); });
+  // fáze 4: odpověď a citace
+  at(stepMs*4, () => { setFlow(5, q);
+    G.nodes.classed("a3", false);
+    highlight(q);
+    const n = citedSet(q).size;
+    status(4, q.answer.startsWith("Nevím") ? "Odpověď: „nevím“" : `Odpověď hotová · ${n} ${plural(n,"citace","citace","citací")}`,
+      "svítí odstavce, které model opravdu ocitoval");
+    at(REDUCED ? 3500 : 2600, () => $("#gstatus").className = "gstatus"); });
+}
+
+/* ---------- živá otázka ---------- */
+async function pow(q){
+  // malý výpočetní test: najdi číslo, aby sha256 začínal 4 nulami (~1–3 s v prohlížeči, pro roboty drahé)
+  const ts = Date.now(), enc = new TextEncoder();
+  for (let n = 0; ; n += 256){
+    const hs = await Promise.all(Array.from({length:256}, (_,k) => crypto.subtle.digest("SHA-256", enc.encode(`${ts}:${n+k}:${q}`))));
+    const k = hs.findIndex(h => { const b = new Uint8Array(h); return b[0]===0 && b[1]===0; });
+    if (k >= 0) return {ts, nonce: String(n+k)};
+  }
+}
+let busy = false;
+async function liveAsk(form){
+  if (busy) return;
+  const q = form.q.value.replace(/\s+/g," ").trim();
+  if (q.length < 8){ form.q.focus(); return; }
+  busy = true; $$(".go").forEach(b => b.disabled = true);
+  const log = $("#log");
+  $("#app").scrollIntoView({block:"start", behavior: REDUCED ? "auto" : "smooth"});
+  log.insertAdjacentHTML("beforeend", `<div class="msg user">${esc(q)}</div><div class="msg wait" id="waitMsg"><i class="ph ph-circle-notch"></i><span>Ověřuji, že nejsi robot…</span></div>`);
+  log.scrollTop = log.scrollHeight;
+  setFlow(1, {q, hits:[], answer:"", rewritten:"…"});
+  try {
+    const {ts, nonce} = await pow(q);
+    $("#waitMsg span").textContent = "Přepisuji otázku, hledám v zákoně a píšu odpověď… (10–25 s)";
+    const r = await fetch("api/ask", {method:"POST", headers:{"Content-Type":"application/json","X-Rag-Client":"web"},
+      body: JSON.stringify({q, ts, nonce, website: form.website.value})});
+    const d = await r.json().catch(() => ({error:"Server neodpověděl."}));
+    $("#waitMsg").remove();
+    if (typeof d.remaining === "number"){ setLeft(d.remaining); try { localStorage.setItem("ragLeft", d.remaining); } catch(e) {} }
+    if (!r.ok || d.error){ setFlow(0); log.insertAdjacentHTML("beforeend", `<div class="msg err">${esc(d.error || "Něco se pokazilo.")}</div>`); log.scrollTop = log.scrollHeight; return; }
+    log.lastElementChild.remove();                       // otázku vypíše ask() znovu i s odpovědí
+    D.questions.push({q, answer:d.answer, rewritten:d.rewritten, hits:d.hits, trace:d.trace, live:true, group:"live"});
+    form.q.value = "";
+    ask(D.questions.length - 1);
+  } catch(err){
+    const w = $("#waitMsg"); if (w) w.remove();
+    setFlow(0);
+    log.insertAdjacentHTML("beforeend", `<div class="msg err">Spojení se nepovedlo. Zkus to znovu.</div>`);
+  } finally { busy = false; $$(".go").forEach(b => b.disabled = false); }
+}
+
+/* ---------- stack (hvězdicové schéma) ---------- */
+const STACK = [
+  ["ph-file-text","Zákoník práce","262/2006 Sb., 260 odstavců z 84 §", .14,.18],
+  ["ph-cube","Hugging Face e5","multilingual-e5, embeddingy", .14,.5],
+  ["ph-magnifying-glass","BM25","hledání podle slov, bez knihovny", .14,.82],
+  ["ph-git-merge","RRF","spojí pořadí více hledání", .5,.12],
+  ["ph-brain","DeepSeek v4.1 Flash","přepis otázky a odpověď", .86,.18],
+  ["ph-plugs-connected","OpenRouter","jeden API klíč na modely", .86,.5],
+  ["ph-check-square-offset","Měření","30 otázek, AI soudce + člověk", .86,.82],
+  ["ph-graph","D3 + Vercel","mapa zákona, web + serverová funkce", .64,.88],
+  ["ph-link-simple","LangChain","stejný postup v LCEL, shoda 30/30", .36,.88],
+];
+function renderHub(){
+  $("#hub").insertAdjacentHTML("beforeend", STACK.map(([ic,t,s,x,y]) =>
+    `<div class="it" style="left:${x*100}%;top:${y*100}%"><i class="ph ${ic}"></i><div><b>${t}</b><span>${s}</span></div></div>`).join(""));
+  renderHubWires();
+}
+function renderHubWires(){
+  const hub = $("#hub"), svg = $("#hubwires"), W = hub.clientWidth, H = hub.clientHeight;
+  if (getComputedStyle(svg).display === "none") return;
+  const cx = W/2, cy = H/2;
+  svg.innerHTML = STACK.map(([,, , x, y]) => { const px = x*W, py = y*H, mx = (px+cx)/2;
+    return `<path class="hwire" d="M${cx},${cy} C${mx},${cy} ${mx},${py} ${px},${py}"/>`; }).join("");
+}
+
 /* ---------- dialog ---------- */
 function renderDialog(){
   $("#cmpTable2").innerHTML = cmpRows();
-  const r = D.retrieval, names = {dense:"jen embeddingy (v1)", hybrid:"+ hledání podle slov (BM25)", hybrid_rewrite:"+ přepis otázky (v2)"};
+  const r = D.retrieval, names = {dense:"e5-base (v1)", dense_large:"e5-large", hybrid:"+ BM25 nad laickou otázkou", hybrid_rewrite:"+ přepis otázky (v2)"};
   $("#ablation").innerHTML = Object.keys(names).map(m =>
     `<span>${names[m]}</span><div class="bar ${m==="hybrid_rewrite"?"v2":""}"><i style="width:${pct(r[m].hit5,r[m].n)}%"></i></div><span class="n">${r[m].hit5}/${r[m].n}</span>`).join("") +
-    `<span class="mut" style="grid-column:1/-1;font-size:12.5px">BM25 samo o sobě pomohlo málo, protože laická slova v zákoně nejsou. Zabralo až spolu s přepisem otázky.</span>`;
+    `<span class="mut" style="grid-column:1/-1;font-size:12.5px">BM25 nad laickou otázkou výsledek zhoršilo, protože slova jako „výplata“ v zákoně nejsou. Zabralo až spolu s přepisem otázky.</span>`;
   const tests = D.questions.map((q,i)=>({q,i})).filter(o => o.q.test);
   const st = ok => ok===null||ok===undefined ? `<span class="mut">–</span>` : `<span class="${ok?"ok":"bad"}">${ok?"správně":"chyba"}</span>`;
   $("#rows").innerHTML = `<tr><th>#</th><th>otázka a poznámka k v2</th><th class="hide-m">sada</th><th>v1</th><th>v2</th></tr>` +
     tests.map(({q,i}) => { const t=q.test;
       return `<tr class="click" data-i="${i}"><td class="st mut">${t.id}</td><td><div>${esc(q.q)}</div><div class="note">${esc(t.note)}</div></td>`+
         `<td class="st mut hide-m">${t.set==="test"?"testovací":"nová"}</td><td class="st">${st(t.v1_correct)}</td><td class="st">${st(t.correct)}</td></tr>`; }).join("");
-  $("#rows").querySelectorAll("tr.click").forEach(r => r.addEventListener("click", () => {
+  $$("#rows tr.click").forEach(r => r.addEventListener("click", () => {
     $("#dlg").close(); const q = D.questions[+r.dataset.i];
-    group = q.group; $("#seg").querySelectorAll("button").forEach(x => x.classList.toggle("on", x.dataset.g===group));
-    ask(+r.dataset.i); }));
+    group = q.group; $$("#seg button").forEach(x => x.classList.toggle("on", x.dataset.g===group));
+    ask(+r.dataset.i, true); }));
 }
 </script>
 </body>

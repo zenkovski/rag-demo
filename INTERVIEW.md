@@ -13,7 +13,9 @@ Stáhnu aktuální znění zákoníku práce ze zakonyprolidi.cz a vezmu pět t�
 **Co je slabina?** Některé odstavce na sebe odkazují („podle odstavce 2“). Model pak vidí jen půlku pravidla. Další krok: přidat k úseku i odkazovaný odstavec.
 
 ## 3. Embeddingy · `tools/rag.py`
-Model `intfloat/multilingual-e5-base` z Hugging Face převede každý úsek na vektor 768 čísel. Podobný význam = vektory blízko sebe. Běží lokálně na PC, zdarma.
+Model e5 z Hugging Face převede každý úsek na vektor čísel. Podobný význam = vektory blízko sebe. Ve v1 `multilingual-e5-base` lokálně (768 čísel), ve v2 `multilingual-e5-large` přes API OpenRouteru (1024 čísel).
+
+**Proč ve v2 přes API?** Lokální model má 1 GB a na Vercelu neběží. Chtěl jsem, aby web používal přesně ten model, který jsem změřil. Vektory všech 260 úseků jsou spočítané předem; při otázce se počítá jen vektor otázky (stojí zlomek haléře).
 
 **Co je embedding?** Číselný otisk významu textu. „Výpověď“ a „ukončení pracovního poměru“ mají podobný otisk, i když jsou to jiná slova.
 
@@ -50,7 +52,9 @@ Model dostane 5 úseků očíslovaných [1] až [5] a pravidla: odpovídej jen z
 
 **Co znamená „20 z 20“, když 4 odpovědi jsou „nevím“?** U těch 4 otázek zákon odpověď nemá, takže „nevím“ je správně. 20 z 20 = 16 správných odpovědí + 4 správná „nevím“.
 
-**Není 20 z 20 podezřelé?** Je. Úpravy v2 jsem navrhl podle chyb na stejných otázkách, takže je to nadsazené (přeučení na testovací sadu). Proto jsem potom napsal 10 nových otázek a změřil obě verze beze změn: v1 8 z 10, v2 9 z 10. Tohle číslo je poctivější a na pohovoru ho říkám jako první.
+**Není 20 z 20 podezřelé?** Je. Úpravy v2 jsem navrhl podle chyb na stejných otázkách, takže je to nadsazené (přeučení na testovací sadu). Proto jsem potom napsal 10 nových otázek a změřil obě verze beze změn: v1 8 z 10, první verze v2 9 z 10, po přechodu na e5-large 10 z 10. Ten přechod jsem neudělal kvůli těm otázkám, ale nová sada už tím není úplně čistá. Na pohovoru říkám obojí a že dalším krokem je třetí sada.
+
+**Je výsledek opakovatelný?** Ne úplně. Přepis otázky dělá jazykový model a i s teplotou 0 vyjde nové volání stejně jen u 6 z 30 otázek. Odpovědi ukládám do cache, takže moje čísla jdou zopakovat, ale nové spuštění se může mírně lišit. Správně by se mělo měřit víc běhů a uvádět rozptyl.
 
 **Proč měřit zvlášť vyhledávání a odpověď?** Abych věděl, kde opravovat. Když vyhledávání nenajde správný úsek, lepší prompt nepomůže.
 
@@ -58,15 +62,28 @@ Model dostane 5 úseků očíslovaných [1] až [5] a pravidla: odpovídej jen z
 
 **Proč jen 20 otázek?** Je to demo. Na produkci bych chtěl stovky otázek ze skutečných dotazů uživatelů a sledovat čísla při každé změně (regresní test).
 
-## 7. Web · `site/`
-Statická stránka bez serveru. Všechny odpovědi jsou předpočítané v `data.json`. Graf (D3) ukazuje všech 260 úseků, vazby = sousední odstavce a nejpodobnější úseky. Po otázce se rozsvítí přesně ty úseky, které vyhledávání vrátilo; citované plně, necitované obrysem.
+## 7. LangChain verze · `tools/rag_langchain.py`
+Stejný postup napsaný idiomaticky v LangChainu 1.x: `Document`, vlastní `Embeddings` pro e5, `InMemoryVectorStore`, dva retrievery (`BaseRetriever`), LCEL řetěz s `RunnableParallel` (tři hledání najednou), RRF a `ChatOpenAI` napojený na OpenRouter.
+
+**Proč dvě verze?** Ruční verze ukazuje, že vím, co se děje uvnitř. LangChain verze ukazuje, že umím framework, který firmy používají. Změřil jsem, že při stejném přepisu otázky najdou obě (a JavaScript na webu) stejných 5 úseků u 30 z 30 otázek.
+
+**Proč ne `langchain-community`?** Při instalaci hlásil, že se ukončuje. `BM25Retriever` a `EnsembleRetriever` tam byly, teď je to roztroušené. Proto jsem retrievery napsal jako malé vlastní třídy nad `langchain-core`.
+
+**Co je LCEL?** LangChain Expression Language: kroky se skládají operátorem `|` jako roura (prompt | model | parser). `RunnableParallel` spustí víc kroků najednou, `RunnablePassthrough.assign` přidá výsledek ke vstupu.
+
+## 8. Web a živé otázky · `site/`, `site/api/ask.js`
+Stránka + jedna serverová funkce na Vercelu pro vlastní otázky. Připravené otázky s měřením jsou předpočítané v `data.json`. Funkce dělá totéž co Python, jen v JavaScriptu (přepis → embeddingy → BM25 → RRF → odpověď).
+
+**Jak bráníš zneužití?** Klíč jen na serveru; 10 otázek na IP za den; proof of work (prohlížeč musí spočítat hash se 4 nulami, robotům to prodraží hromadné dotazy); kontrola původu požadavku; skryté pole jako past; a hlavně pevný limit 0,50 $ na klíči. Slabina: počítadla jsou v paměti funkce, ne v databázi.
+
+**Co je ta animace v mapě?** Skutečné mezivýsledky hledání: nejdřív kandidáti podle významu, pak podle slov, pak spojení RRF, nakonec citované odstavce. Žádná vymyšlená animace. Graf (D3) ukazuje všech 260 úseků, vazby = sousední odstavce a nejpodobnější úseky. Po otázce se rozsvítí přesně ty úseky, které vyhledávání vrátilo; citované plně, necitované obrysem.
 
 **Proč statický web?** Bezpečnost a cena. Na webu není API klíč, nikdo cizí mi nemůže utratit peníze. Nevýhoda: dá se ptát jen na předpočítané otázky.
 
-## 8. Bezpečnost
+## 9. Bezpečnost
 Klíč je jen v `.env`, který je v `.gitignore`. Před každým commitem prohledám repo i historii na `sk-`, `api_key` a podobně.
 
-## 9. Co bych udělal dál
+## 10. Co bych udělal dál
 - reranker (cross-encoder) nad top 20 úseky,
 - úseky s odkazy („podle odstavce 2“) doplnit o odkazovaný odstavec,
 - větší testovací sada ze skutečných otázek,

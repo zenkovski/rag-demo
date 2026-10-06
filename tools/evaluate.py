@@ -118,7 +118,7 @@ def report():
          "## v1 → v2", "",
          "| Měřítko | v1 | v2 |", "|---|---|---|",
          f"| Model | `{v1.get('model', 'nvidia/nemotron-3-super-120b-a12b:free')}` | `{v2['model']}` |",
-         "| Vyhledávání | embeddingy | embeddingy + BM25 + přepis otázky (RRF) |",
+         "| Vyhledávání | embeddingy e5-base | e5-large + BM25 + přepis otázky (RRF) |",
          f"| **Odpověď správně (celkem)** | **{s1['correct']} z 20** | **{s2['correct']} z 20** |",
          f"| z toho otázky s odpovědí | {s1['correct_answerable']} z 16 | {s2['correct_answerable']} z 16 |",
          f"| z toho „nevím“, když zdroj mlčí | {s1['nevim_ok']} z 4 | {s2['nevim_ok']} z 4 |",
@@ -130,7 +130,8 @@ def report():
         L += ["## Co pomohlo ve vyhledávání", "",
               "Stejných 16 otázek, mění se jen způsob hledání. hit@5 = správný paragraf je mezi 5 úseky, které dostane model.", "",
               "| Režim | hit@3 | hit@5 |", "|---|---|---|"]
-        names = {"dense": "jen embeddingy (v1)", "hybrid": "+ BM25 (hledání podle slov)", "hybrid_rewrite": "+ přepis otázky do jazyka zákona (v2)"}
+        names = {"dense": "embeddingy e5-base (v1)", "dense_large": "embeddingy e5-large", "hybrid": "e5-large + BM25 nad laickou otázkou",
+                 "hybrid_rewrite": "e5-large + přepis otázky + BM25 nad přepisem (v2)"}
         L += [f"| {names[m]} | {rc[m]['hit3']} z {rc[m]['n']} | {rc[m]['hit5']} z {rc[m]['n']} |" for m in rag.MODES] + [""]
     ho, mh = load("eval_holdout.json"), load("manual_review_holdout.json")
     if ho:
@@ -142,7 +143,9 @@ def report():
         (c1, h1, n), (c2, h2, _) = hs("v1"), hs("v2")
         L += ["## Kontrola přeučení: 10 nových otázek", "",
               "Úpravy v2 jsem navrhl podle chyb na 20 testovacích otázkách, takže tam může být výsledek přikrášlený.",
-              "Proto jsem až potom napsal 10 nových otázek (`data/testset_holdout.json`) a změřil na nich v1 i v2 beze změn.", "",
+              "Proto jsem až potom napsal 10 nových otázek (`data/testset_holdout.json`) a změřil na nich v1 i v2 beze změn.",
+              "První verze v2 (embeddingy e5-base) na nich měla 9 z 10 (chyba u #28). Pak jsem kvůli webu přešel na e5-large přes API",
+              "a #28 se tím spravila. Změna nebyla kvůli téhle otázce, ale nové otázky už tím nejsou úplně čisté: další krok je nová sada.", "",
               "| Měřítko | v1 | v2 |", "|---|---|---|",
               f"| Odpověď správně (ruční kontrola) | {c1} z {len(ho['v1'])} | {c2} z {len(ho['v2'])} |",
               f"| Správný paragraf mezi 5 nalezenými | {h1} z {n} | {h2} z {n} |", ""]

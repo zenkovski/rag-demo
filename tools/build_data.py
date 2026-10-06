@@ -25,7 +25,7 @@ DEMO = [
 # ruční kontrola ukázkových odpovědí v2 (nejsou v testovacích sadách, ale na webu je vidět i tohle)
 DEMO_REVIEW = {
     "Může mi zaměstnavatel dát výpověď, když jsem nemocný?":
-        (False, "Jádro správně: v pracovní neschopnosti je ochranná doba (§ 53). Závěr „během nemoci výpověď dostat nemůžete“ je ale moc silný: § 54 má výjimky, např. když se zaměstnavatel ruší. Ten se mezi nalezené úseky nedostal."),
+        (False, "Řekl „nevím“, i když odpověď v zákoně je: § 53 odst. 1 (ochranná doba) se mezi 5 nalezených úseků nedostal. Bezpečné, ale neužitečné. V jedné dřívější verzi v2 se § 53 našel, ale závěr byl zase moc silný (§ 54 má výjimky)."),
 }
 
 def edges(vecs, chunks, k=2):
@@ -55,10 +55,10 @@ def main():
     def test_q(r, set_name, manual, v1_ok=None, v1_answer=None):
         m = manual.get(str(r["id"]), {})
         top = [t["id"] if isinstance(t, dict) else t for t in r["top"]]
-        hits, _ = rag.search(r["q"])                       # stejné pořadí jako při měření (přepis je v cache)
+        hits, _, trace = rag.search(r["q"], trace=True)   # stejné pořadí jako při měření (přepis je v cache)
         assert [chunks[i]["id"] for i, _ in hits] == top, r["id"]
         return {"q": r["q"], "answer": r["answer"], "rewritten": r.get("rewritten"),
-                "hits": [[i, round(s, 3)] for i, s in hits],
+                "hits": [[i, round(s, 3)] for i, s in hits], "trace": trace,
                 "test": {"set": set_name, "id": r["id"], "level": r["level"], "gold": r["gold"],
                          "gold_chunks": r["chunks"], "hit3": r["hit3"],
                          "correct": m.get("correct", r["judge"]["correct"]), "judge": r["judge"]["correct"],
@@ -70,11 +70,11 @@ def main():
         ok1 = mh.get("v1", {}).get(str(r["id"]), {}).get("correct", h1[r["id"]]["judge"]["correct"])
         questions.append(test_q(r, "holdout", mh.get("v2", {}), ok1, h1[r["id"]]["answer"]))
     for q in DEMO:
-        hits, rw = rag.search(q)
+        hits, rw, trace = rag.search(q, trace=True)
         text, _ = rag.answer(q, hits, chunks)
         ok, note = DEMO_REVIEW.get(q, (True, "Ručně ověřeno proti textu zákona."))
         questions.append({"q": q, "answer": text, "rewritten": rw, "hits": [[i, round(s, 3)] for i, s in hits],
-                          "test": None, "review": {"ok": ok, "note": note}})
+                          "trace": trace, "test": None, "review": {"ok": ok, "note": note}})
         print("demo", q, flush=True)
 
     def hold(name):
@@ -92,6 +92,15 @@ def main():
             "edges": edges(rag.index(), chunks), "questions": questions}
     (ROOT / "site").mkdir(exist_ok=True)
     (ROOT / "site" / "data.json").write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
+    # data pro živou funkci (site/api/ask.js): texty úseků, jejich vektory a prompty; žádná tajemství
+    import base64
+    vecs = rag.index().astype("<f4")
+    live = {"emb_model": rag.EMB_MODEL, "llm": rag.LLM_MODEL, "top_k": rag.TOP_K, "dim": int(vecs.shape[1]),
+            "system": rag.SYSTEM, "rewrite": rag.REWRITE, "stop": sorted(rag.STOP),
+            "chunks": [{"id": c["id"], "title": c["title"], "text": c["text"]} for c in chunks],
+            "vectors": base64.b64encode(vecs.tobytes()).decode()}
+    (ROOT / "site" / "api").mkdir(exist_ok=True)
+    (ROOT / "site" / "api" / "_index.json").write_text(json.dumps(live, ensure_ascii=False), encoding="utf-8")
     print(f"site/data.json: {len(chunks)} úseků, {len(data['edges'])} hran, {len(questions)} otázek")
     print("v1", strip(s1)); print("v2", strip(s2)); print("holdout", data["holdout"])
 

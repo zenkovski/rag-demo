@@ -3,3 +3,5 @@ numpy
 requests
 beautifulsoup4
 python-dotenv
+langchain-core
+langchain-openai
