@@ -1,7 +1,7 @@
 // Živá otázka: stejný postup jako tools/rag.py (přepis -> e5-large + BM25 -> RRF -> odpověď s citacemi).
 // Klíč je jen v proměnné prostředí OPENROUTER_API_KEY na Vercelu, nikdy v kódu ani na stránce.
 // Ochrana proti spamu: 10 otázek na IP za den, malý výpočetní test (proof of work), délka otázky,
-// kontrola původu požadavku. Nejtvrdší pojistka je limit 0,50 $ přímo na klíči v OpenRouteru.
+// kontrola původu požadavku. Nejtvrdší pojistka je limit 0,75 $ přímo na klíči v OpenRouteru.
 const crypto = require("crypto");
 const IDX = require("./_index.json");
 

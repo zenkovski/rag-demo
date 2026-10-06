@@ -87,6 +87,7 @@ copy .env.example .env                                   # doplň OPENROUTER_API
 - Živé otázky na webu nikdo nekontroluje. Model se může splést, proto jsou u odpovědí citace.
 - Asistent nezná výši minimální mzdy. Nařízení 567/2006 je zrušené a výši teď vyhlašuje ministerstvo sdělením.
 - Počítadla limitů jsou v paměti funkce, ne v databázi.
+- Zákony se mění. Data jsou ze 6. 10. 2026. Aktualizace není automatická: znovu spustit `chunk.py`, `build_data.py` a `evaluate.py` a nasadit.
 
 ## Zdroje a autorství
 
