@@ -23372,5 +23372,863 @@
     "audio_tokens": 0
    }
   }
+ },
+ "a3c422a69e5902494c0673dba44acad1b4bd37ff19f0b2b69c86e7b35d775035": {
+  "text": "Na dohodu o pracovní činnosti není možné vykonávat práci v rozsahu překračujícím v průměru polovinu stanovené týdenní pracovní doby [1]. Stanovená týdenní pracovní doba činí 40 hodin týdně [4], takže v průměru můžete pracovat nejvýše 20 hodin týdně. Dodržení tohoto rozsahu se posuzuje za celou dobu, na kterou byla dohoda uzavřena, nejdéle však za 52 týdnů [3].",
+  "usage": {
+   "prompt_tokens": 960,
+   "completion_tokens": 138,
+   "total_tokens": 1098,
+   "cost": 0.0002232,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.0002232,
+    "upstream_inference_prompt_cost": 5.76e-05,
+    "upstream_inference_completions_cost": 0.0001656
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "b604b8e7fce8b0359196a8c4aebb879c942e31925c63be94867460e464c894e9": {
+  "text": "{\"correct\": true, \"grounded\": true, \"reason\": \"Odpověď správně uvádí limit poloviny stanovené týdenní pracovní doby (20 h) a všechna tvrzení jsou podložena citovanými úseky.\"}",
+  "usage": {
+   "prompt_tokens": 767,
+   "completion_tokens": 62,
+   "total_tokens": 829,
+   "cost": 0.0001937,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.0001937,
+    "upstream_inference_prompt_cost": 0.0001534,
+    "upstream_inference_completions_cost": 4.03e-05
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "423db3ff40a8bbce33a79928c632ffac137681634a675b057aa2b4aeebe8e113": {
+  "text": "Nařízená práce přesčas nesmí činit více než 8 hodin v jednotlivých týdnech a 150 hodin v kalendářním roce [1]. Práci přesčas může zaměstnavatel nařídit jen z vážných provozních důvodů [1] a konat ji lze jen výjimečně [2]. Nad tento rozsah může zaměstnavatel požadovat práci přesčas pouze na základě dohody se zaměstnancem [3].",
+  "usage": {
+   "prompt_tokens": 1079,
+   "completion_tokens": 114,
+   "total_tokens": 1193,
+   "cost": 0.00020154,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.00020154,
+    "upstream_inference_prompt_cost": 6.474e-05,
+    "upstream_inference_completions_cost": 0.0001368
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "66ed9f408e876c151302d05135dbd086dd9624738d7de07f5c1fa93e08903d7a": {
+  "text": "{\"correct\": true, \"grounded\": true, \"reason\": \"Odpověď správně uvádí limity 8 hodin týdně a 150 hodin ročně i možnost navýšení jen po dohodě, vše podloženo citovanými úseky.\"}",
+  "usage": {
+   "prompt_tokens": 867,
+   "completion_tokens": 66,
+   "total_tokens": 933,
+   "cost": 5.8815e-05,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 5.8815e-05,
+    "upstream_inference_prompt_cost": 3.9015e-05,
+    "upstream_inference_completions_cost": 1.98e-05
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "a1c1e131eb0867d66adf6b17f2e4ecc1bf3a7552bf28cc535d2efa3ee74c45f8": {
+  "text": "Zaměstnavatel je povinen poskytnout vám nepřetržitý denní odpočinek alespoň 11 hodin během 24 hodin po sobě jdoucích [2]. Mladistvému zaměstnanci pak alespoň 12 hodin, případně 14 hodin, jde-li o mladistvého uvedeného v § 79a odst. 1 [2].",
+  "usage": {
+   "prompt_tokens": 1299,
+   "completion_tokens": 99,
+   "total_tokens": 1398,
+   "cost": 8.8155e-05,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 8.8155e-05,
+    "upstream_inference_prompt_cost": 5.8455e-05,
+    "upstream_inference_completions_cost": 2.97e-05
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "ea413b024edf8f7b55cb5fc95aa6a579e5db8665e55a1f7d9da059843c9dadb2": {
+  "text": "{\"correct\": true, \"grounded\": true, \"reason\": \"Asistent správně uvádí 11 hodin pro dospělé a 12 (případně 14) hodin pro mladistvé, což odpovídá zlaté odpovědi i citovaným úsekům.\"}",
+  "usage": {
+   "prompt_tokens": 1070,
+   "completion_tokens": 71,
+   "total_tokens": 1141,
+   "cost": 0.00026015,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.00026015,
+    "upstream_inference_prompt_cost": 0.000214,
+    "upstream_inference_completions_cost": 4.615e-05
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "09cf3f0681e390690d8667d7352f570b00aef40819cc843c75f86101c23cb2fd": {
+  "text": "Ne, zaměstnavatel může dát výpověď jen z důvodů uvedených v § 52, například ruší-li se zaměstnavatel, stane-li se zaměstnanec nadbytečným nebo nesplňuje-li předpoklady pro výkon práce [1]. Důvod musí být ve výpovědi skutkově vymezen tak, aby jej nebylo možno zaměnit s jiným důvodem, a nesmí být dodatečně měněn [2]. Výpověď musí být písemná, jinak se k ní nepřihlíží [3].",
+  "usage": {
+   "prompt_tokens": 1784,
+   "completion_tokens": 136,
+   "total_tokens": 1920,
+   "cost": 0.00027024,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.00027024,
+    "upstream_inference_prompt_cost": 0.00010704,
+    "upstream_inference_completions_cost": 0.0001632
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "6a89e43f0baf864157152f9f97676216054726d54b8307aae774c2ca717499be": {
+  "text": "{\"correct\": true, \"grounded\": true, \"reason\": \"Asistent správně uvádí, že výpověď je možná jen z důvodů v § 52, a jeho tvrzení jsou podložena dodanými úseky.\"}",
+  "usage": {
+   "prompt_tokens": 1623,
+   "completion_tokens": 60,
+   "total_tokens": 1683,
+   "cost": 9.1035e-05,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 9.1035e-05,
+    "upstream_inference_prompt_cost": 7.3035e-05,
+    "upstream_inference_completions_cost": 1.8e-05
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "fd9a5028c90584900df8bbeb6c845b7df689b4f997356cee703ee576b6b2b2fb": {
+  "text": "Náhradu mzdy nebo platu za nevyčerpanou dovolenou dostanete jen při skončení pracovního poměru [1], a to ve výši průměrného výdělku [3]. Jinak platí, že za dobu čerpání dovolené náleží náhrada mzdy nebo platu ve výši průměrného výdělku [2]. Výjimkou je nevyčerpaná dodatková dovolená, kterou proplatit nelze a musí se vždy vyčerpat přednostně [4].",
+  "usage": {
+   "prompt_tokens": 967,
+   "completion_tokens": 137,
+   "total_tokens": 1104,
+   "cost": 0.000213615,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.000213615,
+    "upstream_inference_prompt_cost": 0.000136347,
+    "upstream_inference_completions_cost": 7.7268e-05
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "e8a802a7726f3f73098f8ac066df0175188c7bfcdcb3c93c2c85b54e16df4ebb": {
+  "text": "{\"correct\": true, \"grounded\": true, \"reason\": \"Odpověď správně uvádí, že náhrada přísluší jen při skončení pracovního poměru, a doplňující tvrzení jsou podložena dodanými úseky.\"}",
+  "usage": {
+   "prompt_tokens": 792,
+   "completion_tokens": 67,
+   "total_tokens": 859,
+   "cost": 0.00012792,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.00012792,
+    "upstream_inference_prompt_cost": 4.752e-05,
+    "upstream_inference_completions_cost": 8.04e-05
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "53a6d9b9b742b4721dd14987f11915699020057de1ce3c42bbe80378b04c2384": {
+  "text": "Pracovní poměr na dobu určitou smí být sjednán nejdéle na 3 roky a mezi týmiž smluvními stranami může být opakován nejvýše dvakrát; za opakování se považuje i prodloužení [1]. Celková doba trvání takových pracovních poměrů mezi týmiž stranami nesmí přesáhnout 9 let ode dne vzniku prvního pracovního poměru na dobu určitou [1]. Pokud od skončení předchozího pracovního poměru na dobu určitou uplynuly 3 roky, k předchozímu poměru se nepřihlíží [1].",
+  "usage": {
+   "prompt_tokens": 1380,
+   "completion_tokens": 170,
+   "total_tokens": 1550,
+   "cost": 0.0002868,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.0002868,
+    "upstream_inference_prompt_cost": 8.28e-05,
+    "upstream_inference_completions_cost": 0.000204
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "7d143c5b28481ac7770cea5b70ae109b1111fb26519e7a75d8b58f0fae59be47": {
+  "text": "{\"correct\": true, \"grounded\": true, \"reason\": \"Odpověď správně uvádí limit dvou opakování (prodloužení se počítá jako opakování) a je plně podložena citovaným § 39 odst. 2.\"}",
+  "usage": {
+   "prompt_tokens": 1240,
+   "completion_tokens": 65,
+   "total_tokens": 1305,
+   "cost": 7.53e-05,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 7.53e-05,
+    "upstream_inference_prompt_cost": 5.58e-05,
+    "upstream_inference_completions_cost": 1.95e-05
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "2f1907de217522571c7d35814676030fed5f873d07dd8ef6cb2d33c60dbb43f6": {
+  "text": "Nevím, v dostupných úsecích zákona to není.",
+  "usage": {
+   "prompt_tokens": 1396,
+   "completion_tokens": 18,
+   "total_tokens": 1414,
+   "cost": 5.286e-05,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 512,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 5.286e-05,
+    "upstream_inference_prompt_cost": 4.746e-05,
+    "upstream_inference_completions_cost": 5.4e-06
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "ff5c67d1b7ec1d3bed26b3e148a1bccbbfaa8e55612d41c5f910939bff36e7c5": {
+  "text": "{\"correct\": true, \"grounded\": true, \"reason\": \"Asistent správně odmítl uvést konkrétní částku, protože ta v dodaných úsecích ani v předpisech není a vyhlašuje se sdělením MPSV.\"}",
+  "usage": {
+   "prompt_tokens": 1146,
+   "completion_tokens": 65,
+   "total_tokens": 1211,
+   "cost": 7.107e-05,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 7.107e-05,
+    "upstream_inference_prompt_cost": 5.157e-05,
+    "upstream_inference_completions_cost": 1.95e-05
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "101ba06bfc228e3b7766802987ab8a7f0e03d574ecec2ec8e056e273e61f363a": {
+  "text": "Práce na dálku (home office) je možná jen na základě písemné dohody mezi zaměstnavatelem a zaměstnancem [1]. Zaměstnavatel ji může písemně nařídit jen tehdy, pokud tak stanoví opatření orgánu veřejné moci podle jiného zákona, a to na nezbytně nutnou dobu, pokud to povaha práce umožňuje a místo výkonu je způsobilé [2].",
+  "usage": {
+   "prompt_tokens": 1224,
+   "completion_tokens": 112,
+   "total_tokens": 1336,
+   "cost": 0.00010688,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 512,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.00010688,
+    "upstream_inference_prompt_cost": 6.208e-05,
+    "upstream_inference_completions_cost": 4.48e-05
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "559744b06f6ceca7913bac47988e45ff929f79313de0d7ff27611e44aa1b4b2d": {
+  "text": "{\"correct\": true, \"grounded\": true, \"reason\": \"Odpověď vystihuje obě podmínky ze zlaté odpovědi a opírá se výhradně o úseky [1] a [2].\"}",
+  "usage": {
+   "prompt_tokens": 960,
+   "completion_tokens": 58,
+   "total_tokens": 1018,
+   "cost": 0.0003576,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.0003576,
+    "upstream_inference_prompt_cost": 0.000288,
+    "upstream_inference_completions_cost": 6.96e-05
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "73dcf48d2aee18e32a5055963c8d6123d9c48817ffd6320cc8c0dc0f9629b5f1": {
+  "text": "Odstupné je zaměstnavatel povinen vyplatit po skončení pracovního poměru v nejbližším výplatním termínu určeném u zaměstnavatele pro výplatu mzdy nebo platu [1]. Jiný termín je možný, pokud se na tom se zaměstnancem písemně dohodne, například na výplatě v den skončení pracovního poměru nebo na pozdějším termínu [1].",
+  "usage": {
+   "prompt_tokens": 1322,
+   "completion_tokens": 111,
+   "total_tokens": 1433,
+   "cost": 0.000249006,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.000249006,
+    "upstream_inference_prompt_cost": 0.000186402,
+    "upstream_inference_completions_cost": 6.2604e-05
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "d86a35a09ff99c3c8a846a16dcac8f9ef9e5ef1e7d0300d8533cf3558272b0dd": {
+  "text": "{\"correct\": true, \"grounded\": true, \"reason\": \"Odpověď věcně odpovídá zlaté odpovědi a opírá se výhradně o dodaný úsek zákona [1].\"}",
+  "usage": {
+   "prompt_tokens": 1170,
+   "completion_tokens": 56,
+   "total_tokens": 1226,
+   "cost": 6.945e-05,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 6.945e-05,
+    "upstream_inference_prompt_cost": 5.265e-05,
+    "upstream_inference_completions_cost": 1.68e-05
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "0af71512f1feb0222f2e06f4568f6fc1dbeb43b42d6c8d89b96efbb0d02631b6": {
+  "text": "Pokud se se šéfem dohodnete na rozvázání pracovního poměru, musí být tato dohoda písemná [1] a každá strana musí obdržet jedno vyhotovení [3]. Pracovní poměr pak končí sjednaným dnem [2].",
+  "usage": {
+   "prompt_tokens": 978,
+   "completion_tokens": 71,
+   "total_tokens": 1049,
+   "cost": 0.000177942,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.000177942,
+    "upstream_inference_prompt_cost": 0.000137898,
+    "upstream_inference_completions_cost": 4.0044e-05
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "6ae94566586b6aa20fdf191338a6ab87c2b20ad29ab66ffe92487613f41ddfde": {
+  "text": "{\"correct\": true, \"grounded\": true, \"reason\": \"Odpověď správně uvádí, že dohoda o rozvázání pracovního poměru musí být písemná, a opírá se o citované úseky zákona.\"}",
+  "usage": {
+   "prompt_tokens": 711,
+   "completion_tokens": 63,
+   "total_tokens": 774,
+   "cost": 0.000135783,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.000135783,
+    "upstream_inference_prompt_cost": 0.000100251,
+    "upstream_inference_completions_cost": 3.5532e-05
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "cdcda051f74be835c90b9933c4a227b6daba4d8fd78ce696e2930649c8baac99": {
+  "text": "Zaměstnavatel s vámi nesmí okamžitě zrušit pracovní poměr, protože jste těhotná [1]. Okamžitě zrušit pracovní poměr může jen výjimečně, například při pravomocném odsouzení za úmyslný trestný čin nebo při zvlášť hrubém porušení pracovních povinností [2].",
+  "usage": {
+   "prompt_tokens": 1582,
+   "completion_tokens": 93,
+   "total_tokens": 1675,
+   "cost": 0.000275514,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.000275514,
+    "upstream_inference_prompt_cost": 0.000223062,
+    "upstream_inference_completions_cost": 5.2452e-05
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "883edff2973f6803f1a6445e28c149abbbabf1cac6249822ccd7ed0039766ac4": {
+  "text": "{\"correct\": true, \"grounded\": true, \"reason\": \"Asistent správně uvádí, že zaměstnavatel nesmí okamžitě zrušit pracovní poměr s těhotnou zaměstnankyní, a jeho tvrzení jsou podložena dodanými úseky zákona.\"}",
+  "usage": {
+   "prompt_tokens": 1286,
+   "completion_tokens": 76,
+   "total_tokens": 1362,
+   "cost": 8.067e-05,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 8.067e-05,
+    "upstream_inference_prompt_cost": 5.787e-05,
+    "upstream_inference_completions_cost": 2.28e-05
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "07d685a4768444c8f179c83ac173cd0bab79d24e73cdb3bffe85da24ca5997f3": {
+  "text": "V evidenci uchazečů o zaměstnání můžete pracovat na pracovní nebo služební poměr, pokud měsíční výdělek nepřesáhne polovinu minimální mzdy, nebo na dohodu o pracovní činnosti, pokud měsíční odměna nepřesáhne polovinu minimální mzdy [1]. Výkon této činnosti jste povinen oznámit krajské pobočce Úřadu práce bez ohledu na výši výdělku, a to při podání žádosti o zprostředkování zaměstnání nebo nejpozději v den nástupu k výkonu této činnosti [1]. Pokud vykonáváte více činností, měsíční výdělky (odměny) se sčítají [1].",
+  "usage": {
+   "prompt_tokens": 2498,
+   "completion_tokens": 186,
+   "total_tokens": 2684,
+   "cost": 0.0009726,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.0009726,
+    "upstream_inference_prompt_cost": 0.0007494,
+    "upstream_inference_completions_cost": 0.0002232
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "117220b6cbe8f0aadddacef7dcfc9139d718452e6b0717ccceb949a1cc883364": {
+  "text": "{\"correct\": true, \"grounded\": true, \"reason\": \"Odpověď věcně odpovídá zlaté odpovědi a všechna tvrzení jsou podložena dodaným úsekem zákona [1].\"}",
+  "usage": {
+   "prompt_tokens": 2367,
+   "completion_tokens": 57,
+   "total_tokens": 2424,
+   "cost": 0.000365895,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.000365895,
+    "upstream_inference_prompt_cost": 0.000333747,
+    "upstream_inference_completions_cost": 3.2148e-05
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "875bf8af72139992f507237f60dfb5d6e2d8515105b4bc8f99a3635003259527": {
+  "text": "Záleží na tom, jakou máte smlouvu a u koho pracujete.\n\nPokud pracujete za mzdu u soukromého zaměstnavatele, přísluší vám za dobu noční práce dosažená mzda a příplatek nejméně ve výši 10 % průměrného výdělku, přičemž lze sjednat jinou minimální výši a způsob určení příplatku [2]. Pokud pracujete za plat (stát, kraje, obce, státní organizace), přísluší vám za hodinu noční práce příplatek ve výši 20 % průměrného hodinového výdělku [1]. Pokud pracujete na dohodu o provedení práce nebo dohodu o pracovní činnosti, odměnu z dohody lze sjednat již s přihlédnutím k případné noční práci, je-li současně sjednán rozsah této práce a výše příplatků, které by vám jinak byly poskytnuty; za dobu noční práce nad takto sjednaný rozsah vám příplatek přísluší [5].\n\nMěl jste na mysli některou z těchto skupin?",
+  "usage": {
+   "prompt_tokens": 1373,
+   "completion_tokens": 285,
+   "total_tokens": 1658,
+   "cost": 0.000603372,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 512,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.000603372,
+    "upstream_inference_prompt_cost": 0.000261372,
+    "upstream_inference_completions_cost": 0.000342
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "efa92d65729317e66bc402f6b4a80e912a49ea0b876789cc1c1a80303b6d4d89": {
+  "text": "{\"correct\": false, \"grounded\": false, \"reason\": \"Asistent tvrdí, že u platu náleží 20 % a u mzdy 10 %, což odporuje zlaté odpovědi i dodaným úsekům (20 % je jen v úseku [1], který je v rozporu s § 116).\"}",
+  "usage": {
+   "prompt_tokens": 1308,
+   "completion_tokens": 81,
+   "total_tokens": 1389,
+   "cost": 0.00017568,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.00017568,
+    "upstream_inference_prompt_cost": 7.848e-05,
+    "upstream_inference_completions_cost": 9.72e-05
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "76cfa65eb6252b0c664767d71810e5a5471c21633c7e06d131f844bd2c46a30a": {
+  "text": "Pokud jde o mzdu u soukromého zaměstnavatele, přísluší vám za dobu práce ve svátek dosažená mzda a náhradní volno v rozsahu práce konané ve svátek, které vám zaměstnavatel poskytne nejpozději do konce třetího kalendářního měsíce následujícího po výkonu práce ve svátek nebo v jinak dohodnuté době; za dobu čerpání náhradního volna vám přísluší náhrada mzdy ve výši průměrného výdělku [1]. Můžete se také se zaměstnavatelem dohodnout na poskytnutí příplatku k dosažené mzdě nejméně ve výši průměrného výdělku místo náhradního volna [2].\n\nPokud jde o plat ve státní sféře, poskytne vám zaměstnavatel náhradní volno v rozsahu práce konané ve svátek, a to nejpozději do konce třetího kalendářního měsíce následujícího po výkonu práce ve svátek nebo v jinak dohodnuté době, a za dobu čerpání náhradního volna se plat nekrátí [3]. Můžete se také se zaměstnavatelem dohodnout na poskytnutí příplatku ve výši průměrného hodinového výdělku za hodinu práce ve svátek místo náhradního volna [5].\n\nMěl jste na mysli mzdu u soukromého zaměstnavatele, nebo plat ve státní sféře?",
+  "usage": {
+   "prompt_tokens": 1190,
+   "completion_tokens": 392,
+   "total_tokens": 1582,
+   "cost": 0.000388878,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.000388878,
+    "upstream_inference_prompt_cost": 0.00016779,
+    "upstream_inference_completions_cost": 0.000221088
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "c4b6f1b3acc7a2b60dcfac45ed89a1af83f31011d0211609e2aeec8c1ec971f0": {
+  "text": "{\"correct\": true, \"grounded\": true, \"reason\": \"Odpověď věcně odpovídá zlaté odpovědi i dodaným úsekům zákona a nic si nevymýšlí.\"}",
+  "usage": {
+   "prompt_tokens": 1194,
+   "completion_tokens": 53,
+   "total_tokens": 1247,
+   "cost": 0.00013524,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.00013524,
+    "upstream_inference_prompt_cost": 7.164e-05,
+    "upstream_inference_completions_cost": 6.36e-05
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "255eac01bf37a8d6bf9f380bfd97f522c21ee67535bebfc9d12635554f7fe8d2": {
+  "text": "Nástup na otcovskou musí nastat v období 6 týdnů ode dne narození dítěte [1]. Toto období se prodlužuje o kalendářní dny, po které bylo dítě hospitalizováno ze zdravotních důvodů na straně dítěte nebo matky a které spadají do období 6 týdnů ode dne narození [1].",
+  "usage": {
+   "prompt_tokens": 1486,
+   "completion_tokens": 91,
+   "total_tokens": 1577,
+   "cost": 9.417e-05,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 9.417e-05,
+    "upstream_inference_prompt_cost": 6.687e-05,
+    "upstream_inference_completions_cost": 2.73e-05
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "ea987e247a8d8e603ffd1f263f5a734d8c4cee72b89d9bb481eafa3206870aec": {
+  "text": "{\"correct\": true, \"grounded\": true, \"reason\": \"Odpověď správně uvádí lhůtu 6 týdnů i prodloužení o dny hospitalizace, což plně odpovídá zlaté odpovědi i citovaným úsekům.\"}",
+  "usage": {
+   "prompt_tokens": 1245,
+   "completion_tokens": 66,
+   "total_tokens": 1311,
+   "cost": 0.000212769,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.000212769,
+    "upstream_inference_prompt_cost": 0.000175545,
+    "upstream_inference_completions_cost": 3.7224e-05
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "45139a07dadad84603a3baba038ddb6857b6bf2e954618f8cab1b9a55f29e820": {
+  "text": "Odstupné je zaměstnavatel povinen vyplatit po skončení pracovního poměru v nejbližším výplatním termínu určeném u zaměstnavatele pro výplatu mzdy nebo platu [1]. Může se ale písemně dohodnout se zaměstnancem na výplatě v den skončení pracovního poměru nebo na pozdějším termínu [1].",
+  "usage": {
+   "prompt_tokens": 1379,
+   "completion_tokens": 102,
+   "total_tokens": 1481,
+   "cost": 9.2655e-05,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 9.2655e-05,
+    "upstream_inference_prompt_cost": 6.2055e-05,
+    "upstream_inference_completions_cost": 3.06e-05
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "4787115de3a738e0ed242727a9acbd13f661031d8f557e5038a6fb5e3c37ea4c": {
+  "text": "Ano, při výkonu práce na základě dohody o provedení práce je zaměstnavatel povinen předem rozvrhnout zaměstnanci pracovní dobu v písemném rozvrhu pracovní doby a seznámit s ním zaměstnance nejpozději 3 dny před začátkem směny nebo období, na něž je pracovní doba rozvržena, pokud se nedohodne se zaměstnancem na jiné době seznámení [1].",
+  "usage": {
+   "prompt_tokens": 1174,
+   "completion_tokens": 120,
+   "total_tokens": 1294,
+   "cost": 0.000345672,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 512,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.000345672,
+    "upstream_inference_prompt_cost": 0.000201672,
+    "upstream_inference_completions_cost": 0.000144
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "70c96d0e936ccc48304e8edd962f1b5297e2242618597e3955ea93a82c94c1ad": {
+  "text": "Záleží na tom, jakou formou u vás odměna za práci funguje.\n\nPokud jste zaměstnanec v soukromé sféře a pobíráte mzdu, přísluší vám za práci v sobotu a neděli dosažená mzda a příplatek nejméně ve výši 10 % průměrného výdělku [1].\n\nPokud pobíráte plat (stát, kraje, obce, státní organizace), přísluší vám za hodinu práce v sobotu nebo v neděli příplatek ve výši 25 % průměrného hodinového výdělku [2].\n\nPokud pracujete na dohodu o provedení práce nebo o pracovní činnosti, výši odměny a podmínky si sjednáváte v dohodě; odměnu lze sjednat už s přihlédnutím k práci v sobotu a neděli, je-li současně sjednán rozsah této práce a výše příplatků podle § 116 až 118 [5].\n\nMěl jste na mysli mzdu, plat, nebo odměnu z dohody?",
+  "usage": {
+   "prompt_tokens": 1415,
+   "completion_tokens": 278,
+   "total_tokens": 1693,
+   "cost": 0.0003645432,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 512,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.0003645432,
+    "upstream_inference_prompt_cost": 0.0001643832,
+    "upstream_inference_completions_cost": 0.00020016
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
  }
 }

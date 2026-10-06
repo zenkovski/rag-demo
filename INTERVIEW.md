@@ -60,7 +60,7 @@ Model dostane 5 úseků očíslovaných [1] až [5] a pravidla: odpovídej jen z
 **Nejčastější chyba v2?** Mzda × plat (ve v3 opravené). Zákoník práce má zvlášť pravidla pro mzdu (soukromé firmy) a plat (stát). U noční práce model napsal 20 % (plat) místo 10 % (mzda). Řešení ve v3: úsek v podkladech nese poznámku „platí pro mzdu / pro plat“ a pravidlo říká: když otázka neříká, která skupina platí, uveď obě varianty. U nejasné otázky se model doptá.
 
 ## 6. Měření kvality · `tools/evaluate.py`
-46 otázek ve 3 sadách, každá se zlatou odpovědí a správnými paragrafy. 6 otázek nemá odpověď v předpisech (správně je „nevím“). Měřím zvlášť vyhledávání (hit@3, hit@5) a odpověď. Odpověď hodnotí AI soudce a pak ji ručně kontroluji. Výsledek: v1 44 z 56, v2 50 z 56, v3 54 z 56.
+46 otázek ve 3 sadách, každá se zlatou odpovědí a správnými paragrafy. 6 otázek nemá odpověď v předpisech (správně je „nevím“). Měřím zvlášť vyhledávání (hit@3, hit@5) a odpověď. Odpověď hodnotí AI soudce a pak ji ručně kontroluji. Výsledek: v1 44 z 56, v2 50 z 56, v3 55 z 56.
 
 **Proč tři sady?**
 - testovací (1–20): podle chyb na nich jsem navrhl v2, takže tam je v2 nadsazená (19 z 20),
@@ -104,12 +104,11 @@ Každou chybu jsem zařadil do kroku, kde vznikla:
 
 Opravy: výběr přes LLM z 20 kandidátů (hledání), poznámka u úseku „platí pro mzdu / plat“ a přesnější pravidla (čtení). Pak jsem napsal 10 nových otázek **dřív**, než jsem v3 spustil, ať neladím na test. v3 má na nich 10 z 10, v2 8 z 10.
 
-**Co se rozbilo?** Jedna otázka, která ve v2 fungovala („odpočinek mezi směnami“): výběr vzal odstavce o zkrácení odpočinku a vyhodil základní pravidlo. Proto měřím všechno znovu, ne jen opravené otázky. Regrese se jinak nepozná.
+**Co se rozbilo?** Jedna otázka, která ve v2 fungovala („odpočinek mezi směnami“): výběr vzal odstavce o zkrácení odpočinku a vyhodil základní pravidlo. Proto měřím všechno znovu, ne jen opravené otázky. Regrese se jinak nepozná. Opravil jsem to deterministicky: k vybranému odstavci 2, 3… se vždy přidá odstavec 1 téhož paragrafu. Poctivě: tahle druhá oprava už nebyla ověřená na nových otázkách.
 
 **Co mě stálo nejvíc?** Skryté přemýšlení modelu (reasoning). DeepSeek u každého kroku „přemýšlel“ tisíce slov: krok trval 30 s a měření stálo desetkrát víc. Vypnul jsem ho přes `reasoning: {enabled: false}`: krok trvá 1,5 s. Poučení: u každého modelu hlídat počet výstupních tokenů, ne jen cenu za token.
 
 ## 11. Co bych udělal dál
-- výběr vždy doplnit o odstavec 1 téhož paragrafu (oprava regrese),
 - cross-encoder místo LLM pro výběr (levnější, stabilnější),
 - úseky s odkazy („podle § 26“) doplnit o odkazovaný odstavec,
 - větší testovací sada ze skutečných otázek a měření rozptylu,

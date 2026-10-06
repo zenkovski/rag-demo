@@ -11,20 +11,20 @@ Verdikt „správně“ je po ruční kontrole všech odpovědí proti textu zá
 | Model | `nvidia/nemotron-3-super-120b-a12b:free` | `deepseek/deepseek-v4.1-flash` | `deepseek/deepseek-v4.1-flash` |
 | Vyhledávání | e5-base | e5-large + BM25 + přepis (RRF) | v2 + LLM vybere 5 z 20 kandidátů |
 | Pravidla odpovědi | základní | přísnější | + varianty (mzda × plat), doptání, musí/nemusí/nesmí |
-| **Odpověď správně (celkem)** | 44 z 56 | 50 z 56 | 54 z 56 |
-| z toho otázky s odpovědí | 36 z 48 | 42 z 48 | 46 z 48 |
+| **Odpověď správně (celkem)** | 44 z 56 | 50 z 56 | 55 z 56 |
+| z toho otázky s odpovědí | 36 z 48 | 42 z 48 | 47 z 48 |
 | z toho správně „nevím“, když zdroj mlčí | 8 z 8 | 8 z 8 | 8 z 8 |
-| Správný paragraf mezi 5 úseky pro model (hit@5) | 39 z 48 | 45 z 48 | 47 z 48 |
-| Správný paragraf v top 3 (hit@3) | 34 z 48 | 43 z 48 | 47 z 48 |
+| Správný paragraf mezi 5 úseky pro model (hit@5) | 39 z 48 | 45 z 48 | 48 z 48 |
+| Správný paragraf v top 3 (hit@3) | 34 z 48 | 43 z 48 | 48 z 48 |
 | „Nevím“, i když odpověď ve zdroji byla | 5 z 48 | 3 z 48 | 0 z 48 |
-| Opírá se o zdroj (podle AI soudce) | 50 z 56 | 54 z 56 | 56 z 56 |
-| AI soudce se shodl s ruční kontrolou | 55 z 56 | 54 z 56 | 56 z 56 |
+| Opírá se o zdroj (podle AI soudce) | 50 z 56 | 54 z 56 | 55 z 56 |
+| AI soudce se shodl s ruční kontrolou | 55 z 56 | 54 z 56 | 55 z 56 |
 
 ## Podle sad
 
 | Sada | otázek | v1 | v2 | v3 | v3 hit@5 |
 |---|---|---|---|---|---|
-| testovací | 20 | 16 | 19 | 18 | 18 z 19 |
+| testovací | 20 | 16 | 19 | 19 | 19 z 19 |
 | kontrolní | 10 | 7 | 10 | 10 | 9 z 9 |
 | nové předpisy | 16 | 13 | 13 | 16 | 12 z 12 |
 | po opravě | 10 | 8 | 8 | 10 | 8 z 8 |
@@ -54,7 +54,7 @@ Všech 48 otázek s odpovědí, mění se jen způsob hledání.
 | embeddingy e5-large | 40 z 48 | 42 z 48 |
 | e5-large + BM25 nad laickou otázkou | 33 z 48 | 37 z 48 |
 | e5-large + přepis otázky + BM25 nad přepisem (v2) | 43 z 48 | 45 z 48 |
-| v2 + LLM vybere 5 z 20 kandidátů (v3) | 47 z 48 | 47 z 48 |
+| v2 + LLM vybere 5 z 20 kandidátů (v3) | 48 z 48 | 48 z 48 |
 
 ## Otázka po otázce
 
@@ -66,38 +66,38 @@ Všech 48 otázek s odpovědí, mění se jen způsob hledání.
 | 4 | testovací | Jak dlouhá je výpovědní doba? | ano | správně | správně | správně | Správně (2 měsíce, výjimka 1 měsíc). Přidal zbytečnou větu o chráněném trhu práce ze zákona o zaměstnanosti. |
 | 5 | testovací | Od kdy začíná běžet výpovědní doba? | ano | správně | správně | správně | Správně. Nově se doptal, jestli jde o obecnou výpověď, nebo zvláštní případ (pravidlo 7 ve v3). |
 | 6 | testovací | Kolik hodin ročně můžu odpracovat na dohodu o provedení práce (DPP)? | ano | správně | správně | správně | Asistent správně uvádí limit 300 hodin ročně a započítávání dalších DPP u téhož zaměstnavatele, což odpovídá zlaté odpovědi i citovaným úsekům. |
-| 7 | testovací | Kolik hodin týdně můžu pracovat na dohodu o pracovní činnosti? | ano | **chyba** | správně | správně | Odpověď správně uvádí limit poloviny stanovené týdenní pracovní doby (20 h) i způsob posuzování a opírá se výhradně o dodané úseky. |
+| 7 | testovací | Kolik hodin týdně můžu pracovat na dohodu o pracovní činnosti? | ano | **chyba** | správně | správně | Odpověď správně uvádí limit poloviny stanovené týdenní pracovní doby (20 h) a všechna tvrzení jsou podložena citovanými úseky. |
 | 8 | testovací | Po kolika hodinách práce mám nárok na pauzu na jídlo? | ano | správně | správně | správně | Odpověď správně uvádí hranici 6 hodin pro dospělé i 4,5 hodiny pro mladistvé a obě tvrzení se opírají o dodaný § 88 odst. 1. |
-| 9 | testovací | Kolik přesčasů mi může zaměstnavatel nařídit? | ano | správně | správně | správně | Odpověď věcně odpovídá zlaté odpovědi a všechna tvrzení jsou podložena dodanými úseky zákona. |
-| 10 | testovací | Kolik hodin odpočinku musím mít mezi dvěma směnami? | **ne** | **chyba** | správně | **chyba** | Nová chyba ve v3: výběr přes LLM vzal odstavce o zkrácení odpočinku (§ 90 odst. 2 a 3) a vyhodil základní § 90 odst. 1 (11 hodin). Ve v2 to bylo správně. Model poctivě napsal, že základní délku v úsecích nemá. |
+| 9 | testovací | Kolik přesčasů mi může zaměstnavatel nařídit? | ano | správně | správně | správně | Odpověď správně uvádí limity 8 hodin týdně a 150 hodin ročně i možnost navýšení jen po dohodě, vše podloženo citovanými úseky. |
+| 10 | testovací | Kolik hodin odpočinku musím mít mezi dvěma směnami? | ano | **chyba** | správně | správně | Opraveno pravidlem „odstavec 1“: výběr přes LLM vzal jen výjimky (§ 90 odst. 2 a 3), pravidlo k nim přidalo § 90 odst. 1 se základními 11 hodinami. Před tou opravou to byla jediná nová chyba v3. |
 | 11 | testovací | Ve firmě jsem rok a půl a propouštějí mě, protože jsem nadbytečný. Kolik dostanu odstupné? | ano | správně | správně | správně | Asistent správně určil dvojnásobek průměrného výdělku pro dobu 1–2 roky při nadbytečnosti dle § 52 písm. c) a opřel se o dodaný § 67 odst. 1. |
-| 12 | testovací | Může mi zaměstnavatel dát výpověď z jakéhokoli důvodu, třeba že se mu nelíbím? | ano | správně | správně | správně | Správně. V citaci přepsal slovo „zaměnit“ na „zaměřit“ (překlep modelu). |
+| 12 | testovací | Může mi zaměstnavatel dát výpověď z jakéhokoli důvodu, třeba že se mu nelíbím? | ano | správně | správně | správně | Správně, s příklady důvodů z § 52. |
 | 13 | testovací | Jak dlouho mám čas napadnout neplatnou výpověď u soudu? | ano | správně | správně | správně | Asistent správně uvádí dvouměsíční lhůtu od skončení pracovního poměru a opírá se o dodaný § 72. |
 | 14 | testovací | Proplatí mi zaměstnavatel nevyčerpanou dovolenou? | ano | správně | správně | správně | Odpověď správně uvádí, že náhrada přísluší jen při skončení pracovního poměru, a doplňující tvrzení jsou podložena dodanými úseky. |
 | 15 | testovací | Firma mi už měsíc nezaplatila výplatu. Můžu hned odejít? | ano | **chyba** | správně | správně | Asistent správně a s odkazy na úseky zákona uvádí, že při nevyplacení mzdy do 15 dnů po splatnosti lze okamžitě zrušit pracovní poměr, včetně lhůty podle § 59. |
-| 16 | testovací | Kolikrát mi můžou prodloužit smlouvu na dobu určitou? | ano | správně | správně | správně | Asistent správně uvádí limit dvou opakování včetně prodloužení a doplňuje další podmínky věrně podle § 39 odst. 2. |
-| 17 | testovací | Jaká je minimální mzda v roce 2026? | – | správně | správně | správně | Asistent správně odmítl uvést konkrétní částku, protože ta v dodaných úsecích není a zlatá odpověď je NEVÍM. |
+| 16 | testovací | Kolikrát mi můžou prodloužit smlouvu na dobu určitou? | ano | správně | správně | správně | Odpověď správně uvádí limit dvou opakování (prodloužení se počítá jako opakování) a je plně podložena citovaným § 39 odst. 2. |
+| 17 | testovací | Jaká je minimální mzda v roce 2026? | – | správně | správně | správně | Asistent správně odmítl uvést konkrétní částku, protože ta v dodaných úsecích ani v předpisech není a vyhlašuje se sdělením MPSV. |
 | 18 | testovací | Jak dlouho trvá mateřská dovolená? | ano | správně | správně | správně | Odpověď správně uvádí 28/37 týdnů dle § 195 odst. 1 a doplňující podmínky jsou věcně správné i podložené dodanými úseky. |
-| 19 | testovací | Za jakých podmínek můžu pracovat z domova na home office? | ano | správně | správně | správně | Odpověď věcně odpovídá zlaté odpovědi a všechna tvrzení jsou podložena dodanými úseky zákona. |
+| 19 | testovací | Za jakých podmínek můžu pracovat z domova na home office? | ano | správně | správně | správně | Odpověď vystihuje obě podmínky ze zlaté odpovědi a opírá se výhradně o úseky [1] a [2]. |
 | 20 | testovací | Kolik peněz dostanu, když budu na nemocenské? | ano | **chyba** | **chyba** | **chyba** | Lepší než ve v2: výši nemocenského (60/66/72 %) už našel. Chybí ale, že prvních 14 dní platí zaměstnavatel náhradu mzdy 60 % (§ 192 odst. 2 nebyl mezi 5 úseky). Odpověď je proto neúplná. |
 | 21 | kontrolní | Kolik hodin volna v kuse musím mít aspoň jednou za týden? | ano | **chyba** | správně | správně | Odpověď správně uvádí 24 hodin pro dospělé s navazujícím denním odpočinkem a 48 hodin pro mladistvé, vše podloženo citovanými úseky. |
 | 22 | kontrolní | Musí mi šéf dovolenou oznámit dopředu? | ano | správně | správně | správně | Odpověď správně uvádí povinnost písemného oznámení 14 dnů předem a je podložena citovanými úseky zákona. |
 | 23 | kontrolní | Mám smlouvu jen na 4 měsíce. Jak dlouhou zkušební dobu mi můžou dát? | ano | správně | správně | správně | Asistent správně aplikoval § 35 odst. 3 a uvedl maximální zkušební dobu 2 měsíce, což odpovídá zlaté odpovědi i dodaným úsekům. |
 | 24 | kontrolní | Jeden den jsem nepřišel do práce a neomluvil se. Může mi šéf vzít dovolenou? | ano | **chyba** | správně | správně | Asistent správně a věcně shodně se zákonem i zlatou odpovědí uvedl, že zaměstnavatel může krátit dovolenou o neomluveně zameškané hodiny, a opřel se o citovaný § 223 odst. 1. |
-| 25 | kontrolní | Kdy mi přijdou peníze za odstupné? | ano | správně | správně | správně | Odpověď věcně odpovídá zlaté odpovědi i § 67 odst. 5 a opírá se pouze o dodaný úsek. |
-| 26 | kontrolní | Když se se šéfem domluvíme na konci práce, musí to být na papíře? | ano | správně | správně | správně | Asistent správně uvádí, že dohoda o rozvázání pracovního poměru musí být písemná, což odpovídá zlaté odpovědi i citovaným úsekům. |
-| 27 | kontrolní | Jsem těhotná. Může mě zaměstnavatel vyhodit ze dne na den? | ano | správně | správně | správně | Asistent správně uvádí, že zaměstnavatel nesmí okamžitě zrušit pracovní poměr s těhotnou zaměstnankyní, a opírá se o citované úseky zákona. |
+| 25 | kontrolní | Kdy mi přijdou peníze za odstupné? | ano | správně | správně | správně | Odpověď věcně odpovídá zlaté odpovědi a opírá se výhradně o dodaný úsek zákona [1]. |
+| 26 | kontrolní | Když se se šéfem domluvíme na konci práce, musí to být na papíře? | ano | správně | správně | správně | Odpověď správně uvádí, že dohoda o rozvázání pracovního poměru musí být písemná, a opírá se o citované úseky zákona. |
+| 27 | kontrolní | Jsem těhotná. Může mě zaměstnavatel vyhodit ze dne na den? | ano | správně | správně | správně | Asistent správně uvádí, že zaměstnavatel nesmí okamžitě zrušit pracovní poměr s těhotnou zaměstnankyní, a jeho tvrzení jsou podložena dodanými úseky zákona. |
 | 28 | kontrolní | Do kdy si musím vybrat letošní dovolenou? | ano | **chyba** | správně | správně | Odpověď věcně odpovídá zlaté odpovědi a všechna tvrzení jsou podložena citovanými úseky zákona. |
 | 29 | kontrolní | Kolik je stravenkový paušál na jeden den? | – | správně | správně | správně | Asistent správně odmítl odpovědět, protože dodané úseky výši stravenkového paušálu neuvádějí. |
 | 30 | kontrolní | Kolik dní placeného volna dostanu na vlastní svatbu? | ano | správně | správně | správně | Odpověď přesně vystihuje 2 dny volna s náhradou mzdy jen za 1 den a je plně podložena úsekem [1]. |
 | 31 | nové předpisy | Jak dlouho dostanu podporu v nezaměstnanosti, když mi je 35 let? | ano | správně | správně | správně | Asistent správně uvádí 5 měsíců pro uchazeče do 52 let a odkazuje na příslušné úseky zákona. |
 | 32 | nové předpisy | Kolik procent z výplaty dostanu jako podporu v nezaměstnanosti? | ano | správně | správně | správně | Odpověď přesně vystihuje procentní sazby podle věku i strop podpory a všechny údaje jsou podloženy citovanými úseky. |
-| 33 | nové předpisy | Kolik si můžu přivydělat, když jsem v evidenci na úřadu práce? | ano | správně | správně | správně | Odpověď věcně odpovídá zlaté odpovědi a všechna tvrzení jsou podložena dodaným úsekem [1]. |
+| 33 | nové předpisy | Kolik si můžu přivydělat, když jsem v evidenci na úřadu práce? | ano | správně | správně | správně | Odpověď věcně odpovídá zlaté odpovědi a všechna tvrzení jsou podložena dodaným úsekem zákona [1]. |
 | 34 | nové předpisy | Jak dlouho musím předtím pracovat, abych měl nárok na podporu v nezaměstnanosti? | ano | správně | správně | správně | Asistent správně uvádí základní podmínku 12 měsíců v posledních 2 letech i zvláštní případ 9 měsíců po vyčerpání podpůrčí doby, vše podloženo citovanými úseky. |
 | 35 | nové předpisy | Od kolikátého dne nemoci se platí nemocenská? | ano | správně | správně | správně | Odpověď správně uvádí 15. kalendářní den i náhradu mzdy za prvních 14 dnů a všechna tvrzení jsou podložena dodanými úseky. |
 | 36 | nové předpisy | Jak dlouho trvá otcovská a kolik se na ní dostává? | ano | **chyba** | **chyba** | správně | Opraveno ve v3: výběr přes LLM přidal § 38c, takže odpověď má délku (2 týdny) i výši (70 %). |
 | 37 | nové předpisy | Jak dlouho můžu být doma s nemocným dítětem na ošetřovném? | ano | správně | správně | správně | Odpověď správně uvádí 9 dnů, resp. 16 dnů pro osamělého rodiče, a obě tvrzení jsou podložena dodanými úseky. |
-| 38 | nové předpisy | Dostanu příplatek za práci v noci? | ano | **chyba** | **chyba** | správně | Opraveno ve v3: odpověď rozliší plat (20 %) a mzdu (nejméně 10 %), protože úseky nesou poznámku, pro koho platí. |
+| 38 | nové předpisy | Dostanu příplatek za práci v noci? | ano | **chyba** | **chyba** | správně | Opraveno ve v3: rozliší mzdu (nejméně 10 %), plat (20 %) i dohody. AI soudce to označil za chybu, protože zlatá odpověď mluví jen o mzdě. Ruční kontrola: správně. |
 | 39 | nové předpisy | Kolik příplatku dostanu za přesčas? | ano | **chyba** | správně | správně | Správně, rozlišil mzdu a plat a na konci se doptal, co uživatel myslel. |
 | 40 | nové předpisy | Do kdy mi musí zaměstnavatel vydat pracovní posudek? | ano | správně | **chyba** | správně | Opraveno ve v3: „není povinen vydat dříve“ už nepřevrací na „nesmí“ (pravidlo 8). |
 | 41 | nové předpisy | Jak dlouho dopředu musím požádat o rodičovskou dovolenou? | ano | správně | správně | správně | Odpověď správně uvádí lhůtu 30 dnů i výjimku vážných důvodů a opírá se o dodaný úsek [1]. |
@@ -107,7 +107,7 @@ Všech 48 otázek s odpovědí, mění se jen způsob hledání.
 | 45 | nové předpisy | Jak dlouhá je výpovědní doba z nájmu bytu? | – | správně | správně | správně | Asistent správně odmítl odpovědět, protože dodané úseky upravují výpovědní dobu jen v pracovněprávních vztazích, nikoli nájem bytu. |
 | 46 | nové předpisy | Kolik je sleva na dani na poplatníka? | – | správně | správně | správně | Asistent správně odmítl odpovědět, protože sleva na dani na poplatníka není v dodaných úsecích zákona upravena. |
 | 47 | po opravě | Co dostanu, když pracuji ve svátek? | ano | správně | správně | správně | Správně, varianty pro mzdu i plat. |
-| 48 | po opravě | Do kdy po narození dítěte musím nastoupit na otcovskou? | ano | správně | správně | správně | Odpověď správně uvádí lhůtu 6 týdnů i prodloužení o dny hospitalizace, což odpovídá zlaté odpovědi i dodaným úsekům. |
+| 48 | po opravě | Do kdy po narození dítěte musím nastoupit na otcovskou? | ano | správně | správně | správně | Odpověď správně uvádí lhůtu 6 týdnů i prodloužení o dny hospitalizace, což plně odpovídá zlaté odpovědi i citovaným úsekům. |
 | 49 | po opravě | Kolik peněz dostanu na ošetřovném? | ano | správně | **chyba** | správně | Asistent správně uvádí 60 % denního vyměřovacího základu pro ošetřovné i dlouhodobé ošetřovné, což odpovídá zlaté odpovědi i dodaným úsekům. |
 | 50 | po opravě | Dostanu něco navíc za pracovní pohotovost? | ano | správně | správně | správně | Odpověď správně uvádí odměnu nejméně 10 % průměrného výdělku a všechna tvrzení jsou podložena dodanými úseky zákona. |
 | 51 | po opravě | Do kdy mi musí zaměstnavatel vyplatit výplatu? | ano | **chyba** | **chyba** | správně | Asistent správně uvádí lhůtu splatnosti mzdy podle § 141 odst. 1 a jeho tvrzení jsou podložena dodanými úseky. |

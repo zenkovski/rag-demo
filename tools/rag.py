@@ -165,10 +165,30 @@ def parse_pick(text, n):
             out.append(x - 1)
     return out[:TOP_K]
 
+_odst1 = None
+def odst1(i):
+    """Index odstavce 1 téhož paragrafu (u „ZP § 90 odst. 3“ je to „ZP § 90 odst. 1“), jinak None."""
+    global _odst1
+    if _odst1 is None:
+        chunks = load_chunks()
+        ids = {c["id"]: n for n, c in enumerate(chunks)}
+        _odst1 = {n: ids.get(re.sub(r"odst\. \d+$", "odst. 1", c["id"])) for n, c in enumerate(chunks)
+                  if re.search(r"odst\. \d+$", c["id"]) and not c["id"].endswith("odst. 1")}
+    return _odst1.get(i)
+
+def with_odst1(picked, cands):
+    """Za vybraný odstavec 2, 3… přidá odstavec 1 téhož § (bývá v něm základní pravidlo), i když nebyl mezi kandidáty.
+    Oprava regrese v3: u „odpočinku mezi směnami“ výběr vzal jen výjimky (§ 90 odst. 2, 3) bez pravidla (odst. 1)."""
+    out = []
+    for i in picked:
+        j = odst1(i)
+        out += [x for x in (i, j) if x is not None and x not in out and (x == i or x not in picked)]
+    return out[:TOP_K]
+
 def rerank(question, rewritten, cands):
     """v3: LLM přečte 20 kandidátů z RRF a vybere ty, které k odpovědi opravdu patří."""
     text, _ = llm(RERANK, rerank_prompt(question, rewritten, cands, load_chunks()), reasoning=False)
-    return [cands[j] for j in parse_pick(text, len(cands))]
+    return with_odst1([cands[j] for j in parse_pick(text, len(cands))], cands)
 
 def search(question, k=TOP_K, mode=MODE, trace=False):
     """Vrátí (hits, přepsaná otázka[, stopa]). hits = [(index úseku, cosine podobnost s otázkou), ...]

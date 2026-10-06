@@ -117,12 +117,12 @@
    "note": "Správně. Nově se doptal, jestli jde o obecnou výpověď, nebo zvláštní případ (pravidlo 7 ve v3)."
   },
   "10": {
-   "correct": false,
-   "note": "Nová chyba ve v3: výběr přes LLM vzal odstavce o zkrácení odpočinku (§ 90 odst. 2 a 3) a vyhodil základní § 90 odst. 1 (11 hodin). Ve v2 to bylo správně. Model poctivě napsal, že základní délku v úsecích nemá."
+   "correct": true,
+   "note": "Opraveno pravidlem „odstavec 1“: výběr přes LLM vzal jen výjimky (§ 90 odst. 2 a 3), pravidlo k nim přidalo § 90 odst. 1 se základními 11 hodinami. Před tou opravou to byla jediná nová chyba v3."
   },
   "12": {
    "correct": true,
-   "note": "Správně. V citaci přepsal slovo „zaměnit“ na „zaměřit“ (překlep modelu)."
+   "note": "Správně, s příklady důvodů z § 52."
   },
   "20": {
    "correct": false,
@@ -135,7 +135,7 @@
   },
   "38": {
    "correct": true,
-   "note": "Opraveno ve v3: odpověď rozliší plat (20 %) a mzdu (nejméně 10 %), protože úseky nesou poznámku, pro koho platí."
+   "note": "Opraveno ve v3: rozliší mzdu (nejméně 10 %), plat (20 %) i dohody. AI soudce to označil za chybu, protože zlatá odpověď mluví jen o mzdě. Ruční kontrola: správně."
   },
   "39": {
    "correct": true,

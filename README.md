@@ -21,15 +21,15 @@ Postaveno s AI (Claude Code). Kód jsem nepsal ručně; četl jsem ho, kontrolov
 
 | Měřítko | v1 | v2 | v3 |
 |---|---|---|---|
-| **Odpověď správně** | 44 z 56 | 50 z 56 | **54 z 56** |
-| z toho otázky s odpovědí v předpisech | 36 z 48 | 42 z 48 | 46 z 48 |
+| **Odpověď správně** | 44 z 56 | 50 z 56 | **55 z 56** |
+| z toho otázky s odpovědí v předpisech | 36 z 48 | 42 z 48 | 47 z 48 |
 | z toho správně „nevím“ | 8 z 8 | 8 z 8 | 8 z 8 |
-| Správný paragraf mezi 5 úseky, které dostane model | 39 z 48 | 45 z 48 | 47 z 48 |
+| Správný paragraf mezi 5 úseky, které dostane model | 39 z 48 | 45 z 48 | 48 z 48 |
 | „Nevím“, i když odpověď v předpisech byla | 5 | 3 | 0 |
 
 | Sada | v1 | v2 | v3 |
 |---|---|---|---|
-| testovací (1–20), podle ní jsem v2 ladil | 16 z 20 | 19 z 20 | 18 z 20 |
+| testovací (1–20), podle ní jsem v2 ladil | 16 z 20 | 19 z 20 | 19 z 20 |
 | kontrolní (21–30), napsaná po návrhu v2 | 7 z 10 | 10 z 10 | 10 z 10 |
 | nové předpisy (31–46), podle chyb v2 na nich jsem navrhl v3 | 13 z 16 | 13 z 16 | 16 z 16 |
 | **po opravě (47–56)**, napsaná po návrhu v3, ještě před spuštěním | **8 z 10** | **8 z 10** | **10 z 10** |
@@ -38,8 +38,8 @@ Podrobně otázku po otázce: [RESULTS.md](RESULTS.md).
 
 **Jak číst tato čísla (poctivě):**
 - v3 jsem navrhl podle 4 chyb v2, takže na otázkách 1–46 je zvýhodněná. Poctivé srovnání je sada „po opravě“: 10 otázek, které jsem napsal i se zlatými odpověďmi dřív, než jsem v3 poprvé spustil.
-- **v3 jednu věc rozbila:** u „Kolik hodin odpočinku musím mít mezi dvěma směnami?“ vyhodil výběr přes LLM základní odstavec (11 hodin). Ve v2 to bylo správně.
-- AI soudce s vypnutým přemýšlením přehlédl 3 chybná „nevím“ (u v1 a v2). Ruční kontrola je proto pořád nutná.
+- **v3 nejdřív jednu věc rozbila:** u „Kolik hodin odpočinku musím mít mezi dvěma směnami?“ vyhodil výběr přes LLM základní odstavec (11 hodin), ve v2 to bylo správně. Opravil jsem to pravidlem: k vybranému odstavci 2, 3… se vždy přidá odstavec 1 téhož paragrafu (v něm bývá základní pravidlo). Tahle oprava už nebyla měřená na čistých otázkách.
+- AI soudce s vypnutým přemýšlením přehlédl 3 chybná „nevím“ (u v1 a v2) a jednu správnou odpověď v3 označil za chybu. Ruční kontrola je proto pořád nutná.
 - Přepis otázky a výběr dělá jazykový model, nové spuštění se může mírně lišit. Čísla platí pro jedno uložené spuštění (`data/llm_cache.json`).
 
 ## Kde se to pokazilo: hledání, nebo čtení
@@ -50,7 +50,7 @@ Každá chyba vznikne v jednom ze dvou kroků. Na webu je u chyby štítek a ten
 
 | Chyba ve v2 | Krok | Oprava ve v3 | Výsledek |
 |---|---|---|---|
-| Nemocenská: kolik peněz | hledání (§ 29 ZNP byl až 11.) | LLM vybere 5 z 20 kandidátů | výše 60/66/72 % už je, chybí prvních 14 dní od zaměstnavatele |
+| Nemocenská: kolik peněz | hledání (§ 29 ZNP byl až 11.) | LLM vybere 5 z 20 kandidátů | výše 60/66/72 % už je, chybí prvních 14 dní od zaměstnavatele (jediná chyba v3) |
 | Otcovská: délka i výše | hledání (§ 38c byl až 10.) | LLM vybere 5 z 20 | opraveno |
 | Noční práce 20 % místo 10 % | čtení (mzda × plat) | úsek nese poznámku „platí pro mzdu / plat“, model uvede obě varianty | opraveno |
 | Posudek „nesmí“ místo „nemusí“ | čtení | pravidlo: „není povinen“ = nemusí, ne nesmí | opraveno |
@@ -69,14 +69,14 @@ Navíc se v3 u nejasné otázky **doptá** („Myslel jste mzdu, nebo plat?“) 
 | Model e5-base běží jen lokálně (1 GB), na webu ne. | **e5-large přes API** (OpenRouter), stejný model při měření i na webu. |
 | v1 běžel na free `nemotron-3-super`. | v2 používá `deepseek-v4.1-flash` (levný). |
 
-Hledání po krocích (správný paragraf mezi 5 úseky, 48 otázek): e5-base 39 → e5-large 42 → + BM25 nad laickou otázkou **37** (zhoršení: slova „výplata“ v zákoně nejsou) → + přepis otázky 45 → + výběr přes LLM **47**.
+Hledání po krocích (správný paragraf mezi 5 úseky, 48 otázek): e5-base 39 → e5-large 42 → + BM25 nad laickou otázkou **37** (zhoršení: slova „výplata“ v zákoně nejsou) → + přepis otázky 45 → + výběr přes LLM a odstavec 1 **48**.
 
 ## Jak to funguje
 
 ```
 otázka ─► přepis do jazyka zákona (LLM) ─┬─► vektory e5-large (původní i přepsaná otázka) ─┐
                                           └─► BM25 nad přepsanou otázkou ────────────────────┴─► RRF ─► 20 kandidátů
-    ─► LLM vybere 5, které k otázce patří ─► LLM: „odpověz jen z nich, cituj, rozliš mzdu a plat“
+    ─► LLM vybere 5, které k otázce patří (+ odstavec 1 téhož §) ─► LLM: „odpověz jen z nich, cituj, rozliš mzdu a plat“
 ```
 
 | Část | Jak | Soubor |
@@ -147,7 +147,6 @@ copy .env.example .env                                  # a doplň OPENROUTER_AP
 
 ## Další kroky
 
-- Výběr přes LLM občas vyhodí základní odstavec (odpočinek mezi směnami): vybírat vždy i odstavec 1 téhož paragrafu.
 - Levnější a stabilnější reranker (cross-encoder) místo LLM.
 - Úseky s odkazy („podle § 26“) doplnit o odkazovaný odstavec.
 - Měření rozptylu (více běhů kvůli nedeterministickému přepisu).

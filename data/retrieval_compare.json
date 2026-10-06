@@ -3164,8 +3164,8 @@
   ]
  },
  "hybrid_rerank": {
-  "hit3": 47,
-  "hit5": 47,
+  "hit3": 48,
+  "hit5": 48,
   "n": 48,
   "rows": [
    {
@@ -3257,10 +3257,10 @@
     "set": "test",
     "top": [
      "ZP § 76 odst. 2",
+     "ZP § 76 odst. 1",
      "ZP § 76 odst. 3",
      "ZP § 79 odst. 1",
-     "ZP § 77 odst. 8",
-     "ZP § 76 odst. 1"
+     "ZP § 77 odst. 8"
     ],
     "rewritten": "Jaký je maximální rozsah pracovní doby v rámci dohody o pracovní činnosti za kalendářní týden?",
     "hit3": true,
@@ -3285,10 +3285,10 @@
     "set": "test",
     "top": [
      "ZP § 93 odst. 2",
+     "ZP § 93 odst. 1",
      "ZP § 93 odst. 3",
      "ZP § 93 odst. 4",
-     "ZP § 114 odst. 1",
-     "ZP § 127 odst. 3"
+     "ZP § 114 odst. 1"
     ],
     "rewritten": "Jaký je maximální rozsah nařízené práce přesčas, kterou je zaměstnavatel oprávněn zaměstnanci nařídit?",
     "hit3": true,
@@ -3299,14 +3299,14 @@
     "set": "test",
     "top": [
      "ZP § 90 odst. 3",
+     "ZP § 90 odst. 1",
      "ZP § 90 odst. 2",
      "ZP § 90a",
-     "ZP § 85 odst. 3",
-     "ZP § 100 odst. 2"
+     "ZP § 85 odst. 3"
     ],
     "rewritten": "Jaká je minimální délka doby odpočinku mezi koncem jedné směny a začátkem následující směny?",
-    "hit3": false,
-    "hit5": false
+    "hit3": true,
+    "hit5": true
    },
    {
     "id": 11,
@@ -3328,9 +3328,9 @@
     "top": [
      "ZP § 52",
      "ZP § 50 odst. 4",
+     "ZP § 50 odst. 1",
      "ZP § 57 odst. 1",
-     "ZP § 58 odst. 1",
-     "ZP § 317a odst. 5"
+     "ZP § 58 odst. 1"
     ],
     "rewritten": "Může zaměstnavatel rozvázat pracovní poměr výpovědí z důvodu spočívajícího v subjektivním hodnocení zaměstnance, aniž by byl naplněn některý ze zákonných výpovědních důvodů podle § 52 zákoníku práce?",
     "hit3": true,
@@ -3355,10 +3355,10 @@
     "set": "test",
     "top": [
      "ZP § 222 odst. 2",
+     "ZP § 222 odst. 1",
      "ZP § 222 odst. 3",
      "ZP § 222 odst. 5",
-     "ZP § 218 odst. 6",
-     "ZP § 217 odst. 3"
+     "ZP § 218 odst. 6"
     ],
     "rewritten": "Je zaměstnavatel povinen poskytnout zaměstnanci náhradu mzdy za nevyčerpanou dovolenou?",
     "hit3": true,
@@ -3383,8 +3383,8 @@
     "set": "test",
     "top": [
      "ZP § 39 odst. 2",
-     "ZP § 39 odst. 5",
      "ZP § 39 odst. 1",
+     "ZP § 39 odst. 5",
      "ZP § 65 odst. 1",
      "ZP § 39 odst. 3"
     ],
@@ -3397,10 +3397,10 @@
     "set": "test",
     "top": [
      "ZP § 111 odst. 3",
+     "ZP § 111 odst. 1",
      "ZP § 111 odst. 9",
      "ZP § 111 odst. 7",
-     "ZP § 111 odst. 8",
-     "ZP § 111 odst. 4"
+     "ZP § 111 odst. 8"
     ],
     "rewritten": "Jaká je výše minimální mzdy pro rok 2026 podle nařízení vlády, kterým se stanoví základní sazba minimální mzdy?",
     "hit3": null,
@@ -3427,8 +3427,8 @@
      "ZP § 317 odst. 1",
      "ZP § 317 odst. 3",
      "ZP § 2 odst. 2",
-     "ZP § 240 odst. 1",
-     "ZZ § 145"
+     "ZP § 2 odst. 1",
+     "ZP § 240 odst. 1"
     ],
     "rewritten": "Za jakých podmínek lze vykonávat práci v místě bydliště zaměstnance?",
     "hit3": true,
@@ -3509,10 +3509,10 @@
     "set": "holdout",
     "top": [
      "ZP § 67 odst. 5",
+     "ZP § 67 odst. 1",
      "ZP § 68 odst. 1",
      "ZP § 67 odst. 3",
-     "ZP § 67 odst. 4",
-     "ZP § 68 odst. 2"
+     "ZP § 67 odst. 4"
     ],
     "rewritten": "Kdy mi bude vyplaceno odstupné?",
     "hit3": true,
@@ -3523,9 +3523,9 @@
     "set": "holdout",
     "top": [
      "ZP § 49 odst. 2",
+     "ZP § 49 odst. 1",
      "ZP § 49 odst. 3",
      "ZP § 77 odst. 1",
-     "ZP § 49 odst. 1",
      "ZP § 21 odst. 1"
     ],
     "rewritten": "Musí být dohoda o rozvázání pracovního poměru uzavřená mezi zaměstnavatelem a zaměstnancem vyhotovena písemně?",
@@ -3537,10 +3537,10 @@
     "set": "holdout",
     "top": [
      "ZP § 55 odst. 2",
+     "ZP § 55 odst. 1",
      "ZP § 58 odst. 1",
      "ZP § 56 odst. 1",
-     "ZP § 239 odst. 1",
-     "ZP § 55 odst. 1"
+     "ZP § 239 odst. 1"
     ],
     "rewritten": "Může zaměstnavatel okamžitě zrušit pracovní poměr s těhotnou zaměstnankyní?",
     "hit3": true,
@@ -3621,10 +3621,10 @@
     "set": "new",
     "top": [
      "ZZ § 25 odst. 3",
+     "ZZ § 25 odst. 1",
      "ZZ § 50 odst. 2",
      "ZZ § 25 odst. 6",
-     "ZZ § 25 odst. 5",
-     "ZZ § 32 odst. 2"
+     "ZZ § 25 odst. 5"
     ],
     "rewritten": "Jaká je maximální přípustná výše příjmu z výdělečné činnosti po dobu vedení v evidenci uchazečů o zaměstnání?",
     "hit3": true,
@@ -3693,8 +3693,8 @@
      "ZP § 125",
      "ZP § 116",
      "ZP § 112 odst. 5",
-     "ZP § 138",
-     "ZP § 126 odst. 1"
+     "ZP § 112 odst. 1",
+     "ZP § 138"
     ],
     "rewritten": "Náleží zaměstnanci příplatek za práci v noční době podle zákoníku práce?",
     "hit3": true,
@@ -3819,8 +3819,8 @@
      "ZP § 115 odst. 1",
      "ZP § 115 odst. 2",
      "ZP § 135 odst. 2",
-     "ZP § 135 odst. 3",
-     "ZP § 115 odst. 3"
+     "ZP § 135 odst. 1",
+     "ZP § 135 odst. 3"
     ],
     "rewritten": "Jaké plnění náleží zaměstnanci za výkon práce v den svátku?",
     "hit3": true,
@@ -3831,10 +3831,10 @@
     "set": "fresh",
     "top": [
      "ZNP § 38a odst. 4",
+     "ZNP § 38a odst. 1",
      "ZP § 195a",
      "ZNP § 38b odst. 2",
-     "ZP § 196 odst. 1",
-     "ZP § 198 odst. 4"
+     "ZNP § 38b odst. 1"
     ],
     "rewritten": "Do kdy po narození dítěte je zaměstnanec povinen nastoupit na otcovskou dovolenou?",
     "hit3": true,

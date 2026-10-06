@@ -76,7 +76,7 @@ def context(docs: List[Document]) -> str:
 def pick(x: dict) -> List[Document]:
     """Vybrané úseky první, zbytek do 5 doplní pořadí z RRF (jako rag.search)."""
     cands = [d.metadata["i"] for d in x["cands"]]
-    chosen = [cands[j] for j in rag.parse_pick(x["pick"], len(cands))]
+    chosen = rag.with_odst1([cands[j] for j in rag.parse_pick(x["pick"], len(cands))], cands)
     return [DOCS[i] for i in (chosen + [i for i in cands if i not in chosen])[:rag.TOP_K]]
 
 vector, bm25 = VectorRetriever(), BM25Retriever()

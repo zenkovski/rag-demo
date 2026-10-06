@@ -74,6 +74,15 @@ function parsePick(text, n) {
   for (const m of text.match(/\d+/g) || []) { const x = +m; if (x >= 1 && x <= n && !out.includes(x - 1)) out.push(x - 1); }
   return out.slice(0, IDX.top_k);
 }
+// za vybraný odstavec 2, 3… přidá odstavec 1 téhož § (i mimo kandidáty), shodné s rag.with_odst1
+function withOdst1(picked, cands) {
+  const out = [];
+  for (const i of picked) {
+    const j = IDX.chunks[i].o1;
+    for (const x of [i, j]) if (x !== undefined && !out.includes(x) && (x === i || !picked.includes(x))) out.push(x);
+  }
+  return out.slice(0, IDX.top_k);
+}
 function finalHits(d, fused, picked) {
   const order = [...picked, ...fused.map(([i]) => i).filter(i => !picked.includes(i))];
   return order.slice(0, IDX.top_k).map(i => [i, Math.round(d[i] * 1000) / 1000]);
@@ -141,7 +150,7 @@ module.exports = async (req, res) => {
     const [qVec, rwVec] = await embed([`query: ${q}`, `query: ${rewritten}`]);
     const { d, fused, trace } = search(qVec, rwVec, rewritten);
     const cands = fused.slice(0, IDX.n_cand).map(([i]) => i);
-    const picked = parsePick(await chat(IDX.rerank, rerankPrompt(q, rewritten, cands)), cands.length).map(j => cands[j]);
+    const picked = withOdst1(parsePick(await chat(IDX.rerank, rerankPrompt(q, rewritten, cands)), cands.length).map(j => cands[j]), cands);
     trace.rerank = picked;
     const hits = finalHits(d, fused, picked);
     const ctx = hits.map(([i], n) => `[${n + 1}] ${IDX.chunks[i].id} (${IDX.chunks[i].title}${IDX.chunks[i].note || ""}): ${IDX.chunks[i].text}`).join("\n\n");
@@ -155,4 +164,4 @@ module.exports = async (req, res) => {
   }
 };
 module.exports.config = { maxDuration: 60 };
-module.exports.core = { tokens, bm25, top, rrf, search, rerankPrompt, parsePick, finalHits, N };
+module.exports.core = { tokens, bm25, top, rrf, search, rerankPrompt, parsePick, withOdst1, finalHits, N };
