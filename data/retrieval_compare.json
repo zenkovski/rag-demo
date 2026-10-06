@@ -1,8 +1,8 @@
 {
  "dense": {
-  "hit3": 29,
-  "hit5": 33,
-  "n": 40,
+  "hit3": 34,
+  "hit5": 39,
+  "n": 48,
   "rows": [
    {
     "id": 1,
@@ -647,13 +647,153 @@
     "rewritten": null,
     "hit3": null,
     "hit5": null
+   },
+   {
+    "id": 47,
+    "set": "fresh",
+    "top": [
+     "ZP § 135 odst. 1",
+     "ZP § 135 odst. 2",
+     "ZP § 135 odst. 3",
+     "ZP § 115 odst. 1",
+     "ZP § 115 odst. 3"
+    ],
+    "rewritten": null,
+    "hit3": false,
+    "hit5": true
+   },
+   {
+    "id": 48,
+    "set": "fresh",
+    "top": [
+     "ZNP § 38b odst. 2",
+     "ZNP § 38a odst. 4",
+     "ZNP § 38a odst. 1",
+     "ZNP § 38a odst. 5",
+     "ZNP § 38a odst. 2"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 49,
+    "set": "fresh",
+    "top": [
+     "ZNP § 39 odst. 2",
+     "ZNP § 41",
+     "ZNP § 39 odst. 7",
+     "ZNP § 39 odst. 6",
+     "ZNP § 40 odst. 5"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 50,
+    "set": "fresh",
+    "top": [
+     "ZP § 95 odst. 1",
+     "ZP § 140",
+     "ZP § 95 odst. 2",
+     "ZP § 95 odst. 3",
+     "ZP § 144"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 51,
+    "set": "fresh",
+    "top": [
+     "ZP § 67 odst. 5",
+     "ZP § 141 odst. 5",
+     "ZP § 331",
+     "ZZ § 78c odst. 1",
+     "ZP § 142 odst. 4"
+    ],
+    "rewritten": null,
+    "hit3": false,
+    "hit5": false
+   },
+   {
+    "id": 52,
+    "set": "fresh",
+    "top": [
+     "ZP § 67 odst. 5",
+     "ZP § 253 odst. 1",
+     "ZP § 67 odst. 3",
+     "ZP § 67 odst. 1",
+     "ZP § 254 odst. 2"
+    ],
+    "rewritten": null,
+    "hit3": false,
+    "hit5": false
+   },
+   {
+    "id": 53,
+    "set": "fresh",
+    "top": [
+     "ZP § 304 odst. 1",
+     "ZP § 34b odst. 2",
+     "ZP § 21 odst. 1",
+     "ZP § 308 odst. 1",
+     "ZNP § 91a"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 54,
+    "set": "fresh",
+    "top": [
+     "ZP § 34 odst. 1",
+     "ZZ § 91 odst. 4",
+     "ZP § 34 odst. 5",
+     "ZP § 34 odst. 2",
+     "ZP § 33 odst. 1"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 55,
+    "set": "fresh",
+    "top": [
+     "ZZ § 50 odst. 7",
+     "ZZ § 78a odst. 6",
+     "ZZ § 50 odst. 3",
+     "ZP § 178",
+     "ZZ § 78a odst. 3"
+    ],
+    "rewritten": null,
+    "hit3": null,
+    "hit5": null
+   },
+   {
+    "id": 56,
+    "set": "fresh",
+    "top": [
+     "ZZ § 49 odst. 2",
+     "ZZ § 72 odst. 1",
+     "ZP § 271b odst. 6",
+     "ZZ § 116 odst. 2",
+     "ZZ § 48"
+    ],
+    "rewritten": null,
+    "hit3": null,
+    "hit5": null
    }
   ]
  },
  "dense_large": {
-  "hit3": 35,
-  "hit5": 37,
-  "n": 40,
+  "hit3": 40,
+  "hit5": 42,
+  "n": 48,
   "rows": [
    {
     "id": 1,
@@ -1298,13 +1438,153 @@
     "rewritten": null,
     "hit3": null,
     "hit5": null
+   },
+   {
+    "id": 47,
+    "set": "fresh",
+    "top": [
+     "ZP § 135 odst. 1",
+     "ZP § 135 odst. 2",
+     "ZP § 115 odst. 1",
+     "ZP § 135 odst. 3",
+     "ZP § 91 odst. 4"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 48,
+    "set": "fresh",
+    "top": [
+     "ZNP § 38a odst. 4",
+     "ZNP § 38a odst. 1",
+     "ZNP § 38b odst. 2",
+     "ZNP § 38a odst. 2",
+     "ZNP § 38a odst. 3"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 49,
+    "set": "fresh",
+    "top": [
+     "ZNP § 40 odst. 5",
+     "ZNP § 39 odst. 7",
+     "ZNP § 40 odst. 6",
+     "ZNP § 40 odst. 3",
+     "ZNP § 41a odst. 5"
+    ],
+    "rewritten": null,
+    "hit3": false,
+    "hit5": false
+   },
+   {
+    "id": 50,
+    "set": "fresh",
+    "top": [
+     "ZP § 140",
+     "ZP § 95 odst. 1",
+     "ZP § 95 odst. 2",
+     "ZP § 144",
+     "ZP § 95 odst. 3"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 51,
+    "set": "fresh",
+    "top": [
+     "ZP § 324a odst. 3",
+     "ZP § 67 odst. 5",
+     "ZP § 271m odst. 2",
+     "ZP § 141 odst. 5",
+     "ZP § 324a odst. 4"
+    ],
+    "rewritten": null,
+    "hit3": false,
+    "hit5": false
+   },
+   {
+    "id": 52,
+    "set": "fresh",
+    "top": [
+     "ZP § 254 odst. 2",
+     "ZP § 254 odst. 1",
+     "ZP § 67 odst. 5",
+     "ZP § 142 odst. 6",
+     "ZP § 183 odst. 3"
+    ],
+    "rewritten": null,
+    "hit3": false,
+    "hit5": false
+   },
+   {
+    "id": 53,
+    "set": "fresh",
+    "top": [
+     "ZP § 304 odst. 1",
+     "ZP § 303 odst. 4",
+     "ZP § 34b odst. 2",
+     "ZZ § 81 odst. 2",
+     "ZNP § 7a odst. 3"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 54,
+    "set": "fresh",
+    "top": [
+     "ZP § 34 odst. 1",
+     "ZZ § 91 odst. 4",
+     "ZP § 76 odst. 4",
+     "ZP § 33 odst. 1",
+     "ZP § 34 odst. 2"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 55,
+    "set": "fresh",
+    "top": [
+     "ZZ § 78a odst. 3",
+     "ZZ § 116 odst. 2",
+     "ZZ § 78a odst. 6",
+     "ZZ § 114 odst. 2",
+     "ZNP § 41e odst. 4"
+    ],
+    "rewritten": null,
+    "hit3": null,
+    "hit5": null
+   },
+   {
+    "id": 56,
+    "set": "fresh",
+    "top": [
+     "ZZ § 49 odst. 2",
+     "ZNP § 41a odst. 5",
+     "ZP § 355 odst. 1",
+     "ZP § 271b odst. 6",
+     "ZZ § 49 odst. 1"
+    ],
+    "rewritten": null,
+    "hit3": null,
+    "hit5": null
    }
   ]
  },
  "hybrid": {
-  "hit3": 28,
-  "hit5": 32,
-  "n": 40,
+  "hit3": 33,
+  "hit5": 37,
+  "n": 48,
   "rows": [
    {
     "id": 1,
@@ -1949,13 +2229,153 @@
     "rewritten": null,
     "hit3": null,
     "hit5": null
+   },
+   {
+    "id": 47,
+    "set": "fresh",
+    "top": [
+     "ZP § 135 odst. 2",
+     "ZP § 135 odst. 1",
+     "ZP § 115 odst. 1",
+     "ZP § 135 odst. 3",
+     "ZP § 115 odst. 3"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 48,
+    "set": "fresh",
+    "top": [
+     "ZNP § 38a odst. 4",
+     "ZNP § 38b odst. 2",
+     "ZNP § 38a odst. 2",
+     "ZP § 195a",
+     "ZNP § 38b odst. 4"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 49,
+    "set": "fresh",
+    "top": [
+     "ZNP § 71",
+     "ZNP § 4",
+     "ZNP § 48 odst. 3",
+     "ZNP § 39 odst. 4",
+     "ZNP § 15a"
+    ],
+    "rewritten": null,
+    "hit3": false,
+    "hit5": false
+   },
+   {
+    "id": 50,
+    "set": "fresh",
+    "top": [
+     "ZP § 95 odst. 1",
+     "ZP § 140",
+     "ZP § 95 odst. 2",
+     "ZP § 95 odst. 3",
+     "ZP § 144"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 51,
+    "set": "fresh",
+    "top": [
+     "ZP § 67 odst. 5",
+     "ZP § 331",
+     "ZP § 142 odst. 5",
+     "ZP § 142 odst. 4",
+     "ZP § 141 odst. 4"
+    ],
+    "rewritten": null,
+    "hit3": false,
+    "hit5": false
+   },
+   {
+    "id": 52,
+    "set": "fresh",
+    "top": [
+     "ZP § 50 odst. 3",
+     "ZP § 254 odst. 2",
+     "ZP § 50 odst. 2",
+     "ZP § 254 odst. 1",
+     "ZP § 236 odst. 3"
+    ],
+    "rewritten": null,
+    "hit3": false,
+    "hit5": false
+   },
+   {
+    "id": 53,
+    "set": "fresh",
+    "top": [
+     "ZZ § 35 odst. 2",
+     "ZP § 319a odst. 3",
+     "ZP § 304 odst. 1",
+     "ZNP § 93 odst. 3",
+     "ZP § 110 odst. 1"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 54,
+    "set": "fresh",
+    "top": [
+     "ZP § 34 odst. 1",
+     "ZZ § 91 odst. 4",
+     "ZP § 34 odst. 2",
+     "ZP § 29",
+     "ZP § 37 odst. 5"
+    ],
+    "rewritten": null,
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 55,
+    "set": "fresh",
+    "top": [
+     "ZNP § 41e odst. 4",
+     "ZZ § 116 odst. 2",
+     "ZZ § 117 odst. 2",
+     "ZZ § 78a odst. 3",
+     "ZZ § 114 odst. 3"
+    ],
+    "rewritten": null,
+    "hit3": null,
+    "hit5": null
+   },
+   {
+    "id": 56,
+    "set": "fresh",
+    "top": [
+     "ZP § 271b odst. 6",
+     "ZZ § 43 odst. 1",
+     "ZP § 353 odst. 2",
+     "ZZ § 39 odst. 1",
+     "ZZ § 41 odst. 2"
+    ],
+    "rewritten": null,
+    "hit3": null,
+    "hit5": null
    }
   ]
  },
  "hybrid_rewrite": {
-  "hit3": 37,
-  "hit5": 39,
-  "n": 40,
+  "hit3": 43,
+  "hit5": 45,
+  "n": 48,
   "rows": [
    {
     "id": 1,
@@ -2598,6 +3018,937 @@
      "ZZ § 113 odst. 5"
     ],
     "rewritten": "Jaká je výše slevy na dani na poplatníka?",
+    "hit3": null,
+    "hit5": null
+   },
+   {
+    "id": 47,
+    "set": "fresh",
+    "top": [
+     "ZP § 135 odst. 2",
+     "ZP § 115 odst. 1",
+     "ZP § 135 odst. 1",
+     "ZP § 135 odst. 3",
+     "ZP § 91 odst. 4"
+    ],
+    "rewritten": "Jaké plnění náleží zaměstnanci za výkon práce ve svátek?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 48,
+    "set": "fresh",
+    "top": [
+     "ZP § 195a",
+     "ZP § 196 odst. 1",
+     "ZNP § 38a odst. 4",
+     "ZP § 198 odst. 4",
+     "ZP § 197 odst. 3"
+    ],
+    "rewritten": "V jaké lhůtě ode dne narození dítěte je zaměstnanec povinen nastoupit na otcovskou dovolenou?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 49,
+    "set": "fresh",
+    "top": [
+     "ZNP § 41a odst. 1",
+     "ZNP § 39 odst. 2",
+     "ZNP § 71",
+     "ZNP § 41a odst. 8",
+     "ZNP § 41c odst. 3"
+    ],
+    "rewritten": "V jaké výši náleží pojištěnci ošetřovné?",
+    "hit3": false,
+    "hit5": false
+   },
+   {
+    "id": 50,
+    "set": "fresh",
+    "top": [
+     "ZP § 140",
+     "ZP § 95 odst. 1",
+     "ZP § 95 odst. 2",
+     "ZP § 144",
+     "ZP § 346c"
+    ],
+    "rewritten": "Náleží zaměstnanci odměna za pracovní pohotovost?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 51,
+    "set": "fresh",
+    "top": [
+     "ZP § 141 odst. 5",
+     "ZP § 142 odst. 5",
+     "ZP § 142 odst. 4",
+     "ZP § 324a odst. 3",
+     "ZP § 141 odst. 4"
+    ],
+    "rewritten": "V jaké lhůtě je zaměstnavatel povinen vyplatit zaměstnanci mzdu nebo plat?",
+    "hit3": false,
+    "hit5": false
+   },
+   {
+    "id": 52,
+    "set": "fresh",
+    "top": [
+     "ZP § 313 odst. 1",
+     "ZP § 141 odst. 5",
+     "ZP § 67 odst. 5",
+     "ZP § 314 odst. 1",
+     "ZP § 41 odst. 7"
+    ],
+    "rewritten": "Je zaměstnavatel povinen při skončení pracovního poměru vydat zaměstnanci potvrzení o zaměstnání?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 53,
+    "set": "fresh",
+    "top": [
+     "ZP § 304 odst. 1",
+     "ZZ § 113 odst. 6",
+     "ZZ § 81 odst. 4",
+     "ZZ § 75 odst. 9",
+     "ZNP § 12"
+    ],
+    "rewritten": "Je zaměstnanec oprávněn vedle výkonu závislé práce vykonávat samostatnou výdělečnou činnost v oboru shodném s předmětem činnosti zaměstnavatele?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 54,
+    "set": "fresh",
+    "top": [
+     "ZZ § 91 odst. 4",
+     "ZP § 34 odst. 1",
+     "ZP § 34 odst. 2",
+     "ZP § 33 odst. 1",
+     "ZP § 34 odst. 5"
+    ],
+    "rewritten": "Jaké obligatorní náležitosti musí pracovní smlouva obsahovat?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 55,
+    "set": "fresh",
+    "top": [
+     "ZZ § 78a odst. 3",
+     "ZZ § 78a odst. 6",
+     "ZNP § 41e odst. 4",
+     "ZZ § 114 odst. 2",
+     "ZZ § 78c odst. 6"
+    ],
+    "rewritten": "V jaké výši náleží příspěvek na bydlení?",
+    "hit3": null,
+    "hit5": null
+   },
+   {
+    "id": 56,
+    "set": "fresh",
+    "top": [
+     "ZP § 271b odst. 6",
+     "ZZ § 49 odst. 2",
+     "ZNP § 41a odst. 5",
+     "ZZ § 48",
+     "ZZ § 49 odst. 1"
+    ],
+    "rewritten": "Jaká je minimální doba důchodového pojištění nezbytná pro vznik nároku na starobní důchod?",
+    "hit3": null,
+    "hit5": null
+   }
+  ]
+ },
+ "hybrid_rerank": {
+  "hit3": 47,
+  "hit5": 47,
+  "n": 48,
+  "rows": [
+   {
+    "id": 1,
+    "set": "test",
+    "top": [
+     "ZP § 212 odst. 1",
+     "ZP § 213 odst. 1",
+     "ZP § 223 odst. 3",
+     "ZP § 213 odst. 5",
+     "ZP § 213 odst. 4"
+    ],
+    "rewritten": "Jaká je minimální délka dovolené za kalendářní rok podle zákoníku práce?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 2,
+    "set": "test",
+    "top": [
+     "ZP § 35 odst. 2",
+     "ZP § 35 odst. 3",
+     "ZP § 35 odst. 4",
+     "ZP § 35 odst. 1",
+     "ZP § 66 odst. 1"
+    ],
+    "rewritten": "Jaká je maximální délka zkušební doby u zaměstnance v pracovním poměru?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 3,
+    "set": "test",
+    "top": [
+     "ZP § 66 odst. 1",
+     "ZP § 48 odst. 1",
+     "ZP § 59",
+     "ZP § 58 odst. 1",
+     "ZP § 72"
+    ],
+    "rewritten": "Může zaměstnavatel ve zkušební době zrušit pracovní poměr bez uvedení důvodu?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 4,
+    "set": "test",
+    "top": [
+     "ZP § 51 odst. 2",
+     "ZP § 51 odst. 1",
+     "ZP § 51 odst. 3",
+     "ZP § 87a odst. 3",
+     "ZZ § 78 odst. 7"
+    ],
+    "rewritten": "Jaká je délka výpovědní doby?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 5,
+    "set": "test",
+    "top": [
+     "ZP § 51 odst. 1",
+     "ZZ § 78 odst. 7",
+     "ZP § 53 odst. 2",
+     "ZP § 51a odst. 2",
+     "ZP § 87a odst. 3"
+    ],
+    "rewritten": "Od kterého dne počíná běh výpovědní doby?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 6,
+    "set": "test",
+    "top": [
+     "ZP § 75 odst. 1",
+     "ZP § 75 odst. 2",
+     "ZP § 76 odst. 1",
+     "ZP § 213 odst. 1",
+     "ZNP § 7a odst. 3"
+    ],
+    "rewritten": "Jaký je maximální rozsah výkonu práce v kalendářním roce u právního jednání o provedení práce?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 7,
+    "set": "test",
+    "top": [
+     "ZP § 76 odst. 2",
+     "ZP § 76 odst. 3",
+     "ZP § 79 odst. 1",
+     "ZP § 77 odst. 8",
+     "ZP § 76 odst. 1"
+    ],
+    "rewritten": "Jaký je maximální rozsah pracovní doby v rámci dohody o pracovní činnosti za kalendářní týden?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 8,
+    "set": "test",
+    "top": [
+     "ZP § 88 odst. 1",
+     "ZP § 88 odst. 2",
+     "ZP § 88 odst. 3",
+     "ZP § 88 odst. 4",
+     "ZP § 89 odst. 2"
+    ],
+    "rewritten": "Po kolika hodinách výkonu práce vzniká zaměstnanci nárok na přestávku na jídlo a oddech?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 9,
+    "set": "test",
+    "top": [
+     "ZP § 93 odst. 2",
+     "ZP § 93 odst. 3",
+     "ZP § 93 odst. 4",
+     "ZP § 114 odst. 1",
+     "ZP § 127 odst. 3"
+    ],
+    "rewritten": "Jaký je maximální rozsah nařízené práce přesčas, kterou je zaměstnavatel oprávněn zaměstnanci nařídit?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 10,
+    "set": "test",
+    "top": [
+     "ZP § 90 odst. 3",
+     "ZP § 90 odst. 2",
+     "ZP § 90a",
+     "ZP § 85 odst. 3",
+     "ZP § 100 odst. 2"
+    ],
+    "rewritten": "Jaká je minimální délka doby odpočinku mezi koncem jedné směny a začátkem následující směny?",
+    "hit3": false,
+    "hit5": false
+   },
+   {
+    "id": 11,
+    "set": "test",
+    "top": [
+     "ZP § 67 odst. 1",
+     "ZP § 52",
+     "ZP § 67 odst. 3",
+     "ZP § 57 odst. 1",
+     "ZP § 68 odst. 1"
+    ],
+    "rewritten": "Zaměstnanec, jehož pracovní poměr u zaměstnavatele trval po dobu alespoň jednoho roku a půl a u něhož dochází k výpovědi z organizačních důvodů spočívajících v nadbytečnosti zaměstnance, má nárok na odstupné v jaké výši?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 12,
+    "set": "test",
+    "top": [
+     "ZP § 52",
+     "ZP § 50 odst. 4",
+     "ZP § 57 odst. 1",
+     "ZP § 58 odst. 1",
+     "ZP § 317a odst. 5"
+    ],
+    "rewritten": "Může zaměstnavatel rozvázat pracovní poměr výpovědí z důvodu spočívajícího v subjektivním hodnocení zaměstnance, aniž by byl naplněn některý ze zákonných výpovědních důvodů podle § 52 zákoníku práce?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 13,
+    "set": "test",
+    "top": [
+     "ZP § 72",
+     "ZP § 285 odst. 2",
+     "ZP § 315",
+     "ZP § 71",
+     "ZP § 339a odst. 1"
+    ],
+    "rewritten": "V jaké lhůtě je možné se domáhat určení neplatnosti výpovědi z pracovního poměru u soudu?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 14,
+    "set": "test",
+    "top": [
+     "ZP § 222 odst. 2",
+     "ZP § 222 odst. 3",
+     "ZP § 222 odst. 5",
+     "ZP § 218 odst. 6",
+     "ZP § 217 odst. 3"
+    ],
+    "rewritten": "Je zaměstnavatel povinen poskytnout zaměstnanci náhradu mzdy za nevyčerpanou dovolenou?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 15,
+    "set": "test",
+    "top": [
+     "ZP § 56 odst. 1",
+     "ZP § 59",
+     "ZP § 141 odst. 1",
+     "ZP § 56 odst. 2",
+     "ZP § 58 odst. 1"
+    ],
+    "rewritten": "Zaměstnavatel nevyplatil zaměstnanci mzdu po dobu jednoho měsíce; může zaměstnanec okamžitě zrušit pracovní poměr?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 16,
+    "set": "test",
+    "top": [
+     "ZP § 39 odst. 2",
+     "ZP § 39 odst. 5",
+     "ZP § 39 odst. 1",
+     "ZP § 65 odst. 1",
+     "ZP § 39 odst. 3"
+    ],
+    "rewritten": "Kolikrát může být pracovní poměr na dobu určitou prodloužen?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 17,
+    "set": "test",
+    "top": [
+     "ZP § 111 odst. 3",
+     "ZP § 111 odst. 9",
+     "ZP § 111 odst. 7",
+     "ZP § 111 odst. 8",
+     "ZP § 111 odst. 4"
+    ],
+    "rewritten": "Jaká je výše minimální mzdy pro rok 2026 podle nařízení vlády, kterým se stanoví základní sazba minimální mzdy?",
+    "hit3": null,
+    "hit5": null
+   },
+   {
+    "id": 18,
+    "set": "test",
+    "top": [
+     "ZP § 195 odst. 1",
+     "ZP § 195 odst. 3",
+     "ZP § 195 odst. 4",
+     "ZP § 195 odst. 5",
+     "ZP § 197 odst. 3"
+    ],
+    "rewritten": "Jaká je maximální délka mateřské dovolené podle zákoníku práce?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 19,
+    "set": "test",
+    "top": [
+     "ZP § 317 odst. 1",
+     "ZP § 317 odst. 3",
+     "ZP § 2 odst. 2",
+     "ZP § 240 odst. 1",
+     "ZZ § 145"
+    ],
+    "rewritten": "Za jakých podmínek lze vykonávat práci v místě bydliště zaměstnance?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 20,
+    "set": "test",
+    "top": [
+     "ZNP § 29 odst. 1",
+     "ZP § 192 odst. 1",
+     "ZNP § 23",
+     "ZNP § 110a",
+     "ZNP § 31"
+    ],
+    "rewritten": "Jaká je výše dávky nemocenského pojištění poskytované zaměstnanci v případě dočasné pracovní neschopnosti?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 21,
+    "set": "holdout",
+    "top": [
+     "ZP § 92 odst. 1",
+     "ZP § 92 odst. 2",
+     "ZP § 92 odst. 4",
+     "ZP § 90 odst. 1",
+     "ZP § 92 odst. 5"
+    ],
+    "rewritten": "Jaká je minimální délka nepřetržitého odpočinku mezi směnami, která musí být zaměstnanci poskytnuta alespoň jednou za týden?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 22,
+    "set": "holdout",
+    "top": [
+     "ZP § 217 odst. 1",
+     "ZP § 218 odst. 4",
+     "ZP § 218 odst. 1",
+     "ZP § 217 odst. 3",
+     "ZP § 217 odst. 2"
+    ],
+    "rewritten": "Je zaměstnavatel povinen poskytnout zaměstnanci dovolenou včasným určením jejího čerpání?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 23,
+    "set": "holdout",
+    "top": [
+     "ZP § 35 odst. 3",
+     "ZP § 35 odst. 2",
+     "ZP § 35 odst. 1",
+     "ZP § 35 odst. 4",
+     "ZP § 66 odst. 1"
+    ],
+    "rewritten": "Jaká může být nejdelší délka zkušební doby, byla-li sjednána pracovní smlouva na dobu určitou v trvání čtyř měsíců?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 24,
+    "set": "holdout",
+    "top": [
+     "ZP § 223 odst. 1",
+     "ZP § 218 odst. 4",
+     "ZP § 217 odst. 3",
+     "ZP § 217 odst. 2",
+     "ZP § 218 odst. 5"
+    ],
+    "rewritten": "Zaměstnanec se nedostavil na pracoviště a neomluvil svou nepřítomnost; může zaměstnavatel nařídit čerpání dovolené za tento den?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 25,
+    "set": "holdout",
+    "top": [
+     "ZP § 67 odst. 5",
+     "ZP § 68 odst. 1",
+     "ZP § 67 odst. 3",
+     "ZP § 67 odst. 4",
+     "ZP § 68 odst. 2"
+    ],
+    "rewritten": "Kdy mi bude vyplaceno odstupné?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 26,
+    "set": "holdout",
+    "top": [
+     "ZP § 49 odst. 2",
+     "ZP § 49 odst. 3",
+     "ZP § 77 odst. 1",
+     "ZP § 49 odst. 1",
+     "ZP § 21 odst. 1"
+    ],
+    "rewritten": "Musí být dohoda o rozvázání pracovního poměru uzavřená mezi zaměstnavatelem a zaměstnancem vyhotovena písemně?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 27,
+    "set": "holdout",
+    "top": [
+     "ZP § 55 odst. 2",
+     "ZP § 58 odst. 1",
+     "ZP § 56 odst. 1",
+     "ZP § 239 odst. 1",
+     "ZP § 55 odst. 1"
+    ],
+    "rewritten": "Může zaměstnavatel okamžitě zrušit pracovní poměr s těhotnou zaměstnankyní?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 28,
+    "set": "holdout",
+    "top": [
+     "ZP § 218 odst. 1",
+     "ZP § 218 odst. 3",
+     "ZP § 218 odst. 5",
+     "ZP § 218 odst. 4",
+     "ZP § 218 odst. 2"
+    ],
+    "rewritten": "Do kdy je zaměstnanec povinen vyčerpat dovolenou za příslušný kalendářní rok?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 29,
+    "set": "holdout",
+    "top": [
+     "ZP § 190a odst. 3",
+     "ZP § 176 odst. 1",
+     "ZP § 163 odst. 1",
+     "ZP § 176 odst. 3",
+     "ZP § 163 odst. 2"
+    ],
+    "rewritten": "Jaká je výše paušální částky na stravování zaměstnance za jednu pracovní směnu?",
+    "hit3": null,
+    "hit5": null
+   },
+   {
+    "id": 30,
+    "set": "holdout",
+    "top": [
+     "NV 590 příloha bod 5",
+     "NV 590 příloha bod 7",
+     "NV 590 příloha bod 6",
+     "ZP § 115 odst. 1",
+     "NV 590 příloha bod 11"
+    ],
+    "rewritten": "Kolik dnů pracovního volna s náhradou mzdy náleží zaměstnanci při uzavření manželství?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 31,
+    "set": "new",
+    "top": [
+     "ZZ § 43 odst. 1",
+     "ZZ § 43 odst. 2",
+     "ZZ § 50 odst. 3",
+     "ZZ § 51 odst. 1",
+     "ZZ § 54 odst. 4"
+    ],
+    "rewritten": "Jaká je maximální doba poskytování podpory v nezaměstnanosti pro uchazeče o zaměstnání ve věku 35 let?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 32,
+    "set": "new",
+    "top": [
+     "ZZ § 50 odst. 3",
+     "ZZ § 50 odst. 1",
+     "ZZ § 51a",
+     "ZZ § 50 odst. 2",
+     "ZZ § 50 odst. 6"
+    ],
+    "rewritten": "Jaká je výše podpory v nezaměstnanosti v procentech z předchozího výdělku?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 33,
+    "set": "new",
+    "top": [
+     "ZZ § 25 odst. 3",
+     "ZZ § 50 odst. 2",
+     "ZZ § 25 odst. 6",
+     "ZZ § 25 odst. 5",
+     "ZZ § 32 odst. 2"
+    ],
+    "rewritten": "Jaká je maximální přípustná výše příjmu z výdělečné činnosti po dobu vedení v evidenci uchazečů o zaměstnání?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 34,
+    "set": "new",
+    "top": [
+     "ZZ § 39 odst. 1",
+     "ZZ § 41 odst. 1",
+     "ZZ § 49 odst. 1",
+     "ZZ § 48",
+     "ZZ § 43 odst. 1"
+    ],
+    "rewritten": "Jaká je minimální doba předchozího zaměstnání pro vznik nároku na podporu v nezaměstnanosti?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 35,
+    "set": "new",
+    "top": [
+     "ZNP § 23",
+     "ZNP § 26 odst. 1",
+     "ZP § 192 odst. 1",
+     "ZNP § 172 odst. 1",
+     "ZNP § 26 odst. 2"
+    ],
+    "rewritten": "Od kterého dne trvání dočasné pracovní neschopnosti vzniká nárok na nemocenské?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 36,
+    "set": "new",
+    "top": [
+     "ZNP § 38b odst. 1",
+     "ZNP § 38c",
+     "ZP § 195a",
+     "ZP § 198 odst. 4",
+     "ZNP § 38b odst. 2"
+    ],
+    "rewritten": "Jaká je délka trvání otcovské dovolené a jaká je výše otcovské dávky?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 37,
+    "set": "new",
+    "top": [
+     "ZNP § 40 odst. 1",
+     "ZNP § 40 odst. 8",
+     "ZNP § 39 odst. 1",
+     "ZP § 53 odst. 1",
+     "ZNP § 39 odst. 5"
+    ],
+    "rewritten": "Jaká je maximální doba poskytování ošetřovného při péči o nemocné dítě?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 38,
+    "set": "new",
+    "top": [
+     "ZP § 125",
+     "ZP § 116",
+     "ZP § 112 odst. 5",
+     "ZP § 138",
+     "ZP § 126 odst. 1"
+    ],
+    "rewritten": "Náleží zaměstnanci příplatek za práci v noční době podle zákoníku práce?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 39,
+    "set": "new",
+    "top": [
+     "ZP § 114 odst. 1",
+     "ZP § 127 odst. 1",
+     "ZP § 114 odst. 2",
+     "ZP § 114 odst. 3",
+     "ZP § 127 odst. 3"
+    ],
+    "rewritten": "Jaká je výše příplatku za práci přesčas?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 40,
+    "set": "new",
+    "top": [
+     "ZP § 313 odst. 1",
+     "ZP § 314 odst. 1",
+     "ZZ § 27 odst. 3",
+     "ZNP § 62 odst. 2",
+     "ZP § 315"
+    ],
+    "rewritten": "V jaké lhůtě je zaměstnavatel povinen vydat zaměstnanci potvrzení o zaměstnání?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 41,
+    "set": "new",
+    "top": [
+     "ZP § 196 odst. 2",
+     "ZP § 196 odst. 1",
+     "ZP § 217 odst. 5",
+     "ZP § 197 odst. 3",
+     "ZP § 218 odst. 5"
+    ],
+    "rewritten": "V jakém časovém předstihu je zaměstnanec povinen požádat zaměstnavatele o poskytnutí rodičovské dovolené?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 42,
+    "set": "new",
+    "top": [
+     "NV 590 příloha bod 7",
+     "ZP § 198 odst. 4",
+     "ZP § 199 odst. 3",
+     "ZP § 235 odst. 1",
+     "ZP § 195 odst. 4"
+    ],
+    "rewritten": "Kolik dnů pracovního volna poskytne zaměstnavatel zaměstnanci při úmrtí matky?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 43,
+    "set": "new",
+    "top": [
+     "ZNP § 44 odst. 1",
+     "ZNP § 44 odst. 2",
+     "ZZ § 120d odst. 2",
+     "ZZ § 120f odst. 1",
+     "ZNP § 43 odst. 2"
+    ],
+    "rewritten": "Jaká je celková výše rodičovského příspěvku?",
+    "hit3": null,
+    "hit5": null
+   },
+   {
+    "id": 44,
+    "set": "new",
+    "top": [
+     "ZP § 356 odst. 3",
+     "ZNP § 104 odst. 3",
+     "ZZ § 113 odst. 5",
+     "ZNP § 183",
+     "ZNP § 83 odst. 1"
+    ],
+    "rewritten": "Jaká je měsíční výše pojistného na sociální zabezpečení pro osobu samostatně výdělečně činnou?",
+    "hit3": null,
+    "hit5": null
+   },
+   {
+    "id": 45,
+    "set": "new",
+    "top": [
+     "ZP § 51 odst. 2",
+     "ZP § 51 odst. 1",
+     "ZP § 317a odst. 5",
+     "ZZ § 78 odst. 7",
+     "ZP § 87a odst. 3"
+    ],
+    "rewritten": "Jaká je výpovědní doba z nájmu bytu?",
+    "hit3": null,
+    "hit5": null
+   },
+   {
+    "id": 46,
+    "set": "new",
+    "top": [
+     "ZZ § 109b",
+     "ZP § 180",
+     "ZP § 324a odst. 7",
+     "ZNP § 17 odst. 1",
+     "ZZ § 113 odst. 5"
+    ],
+    "rewritten": "Jaká je výše slevy na dani na poplatníka?",
+    "hit3": null,
+    "hit5": null
+   },
+   {
+    "id": 47,
+    "set": "fresh",
+    "top": [
+     "ZP § 115 odst. 1",
+     "ZP § 115 odst. 2",
+     "ZP § 135 odst. 2",
+     "ZP § 135 odst. 3",
+     "ZP § 115 odst. 3"
+    ],
+    "rewritten": "Jaké plnění náleží zaměstnanci za výkon práce v den svátku?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 48,
+    "set": "fresh",
+    "top": [
+     "ZNP § 38a odst. 4",
+     "ZP § 195a",
+     "ZNP § 38b odst. 2",
+     "ZP § 196 odst. 1",
+     "ZP § 198 odst. 4"
+    ],
+    "rewritten": "Do kdy po narození dítěte je zaměstnanec povinen nastoupit na otcovskou dovolenou?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 49,
+    "set": "fresh",
+    "top": [
+     "ZNP § 41",
+     "ZNP § 41f",
+     "ZNP § 173 odst. 1",
+     "ZNP § 40 odst. 5",
+     "ZNP § 41a odst. 8"
+    ],
+    "rewritten": "Jaká je výše ošetřovného?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 50,
+    "set": "fresh",
+    "top": [
+     "ZP § 140",
+     "ZP § 95 odst. 1",
+     "ZP § 95 odst. 2",
+     "ZP § 144",
+     "ZP § 145 odst. 2"
+    ],
+    "rewritten": "Náleží zaměstnanci za pracovní pohotovost zvláštní odměna?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 51,
+    "set": "fresh",
+    "top": [
+     "ZP § 141 odst. 1",
+     "ZP § 141 odst. 3",
+     "ZP § 141 odst. 5",
+     "ZP § 142 odst. 5",
+     "ZP § 142 odst. 4"
+    ],
+    "rewritten": "V jaké lhůtě je zaměstnavatel povinen vyplatit zaměstnanci mzdu?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 52,
+    "set": "fresh",
+    "top": [
+     "ZP § 313 odst. 1",
+     "ZP § 141 odst. 5",
+     "ZP § 67 odst. 5",
+     "ZP § 314 odst. 1",
+     "ZP § 41 odst. 7"
+    ],
+    "rewritten": "Je zaměstnavatel povinen při skončení pracovního poměru vydat zaměstnanci potvrzení o zaměstnání?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 53,
+    "set": "fresh",
+    "top": [
+     "ZP § 304 odst. 1",
+     "ZZ § 113 odst. 6",
+     "ZP § 34b odst. 2",
+     "ZZ § 75 odst. 9",
+     "ZNP § 12"
+    ],
+    "rewritten": "Může zaměstnanec vykonávat vedle pracovněprávního vztahu samostatnou výdělečnou činnost ve stejném oboru činnosti jako zaměstnavatel?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 54,
+    "set": "fresh",
+    "top": [
+     "ZP § 34 odst. 1",
+     "ZP § 34 odst. 2",
+     "ZP § 34 odst. 5",
+     "ZZ § 91 odst. 4",
+     "ZP § 33 odst. 1"
+    ],
+    "rewritten": "Jaké náležitosti musí obsahovat pracovní smlouva?",
+    "hit3": true,
+    "hit5": true
+   },
+   {
+    "id": 55,
+    "set": "fresh",
+    "top": [
+     "ZNP § 41e odst. 4",
+     "ZZ § 78a odst. 2",
+     "ZZ § 113 odst. 5",
+     "ZZ § 78c odst. 6",
+     "ZZ § 112 odst. 2"
+    ],
+    "rewritten": "Jaká je výše příspěvku na bydlení podle zákona o státní sociální podpoře?",
+    "hit3": null,
+    "hit5": null
+   },
+   {
+    "id": 56,
+    "set": "fresh",
+    "top": [
+     "ZP § 271b odst. 6",
+     "ZZ § 49 odst. 2",
+     "ZZ § 48",
+     "ZZ § 49 odst. 1",
+     "ZZ § 39 odst. 1"
+    ],
+    "rewritten": "Kolik let důchodového pojištění je třeba získat pro nárok na starobní důchod?",
     "hit3": null,
     "hit5": null
    }

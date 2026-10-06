@@ -85,21 +85,26 @@ def main():
     chunks = meta["chunks"]
     ev, man = E.load("eval.json"), E.load("manual_review.json")
     S, rc = E.summaries(), E.load("retrieval_compare.json")
-    fin = {v: E.final(ev[v]["rows"], man.get(v, {})) for v in ("v1", "v2")}
-    v1rows = {r["id"]: r for r in ev["v1"]["rows"]}
+    fin = {v: E.final(ev[v]["rows"], man.get(v, {})) for v in E.VERSIONS}
+    old = {v: {r["id"]: r for r in ev[v]["rows"]} for v in ("v1", "v2")}
 
     questions = []
-    for r in ev["v2"]["rows"]:
-        m = man.get("v2", {}).get(str(r["id"]), {})
+    for r in ev["v3"]["rows"]:
+        m = man.get("v3", {}).get(str(r["id"]), {})
+        ok = fin["v3"][r["id"]]
+        # kde se chyba stala: správný odstavec nebyl mezi 5 úseky -> hledání, jinak čtení (model text špatně použil)
+        fail = None if ok else (m.get("fail") or ("hledání" if r["chunks"] and not r["hit5"] else "čtení"))
         top = [t["id"] for t in r["top"]]
         hits, _, trace = rag.search(r["q"], trace=True)   # stejné pořadí jako při měření (přepis je v cache)
         assert [chunks[i]["id"] for i, _ in hits] == top, r["id"]
         questions.append({"q": r["q"], "answer": r["answer"], "rewritten": r.get("rewritten"),
                           "hits": [[i, round(s, 3)] for i, s in hits], "trace": trace,
                           "test": {"set": r["set"], "id": r["id"], "level": r["level"], "gold": r["gold"],
-                                   "gold_chunks": r["chunks"], "hit5": r["hit5"], "correct": fin["v2"][r["id"]],
+                                   "gold_chunks": r["chunks"], "hit5": r["hit5"], "correct": ok, "fail": fail,
                                    "judge": r["judge"]["correct"], "note": m.get("note") or r["judge"]["reason"],
-                                   "v1_correct": fin["v1"][r["id"]], "v1_answer": v1rows[r["id"]]["answer"]}})
+                                   "v2_correct": fin["v2"][r["id"]], "v2_answer": old["v2"][r["id"]]["answer"],
+                                   "v2_note": man.get("v2", {}).get(str(r["id"]), {}).get("note"),
+                                   "v1_correct": fin["v1"][r["id"]], "v1_answer": old["v1"][r["id"]]["answer"]}})
     for q in DEMO:
         hits, rw, trace = rag.search(q, trace=True)
         text, _ = rag.answer(q, hits, chunks)
@@ -115,7 +120,7 @@ def main():
             "llm": rag.LLM_MODEL, "llm_v1": E.V1["model"], "embeddings": rag.EMB_MODEL, "top_k": rag.TOP_K,
             "eval": S, "scale": E.scale(),
             "retrieval": {m: {"hit3": rc[m]["hit3"], "hit5": rc[m]["hit5"], "n": rc[m]["n"]} for m in rag.MODES},
-            "cost_usd": ev["v2"].get("cost_usd_new_calls"),
+            "cost_usd": ev["v3"].get("cost_usd_full"),
             "chunks": [{**{k: c[k] for k in ("id", "law", "title", "topic", "text")}, "p": pos[n]} for n, c in enumerate(chunks)],
             "edges": ed, "questions": questions}
     (ROOT / "site").mkdir(exist_ok=True)
@@ -123,14 +128,16 @@ def main():
     # data pro živou funkci (site/api/ask.js): texty úseků, jejich vektory (int8) a prompty; žádná tajemství
     q8, scale = rag.quantize(rag.embed_api([rag.passage(c) for c in chunks]))
     live = {"emb_model": rag.EMB_MODEL, "llm": rag.LLM_MODEL, "top_k": rag.TOP_K, "dim": int(q8.shape[1]),
-            "system": rag.SYSTEM, "rewrite": rag.REWRITE, "stop": sorted(rag.STOP),
-            "chunks": [{"id": c["id"], "title": c["title"], "text": c["text"]} for c in chunks],
+            "system": rag.SYSTEM_V3, "rewrite": rag.REWRITE, "rerank": rag.RERANK, "n_cand": rag.N_CAND, "stop": sorted(rag.STOP),
+            "chunks": [{"id": c["id"], "title": c["title"], "text": c["text"], **({"note": rag.note(c)} if rag.note(c) else {})} for c in chunks],
             "vectors": base64.b64encode(q8.tobytes()).decode(),
             "scales": base64.b64encode(scale.astype("<f4").tobytes()).decode()}
     (ROOT / "site" / "api").mkdir(exist_ok=True)
     (ROOT / "site" / "api" / "_index.json").write_text(json.dumps(live, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     print(f"site/data.json: {len(chunks)} úseků, {len(ed)} hran, {len(questions)} otázek")
-    print("v1", S["v1"]["all"]); print("v2", S["v2"]["all"]); print("scale", data["scale"])
+    for v in E.VERSIONS:
+        print(v, S[v]["all"])
+    print("scale", data["scale"])
 
 if __name__ == "__main__":
     main()

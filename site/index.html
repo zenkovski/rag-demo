@@ -177,6 +177,8 @@ a{color:inherit}
 .fn.on .t i{color:var(--accent)}
 .fn.done{border-color:rgb(var(--accent-rgb) / .3)}
 .fn.done .t i{color:var(--accent-2)}
+.fn.bad{border-color:rgb(var(--bad-rgb) / .8)!important;box-shadow:0 0 0 1px rgb(var(--bad-rgb) / .3),0 0 26px rgb(var(--bad-rgb) / .2)!important}
+.fn.bad .t i{color:var(--bad)!important}
 .fn.ice.on{border-color:rgb(var(--ice-rgb) / .7);box-shadow:0 0 26px rgb(var(--ice-rgb) / .15)}
 .fn.ice.on .t i{color:var(--ice)}
 
@@ -201,6 +203,8 @@ a{color:inherit}
 .tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:6px}
 .tag{font-family:var(--mono);font-size:10.5px;padding:2px 7px;border:1px solid var(--line-2);border-radius:999px}
 .tag.ok{color:var(--accent);border-color:rgb(var(--accent-rgb) / .4)}
+.where{margin:6px 0 4px;font-size:12.5px;color:var(--soft)}
+.where b{color:var(--bad);font-weight:600}
 .tag.bad{color:var(--bad);border-color:rgb(var(--bad-rgb) / .45);background:var(--bad-dim)}
 details.v1{margin-top:9px}
 details.v1 summary{font-family:var(--mono);font-size:11px;color:var(--muted);cursor:pointer;list-style:none}
@@ -433,7 +437,7 @@ dialog::backdrop{background:rgba(2,4,5,.8)}
 .dsec{padding:18px 22px;border-bottom:1px solid var(--line)}
 .dsec h3{margin:0 0 12px;font-size:15px;font-weight:600}
 .two{display:grid;grid-template-columns:1fr 1fr;gap:28px}
-.rows3{display:grid;grid-template-columns:1fr auto auto;gap:7px 14px;font-size:13.5px;align-items:center}
+.rows3{display:grid;grid-template-columns:1fr auto auto auto;gap:7px 14px;font-size:13.5px;align-items:center}
 .rows3 .hd{font-family:var(--mono);font-size:10.5px;color:var(--faint)}
 .rows3 .v{font-family:var(--mono);font-size:12.5px;text-align:right}
 .rows3 .v.up{color:var(--accent)}
@@ -577,7 +581,7 @@ dialog::backdrop{background:rgba(2,4,5,.8)}
           <div class="fn" id="f-vec"><div class="t"><i class="ph ph-graph"></i>Vektory · význam</div><div class="d">e5-large, kosinová podobnost</div></div>
           <div class="fn ice" id="f-bm"><div class="t"><i class="ph ph-text-aa"></i>Full-text · slova</div><div class="d">BM25 nad přepsanou otázkou</div></div>
         </div>
-        <div class="fcol"><div class="fn" id="f-rrf"><div class="t"><i class="ph ph-git-merge"></i>Spojení RRF</div><div class="d">top 5 úseků</div></div></div>
+        <div class="fcol"><div class="fn" id="f-rrf"><div class="t"><i class="ph ph-git-merge"></i>RRF + výběr LLM</div><div class="d">20 kandidátů → vybere 5</div></div></div>
         <div class="fcol"><div class="fn" id="f-ans"><div class="t"><i class="ph ph-quotes"></i>Odpověď s citacemi</div><div class="d">jen z nalezených úseků</div></div></div>
       </div>
     </div>
@@ -625,11 +629,11 @@ dialog::backdrop{background:rgba(2,4,5,.8)}
     <div class="cats" id="cats" role="tablist" aria-label="Kategorie otázek"></div>
     <div class="qpanel" id="qpanel"><div>
       <div class="qtitle"><span id="qtitle"></span><div class="setf" id="setf">
-        <button data-s="all" class="on">vše</button><button data-s="test">testovací</button><button data-s="holdout">kontrolní</button><button data-s="new">nové předpisy</button><button data-s="demo">ukázky</button>
+        <button data-s="all" class="on">vše</button><button data-s="test">testovací</button><button data-s="holdout">kontrolní</button><button data-s="new">nové předpisy</button><button data-s="fresh">po opravě</button><button data-s="demo">ukázky</button>
       </div></div>
       <div class="qgrid" id="qs"></div>
     </div></div>
-    <div class="qnote">Tečka = výsledek ruční kontroly: <span class="ok">●</span> správně, <span class="bad">●</span> chyba. Otázky se štítkem <b>test „nevím“</b> předpisy schválně neřeší: zkouší, jestli asistent přizná, že neví, místo aby si vymýšlel. Odpovědi jsou předpočítané a nespotřebují tvůj limit 10 otázek.<br><b>Proč jsou tam chyby?</b> Asistent ví jen to, co najde v textu zákona. Chyba vznikne, když hledání nenajde správný odstavec, nebo když model text špatně přečte (třeba zamění mzdu a plat). Chyby neschovávám: ukazují, co zlepšit.</div>
+    <div class="qnote">Tečka = výsledek ruční kontroly: <span class="ok">●</span> správně, <span class="bad">●</span> chyba. Otázky se štítkem <b>test „nevím“</b> předpisy schválně neřeší: zkouší, jestli asistent přizná, že neví, místo aby si vymýšlel. Odpovědi jsou předpočítané a nespotřebují tvůj limit 10 otázek.<br><b>Proč jsou tam chyby?</b> Asistent ví jen to, co najde v textu zákona. Chyba vznikne, když hledání nenajde správný odstavec, nebo když model text špatně přečte (třeba zamění mzdu a plat). U každé chyby uvidíš, kde se stala: v <b>hledání</b>, nebo ve <b>čtení</b>. Ten krok ve schématu zčervená. Chyby neschovávám: ukazují, co zlepšit.</div>
   </div>
 </section>
 
@@ -668,7 +672,7 @@ dialog::backdrop{background:rgba(2,4,5,.8)}
 <footer>
   <div class="wrap">
     <strong>Není to právní porada.</strong>
-    <span>v2 · 4 předpisy · 2 475 odstavců · měřeno na 46 otázkách</span>
+    <span>v3 · 4 předpisy · 2 475 odstavců · měřeno na 56 otázkách</span>
     <span id="srcinfo"></span>
     <a href="https://github.com/zenkovski/rag-demo">GitHub</a>
     <span>Postaveno s AI</span>
@@ -694,8 +698,8 @@ dialog::backdrop{background:rgba(2,4,5,.8)}
     <button class="close" id="dlgClose">zavřít ✕</button>
   </div>
   <div class="dsec"><div class="two">
-    <div><h3>v1 → v2 na 46 testovacích otázkách</h3><div class="rows3" id="cmpTable2"></div></div>
-    <div><h3>Co pomohlo ve vyhledávání</h3><p class="mut" style="margin:0 0 10px;font-size:13px">Správný paragraf mezi 5 úseky, které dostane model (40 otázek s odpovědí).</p><div class="bars2" id="ablation"></div></div>
+    <div><h3>v1 → v2 → v3 na 56 testovacích otázkách</h3><div class="rows3" id="cmpTable2"></div></div>
+    <div><h3>Co pomohlo ve vyhledávání</h3><p class="mut" style="margin:0 0 10px;font-size:13px">Správný paragraf mezi 5 úseky, které dostane model (48 otázek s odpovědí).</p><div class="bars2" id="ablation"></div></div>
   </div></div>
   <div class="dsec"><h3>Otázka po otázce</h3><table class="tbl" id="rows"></table></div>
 </dialog>
@@ -810,6 +814,9 @@ function setFlow(stage, q){
   const on = {1:["q"], 2:["rw","vec"], 3:["bm"], 4:["rrf"], 5:["ans"]}[stage] || [];
   const done = {2:["q"], 3:["q","rw","vec"], 4:["q","rw","vec","bm"], 5:["q","rw","vec","bm","rrf"]}[stage] || [];
   Object.entries(nodes).forEach(([k,s]) => { $(s).classList.toggle("on", on.includes(k)); $(s).classList.toggle("done", done.includes(k)); });
+  // u chyby zčervená krok, kde se stala: hledání = výběr úseků, čtení = odpověď
+  const bad = stage===5 && q && q.test && q.test.fail ? (q.test.fail==="hledání" ? "#f-rrf" : "#f-ans") : null;
+  Object.values(nodes).forEach(sel => $(sel).classList.toggle("bad", sel===bad));
   const wires = {2:["w1","w2"], 3:["w3"], 4:["w4","w5"], 5:["w6"]}[stage] || [];
   $$("#wires .wire").forEach(w => w.classList.toggle("on", wires.includes(w.id)));
   if (q){
@@ -828,39 +835,40 @@ function setFlow(stage, q){
 
 /* ---------- bento s čísly ---------- */
 function cmpRows(){
-  const v1=D.eval.v1.all, v2=D.eval.v2.all, r=D.retrieval;
-  const row = (l,a,b,n) => `<span>${l}</span><span class="v mut">${a}/${n}</span><span class="v ${b>a?"up":""}">${b}/${n}</span>`;
-  return `<span class="hd"></span><span class="hd v">v1</span><span class="hd v">v2</span>`+
-    row("Odpověď správně", v1.correct, v2.correct, v1.n)+
-    row("… otázky s odpovědí", v1.correct_answerable, v2.correct_answerable, v1.n_answerable)+
-    row("… správně „nevím“", v1.nevim_ok, v2.nevim_ok, v1.n_unanswerable)+
+  const [a1,a2,a3] = ["v1","v2","v3"].map(v => D.eval[v].all);
+  const row = (l,k,nk) => `<span>${l}</span><span class="v mut">${a1[k]}/${a1[nk]}</span><span class="v mut">${a2[k]}/${a2[nk]}</span><span class="v ${a3[k]>a2[k]?"up":""}">${a3[k]}/${a3[nk]}</span>`;
+  return `<span class="hd"></span><span class="hd v">v1</span><span class="hd v">v2</span><span class="hd v">v3</span>`+
+    row("Odpověď správně","correct","n")+
+    row("… otázky s odpovědí","correct_answerable","n_answerable")+
+    row("… správně „nevím“","nevim_ok","n_unanswerable")+
     `<span class="sep"></span>`+
-    row("Správný § mezi 5 nalezenými", v1.hit5, v2.hit5, v1.n_answerable)+
-    row("Správný § mezi 3 prvními", v1.hit3, v2.hit3, v1.n_answerable)+
-    row("AI soudce = člověk", v1.judge_agree, v2.judge_agree, v1.n)+
-    `<span class="sep"></span><span class="mut" style="grid-column:1/-1;font-size:12.5px">v1: ${esc(short(D.llm_v1))} (zdarma), jen embeddingy e5-base. v2: ${esc(short(D.llm))}, e5-large + BM25 + přepis otázky.</span>`;
+    row("Správný § mezi 5 pro model","hit5","n_answerable")+
+    row("Správný § mezi 3 prvními","hit3","n_answerable")+
+    row("AI soudce = člověk","judge_agree","n")+
+    `<span class="sep"></span><span class="mut" style="grid-column:1/-1;font-size:12.5px">v1: ${esc(short(D.llm_v1))} (zdarma), jen embeddingy e5-base. v2: ${esc(short(D.llm))}, e5-large + BM25 + přepis otázky. v3: navíc LLM vybere 5 z 20 kandidátů a odpověď rozliší mzdu a plat.</span>`;
 }
 function renderBento(){
-  const v1=D.eval.v1.all, v2=D.eval.v2.all, nw=D.eval.v2.new, nw1=D.eval.v1.new, r=D.retrieval, sc=D.scale;
+  const [v1,v2,v3] = ["v1","v2","v3"].map(v => D.eval[v].all), fr = ["v1","v2","v3"].map(v => D.eval[v].fresh), r = D.retrieval, sc = D.scale;
   const bar = (l,a,n,cls) => `<span>${l}</span><div class="bar ${cls||""}"><i style="width:${pct(a,n)}%"></i></div><span class="n">${a}/${n}</span>`;
   $("#bento").innerHTML =
-    `<div class="tile t-main"><div><h3>Testovací otázky správně (v2)</h3><div class="big">${v2.correct}<span>/${v2.n}</span></div>`+
-      `<div class="split"><span class="chip"><b>${v2.correct_answerable}/${v2.n_answerable}</b> otázek s odpovědí v předpisech</span><span class="chip"><b>${v2.nevim_ok}/${v2.n_unanswerable}</b> správně „nevím“, když předpisy mlčí</span><span class="chip">měření stálo <b>${(D.cost_usd||0).toFixed(2).replace(".",",")} $</b></span></div></div>`+
-      `<div><div class="bars2">${bar("v1",v1.correct,v1.n)}${bar("v2",v2.correct,v2.n,"v2")}</div>`+
-      `<p class="bad-note"><b>Pozor:</b> podle prvních 20 otázek jsem v2 ladil, tam je výsledek nadsazený. Poctivější je karta „nové předpisy“.</p>`+
+    `<div class="tile t-main"><div><h3>Testovací otázky správně (v3)</h3><div class="big">${v3.correct}<span>/${v3.n}</span></div>`+
+      `<div class="split"><span class="chip"><b>${v3.correct_answerable}/${v3.n_answerable}</b> otázek s odpovědí v předpisech</span><span class="chip"><b>${v3.nevim_ok}/${v3.n_unanswerable}</b> správně „nevím“, když předpisy mlčí</span><span class="chip">měření v3 od nuly stojí <b>${(D.cost_usd||0).toFixed(2).replace(".",",")} $</b></span></div></div>`+
+      `<div><div class="bars2">${bar("v1",v1.correct,v1.n)}${bar("v2",v2.correct,v2.n)}${bar("v3",v3.correct,v3.n,"v2")}</div>`+
+      `<p class="bad-note"><b>Pozor:</b> v2 i v3 jsem navrhl podle chyb na otázkách 1–46, tam jsou čísla nadsazená. Poctivé srovnání je karta „po opravě“.</p>`+
       `<button class="linkbtn" id="openRes"><i class="ph ph-list-checks"></i>Celé měření otázku po otázce</button></div></div>`+
-    `<div class="tile t-hold"><h3>Nové předpisy</h3><div class="big">${nw.correct}<span>/${nw.n}</span></div><p style="margin-top:10px">otázky napsané až po přidání zákonů, bez ladění. v1 na nich měla ${nw1.correct}/${nw1.n}.</p></div>`+
+    `<div class="tile t-hold"><h3>Po opravě</h3><div class="big">${fr[2].correct}<span>/${fr[2].n}</span></div><p style="margin-top:10px">10 otázek napsaných až po návrhu v3, ještě před spuštěním. v2 na nich ${fr[1].correct}/${fr[1].n}, v1 ${fr[0].correct}/${fr[0].n}.</p></div>`+
     `<div class="tile t-scale"><h3>10× větší zdroj</h3><div class="vs"><span><b>${sc.small}/${sc.n}</b>260 odstavců</span><span><b>${sc.big}/${sc.n}</b>2 475 odstavců</span></div><p style="margin-top:10px">správný § mezi 5 nalezenými u stejných otázek. Víc textu hledání ${sc.big>=sc.small?"nezhoršilo":"trochu zhoršilo"}.</p></div>`+
     `<div class="tile t-wide"><h3>Co pomohlo ve vyhledávání</h3><p style="margin-bottom:14px">správný paragraf mezi 5 úseky, které dostane model (${r.dense.n} otázek)</p><div class="bars2">`+
       bar("e5-base (v1)", r.dense.hit5, r.dense.n)+bar("e5-large", r.dense_large.hit5, r.dense_large.n)+
-      bar("+ BM25 laicky", r.hybrid.hit5, r.hybrid.n)+bar("+ přepis (v2)", r.hybrid_rewrite.hit5, r.hybrid_rewrite.n, "v2")+`</div></div>`;
+      bar("+ BM25 laicky", r.hybrid.hit5, r.hybrid.n)+bar("+ přepis (v2)", r.hybrid_rewrite.hit5, r.hybrid_rewrite.n)+
+      bar("+ výběr LLM (v3)", r.hybrid_rerank.hit5, r.hybrid_rerank.n, "v2")+`</div></div>`;
   $("#openRes").addEventListener("click", () => $("#dlg").showModal());
 }
 
 /* ---------- otázky ---------- */
 const norm = s => s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"");
 function qStatus(q){ if (q.test) return q.test.correct ? "" : "bad"; return q.review && !q.review.ok ? "bad" : ""; }
-const SETS = {test:["T","test"], holdout:["K","kontrolní otázka"], new:["N","nový předpis"]};
+const SETS = {test:["T","test"], holdout:["K","kontrolní otázka"], new:["N","nový předpis"], fresh:["P","otázka po opravě"]};
 function qLabel(q,i){ return q.test ? SETS[q.test.set][0]+q.test.id : "U"+(i-D.nTests+1); }
 function openCat(id){ cat = (cat===id && !$("#filter").value.trim()) ? null : id; renderQuestions(); }
 function renderQuestions(){
@@ -903,8 +911,13 @@ function ask(i, scroll){
   if (q.test){
     const t = q.test;
     const r = t.hit5===null ? "předpisy odpověď nemají" : (q.hits.some(h => t.gold_chunks.includes(D.chunks[h[0]].id)) ? "správný § nalezen" : "správný § nenalezen");
+    const WHY = {"hledání": "Mezi 5 úseky, které model dostal, nebyl odstavec s odpovědí. Model pak nemá z čeho odpovědět.",
+                 "čtení": "Správný odstavec model měl, ale špatně ho použil nebo přečetl."};
     verdict = `<div class="verdict"><div class="tags"><span class="tag ${t.correct?"ok":"bad"}">${SETS[t.set][1]} ${t.id}: ${t.correct?"správně":"chyba"}</span>`+
-      `<span class="tag ${r==="správný § nenalezen"?"bad":"ok"}">${r}</span></div>${esc(t.note)}`+
+      `<span class="tag ${r==="správný § nenalezen"?"bad":"ok"}">${r}</span>`+
+      (t.correct && t.v2_correct===false ? `<span class="tag ok">opraveno ve v3</span>` : "")+`</div>`+
+      (t.fail ? `<div class="where">Kde se to pokazilo: <b>${t.fail}</b>. ${WHY[t.fail]}</div>` : "")+esc(t.note)+
+      (t.v2_answer && t.v2_answer!==q.answer ? `<details class="v1"><summary>porovnat s v2 (${t.v2_correct?"správně":"chyba"})</summary><div class="old">${fmt(t.v2_answer,null)}${t.v2_note?`<div style="margin-top:6px;font-size:12px">${esc(t.v2_note)}</div>`:""}</div></details>` : "")+
       (t.v1_answer ? `<details class="v1"><summary>porovnat s v1 (${t.v1_correct?"správně":"chyba"})</summary><div class="old">${fmt(t.v1_answer,null)}</div></details>` : "")+`</div>`;
   } else if (q.live){
     verdict = `<div class="verdict"><div class="tags"><span class="tag">živá odpověď · neověřeno ručně</span></div>Tahle odpověď vznikla teď. Neprošla měřením ani ruční kontrolou, tak si ji ověř kliknutím na citace.</div>`;
@@ -1080,14 +1093,14 @@ function think(q){
     scaleMarks(d3.zoomTransform(G.svg.node()).k);
     G.q.selectAll("line.syn.f").data(fused).join("line").attr("class","syn f")
       .attr("x1",qx).attr("y1",qy).attr("x2",i=>P[i].x).attr("y2",i=>P[i].y).style("stroke-opacity", i => top5.has(i) ? .8 : .25);
-    status(3, `Spojuji pořadí (RRF) · vybírám ${q.hits.length} z ${fused.length}`, "vyhrává odstavec, který je vysoko ve více seznamech"); });
+    status(3, `Spojuji pořadí (RRF) · ${fused.length} kandidátů`, t.rerank ? `AI model z nich vybere ${q.hits.length}, které k otázce opravdu patří` : "vyhrává odstavec, který je vysoko ve více seznamech"); });
   // fáze 4: odpověď a citace
   at(stepMs*4, () => { setFlow(5, q);
     G.nodes.classed("a3", false);
     highlight(q);
     const n = citedSet(q).size;
     status(4, q.answer.startsWith("Nevím") ? "Odpověď: „nevím“" : `Odpověď hotová · ${n} ${plural(n,"citace","citace","citací")}`,
-      "svítí odstavce, které model opravdu ocitoval");
+      q.test && q.test.fail ? `chyba v kroku: ${q.test.fail}` : "svítí odstavce, které model opravdu ocitoval");
     at(REDUCED ? 3500 : 2600, () => $("#gstatus").className = "gstatus"); });
 }
 
@@ -1138,11 +1151,11 @@ const STACK = [
   ["ph-cube","Hugging Face e5","multilingual-e5, embeddingy", .14,.5],
   ["ph-magnifying-glass","BM25","hledání podle slov, bez knihovny", .14,.82],
   ["ph-git-merge","RRF","spojí pořadí více hledání", .5,.12],
-  ["ph-brain","DeepSeek v4.1 Flash","přepis otázky a odpověď", .86,.18],
+  ["ph-brain","DeepSeek v4.1 Flash","přepis, výběr úseků, odpověď", .86,.18],
   ["ph-plugs-connected","OpenRouter","jeden API klíč na modely", .86,.5],
-  ["ph-check-square-offset","Měření","46 otázek, AI soudce + člověk", .86,.82],
+  ["ph-check-square-offset","Měření","56 otázek, AI soudce + člověk", .86,.82],
   ["ph-graph","D3 + Vercel","mapa předpisů, web + serverová funkce", .64,.88],
-  ["ph-link-simple","LangChain","stejný postup v LCEL, shoda 46/46", .36,.88],
+  ["ph-link-simple","LangChain","stejný postup v LCEL, shoda 56/56", .36,.88],
 ];
 function renderHub(){
   $("#hub").insertAdjacentHTML("beforeend", STACK.map(([ic,t,s,x,y]) =>
@@ -1167,16 +1180,16 @@ function renderHubWires(){
 /* ---------- dialog ---------- */
 function renderDialog(){
   $("#cmpTable2").innerHTML = cmpRows();
-  const r = D.retrieval, names = {dense:"e5-base (v1)", dense_large:"e5-large", hybrid:"+ BM25 nad laickou otázkou", hybrid_rewrite:"+ přepis otázky (v2)"};
+  const r = D.retrieval, names = {dense:"e5-base (v1)", dense_large:"e5-large", hybrid:"+ BM25 nad laickou otázkou", hybrid_rewrite:"+ přepis otázky (v2)", hybrid_rerank:"+ výběr LLM z 20 (v3)"};
   $("#ablation").innerHTML = Object.keys(names).map(m =>
-    `<span>${names[m]}</span><div class="bar ${m==="hybrid_rewrite"?"v2":""}"><i style="width:${pct(r[m].hit5,r[m].n)}%"></i></div><span class="n">${r[m].hit5}/${r[m].n}</span>`).join("") +
+    `<span>${names[m]}</span><div class="bar ${m==="hybrid_rerank"?"v2":""}"><i style="width:${pct(r[m].hit5,r[m].n)}%"></i></div><span class="n">${r[m].hit5}/${r[m].n}</span>`).join("") +
     `<span class="mut" style="grid-column:1/-1;font-size:12.5px">Laická slova jako „výplata“ v zákoně nejsou, proto hledání podle slov běží až nad otázkou přepsanou do jazyka zákona.</span>`;
   const tests = D.questions.map((q,i)=>({q,i})).filter(o => o.q.test);
   const st = ok => ok===null||ok===undefined ? `<span class="mut">–</span>` : `<span class="${ok?"ok":"bad"}">${ok?"správně":"chyba"}</span>`;
-  $("#rows").innerHTML = `<tr><th>#</th><th>otázka a poznámka k v2</th><th class="hide-m">sada</th><th>v1</th><th>v2</th></tr>` +
+  $("#rows").innerHTML = `<tr><th>#</th><th>otázka a poznámka k v3</th><th class="hide-m">sada</th><th>v1</th><th>v2</th><th>v3</th></tr>` +
     tests.map(({q,i}) => { const t=q.test;
       return `<tr class="click" data-i="${i}"><td class="st mut">${t.id}</td><td><div>${esc(q.q)}</div><div class="note">${esc(t.note)}</div></td>`+
-        `<td class="st mut hide-m">${SETS[t.set][1]}</td><td class="st">${st(t.v1_correct)}</td><td class="st">${st(t.correct)}</td></tr>`; }).join("");
+        `<td class="st mut hide-m">${SETS[t.set][1]}</td><td class="st">${st(t.v1_correct)}</td><td class="st">${st(t.v2_correct)}</td><td class="st">${st(t.correct)}</td></tr>`; }).join("");
   $$("#rows tr.click").forEach(r => r.addEventListener("click", () => {
     $("#dlg").close(); const q = D.questions[+r.dataset.i];
     cat = q.cat;

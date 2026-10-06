@@ -16,8 +16,9 @@ EMB_MODEL_V1 = "intfloat/multilingual-e5-base"   # v1: lokálně přes sentence-
 EMB_MODEL = "intfloat/multilingual-e5-large"     # v2: přes OpenRouter API, aby stejný model běžel i na webu
 LLM_MODEL = "deepseek/deepseek-v4.1-flash"       # přes OpenRouter, ~0,05 $ / 1M vstupních tokenů
 TOP_K = 5                                        # kolik úseků dostane model jako podklad
-MODES = ("dense", "dense_large", "hybrid", "hybrid_rewrite")   # v1 = dense, v2 = hybrid_rewrite
-MODE = "hybrid_rewrite"
+MODES = ("dense", "dense_large", "hybrid", "hybrid_rewrite", "hybrid_rerank")   # v1 = dense, v2 = hybrid_rewrite, v3 = hybrid_rerank
+MODE = "hybrid_rerank"
+N_CAND = 20                                      # v3: kolik kandidátů z RRF dostane LLM k výběru
 
 # ---------- data a embeddingy ----------
 def load_chunks():
@@ -127,8 +128,8 @@ REWRITE = """Přepiš otázku laika do formulace, jakou by použil český práv
 Použij odborné právní pojmy místo hovorových slov. Nic nepřidávej a na otázku neodpovídej.
 Vrať jen jednu přepsanou větu."""
 
-def rewrite(question):
-    text, _ = llm(REWRITE, question)
+def rewrite(question, reasoning=True):
+    text, _ = llm(REWRITE, question, reasoning=reasoning)
     return text.strip().strip('"').splitlines()[0] if text.strip() else question
 
 # ---------- vyhledávání ----------
@@ -146,32 +147,63 @@ def top(scores, n=50):
     order = np.argsort(-scores, kind="stable")
     return [int(i) for i in order[:n] if scores[i] > 0]
 
+RERANK = """Dostaneš otázku a očíslované úseky českých právních předpisů.
+Vyber úseky, které jsou potřeba k odpovědi na otázku, nejvýše 5, nejdůležitější první.
+Když odpověď potřebuje víc odstavců (třeba délku i výši dávky, nebo pravidlo i jeho výjimku), vyber všechny.
+Vrať jen čísla úseků oddělená čárkou, např.: 3, 1, 7. Když žádný úsek k otázce nepatří, vrať 0."""
+
+def rerank_prompt(question, rewritten, cands, chunks):
+    return f"Otázka: {question}\nV jazyce zákona: {rewritten}\n\nÚseky:\n" + "\n".join(
+        f"[{n}] {chunks[i]['id']} ({chunks[i]['title']}): {chunks[i]['text'][:400]}" for n, i in enumerate(cands, 1))
+
+def parse_pick(text, n):
+    """Čísla z odpovědi modelu -> pořadí kandidátů (bez opakování, jen platná, nejvýše 5)."""
+    out = []
+    for m in re.findall(r"\d+", text):
+        x = int(m)
+        if 1 <= x <= n and x - 1 not in out:
+            out.append(x - 1)
+    return out[:TOP_K]
+
+def rerank(question, rewritten, cands):
+    """v3: LLM přečte 20 kandidátů z RRF a vybere ty, které k odpovědi opravdu patří."""
+    text, _ = llm(RERANK, rerank_prompt(question, rewritten, cands, load_chunks()), reasoning=False)
+    return [cands[j] for j in parse_pick(text, len(cands))]
+
 def search(question, k=TOP_K, mode=MODE, trace=False):
     """Vrátí (hits, přepsaná otázka[, stopa]). hits = [(index úseku, cosine podobnost s otázkou), ...]
     stopa = mezikroky pro vizualizaci "přemýšlení" na webu (co našel který způsob hledání)."""
     model = "base" if mode == "dense" else "large"
     d = dense_scores(question, model)
-    rewritten, rankings, steps = None, [], {}
+    rewritten, rankings, steps, fused = None, [], {}, []
     if mode in ("dense", "dense_large"):
         order = [(i, 0.0) for i in top(d, len(d))]
     else:
         rankings.append(top(d)); steps["dense_q"] = rankings[-1]           # význam: původní otázka
-        if mode == "hybrid_rewrite":
-            rewritten = rewrite(question)
+        if mode in ("hybrid_rewrite", "hybrid_rerank"):
+            rewritten = rewrite(question, reasoning=mode != "hybrid_rerank")   # v3 bez skrytého přemýšlení
             rankings.append(top(dense_scores(rewritten))); steps["dense_rw"] = rankings[-1]   # význam: přepsaná
         # slova: jen z otázky v jazyce zákona; laická slova ("výplata") v zákoně nejsou a přidávají šum
         rankings.append(top(bm25_scores(rewritten or question))); steps["bm25"] = rankings[-1]
-        order = rrf(rankings)
+        order = fused = rrf(rankings)
+    if mode == "hybrid_rerank":
+        cands = [i for i, _ in fused[:N_CAND]]
+        picked = rerank(question, rewritten, cands)
+        steps["rerank"] = picked
+        # vybrané první, zbytek do 5 doplní pořadí z RRF (model dostane vždy 5 úseků)
+        order = [(i, 0.0) for i in picked] + [(i, s) for i, s in fused if i not in picked]
     hits = [(int(i), float(d[i])) for i, _ in order[:k]]
     if not trace:
         return hits, rewritten
     steps = {name: lst[:20] for name, lst in steps.items()}
-    steps["fused"] = [[int(i), round(sc, 5)] for i, sc in order[:12]]
+    steps["fused"] = [[int(i), round(sc, 5)] for i, sc in fused[:N_CAND]]
     return hits, rewritten, steps
 
 # ---------- LLM ----------
-def llm(system, user, model=None):
-    """Jedno volání jazykového modelu přes OpenRouter. Klíč se čte z .env (nikdy není v kódu)."""
+COST = 0.0                                       # součet ceny volání (i z cache), pro výpočet ceny měření
+def llm(system, user, model=None, reasoning=True):
+    """Jedno volání jazykového modelu přes OpenRouter. Klíč se čte z .env (nikdy není v kódu).
+    reasoning=False vypne skryté přemýšlení modelu (v3): stejná úloha za ~1/10 času i ceny."""
     import time, hashlib, requests
     from dotenv import load_dotenv
     load_dotenv(ROOT / ".env")
@@ -179,11 +211,15 @@ def llm(system, user, model=None):
     # cache: stejný model + stejný vstup = uložená odpověď (opakovaný běh nic nestojí a čísla se nemění)
     cache_file = ROOT / "data" / "llm_cache.json"
     cache = json.loads(cache_file.read_text(encoding="utf-8")) if cache_file.exists() else {}
-    key = hashlib.sha256(f"{model}|{system}|{user}|False".encode()).hexdigest()
+    global COST
+    key = hashlib.sha256((f"{model}|{system}|{user}|False" + ("" if reasoning else "|noreason")).encode()).hexdigest()
     if key in cache:
+        COST += cache[key]["usage"].get("cost") or 0
         return cache[key]["text"], cache[key]["usage"]
     body = {"model": model, "temperature": 0,
             "messages": [{"role": "system", "content": system}, {"role": "user", "content": user}]}
+    if not reasoning:
+        body["reasoning"] = {"enabled": False}
     for attempt in range(8):                       # přetížení / limit -> počkej a zkus znovu
         r = requests.post("https://openrouter.ai/api/v1/chat/completions", timeout=300, json=body,
                           headers={"Authorization": f"Bearer {os.environ['OPENROUTER_API_KEY']}"})
@@ -194,6 +230,7 @@ def llm(system, user, model=None):
         r.raise_for_status()
         text, usage = (data["choices"][0]["message"]["content"] or "").strip(), data.get("usage", {})
         cache[key] = {"text": text, "usage": usage}
+        COST += usage.get("cost") or 0
         cache_file.write_text(json.dumps(cache, ensure_ascii=False, indent=1), encoding="utf-8")
         return text, usage
     raise RuntimeError(f"OpenRouter: {r.status_code} {r.text[:200]}")
@@ -213,10 +250,31 @@ Za každou větu, která vychází z úseku, dej citaci ve tvaru [1], [2] podle 
 Pokud úseky na otázku neodpovídají, napiš přesně: "Nevím, v dostupných úsecích zákona to není." a nic dalšího.
 Piš česky, stručně (2–5 vět), srozumitelně pro laika."""
 
-def answer(question, hits, chunks, system=SYSTEM, model=None):
-    ctx = "\n\n".join(f"[{n}] {chunks[i]['id']} ({chunks[i]['title']}): {chunks[i]['text']}"
-                      for n, (i, _) in enumerate(hits, 1))
-    text, usage = llm(system, f"Úseky zákona:\n\n{ctx}\n\nOtázka: {question}", model)
+SYSTEM_V3 = SYSTEM.replace("Piš česky, stručně", """6. Když se pravidla v úsecích liší podle skupiny (mzda u soukromého zaměstnavatele × plat ve státní sféře, mladistvý × dospělý, DPP × DPČ) a otázka neříká, která skupina platí, uveď varianty zvlášť: „Pokud …, pak … [n]. Pokud …, pak … [m].“
+7. Když jde otázku pochopit víc způsoby, odpověz krátce na každý význam zvlášť a na konci se jednou větou zeptej, který měl uživatel na mysli.
+8. Zachovej přesný význam povinností: „je povinen“ = musí, „není povinen“ = nemusí (to neznamená „nesmí“), „nesmí“ = zákaz. Čísla, procenta a lhůty opiš přesně.
+Piš česky, stručně""")
+
+def note(c):
+    """v3: komu úsek platí. Zákoník práce má zvlášť mzdu (firmy, § 113–121) a plat (stát, § 122–137)."""
+    m = re.match(r"\d+", c.get("para") or "")
+    if c.get("law") != "ZP" or not m:
+        return ""
+    n = int(m.group())
+    if 113 <= n <= 121:
+        return " · platí pro mzdu (soukromý zaměstnavatel)"
+    if 122 <= n <= 137:
+        return " · platí pro plat (stát, kraje, obce, státní organizace)"
+    return ""
+
+def context(hits, chunks, notes=False):
+    return "\n\n".join(f"[{n}] {chunks[i]['id']} ({chunks[i]['title']}{note(chunks[i]) if notes else ''}): {chunks[i]['text']}"
+                       for n, (i, _) in enumerate(hits, 1))
+
+def answer(question, hits, chunks, system=None, model=None):
+    system = system or SYSTEM_V3
+    ctx = context(hits, chunks, notes=system == SYSTEM_V3)
+    text, usage = llm(system, f"Úseky zákona:\n\n{ctx}\n\nOtázka: {question}", model, reasoning=system != SYSTEM_V3)
     # model občas píše citace jako 【3】 nebo [1][2] slepené; sjednotím formát (obsah se nemění)
     return re.sub(r"【(\d+)】", r"[\1]", text), usage
 

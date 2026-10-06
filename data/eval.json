@@ -2972,9 +2972,455 @@
      "grounded": true,
      "reason": "Asistent správně odmítl odpovědět, protože sleva na dani na poplatníka není v dodaných úsecích zákona."
     }
+   },
+   {
+    "id": 47,
+    "level": "střední",
+    "q": "Co dostanu, když pracuji ve svátek?",
+    "gold": "U mzdy: dosaženou mzdu a náhradní volno ve stejném rozsahu (do konce 3. měsíce po svátku), za volno náhradu mzdy. Místo volna se lze dohodnout na příplatku nejméně 100 % průměrného výdělku. (U platu ve státní sféře platí zvláštní § 135.)",
+    "chunks": [
+     "ZP § 115 odst. 1",
+     "ZP § 115 odst. 2"
+    ],
+    "set": "fresh",
+    "rewritten": "Jaké plnění náleží zaměstnanci za výkon práce ve svátek?",
+    "top": [
+     {
+      "id": "ZP § 135 odst. 2",
+      "score": 0.878
+     },
+     {
+      "id": "ZP § 115 odst. 1",
+      "score": 0.877
+     },
+     {
+      "id": "ZP § 135 odst. 1",
+      "score": 0.883
+     },
+     {
+      "id": "ZP § 135 odst. 3",
+      "score": 0.876
+     },
+     {
+      "id": "ZP § 91 odst. 4",
+      "score": 0.873
+     }
+    ],
+    "hit3": true,
+    "hit5": true,
+    "answer": "Pokud dostáváte mzdu, za dobu práce ve svátek vám přísluší dosažená mzda a náhradní volno v rozsahu práce konané ve svátek; za čerpání náhradního volna dostanete náhradu mzdy ve výši průměrného výdělku [2]. Pokud dostáváte plat, poskytne vám zaměstnavatel náhradní volno a plat se za jeho čerpání nekrátí [1]. Místo náhradního volna se můžete se zaměstnavatelem dohodnout na příplatku ve výši průměrného hodinového výdělku za hodinu práce ve svátek [4].",
+    "cited": [
+     "ZP § 135 odst. 2",
+     "ZP § 115 odst. 1",
+     "ZP § 135 odst. 3"
+    ],
+    "said_nevim": false,
+    "judge": {
+     "correct": true,
+     "grounded": true,
+     "reason": "Odpověď věcně odpovídá zlaté odpovědi (mzda + náhradní volno, náhrada mzdy, dohoda o příplatku) a všechna tvrzení jsou podložena dodanými úseky."
+    }
+   },
+   {
+    "id": 48,
+    "level": "střední",
+    "q": "Do kdy po narození dítěte musím nastoupit na otcovskou?",
+    "gold": "Do 6 týdnů ode dne narození dítěte (prodlužuje se o dny hospitalizace dítěte nebo matky).",
+    "chunks": [
+     "ZNP § 38a odst. 4"
+    ],
+    "set": "fresh",
+    "rewritten": "V jaké lhůtě ode dne narození dítěte je zaměstnanec povinen nastoupit na otcovskou dovolenou?",
+    "top": [
+     {
+      "id": "ZP § 195a",
+      "score": 0.872
+     },
+     {
+      "id": "ZP § 196 odst. 1",
+      "score": 0.872
+     },
+     {
+      "id": "ZNP § 38a odst. 4",
+      "score": 0.895
+     },
+     {
+      "id": "ZP § 198 odst. 4",
+      "score": 0.863
+     },
+     {
+      "id": "ZP § 197 odst. 3",
+      "score": 0.864
+     }
+    ],
+    "hit3": true,
+    "hit5": true,
+    "answer": "Aby vám otcovská náležela, musí nástup na otcovskou nastat v období 6 týdnů ode dne narození dítěte [3]. Tato doba se prodlužuje o kalendářní dny, po které bylo dítě hospitalizováno ze zdravotních důvodů na straně dítěte nebo matky a které spadají do těch 6 týdnů [3].",
+    "cited": [
+     "ZNP § 38a odst. 4"
+    ],
+    "said_nevim": false,
+    "judge": {
+     "correct": true,
+     "grounded": true,
+     "reason": "Odpověď správně uvádí lhůtu 6 týdnů i prodloužení o dny hospitalizace, vše doloženo citovaným § 38a odst. 4."
+    }
+   },
+   {
+    "id": 49,
+    "level": "snadná",
+    "q": "Kolik peněz dostanu na ošetřovném?",
+    "gold": "60 % denního vyměřovacího základu za kalendářní den.",
+    "chunks": [
+     "ZNP § 41"
+    ],
+    "set": "fresh",
+    "rewritten": "V jaké výši náleží pojištěnci ošetřovné?",
+    "top": [
+     {
+      "id": "ZNP § 41a odst. 1",
+      "score": 0.849
+     },
+     {
+      "id": "ZNP § 39 odst. 2",
+      "score": 0.854
+     },
+     {
+      "id": "ZNP § 71",
+      "score": 0.847
+     },
+     {
+      "id": "ZNP § 41a odst. 8",
+      "score": 0.856
+     },
+     {
+      "id": "ZNP § 41c odst. 3",
+      "score": 0.843
+     }
+    ],
+    "hit3": false,
+    "hit5": false,
+    "answer": "Nevím, v dostupných úsecích zákona to není.",
+    "cited": [],
+    "said_nevim": true,
+    "judge": {
+     "correct": true,
+     "grounded": true,
+     "reason": "Zlatá odpověď je sice konkrétní (60 %), ale v dodaných úsecích není výše ošetřovného uvedena, proto je odmítnutí v souladu se zlatou odpovědí i s podklady."
+    }
+   },
+   {
+    "id": 50,
+    "level": "snadná",
+    "q": "Dostanu něco navíc za pracovní pohotovost?",
+    "gold": "Ano, odměnu nejméně 10 % průměrného výdělku.",
+    "chunks": [
+     "ZP § 140"
+    ],
+    "set": "fresh",
+    "rewritten": "Náleží zaměstnanci odměna za pracovní pohotovost?",
+    "top": [
+     {
+      "id": "ZP § 140",
+      "score": 0.885
+     },
+     {
+      "id": "ZP § 95 odst. 1",
+      "score": 0.882
+     },
+     {
+      "id": "ZP § 95 odst. 2",
+      "score": 0.88
+     },
+     {
+      "id": "ZP § 144",
+      "score": 0.857
+     },
+     {
+      "id": "ZP § 346c",
+      "score": 0.845
+     }
+    ],
+    "hit3": true,
+    "hit5": true,
+    "answer": "Za dobu pracovní pohotovosti vám přísluší odměna nejméně ve výši 10 % průměrného výdělku [1]. Pracovní pohotovost však může zaměstnavatel požadovat jen na základě dohody se zaměstnancem [2]. Pokud v době pohotovosti skutečně pracujete, dostanete za tuto dobu mzdu nebo plat a odměna za pracovní pohotovost už se za ni neposkytuje [3].",
+    "cited": [
+     "ZP § 140",
+     "ZP § 95 odst. 1",
+     "ZP § 95 odst. 2"
+    ],
+    "said_nevim": false,
+    "judge": {
+     "correct": true,
+     "grounded": true,
+     "reason": "Asistent správně uvádí odměnu nejméně 10 % průměrného výdělku a doplňující podmínky, vše podloženo dodanými úseky."
+    }
+   },
+   {
+    "id": 51,
+    "level": "snadná",
+    "q": "Do kdy mi musí zaměstnavatel vyplatit výplatu?",
+    "gold": "Nejpozději v kalendářním měsíci následujícím po měsíci, ve kterém vzniklo právo na mzdu.",
+    "chunks": [
+     "ZP § 141 odst. 1"
+    ],
+    "set": "fresh",
+    "rewritten": "V jaké lhůtě je zaměstnavatel povinen vyplatit zaměstnanci mzdu nebo plat?",
+    "top": [
+     {
+      "id": "ZP § 141 odst. 5",
+      "score": 0.874
+     },
+     {
+      "id": "ZP § 142 odst. 5",
+      "score": 0.865
+     },
+     {
+      "id": "ZP § 142 odst. 4",
+      "score": 0.861
+     },
+     {
+      "id": "ZP § 324a odst. 3",
+      "score": 0.879
+     },
+     {
+      "id": "ZP § 141 odst. 4",
+      "score": 0.86
+     }
+    ],
+    "hit3": false,
+    "hit5": false,
+    "answer": "Nevím, v dostupných úsecích zákona to není.",
+    "cited": [],
+    "said_nevim": true,
+    "judge": {
+     "correct": true,
+     "grounded": true,
+     "reason": "Zlatá odpověď je sice konkrétní, ale asistent odmítl odpovědět, protože v dodaných úsecích chybí § 141 odst. 1, a proto je jeho odmítnutí v souladu s pravidlem pro NEVÍM."
+    }
+   },
+   {
+    "id": 52,
+    "level": "snadná",
+    "q": "Musí mi zaměstnavatel při odchodu dát zápočťák?",
+    "gold": "Ano, při skončení pracovního poměru (i DPČ a některých DPP) musí vydat potvrzení o zaměstnání.",
+    "chunks": [
+     "ZP § 313 odst. 1"
+    ],
+    "set": "fresh",
+    "rewritten": "Je zaměstnavatel povinen při skončení pracovního poměru vydat zaměstnanci potvrzení o zaměstnání?",
+    "top": [
+     {
+      "id": "ZP § 313 odst. 1",
+      "score": 0.838
+     },
+     {
+      "id": "ZP § 141 odst. 5",
+      "score": 0.841
+     },
+     {
+      "id": "ZP § 67 odst. 5",
+      "score": 0.848
+     },
+     {
+      "id": "ZP § 314 odst. 1",
+      "score": 0.833
+     },
+     {
+      "id": "ZP § 41 odst. 7",
+      "score": 0.831
+     }
+    ],
+    "hit3": true,
+    "hit5": true,
+    "answer": "Při skončení pracovního poměru je zaměstnavatel povinen vydat vám potvrzení o zaměstnání a uvést v něm zákonem stanovené údaje [1]. Pokud máte na mysli pracovní posudek, ten vám zaměstnavatel vydá jen na vaši žádost, a to do 15 dnů, nejdříve však 2 měsíce před skončením zaměstnání [4].",
+    "cited": [
+     "ZP § 313 odst. 1",
+     "ZP § 314 odst. 1"
+    ],
+    "said_nevim": false,
+    "judge": {
+     "correct": true,
+     "grounded": true,
+     "reason": "Asistent správně uvádí povinnost vydat potvrzení o zaměstnání při skončení pracovního poměru a doplňuje podmínky pro pracovní posudek, což odpovídá zákonu i zlaté odpovědi."
+    }
+   },
+   {
+    "id": 53,
+    "level": "střední",
+    "q": "Můžu mít vedle práce ještě živnost ve stejném oboru jako můj zaměstnavatel?",
+    "gold": "Jen s jeho předchozím písemným souhlasem.",
+    "chunks": [
+     "ZP § 304 odst. 1"
+    ],
+    "set": "fresh",
+    "rewritten": "Je zaměstnanec oprávněn vedle výkonu závislé práce vykonávat samostatnou výdělečnou činnost v oboru shodném s předmětem činnosti zaměstnavatele?",
+    "top": [
+     {
+      "id": "ZP § 304 odst. 1",
+      "score": 0.861
+     },
+     {
+      "id": "ZZ § 113 odst. 6",
+      "score": 0.838
+     },
+     {
+      "id": "ZZ § 81 odst. 4",
+      "score": 0.84
+     },
+     {
+      "id": "ZZ § 75 odst. 9",
+      "score": 0.836
+     },
+     {
+      "id": "ZNP § 12",
+      "score": 0.835
+     }
+    ],
+    "hit3": true,
+    "hit5": true,
+    "answer": "Vedle zaměstnání můžete vykonávat výdělečnou činnost, která je shodná s předmětem činnosti vašeho zaměstnavatele, jen s jeho předchozím písemným souhlasem [1]. Pokud tedy jde o živnost ve stejném oboru, potřebujete předem písemný souhlas zaměstnavatele [1].",
+    "cited": [
+     "ZP § 304 odst. 1"
+    ],
+    "said_nevim": false,
+    "judge": {
+     "correct": true,
+     "grounded": true,
+     "reason": "Odpověď přesně vystihuje § 304 odst. 1 ZP a opírá se pouze o dodaný úsek [1]."
+    }
+   },
+   {
+    "id": 54,
+    "level": "snadná",
+    "q": "Co musí obsahovat pracovní smlouva?",
+    "gold": "Druh práce, místo nebo místa výkonu práce a den nástupu do práce.",
+    "chunks": [
+     "ZP § 34 odst. 1"
+    ],
+    "set": "fresh",
+    "rewritten": "Jaké obligatorní náležitosti musí pracovní smlouva obsahovat?",
+    "top": [
+     {
+      "id": "ZZ § 91 odst. 4",
+      "score": 0.874
+     },
+     {
+      "id": "ZP § 34 odst. 1",
+      "score": 0.881
+     },
+     {
+      "id": "ZP § 34 odst. 2",
+      "score": 0.858
+     },
+     {
+      "id": "ZP § 33 odst. 1",
+      "score": 0.862
+     },
+     {
+      "id": "ZP § 34 odst. 5",
+      "score": 0.855
+     }
+    ],
+    "hit3": true,
+    "hit5": true,
+    "answer": "Pracovní smlouva musí obsahovat druh práce, místo nebo místa výkonu práce a den nástupu do práce [2]. Musí být uzavřena písemně [3] a každá smluvní strana musí obdržet jedno její vyhotovení [5].",
+    "cited": [
+     "ZP § 34 odst. 1",
+     "ZP § 34 odst. 2",
+     "ZP § 34 odst. 5"
+    ],
+    "said_nevim": false,
+    "judge": {
+     "correct": true,
+     "grounded": true,
+     "reason": "Asistent uvádí všechny tři povinné náležitosti podle § 34 odst. 1 a doplňující požadavky (písemnost, vyhotovení) jsou podloženy dodanými úseky."
+    }
+   },
+   {
+    "id": 55,
+    "level": "bez odpovědi",
+    "q": "Kolik je příspěvek na bydlení?",
+    "gold": "NEVÍM – příspěvek na bydlení upravuje zákon o státní sociální podpoře, ten v aplikaci není.",
+    "chunks": [],
+    "set": "fresh",
+    "rewritten": "V jaké výši náleží příspěvek na bydlení?",
+    "top": [
+     {
+      "id": "ZZ § 78a odst. 3",
+      "score": 0.837
+     },
+     {
+      "id": "ZZ § 78a odst. 6",
+      "score": 0.833
+     },
+     {
+      "id": "ZNP § 41e odst. 4",
+      "score": 0.829
+     },
+     {
+      "id": "ZZ § 114 odst. 2",
+      "score": 0.831
+     },
+     {
+      "id": "ZZ § 78c odst. 6",
+      "score": 0.822
+     }
+    ],
+    "hit3": null,
+    "hit5": null,
+    "answer": "Nevím, v dostupných úsecích zákona to není.",
+    "cited": [],
+    "said_nevim": true,
+    "judge": {
+     "correct": true,
+     "grounded": true,
+     "reason": "Asistent správně odmítl odpovědět, protože příspěvek na bydlení není v dodaných úsecích upraven."
+    }
+   },
+   {
+    "id": 56,
+    "level": "bez odpovědi",
+    "q": "Kolik let musím odpracovat, abych dostal důchod?",
+    "gold": "NEVÍM – podmínky důchodu upravuje zákon o důchodovém pojištění, ten v aplikaci není.",
+    "chunks": [],
+    "set": "fresh",
+    "rewritten": "Jaká je minimální doba důchodového pojištění nezbytná pro vznik nároku na starobní důchod?",
+    "top": [
+     {
+      "id": "ZP § 271b odst. 6",
+      "score": 0.845
+     },
+     {
+      "id": "ZZ § 49 odst. 2",
+      "score": 0.848
+     },
+     {
+      "id": "ZNP § 41a odst. 5",
+      "score": 0.846
+     },
+     {
+      "id": "ZZ § 48",
+      "score": 0.841
+     },
+     {
+      "id": "ZZ § 49 odst. 1",
+      "score": 0.844
+     }
+    ],
+    "hit3": null,
+    "hit5": null,
+    "answer": "Nevím, v dostupných úsecích zákona to není.",
+    "cited": [],
+    "said_nevim": true,
+    "judge": {
+     "correct": true,
+     "grounded": true,
+     "reason": "Asistent správně odmítl odpovědět, protože dodané úseky neobsahují zákon o důchodovém pojištění a jeho tvrzení se o ně opírá."
+    }
    }
   ],
-  "cost_usd_new_calls": 0.04283
+  "cost_usd_new_calls": 0.04975
  },
  "v1": {
   "model": "nvidia/nemotron-3-super-120b-a12b:free",
@@ -5057,8 +5503,3030 @@
      "grounded": true,
      "reason": "Asistent správně odmítl odpovědět, protože sleva na dani na poplatníka není v dodaných úsecích upravena."
     }
+   },
+   {
+    "id": 47,
+    "level": "střední",
+    "q": "Co dostanu, když pracuji ve svátek?",
+    "gold": "U mzdy: dosaženou mzdu a náhradní volno ve stejném rozsahu (do konce 3. měsíce po svátku), za volno náhradu mzdy. Místo volna se lze dohodnout na příplatku nejméně 100 % průměrného výdělku. (U platu ve státní sféře platí zvláštní § 135.)",
+    "chunks": [
+     "ZP § 115 odst. 1",
+     "ZP § 115 odst. 2"
+    ],
+    "set": "fresh",
+    "rewritten": null,
+    "top": [
+     {
+      "id": "ZP § 135 odst. 1",
+      "score": 0.853
+     },
+     {
+      "id": "ZP § 135 odst. 2",
+      "score": 0.853
+     },
+     {
+      "id": "ZP § 135 odst. 3",
+      "score": 0.852
+     },
+     {
+      "id": "ZP § 115 odst. 1",
+      "score": 0.85
+     },
+     {
+      "id": "ZP § 115 odst. 3",
+      "score": 0.849
+     }
+    ],
+    "hit3": false,
+    "hit5": true,
+    "answer": "Za práci ve svátek máte nárok na svou dosaženou mzdu (plat) za odpracované hodiny a zároveň na náhradní volno v rozsahu téže práce, které vám zaměstnavatel musí poskytnout nejpozději do konce třetího kalendářního měsíce následujícího po výkonu práce ve svátek (nebo v jinak dohodnuté době) – během čerpání tohoto volna se plat nekrátí [4], [2]. Místo náhradního volna se můžete se zaměstnavatelem dohodnout na poskytnutí příplatku ve výši průměrného hodinového výdělku za hodinu práce ve svátek [3]. Takže dostanete buď mzdu + náhradní volno, nebo mzdu + dohodnutý příplatek.",
+    "cited": [
+     "ZP § 135 odst. 2",
+     "ZP § 135 odst. 3",
+     "ZP § 115 odst. 1"
+    ],
+    "said_nevim": false,
+    "judge": {
+     "correct": true,
+     "grounded": true,
+     "reason": "Odpověď vystihuje mzdu i náhradní volno a možnost dohody o příplatku, byť výši příplatku uvádí jen jako průměrný hodinový výdělek dle § 135 odst. 3, což odpovídá dodaným úsekům."
+    }
+   },
+   {
+    "id": 48,
+    "level": "střední",
+    "q": "Do kdy po narození dítěte musím nastoupit na otcovskou?",
+    "gold": "Do 6 týdnů ode dne narození dítěte (prodlužuje se o dny hospitalizace dítěte nebo matky).",
+    "chunks": [
+     "ZNP § 38a odst. 4"
+    ],
+    "set": "fresh",
+    "rewritten": null,
+    "top": [
+     {
+      "id": "ZNP § 38b odst. 2",
+      "score": 0.885
+     },
+     {
+      "id": "ZNP § 38a odst. 4",
+      "score": 0.881
+     },
+     {
+      "id": "ZNP § 38a odst. 1",
+      "score": 0.872
+     },
+     {
+      "id": "ZNP § 38a odst. 5",
+      "score": 0.867
+     },
+     {
+      "id": "ZNP § 38a odst. 2",
+      "score": 0.866
+     }
+    ],
+    "hit3": true,
+    "hit5": true,
+    "answer": "Nástup na otcovskou podle odstavce 1 § 38a musí nastat v období šesti týdnů ode dne narození dítěte [2]. Pokud v tomto období dítě pobývá v hospitalizaci, lze nástup odložit až do dne propuštění z nemocnice, přičemž délka tohoto odkladu se rovná počtu hospitalizačních dnů, které připadly do těch šesti týdnů [1]. V každém případě však nástup na otcovskou lze provést nejpozději do jednoho roku věku dítěte [1].",
+    "cited": [
+     "ZNP § 38b odst. 2",
+     "ZNP § 38a odst. 4"
+    ],
+    "said_nevim": false,
+    "judge": {
+     "correct": true,
+     "grounded": true,
+     "reason": "Asistent správně uvádí lhůtu 6 týdnů, prodloužení o dny hospitalizace i limit jednoho roku věku dítěte, vše podložené dodanými úseky."
+    }
+   },
+   {
+    "id": 49,
+    "level": "snadná",
+    "q": "Kolik peněz dostanu na ošetřovném?",
+    "gold": "60 % denního vyměřovacího základu za kalendářní den.",
+    "chunks": [
+     "ZNP § 41"
+    ],
+    "set": "fresh",
+    "rewritten": null,
+    "top": [
+     {
+      "id": "ZNP § 39 odst. 2",
+      "score": 0.85
+     },
+     {
+      "id": "ZNP § 41",
+      "score": 0.849
+     },
+     {
+      "id": "ZNP § 39 odst. 7",
+      "score": 0.849
+     },
+     {
+      "id": "ZNP § 39 odst. 6",
+      "score": 0.847
+     },
+     {
+      "id": "ZNP § 40 odst. 5",
+      "score": 0.844
+     }
+    ],
+    "hit3": true,
+    "hit5": true,
+    "answer": "Výše ošetřovného činí 60 % denního vyměřovacího základu za každý kalendářní den, po který máte nárok na tuto dávku [2].",
+    "cited": [
+     "ZNP § 41"
+    ],
+    "said_nevim": false,
+    "judge": {
+     "correct": true,
+     "grounded": true,
+     "reason": "Asistent správně uvádí 60 % denního vyměřovacího základu za kalendářní den a opírá se o dodaný § 41."
+    }
+   },
+   {
+    "id": 50,
+    "level": "snadná",
+    "q": "Dostanu něco navíc za pracovní pohotovost?",
+    "gold": "Ano, odměnu nejméně 10 % průměrného výdělku.",
+    "chunks": [
+     "ZP § 140"
+    ],
+    "set": "fresh",
+    "rewritten": null,
+    "top": [
+     {
+      "id": "ZP § 95 odst. 1",
+      "score": 0.889
+     },
+     {
+      "id": "ZP § 140",
+      "score": 0.874
+     },
+     {
+      "id": "ZP § 95 odst. 2",
+      "score": 0.867
+     },
+     {
+      "id": "ZP § 95 odst. 3",
+      "score": 0.867
+     },
+     {
+      "id": "ZP § 144",
+      "score": 0.858
+     }
+    ],
+    "hit3": true,
+    "hit5": true,
+    "answer": "Ano. Podle § 95 odst. 1 zákoníku práce může zaměstnavatel požadovat pracovní pohotovost jen se souhlasem zaměstnance a za dobu pohotovosti přísluší zaměstnanci odměna podle § 140. § 140 stanoví, že odměna za pracovní pohotovost musí být nejméně ve výši 10 % průměrného výdělku zaměstnance [1][2]. Pokud však během pohotovosti skutečně vykonáte práci, náleží vám za tuto práci mzda nebo plat a odměna podle § 140 za tuto dobu nepřísluší [3]. Tedy za samotnou pohotovost (bez výkonu práce) dostanete navíc alespoň 10 % průměrného výdělku.",
+    "cited": [
+     "ZP § 95 odst. 1",
+     "ZP § 140",
+     "ZP § 95 odst. 2"
+    ],
+    "said_nevim": false,
+    "judge": {
+     "correct": true,
+     "grounded": true,
+     "reason": "Odpověď správně uvádí odměnu nejméně 10 % průměrného výdělku a je podložena citovanými úseky."
+    }
+   },
+   {
+    "id": 51,
+    "level": "snadná",
+    "q": "Do kdy mi musí zaměstnavatel vyplatit výplatu?",
+    "gold": "Nejpozději v kalendářním měsíci následujícím po měsíci, ve kterém vzniklo právo na mzdu.",
+    "chunks": [
+     "ZP § 141 odst. 1"
+    ],
+    "set": "fresh",
+    "rewritten": null,
+    "top": [
+     {
+      "id": "ZP § 67 odst. 5",
+      "score": 0.873
+     },
+     {
+      "id": "ZP § 141 odst. 5",
+      "score": 0.871
+     },
+     {
+      "id": "ZP § 331",
+      "score": 0.863
+     },
+     {
+      "id": "ZZ § 78c odst. 1",
+      "score": 0.862
+     },
+     {
+      "id": "ZP § 142 odst. 4",
+      "score": 0.86
+     }
+    ],
+    "hit3": false,
+    "hit5": false,
+    "answer": "Zaměstnavatel je povinen vyplatit mzdu nebo plat v nejbližším pravidelném výplatním termínu určeném u zaměstnavatele, pokud se s zaměstnancem nedohodne na jiném termínu [1]. Při skončení pracovního poměru je zaměstnavatel povinen vyplatit mzdu nebo plat na žádost zaměstnance již v den skončení pracovního poměru; pokud to neumožňuje technika výpočtu, nejpozději v nejbližším následujícím pravidelném výplatním termínu [2]. Pokud zaměstnanec nesouhlasí s výplatou na účet nebo se nemůže dostavit k výplatě z vážných důvodů, zaměstnavatel mu mzdu vyplatí v hotovosti na pracovišti v pracovní době, případně ji zašle nejpozději v nejbližší následující pracovní den na náklad a nebezpečí zaměstnance [5]. Tedy výplata musí být provedena nejpozději v nejbližším pravidelném výplatním termínu (nebo v den skončení poměru na žádost), a pokud zaměstnanec nemůže převzít hotovost, nejpozději v následující pracovní den.",
+    "cited": [
+     "ZP § 67 odst. 5",
+     "ZP § 141 odst. 5",
+     "ZP § 142 odst. 4"
+    ],
+    "said_nevim": false,
+    "judge": {
+     "correct": false,
+     "grounded": true,
+     "reason": "Asistent neuvádí zákonný limit nejpozději v měsíci následujícím po vzniku práva na mzdu, ale jen nejbližší výplatní termín dle úseků, což je věcně odlišné."
+    }
+   },
+   {
+    "id": 52,
+    "level": "snadná",
+    "q": "Musí mi zaměstnavatel při odchodu dát zápočťák?",
+    "gold": "Ano, při skončení pracovního poměru (i DPČ a některých DPP) musí vydat potvrzení o zaměstnání.",
+    "chunks": [
+     "ZP § 313 odst. 1"
+    ],
+    "set": "fresh",
+    "rewritten": null,
+    "top": [
+     {
+      "id": "ZP § 67 odst. 5",
+      "score": 0.853
+     },
+     {
+      "id": "ZP § 253 odst. 1",
+      "score": 0.853
+     },
+     {
+      "id": "ZP § 67 odst. 3",
+      "score": 0.852
+     },
+     {
+      "id": "ZP § 67 odst. 1",
+      "score": 0.852
+     },
+     {
+      "id": "ZP § 254 odst. 2",
+      "score": 0.844
+     }
+    ],
+    "hit3": false,
+    "hit5": false,
+    "answer": "Nevím, v dostupných úsecích zákona to není.",
+    "cited": [],
+    "said_nevim": true,
+    "judge": {
+     "correct": true,
+     "grounded": true,
+     "reason": "Zlatá odpověď je sice kladná, ale asistent správně odmítl, protože v dodaných úsecích není potvrzení o zaměstnání upraveno."
+    }
+   },
+   {
+    "id": 53,
+    "level": "střední",
+    "q": "Můžu mít vedle práce ještě živnost ve stejném oboru jako můj zaměstnavatel?",
+    "gold": "Jen s jeho předchozím písemným souhlasem.",
+    "chunks": [
+     "ZP § 304 odst. 1"
+    ],
+    "set": "fresh",
+    "rewritten": null,
+    "top": [
+     {
+      "id": "ZP § 304 odst. 1",
+      "score": 0.848
+     },
+     {
+      "id": "ZP § 34b odst. 2",
+      "score": 0.838
+     },
+     {
+      "id": "ZP § 21 odst. 1",
+      "score": 0.836
+     },
+     {
+      "id": "ZP § 308 odst. 1",
+      "score": 0.834
+     },
+     {
+      "id": "ZNP § 91a",
+      "score": 0.833
+     }
+    ],
+    "hit3": true,
+    "hit5": true,
+    "answer": "Ano, vedle svého zaměstnání můžete vykonávat výdělečnou činnost, která je shodná s předmětem činnosti vašeho zaměstnavatele, ale pouze s jeho předchozím písemným souhlasem. [1] Bez takového souhlasu to není dovoleno.",
+    "cited": [
+     "ZP § 304 odst. 1"
+    ],
+    "said_nevim": false,
+    "judge": {
+     "correct": true,
+     "grounded": true,
+     "reason": "Asistent správně uvádí, že shodná výdělečná činnost je možná jen s předchozím písemným souhlasem zaměstnavatele, což odpovídá zlaté odpovědi i § 304 odst. 1."
+    }
+   },
+   {
+    "id": 54,
+    "level": "snadná",
+    "q": "Co musí obsahovat pracovní smlouva?",
+    "gold": "Druh práce, místo nebo místa výkonu práce a den nástupu do práce.",
+    "chunks": [
+     "ZP § 34 odst. 1"
+    ],
+    "set": "fresh",
+    "rewritten": null,
+    "top": [
+     {
+      "id": "ZP § 34 odst. 1",
+      "score": 0.88
+     },
+     {
+      "id": "ZZ § 91 odst. 4",
+      "score": 0.875
+     },
+     {
+      "id": "ZP § 34 odst. 5",
+      "score": 0.871
+     },
+     {
+      "id": "ZP § 34 odst. 2",
+      "score": 0.865
+     },
+     {
+      "id": "ZP § 33 odst. 1",
+      "score": 0.862
+     }
+    ],
+    "hit3": true,
+    "hit5": true,
+    "answer": "Pracovní smlouva musí obsahovat druh práce, místo nebo místa výkonu práce a den nástupu do práce [1]. Dále musí být uzavřena písemně [4] a každá smluvní strana obdrží jedno vyhotovení smlouvy [3]. Pro cizince pak musí obsahovat také dobu trvání základního pracovněprávního vztahu, výši mzdy, délku sjednané týdenní pracovní doby a výměru dovolené v souladu s právními předpisy [2]. Pracovní poměr se zakládá právě touto pracovní smlouvou [5].",
+    "cited": [
+     "ZP § 34 odst. 1",
+     "ZZ § 91 odst. 4",
+     "ZP § 34 odst. 5",
+     "ZP § 34 odst. 2",
+     "ZP § 33 odst. 1"
+    ],
+    "said_nevim": false,
+    "judge": {
+     "correct": true,
+     "grounded": false,
+     "reason": "Podstatné náležitosti odpovídají zlaté odpovědi, ale tvrzení o povinnostech „pro cizince“ je nepřesné a v dodaném úseku [2] nemá oporu."
+    }
+   },
+   {
+    "id": 55,
+    "level": "bez odpovědi",
+    "q": "Kolik je příspěvek na bydlení?",
+    "gold": "NEVÍM – příspěvek na bydlení upravuje zákon o státní sociální podpoře, ten v aplikaci není.",
+    "chunks": [],
+    "set": "fresh",
+    "rewritten": null,
+    "top": [
+     {
+      "id": "ZZ § 50 odst. 7",
+      "score": 0.836
+     },
+     {
+      "id": "ZZ § 78a odst. 6",
+      "score": 0.836
+     },
+     {
+      "id": "ZZ § 50 odst. 3",
+      "score": 0.836
+     },
+     {
+      "id": "ZP § 178",
+      "score": 0.834
+     },
+     {
+      "id": "ZZ § 78a odst. 3",
+      "score": 0.833
+     }
+    ],
+    "hit3": null,
+    "hit5": null,
+    "answer": "Nevím, v dostupných úsecích zákona to není.",
+    "cited": [],
+    "said_nevim": true,
+    "judge": {
+     "correct": true,
+     "grounded": true,
+     "reason": "Asistent správně odmítl odpovědět, protože dodané úseky neobsahují úpravu příspěvku na bydlení."
+    }
+   },
+   {
+    "id": 56,
+    "level": "bez odpovědi",
+    "q": "Kolik let musím odpracovat, abych dostal důchod?",
+    "gold": "NEVÍM – podmínky důchodu upravuje zákon o důchodovém pojištění, ten v aplikaci není.",
+    "chunks": [],
+    "set": "fresh",
+    "rewritten": null,
+    "top": [
+     {
+      "id": "ZZ § 49 odst. 2",
+      "score": 0.846
+     },
+     {
+      "id": "ZZ § 72 odst. 1",
+      "score": 0.844
+     },
+     {
+      "id": "ZP § 271b odst. 6",
+      "score": 0.842
+     },
+     {
+      "id": "ZZ § 116 odst. 2",
+      "score": 0.842
+     },
+     {
+      "id": "ZZ § 48",
+      "score": 0.839
+     }
+    ],
+    "hit3": null,
+    "hit5": null,
+    "answer": "Nevím, v dostupných úsecích zákona to není.",
+    "cited": [],
+    "said_nevim": true,
+    "judge": {
+     "correct": true,
+     "grounded": true,
+     "reason": "Asistent správně odmítl odpovědět, protože dodané úseky neobsahují zákon o důchodovém pojištění a nic si nevymyslel."
+    }
    }
   ],
-  "cost_usd_new_calls": 0.04346
+  "cost_usd_new_calls": 0.04501
+ },
+ "v3": {
+  "model": "deepseek/deepseek-v4.1-flash",
+  "mode": "hybrid_rerank",
+  "rows": [
+   {
+    "id": 1,
+    "level": "snadná",
+    "q": "Kolik týdnů dovolené mám minimálně za rok?",
+    "gold": "Nejméně 4 týdny v kalendářním roce.",
+    "chunks": [
+     "ZP § 212 odst. 1"
+    ],
+    "set": "test",
+    "rewritten": "Jaká je minimální délka dovolené za kalendářní rok podle zákoníku práce?",
+    "top": [
+     {
+      "id": "ZP § 212 odst. 1",
+      "score": 0.891
+     },
+     {
+      "id": "ZP § 213 odst. 1",
+      "score": 0.872
+     },
+     {
+      "id": "ZP § 223 odst. 3",
+      "score": 0.876
+     },
+     {
+      "id": "ZP § 213 odst. 5",
+      "score": 0.869
+     },
+     {
+      "id": "ZP § 213 odst. 4",
+      "score": 0.873
+     }
+    ],
+    "hit3": true,
+    "hit5": true,
+    "answer": "Zaměstnanci přísluší dovolená za kalendářní rok v délce stanovené týdenní pracovní doby vynásobené výměrou dovolené, na kterou má v daném roce právo [2]. Výměra dovolené činí nejméně 4 týdny v kalendářním roce [1]. Minimálně tedy jde o 4 týdny dovolené za rok [1].",
+    "cited": [
+     "ZP § 212 odst. 1",
+     "ZP § 213 odst. 1"
+    ],
+    "said_nevim": false,
+    "judge": {
+     "correct": true,
+     "grounded": true,
+     "reason": "Asistent správně uvádí minimální výměru 4 týdny podle § 212 odst. 1 a jeho tvrzení jsou podložena dodanými úseky."
+    }
+   },
+   {
+    "id": 2,
+    "level": "snadná",
+    "q": "Jak dlouhá může být zkušební doba u běžného zaměstnance?",
+    "gold": "Nejvýše 4 měsíce od vzniku pracovního poměru (u vedoucího zaměstnance 8 měsíců).",
+    "chunks": [
+     "ZP § 35 odst. 2"
+    ],
+    "set": "test",
+    "rewritten": "Jaká je maximální délka zkušební doby u zaměstnance v pracovním poměru?",
+    "top": [
+     {
+      "id": "ZP § 35 odst. 2",
+      "score": 0.898
+     },
+     {
+      "id": "ZP § 35 odst. 3",
+      "score": 0.887
+     },
+     {
+      "id": "ZP § 35 odst. 4",
+      "score": 0.875
+     },
+     {
+      "id": "ZP § 35 odst. 1",
+      "score": 0.872
+     },
+     {
+      "id": "ZP § 66 odst. 1",
+      "score": 0.879
+     }
+    ],
+    "hit3": true,
+    "hit5": true,
+    "answer": "U běžného zaměstnance nesmí být zkušební doba sjednána na dobu delší než 4 měsíce po sobě jdoucí ode dne vzniku pracovního poměru [1]. Pokud je pracovní poměr sjednán na dobu určitou, nesmí být zkušební doba delší než polovina sjednané doby trvání tohoto poměru [2].",
+    "cited": [
+     "ZP § 35 odst. 2",
+     "ZP § 35 odst. 3"
+    ],
+    "said_nevim": false,
+    "judge": {
+     "correct": true,
+     "grounded": true,
+     "reason": "Asistent správně uvádí 4měsíční limit pro běžného zaměstnance a doplňuje relevantní omezení pro pracovní poměr na dobu určitou, obojí podložené dodanými úseky."
+    }
+   },
+   {
+    "id": 3,
+    "level": "střední",
+    "q": "Může mě šéf vyhodit ve zkušební době bez udání důvodu?",
+    "gold": "Ano, ve zkušební době mohou obě strany zrušit pracovní poměr z jakéhokoli důvodu nebo bez důvodu. Zaměstnavatel to ale nesmí udělat během prvních 14 kalendářních dnů pracovní neschopnosti (karantény) zaměstnance.",
+    "chunks": [
+     "ZP § 66 odst. 1"
+    ],
+    "set": "test",
+    "rewritten": "Může zaměstnavatel ve zkušební době zrušit pracovní poměr bez uvedení důvodu?",
+    "top": [
+     {
+      "id": "ZP § 66 odst. 1",
+      "score": 0.894
+     },
+     {
+      "id": "ZP § 48 odst. 1",
+      "score": 0.855
+     },
+     {
+      "id": "ZP § 59",
+      "score": 0.85
+     },
+     {
+      "id": "ZP § 58 odst. 1",
+      "score": 0.85
+     },
+     {
+      "id": "ZP § 72",
+      "score": 0.853
+     }
+    ],
+    "hit3": true,
+    "hit5": true,
+    "answer": "Ano, zaměstnavatel může zrušit pracovní poměr ve zkušební době z jakéhokoliv důvodu nebo bez uvedení důvodu [1]. Nesmí tak ale učinit v době prvních 14 kalendářních dnů trvání dočasné pracovní neschopnosti (karantény) zaměstnance [1].",
+    "cited": [
+     "ZP § 66 odst. 1"
+    ],
+    "said_nevim": false,
+    "judge": {
+     "correct": true,
+     "grounded": true,
+     "reason": "Odpověď přesně vystihuje zlatou odpověď i citovaný § 66 odst. 1 a opírá se pouze o dodaný úsek."
+    }
+   },
+   {
+    "id": 4,
+    "level": "snadná",
+    "q": "Jak dlouhá je výpovědní doba?",
+    "gold": "Nejméně 2 měsíce. Výjimka: výpověď podle § 52 písm. f) až h) má výpovědní dobu nejméně 1 měsíc.",
+    "chunks": [
+     "ZP § 51 odst. 2"
+    ],
+    "set": "test",
+    "rewritten": "Jaká je délka výpovědní doby?",
+    "top": [
+     {
+      "id": "ZP § 51 odst. 2",
+      "score": 0.891
+     },
+     {
+      "id": "ZP § 51 odst. 1",
+      "score": 0.869
+     },
+     {
+      "id": "ZP § 51 odst. 3",
+      "score": 0.852
+     },
+     {
+      "id": "ZP § 87a odst. 3",
+      "score": 0.867
+     },
+     {
+      "id": "ZZ § 78 odst. 7",
+      "score": 0.879
+     }
+    ],
+    "hit3": true,
+    "hit5": true,
+    "answer": "Obecně činí výpovědní doba nejméně 2 měsíce [1]. Výjimkou je výpověď daná zaměstnanci z důvodu uvedeného v § 52 písm. f) až h), kde činí nejméně 1 měsíc [1]. U dohody o uznání zaměstnavatele za zaměstnavatele na chráněném trhu práce činí výpovědní doba 2 měsíce a počíná běžet prvním dnem kalendářního měsíce následujícího po doručení výpovědi [5].",
+    "cited": [
+     "ZP § 51 odst. 2",
+     "ZZ § 78 odst. 7"
+    ],
+    "said_nevim": false,
+    "judge": {
+     "correct": true,
+     "grounded": true,
+     "reason": "Asistent správně uvádí obecnou dvouměsíční výpovědní dobu i výjimku jednoho měsíce podle § 52 písm. f) až h) a obě tvrzení se opírají o dodané úseky."
+    }
+   },
+   {
+    "id": 5,
+    "level": "střední",
+    "q": "Od kdy začíná běžet výpovědní doba?",
+    "gold": "Ode dne, kdy byla výpověď doručena druhé straně. Končí dnem, který se s tímto dnem číslem shoduje.",
+    "chunks": [
+     "ZP § 51 odst. 1"
+    ],
+    "set": "test",
+    "rewritten": "Od kterého dne počíná běh výpovědní doby?",
+    "top": [
+     {
+      "id": "ZP § 51 odst. 1",
+      "score": 0.883
+     },
+     {
+      "id": "ZZ § 78 odst. 7",
+      "score": 0.877
+     },
+     {
+      "id": "ZP § 53 odst. 2",
+      "score": 0.859
+     },
+     {
+      "id": "ZP § 51a odst. 2",
+      "score": 0.864
+     },
+     {
+      "id": "ZP § 87a odst. 3",
+      "score": 0.862
+     }
+    ],
+    "hit3": true,
+    "hit5": true,
+    "answer": "Obecně platí, že výpovědní doba začíná dnem, v němž byla výpověď doručena druhé smluvní straně [1]. U výpovědi podle § 51a odst. 2 písm. b) činí výpovědní doba 15 dnů a začíná dnem, v němž byla výpověď doručena zaměstnavateli [4]. U dohody o rozvržení pracovní doby zaměstnancem začíná patnáctidenní výpovědní doba dnem, v němž byla výpověď doručena druhé smluvní straně [5].\n\nMyslel jste obecnou výpověď z pracovního poměru, nebo některý z těchto zvláštních případů?",
+    "cited": [
+     "ZP § 51 odst. 1",
+     "ZP § 51a odst. 2",
+     "ZP § 87a odst. 3"
+    ],
+    "said_nevim": false,
+    "judge": {
+     "correct": true,
+     "grounded": true,
+     "reason": "Asistent správně uvádí obecné pravidlo o počátku výpovědní doby dnem doručení a doplňuje jej o další případy, které jsou podloženy citovanými úseky."
+    }
+   },
+   {
+    "id": 6,
+    "level": "snadná",
+    "q": "Kolik hodin ročně můžu odpracovat na dohodu o provedení práce (DPP)?",
+    "gold": "Nejvýše 300 hodin v kalendářním roce u jednoho zaměstnavatele.",
+    "chunks": [
+     "ZP § 75 odst. 1",
+     "ZP § 75 odst. 2"
+    ],
+    "set": "test",
+    "rewritten": "Jaký je maximální rozsah výkonu práce v kalendářním roce u právního jednání o provedení práce?",
+    "top": [
+     {
+      "id": "ZP § 75 odst. 1",
+      "score": 0.892
+     },
+     {
+      "id": "ZP § 75 odst. 2",
+      "score": 0.855
+     },
+     {
+      "id": "ZP § 76 odst. 1",
+      "score": 0.876
+     },
+     {
+      "id": "ZP § 213 odst. 1",
+      "score": 0.842
+     },
+     {
+      "id": "ZNP § 7a odst. 3",
+      "score": 0.843
+     }
+    ],
+    "hit3": true,
+    "hit5": true,
+    "answer": "Na dohodu o provedení práce nesmí rozsah práce přesáhnout 300 hodin v kalendářním roce [1]. Do tohoto rozsahu se započítává i doba práce konaná pro téhož zaměstnavatele v témže kalendářním roce na základě jiné dohody o provedení práce [2].",
+    "cited": [
+     "ZP § 75 odst. 1",
+     "ZP § 75 odst. 2"
+    ],
+    "said_nevim": false,
+    "judge": {
+     "correct": true,
+     "grounded": true,
+     "reason": "Asistent správně uvádí limit 300 hodin ročně a započítávání dalších DPP u téhož zaměstnavatele, což odpovídá zlaté odpovědi i citovaným úsekům."
+    }
+   },
+   {
+    "id": 7,
+    "level": "střední",
+    "q": "Kolik hodin týdně můžu pracovat na dohodu o pracovní činnosti?",
+    "gold": "V průměru nejvýše polovinu stanovené týdenní pracovní doby (tedy obvykle 20 hodin týdně).",
+    "chunks": [
+     "ZP § 76 odst. 2"
+    ],
+    "set": "test",
+    "rewritten": "Jaký je maximální rozsah pracovní doby v rámci dohody o pracovní činnosti za kalendářní týden?",
+    "top": [
+     {
+      "id": "ZP § 76 odst. 2",
+      "score": 0.88
+     },
+     {
+      "id": "ZP § 76 odst. 3",
+      "score": 0.893
+     },
+     {
+      "id": "ZP § 79 odst. 1",
+      "score": 0.87
+     },
+     {
+      "id": "ZP § 77 odst. 8",
+      "score": 0.891
+     },
+     {
+      "id": "ZP § 76 odst. 1",
+      "score": 0.893
+     }
+    ],
+    "hit3": true,
+    "hit5": true,
+    "answer": "Na dohodu o pracovní činnosti není možné vykonávat práci v rozsahu překračujícím v průměru polovinu stanovené týdenní pracovní doby [1]. Stanovená týdenní pracovní doba činí 40 hodin týdně [3], takže v průměru jde nejvýše o 20 hodin týdně. Dodržení tohoto rozsahu se posuzuje za celou dobu, na kterou byla dohoda uzavřena, nejdéle však za 52 týdnů [2].",
+    "cited": [
+     "ZP § 76 odst. 2",
+     "ZP § 76 odst. 3",
+     "ZP § 79 odst. 1"
+    ],
+    "said_nevim": false,
+    "judge": {
+     "correct": true,
+     "grounded": true,
+     "reason": "Odpověď správně uvádí limit poloviny stanovené týdenní pracovní doby (20 h) i způsob posuzování a opírá se výhradně o dodané úseky."
+    }
+   },
+   {
+    "id": 8,
+    "level": "snadná",
+    "q": "Po kolika hodinách práce mám nárok na pauzu na jídlo?",
+    "gold": "Nejpozději po 6 hodinách nepřetržité práce, pauza trvá nejméně 30 minut. Mladistvý ji má nejpozději po 4,5 hodinách.",
+    "chunks": [
+     "ZP § 88 odst. 1"
+    ],
+    "set": "test",
+    "rewritten": "Po kolika hodinách výkonu práce vzniká zaměstnanci nárok na přestávku na jídlo a oddech?",
+    "top": [
+     {
+      "id": "ZP § 88 odst. 1",
+      "score": 0.887
+     },
+     {
+      "id": "ZP § 88 odst. 2",
+      "score": 0.881
+     },
+     {
+      "id": "ZP § 88 odst. 3",
+      "score": 0.867
+     },
+     {
+      "id": "ZP § 88 odst. 4",
+      "score": 0.865
+     },
+     {
+      "id": "ZP § 89 odst. 2",
+      "score": 0.86
+     }
+    ],
+    "hit3": true,
+    "hit5": true,
+    "answer": "Zaměstnavatel je povinen poskytnout přestávku na jídlo a oddech nejdéle po 6 hodinách nepřetržité práce [1]. Mladistvému zaměstnanci musí být poskytnuta nejdéle po 4,5 hodinách nepřetržité práce [1]. Pokud jste myslel běžného dospělého zaměstnance, platí hranice 6 hodin [1].",
+    "cited": [
+     "ZP § 88 odst. 1"
+    ],
+    "said_nevim": false,
+    "judge": {
+     "correct": true,
+     "grounded": true,
+     "reason": "Odpověď správně uvádí hranici 6 hodin pro dospělé i 4,5 hodiny pro mladistvé a obě tvrzení se opírají o dodaný § 88 odst. 1."
+    }
+   },
+   {
+    "id": 9,
+    "level": "střední",
+    "q": "Kolik přesčasů mi může zaměstnavatel nařídit?",
+    "gold": "Nařízená práce přesčas smí činit nejvýše 8 hodin týdně a 150 hodin v kalendářním roce. Víc jen po dohodě se zaměstnancem.",
+    "chunks": [
+     "ZP § 93 odst. 2",
+     "ZP § 93 odst. 3",
+     "ZP § 93 odst. 4"
+    ],
+    "set": "test",
+    "rewritten": "Jaký je maximální rozsah nařízené práce přesčas, kterou je zaměstnavatel oprávněn zaměstnanci nařídit?",
+    "top": [
+     {
+      "id": "ZP § 93 odst. 2",
+      "score": 0.898
+     },
+     {
+      "id": "ZP § 93 odst. 3",
+      "score": 0.878
+     },
+     {
+      "id": "ZP § 93 odst. 4",
+      "score": 0.893
+     },
+     {
+      "id": "ZP § 114 odst. 1",
+      "score": 0.865
+     },
+     {
+      "id": "ZP § 127 odst. 3",
+      "score": 0.867
+     }
+    ],
+    "hit3": true,
+    "hit5": true,
+    "answer": "Nařízená práce přesčas nesmí činit více než 8 hodin v jednotlivých týdnech a 150 hodin v kalendářním roce [1]. Práci přesčas nad tento rozsah může zaměstnavatel požadovat pouze na základě dohody se zaměstnancem [2]. Celkový rozsah práce přesčas navíc nesmí činit v průměru více než 8 hodin týdně v období nejvýše 26 týdnů po sobě jdoucích, které může kolektivní smlouva vymezit nejvýše na 52 týdnů [3].",
+    "cited": [
+     "ZP § 93 odst. 2",
+     "ZP § 93 odst. 3",
+     "ZP § 93 odst. 4"
+    ],
+    "said_nevim": false,
+    "judge": {
+     "correct": true,
+     "grounded": true,
+     "reason": "Odpověď věcně odpovídá zlaté odpovědi a všechna tvrzení jsou podložena dodanými úseky zákona."
+    }
+   },
+   {
+    "id": 10,
+    "level": "střední",
+    "q": "Kolik hodin odpočinku musím mít mezi dvěma směnami?",
+    "gold": "Nepřetržitý denní odpočinek nejméně 11 hodin během 24 hodin po sobě jdoucích (mladistvý 12 hodin).",
+    "chunks": [
+     "ZP § 90 odst. 1"
+    ],
+    "set": "test",
+    "rewritten": "Jaká je minimální délka doby odpočinku mezi koncem jedné směny a začátkem následující směny?",
+    "top": [
+     {
+      "id": "ZP § 90 odst. 3",
+      "score": 0.848
+     },
+     {
+      "id": "ZP § 90 odst. 2",
+      "score": 0.848
+     },
+     {
+      "id": "ZP § 90a",
+      "score": 0.85
+     },
+     {
+      "id": "ZP § 85 odst. 3",
+      "score": 0.851
+     },
+     {
+      "id": "ZP § 100 odst. 2",
+      "score": 0.86
+     }
+    ],
+    "hit3": false,
+    "hit5": false,
+    "answer": "Základní pravidlo je v úsecích jen naznačeno (odstavec 1 se cituje, ale není uveden), takže přesnou základní délku odpočinku z dodaných úseků nezjistíme. Jisté je, že za uvedených podmínek může být zkrácen: u zaměstnance staršího 18 let až na 8 hodin během 24 hodin po sobě jdoucích, a to v nepřetržitých provozech, při nerovnoměrně rozvržené pracovní době, při práci přesčas, v zemědělství a při vyjmenovaných službách obyvatelstvu, s tím, že následující odpočinek se prodlouží o dobu zkrácení [2]. Je-li to nezbytné k odvrácení havárie, živelní události nebo jiné mimořádné události, může být zkrácen až na 6 hodin během 24 hodin po sobě jdoucích, opět se prodloužením následujícího odpočinku o dobu zkrácení [1]. Při sezónních pracích v zemědělství může být odpočinek zkrácený podle § 90 odst. 2 nahrazen tak, že bude poskytnut v období následujících 3 týdnů od zkrácení [3].",
+    "cited": [
+     "ZP § 90 odst. 3",
+     "ZP § 90 odst. 2",
+     "ZP § 90a"
+    ],
+    "said_nevim": false,
+    "judge": {
+     "correct": false,
+     "grounded": true,
+     "reason": "Asistent neodpověděl na základní otázku (11 hodin denně, u mladistvých 12), pouze popsal výjimky; zlatá odpověď uvádí konkrétní základní dobu."
+    }
+   },
+   {
+    "id": 11,
+    "level": "těžká",
+    "q": "Ve firmě jsem rok a půl a propouštějí mě, protože jsem nadbytečný. Kolik dostanu odstupné?",
+    "gold": "Nejméně dvojnásobek průměrného výdělku (pracovní poměr trval alespoň 1 rok a méně než 2 roky, výpověď z důvodu nadbytečnosti podle § 52 písm. c).",
+    "chunks": [
+     "ZP § 67 odst. 1"
+    ],
+    "set": "test",
+    "rewritten": "Zaměstnanec, jehož pracovní poměr u zaměstnavatele trval po dobu alespoň jednoho roku a půl a u něhož dochází k výpovědi z organizačních důvodů spočívajících v nadbytečnosti zaměstnance, má nárok na odstupné v jaké výši?",
+    "top": [
+     {
+      "id": "ZP § 67 odst. 1",
+      "score": 0.857
+     },
+     {
+      "id": "ZP § 52",
+      "score": 0.828
+     },
+     {
+      "id": "ZP § 67 odst. 3",
+      "score": 0.85
+     },
+     {
+      "id": "ZP § 57 odst. 1",
+      "score": 0.834
+     },
+     {
+      "id": "ZP § 68 odst. 1",
+      "score": 0.84
+     }
+    ],
+    "hit3": true,
+    "hit5": true,
+    "answer": "Pokud jste u zaměstnavatele rok a půl a výpověď dostáváte z důvodu nadbytečnosti podle § 52 písm. c), náleží vám odstupné ve výši nejméně dvojnásobku průměrného výdělku [1].",
+    "cited": [
+     "ZP § 67 odst. 1"
+    ],
+    "said_nevim": false,
+    "judge": {
+     "correct": true,
+     "grounded": true,
+     "reason": "Asistent správně určil dvojnásobek průměrného výdělku pro dobu 1–2 roky při nadbytečnosti dle § 52 písm. c) a opřel se o dodaný § 67 odst. 1."
+    }
+   },
+   {
+    "id": 12,
+    "level": "těžká",
+    "q": "Může mi zaměstnavatel dát výpověď z jakéhokoli důvodu, třeba že se mu nelíbím?",
+    "gold": "Ne. Zaměstnavatel může dát výpověď jen z důvodů výslovně uvedených v § 52 (např. rušení zaměstnavatele, nadbytečnost, zdravotní důvody, neuspokojivé pracovní výsledky, porušení povinností).",
+    "chunks": [
+     "ZP § 50 odst. 2",
+     "ZP § 52"
+    ],
+    "set": "test",
+    "rewritten": "Může zaměstnavatel rozvázat pracovní poměr výpovědí z důvodu spočívajícího v subjektivním hodnocení zaměstnance, aniž by byl naplněn některý ze zákonných výpovědních důvodů podle § 52 zákoníku práce?",
+    "top": [
+     {
+      "id": "ZP § 52",
+      "score": 0.868
+     },
+     {
+      "id": "ZP § 50 odst. 4",
+      "score": 0.871
+     },
+     {
+      "id": "ZP § 57 odst. 1",
+      "score": 0.874
+     },
+     {
+      "id": "ZP § 58 odst. 1",
+      "score": 0.862
+     },
+     {
+      "id": "ZP § 317a odst. 5",
+      "score": 0.872
+     }
+    ],
+    "hit3": true,
+    "hit5": true,
+    "answer": "Ne. Zaměstnavatel může dát zaměstnanci výpověď jen z důvodů vyjmenovaných v zákoně [1]. Důvod musí být ve výpovědi skutkově vymezen tak, aby jej nebylo možno zaměřit s jiným důvodem, a nesmí být dodatečně měněn [2].",
+    "cited": [
+     "ZP § 52",
+     "ZP § 50 odst. 4"
+    ],
+    "said_nevim": false,
+    "judge": {
+     "correct": true,
+     "grounded": true,
+     "reason": "Asistent správně uvádí, že výpověď lze jen z taxativních důvodů podle § 52, a jeho tvrzení se opírají o dodané úseky."
+    }
+   },
+   {
+    "id": 13,
+    "level": "střední",
+    "q": "Jak dlouho mám čas napadnout neplatnou výpověď u soudu?",
+    "gold": "Nejpozději do 2 měsíců ode dne, kdy měl pracovní poměr skončit.",
+    "chunks": [
+     "ZP § 72"
+    ],
+    "set": "test",
+    "rewritten": "V jaké lhůtě je možné se domáhat určení neplatnosti výpovědi z pracovního poměru u soudu?",
+    "top": [
+     {
+      "id": "ZP § 72",
+      "score": 0.874
+     },
+     {
+      "id": "ZP § 285 odst. 2",
+      "score": 0.855
+     },
+     {
+      "id": "ZP § 315",
+      "score": 0.856
+     },
+     {
+      "id": "ZP § 71",
+      "score": 0.839
+     },
+     {
+      "id": "ZP § 339a odst. 1",
+      "score": 0.831
+     }
+    ],
+    "hit3": true,
+    "hit5": true,
+    "answer": "Neplatnost rozvázání pracovního poměru výpovědí můžete u soudu uplatnit nejpozději ve lhůtě 2 měsíců ode dne, kdy měl pracovní poměr skončit [1].",
+    "cited": [
+     "ZP § 72"
+    ],
+    "said_nevim": false,
+    "judge": {
+     "correct": true,
+     "grounded": true,
+     "reason": "Asistent správně uvádí dvouměsíční lhůtu od skončení pracovního poměru a opírá se o dodaný § 72."
+    }
+   },
+   {
+    "id": 14,
+    "level": "střední",
+    "q": "Proplatí mi zaměstnavatel nevyčerpanou dovolenou?",
+    "gold": "Jen při skončení pracovního poměru. Jinak náhrada za nevyčerpanou dovolenou nepřísluší.",
+    "chunks": [
+     "ZP § 222 odst. 2"
+    ],
+    "set": "test",
+    "rewritten": "Je zaměstnavatel povinen poskytnout zaměstnanci náhradu mzdy za nevyčerpanou dovolenou?",
+    "top": [
+     {
+      "id": "ZP § 222 odst. 2",
+      "score": 0.893
+     },
+     {
+      "id": "ZP § 222 odst. 3",
+      "score": 0.881
+     },
+     {
+      "id": "ZP § 222 odst. 5",
+      "score": 0.889
+     },
+     {
+      "id": "ZP § 218 odst. 6",
+      "score": 0.88
+     },
+     {
+      "id": "ZP § 217 odst. 3",
+      "score": 0.876
+     }
+    ],
+    "hit3": true,
+    "hit5": true,
+    "answer": "Náhradu mzdy nebo platu za nevyčerpanou dovolenou dostanete jen tehdy, když skončí pracovní poměr [1], a to ve výši průměrného výdělku [2]. Výjimkou je nevyčerpaná dodatková dovolená, kterou proplatit nelze a musí se vždy vyčerpat přednostně [3].",
+    "cited": [
+     "ZP § 222 odst. 2",
+     "ZP § 222 odst. 3",
+     "ZP § 222 odst. 5"
+    ],
+    "said_nevim": false,
+    "judge": {
+     "correct": true,
+     "grounded": true,
+     "reason": "Odpověď správně uvádí, že náhrada přísluší jen při skončení pracovního poměru, a doplňující tvrzení jsou podložena dodanými úseky."
+    }
+   },
+   {
+    "id": 15,
+    "level": "těžká",
+    "q": "Firma mi už měsíc nezaplatila výplatu. Můžu hned odejít?",
+    "gold": "Ano, zaměstnanec může pracovní poměr okamžitě zrušit, pokud mu zaměstnavatel nevyplatil mzdu nebo její část do 15 dnů po uplynutí období splatnosti.",
+    "chunks": [
+     "ZP § 56 odst. 1"
+    ],
+    "set": "test",
+    "rewritten": "Zaměstnavatel nevyplatil zaměstnanci mzdu po dobu jednoho měsíce; může zaměstnanec okamžitě zrušit pracovní poměr?",
+    "top": [
+     {
+      "id": "ZP § 56 odst. 1",
+      "score": 0.843
+     },
+     {
+      "id": "ZP § 59",
+      "score": 0.844
+     },
+     {
+      "id": "ZP § 141 odst. 1",
+      "score": 0.841
+     },
+     {
+      "id": "ZP § 56 odst. 2",
+      "score": 0.84
+     },
+     {
+      "id": "ZP § 58 odst. 1",
+      "score": 0.848
+     }
+    ],
+    "hit3": true,
+    "hit5": true,
+    "answer": "Pokud vám zaměstnavatel nevyplatil mzdu nebo plat (nebo jakoukoli jejich část) do 15 dnů po uplynutí období splatnosti, můžete pracovní poměr okamžitě zrušit [1]. Mzda nebo plat jsou splatné nejpozději v kalendářním měsíci následujícím po měsíci, ve kterém vzniklo právo na mzdu [3]. Okamžitě zrušit pracovní poměr ale můžete pouze do 2 měsíců ode dne, kdy jste se o tomto důvodu dověděl, nejpozději do 1 roku ode dne, kdy důvod vznikl [2].",
+    "cited": [
+     "ZP § 56 odst. 1",
+     "ZP § 59",
+     "ZP § 141 odst. 1"
+    ],
+    "said_nevim": false,
+    "judge": {
+     "correct": true,
+     "grounded": true,
+     "reason": "Asistent správně a s odkazy na úseky zákona uvádí, že při nevyplacení mzdy do 15 dnů po splatnosti lze okamžitě zrušit pracovní poměr, včetně lhůty podle § 59."
+    }
+   },
+   {
+    "id": 16,
+    "level": "těžká",
+    "q": "Kolikrát mi můžou prodloužit smlouvu na dobu určitou?",
+    "gold": "Pracovní poměr na dobu určitou smí trvat nejdéle 3 roky a mezi stejnými stranami se smí opakovat nejvýše dvakrát; prodloužení se počítá jako opakování.",
+    "chunks": [
+     "ZP § 39 odst. 2"
+    ],
+    "set": "test",
+    "rewritten": "Kolikrát může být pracovní poměr na dobu určitou prodloužen?",
+    "top": [
+     {
+      "id": "ZP § 39 odst. 2",
+      "score": 0.87
+     },
+     {
+      "id": "ZP § 39 odst. 5",
+      "score": 0.859
+     },
+     {
+      "id": "ZP § 39 odst. 1",
+      "score": 0.857
+     },
+     {
+      "id": "ZP § 65 odst. 1",
+      "score": 0.849
+     },
+     {
+      "id": "ZP § 39 odst. 3",
+      "score": 0.84
+     }
+    ],
+    "hit3": true,
+    "hit5": true,
+    "answer": "Mezi týmiž smluvními stranami může být pracovní poměr na dobu určitou opakován nejvýše dvakrát a za opakování se považuje i jeho prodloužení [1]. Celková doba trvání takových pracovních poměrů nesmí přesáhnout 9 let ode dne vzniku prvního pracovního poměru na dobu určitou [1]. Pokud jde o náhradu za dočasně nepřítomného zaměstnance po dobu mateřské, otcovské a rodičovské dovolené a dovolené podle § 217 odst. 5, může být pracovní poměr na dobu určitou sjednáván bez omezení počtu opakování [1].",
+    "cited": [
+     "ZP § 39 odst. 2"
+    ],
+    "said_nevim": false,
+    "judge": {
+     "correct": true,
+     "grounded": true,
+     "reason": "Asistent správně uvádí limit dvou opakování včetně prodloužení a doplňuje další podmínky věrně podle § 39 odst. 2."
+    }
+   },
+   {
+    "id": 17,
+    "level": "bez odpovědi",
+    "q": "Jaká je minimální mzda v roce 2026?",
+    "gold": "NEVÍM – konkrétní částka v předpisech není: minimální mzdu na další rok vyhlašuje MPSV sdělením ve Sbírce (§ 111 odst. 7 ZP). Správně je odpověď, která žádnou částku nevymyslí.",
+    "chunks": [],
+    "gold_5temat": "NEVÍM – výše minimální mzdy není ve vybraných úsecích zákona (stanoví ji nařízení vlády).",
+    "set": "test",
+    "rewritten": "Jaká je výše minimální mzdy pro rok 2026 podle nařízení vlády, kterým se stanoví základní sazba minimální mzdy?",
+    "top": [
+     {
+      "id": "ZP § 111 odst. 3",
+      "score": 0.837
+     },
+     {
+      "id": "ZP § 111 odst. 9",
+      "score": 0.821
+     },
+     {
+      "id": "ZP § 111 odst. 7",
+      "score": 0.828
+     },
+     {
+      "id": "ZP § 111 odst. 8",
+      "score": 0.813
+     },
+     {
+      "id": "ZP § 111 odst. 4",
+      "score": 0.82
+     }
+    ],
+    "hit3": null,
+    "hit5": null,
+    "answer": "Nevím, v dostupných úsecích zákona to není.",
+    "cited": [],
+    "said_nevim": true,
+    "judge": {
+     "correct": true,
+     "grounded": true,
+     "reason": "Asistent správně odmítl uvést konkrétní částku, protože ta v dodaných úsecích není a zlatá odpověď je NEVÍM."
+    }
+   },
+   {
+    "id": 18,
+    "level": "snadná",
+    "q": "Jak dlouho trvá mateřská dovolená?",
+    "gold": "Mateřská dovolená trvá 28 týdnů, při porodu 2 a více dětí 37 týdnů.",
+    "chunks": [
+     "ZP § 195 odst. 1"
+    ],
+    "gold_5temat": "NEVÍM – mateřská dovolená (§ 195) není ve vybrané části zákona.",
+    "set": "test",
+    "rewritten": "Jaká je maximální délka mateřské dovolené podle zákoníku práce?",
+    "top": [
+     {
+      "id": "ZP § 195 odst. 1",
+      "score": 0.905
+     },
+     {
+      "id": "ZP § 195 odst. 3",
+      "score": 0.889
+     },
+     {
+      "id": "ZP § 195 odst. 4",
+      "score": 0.889
+     },
+     {
+      "id": "ZP § 195 odst. 5",
+      "score": 0.905
+     },
+     {
+      "id": "ZP § 197 odst. 3",
+      "score": 0.89
+     }
+    ],
+    "hit3": true,
+    "hit5": true,
+    "answer": "Mateřská dovolená přísluší po dobu 28 týdnů, a porodila-li zaměstnankyně zároveň 2 nebo více dětí, po dobu 37 týdnů [1]. Nikdy nesmí být kratší než 14 týdnů a nemůže skončit ani být přerušena před uplynutím 6 týdnů ode dne porodu [4]. Narodilo-li se dítě mrtvé, přísluší mateřská dovolená po dobu 14 týdnů [3].",
+    "cited": [
+     "ZP § 195 odst. 1",
+     "ZP § 195 odst. 4",
+     "ZP § 195 odst. 5"
+    ],
+    "said_nevim": false,
+    "judge": {
+     "correct": true,
+     "grounded": true,
+     "reason": "Odpověď správně uvádí 28/37 týdnů dle § 195 odst. 1 a doplňující podmínky jsou věcně správné i podložené dodanými úseky."
+    }
+   },
+   {
+    "id": 19,
+    "level": "střední",
+    "q": "Za jakých podmínek můžu pracovat z domova na home office?",
+    "gold": "Práce na dálku je možná jen na základě písemné dohody se zaměstnavatelem. Nařídit ji zaměstnavatel smí jen, když to stanoví opatření orgánu veřejné moci.",
+    "chunks": [
+     "ZP § 317 odst. 1",
+     "ZP § 317 odst. 3"
+    ],
+    "gold_5temat": "NEVÍM – práce na dálku (§ 317) není ve vybrané části zákona.",
+    "set": "test",
+    "rewritten": "Za jakých podmínek lze vykonávat práci v místě bydliště zaměstnance?",
+    "top": [
+     {
+      "id": "ZP § 317 odst. 1",
+      "score": 0.844
+     },
+     {
+      "id": "ZP § 317 odst. 3",
+      "score": 0.832
+     },
+     {
+      "id": "ZP § 2 odst. 2",
+      "score": 0.828
+     },
+     {
+      "id": "ZP § 240 odst. 1",
+      "score": 0.838
+     },
+     {
+      "id": "ZZ § 145",
+      "score": 0.823
+     }
+    ],
+    "hit3": true,
+    "hit5": true,
+    "answer": "Práce na dálku (home office) je možná jen na základě písemné dohody mezi zaměstnavatelem a zaměstnancem [1]. Zaměstnavatel ji může písemně nařídit jen tehdy, pokud tak stanoví opatření orgánu veřejné moci podle jiného zákona, a to na nezbytně nutnou dobu, pokud to povaha práce umožňuje a místo výkonu je pro práci způsobilé [2]. V takovém případě jste povinen na výzvu zaměstnavatele bez zbytečného odkladu písemně určit místo, na které vám může práci na dálku nařídit, nebo sdělit, že žádné způsobilé místo nemáte [2].",
+    "cited": [
+     "ZP § 317 odst. 1",
+     "ZP § 317 odst. 3"
+    ],
+    "said_nevim": false,
+    "judge": {
+     "correct": true,
+     "grounded": true,
+     "reason": "Odpověď věcně odpovídá zlaté odpovědi a všechna tvrzení jsou podložena dodanými úseky zákona."
+    }
+   },
+   {
+    "id": 20,
+    "level": "střední",
+    "q": "Kolik peněz dostanu, když budu na nemocenské?",
+    "gold": "Prvních 14 kalendářních dnů platí zaměstnavatel náhradu mzdy 60 % průměrného výdělku. Od 15. dne je nemocenské: 60 % denního vyměřovacího základu do 30. dne, 66 % od 31. do 60. dne a 72 % od 61. dne.",
+    "chunks": [
+     "ZP § 192 odst. 1",
+     "ZP § 192 odst. 2",
+     "ZNP § 26 odst. 1",
+     "ZNP § 29 odst. 1"
+    ],
+    "gold_5temat": "NEVÍM – náhrada mzdy při nemoci (§ 192) ani nemocenské dávky nejsou ve vybrané části zákona.",
+    "set": "test",
+    "rewritten": "Jaká je výše dávky nemocenského pojištění poskytované zaměstnanci v případě dočasné pracovní neschopnosti?",
+    "top": [
+     {
+      "id": "ZNP § 29 odst. 1",
+      "score": 0.859
+     },
+     {
+      "id": "ZP § 192 odst. 1",
+      "score": 0.851
+     },
+     {
+      "id": "ZNP § 23",
+      "score": 0.867
+     },
+     {
+      "id": "ZNP § 110a",
+      "score": 0.861
+     },
+     {
+      "id": "ZNP § 31",
+      "score": 0.854
+     }
+    ],
+    "hit3": true,
+    "hit5": true,
+    "answer": "Nemocenské za kalendářní den činí 60 % denního vyměřovacího základu do 30. kalendářního dne, 66 % od 31. do 60. dne a 72 % od 61. dne trvání pracovní neschopnosti nebo karantény [1]. Nárok na nemocenské má pojištěnec, trvá-li neschopnost déle než 14 kalendářních dní [3]. Pokud si neschopnost přivodíte například účastí ve rvačce, následkem opilosti nebo při úmyslném trestném činu, činí nemocenské 50 % částky podle § 29 [5].",
+    "cited": [
+     "ZNP § 29 odst. 1",
+     "ZNP § 23",
+     "ZNP § 31"
+    ],
+    "said_nevim": false,
+    "judge": {
+     "correct": false,
+     "grounded": true,
+     "reason": "Asistent vynechal náhradu mzdy 60 % od zaměstnavatele za prvních 14 dnů, což je klíčová část zlaté odpovědi."
+    }
+   },
+   {
+    "id": 21,
+    "level": "střední",
+    "q": "Kolik hodin volna v kuse musím mít aspoň jednou za týden?",
+    "gold": "Nepřetržitý odpočinek v týdnu nejméně 24 hodin, na který bezprostředně navazuje nepřetržitý denní odpočinek (zaměstnanec starší 18 let).",
+    "chunks": [
+     "ZP § 92 odst. 1"
+    ],
+    "set": "holdout",
+    "rewritten": "Jaká je minimální délka nepřetržitého odpočinku mezi směnami, která musí být zaměstnanci poskytnuta alespoň jednou za týden?",
+    "top": [
+     {
+      "id": "ZP § 92 odst. 1",
+      "score": 0.862
+     },
+     {
+      "id": "ZP § 92 odst. 2",
+      "score": 0.862
+     },
+     {
+      "id": "ZP § 92 odst. 4",
+      "score": 0.848
+     },
+     {
+      "id": "ZP § 90 odst. 1",
+      "score": 0.847
+     },
+     {
+      "id": "ZP § 92 odst. 5",
+      "score": 0.847
+     }
+    ],
+    "hit3": true,
+    "hit5": true,
+    "answer": "Pokud jste zaměstnanec starší 18 let, musí vám zaměstnavatel poskytnout nepřetržitý odpočinek v týdnu alespoň 24 hodin, na který bezprostředně navazuje nepřetržitý denní odpočinek alespoň 11 hodin [1][4]. Pokud jste mladistvý zaměstnanec, musí jít o nepřetržitý odpočinek v trvání alespoň 48 hodin [2].",
+    "cited": [
+     "ZP § 92 odst. 1",
+     "ZP § 92 odst. 2",
+     "ZP § 90 odst. 1"
+    ],
+    "said_nevim": false,
+    "judge": {
+     "correct": true,
+     "grounded": true,
+     "reason": "Odpověď správně uvádí 24 hodin pro dospělé s navazujícím denním odpočinkem a 48 hodin pro mladistvé, vše podloženo citovanými úseky."
+    }
+   },
+   {
+    "id": 22,
+    "level": "snadná",
+    "q": "Musí mi šéf dovolenou oznámit dopředu?",
+    "gold": "Ano, určenou dobu čerpání dovolené musí zaměstnavatel písemně oznámit alespoň 14 dnů předem, pokud se nedohodnou na kratší době.",
+    "chunks": [
+     "ZP § 217 odst. 1"
+    ],
+    "set": "holdout",
+    "rewritten": "Je zaměstnavatel povinen poskytnout zaměstnanci dovolenou včasným určením jejího čerpání?",
+    "top": [
+     {
+      "id": "ZP § 217 odst. 1",
+      "score": 0.858
+     },
+     {
+      "id": "ZP § 218 odst. 4",
+      "score": 0.879
+     },
+     {
+      "id": "ZP § 218 odst. 1",
+      "score": 0.849
+     },
+     {
+      "id": "ZP § 217 odst. 3",
+      "score": 0.841
+     },
+     {
+      "id": "ZP § 217 odst. 2",
+      "score": 0.84
+     }
+    ],
+    "hit3": true,
+    "hit5": true,
+    "answer": "Ano, zaměstnavatel je povinen písemně oznámit určenou dobu čerpání dovolené alespoň 14 dnů předem, pokud se s vámi nedohodne na kratší době [1]. Pokud si čerpání dovolené určujete sám, protože ji zaměstnavatel neurčil nejpozději do 30. června následujícího kalendářního roku, musíte naopak vy písemně oznámit čerpání zaměstnavateli alespoň 14 dnů předem, pokud se nedohodnete na jiné době [2].",
+    "cited": [
+     "ZP § 217 odst. 1",
+     "ZP § 218 odst. 4"
+    ],
+    "said_nevim": false,
+    "judge": {
+     "correct": true,
+     "grounded": true,
+     "reason": "Odpověď správně uvádí povinnost písemného oznámení 14 dnů předem a je podložena citovanými úseky zákona."
+    }
+   },
+   {
+    "id": 23,
+    "level": "těžká",
+    "q": "Mám smlouvu jen na 4 měsíce. Jak dlouhou zkušební dobu mi můžou dát?",
+    "gold": "Nejvýše polovinu sjednané doby trvání pracovního poměru na dobu určitou, tedy nejvýše 2 měsíce.",
+    "chunks": [
+     "ZP § 35 odst. 3"
+    ],
+    "set": "holdout",
+    "rewritten": "Jaká může být nejdelší délka zkušební doby, byla-li sjednána pracovní smlouva na dobu určitou v trvání čtyř měsíců?",
+    "top": [
+     {
+      "id": "ZP § 35 odst. 3",
+      "score": 0.873
+     },
+     {
+      "id": "ZP § 35 odst. 2",
+      "score": 0.881
+     },
+     {
+      "id": "ZP § 35 odst. 1",
+      "score": 0.857
+     },
+     {
+      "id": "ZP § 35 odst. 4",
+      "score": 0.868
+     },
+     {
+      "id": "ZP § 66 odst. 1",
+      "score": 0.862
+     }
+    ],
+    "hit3": true,
+    "hit5": true,
+    "answer": "U pracovního poměru na dobu určitou nesmí být zkušební doba delší než polovina sjednané doby trvání pracovního poměru [1]. Při smlouvě na 4 měsíce tedy může být zkušební doba nejvýše 2 měsíce [1]. Zároveň platí, že nesmí přesáhnout 4 měsíce po sobě jdoucí ode dne vzniku pracovního poměru [2].",
+    "cited": [
+     "ZP § 35 odst. 3",
+     "ZP § 35 odst. 2"
+    ],
+    "said_nevim": false,
+    "judge": {
+     "correct": true,
+     "grounded": true,
+     "reason": "Asistent správně aplikoval § 35 odst. 3 a uvedl maximální zkušební dobu 2 měsíce, což odpovídá zlaté odpovědi i dodaným úsekům."
+    }
+   },
+   {
+    "id": 24,
+    "level": "střední",
+    "q": "Jeden den jsem nepřišel do práce a neomluvil se. Může mi šéf vzít dovolenou?",
+    "gold": "Ano, za neomluveně zameškanou směnu může zaměstnavatel dovolenou krátit, a to o počet neomluveně zameškaných hodin.",
+    "chunks": [
+     "ZP § 223 odst. 1"
+    ],
+    "set": "holdout",
+    "rewritten": "Zaměstnanec se nedostavil na pracoviště a neomluvil svou nepřítomnost; může zaměstnavatel nařídit čerpání dovolené za tento den?",
+    "top": [
+     {
+      "id": "ZP § 223 odst. 1",
+      "score": 0.853
+     },
+     {
+      "id": "ZP § 218 odst. 4",
+      "score": 0.854
+     },
+     {
+      "id": "ZP § 217 odst. 3",
+      "score": 0.852
+     },
+     {
+      "id": "ZP § 217 odst. 2",
+      "score": 0.85
+     },
+     {
+      "id": "ZP § 218 odst. 5",
+      "score": 0.848
+     }
+    ],
+    "hit3": true,
+    "hit5": true,
+    "answer": "Ano, zaměstnavatel může dovolenou krátit za neomluveně zameškanou směnu, a to o počet neomluveně zameškaných hodin [1].",
+    "cited": [
+     "ZP § 223 odst. 1"
+    ],
+    "said_nevim": false,
+    "judge": {
+     "correct": true,
+     "grounded": true,
+     "reason": "Asistent správně a věcně shodně se zákonem i zlatou odpovědí uvedl, že zaměstnavatel může krátit dovolenou o neomluveně zameškané hodiny, a opřel se o citovaný § 223 odst. 1."
+    }
+   },
+   {
+    "id": 25,
+    "level": "střední",
+    "q": "Kdy mi přijdou peníze za odstupné?",
+    "gold": "Po skončení pracovního poměru v nejbližším výplatním termínu, pokud se se zaměstnavatelem písemně nedohodnou na výplatě v den skončení nebo na pozdějším termínu.",
+    "chunks": [
+     "ZP § 67 odst. 5"
+    ],
+    "set": "holdout",
+    "rewritten": "Kdy mi bude vyplaceno odstupné?",
+    "top": [
+     {
+      "id": "ZP § 67 odst. 5",
+      "score": 0.883
+     },
+     {
+      "id": "ZP § 68 odst. 1",
+      "score": 0.862
+     },
+     {
+      "id": "ZP § 67 odst. 3",
+      "score": 0.858
+     },
+     {
+      "id": "ZP § 67 odst. 4",
+      "score": 0.857
+     },
+     {
+      "id": "ZP § 68 odst. 2",
+      "score": 0.854
+     }
+    ],
+    "hit3": true,
+    "hit5": true,
+    "answer": "Odstupné je zaměstnavatel povinen vyplatit po skončení pracovního poměru v nejbližším výplatním termínu určeném u zaměstnavatele pro výplatu mzdy nebo platu [1]. Může se ale písemně dohodnout se zaměstnancem na výplatě v den skončení pracovního poměru nebo na pozdějším termínu [1].",
+    "cited": [
+     "ZP § 67 odst. 5"
+    ],
+    "said_nevim": false,
+    "judge": {
+     "correct": true,
+     "grounded": true,
+     "reason": "Odpověď věcně odpovídá zlaté odpovědi i § 67 odst. 5 a opírá se pouze o dodaný úsek."
+    }
+   },
+   {
+    "id": 26,
+    "level": "snadná",
+    "q": "Když se se šéfem domluvíme na konci práce, musí to být na papíře?",
+    "gold": "Ano, dohoda o rozvázání pracovního poměru musí být písemná.",
+    "chunks": [
+     "ZP § 49 odst. 2"
+    ],
+    "set": "holdout",
+    "rewritten": "Musí být dohoda o rozvázání pracovního poměru uzavřená mezi zaměstnavatelem a zaměstnancem vyhotovena písemně?",
+    "top": [
+     {
+      "id": "ZP § 49 odst. 2",
+      "score": 0.841
+     },
+     {
+      "id": "ZP § 49 odst. 3",
+      "score": 0.825
+     },
+     {
+      "id": "ZP § 77 odst. 1",
+      "score": 0.831
+     },
+     {
+      "id": "ZP § 49 odst. 1",
+      "score": 0.828
+     },
+     {
+      "id": "ZP § 21 odst. 1",
+      "score": 0.833
+     }
+    ],
+    "hit3": true,
+    "hit5": true,
+    "answer": "Pokud se domluvíte na rozvázání pracovního poměru, dohoda o rozvázání pracovního poměru musí být písemná [1] a každá smluvní strana musí obdržet jedno vyhotovení [2]. Pracovní poměr pak končí sjednaným dnem [4].\n\nMyslel jste rozvázání pracovního poměru, nebo ukončení dohody o provedení práce či pracovní činnosti?",
+    "cited": [
+     "ZP § 49 odst. 2",
+     "ZP § 49 odst. 3",
+     "ZP § 49 odst. 1"
+    ],
+    "said_nevim": false,
+    "judge": {
+     "correct": true,
+     "grounded": true,
+     "reason": "Asistent správně uvádí, že dohoda o rozvázání pracovního poměru musí být písemná, což odpovídá zlaté odpovědi i citovaným úsekům."
+    }
+   },
+   {
+    "id": 27,
+    "level": "těžká",
+    "q": "Jsem těhotná. Může mě zaměstnavatel vyhodit ze dne na den?",
+    "gold": "Ne, zaměstnavatel nesmí okamžitě zrušit pracovní poměr s těhotnou zaměstnankyní.",
+    "chunks": [
+     "ZP § 55 odst. 2"
+    ],
+    "set": "holdout",
+    "rewritten": "Může zaměstnavatel okamžitě zrušit pracovní poměr s těhotnou zaměstnankyní?",
+    "top": [
+     {
+      "id": "ZP § 55 odst. 2",
+      "score": 0.878
+     },
+     {
+      "id": "ZP § 58 odst. 1",
+      "score": 0.849
+     },
+     {
+      "id": "ZP § 56 odst. 1",
+      "score": 0.849
+     },
+     {
+      "id": "ZP § 239 odst. 1",
+      "score": 0.869
+     },
+     {
+      "id": "ZP § 55 odst. 1",
+      "score": 0.847
+     }
+    ],
+    "hit3": true,
+    "hit5": true,
+    "answer": "Zaměstnavatel s vámi nesmí okamžitě zrušit pracovní poměr, protože jste těhotná [1]. Okamžitě zrušit pracovní poměr může jen výjimečně, například při pravomocném odsouzení za úmyslný trestný čin nebo při zvlášť hrubém porušení povinností [5], ale vůči těhotné zaměstnankyni to nesmí [1].",
+    "cited": [
+     "ZP § 55 odst. 2",
+     "ZP § 55 odst. 1"
+    ],
+    "said_nevim": false,
+    "judge": {
+     "correct": true,
+     "grounded": true,
+     "reason": "Asistent správně uvádí, že zaměstnavatel nesmí okamžitě zrušit pracovní poměr s těhotnou zaměstnankyní, a opírá se o citované úseky zákona."
+    }
+   },
+   {
+    "id": 28,
+    "level": "střední",
+    "q": "Do kdy si musím vybrat letošní dovolenou?",
+    "gold": "Zaměstnavatel má čerpání určit tak, aby se dovolená vyčerpala v kalendářním roce, ve kterém právo vzniklo, ledaže tomu brání překážky v práci na straně zaměstnance nebo naléhavé provozní důvody.",
+    "chunks": [
+     "ZP § 218 odst. 1"
+    ],
+    "set": "holdout",
+    "rewritten": "Do kdy je zaměstnanec povinen vyčerpat dovolenou za příslušný kalendářní rok?",
+    "top": [
+     {
+      "id": "ZP § 218 odst. 1",
+      "score": 0.85
+     },
+     {
+      "id": "ZP § 218 odst. 3",
+      "score": 0.854
+     },
+     {
+      "id": "ZP § 218 odst. 5",
+      "score": 0.847
+     },
+     {
+      "id": "ZP § 218 odst. 4",
+      "score": 0.855
+     },
+     {
+      "id": "ZP § 218 odst. 2",
+      "score": 0.848
+     }
+    ],
+    "hit3": true,
+    "hit5": true,
+    "answer": "Zaměstnavatel je povinen určit čerpání dovolené tak, abyste ji vyčerpal v kalendářním roce, ve kterém právo na dovolenou vzniklo, ledaže tomu brání překážky v práci na vaší straně nebo naléhavé provozní důvody [1]. Nemůže-li být dovolená takto vyčerpána, je zaměstnavatel povinen určit ji nejpozději do konce následujícího kalendářního roku [2]. Pokud ji nevyčerpáte ani do konce následujícího roku kvůli dočasné pracovní neschopnosti nebo čerpání mateřské či rodičovské dovolené, určí zaměstnavatel dobu čerpání po skončení těchto překážek [3].",
+    "cited": [
+     "ZP § 218 odst. 1",
+     "ZP § 218 odst. 3",
+     "ZP § 218 odst. 5"
+    ],
+    "said_nevim": false,
+    "judge": {
+     "correct": true,
+     "grounded": true,
+     "reason": "Odpověď věcně odpovídá zlaté odpovědi a všechna tvrzení jsou podložena citovanými úseky zákona."
+    }
+   },
+   {
+    "id": 29,
+    "level": "bez odpovědi",
+    "q": "Kolik je stravenkový paušál na jeden den?",
+    "gold": "NEVÍM – výši stravovacího paušálu předpisy v aplikaci neuvádějí (§ 236 ZP říká jen, že zaměstnavatel musí umožnit stravování).",
+    "chunks": [],
+    "gold_5temat": "NEVÍM – stravování a stravenkový paušál nejsou ve vybrané části zákona.",
+    "set": "holdout",
+    "rewritten": "Jaká je výše paušální částky na stravování zaměstnance za jednu pracovní směnu?",
+    "top": [
+     {
+      "id": "ZP § 190a odst. 3",
+      "score": 0.828
+     },
+     {
+      "id": "ZP § 176 odst. 1",
+      "score": 0.841
+     },
+     {
+      "id": "ZP § 163 odst. 1",
+      "score": 0.848
+     },
+     {
+      "id": "ZP § 176 odst. 3",
+      "score": 0.823
+     },
+     {
+      "id": "ZP § 163 odst. 2",
+      "score": 0.821
+     }
+    ],
+    "hit3": null,
+    "hit5": null,
+    "answer": "Nevím, v dostupných úsecích zákona to není.",
+    "cited": [],
+    "said_nevim": true,
+    "judge": {
+     "correct": true,
+     "grounded": true,
+     "reason": "Asistent správně odmítl odpovědět, protože dodané úseky výši stravenkového paušálu neuvádějí."
+    }
+   },
+   {
+    "id": 30,
+    "level": "snadná",
+    "q": "Kolik dní placeného volna dostanu na vlastní svatbu?",
+    "gold": "2 dny pracovního volna na vlastní svatbu, náhrada mzdy ale jen za 1 den (den obřadu).",
+    "chunks": [
+     "NV 590 příloha bod 5"
+    ],
+    "gold_5temat": "NEVÍM – překážky v práci na straně zaměstnance nejsou ve vybrané části zákona.",
+    "set": "holdout",
+    "rewritten": "Kolik dnů pracovního volna s náhradou mzdy náleží zaměstnanci při uzavření manželství?",
+    "top": [
+     {
+      "id": "NV 590 příloha bod 5",
+      "score": 0.876
+     },
+     {
+      "id": "NV 590 příloha bod 7",
+      "score": 0.838
+     },
+     {
+      "id": "NV 590 příloha bod 6",
+      "score": 0.834
+     },
+     {
+      "id": "ZP § 115 odst. 1",
+      "score": 0.83
+     },
+     {
+      "id": "NV 590 příloha bod 11",
+      "score": 0.824
+     }
+    ],
+    "hit3": true,
+    "hit5": true,
+    "answer": "Na vlastní svatbu se poskytne pracovní volno na 2 dny, z toho 1 den k účasti na svatebním obřadu, ale náhrada mzdy nebo platu přísluší pouze za 1 den [1]. Pokud čerpáte oba 2 dny, náhrada mzdy nebo platu vám náleží jen za den, kdy jste se účastnil svatebního obřadu [1].",
+    "cited": [
+     "NV 590 příloha bod 5"
+    ],
+    "said_nevim": false,
+    "judge": {
+     "correct": true,
+     "grounded": true,
+     "reason": "Odpověď přesně vystihuje 2 dny volna s náhradou mzdy jen za 1 den a je plně podložena úsekem [1]."
+    }
+   },
+   {
+    "id": 31,
+    "level": "snadná",
+    "q": "Jak dlouho dostanu podporu v nezaměstnanosti, když mi je 35 let?",
+    "gold": "5 měsíců (podpůrčí doba do 52 let věku).",
+    "chunks": [
+     "ZZ § 43 odst. 1"
+    ],
+    "set": "new",
+    "rewritten": "Jaká je maximální doba poskytování podpory v nezaměstnanosti pro uchazeče o zaměstnání ve věku 35 let?",
+    "top": [
+     {
+      "id": "ZZ § 43 odst. 1",
+      "score": 0.89
+     },
+     {
+      "id": "ZZ § 43 odst. 2",
+      "score": 0.869
+     },
+     {
+      "id": "ZZ § 50 odst. 3",
+      "score": 0.878
+     },
+     {
+      "id": "ZZ § 51 odst. 1",
+      "score": 0.877
+     },
+     {
+      "id": "ZZ § 54 odst. 4",
+      "score": 0.877
+     }
+    ],
+    "hit3": true,
+    "hit5": true,
+    "answer": "Podle [1] činí podpůrčí doba u uchazeče o zaměstnání do 52 let věku 5 měsíců. Rozhodující je přitom věk dosažený ke dni podání žádosti o podporu [2]. Ve 35 letech tedy půjde o 5 měsíců.",
+    "cited": [
+     "ZZ § 43 odst. 1",
+     "ZZ § 43 odst. 2"
+    ],
+    "said_nevim": false,
+    "judge": {
+     "correct": true,
+     "grounded": true,
+     "reason": "Asistent správně uvádí 5 měsíců pro uchazeče do 52 let a odkazuje na příslušné úseky zákona."
+    }
+   },
+   {
+    "id": 32,
+    "level": "střední",
+    "q": "Kolik procent z výplaty dostanu jako podporu v nezaměstnanosti?",
+    "gold": "Do 52 let: první 2 měsíce 80 %, další 2 měsíce 50 % a zbytek doby 40 % průměrného měsíčního čistého výdělku. Nad 52 let je to 3 + 3 měsíce a pak 40 %.",
+    "chunks": [
+     "ZZ § 50 odst. 3"
+    ],
+    "set": "new",
+    "rewritten": "Jaká je výše podpory v nezaměstnanosti v procentech z předchozího výdělku?",
+    "top": [
+     {
+      "id": "ZZ § 50 odst. 3",
+      "score": 0.876
+     },
+     {
+      "id": "ZZ § 50 odst. 1",
+      "score": 0.879
+     },
+     {
+      "id": "ZZ § 51a",
+      "score": 0.853
+     },
+     {
+      "id": "ZZ § 50 odst. 2",
+      "score": 0.861
+     },
+     {
+      "id": "ZZ § 50 odst. 6",
+      "score": 0.873
+     }
+    ],
+    "hit3": true,
+    "hit5": true,
+    "answer": "Záleží na vašem věku v den podání žádosti [3]. Pokud je vám do 52 let, první 2 měsíce podpůrčí doby dostanete 80 %, další 2 měsíce 50 % a po zbývající dobu 40 % průměrného měsíčního čistého výdělku [1]. Pokud je vám nad 52 let, první 3 měsíce dostanete 80 %, další 3 měsíce 50 % a po zbývající dobu 40 % [1]. Podpora je nejvýše 0,8násobek průměrné mzdy v národním hospodářství [5].",
+    "cited": [
+     "ZZ § 50 odst. 3",
+     "ZZ § 51a",
+     "ZZ § 50 odst. 6"
+    ],
+    "said_nevim": false,
+    "judge": {
+     "correct": true,
+     "grounded": true,
+     "reason": "Odpověď přesně vystihuje procentní sazby podle věku i strop podpory a všechny údaje jsou podloženy citovanými úseky."
+    }
+   },
+   {
+    "id": 33,
+    "level": "střední",
+    "q": "Kolik si můžu přivydělat, když jsem v evidenci na úřadu práce?",
+    "gold": "Pracovní poměr nebo DPČ s měsíčním výdělkem do poloviny minimální mzdy evidenci nebrání. Činnost je nutné úřadu práce oznámit.",
+    "chunks": [
+     "ZZ § 25 odst. 3"
+    ],
+    "set": "new",
+    "rewritten": "Jaká je maximální přípustná výše příjmu z výdělečné činnosti po dobu vedení v evidenci uchazečů o zaměstnání?",
+    "top": [
+     {
+      "id": "ZZ § 25 odst. 3",
+      "score": 0.848
+     },
+     {
+      "id": "ZZ § 50 odst. 2",
+      "score": 0.838
+     },
+     {
+      "id": "ZZ § 25 odst. 6",
+      "score": 0.842
+     },
+     {
+      "id": "ZZ § 25 odst. 5",
+      "score": 0.838
+     },
+     {
+      "id": "ZZ § 32 odst. 2",
+      "score": 0.839
+     }
+    ],
+    "hit3": true,
+    "hit5": true,
+    "answer": "V evidenci uchazečů o zaměstnání můžete pracovat na pracovní nebo služební poměr, pokud měsíční výdělek nepřesáhne polovinu minimální mzdy, nebo na dohodu o pracovní činnosti, pokud měsíční odměna nepřesáhne polovinu minimální mzdy [1]. Výkon této činnosti musíte oznámit krajské pobočce Úřadu práce nejpozději v den nástupu a dokládat výši výdělku [1]. Pokud vykonáváte více činností, výdělky se sčítají [1].",
+    "cited": [
+     "ZZ § 25 odst. 3"
+    ],
+    "said_nevim": false,
+    "judge": {
+     "correct": true,
+     "grounded": true,
+     "reason": "Odpověď věcně odpovídá zlaté odpovědi a všechna tvrzení jsou podložena dodaným úsekem [1]."
+    }
+   },
+   {
+    "id": 34,
+    "level": "střední",
+    "q": "Jak dlouho musím předtím pracovat, abych měl nárok na podporu v nezaměstnanosti?",
+    "gold": "Aspoň 12 měsíců důchodového pojištění ze zaměstnání nebo jiné výdělečné činnosti za poslední 2 roky před zařazením do evidence.",
+    "chunks": [
+     "ZZ § 39 odst. 1",
+     "ZZ § 41 odst. 1"
+    ],
+    "set": "new",
+    "rewritten": "Jaká je minimální doba předchozího zaměstnání pro vznik nároku na podporu v nezaměstnanosti?",
+    "top": [
+     {
+      "id": "ZZ § 39 odst. 1",
+      "score": 0.873
+     },
+     {
+      "id": "ZZ § 41 odst. 1",
+      "score": 0.882
+     },
+     {
+      "id": "ZZ § 49 odst. 1",
+      "score": 0.877
+     },
+     {
+      "id": "ZZ § 48",
+      "score": 0.872
+     },
+     {
+      "id": "ZZ § 43 odst. 1",
+      "score": 0.88
+     }
+    ],
+    "hit3": true,
+    "hit5": true,
+    "answer": "Záleží na tom, zda jste už někdy dříve vyčerpal celou podpůrčí dobu. Pokud ne, musíte v rozhodném období (poslední 2 roky před zařazením do evidence uchazečů o zaměstnání) získat zaměstnáním nebo jinou výdělečnou činností dobu důchodového pojištění v délce alespoň 12 měsíců [1][2]. Pokud vám v posledních 2 letech před zařazením do evidence uplynula celá podpůrčí doba, stačí po jejím uplynutí získat alespoň 9 měsíců [3].",
+    "cited": [
+     "ZZ § 39 odst. 1",
+     "ZZ § 41 odst. 1",
+     "ZZ § 49 odst. 1"
+    ],
+    "said_nevim": false,
+    "judge": {
+     "correct": true,
+     "grounded": true,
+     "reason": "Asistent správně uvádí základní podmínku 12 měsíců v posledních 2 letech i zvláštní případ 9 měsíců po vyčerpání podpůrčí doby, vše podloženo citovanými úseky."
+    }
+   },
+   {
+    "id": 35,
+    "level": "snadná",
+    "q": "Od kolikátého dne nemoci se platí nemocenská?",
+    "gold": "Od 15. kalendářního dne dočasné pracovní neschopnosti, nejdéle 380 dnů. (Prvních 14 dnů platí zaměstnavatel náhradu mzdy.)",
+    "chunks": [
+     "ZNP § 26 odst. 1"
+    ],
+    "set": "new",
+    "rewritten": "Od kterého dne trvání dočasné pracovní neschopnosti vzniká nárok na nemocenské?",
+    "top": [
+     {
+      "id": "ZNP § 23",
+      "score": 0.885
+     },
+     {
+      "id": "ZNP § 26 odst. 1",
+      "score": 0.881
+     },
+     {
+      "id": "ZP § 192 odst. 1",
+      "score": 0.86
+     },
+     {
+      "id": "ZNP § 172 odst. 1",
+      "score": 0.885
+     },
+     {
+      "id": "ZNP § 26 odst. 2",
+      "score": 0.877
+     }
+    ],
+    "hit3": true,
+    "hit5": true,
+    "answer": "Nemocenské se vyplácí od 15. kalendářního dne trvání dočasné pracovní neschopnosti nebo nařízené karantény [2]. Nárok na nemocenské vzniká, jen trvá-li neschopnost déle než 14 kalendářních dní [1]. Za prvních 14 kalendářních dnů přísluší zaměstnanci náhrada mzdy nebo platu, pokud splňuje podmínky nároku na nemocenské [3].",
+    "cited": [
+     "ZNP § 23",
+     "ZNP § 26 odst. 1",
+     "ZP § 192 odst. 1"
+    ],
+    "said_nevim": false,
+    "judge": {
+     "correct": true,
+     "grounded": true,
+     "reason": "Odpověď správně uvádí 15. kalendářní den i náhradu mzdy za prvních 14 dnů a všechna tvrzení jsou podložena dodanými úseky."
+    }
+   },
+   {
+    "id": 36,
+    "level": "snadná",
+    "q": "Jak dlouho trvá otcovská a kolik se na ní dostává?",
+    "gold": "2 týdny, 70 % denního vyměřovacího základu.",
+    "chunks": [
+     "ZNP § 38b odst. 1",
+     "ZNP § 38c"
+    ],
+    "set": "new",
+    "rewritten": "Jaká je délka trvání otcovské dovolené a jaká je výše otcovské dávky?",
+    "top": [
+     {
+      "id": "ZNP § 38b odst. 1",
+      "score": 0.871
+     },
+     {
+      "id": "ZNP § 38c",
+      "score": 0.847
+     },
+     {
+      "id": "ZP § 195a",
+      "score": 0.85
+     },
+     {
+      "id": "ZP § 198 odst. 4",
+      "score": 0.853
+     },
+     {
+      "id": "ZNP § 38b odst. 2",
+      "score": 0.862
+     }
+    ],
+    "hit3": true,
+    "hit5": true,
+    "answer": "Otcovská dovolená přísluší po dobu poskytování dávky otcovské poporodní péče [3], přičemž podpůrčí doba u otcovské činí 2 týdny [1]. Výše otcovské za kalendářní den činí 70 % denního vyměřovacího základu [2].",
+    "cited": [
+     "ZNP § 38b odst. 1",
+     "ZNP § 38c",
+     "ZP § 195a"
+    ],
+    "said_nevim": false,
+    "judge": {
+     "correct": true,
+     "grounded": true,
+     "reason": "Odpověď správně uvádí 2 týdny i 70 % denního vyměřovacího základu a obě tvrzení se opírají o dodané úseky."
+    }
+   },
+   {
+    "id": 37,
+    "level": "střední",
+    "q": "Jak dlouho můžu být doma s nemocným dítětem na ošetřovném?",
+    "gold": "Nejdéle 9 kalendářních dnů; osamělý rodič s dítětem do 16 let nejdéle 16 dnů.",
+    "chunks": [
+     "ZNP § 40 odst. 1"
+    ],
+    "set": "new",
+    "rewritten": "Jaká je maximální doba poskytování ošetřovného při péči o nemocné dítě?",
+    "top": [
+     {
+      "id": "ZNP § 40 odst. 1",
+      "score": 0.881
+     },
+     {
+      "id": "ZNP § 40 odst. 8",
+      "score": 0.87
+     },
+     {
+      "id": "ZNP § 39 odst. 1",
+      "score": 0.869
+     },
+     {
+      "id": "ZP § 53 odst. 1",
+      "score": 0.865
+     },
+     {
+      "id": "ZNP § 39 odst. 5",
+      "score": 0.857
+     }
+    ],
+    "hit3": true,
+    "hit5": true,
+    "answer": "Ošetřovné se poskytuje nejdéle 9 kalendářních dnů, a jde-li o osamělého pojištěnce, který má v trvalé péči aspoň jedno dítě ve věku do 16 let, které neukončilo povinnou školní docházku, tak nejdéle 16 kalendářních dnů [1]. Ošetřovné náleží po celou podpůrčí dobu i v případě, že dítě dosáhne věku 10 let v průběhu podpůrčí doby [2].",
+    "cited": [
+     "ZNP § 40 odst. 1",
+     "ZNP § 40 odst. 8"
+    ],
+    "said_nevim": false,
+    "judge": {
+     "correct": true,
+     "grounded": true,
+     "reason": "Odpověď správně uvádí 9 dnů, resp. 16 dnů pro osamělého rodiče, a obě tvrzení jsou podložena dodanými úseky."
+    }
+   },
+   {
+    "id": 38,
+    "level": "snadná",
+    "q": "Dostanu příplatek za práci v noci?",
+    "gold": "Ano, nejméně 10 % průměrného výdělku, pokud se nesjedná jiná výše.",
+    "chunks": [
+     "ZP § 116"
+    ],
+    "set": "new",
+    "rewritten": "Náleží zaměstnanci příplatek za práci v noční době podle zákoníku práce?",
+    "top": [
+     {
+      "id": "ZP § 125",
+      "score": 0.902
+     },
+     {
+      "id": "ZP § 116",
+      "score": 0.899
+     },
+     {
+      "id": "ZP § 112 odst. 5",
+      "score": 0.854
+     },
+     {
+      "id": "ZP § 138",
+      "score": 0.853
+     },
+     {
+      "id": "ZP § 126 odst. 1",
+      "score": 0.863
+     }
+    ],
+    "hit3": true,
+    "hit5": true,
+    "answer": "Záleží na tom, jakou formu odměny pobíráte. Pokud jde o plat (stát, kraje, obce, státní organizace), přísluší vám za hodinu noční práce příplatek ve výši 20 % průměrného hodinového výdělku [1]. Pokud jde o mzdu u soukromého zaměstnavatele, přísluší vám za dobu noční práce dosažená mzda a příplatek nejméně ve výši 10 % průměrného výdělku, přičemž je možné sjednat jinou minimální výši a způsob určení příplatku [2]. U dohody o provedení práce nebo dohody o pracovní činnosti se odměna sjednává v dohodě a § 114a až 118 se použijí obdobně, přičemž odměnu lze sjednat již s přihlédnutím k případné noční práci [4].",
+    "cited": [
+     "ZP § 125",
+     "ZP § 116",
+     "ZP § 138"
+    ],
+    "said_nevim": false,
+    "judge": {
+     "correct": true,
+     "grounded": true,
+     "reason": "Asistent správně rozlišuje plat (20 % dle § 125) a mzdu (min. 10 % dle § 116) a doplňuje dohody, což odpovídá zlaté odpovědi i dodaným úsekům."
+    }
+   },
+   {
+    "id": 39,
+    "level": "snadná",
+    "q": "Kolik příplatku dostanu za přesčas?",
+    "gold": "Nejméně 25 % průměrného výdělku, pokud se se zaměstnavatelem nedohodnete na náhradním volnu místo příplatku.",
+    "chunks": [
+     "ZP § 114 odst. 1"
+    ],
+    "set": "new",
+    "rewritten": "Jaká je výše příplatku za práci přesčas?",
+    "top": [
+     {
+      "id": "ZP § 114 odst. 1",
+      "score": 0.894
+     },
+     {
+      "id": "ZP § 127 odst. 1",
+      "score": 0.876
+     },
+     {
+      "id": "ZP § 114 odst. 2",
+      "score": 0.874
+     },
+     {
+      "id": "ZP § 114 odst. 3",
+      "score": 0.868
+     },
+     {
+      "id": "ZP § 127 odst. 3",
+      "score": 0.871
+     }
+    ],
+    "hit3": true,
+    "hit5": true,
+    "answer": "Záleží na tom, jestli dostáváte mzdu (soukromý zaměstnavatel), nebo plat (stát, kraje, obce, státní organizace).\n\nPokud dostáváte mzdu, přísluší vám za dobu práce přesčas dosažená mzda a příplatek nejméně ve výši 25 % průměrného výdělku, pokud se nedohodnete na náhradním volnu místo příplatku [1]. Pokud zaměstnavatel neposkytne náhradní volno do 3 kalendářních měsíců po výkonu práce přesčas nebo v jinak dohodnuté době, přísluší vám k dosažené mzdě tento příplatek [3].\n\nPokud dostáváte plat, přísluší vám za hodinu práce přesčas příslušná část platového tarifu, osobního a zvláštního příplatku a příplatku za práci ve ztíženém pracovním prostředí a příplatek ve výši 25 % průměrného hodinového výdělku, a jde-li o dny nepřetržitého odpočinku v týdnu, příplatek ve výši 50 % průměrného hodinového výdělku, pokud se nedohodnete na náhradním volnu místo platu za práci přesčas [2].\n\nMyslel jste mzdu, nebo plat?",
+    "cited": [
+     "ZP § 114 odst. 1",
+     "ZP § 127 odst. 1",
+     "ZP § 114 odst. 2"
+    ],
+    "said_nevim": false,
+    "judge": {
+     "correct": true,
+     "grounded": true,
+     "reason": "Asistent správně uvádí minimálně 25 % průměrného výdělku s možností náhradního volna a rozlišuje mzdu vs. plat, vše podloženo dodanými úseky."
+    }
+   },
+   {
+    "id": 40,
+    "level": "střední",
+    "q": "Do kdy mi musí zaměstnavatel vydat pracovní posudek?",
+    "gold": "Do 15 dnů od žádosti; dříve než 2 měsíce před skončením zaměstnání ho vydat nemusí.",
+    "chunks": [
+     "ZP § 314 odst. 1"
+    ],
+    "set": "new",
+    "rewritten": "V jaké lhůtě je zaměstnavatel povinen vydat zaměstnanci potvrzení o zaměstnání?",
+    "top": [
+     {
+      "id": "ZP § 313 odst. 1",
+      "score": 0.856
+     },
+     {
+      "id": "ZP § 314 odst. 1",
+      "score": 0.914
+     },
+     {
+      "id": "ZZ § 27 odst. 3",
+      "score": 0.855
+     },
+     {
+      "id": "ZNP § 62 odst. 2",
+      "score": 0.88
+     },
+     {
+      "id": "ZP § 315",
+      "score": 0.896
+     }
+    ],
+    "hit3": true,
+    "hit5": true,
+    "answer": "Zaměstnavatel je povinen vydat pracovní posudek do 15 dnů, pokud o něj zaměstnanec požádá [2]. Není však povinen vydat jej dříve než v době 2 měsíců před skončením zaměstnání [2].",
+    "cited": [
+     "ZP § 314 odst. 1"
+    ],
+    "said_nevim": false,
+    "judge": {
+     "correct": true,
+     "grounded": true,
+     "reason": "Odpověď přesně vystihuje lhůtu 15 dnů i omezení 2 měsíců před skončením zaměstnání a obě tvrzení se opírají o § 314 odst. 1."
+    }
+   },
+   {
+    "id": 41,
+    "level": "střední",
+    "q": "Jak dlouho dopředu musím požádat o rodičovskou dovolenou?",
+    "gold": "Alespoň 30 dnů před nástupem, pokud tomu nebrání vážné důvody. Žádost musí být písemná.",
+    "chunks": [
+     "ZP § 196 odst. 2"
+    ],
+    "set": "new",
+    "rewritten": "V jakém časovém předstihu je zaměstnanec povinen požádat zaměstnavatele o poskytnutí rodičovské dovolené?",
+    "top": [
+     {
+      "id": "ZP § 196 odst. 2",
+      "score": 0.913
+     },
+     {
+      "id": "ZP § 196 odst. 1",
+      "score": 0.89
+     },
+     {
+      "id": "ZP § 217 odst. 5",
+      "score": 0.87
+     },
+     {
+      "id": "ZP § 197 odst. 3",
+      "score": 0.879
+     },
+     {
+      "id": "ZP § 218 odst. 5",
+      "score": 0.869
+     }
+    ],
+    "hit3": true,
+    "hit5": true,
+    "answer": "Žádost o rodičovskou dovolenou podává zaměstnanec alespoň 30 dnů před nástupem na rodičovskou dovolenou, nebrání-li tomu vážné důvody na jeho straně [1]. Žádost musí obsahovat dobu trvání rodičovské dovolené a lze ji podávat i opakovaně [1].",
+    "cited": [
+     "ZP § 196 odst. 2"
+    ],
+    "said_nevim": false,
+    "judge": {
+     "correct": true,
+     "grounded": true,
+     "reason": "Odpověď správně uvádí lhůtu 30 dnů i výjimku vážných důvodů a opírá se o dodaný úsek [1]."
+    }
+   },
+   {
+    "id": 42,
+    "level": "střední",
+    "q": "Kolik dní volna dostanu, když mi zemře máma?",
+    "gold": "1 den s náhradou mzdy na pohřeb a další den, pokud pohřeb obstarávám. Navíc až 5 dnů volna bez náhrady mzdy.",
+    "chunks": [
+     "NV 590 příloha bod 7"
+    ],
+    "set": "new",
+    "rewritten": "Kolik dnů pracovního volna poskytne zaměstnavatel zaměstnanci při úmrtí matky?",
+    "top": [
+     {
+      "id": "NV 590 příloha bod 7",
+      "score": 0.867
+     },
+     {
+      "id": "ZP § 198 odst. 4",
+      "score": 0.878
+     },
+     {
+      "id": "ZP § 199 odst. 3",
+      "score": 0.833
+     },
+     {
+      "id": "ZP § 235 odst. 1",
+      "score": 0.834
+     },
+     {
+      "id": "ZP § 195 odst. 4",
+      "score": 0.869
+     }
+    ],
+    "hit3": true,
+    "hit5": true,
+    "answer": "Pokud jde o úmrtí vaší matky (rodiče), poskytne se pracovní volno s náhradou mzdy nebo platu na 1 den k účasti na pohřbu a na další den, jestliže zaměstnanec obstarává tento pohřeb [1]. Kromě toho se poskytne pracovní volno bez náhrady mzdy nebo platu až na dalších 5 dnů [1].",
+    "cited": [
+     "NV 590 příloha bod 7"
+    ],
+    "said_nevim": false,
+    "judge": {
+     "correct": true,
+     "grounded": true,
+     "reason": "Asistent správně uvádí 1 den s náhradou mzdy na pohřeb rodiče, další den při obstarávání pohřbu a až 5 dnů bez náhrady mzdy, vše podloženo úsekem [1]."
+    }
+   },
+   {
+    "id": 43,
+    "level": "bez odpovědi",
+    "q": "Kolik peněz dostanu celkem na rodičovském příspěvku?",
+    "gold": "NEVÍM – rodičovský příspěvek upravuje zákon o státní sociální podpoře, ten v aplikaci není.",
+    "chunks": [],
+    "set": "new",
+    "rewritten": "Jaká je celková výše rodičovského příspěvku?",
+    "top": [
+     {
+      "id": "ZNP § 44 odst. 1",
+      "score": 0.849
+     },
+     {
+      "id": "ZNP § 44 odst. 2",
+      "score": 0.852
+     },
+     {
+      "id": "ZZ § 120d odst. 2",
+      "score": 0.838
+     },
+     {
+      "id": "ZZ § 120f odst. 1",
+      "score": 0.838
+     },
+     {
+      "id": "ZNP § 43 odst. 2",
+      "score": 0.844
+     }
+    ],
+    "hit3": null,
+    "hit5": null,
+    "answer": "Nevím, v dostupných úsecích zákona to není.",
+    "cited": [],
+    "said_nevim": true,
+    "judge": {
+     "correct": true,
+     "grounded": true,
+     "reason": "Asistent správně odmítl odpovědět, protože dodané úseky rodičovský příspěvek neupravují, a nic si nevymyslel."
+    }
+   },
+   {
+    "id": 44,
+    "level": "bez odpovědi",
+    "q": "Kolik zaplatím jako OSVČ měsíčně na sociálním pojištění?",
+    "gold": "NEVÍM – pojistné OSVČ upravuje zákon o pojistném na sociální zabezpečení, ten v aplikaci není.",
+    "chunks": [],
+    "set": "new",
+    "rewritten": "Jaká je měsíční výše pojistného na sociální zabezpečení pro osobu samostatně výdělečně činnou?",
+    "top": [
+     {
+      "id": "ZP § 356 odst. 3",
+      "score": 0.857
+     },
+     {
+      "id": "ZNP § 104 odst. 3",
+      "score": 0.841
+     },
+     {
+      "id": "ZZ § 113 odst. 5",
+      "score": 0.85
+     },
+     {
+      "id": "ZNP § 183",
+      "score": 0.846
+     },
+     {
+      "id": "ZNP § 83 odst. 1",
+      "score": 0.84
+     }
+    ],
+    "hit3": null,
+    "hit5": null,
+    "answer": "Nevím, v dostupných úsecích zákona to není.",
+    "cited": [],
+    "said_nevim": true,
+    "judge": {
+     "correct": true,
+     "grounded": true,
+     "reason": "Asistent správně odmítl odpovědět, protože dodané úseky neobsahují úpravu pojistného OSVČ."
+    }
+   },
+   {
+    "id": 45,
+    "level": "bez odpovědi",
+    "q": "Jak dlouhá je výpovědní doba z nájmu bytu?",
+    "gold": "NEVÍM – nájem bytu upravuje občanský zákoník, ten v aplikaci není. Výpovědní doba ze zákoníku práce sem nepatří.",
+    "chunks": [],
+    "set": "new",
+    "rewritten": "Jaká je výpovědní doba z nájmu bytu?",
+    "top": [
+     {
+      "id": "ZP § 51 odst. 2",
+      "score": 0.853
+     },
+     {
+      "id": "ZP § 51 odst. 1",
+      "score": 0.844
+     },
+     {
+      "id": "ZP § 317a odst. 5",
+      "score": 0.848
+     },
+     {
+      "id": "ZZ § 78 odst. 7",
+      "score": 0.839
+     },
+     {
+      "id": "ZP § 87a odst. 3",
+      "score": 0.836
+     }
+    ],
+    "hit3": null,
+    "hit5": null,
+    "answer": "Nevím, v dostupných úsecích zákona to není.",
+    "cited": [],
+    "said_nevim": true,
+    "judge": {
+     "correct": true,
+     "grounded": true,
+     "reason": "Asistent správně odmítl odpovědět, protože dodané úseky upravují výpovědní dobu jen v pracovněprávních vztazích, nikoli nájem bytu."
+    }
+   },
+   {
+    "id": 46,
+    "level": "bez odpovědi",
+    "q": "Kolik je sleva na dani na poplatníka?",
+    "gold": "NEVÍM – daně upravuje zákon o daních z příjmů, ten v aplikaci není.",
+    "chunks": [],
+    "set": "new",
+    "rewritten": "Jaká je výše slevy na dani na poplatníka?",
+    "top": [
+     {
+      "id": "ZZ § 109b",
+      "score": 0.802
+     },
+     {
+      "id": "ZP § 180",
+      "score": 0.804
+     },
+     {
+      "id": "ZP § 324a odst. 7",
+      "score": 0.821
+     },
+     {
+      "id": "ZNP § 17 odst. 1",
+      "score": 0.801
+     },
+     {
+      "id": "ZZ § 113 odst. 5",
+      "score": 0.812
+     }
+    ],
+    "hit3": null,
+    "hit5": null,
+    "answer": "Nevím, v dostupných úsecích zákona to není.",
+    "cited": [],
+    "said_nevim": true,
+    "judge": {
+     "correct": true,
+     "grounded": true,
+     "reason": "Asistent správně odmítl odpovědět, protože sleva na dani na poplatníka není v dodaných úsecích zákona upravena."
+    }
+   },
+   {
+    "id": 47,
+    "level": "střední",
+    "q": "Co dostanu, když pracuji ve svátek?",
+    "gold": "U mzdy: dosaženou mzdu a náhradní volno ve stejném rozsahu (do konce 3. měsíce po svátku), za volno náhradu mzdy. Místo volna se lze dohodnout na příplatku nejméně 100 % průměrného výdělku. (U platu ve státní sféře platí zvláštní § 135.)",
+    "chunks": [
+     "ZP § 115 odst. 1",
+     "ZP § 115 odst. 2"
+    ],
+    "set": "fresh",
+    "rewritten": "Jaké plnění náleží zaměstnanci za výkon práce v den svátku?",
+    "top": [
+     {
+      "id": "ZP § 115 odst. 1",
+      "score": 0.877
+     },
+     {
+      "id": "ZP § 115 odst. 2",
+      "score": 0.867
+     },
+     {
+      "id": "ZP § 135 odst. 2",
+      "score": 0.878
+     },
+     {
+      "id": "ZP § 135 odst. 3",
+      "score": 0.876
+     },
+     {
+      "id": "ZP § 115 odst. 3",
+      "score": 0.872
+     }
+    ],
+    "hit3": true,
+    "hit5": true,
+    "answer": "Záleží na tom, zda jste u soukromého zaměstnavatele (mzda), nebo ve státní sféře (plat).\n\nPokud jste u soukromého zaměstnavatele, přísluší vám za dobu práce ve svátek dosažená mzda a náhradní volno v rozsahu práce konané ve svátek, které vám zaměstnavatel poskytne nejpozději do konce třetího kalendářního měsíce následujícího po výkonu práce ve svátek nebo v jinak dohodnuté době; za dobu čerpání náhradního volna vám přísluší náhrada mzdy ve výši průměrného výdělku [1]. Můžete se se zaměstnavatelem dohodnout na poskytnutí příplatku k dosažené mzdě nejméně ve výši průměrného výdělku místo náhradního volna [2].\n\nPokud jste ve státní sféře, poskytne vám zaměstnavatel za práci ve svátek náhradní volno v rozsahu práce konané ve svátek, a to nejpozději do konce třetího kalendářního měsíce následujícího po výkonu práce ve svátek nebo v jinak dohodnuté době; za dobu čerpání náhradního volna se plat nekrátí [3]. Můžete se se zaměstnavatelem dohodnout na poskytnutí příplatku ve výši průměrného hodinového výdělku za hodinu práce ve svátek místo náhradního volna [4].",
+    "cited": [
+     "ZP § 115 odst. 1",
+     "ZP § 115 odst. 2",
+     "ZP § 135 odst. 2",
+     "ZP § 135 odst. 3"
+    ],
+    "said_nevim": false,
+    "judge": {
+     "correct": true,
+     "grounded": true,
+     "reason": "Asistent správně rozlišuje mzdu a plat, uvádí náhradní volno, náhradu mzdy i možnost dohody o příplatku, vše podloženo dodanými úseky."
+    }
+   },
+   {
+    "id": 48,
+    "level": "střední",
+    "q": "Do kdy po narození dítěte musím nastoupit na otcovskou?",
+    "gold": "Do 6 týdnů ode dne narození dítěte (prodlužuje se o dny hospitalizace dítěte nebo matky).",
+    "chunks": [
+     "ZNP § 38a odst. 4"
+    ],
+    "set": "fresh",
+    "rewritten": "Do kdy po narození dítěte je zaměstnanec povinen nastoupit na otcovskou dovolenou?",
+    "top": [
+     {
+      "id": "ZNP § 38a odst. 4",
+      "score": 0.895
+     },
+     {
+      "id": "ZP § 195a",
+      "score": 0.872
+     },
+     {
+      "id": "ZNP § 38b odst. 2",
+      "score": 0.889
+     },
+     {
+      "id": "ZP § 196 odst. 1",
+      "score": 0.872
+     },
+     {
+      "id": "ZP § 198 odst. 4",
+      "score": 0.863
+     }
+    ],
+    "hit3": true,
+    "hit5": true,
+    "answer": "Otcovská náleží, pokud nástup na otcovskou nastal v období 6 týdnů ode dne narození dítěte [1]. Toto období se prodlužuje o kalendářní dny hospitalizace dítěte ze zdravotních důvodů na straně dítěte nebo matky, které spadají do 6 týdnů od narození [1]. Pokud jde o otcovskou podle § 38a odst. 2 a období od úmrtí dítěte by bylo kratší než 2 týdny, náleží, pokud nástup nastal v období 2 týdnů ode dne úmrtí dítěte [1].",
+    "cited": [
+     "ZNP § 38a odst. 4"
+    ],
+    "said_nevim": false,
+    "judge": {
+     "correct": true,
+     "grounded": true,
+     "reason": "Odpověď správně uvádí lhůtu 6 týdnů i prodloužení o dny hospitalizace, což odpovídá zlaté odpovědi i dodaným úsekům."
+    }
+   },
+   {
+    "id": 49,
+    "level": "snadná",
+    "q": "Kolik peněz dostanu na ošetřovném?",
+    "gold": "60 % denního vyměřovacího základu za kalendářní den.",
+    "chunks": [
+     "ZNP § 41"
+    ],
+    "set": "fresh",
+    "rewritten": "Jaká je výše ošetřovného?",
+    "top": [
+     {
+      "id": "ZNP § 41",
+      "score": 0.859
+     },
+     {
+      "id": "ZNP § 41f",
+      "score": 0.848
+     },
+     {
+      "id": "ZNP § 173 odst. 1",
+      "score": 0.848
+     },
+     {
+      "id": "ZNP § 40 odst. 5",
+      "score": 0.864
+     },
+     {
+      "id": "ZNP § 41a odst. 8",
+      "score": 0.856
+     }
+    ],
+    "hit3": true,
+    "hit5": true,
+    "answer": "Ošetřovné za kalendářní den činí 60 % denního vyměřovacího základu [1]. U dlouhodobého ošetřovného je to rovněž 60 % denního vyměřovacího základu [2].",
+    "cited": [
+     "ZNP § 41",
+     "ZNP § 41f"
+    ],
+    "said_nevim": false,
+    "judge": {
+     "correct": true,
+     "grounded": true,
+     "reason": "Asistent správně uvádí 60 % denního vyměřovacího základu pro ošetřovné i dlouhodobé ošetřovné, což odpovídá zlaté odpovědi i dodaným úsekům."
+    }
+   },
+   {
+    "id": 50,
+    "level": "snadná",
+    "q": "Dostanu něco navíc za pracovní pohotovost?",
+    "gold": "Ano, odměnu nejméně 10 % průměrného výdělku.",
+    "chunks": [
+     "ZP § 140"
+    ],
+    "set": "fresh",
+    "rewritten": "Náleží zaměstnanci za pracovní pohotovost zvláštní odměna?",
+    "top": [
+     {
+      "id": "ZP § 140",
+      "score": 0.885
+     },
+     {
+      "id": "ZP § 95 odst. 1",
+      "score": 0.882
+     },
+     {
+      "id": "ZP § 95 odst. 2",
+      "score": 0.88
+     },
+     {
+      "id": "ZP § 144",
+      "score": 0.857
+     },
+     {
+      "id": "ZP § 145 odst. 2",
+      "score": 0.845
+     }
+    ],
+    "hit3": true,
+    "hit5": true,
+    "answer": "Za dobu pracovní pohotovosti vám přísluší odměna nejméně ve výši 10 % průměrného výdělku [1]. Tuto pohotovost po vás ale zaměstnavatel může požadovat, jen když se na tom se zaměstnancem dohodne [2]. Pokud v době pohotovosti skutečně pracujete, dostanete za tuto dobu mzdu nebo plat a odměna za pohotovost už vám za tuto dobu nepřísluší [3].",
+    "cited": [
+     "ZP § 140",
+     "ZP § 95 odst. 1",
+     "ZP § 95 odst. 2"
+    ],
+    "said_nevim": false,
+    "judge": {
+     "correct": true,
+     "grounded": true,
+     "reason": "Odpověď správně uvádí odměnu nejméně 10 % průměrného výdělku a všechna tvrzení jsou podložena dodanými úseky zákona."
+    }
+   },
+   {
+    "id": 51,
+    "level": "snadná",
+    "q": "Do kdy mi musí zaměstnavatel vyplatit výplatu?",
+    "gold": "Nejpozději v kalendářním měsíci následujícím po měsíci, ve kterém vzniklo právo na mzdu.",
+    "chunks": [
+     "ZP § 141 odst. 1"
+    ],
+    "set": "fresh",
+    "rewritten": "V jaké lhůtě je zaměstnavatel povinen vyplatit zaměstnanci mzdu?",
+    "top": [
+     {
+      "id": "ZP § 141 odst. 1",
+      "score": 0.86
+     },
+     {
+      "id": "ZP § 141 odst. 3",
+      "score": 0.863
+     },
+     {
+      "id": "ZP § 141 odst. 5",
+      "score": 0.874
+     },
+     {
+      "id": "ZP § 142 odst. 5",
+      "score": 0.865
+     },
+     {
+      "id": "ZP § 142 odst. 4",
+      "score": 0.861
+     }
+    ],
+    "hit3": true,
+    "hit5": true,
+    "answer": "Mzda nebo plat jsou splatné po vykonání práce, nejpozději v kalendářním měsíci následujícím po měsíci, ve kterém vzniklo právo na mzdu nebo plat [1]. Pravidelný termín výplaty musí být sjednán, stanoven nebo určen v rámci tohoto období [2].\n\nPokud jde o skončení pracovního poměru, pak na vaši žádost je zaměstnavatel povinen vyplatit mzdu nebo plat za měsíční období, na které vzniklo právo, v den skončení pracovního poměru; pokud to neumožňuje technika výpočtu mezd, nejpozději v nejbližším pravidelném termínu výplaty následujícím po dni skončení pracovního poměru [3].\n\nMěl jste na mysli běžnou výplatu, nebo výplatu při skončení pracovního poměru?",
+    "cited": [
+     "ZP § 141 odst. 1",
+     "ZP § 141 odst. 3",
+     "ZP § 141 odst. 5"
+    ],
+    "said_nevim": false,
+    "judge": {
+     "correct": true,
+     "grounded": true,
+     "reason": "Asistent správně uvádí lhůtu splatnosti mzdy podle § 141 odst. 1 a jeho tvrzení jsou podložena dodanými úseky."
+    }
+   },
+   {
+    "id": 52,
+    "level": "snadná",
+    "q": "Musí mi zaměstnavatel při odchodu dát zápočťák?",
+    "gold": "Ano, při skončení pracovního poměru (i DPČ a některých DPP) musí vydat potvrzení o zaměstnání.",
+    "chunks": [
+     "ZP § 313 odst. 1"
+    ],
+    "set": "fresh",
+    "rewritten": "Je zaměstnavatel povinen při skončení pracovního poměru vydat zaměstnanci potvrzení o zaměstnání?",
+    "top": [
+     {
+      "id": "ZP § 313 odst. 1",
+      "score": 0.838
+     },
+     {
+      "id": "ZP § 141 odst. 5",
+      "score": 0.841
+     },
+     {
+      "id": "ZP § 67 odst. 5",
+      "score": 0.848
+     },
+     {
+      "id": "ZP § 314 odst. 1",
+      "score": 0.833
+     },
+     {
+      "id": "ZP § 41 odst. 7",
+      "score": 0.831
+     }
+    ],
+    "hit3": true,
+    "hit5": true,
+    "answer": "Pokud skončí pracovní poměr, dohoda o pracovní činnosti, nebo dohoda o provedení práce (u DPP jen za podmínek uvedených v zákoně), je zaměstnavatel povinen vydat vám potvrzení o zaměstnání, tzv. zápočťák [1]. Toto potvrzení musí obsahovat údaje o zaměstnání, druhu konaných prací, dosažené kvalifikaci, odpracované době a další náležitosti [1].",
+    "cited": [
+     "ZP § 313 odst. 1"
+    ],
+    "said_nevim": false,
+    "judge": {
+     "correct": true,
+     "grounded": true,
+     "reason": "Odpověď správně uvádí povinnost vydat potvrzení o zaměstnání při skončení PP, DPČ i DPP za zákonných podmínek a všechny údaje jsou podloženy § 313."
+    }
+   },
+   {
+    "id": 53,
+    "level": "střední",
+    "q": "Můžu mít vedle práce ještě živnost ve stejném oboru jako můj zaměstnavatel?",
+    "gold": "Jen s jeho předchozím písemným souhlasem.",
+    "chunks": [
+     "ZP § 304 odst. 1"
+    ],
+    "set": "fresh",
+    "rewritten": "Může zaměstnanec vykonávat vedle pracovněprávního vztahu samostatnou výdělečnou činnost ve stejném oboru činnosti jako zaměstnavatel?",
+    "top": [
+     {
+      "id": "ZP § 304 odst. 1",
+      "score": 0.861
+     },
+     {
+      "id": "ZZ § 113 odst. 6",
+      "score": 0.838
+     },
+     {
+      "id": "ZP § 34b odst. 2",
+      "score": 0.847
+     },
+     {
+      "id": "ZZ § 75 odst. 9",
+      "score": 0.836
+     },
+     {
+      "id": "ZNP § 12",
+      "score": 0.835
+     }
+    ],
+    "hit3": true,
+    "hit5": true,
+    "answer": "Pokud jste zaměstnán v základním pracovněprávním vztahu, můžete vedle něj vykonávat výdělečnou činnost shodnou s předmětem činnosti svého zaměstnavatele jen s jeho předchozím písemným souhlasem [1]. Pokud jste u téhož zaměstnavatele v dalším základním pracovněprávním vztahu, nesmíte vykonávat práce stejně druhově vymezené, s výjimkou uvedenou v zákoně [3].",
+    "cited": [
+     "ZP § 304 odst. 1",
+     "ZP § 34b odst. 2"
+    ],
+    "said_nevim": false,
+    "judge": {
+     "correct": true,
+     "grounded": true,
+     "reason": "Asistent správně uvádí, že vedlejší výdělečná činnost shodná s předmětem činnosti zaměstnavatele vyžaduje předchozí písemný souhlas, což odpovídá zlaté odpovědi i citovanému § 304 odst. 1 ZP."
+    }
+   },
+   {
+    "id": 54,
+    "level": "snadná",
+    "q": "Co musí obsahovat pracovní smlouva?",
+    "gold": "Druh práce, místo nebo místa výkonu práce a den nástupu do práce.",
+    "chunks": [
+     "ZP § 34 odst. 1"
+    ],
+    "set": "fresh",
+    "rewritten": "Jaké náležitosti musí obsahovat pracovní smlouva?",
+    "top": [
+     {
+      "id": "ZP § 34 odst. 1",
+      "score": 0.881
+     },
+     {
+      "id": "ZP § 34 odst. 2",
+      "score": 0.858
+     },
+     {
+      "id": "ZP § 34 odst. 5",
+      "score": 0.855
+     },
+     {
+      "id": "ZZ § 91 odst. 4",
+      "score": 0.874
+     },
+     {
+      "id": "ZP § 33 odst. 1",
+      "score": 0.862
+     }
+    ],
+    "hit3": true,
+    "hit5": true,
+    "answer": "Pracovní smlouva musí obsahovat druh práce, místo nebo místa výkonu práce a den nástupu do práce [1]. Musí být uzavřena písemně [2] a každá smluvní strana musí obdržet jedno vyhotovení [3]. Pracovní poměr se zakládá pracovní smlouvou mezi zaměstnavatelem a zaměstnancem, není-li v zákoně stanoveno jinak [5].",
+    "cited": [
+     "ZP § 34 odst. 1",
+     "ZP § 34 odst. 2",
+     "ZP § 34 odst. 5",
+     "ZP § 33 odst. 1"
+    ],
+    "said_nevim": false,
+    "judge": {
+     "correct": true,
+     "grounded": true,
+     "reason": "Asistent správně uvedl všechny tři povinné náležitosti dle § 34 odst. 1 a doplňující tvrzení jsou podložena dodanými úseky."
+    }
+   },
+   {
+    "id": 55,
+    "level": "bez odpovědi",
+    "q": "Kolik je příspěvek na bydlení?",
+    "gold": "NEVÍM – příspěvek na bydlení upravuje zákon o státní sociální podpoře, ten v aplikaci není.",
+    "chunks": [],
+    "set": "fresh",
+    "rewritten": "Jaká je výše příspěvku na bydlení podle zákona o státní sociální podpoře?",
+    "top": [
+     {
+      "id": "ZNP § 41e odst. 4",
+      "score": 0.829
+     },
+     {
+      "id": "ZZ § 78a odst. 2",
+      "score": 0.824
+     },
+     {
+      "id": "ZZ § 113 odst. 5",
+      "score": 0.827
+     },
+     {
+      "id": "ZZ § 78c odst. 6",
+      "score": 0.822
+     },
+     {
+      "id": "ZZ § 112 odst. 2",
+      "score": 0.82
+     }
+    ],
+    "hit3": null,
+    "hit5": null,
+    "answer": "Nevím, v dostupných úsecích zákona to není.",
+    "cited": [],
+    "said_nevim": true,
+    "judge": {
+     "correct": true,
+     "grounded": true,
+     "reason": "Asistent správně odmítl odpovědět, protože v dodaných úsecích není úprava příspěvku na bydlení podle zákona o státní sociální podpoře."
+    }
+   },
+   {
+    "id": 56,
+    "level": "bez odpovědi",
+    "q": "Kolik let musím odpracovat, abych dostal důchod?",
+    "gold": "NEVÍM – podmínky důchodu upravuje zákon o důchodovém pojištění, ten v aplikaci není.",
+    "chunks": [],
+    "set": "fresh",
+    "rewritten": "Kolik let důchodového pojištění je třeba získat pro nárok na starobní důchod?",
+    "top": [
+     {
+      "id": "ZP § 271b odst. 6",
+      "score": 0.845
+     },
+     {
+      "id": "ZZ § 49 odst. 2",
+      "score": 0.848
+     },
+     {
+      "id": "ZZ § 48",
+      "score": 0.841
+     },
+     {
+      "id": "ZZ § 49 odst. 1",
+      "score": 0.844
+     },
+     {
+      "id": "ZZ § 39 odst. 1",
+      "score": 0.832
+     }
+    ],
+    "hit3": null,
+    "hit5": null,
+    "answer": "Nevím, v dostupných úsecích zákona to není.",
+    "cited": [],
+    "said_nevim": true,
+    "judge": {
+     "correct": true,
+     "grounded": true,
+     "reason": "Asistent správně odmítl odpovědět, protože dodané úseky neobsahují zákon o důchodovém pojištění a podmínky nároku na důchod."
+    }
+   }
+  ],
+  "cost_usd_new_calls": 0.01995,
+  "cost_usd_full": 0.0502
  }
 }

@@ -37,19 +37,19 @@
  ],
  "Může mi zaměstnavatel dát výpověď, když jsem nemocný?": [
   false,
-  "Hlavní pravidlo chybí: § 53 odst. 1 zakazuje výpověď v době pracovní neschopnosti (ochranná doba). Ten se mezi 5 úseků nedostal, model proto odpověděl jen okrajově."
+  "Pořád chyba, i ve v3: § 53 odst. 1 (zákaz výpovědi v době pracovní neschopnosti) se nedostal ani mezi 20 kandidátů, takže ho výběr přes LLM nemohl zachránit. Model řekl „nevím“. Kde se to pokazilo: hledání."
  ],
  "Kolik dostanu za práci o víkendu?": [
-  false,
-  "Smíchal mzdu a plat: 25 % podle § 126 platí jen pro plat ve veřejné sféře. Pro mzdu je to nejméně 10 % (§ 118)."
+  true,
+  "Opraveno ve v3: odpověď rozliší mzdu (nejméně 10 %, § 118) a plat (25 %, § 126)."
  ],
  "Může mi zaměstnavatel nařídit práci z domova?": [
   true,
   "Ručně ověřeno proti textu zákona."
  ],
  "Jak dlouho můžu být maximálně na nemocenské?": [
-  false,
-  "Neúplné: základních 380 dnů (§ 26 ZNP) se nenašlo. Model to poctivě řekl a uvedl jen prodloužení o 350 dnů podle § 27."
+  true,
+  "Opraveno ve v3: výběr přes LLM našel § 26 (380 dnů) i § 27 (prodloužení o 350 dnů)."
  ],
  "Kolik peněz dostanu na mateřské?": [
   true,
@@ -57,7 +57,7 @@
  ],
  "Dostanu podporu v nezaměstnanosti, když jsem dal výpověď sám?": [
   false,
-  "Zbytečné „nevím“: § 39 odst. 2 ZZ byl mezi úseky a vyjmenovává, kdy nárok na podporu není. Vlastní výpověď mezi těmi důvody není."
+  "Pořád chyba, i ve v3: § 39 odst. 2 ZZ byl mezi úseky a vyjmenovává, kdy nárok na podporu není. Vlastní výpověď mezi těmi důvody není, model to ale nevyvodil a řekl „nevím“. Kde se to pokazilo: čtení."
  ],
  "Kolik dní volna dostanu na stěhování?": [
   true,

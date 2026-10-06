@@ -60,10 +60,23 @@ function search(qVec, rwVec, rewritten) {
   const d = cosineAll(qVec);
   const steps = { dense_q: top(d), dense_rw: top(cosineAll(rwVec)), bm25: top(bm25(rewritten)) };
   const fused = rrf([steps.dense_q, steps.dense_rw, steps.bm25]);
-  const hits = fused.slice(0, IDX.top_k).map(([i]) => [i, Math.round(d[i] * 1000) / 1000]);
   const trace = Object.fromEntries(Object.entries(steps).map(([k, v]) => [k, v.slice(0, 20)]));
-  trace.fused = fused.slice(0, 12).map(([i, s]) => [i, Math.round(s * 1e5) / 1e5]);
-  return { hits, trace };
+  trace.fused = fused.slice(0, IDX.n_cand).map(([i, s]) => [i, Math.round(s * 1e5) / 1e5]);
+  return { d, fused, trace };
+}
+// v3: LLM vybere z 20 kandidátů ty, které k odpovědi patří (shodné s rag.rerank / rag.parse_pick)
+function rerankPrompt(q, rewritten, cands) {
+  return `Otázka: ${q}\nV jazyce zákona: ${rewritten}\n\nÚseky:\n` + cands.map((i, n) => {
+    const c = IDX.chunks[i]; return `[${n + 1}] ${c.id} (${c.title}): ${[...c.text].slice(0, 400).join("")}`; }).join("\n");
+}
+function parsePick(text, n) {
+  const out = [];
+  for (const m of text.match(/\d+/g) || []) { const x = +m; if (x >= 1 && x <= n && !out.includes(x - 1)) out.push(x - 1); }
+  return out.slice(0, IDX.top_k);
+}
+function finalHits(d, fused, picked) {
+  const order = [...picked, ...fused.map(([i]) => i).filter(i => !picked.includes(i))];
+  return order.slice(0, IDX.top_k).map(i => [i, Math.round(d[i] * 1000) / 1000]);
 }
 
 // ---------- OpenRouter ----------
@@ -81,7 +94,8 @@ async function call(path, body) {
   }
   throw new Error("OpenRouter nedostupný");
 }
-const chat = async (system, user) => (await call("chat/completions", { model: IDX.llm, temperature: 0,
+// reasoning vypnutý jako v rag.py (v3): bez skrytého přemýšlení je odpověď ~10× rychlejší a levnější
+const chat = async (system, user) => (await call("chat/completions", { model: IDX.llm, temperature: 0, reasoning: { enabled: false },
   messages: [{ role: "system", content: system }, { role: "user", content: user }] })).choices[0].message.content.trim();
 async function embed(texts) {
   const data = await call("embeddings", { model: IDX.emb_model, input: texts });
@@ -125,8 +139,12 @@ module.exports = async (req, res) => {
     let rewritten = await chat(IDX.rewrite, q);
     rewritten = rewritten.replace(/^"+|"+$/g, "").split(/\r?\n/)[0].trim() || q;
     const [qVec, rwVec] = await embed([`query: ${q}`, `query: ${rewritten}`]);
-    const { hits, trace } = search(qVec, rwVec, rewritten);
-    const ctx = hits.map(([i], n) => `[${n + 1}] ${IDX.chunks[i].id} (${IDX.chunks[i].title}): ${IDX.chunks[i].text}`).join("\n\n");
+    const { d, fused, trace } = search(qVec, rwVec, rewritten);
+    const cands = fused.slice(0, IDX.n_cand).map(([i]) => i);
+    const picked = parsePick(await chat(IDX.rerank, rerankPrompt(q, rewritten, cands)), cands.length).map(j => cands[j]);
+    trace.rerank = picked;
+    const hits = finalHits(d, fused, picked);
+    const ctx = hits.map(([i], n) => `[${n + 1}] ${IDX.chunks[i].id} (${IDX.chunks[i].title}${IDX.chunks[i].note || ""}): ${IDX.chunks[i].text}`).join("\n\n");
     let answer = await chat(IDX.system, `Úseky zákona:\n\n${ctx}\n\nOtázka: ${q}`);
     answer = answer.replace(/【(\d+)】/g, "[$1]");
     return send(200, { q, rewritten, hits, trace, answer, remaining: PER_IP_PER_DAY - used - 1 });
@@ -137,4 +155,4 @@ module.exports = async (req, res) => {
   }
 };
 module.exports.config = { maxDuration: 60 };
-module.exports.core = { tokens, bm25, top, rrf, search, N };
+module.exports.core = { tokens, bm25, top, rrf, search, rerankPrompt, parsePick, finalHits, N };

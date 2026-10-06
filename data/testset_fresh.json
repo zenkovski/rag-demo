@@ -1,0 +1,12 @@
+[
+ {"id": 47, "level": "střední", "q": "Co dostanu, když pracuji ve svátek?", "gold": "U mzdy: dosaženou mzdu a náhradní volno ve stejném rozsahu (do konce 3. měsíce po svátku), za volno náhradu mzdy. Místo volna se lze dohodnout na příplatku nejméně 100 % průměrného výdělku. (U platu ve státní sféře platí zvláštní § 135.)", "chunks": ["ZP § 115 odst. 1", "ZP § 115 odst. 2"]},
+ {"id": 48, "level": "střední", "q": "Do kdy po narození dítěte musím nastoupit na otcovskou?", "gold": "Do 6 týdnů ode dne narození dítěte (prodlužuje se o dny hospitalizace dítěte nebo matky).", "chunks": ["ZNP § 38a odst. 4"]},
+ {"id": 49, "level": "snadná", "q": "Kolik peněz dostanu na ošetřovném?", "gold": "60 % denního vyměřovacího základu za kalendářní den.", "chunks": ["ZNP § 41"]},
+ {"id": 50, "level": "snadná", "q": "Dostanu něco navíc za pracovní pohotovost?", "gold": "Ano, odměnu nejméně 10 % průměrného výdělku.", "chunks": ["ZP § 140"]},
+ {"id": 51, "level": "snadná", "q": "Do kdy mi musí zaměstnavatel vyplatit výplatu?", "gold": "Nejpozději v kalendářním měsíci následujícím po měsíci, ve kterém vzniklo právo na mzdu.", "chunks": ["ZP § 141 odst. 1"]},
+ {"id": 52, "level": "snadná", "q": "Musí mi zaměstnavatel při odchodu dát zápočťák?", "gold": "Ano, při skončení pracovního poměru (i DPČ a některých DPP) musí vydat potvrzení o zaměstnání.", "chunks": ["ZP § 313 odst. 1"]},
+ {"id": 53, "level": "střední", "q": "Můžu mít vedle práce ještě živnost ve stejném oboru jako můj zaměstnavatel?", "gold": "Jen s jeho předchozím písemným souhlasem.", "chunks": ["ZP § 304 odst. 1"]},
+ {"id": 54, "level": "snadná", "q": "Co musí obsahovat pracovní smlouva?", "gold": "Druh práce, místo nebo místa výkonu práce a den nástupu do práce.", "chunks": ["ZP § 34 odst. 1"]},
+ {"id": 55, "level": "bez odpovědi", "q": "Kolik je příspěvek na bydlení?", "gold": "NEVÍM – příspěvek na bydlení upravuje zákon o státní sociální podpoře, ten v aplikaci není.", "chunks": []},
+ {"id": 56, "level": "bez odpovědi", "q": "Kolik let musím odpracovat, abych dostal důchod?", "gold": "NEVÍM – podmínky důchodu upravuje zákon o důchodovém pojištění, ten v aplikaci není.", "chunks": []}
+]

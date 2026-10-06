@@ -6,7 +6,7 @@ idiomaticky v LangChainu: dokumenty, retrievery, Runnable řetězy a model přes
 langchain-community (kde býval BM25Retriever) se ukončuje, proto jsou retrievery vlastní třídy nad langchain-core.
 
   .venv/Scripts/python tools/rag_langchain.py "Nezaplatili mi výplatu, můžu odejít?"
-  .venv/Scripts/python tools/rag_langchain.py --compare     # stejné výsledky jako rag.py? (46 otázek)
+  .venv/Scripts/python tools/rag_langchain.py --compare     # stejné výsledky jako rag.py? (56 otázek; --rw i nový přepis)
 """
 import json, os, sys
 from typing import List
@@ -56,54 +56,71 @@ class BM25Retriever(BaseRetriever):
         return [DOCS[i] for i in rag.top(s, self.k)]
 
 def rrf(lists: dict) -> List[Document]:
-    """Reciprocal rank fusion přes výsledky všech retrieverů (pořadí dokumentů, 1/(60 + pořadí))."""
+    """Reciprocal rank fusion přes výsledky všech retrieverů (pořadí dokumentů, 1/(60 + pořadí)). Vrací 20 kandidátů."""
     order = rag.rrf([[d.metadata["i"] for d in docs] for docs in lists.values()])
-    return [DOCS[i] for i, _ in order[:rag.TOP_K]]
+    return [DOCS[i] for i, _ in order[:rag.N_CAND]]
 
 # ---------- modely a prompty ----------
-LLM = ChatOpenAI(model=rag.LLM_MODEL, temperature=0, base_url="https://openrouter.ai/api/v1",
+LLM = ChatOpenAI(model=rag.LLM_MODEL, temperature=0, base_url="https://openrouter.ai/api/v1", extra_body={"reasoning": {"enabled": False}},
                  api_key=os.environ["OPENROUTER_API_KEY"])
 REWRITE = ChatPromptTemplate.from_messages([("system", rag.REWRITE), ("human", "{q}")])
-ANSWER = ChatPromptTemplate.from_messages([("system", rag.SYSTEM), ("human", "Úseky zákona:\n\n{context}\n\nOtázka: {q}")])
+RERANK = ChatPromptTemplate.from_messages([("system", rag.RERANK), ("human", "{prompt}")])
+ANSWER = ChatPromptTemplate.from_messages([("system", rag.SYSTEM_V3), ("human", "Úseky zákona:\n\n{context}\n\nOtázka: {q}")])
 
 def first_line(text: str) -> str:
     return text.strip().strip('"').splitlines()[0] if text.strip() else ""
 
 def context(docs: List[Document]) -> str:
-    return "\n\n".join(f"[{n}] {d.metadata['id']} ({d.metadata['title']}): {d.page_content}" for n, d in enumerate(docs, 1))
+    return rag.context([(d.metadata["i"], 0) for d in docs], CHUNKS, notes=True)
+
+def pick(x: dict) -> List[Document]:
+    """Vybrané úseky první, zbytek do 5 doplní pořadí z RRF (jako rag.search)."""
+    cands = [d.metadata["i"] for d in x["cands"]]
+    chosen = [cands[j] for j in rag.parse_pick(x["pick"], len(cands))]
+    return [DOCS[i] for i in (chosen + [i for i in cands if i not in chosen])[:rag.TOP_K]]
 
 vector, bm25 = VectorRetriever(), BM25Retriever()
 
-# ---------- LCEL řetěz: otázka -> přepis -> 3 hledání paralelně -> RRF -> odpověď ----------
+# ---------- LCEL řetěz: otázka -> přepis -> 3 hledání paralelně -> RRF (20) -> LLM vybere -> odpověď ----------
 rewrite_chain = REWRITE | LLM | StrOutputParser() | RunnableLambda(first_line)
-search_chain = RunnablePassthrough.assign(docs=RunnableParallel(
+search_chain = RunnablePassthrough.assign(cands=RunnableParallel(
     dense_q=RunnableLambda(lambda x: x["q"]) | vector,     # význam: původní otázka
     dense_rw=RunnableLambda(lambda x: x["rw"]) | vector,   # význam: přepsaná otázka
     bm25=RunnableLambda(lambda x: x["rw"]) | bm25,         # slova: přepsaná otázka
 ) | RunnableLambda(rrf))
-retrieve_chain = RunnablePassthrough.assign(rw=rewrite_chain) | search_chain
+rerank_chain = RunnablePassthrough.assign(pick=RunnableLambda(
+    lambda x: {"prompt": rag.rerank_prompt(x["q"], x["rw"], [d.metadata["i"] for d in x["cands"]], CHUNKS)})
+    | RERANK | LLM | StrOutputParser()) | RunnablePassthrough.assign(docs=RunnableLambda(pick))
+retrieve_chain = RunnablePassthrough.assign(rw=rewrite_chain) | search_chain | rerank_chain
 answer_chain = retrieve_chain | RunnablePassthrough.assign(
     answer=RunnableLambda(lambda x: {"q": x["q"], "context": context(x["docs"])}) | ANSWER | LLM | StrOutputParser())
 
-def compare():
-    """1) Hledání: dostane-li LangChain stejný přepis jako rag.py, najde stejných 5 úseků?
-    2) Přepis: vyjde nové volání modelu stejně jako uložené? (teplota 0 ≠ vždy stejný text)"""
+def compare(check_rewrite=False):
+    """1) Hledání: dostane-li LangChain stejný přepis jako rag.py, najde stejných 20 kandidátů z RRF?
+    2) Při stejné odpovědi výběrového modelu (uložená v cache rag.py) vyjde stejných 5 úseků?
+    3) --rw: vyjde nové volání přepisu stejně jako uložené? (teplota 0 ≠ vždy stejný text, stojí pár haléřů)"""
     import evaluate
     tests = evaluate.tests()
-    same = same_rw = 0
+    same_c = same_h = same_rw = 0
     for t in tests:
-        hits, rw = rag.search(t["q"])                       # přepis z rag.py (uložený)
+        hits, rw, st = rag.search(t["q"], trace=True)            # přepis i výběr z rag.py (uložené)
         out = search_chain.invoke({"q": t["q"], "rw": rw})
-        a, b = [d.metadata["i"] for d in out["docs"]], [i for i, _ in hits]
-        same += a == b; same_rw += rewrite_chain.invoke({"q": t["q"]}) == rw
+        a, b = [d.metadata["i"] for d in out["cands"]], [i for i, _ in st["fused"]]
+        same_c += a == b
+        pick_text, _ = rag.llm(rag.RERANK, rag.rerank_prompt(t["q"], rw, a, CHUNKS), reasoning=False)   # z cache, zdarma
+        same_h += [d.metadata["i"] for d in pick({"cands": out["cands"], "pick": pick_text})] == [i for i, _ in hits]
+        if check_rewrite:
+            same_rw += rewrite_chain.invoke({"q": t["q"]}) == rw
         if a != b:
-            print(f"#{t['id']} rozdíl: LC {[CHUNKS[i]['id'] for i in a]} | rag.py {[CHUNKS[i]['id'] for i in b]}")
-    print(f"hledání (stejný přepis): stejných 5 úseků ve stejném pořadí {same}/{len(tests)}")
-    print(f"nový přepis přes LangChain shodný s uloženým: {same_rw}/{len(tests)}")
+            print(f"#{t['id']} rozdíl v kandidátech")
+    print(f"kandidáti z RRF (stejný přepis): stejných 20 ve stejném pořadí {same_c}/{len(tests)}")
+    print(f"5 úseků pro model (stejný výběr): {same_h}/{len(tests)}")
+    if check_rewrite:
+        print(f"nový přepis přes LangChain shodný s uloženým: {same_rw}/{len(tests)}")
 
 if __name__ == "__main__":
     if "--compare" in sys.argv:
-        compare()
+        compare("--rw" in sys.argv)
     else:
         q = " ".join(sys.argv[1:]) or "Firma mi nezaplatila výplatu, můžu hned odejít?"
         out = answer_chain.invoke({"q": q})

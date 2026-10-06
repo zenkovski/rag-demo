@@ -27,6 +27,18 @@
   "40": {
    "correct": false,
    "note": "Obrátil význam: zákon říká, že zaměstnavatel posudek nemusí vydat dřív než 2 měsíce před koncem zaměstnání. Model napsal, že nesmí."
+  },
+  "49": {
+   "correct": false,
+   "note": "§ 41 ZNP (60 %) se nenašel, model řekl „nevím“. AI soudce to bez přemýšlení přehlédl a dal „správně“."
+  },
+  "51": {
+   "correct": false,
+   "note": "§ 141 odst. 1 se nenašel, model řekl „nevím“. AI soudce to přehlédl."
+  },
+  "52": {
+   "correct": true,
+   "note": "Správně (potvrzení o zaměstnání). Navíc u posudku napsal „nejdříve 2 měsíce před skončením“, to zákon neříká přesně takhle."
   }
  },
  "v1": {
@@ -85,6 +97,57 @@
   "40": {
    "correct": true,
    "note": "Správně, a to i tam, kde v2 udělala chybu (v1 správně napsal „není povinen“)."
+  },
+  "51": {
+   "correct": false,
+   "note": "§ 141 odst. 1 se nenašel, odpověděl z jiného odstavce o výplatním termínu."
+  },
+  "52": {
+   "correct": false,
+   "note": "§ 313 se nenašel, model řekl „nevím“. AI soudce to přehlédl."
+  }
+ },
+ "v3": {
+  "4": {
+   "correct": true,
+   "note": "Správně (2 měsíce, výjimka 1 měsíc). Přidal zbytečnou větu o chráněném trhu práce ze zákona o zaměstnanosti."
+  },
+  "5": {
+   "correct": true,
+   "note": "Správně. Nově se doptal, jestli jde o obecnou výpověď, nebo zvláštní případ (pravidlo 7 ve v3)."
+  },
+  "10": {
+   "correct": false,
+   "note": "Nová chyba ve v3: výběr přes LLM vzal odstavce o zkrácení odpočinku (§ 90 odst. 2 a 3) a vyhodil základní § 90 odst. 1 (11 hodin). Ve v2 to bylo správně. Model poctivě napsal, že základní délku v úsecích nemá."
+  },
+  "12": {
+   "correct": true,
+   "note": "Správně. V citaci přepsal slovo „zaměnit“ na „zaměřit“ (překlep modelu)."
+  },
+  "20": {
+   "correct": false,
+   "fail": "hledání",
+   "note": "Lepší než ve v2: výši nemocenského (60/66/72 %) už našel. Chybí ale, že prvních 14 dní platí zaměstnavatel náhradu mzdy 60 % (§ 192 odst. 2 nebyl mezi 5 úseky). Odpověď je proto neúplná."
+  },
+  "36": {
+   "correct": true,
+   "note": "Opraveno ve v3: výběr přes LLM přidal § 38c, takže odpověď má délku (2 týdny) i výši (70 %)."
+  },
+  "38": {
+   "correct": true,
+   "note": "Opraveno ve v3: odpověď rozliší plat (20 %) a mzdu (nejméně 10 %), protože úseky nesou poznámku, pro koho platí."
+  },
+  "39": {
+   "correct": true,
+   "note": "Správně, rozlišil mzdu a plat a na konci se doptal, co uživatel myslel."
+  },
+  "40": {
+   "correct": true,
+   "note": "Opraveno ve v3: „není povinen vydat dříve“ už nepřevrací na „nesmí“ (pravidlo 8)."
+  },
+  "47": {
+   "correct": true,
+   "note": "Správně, varianty pro mzdu i plat."
   }
  }
 }
