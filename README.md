@@ -22,7 +22,7 @@ Odpovídá česky na otázky z pracovního práva. Odpovídá jen z textu zákon
 
 ## Výsledky
 
-Každou odpověď jsem ručně zkontroloval proti textu zákona.
+Odpovědi hodnotí AI soudce (DeepSeek). Každou pak ještě jednou porovná s textem zákona Claude Opus 5.5 a já jsem výsledky prošel a schválil. Platí ten druhý verdikt.
 
 | Co měřím | Výsledek |
 |---|---|
@@ -58,7 +58,7 @@ Stejné hledání je napsané třikrát: ručně v Pythonu, v LangChainu a v Jav
 | `site/index.html` | web (jeden soubor, D3 mapa) |
 | `site/api/ask.js` | serverová funkce pro vlastní otázky (Vercel) |
 | `data/testset*.json` | testovací otázky se správnými odpověďmi |
-| `data/manual_review.json` | ruční verdikty |
+| `data/manual_review.json` | verdikty druhé kontroly |
 | `tests/` | 14 testů bez API, včetně kontroly, že web hledá stejně jako Python |
 
 Další dokumenty:
@@ -98,4 +98,4 @@ copy .env.example .env                                   # doplň OPENROUTER_API
 
 Předpisy ze zakonyprolidi.cz, stažené 6. 10. 2026 (262/2006, 435/2004, 187/2006, 590/2006 Sb.). Text zákonů není chráněn autorským právem.
 
-Postaveno s AI (Claude Code). Kód jsem nepsal ručně: četl jsem ho, kontroloval a testoval.
+Postaveno s Claude Code (Opus 5.5). Kód napsala AI. Já jsem řídil, co se staví, nechal kód prověřit code-review skilly a dalšími review agenty, testoval a hlídal výsledky měření.

@@ -73,7 +73,7 @@ MRR (mean reciprocal rank) = jak vysoko je první správný úsek: 1 = vždy prv
 - **66 otázek v 5 sadách.** 56 má odpověď v předpisech (se správnými paragrafy), 10 je past, kde je správně „nevím“.
 - **Únik testu (leakage):** podle chyb na sadě jsem pokaždé navrhl další verzi, takže na ní je ta verze zvýhodněná. Proto jsem před spuštěním v3 i v3.1 napsal novou sadu i se správnými odpověďmi. Poctivé číslo: **20 z 20 (předchozí verze 18 z 20)**. Celkových 66 z 66 je nadsazené a tak je to i napsané.
 - **Hledání:** hit@3 a hit@5 (správný § mezi prvními 3 / 5) a MRR (jak vysoko správný § je).
-- **Odpověď:** AI soudce (správně? opírá se o úseky?) a pak ruční kontrola všech odpovědí. Platí ruční verdikt. Soudce přehlédl několik chybných „nevím“.
+- **Odpověď:** AI soudce (správně? opírá se o úseky?), pak druhá kontrola každé odpovědi proti textu zákona (Claude Opus 5.5), kterou jsem prošel a schválil. Platí druhý verdikt. Soudce přehlédl několik chybných „nevím“.
 - **Mimo testy:** 16 ukázkových otázek na webu, 14 správně. Obě chyby jsou na webu vidět.
 - **Opakovatelnost:** přepis dělá LLM a ani s teplotou 0 není nové volání vždy stejné. Čísla platí pro jeden uložený běh (`data/llm_cache.json`). Správně by se měřilo víc běhů a rozptyl. Pro demo s limitem 0,75 $ to nedělám.
 - **66 otázek je málo.** Rozdíl 18 vs 20 z 20 je ukazatel, ne statistický důkaz.
@@ -98,7 +98,7 @@ Riziko tří kopií je, že se rozejdou. Proto test v `tests/` spustí JavaScrip
 ## 10. Web a ochrana · `site/`
 
 - Klíč jen v proměnné prostředí na Vercelu. Max 10 otázek na IP za den, strop 400 za den, proof of work (prohlížeč spočítá hash se 4 nulami, 1–3 s), kontrola původu, skryté pole proti robotům. Pevný limit 0,75 $ na klíči.
-- Ukázkové otázky jsou předpočítané a ručně zkontrolované, nic nestojí.
+- Ukázkové otázky jsou předpočítané a zkontrolované, nic nestojí.
 - Mapa ukazuje skutečné mezivýsledky hledání, ne animaci. Rozložení 2 475 bodů se počítá předem v Pythonu.
 - Slabina: počítadla jsou v paměti funkce. Při víc instancích by se limit dal obejít. Řešení: Redis.
 

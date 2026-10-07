@@ -2,7 +2,7 @@
 
 Zdroj: 4 předpisy, 2 475 úseků (celý zákoník práce, zákon o zaměstnanosti, zákon o nemocenském pojištění,
 nařízení vlády o překážkách v práci). 66 testovacích otázek v 5 sadách, 56 má odpověď v předpisech, 10 záměrně ne.
-Verdikt „správně“ je po ruční kontrole všech odpovědí proti textu zákona.
+Verdikt „správně“ je po druhé kontrole všech odpovědí proti textu zákona (Claude Opus 5.5).
 
 ## v1 → v2 → v3
 
@@ -18,7 +18,7 @@ Verdikt „správně“ je po ruční kontrole všech odpovědí proti textu zá
 | Správný paragraf v top 3 (hit@3) | 42 z 56 | 50 z 56 | 56 z 56 |
 | „Nevím“, i když odpověď ve zdroji byla | 5 z 56 | 3 z 56 | 0 z 56 |
 | Opírá se o zdroj (podle AI soudce) | 60 z 66 | 64 z 66 | 65 z 66 |
-| AI soudce se shodl s ruční kontrolou | 65 z 66 | 64 z 66 | 65 z 66 |
+| AI soudce se shodl s druhou kontrolou | 65 z 66 | 64 z 66 | 65 z 66 |
 
 ## Podle sad
 

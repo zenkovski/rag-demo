@@ -140,7 +140,7 @@ def report():
     L = ["# Výsledky měření", "",
          "Zdroj: 4 předpisy, 2 475 úseků (celý zákoník práce, zákon o zaměstnanosti, zákon o nemocenském pojištění,",
          f"nařízení vlády o překážkách v práci). {a['v3']['n']} testovacích otázek v 5 sadách, {a['v3']['n_answerable']} má odpověď v předpisech, {a['v3']['n_unanswerable']} záměrně ne.",
-         "Verdikt „správně“ je po ruční kontrole všech odpovědí proti textu zákona.", "",
+         "Verdikt „správně“ je po druhé kontrole všech odpovědí proti textu zákona (Claude Opus 5.5).", "",
          "## v1 → v2 → v3", "",
          "| Měřítko | v1 | v2 | v3 |", "|---|---|---|---|",
          f"| Model | `{ev['v1']['model']}` | `{ev['v2']['model']}` | `{ev['v3']['model']}` |",
@@ -153,7 +153,7 @@ def report():
          row("Správný paragraf v top 3 (hit@3)", "hit3", "n_answerable"),
          row("„Nevím“, i když odpověď ve zdroji byla", "nevim_wrong", "n_answerable"),
          row("Opírá se o zdroj (podle AI soudce)", "grounded", "n"),
-         row("AI soudce se shodl s ruční kontrolou", "judge_agree", "n"), "",
+         row("AI soudce se shodl s druhou kontrolou", "judge_agree", "n"), "",
          "## Podle sad", "",
          "| Sada | otázek | v1 | v2 | v3 | v3 hit@5 |", "|---|---|---|---|---|---|"]
     for s_, _ in SETS:

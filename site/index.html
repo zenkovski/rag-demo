@@ -11,7 +11,7 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://lukas-rag.vercel.app/">
 <meta property="og:title" content="Zeptej se na pracovní právo. Každá věta má zdroj.">
-<meta property="og:description" content="AI asistent nad zákoníkem práce a dalšími 3 předpisy. Odpovídá s citacemi, nebo řekne „nevím“. Změřeno na 66 ručně kontrolovaných otázkách.">
+<meta property="og:description" content="AI asistent nad zákoníkem práce a dalšími 3 předpisy. Odpovídá s citacemi, nebo řekne „nevím“. Změřeno na 66 otázkách se známou správnou odpovědí.">
 <meta property="og:image" content="https://lukas-rag.vercel.app/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -34,23 +34,21 @@
   --r:14px; --r-sm:9px;
   --display:"Bricolage Grotesque",system-ui,sans-serif; --sans:"Onest",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,monospace;
 }
-/* paleta 16 „Honey Gold + Deep Navy“: prémiové, důvěra */
-:root[data-paleta="16"]{
-  --bg:#04070f; --bg-2:#070c18; --panel:#0b1222; --panel-2:#0f182d; --line:#18223a; --line-2:#24314f;
-  --text:#e9edf6; --soft:#b8c1d6; --muted:#8089a2; --faint:#4f5874;
-  --accent:#FEC40B; --accent-rgb:254 196 11; --accent-2:#d9a300; --accent-hi:#ffd54a; --accent-ink:#1d1500;
-  --ice:#9fb8ff; --ice-rgb:159 184 255; --bg-rgb:4 7 15; --aur2:2 69 236; --aur3:40 80 190; --tint-rgb:22 36 74;
-  --grid-rgb:150 165 205; --wire:#27344f; --link:#172038; --near:#3d3108;
+/* paleta 30 „Papír“: světlá, teplý papír + tmavě smaragdové zvýraznění */
+:root[data-paleta="30"]{
+  color-scheme:light;
+  --bg:#f5f2ec; --bg-2:#eeeae2; --panel:#fffdf9; --panel-2:#f4f0e8; --line:#e2dccf; --line-2:#d3ccbd;
+  --text:#1c1a17; --soft:#3d3933; --muted:#6c665c; --faint:#9d968a;
+  --accent:#0f7a5c; --accent-rgb:15 122 92; --accent-2:#0b6049; --accent-hi:#13926e; --accent-ink:#ffffff;
+  --ice:#2f6aa3; --ice-rgb:47 106 163; --bg-rgb:245 242 236; --aur2:120 200 170; --aur3:225 205 170; --tint-rgb:226 232 224;
+  --grid-rgb:70 65 55; --wire:#c4bcab; --link:#e4ded2; --near:#cfe6da;
+  --bad:#c2410c; --bad-rgb:194 65 12;
+  --glow:rgb(var(--accent-rgb) / .18);
 }
-/* paleta 9 „Deep Navy + Cyan“: tech */
-:root[data-paleta="9"]{
-  --bad:#f6a77f; --bad-rgb:246 167 127;
-  --bg:#07070c; --bg-2:#0b0b12; --panel:#12121c; --panel-2:#171724; --line:#20202f; --line-2:#2b2b3f;
-  --text:#e8e8f2; --soft:#bdbdd0; --muted:#85859c; --faint:#55556d;
-  --accent:#1EC1CB; --accent-rgb:30 193 203; --accent-2:#159aa2; --accent-hi:#4fd6de; --accent-ink:#021a1c;
-  --ice:#e4e2ff; --ice-rgb:228 226 255; --bg-rgb:7 7 12; --aur2:70 60 170; --aur3:28 28 90; --tint-rgb:28 28 40;
-  --grid-rgb:160 160 200; --wire:#2c2c42; --link:#1c1c2a; --near:#0c3a3d;
-}
+/* Papír: bílé obrysy a průhlednost dělané pro tmavé pozadí převrátit */
+:root[data-paleta="30"] .node:hover,:root[data-paleta="30"] .node.gold,:root[data-paleta="30"] .node.sel{stroke:var(--text)}
+:root[data-paleta="30"] .src .hits .g{color:var(--accent)}
+:root[data-paleta="30"] .dimmed .node:not(.hit):not(.near):not(.a1):not(.a2):not(.a3){opacity:.38}
 /* paleta 1 „Charcoal Navy + Sandy Tan + Steel Blue“: teplá */
 :root[data-paleta="1"]{
   --bg:#0b0b10; --bg-2:#0f0f15; --panel:#15141b; --panel-2:#1b1a23; --line:#25242f; --line-2:#33313f;
@@ -143,6 +141,18 @@ a{color:inherit}
 .askbig form{display:flex;align-items:center;gap:8px;background:rgb(var(--bg-rgb) / .92);border:1px solid var(--line-2);border-radius:18px;padding:8px 8px 8px 18px;box-shadow:0 0 0 1px rgb(var(--accent-rgb) / .08),0 20px 60px rgba(0,0,0,.55),0 0 60px rgb(var(--accent-rgb) / .10)}
 .askbig form:focus-within{border-color:rgb(var(--accent-rgb) / .6);box-shadow:0 0 0 4px rgb(var(--accent-rgb) / .12),0 20px 60px rgba(0,0,0,.55),0 0 80px rgb(var(--accent-rgb) / .18)}
 .askbig form > .ph{font-size:20px;color:var(--accent)}
+.askbig form{padding-left:8px}
+.livemini .qa{flex:none;width:38px;height:38px;border-radius:10px;display:grid;place-items:center;font-size:17px;color:var(--accent);background:rgb(var(--accent-rgb) / .1);border:1px solid rgb(var(--accent-rgb) / .35);cursor:pointer}
+.livemini .qa:hover{background:rgb(var(--accent-rgb) / .2)}
+.livemini .qa:disabled{opacity:.6}
+.askbig .qa{flex:none;width:40px;height:40px;border-radius:12px;display:grid;place-items:center;font-size:19px;color:var(--accent);background:rgb(var(--accent-rgb) / .1);border:1px solid rgb(var(--accent-rgb) / .35);cursor:pointer;transition:background .2s,transform .2s}
+.askbig .qa:hover{background:rgb(var(--accent-rgb) / .2);transform:rotate(-8deg)}
+.askbig .qa:disabled{opacity:.6;cursor:default}
+@media (prefers-reduced-motion:no-preference){
+  .askbig .qa{animation:qapulse 2.6s ease-in-out infinite}
+  .askbig form:focus-within .qa,.askbig .qa:hover,.askbig .qa:disabled{animation:none}
+  @keyframes qapulse{50%{box-shadow:0 0 0 5px rgb(var(--accent-rgb) / .12),0 0 18px rgb(var(--accent-rgb) / .25)}}
+}
 .askbig input[name=q]{flex:1;min-width:0;background:none;border:0;outline:none;color:var(--text);font:inherit;font-size:17px;padding:12px 4px}
 .askbig input[name=q]::placeholder{color:var(--faint)}
 .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
@@ -151,6 +161,7 @@ a{color:inherit}
 .go:disabled{opacity:.55;cursor:wait}
 .askmeta{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:12px;font-family:var(--mono);font-size:11.5px;color:var(--muted)}
 .askmeta b{color:var(--soft);font-weight:500}
+.askmeta:has(.leftCount:empty){display:none}
 .chips{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;margin-top:22px}
 .chips button{background:rgb(var(--bg-rgb) / .85);border:1px solid var(--line-2);border-radius:999px;padding:7px 14px;font-size:13.5px;color:var(--soft)}
 .chips button:hover{border-color:rgb(var(--accent-rgb) / .5);color:var(--text)}
@@ -297,6 +308,24 @@ details.v1 .old{margin-top:6px;font-size:13px;color:var(--muted);background:var(
 .scope{display:flex;justify-content:center;flex-wrap:wrap;gap:6px;margin-top:16px;font-size:12.5px;color:var(--muted)}
 .scope span{border:1px solid var(--line-2);border-radius:999px;padding:3px 10px;background:rgb(var(--bg-rgb) / .7)}
 .scope b{color:var(--soft);font-weight:500;align-self:center;margin-right:2px}
+.hstats{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin:-12px auto 30px}
+.hstats > button{font:inherit;color:inherit;cursor:pointer;transition:border-color .2s,background .2s;display:flex;flex-direction:column;align-items:center;gap:2px;min-width:96px;padding:9px 16px;border:1px solid var(--line-2);border-radius:12px;background:rgb(var(--bg-rgb) / .6)}
+.hstats b{font-family:var(--display);font-size:22px;font-weight:700;color:var(--accent);line-height:1.1}
+.hstats span{font-size:12px;color:var(--muted)}
+.hstats > button::after{content:"";width:6px;height:6px;margin-top:3px;border-right:1.5px solid var(--faint);border-bottom:1.5px solid var(--faint);transform:rotate(45deg);transition:transform .2s}
+.hstats > button:hover{border-color:rgb(var(--accent-rgb) / .5)}
+.hstats > button[aria-expanded=true]{border-color:var(--accent);background:rgb(var(--accent-rgb) / .08)}
+.hstats > button[aria-expanded=true]::after{transform:rotate(225deg);border-color:var(--accent)}
+.hsinfo{max-width:620px;margin:-16px auto 28px;padding:14px 18px;text-align:left;border:1px solid var(--line-2);border-radius:14px;background:rgb(var(--bg-rgb) / .85);font-size:14px;line-height:1.55;color:var(--soft)}
+.hsinfo b{color:var(--text);font-weight:600}
+.hsinfo ul{margin:0;padding-left:18px;display:grid;gap:5px}
+.hsinfo .t{display:block;font-family:var(--display);font-size:16px;font-weight:700;color:var(--accent);margin-bottom:4px}
+.built{display:inline-flex;align-items:center;gap:10px;text-decoration:none!important;color:var(--muted);border:1px solid var(--line-2);border-radius:12px;padding:8px 12px;background:var(--panel)}
+.built svg{width:20px;height:20px;flex:none}
+.built b{color:var(--text);font-weight:600}
+.built:hover{border-color:rgb(217 119 87 / .6)}
+.demonote{max-width:640px;margin:28px auto 0;text-align:center;font-size:14px;line-height:1.6;color:var(--muted)}
+.demonote b{color:var(--text);font-weight:600}
 .outside{margin-top:8px;font-size:12.5px;color:var(--muted);background:var(--bg);border:1px dashed var(--line-2);border-radius:10px;padding:9px 11px}
 .outside b{color:var(--soft);font-weight:600}
 .nh{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:9px}
@@ -427,6 +456,7 @@ details.v1 .old{margin-top:6px;font-size:13px;color:var(--muted);background:var(
 .hub .it b{display:block;font-size:13.5px;font-weight:600}
 .hub .it span{display:block;font-size:11.5px;color:var(--muted);line-height:1.4}
 .hub .it:hover{border-color:rgb(var(--accent-rgb) / .6)}
+.hubinfo{display:none}
 .hwire{fill:none;stroke:var(--wire);stroke-width:1.2;stroke-dasharray:4 6}
 @media (prefers-reduced-motion:no-preference){ .hwire{animation:dash 2.2s linear infinite} }
 
@@ -549,6 +579,95 @@ dialog::backdrop{background:rgba(2,4,5,.8)}
   .hub .it span{font-size:10.5px}
   .t-main .big{font-size:96px}
 }
+
+/* ---------- m2: klidnější mobil ---------- */
+.qnote summary{cursor:pointer;color:var(--soft);list-style:none;display:block;line-height:1.5}
+.qnote summary::-webkit-details-marker{display:none}
+.qnote summary::before{content:"+";font-family:var(--mono);color:var(--accent);margin-right:7px}
+.qnote[open] summary::before{content:"−"}
+.qnote > div{margin-top:8px}
+.qnote p{margin:0 0 8px}
+.qnote .nvk{color:var(--ice)}
+.sheetx{margin-left:8px;background:none;border:1px solid var(--line-2);border-radius:999px;width:30px;height:30px;color:var(--soft);font-size:15px}
+.sheetbg{display:none}
+@media (max-width:900px){
+  .hero .scope{gap:6px;margin-top:18px}
+  .hero .scope{display:grid;grid-template-columns:1fr 1fr;max-width:360px;margin-left:auto;margin-right:auto}
+  .hero .scope b{grid-column:1/-1;text-align:center;margin:0 0 2px}
+  .hero .scope span{display:flex;align-items:center;justify-content:center;text-align:center;padding:7px 10px;border-radius:10px;line-height:1.3;color:var(--soft)}
+  .hstats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;margin:-8px 0 22px}
+  .hstats > button{padding:8px 4px;min-width:0}
+  .hsinfo{margin:-12px 0 22px;font-size:13.5px;padding:12px 14px}
+  .hstats b{font-size:18px}
+  .hstats span{font-size:10.5px}
+  .hero p.lead{margin-bottom:26px}
+  .warnline{font-size:12px;opacity:.8}
+  .chat .intro{display:none}
+  .chat .log:has(.intro){min-height:0;padding:0}
+  .divider{display:none}
+  /* postup: řetěz v jednom řádku jako na počítači, jen ikonka a krátký název, se šipkami */
+  .flow{padding:12px 10px}
+  .fgrid{grid-template-columns:repeat(5,minmax(0,1fr));grid-template-areas:none;gap:6px 13px}
+  .fcol{display:flex;flex-direction:column;gap:6px}
+  #f-q,#f-rw,#f-vec,#f-bm,#f-rrf,#f-ans{grid-area:auto}
+  .fn{padding:7px 3px;border-radius:10px}
+  .fn .d{display:none}
+  .fn .t{flex-direction:column;justify-content:center;text-align:center;gap:3px;font-size:10.5px;line-height:1.15}
+  .fn .t i{font-size:16px;flex:none}
+  /* kategorie: vodorovný pás místo 10 velkých dlaždic */
+  .cats{display:flex;overflow-x:auto;gap:8px;padding:2px 2px 8px;margin:0 -2px;scroll-snap-type:x proximity;scrollbar-width:none}
+  .cats::-webkit-scrollbar{display:none}
+  .cat{flex:none;flex-direction:row;align-items:center;gap:7px;padding:8px 12px;border-radius:999px;scroll-snap-align:start}
+  .cat .top{gap:0}
+  .cat .top i{font-size:16px}
+  .cat .cnt,.cat .law,.cat .dots{display:none}
+  .cat b{font-size:13px;white-space:nowrap}
+  .cat.on::after{display:none}
+  .qhead h3{font-size:17px}
+  .qpanel .qtitle{flex-direction:column;align-items:flex-start}
+  .setf{flex-wrap:nowrap;overflow-x:auto;max-width:100%;scrollbar-width:none}
+  .setf button{white-space:nowrap}
+  .qb{font-size:13px}
+  /* mapa menší, zdroj jen jako panel po kliknutí */
+  .graph svg#graph{height:44vh}
+  .card{position:fixed;left:0;right:0;bottom:0;z-index:70;max-height:75vh;overflow:auto;background:var(--panel);border:1px solid var(--line-2)!important;border-radius:18px 18px 0 0;box-shadow:0 -20px 60px rgb(0 0 0 / .6);transform:translateY(105%);visibility:hidden;transition:transform .3s ease,visibility 0s .3s}
+  body.sheet .card{transform:none;visibility:visible;transition:transform .3s ease}
+  .card .ph2{position:sticky;top:0;background:var(--panel);z-index:1}
+  .src{min-height:0}
+  body.sheet .sheetbg{display:block;position:fixed;inset:0;z-index:65;background:rgb(0 0 0 / .5)}
+  body.sheet .dock{opacity:0;pointer-events:none}
+  /* sekce níž: méně textu */
+  .demo-cite{max-height:190px;overflow:hidden;-webkit-mask-image:linear-gradient(#000 70%,transparent);mask-image:linear-gradient(#000 70%,transparent)}
+  .sec .sub{font-size:15px}
+  /* pořadí v okně: mapa → legenda → řetěz → chat → rychlé otázky */
+  .app{display:flex;flex-direction:column}
+  .desk{display:contents}
+  .apphead{order:0} #graphWrap{order:1} #tlbox{order:2} #flow{order:3;border-top:1px solid var(--line)} .chat{order:4;border-top:1px solid var(--line)!important} #quick{order:5}
+  /* horní menu: logo vlevo, vpravo stejně vysoká tlačítka, výzva poslední */
+  .nav .pill{padding:5px 5px 5px 8px;gap:6px}
+  .nav .logo .hide-m{display:inline!important;color:var(--muted);font-weight:600}
+  .nav .pal{margin-left:0;order:2}
+  .nav .pal > button{width:36px;height:36px;padding:0;justify-content:center;border-radius:50%}
+  .nav .gh{order:3;width:36px;height:36px;padding:0;margin:0;justify-content:center;border-radius:50%;background:var(--panel-2);color:var(--text);border:1px solid var(--line-2);font-size:17px}
+  .nav .gh:hover{background:var(--panel-2)}
+  .nav a.l[href="#app"]{order:4;height:36px;display:inline-flex!important;align-items:center;padding:0 15px;font-size:13.5px}
+  .pal .menu{min-width:280px;right:-44px}
+  /* stack: váha uprostřed, kolem ní ikony v kruhu, po klepnutí popis pod kruhem */
+  .hub{display:block;height:340px;padding:0}
+  .hub .core{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:78px;height:78px;margin:0;font-size:34px;border-radius:20px}
+  .hub .it{position:absolute;left:var(--x)!important;top:var(--y)!important;transform:translate(-50%,-50%);width:50px;height:50px;padding:0;border-radius:14px;display:grid;place-items:center;cursor:pointer;background:var(--panel)}
+  .hub .it > div{display:none}
+  .hub .it i{margin:0;font-size:22px}
+  .hub .it.on{border-color:var(--accent);box-shadow:0 0 0 1px rgb(var(--accent-rgb) / .3),0 0 22px rgb(var(--accent-rgb) / .25);background:var(--panel-2)}
+  .hwire.on{stroke:var(--accent);stroke-dasharray:none;opacity:.8}
+  .hubinfo{display:flex;gap:12px;align-items:flex-start;margin-top:12px;min-height:64px;padding:14px 16px;border:1px solid var(--line-2);border-radius:14px;background:var(--bg-2);font-size:13.5px;color:var(--muted)}
+  .hubinfo i{font-size:22px;color:var(--accent);margin-top:1px}
+  .hubinfo b{display:block;color:var(--text);font-size:15px;font-weight:600;margin-bottom:2px}
+  /* nadpisy a úvodní text sekcí na střed */
+  .sec > h2,.sec > .sub{text-align:center;margin-left:auto;margin-right:auto}
+  /* lichá poslední dlaždice ve stacku doprostřed na páteř */
+}
+@media (max-width:900px) and (prefers-reduced-motion:reduce){ .card,body.sheet .card{transition:none} }
 </style>
 </head>
 <body>
@@ -570,17 +689,18 @@ dialog::backdrop{background:rgba(2,4,5,.8)}
   <div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
   <div class="wrap">
     <h1>Zeptej se na pracovní právo. <span>Každá věta má zdroj.</span></h1>
-    <p class="lead">Asistent prohledá celý zákoník práce, zákon o zaměstnanosti, nemocenské pojištění a nařízení o překážkách v práci. Najde odstavce, které k otázce patří, odpoví jen z nich a označí, odkud co má. Když v textu odpověď není, řekne „nevím“.</p>
+    <p class="lead"><span class="hide-m">Asistent prohledá celý zákoník práce, zákon o zaměstnanosti, nemocenské pojištění a nařízení o překážkách v práci. Najde odstavce, které k otázce patří, odpoví jen z nich a označí, odkud co má. Když v textu odpověď není, řekne „nevím“.</span><span class="only-m">Prohledá celý zákoník práce a další 3 předpisy. Najde odstavce, které k otázce patří, odpoví jen z nich a ke každé větě dá zdroj. Když odpověď v zákoně není, řekne „nevím“.</span></p>
+    <div class="hstats" aria-label="Velikost zdroje"><button type="button" aria-expanded="false"><b>4</b><span>předpisy</span></button><button type="button" aria-expanded="false"><b>841</b><span>paragrafů</span></button><button type="button" aria-expanded="false"><b>2 475</b><span>odstavců</span></button><button type="button" aria-expanded="false"><b>~570</b><span>stran textu</span></button></div>
+    <div class="hsinfo" id="hsinfo" aria-live="polite" hidden></div>
     <div class="askbig">
       <form id="heroForm" autocomplete="off">
-        <i class="ph ph-sparkle"></i>
+        <button type="button" class="qa" id="quickAsk" title="Rychlá otázka: napíše a položí jednu z připravených otázek" aria-label="Rychlá otázka"><i class="ph ph-sparkle"></i></button>
         <input name="q" maxlength="300" placeholder="Např. Nezaplatili mi výplatu, můžu hned odejít?" aria-label="Tvoje otázka">
         <input class="hp" name="website" tabindex="-1" aria-hidden="true">
         <button class="go" type="submit"><span>Zeptat se</span><i class="ph ph-arrow-right"></i></button>
       </form>
-      <div class="askmeta"><span>živě přes AI</span><span>max <b>10</b> otázek denně</span><span class="leftCount"></span></div>
+      <div class="askmeta"><span class="leftCount"></span></div>
     </div>
-    <div class="scope"><b>Umí:</b><span>celý zákoník práce</span><span>podpora v nezaměstnanosti</span><span>nemocenská, mateřská, otcovská</span><span>volno na svatbu a pohřeb</span></div>
     <div class="chips" id="chips"></div>
     <div class="warnline">Není to právní porada. Je to technická ukázka RAG a měření kvality.</div>
   </div>
@@ -594,13 +714,13 @@ dialog::backdrop{background:rgba(2,4,5,.8)}
       <svg class="wires" id="wires" aria-hidden="true"></svg>
       <div class="fgrid">
         <div class="fcol"><div class="fn" id="f-q"><div class="t"><i class="ph ph-chat-circle-text"></i>Otázka</div><div class="d">laická otázka česky</div></div></div>
-        <div class="fcol"><div class="fn" id="f-rw"><div class="t"><i class="ph ph-translate"></i>Přepis do jazyka zákona</div><div class="d">LLM: „výplata“ → „mzda“</div></div></div>
+        <div class="fcol"><div class="fn" id="f-rw"><div class="t"><i class="ph ph-translate"></i>Přepis<span class="hide-m"> do jazyka zákona</span></div><div class="d">LLM: „výplata“ → „mzda“</div></div></div>
         <div class="fcol">
-          <div class="fn" id="f-vec"><div class="t"><i class="ph ph-graph"></i>Vektory · význam</div><div class="d">e5-large, kosinová podobnost</div></div>
-          <div class="fn ice" id="f-bm"><div class="t"><i class="ph ph-text-aa"></i>Full-text · slova</div><div class="d">BM25 nad přepsanou otázkou</div></div>
+          <div class="fn" id="f-vec"><div class="t"><i class="ph ph-graph"></i><span class="hide-m">Vektory · význam</span><span class="only-m">Význam</span></div><div class="d">e5-large, kosinová podobnost</div></div>
+          <div class="fn ice" id="f-bm"><div class="t"><i class="ph ph-text-aa"></i><span class="hide-m">Full-text · slova</span><span class="only-m">Slova</span></div><div class="d">BM25 nad přepsanou otázkou</div></div>
         </div>
-        <div class="fcol"><div class="fn" id="f-rrf"><div class="t"><i class="ph ph-git-merge"></i>RRF + výběr LLM</div><div class="d">20 kandidátů → vybere 5</div></div></div>
-        <div class="fcol"><div class="fn" id="f-ans"><div class="t"><i class="ph ph-quotes"></i>Odpověď s citacemi</div><div class="d">jen z nalezených úseků</div></div></div>
+        <div class="fcol"><div class="fn" id="f-rrf"><div class="t"><i class="ph ph-git-merge"></i><span class="hide-m">RRF + výběr LLM</span><span class="only-m">Výběr 5</span></div><div class="d">20 kandidátů → vybere 5</div></div></div>
+        <div class="fcol"><div class="fn" id="f-ans"><div class="t"><i class="ph ph-quotes"></i>Odpověď<span class="hide-m"> s citacemi</span></div><div class="d">jen z nalezených úseků</div></div></div>
       </div>
     </div>
 
@@ -613,6 +733,7 @@ dialog::backdrop{background:rgba(2,4,5,.8)}
         <div class="ask">
           <div class="livemini">
             <form id="liveForm" autocomplete="off">
+              <button type="button" class="qa" id="quickAsk2" title="Rychlá otázka: napíše a položí jednu z připravených otázek" aria-label="Rychlá otázka"><i class="ph ph-sparkle"></i></button>
               <input name="q" id="liveQ" maxlength="300" placeholder="Napiš vlastní otázku…" aria-label="Vlastní otázka">
               <input class="hp" name="website" tabindex="-1" aria-hidden="true">
               <button class="go" id="liveBtn" type="submit" aria-label="Zeptat se"><i class="ph ph-paper-plane-right"></i></button>
@@ -632,11 +753,11 @@ dialog::backdrop{background:rgba(2,4,5,.8)}
       </section>
 
       <section class="card">
-        <div class="ph2"><span>Zdroj</span><span id="srcmeta"></span></div>
+        <div class="ph2"><span>Zdroj</span><span id="srcmeta"></span><button class="sheetx only-m" id="sheetx" aria-label="Zavřít"><i class="ph ph-x"></i></button></div>
         <div class="src" id="src"><p class="placeholder"><b>Tady uvidíš původní text.</b> Klikni na citaci [1] v odpovědi nebo na tečku v mapě.</p></div>
       </section>
     </div>
-    <details class="tlbox" id="tlbox" open><summary><i class="ph ph-palette"></i>Legenda mapy<span class="hide-m"> · co znamenají barvy</span><i class="ph ph-caret-down car"></i></summary><div class="tlegend" id="tlegend"></div></details>
+    <details class="tlbox" id="tlbox"><summary><i class="ph ph-palette"></i>Legenda mapy<span class="hide-m"> · co znamenají barvy</span><i class="ph ph-caret-down car"></i></summary><div class="tlegend" id="tlegend"></div></details>
   </div>
 
   <div class="quick" id="quick">
@@ -651,13 +772,17 @@ dialog::backdrop{background:rgba(2,4,5,.8)}
       </div></div>
       <div class="qgrid" id="qs"></div>
     </div></div>
-    <div class="qnote">Tečka = výsledek ruční kontroly: <span class="ok">●</span> správně, <span class="bad">●</span> chyba. Otázky se štítkem <b>test „nevím“</b> předpisy schválně neřeší: zkouší, jestli asistent přizná, že neví, místo aby si vymýšlel. Odpovědi jsou předpočítané a nespotřebují tvůj limit 10 otázek.<br><b>Proč jsou tam chyby?</b> Asistent ví jen to, co najde v textu zákona. Chyba vznikne, když hledání nenajde správný odstavec, nebo když model text špatně přečte (třeba zamění mzdu a plat). U každé chyby uvidíš, kde se stala: v <b>hledání</b>, nebo ve <b>čtení</b>. Ten krok ve schématu zčervená. Chyby neschovávám: ukazují, co zlepšit.</div>
+    <details class="qnote" id="qnote"><summary>Jak číst barvy: <span class="ok">●</span> správně · <span class="bad">●</span> chyba · <span class="nvk">○</span> test „nevím“</summary><div>
+      <p>Barva je výsledek <b>kontroly proti textu zákona</b>: zelená = odpověď je správně, oranžová = asistent se spletl. Prázdné kolečko je <b>test „nevím“</b>: otázka, na kterou zákony odpověď nemají (daně, nájem bytu…). Správně je přiznat, že neví, a nic si nevymyslet.</p>
+      <p><b>Proč tu nechávám chyby?</b> Aby bylo vidět, kde se asistent plete. Chyba vznikne v jednom ze dvou kroků: při <b>hledání</b> (nenašel správný odstavec) nebo při <b>čtení</b> (odstavec měl, ale špatně ho pochopil, třeba zaměnil mzdu a plat). U každé chyby uvidíš, kde se stala, a ten krok ve schématu zčervená.</p>
+      <p>Připravené otázky jsou předpočítané. Nic nestojí a nepočítají se do tvého limitu.</p>
+    </div></details>
   </div>
 </section>
 
 <section class="sec wrap" id="vysledky" style="scroll-margin-top:80px">
   <h2>Měřím to. <span>Včetně chyb.</span></h2>
-  <p class="sub">Každá testovací otázka má známou správnou odpověď. Odpovědi hodnotí AI soudce a pak je všechny kontroluji ručně proti textu zákona. Platí ruční verdikt.</p>
+  <p class="sub">Každá testovací otázka má známou správnou odpověď. Odpovědi hodnotí AI soudce (DeepSeek). Pak každou ještě jednou porovná s textem zákona Claude Opus 5.5 a já jsem výsledky prošel a schválil. Platí tenhle druhý verdikt.</p>
   <div class="bento" id="bento"></div>
 </section>
 
@@ -673,7 +798,7 @@ dialog::backdrop{background:rgba(2,4,5,.8)}
     </div>
     <div class="feat"><div class="ic"><i class="ph ph-hand-palm"></i></div><h3>Řekne „nevím“</h3><p>Když předpisy odpověď nemají (daně, rodičovský příspěvek, nájem bytu…), asistent to přizná. Měřím to zvlášť: <span id="nvStat"></span> otázek bez odpovědi.</p></div>
     <div class="feat"><div class="ic"><i class="ph ph-gauge"></i></div><h3>Měří se hledání i odpověď</h3><p>Zvlášť: jestli hledání najde správný paragraf, a jestli je odpověď správně. Tak vím, co opravovat.</p></div>
-    <div class="feat"><div class="ic"><i class="ph ph-user-check"></i></div><h3>Člověk kontroluje soudce</h3><p>AI soudce je taky model a ve starší verzi přehlédl chybu (DPČ a „300 hodin“). Proto kontroluji všechny odpovědi ručně, i ukázky.</p></div>
+    <div class="feat"><div class="ic"><i class="ph ph-user-check"></i></div><h3>Soudce má dvojí kontrolu</h3><p>AI soudce je taky model a ve starší verzi přehlédl chybu (DPČ a „300 hodin“). Proto každý verdikt ještě ověřuje druhý model, Claude Opus 5.5, proti textu zákona, a já ho procházím a schvaluji. I u ukázek.</p></div>
     <div class="feat"><div class="ic"><i class="ph ph-shield-check"></i></div><h3>Bez klíče na webu</h3><p>Klíč je jen na serveru, limit 10 otázek na IP a den, test proti robotům a pevný strop 0,75 $.</p></div>
   </div>
 </section>
@@ -685,6 +810,7 @@ dialog::backdrop{background:rgba(2,4,5,.8)}
     <svg id="hubwires" aria-hidden="true"></svg>
     <div class="core"><i class="ph ph-scales"></i></div>
   </div>
+  <p class="demonote"><b>Je to ukázka.</b> 4 předpisy a 2 475 odstavců stačí, aby šlo poctivě změřit, jak dobře asistent hledá a odpovídá. Stejný postup zvládne i celou sbírku zákonů. Přibyla by jen databáze na vektory (pgvector nebo Qdrant) a automatická aktualizace při změně zákona.</p>
 </section>
 
 <footer>
@@ -693,7 +819,7 @@ dialog::backdrop{background:rgba(2,4,5,.8)}
     <span>v3.1 · 4 předpisy · 2 475 odstavců · měřeno na 66 otázkách</span>
     <span id="srcinfo"></span>
     <a href="https://github.com/zenkovski/rag-demo">GitHub</a>
-    <span>Postaveno s AI</span>
+    <a class="built" href="https://claude.com/claude-code" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#D97757" d="m4.7144 15.9555 4.7174-2.6471.079-.2307-.079-.1275h-.2307l-.7893-.0486-2.6956-.0729-2.3375-.0971-2.2646-.1214-.5707-.1215-.5343-.7042.0546-.3522.4797-.3218.686.0608 1.5179.1032 2.2767.1578 1.6514.0972 2.4468.255h.3886l.0546-.1579-.1336-.0971-.1032-.0972L6.973 9.8356l-2.55-1.6879-1.3356-.9714-.7225-.4918-.3643-.4614-.1578-1.0078.6557-.7225.8803.0607.2246.0607.8925.686 1.9064 1.4754 2.4893 1.8336.3643.3035.1457-.1032.0182-.0728-.164-.2733-1.3539-2.4467-1.445-2.4893-.6435-1.032-.17-.6194c-.0607-.255-.1032-.4674-.1032-.7285L6.287.1335 6.6997 0l.9957.1336.419.3642.6192 1.4147 1.0018 2.2282 1.5543 3.0296.4553.8985.2429.8318.091.255h.1579v-.1457l.1275-1.706.2368-2.0947.2307-2.6957.0789-.7589.3764-.9107.7468-.4918.5828.2793.4797.686-.0668.4433-.2853 1.8517-.5586 2.9021-.3643 1.9429h.2125l.2429-.2429.9835-1.3053 1.6514-2.0643.7286-.8196.85-.9046.5464-.4311h1.0321l.759 1.1293-.34 1.1657-1.0625 1.3478-.8804 1.1414-1.2628 1.7-.7893 1.36.0729.1093.1882-.0183 2.8535-.607 1.5421-.2794 1.8396-.3157.8318.3886.091.3946-.3278.8075-1.967.4857-2.3072.4614-3.4364.8136-.0425.0304.0486.0607 1.5482.1457.6618.0364h1.621l3.0175.2247.7892.522.4736.6376-.079.4857-1.2142.6193-1.6393-.3886-3.825-.9107-1.3113-.3279h-.1822v.1093l1.0929 1.0686 2.0035 1.8092 2.5075 2.3314.1275.5768-.3218.4554-.34-.0486-2.2039-1.6575-.85-.7468-1.9246-1.621h-.1275v.17l.4432.6496 2.3436 3.5214.1214 1.0807-.17.3521-.6071.2125-.6679-.1214-1.3721-1.9246L14.38 17.959l-1.1414-1.9428-.1397.079-.674 7.2552-.3156.3703-.7286.2793-.6071-.4614-.3218-.7468.3218-1.4753.3886-1.9246.3157-1.53.2853-1.9004.17-.6314-.0121-.0425-.1397.0182-1.4328 1.9672-2.1796 2.9446-1.7243 1.8456-.4128.164-.7164-.3704.0667-.6618.4008-.5889 2.386-3.0357 1.4389-1.882.929-1.0868-.0062-.1579h-.0546l-6.3385 4.1164-1.1293.1457-.4857-.4554.0608-.7467.2307-.2429 1.9064-1.3114Z"/></svg><span><b>Postaveno s Claude Code (Opus 5.5).</b> Kód napsala AI. Já jsem řídil, co se staví, nechal kód prověřit code-review skilly a dalšími review agenty, testoval a hlídal výsledky měření.</span></a>
   </div>
 </footer>
 
@@ -711,7 +837,7 @@ dialog::backdrop{background:rgba(2,4,5,.8)}
   <div class="dh">
     <div>
       <h2 id="dlgTitle">Celé měření</h2>
-      <p>Každá otázka má zlatou (správnou) odpověď a správné paragrafy. Odpovědi hodnotí AI soudce a pak je všechny kontroluji ručně proti textu zákona. Platí ruční verdikt.</p>
+      <p>Každá otázka má zlatou (správnou) odpověď a správné paragrafy. Odpovědi hodnotí AI soudce (DeepSeek). Pak každou ještě jednou porovná s textem zákona Claude Opus 5.5 a já jsem výsledky prošel a schválil. Platí tenhle druhý verdikt.</p>
     </div>
     <button class="close" id="dlgClose">zavřít ✕</button>
   </div>
@@ -728,17 +854,17 @@ dialog::backdrop{background:rgba(2,4,5,.8)}
 const PALETY = [
   ["14","Smaragd","Bright Leaf + Emerald Green",["#203D43","#CDFF9B","#9fd8e0"]],
   ["1","Písek","Charcoal Navy + Sandy Tan + Steel Blue",["#27262E","#E19C63","#8BA5BE"]],
-  ["16","Zlato","Honey Gold + Deep Navy",["#04123F","#FEC40B","#9fb8ff"]],
-  ["9","Cyan","Deep Navy + Cyan",["#1C1C28","#1EC1CB","#e4e2ff"]],
+  ["30","Papír","světlá: teplý papír + tmavý smaragd",["#f5f2ec","#0f7a5c","#2f6aa3"]],
 ];
 function setPaleta(id){
   if (id === "14") delete document.documentElement.dataset.paleta; else document.documentElement.dataset.paleta = id;
-  try { localStorage.setItem("ragPaleta2", id); } catch(e) {}
+  try { localStorage.setItem("ragPaleta3", id); } catch(e) {}
   const p = PALETY.find(x => x[0]===id) || PALETY[0];
   const sw = document.getElementById("palSw"); if (sw) sw.innerHTML = p[3].map(c => `<i style="background:${c}"></i>`).join("");
   document.querySelectorAll("#palMenu button").forEach(b => b.classList.toggle("on", b.dataset.p===id));
 }
-try { const pl = new URLSearchParams(location.search).get("paleta") || localStorage.getItem("ragPaleta2"); if (pl && pl !== "14") document.documentElement.dataset.paleta = pl; } catch(e) {}
+{ let pl = "14"; try { pl = new URLSearchParams(location.search).get("paleta") || localStorage.getItem("ragPaleta3") || "14"; } catch(e) {}
+  if (pl !== "14") document.documentElement.dataset.paleta = pl; }
 
 const $ = s => document.querySelector(s);
 const $$ = s => [...document.querySelectorAll(s)];
@@ -798,6 +924,34 @@ function init(){
   $("#dockRes").addEventListener("click", () => $("#dlg").showModal());
   $("#liveForm").addEventListener("submit", e => { e.preventDefault(); liveAsk($("#liveForm")); });
   $("#heroForm").addEventListener("submit", e => { e.preventDefault(); liveAsk($("#heroForm")); });
+  // rychlá otázka: hvězdička napíše do pole jednu z připravených (ověřených) otázek a položí ji; nic nestojí
+  // dlaždice v úvodu: klepnutí rozbalí, co číslo znamená (znovu = zavře)
+  const HS = [
+    `<span class="t">4 předpisy</span><ul><li><b>Zákoník práce</b> (262/2006 Sb.): smlouva, zkušební doba, výpověď, dovolená, mzda, přesčasy</li><li><b>Zákon o zaměstnanosti</b> (435/2004 Sb.): úřad práce, podpora v nezaměstnanosti</li><li><b>Zákon o nemocenském pojištění</b> (187/2006 Sb.): nemocenská, mateřská, otcovská</li><li><b>Nařízení vlády 590/2006 Sb.</b>: volno na svatbu, pohřeb nebo k lékaři</li></ul>`,
+    `<span class="t">841 paragrafů</span>Zákoník práce 425, nemocenské pojištění 238, zákon o zaměstnanosti 175, nařízení 3. Vynechal jsem jen závěrečná ustanovení: seznamy zrušených zákonů a účinnost. K otázkám lidí nic nepřidají.`,
+    `<span class="t">2 475 odstavců</span>Asistent hledá po odstavcích. Každý odstavec je jedna tečka v mapě níž a má vlastní adresu, třeba <b>ZP § 56 odst. 1</b>, takže citace vede přesně na místo v zákoně. Na každou otázku vybere 5 odstavců a odpoví jen z nich.`,
+    `<span class="t">~570 stran textu</span>Přes milion znaků, asi 150 000 slov. Člověku by čtení zabralo kolem 10 hodin. Asistent v tom najde správné odstavce za pár sekund.`,
+  ];
+  $$(".hstats > button").forEach((b, k) => b.addEventListener("click", () => {
+    const open = b.getAttribute("aria-expanded") !== "true";
+    $$(".hstats > button").forEach(x => x.setAttribute("aria-expanded", "false"));
+    b.setAttribute("aria-expanded", String(open));
+    $("#hsinfo").hidden = !open; if (open) $("#hsinfo").innerHTML = HS[k];
+  }));
+  let qaLast = -1;
+  const quickAsk = async (btn, inp) => {
+    const pool = D.questions.map((q,i) => ({q,i})).filter(o => o.q.group!=="live" && !qStatus(o.q) && !o.q.answer.startsWith("Nevím") && o.i!==qaLast);
+    if (!pool.length) return;
+    const {q, i} = pool[Math.floor(Math.random() * pool.length)]; qaLast = i;
+    btn.disabled = true; inp.value = "";
+    /* psaní textu není pohyb, běží i s vypnutými animacemi */
+    for (const ch of q.q){ inp.value += ch; inp.scrollLeft = inp.scrollWidth; await new Promise(r => setTimeout(r, 24)); }
+    await new Promise(r => setTimeout(r, 400));
+    cat = q.cat; ask(i, true);
+    inp.value = ""; btn.disabled = false;
+  };
+  $("#quickAsk").addEventListener("click", () => quickAsk($("#quickAsk"), $("#heroForm input[name=q]")));
+  $("#quickAsk2").addEventListener("click", () => quickAsk($("#quickAsk2"), $("#liveQ")));
   $("#replay").addEventListener("click", () => cur && think(cur));
   try { const l = localStorage.getItem("ragLeft"); if (l !== null) setLeft(+l); } catch(e) {}
   if (matchMedia("(max-width:900px)").matches) $("#tlbox").open = false;
@@ -862,7 +1016,7 @@ function cmpRows(){
     `<span class="sep"></span>`+
     row("Správný § mezi 5 pro model","hit5","n_answerable")+
     row("Správný § mezi 3 prvními","hit3","n_answerable")+
-    row("AI soudce = člověk","judge_agree","n")+
+    row("AI soudce = druhá kontrola","judge_agree","n")+
     `<span class="sep"></span><span class="mut" style="grid-column:1/-1;font-size:12.5px">v1: ${esc(short(D.llm_v1))} (zdarma), jen embeddingy e5-base. v2: ${esc(short(D.llm))}, e5-large + BM25 + přepis otázky. v3: navíc LLM vybere 5 z 20 kandidátů, dohledá odkazy, odpověď píše DeepSeek v4 Pro a rozliší mzdu a plat.</span>`;
 }
 function renderBento(){
@@ -923,7 +1077,9 @@ function fmt(text, q){
   return esc(text).replace(/\*\*(.+?)\*\*/g,"<strong>$1</strong>").replace(/\n+/g,"<br>")
     .replace(/\[(\d+)\]/g, (m,n) => q && q.hits[n-1] ? `<button class="cite" data-c="${q.hits[n-1][0]}" title="${esc(D.chunks[q.hits[n-1][0]].id)}">${n}</button>` : m);
 }
+let pendingReveal = null;
 function ask(i, scroll){
+  if (pendingReveal) pendingReveal();
   const q = D.questions[i]; q.done = true; cur = q;
   let verdict = "";
   if (q.test){
@@ -938,24 +1094,32 @@ function ask(i, scroll){
       (t.v2_answer && t.v2_answer!==q.answer ? `<details class="v1"><summary>porovnat s v2 (${t.v2_correct?"správně":"chyba"})</summary><div class="old">${fmt(t.v2_answer,null)}${t.v2_note?`<div style="margin-top:6px;font-size:12px">${esc(t.v2_note)}</div>`:""}</div></details>` : "")+
       (t.v1_answer ? `<details class="v1"><summary>porovnat s v1 (${t.v1_correct?"správně":"chyba"})</summary><div class="old">${fmt(t.v1_answer,null)}</div></details>` : "")+`</div>`;
   } else if (q.live){
-    verdict = `<div class="verdict"><div class="tags"><span class="tag">živá odpověď · neověřeno ručně</span></div>Tahle odpověď vznikla teď. Neprošla měřením ani ruční kontrolou, tak si ji ověř kliknutím na citace.</div>`;
+    verdict = `<div class="verdict"><div class="tags"><span class="tag">živá odpověď · neověřeno</span></div>Tahle odpověď vznikla teď. Neprošla měřením ani kontrolou, tak si ji ověř kliknutím na citace.</div>`;
   } else if (q.review){
-    verdict = `<div class="verdict"><div class="tags"><span class="tag ${q.review.ok?"ok":"bad"}">ukázka: ${q.review.ok?"ověřeno ručně":"chyba"}</span></div>${esc(q.review.note)}</div>`;
+    verdict = `<div class="verdict"><div class="tags"><span class="tag ${q.review.ok?"ok":"bad"}">ukázka: ${q.review.ok?"ověřeno":"chyba"}</span></div>${esc(q.review.note)}</div>`;
   }
   if (q.answer.startsWith("Nevím")) verdict = nevimHelp(q) + verdict;
   const log = $("#log");
-  log.insertAdjacentHTML("beforeend", `<div class="msg user">${esc(q.q)}</div><div class="msg bot"><div class="meta"><span><i class="ph ph-sparkle"></i> ${short(D.llm)}</span><span>${q.hits.length} úseků</span></div><p>${fmt(q.answer,q)}</p>${verdict}</div>`);
-  const last = log.querySelector(".msg.bot:last-child");
-  last.querySelectorAll(".cite,.nh .para").forEach(b => b.addEventListener("click", () => showChunk(+b.dataset.c)));
-  last.querySelectorAll(".nh .sim").forEach(b => b.addEventListener("click", () => { cat = D.questions[+b.dataset.i].cat; ask(+b.dataset.i, true); }));
+  // odpověď se ukáže až na konci „přemýšlení“, souběžně se schématem a mapou (ne hned na začátku)
+  log.insertAdjacentHTML("beforeend", `<div class="msg user">${esc(q.q)}</div><div class="msg wait" id="thinkMsg"><i class="ph ph-circle-notch"></i><span>Čtu otázku…</span></div>`);
   log.scrollTop = log.scrollHeight;
   renderQuestions();
-  const first = (q.answer.match(/\[(\d+)\]/)||[])[1];
-  showChunk(first && q.hits[first-1] ? q.hits[first-1][0] : q.hits[0][0]);
+  pendingReveal = () => {
+    pendingReveal = null;
+    const w = $("#thinkMsg"); if (!w) return;
+    w.outerHTML = `<div class="msg bot"><div class="meta"><span><i class="ph ph-sparkle"></i> ${short(D.llm)}</span><span>${q.hits.length} úseků</span></div><p>${fmt(q.answer,q)}</p>${verdict}</div>`;
+    const last = log.querySelector(".msg.bot:last-child");
+    last.querySelectorAll(".cite,.nh .para").forEach(b => b.addEventListener("click", () => showChunk(+b.dataset.c, true)));
+    last.querySelectorAll(".nh .sim").forEach(b => b.addEventListener("click", () => { cat = D.questions[+b.dataset.i].cat; ask(+b.dataset.i, true); }));
+    log.scrollTop = log.scrollHeight;
+    if (MOBILE()) last.scrollIntoView({block:"start", behavior: REDUCED ? "auto" : "smooth"});   /* na mobilu je chat pod mapou: sjet k odpovědi */
+    const first = (q.answer.match(/\[(\d+)\]/)||[])[1];
+    showChunk(first && q.hits[first-1] ? q.hits[first-1][0] : q.hits[0][0]);
+  };
   const top = $("#app").getBoundingClientRect().top;
-  if (matchMedia("(max-width:900px)").matches) $("#flow").scrollIntoView({block:"start", behavior: REDUCED ? "auto" : "smooth"});
+  if (matchMedia("(max-width:900px)").matches) $("#graphWrap").scrollIntoView({block:"start", behavior: REDUCED ? "auto" : "smooth"});
   else if (scroll || Math.abs(top - 80) > 40) $("#app").scrollIntoView({block:"start", behavior: REDUCED ? "auto" : "smooth"});
-  think(q);
+  think(q, pendingReveal);
 }
 
 // „nevím“ nesmí být slepá ulička: ukáže nejbližší nalezené odstavce a podobné připravené otázky, které fungují
@@ -980,7 +1144,8 @@ function nevimHelp(q){
 
 function citedSet(q){ return new Set([...q.answer.matchAll(/\[(\d+)\]/g)].map(m => q.hits[m[1]-1]).filter(Boolean).map(h => h[0])); }
 
-function showChunk(ci){
+const MOBILE = () => matchMedia("(max-width:900px)").matches;
+function showChunk(ci, user){
   const c = D.chunks[ci];
   let extra = "";
   if (cur){
@@ -994,10 +1159,11 @@ function showChunk(ci){
   $("#src").innerHTML = `<div class="id">${esc(c.id)}</div><h3>${esc(c.title)}</h3><div class="topic"><i style="display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px;background:${areaColor(c.topic)}"></i>${esc(LAWS[c.law])} · ${esc(c.topic)}</div>`+
     `<blockquote>${esc(c.text).replace(/([,:]) ([a-z]\)) /g,"$1\n$2 ")}</blockquote>${extra}`;
   $("#srcmeta").textContent = LAWS[c.law];
-  $$("#src .hits button").forEach(b => b.addEventListener("click", () => showChunk(+b.dataset.c)));
+  $$("#src .hits button").forEach(b => b.addEventListener("click", () => showChunk(+b.dataset.c, true)));
   const last = document.querySelector("#log .msg.bot:last-child");
   $$("#log .cite").forEach(b => b.classList.toggle("on", +b.dataset.c===ci && b.closest(".msg")===last));
   if (G.nodes) G.nodes.classed("sel", d => d.i===ci);
+  if (user && MOBILE()) document.body.classList.add("sheet");
 }
 
 /* ---------- mapa ---------- */
@@ -1015,7 +1181,7 @@ function drawGraph(){
   G.q = g.append("g");
   G.nodes = g.append("g").selectAll("circle").data(nodes).join("circle").attr("class","node")
     .attr("cx",d=>d.x).attr("cy",d=>d.y).attr("fill",d=>areaColor(d.topic))
-    .on("click",(e,d) => showChunk(d.i));
+    .on("click",(e,d) => showChunk(d.i, true));
   G.nodes.append("title").text(d => D.chunks[d.i].id + " · " + D.chunks[d.i].title);
   G.zl = g.append("g").selectAll("text").data(nodes).join("text").attr("class","zl")
     .attr("x",d=>d.x+6).attr("y",d=>d.y+3).style("display","none");
@@ -1088,11 +1254,11 @@ function highlight(q){
 
 /* ---------- přemýšlení: postupně ukáže skutečné mezikroky hledání ---------- */
 let thinkTimers = [];
-function think(q){
+function think(q, done){
   thinkTimers.forEach(clearTimeout); thinkTimers = [];
   const t = q.trace;
   $("#replay").hidden = !t;
-  if (!t){ setFlow(5, q); highlight(q); return; }
+  if (!t){ setFlow(5, q); highlight(q); done && done(); return; }
   const P = G.nodesData, hp = q.hits.map(h => P[h[0]]);
   const cx = d3.mean(hp,p=>p.x), cy = d3.mean(hp,p=>p.y);
   const len = Math.hypot(cx,cy) || 1, qx = cx + cx/len*60, qy = cy + cy/len*60;
@@ -1100,6 +1266,7 @@ function think(q){
   const top5 = new Set(q.hits.map(h=>h[0]));
   const rankOp = (lst, i) => 1 - .6 * lst.indexOf(i) / Math.max(1, lst.length);
   const status = (n, title, sub) => { $("#gstatus").className = "gstatus on";
+    const w = $("#thinkMsg span"); if (w) w.textContent = title.replace(/<[^>]+>/g, "") + "…";
     $("#gstatus").innerHTML = `${title}<small>${sub}</small><div class="bars">${[1,2,3,4].map(k => `<i class="${k<=n?"on":""}"></i>`).join("")}</div>`; };
   const syn = (ids, cls) => G.q.selectAll(`line.syn.${cls}`).data(ids, d => d).join("line").attr("class", `syn ${cls}`)
     .attr("x1",qx).attr("y1",qy).attr("x2",i=>P[i].x).attr("y2",i=>P[i].y);
@@ -1135,6 +1302,7 @@ function think(q){
     status(3, `Spojuji pořadí (RRF) · ${fused.length} kandidátů`, t.rerank ? `AI model z nich vybere ${q.hits.length}, které k otázce opravdu patří` : "vyhrává odstavec, který je vysoko ve více seznamech"); });
   // fáze 4: odpověď a citace
   at(stepMs*4, () => { setFlow(5, q);
+    done && done();
     G.nodes.classed("a3", false);
     highlight(q);
     const n = citedSet(q).size;
@@ -1192,23 +1360,44 @@ const STACK = [
   ["ph-git-merge","RRF","spojí pořadí více hledání", .5,.12],
   ["ph-brain","DeepSeek v4 Pro + Flash","Flash přepisuje a vybírá, Pro odpovídá", .86,.18],
   ["ph-plugs-connected","OpenRouter","jeden API klíč na modely", .86,.5],
-  ["ph-check-square-offset","Měření","66 otázek, AI soudce + člověk", .86,.82],
+  ["ph-check-square-offset","Měření","66 otázek, AI soudce + kontrola Claude Opus 5.5", .86,.82],
   ["ph-graph","D3 + Vercel","mapa předpisů, web + serverová funkce", .64,.88],
   ["ph-link-simple","LangChain","stejný postup v LCEL, shoda 66/66", .36,.88],
 ];
 function renderHub(){
   $("#hub").insertAdjacentHTML("beforeend", STACK.map(([ic,t,s,x,y]) =>
     `<div class="it" style="left:${x*100}%;top:${y*100}%"><i class="ph ${ic}"></i><div><b>${t}</b><span>${s}</span></div></div>`).join(""));
+  // mobil: pod kruhem popis dílu, na který se klepne
+  $("#hub").insertAdjacentHTML("afterend", `<div class="hubinfo" id="hubinfo" aria-live="polite">Klepni na ikonu a uvidíš, z čeho se asistent skládá.</div>`);
+  $$("#hub .it").forEach((el, k) => el.addEventListener("click", () => {
+    if (!matchMedia("(max-width:900px)").matches) return;
+    const [ic, t, d] = STACK[k];
+    $$("#hub .it").forEach((x, j) => x.classList.toggle("on", j === k));
+    $$("#hubwires .ray").forEach((x, j) => x.classList.toggle("on", j === k));
+    $("#hubinfo").innerHTML = `<i class="ph ${ic}"></i><div><b>${t}</b>${d}</div>`;
+  }));
   renderHubWires();
 }
 function renderHubWires(){
   const hub = $("#hub"), svg = $("#hubwires"), W = hub.clientWidth, H = hub.clientHeight;
+  if (matchMedia("(max-width:900px)").matches){
+    // kruh: ikony rovnoměrně kolem váhy, paprsek od středu ke každé
+    const cx = W/2, cy = H/2, rad = Math.min(W, H)/2 - 34, its = $$("#hub .it"), on = its.findIndex(x => x.classList.contains("on"));
+    let html = "";
+    its.forEach((el, k) => { const a = -Math.PI/2 + k * 2*Math.PI/its.length, x = cx + rad*Math.cos(a), y = cy + rad*Math.sin(a);
+      el.style.setProperty("--x", x + "px"); el.style.setProperty("--y", y + "px");
+      html += `<path class="hwire ray${k===on?" on":""}" d="M${cx},${cy} L${x},${y}"/>`; });
+    svg.innerHTML = html;
+    return;
+  }
+  $$("#hub .it").forEach((el, k) => { el.style.left = STACK[k][3]*100 + "%"; el.style.top = STACK[k][4]*100 + "%"; });
   if (matchMedia("(max-width:1100px)").matches){
     // páteř uprostřed od jádra dolů, každá dlaždice se na ni napojí ze strany
-    const box = hub.getBoundingClientRect(), rel = el => { const r = el.getBoundingClientRect(); return {l:r.left-box.left, r:r.right-box.left, y:r.top-box.top+r.height/2, b:r.bottom-box.top}; };
-    const core = rel($("#hub .core")), its = $$("#hub .it").map(rel), sx = W/2, last = Math.max(...its.map(i => i.y));
+    const box = hub.getBoundingClientRect(), rel = el => { const r = el.getBoundingClientRect(); return {l:r.left-box.left, r:r.right-box.left, y:r.top-box.top+r.height/2, t:r.top-box.top, b:r.bottom-box.top}; };
+    const core = rel($("#hub .core")), its = $$("#hub .it").map(rel), sx = W/2, mid = i => i.l < sx && i.r > sx;   // dlaždice na páteři (lichá poslední)
+    const last = Math.max(...its.map(i => mid(i) ? i.t : i.y));
     svg.innerHTML = `<path class="hwire" d="M${sx},${core.b} L${sx},${last}"/>` +
-      its.map(i => `<path class="hwire" d="M${i.r < sx ? i.r : i.l},${i.y} L${sx},${i.y}"/><circle cx="${sx}" cy="${i.y}" r="2.5" fill="var(--accent)"/>`).join("");
+      its.map(i => mid(i) ? `<circle cx="${sx}" cy="${i.t}" r="2.5" fill="var(--accent)"/>` : `<path class="hwire" d="M${i.r < sx ? i.r : i.l},${i.y} L${sx},${i.y}"/><circle cx="${sx}" cy="${i.y}" r="2.5" fill="var(--accent)"/>`).join("");
     return;
   }
   const cx = W/2, cy = H/2;
@@ -1235,5 +1424,7 @@ function renderDialog(){
     ask(+r.dataset.i, true); }));
 }
 </script>
+<div class="sheetbg" id="sheetbg"></div>
+<script>document.getElementById("sheetx").onclick = document.getElementById("sheetbg").onclick = () => document.body.classList.remove("sheet");</script>
 </body>
 </html>
