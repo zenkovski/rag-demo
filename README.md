@@ -29,7 +29,7 @@ Každou odpověď jsem ručně zkontroloval proti textu zákona.
 | Otázky napsané předem, před spuštěním verze | **20 z 20** (předchozí verze 18 z 20) |
 | Ukázkové otázky mimo testy | **14 z 16** (obě chyby jsou vidět na webu) |
 | Past: odpověď v zákonech není, správně je „nevím“ | **10 z 10** |
-| Správný paragraf mezi 5 úseky, které model dostane | **56 z 56** |
+| Správný paragraf mezi 5 úseky, které model dostane | **56 z 56** (cross-encoder pro srovnání 52, viz [DESIGN.md](DESIGN.md#5-výběr-5-z-20-llm-nebo-cross-encoder)) |
 
 Celkem 66 z 66, ale toto číslo je nadsazené: podle části otázek jsem ladil. Poctivé jsou řádky výše. Podrobně: [RESULTS.md](RESULTS.md).
 
@@ -53,6 +53,7 @@ Stejné hledání je napsané třikrát: ručně v Pythonu, v LangChainu a v Jav
 | `tools/rag.py` | celý postup: embeddingy, BM25, RRF, výběr, odpověď |
 | `tools/rag_langchain.py` | stejný postup v LangChainu (LCEL) |
 | `tools/evaluate.py` | měření na 66 otázkách → `RESULTS.md` |
+| `tools/rerank_compare.py` | výběr přes LLM proti cross-encoderu (zdarma, z cache) |
 | `tools/build_data.py` | data a rozložení mapy pro web |
 | `site/index.html` | web (jeden soubor, D3 mapa) |
 | `site/api/ask.js` | serverová funkce pro vlastní otázky (Vercel) |
@@ -63,7 +64,7 @@ Stejné hledání je napsané třikrát: ručně v Pythonu, v LangChainu a v Jav
 Další dokumenty:
 - [RESULTS.md](RESULTS.md): výsledky otázku po otázce.
 - [HISTORY.md](HISTORY.md): co se změnilo ve v1 → v3.1 a proč.
-- [INTERVIEW.md](INTERVIEW.md): vysvětlení každé části.
+- [DESIGN.md](DESIGN.md): každé rozhodnutí, proč padlo a co by chybělo do provozu.
 
 ## Spuštění
 
@@ -91,7 +92,7 @@ copy .env.example .env                                   # doplň OPENROUTER_API
 - Živé otázky na webu nikdo nekontroluje. Model se může splést, proto jsou u odpovědí citace.
 - Asistent nezná výši minimální mzdy. Nařízení 567/2006 je zrušené a výši teď vyhlašuje ministerstvo sdělením.
 - Počítadla limitů jsou v paměti funkce, ne v databázi.
-- Zákony se mění. Data jsou zmrazená k 6. 10. 2026. Pro demo automatická aktualizace není potřeba. Jak by fungovala v provozu: [INTERVIEW.md](INTERVIEW.md#11-co-bych-udělal-dál).
+- Zákony se mění. Data jsou zmrazená k 6. 10. 2026. Pro demo automatická aktualizace není potřeba. Jak by fungovala v provozu: [DESIGN.md](DESIGN.md#11-co-by-chybělo-do-provozu).
 
 ## Zdroje a autorství
 

@@ -1,0 +1,481 @@
+{
+ "n": 56,
+ "kandidati_20": {
+  "hit": 55,
+  "of": 56,
+  "mrr": 0.711
+ },
+ "rrf_top5": {
+  "hit": 49,
+  "of": 56,
+  "mrr": 0.699
+ },
+ "llm_vyber_5": {
+  "hit": 56,
+  "of": 56,
+  "mrr": 0.964
+ },
+ "cross_encoder_5": {
+  "hit": 52,
+  "of": 56,
+  "mrr": 0.805
+ },
+ "cross_encoder_s_na_otazku_cpu": 15.23,
+ "chyby_cross_encoder": [
+  7,
+  10,
+  24,
+  62
+ ],
+ "chyby_llm": [],
+ "rows": [
+  {
+   "id": 1,
+   "set": "test",
+   "rrf20": 6,
+   "rrf5": null,
+   "llm": 1,
+   "ce": 1
+  },
+  {
+   "id": 2,
+   "set": "test",
+   "rrf20": 2,
+   "rrf5": 2,
+   "llm": 1,
+   "ce": 1
+  },
+  {
+   "id": 3,
+   "set": "test",
+   "rrf20": 1,
+   "rrf5": 1,
+   "llm": 1,
+   "ce": 1
+  },
+  {
+   "id": 4,
+   "set": "test",
+   "rrf20": 4,
+   "rrf5": 4,
+   "llm": 1,
+   "ce": 1
+  },
+  {
+   "id": 5,
+   "set": "test",
+   "rrf20": 2,
+   "rrf5": 2,
+   "llm": 1,
+   "ce": 1
+  },
+  {
+   "id": 6,
+   "set": "test",
+   "rrf20": 1,
+   "rrf5": 1,
+   "llm": 1,
+   "ce": 1
+  },
+  {
+   "id": 7,
+   "set": "test",
+   "rrf20": 2,
+   "rrf5": 2,
+   "llm": 1,
+   "ce": null
+  },
+  {
+   "id": 8,
+   "set": "test",
+   "rrf20": 1,
+   "rrf5": 1,
+   "llm": 1,
+   "ce": 1
+  },
+  {
+   "id": 9,
+   "set": "test",
+   "rrf20": 1,
+   "rrf5": 1,
+   "llm": 1,
+   "ce": 1
+  },
+  {
+   "id": 10,
+   "set": "test",
+   "rrf20": null,
+   "rrf5": null,
+   "llm": 2,
+   "ce": null
+  },
+  {
+   "id": 11,
+   "set": "test",
+   "rrf20": 1,
+   "rrf5": 1,
+   "llm": 1,
+   "ce": 1
+  },
+  {
+   "id": 12,
+   "set": "test",
+   "rrf20": 6,
+   "rrf5": null,
+   "llm": 1,
+   "ce": 1
+  },
+  {
+   "id": 13,
+   "set": "test",
+   "rrf20": 1,
+   "rrf5": 1,
+   "llm": 1,
+   "ce": 1
+  },
+  {
+   "id": 14,
+   "set": "test",
+   "rrf20": 1,
+   "rrf5": 1,
+   "llm": 1,
+   "ce": 1
+  },
+  {
+   "id": 15,
+   "set": "test",
+   "rrf20": 3,
+   "rrf5": 3,
+   "llm": 1,
+   "ce": 1
+  },
+  {
+   "id": 16,
+   "set": "test",
+   "rrf20": 1,
+   "rrf5": 1,
+   "llm": 1,
+   "ce": 1
+  },
+  {
+   "id": 18,
+   "set": "test",
+   "rrf20": 1,
+   "rrf5": 1,
+   "llm": 1,
+   "ce": 1
+  },
+  {
+   "id": 19,
+   "set": "test",
+   "rrf20": 4,
+   "rrf5": 4,
+   "llm": 1,
+   "ce": 1
+  },
+  {
+   "id": 20,
+   "set": "test",
+   "rrf20": 11,
+   "rrf5": null,
+   "llm": 1,
+   "ce": 2
+  },
+  {
+   "id": 21,
+   "set": "holdout",
+   "rrf20": 2,
+   "rrf5": 2,
+   "llm": 1,
+   "ce": 1
+  },
+  {
+   "id": 22,
+   "set": "holdout",
+   "rrf20": 2,
+   "rrf5": 2,
+   "llm": 1,
+   "ce": 1
+  },
+  {
+   "id": 23,
+   "set": "holdout",
+   "rrf20": 1,
+   "rrf5": 1,
+   "llm": 1,
+   "ce": 2
+  },
+  {
+   "id": 24,
+   "set": "holdout",
+   "rrf20": 4,
+   "rrf5": 4,
+   "llm": 1,
+   "ce": null
+  },
+  {
+   "id": 25,
+   "set": "holdout",
+   "rrf20": 1,
+   "rrf5": 1,
+   "llm": 1,
+   "ce": 1
+  },
+  {
+   "id": 26,
+   "set": "holdout",
+   "rrf20": 1,
+   "rrf5": 1,
+   "llm": 1,
+   "ce": 1
+  },
+  {
+   "id": 27,
+   "set": "holdout",
+   "rrf20": 1,
+   "rrf5": 1,
+   "llm": 1,
+   "ce": 1
+  },
+  {
+   "id": 28,
+   "set": "holdout",
+   "rrf20": 2,
+   "rrf5": 2,
+   "llm": 1,
+   "ce": 3
+  },
+  {
+   "id": 30,
+   "set": "holdout",
+   "rrf20": 1,
+   "rrf5": 1,
+   "llm": 1,
+   "ce": 1
+  },
+  {
+   "id": 31,
+   "set": "new",
+   "rrf20": 1,
+   "rrf5": 1,
+   "llm": 1,
+   "ce": 1
+  },
+  {
+   "id": 32,
+   "set": "new",
+   "rrf20": 2,
+   "rrf5": 2,
+   "llm": 1,
+   "ce": 2
+  },
+  {
+   "id": 33,
+   "set": "new",
+   "rrf20": 1,
+   "rrf5": 1,
+   "llm": 1,
+   "ce": 1
+  },
+  {
+   "id": 34,
+   "set": "new",
+   "rrf20": 1,
+   "rrf5": 1,
+   "llm": 1,
+   "ce": 3
+  },
+  {
+   "id": 35,
+   "set": "new",
+   "rrf20": 1,
+   "rrf5": 1,
+   "llm": 2,
+   "ce": 3
+  },
+  {
+   "id": 36,
+   "set": "new",
+   "rrf20": 6,
+   "rrf5": null,
+   "llm": 1,
+   "ce": 2
+  },
+  {
+   "id": 37,
+   "set": "new",
+   "rrf20": 1,
+   "rrf5": 1,
+   "llm": 1,
+   "ce": 1
+  },
+  {
+   "id": 38,
+   "set": "new",
+   "rrf20": 2,
+   "rrf5": 2,
+   "llm": 2,
+   "ce": 1
+  },
+  {
+   "id": 39,
+   "set": "new",
+   "rrf20": 1,
+   "rrf5": 1,
+   "llm": 1,
+   "ce": 1
+  },
+  {
+   "id": 40,
+   "set": "new",
+   "rrf20": 1,
+   "rrf5": 1,
+   "llm": 2,
+   "ce": 1
+  },
+  {
+   "id": 41,
+   "set": "new",
+   "rrf20": 2,
+   "rrf5": 2,
+   "llm": 1,
+   "ce": 1
+  },
+  {
+   "id": 42,
+   "set": "new",
+   "rrf20": 1,
+   "rrf5": 1,
+   "llm": 1,
+   "ce": 1
+  },
+  {
+   "id": 47,
+   "set": "fresh",
+   "rrf20": 5,
+   "rrf5": 5,
+   "llm": 1,
+   "ce": 1
+  },
+  {
+   "id": 48,
+   "set": "fresh",
+   "rrf20": 3,
+   "rrf5": 3,
+   "llm": 1,
+   "ce": 3
+  },
+  {
+   "id": 49,
+   "set": "fresh",
+   "rrf20": 1,
+   "rrf5": 1,
+   "llm": 1,
+   "ce": 1
+  },
+  {
+   "id": 50,
+   "set": "fresh",
+   "rrf20": 1,
+   "rrf5": 1,
+   "llm": 1,
+   "ce": 2
+  },
+  {
+   "id": 51,
+   "set": "fresh",
+   "rrf20": 15,
+   "rrf5": null,
+   "llm": 1,
+   "ce": 2
+  },
+  {
+   "id": 52,
+   "set": "fresh",
+   "rrf20": 1,
+   "rrf5": 1,
+   "llm": 1,
+   "ce": 1
+  },
+  {
+   "id": 53,
+   "set": "fresh",
+   "rrf20": 1,
+   "rrf5": 1,
+   "llm": 1,
+   "ce": 1
+  },
+  {
+   "id": 54,
+   "set": "fresh",
+   "rrf20": 2,
+   "rrf5": 2,
+   "llm": 1,
+   "ce": 4
+  },
+  {
+   "id": 57,
+   "set": "fresh2",
+   "rrf20": 1,
+   "rrf5": 1,
+   "llm": 1,
+   "ce": 1
+  },
+  {
+   "id": 58,
+   "set": "fresh2",
+   "rrf20": 1,
+   "rrf5": 1,
+   "llm": 1,
+   "ce": 1
+  },
+  {
+   "id": 59,
+   "set": "fresh2",
+   "rrf20": 1,
+   "rrf5": 1,
+   "llm": 1,
+   "ce": 1
+  },
+  {
+   "id": 60,
+   "set": "fresh2",
+   "rrf20": 1,
+   "rrf5": 1,
+   "llm": 1,
+   "ce": 1
+  },
+  {
+   "id": 61,
+   "set": "fresh2",
+   "rrf20": 1,
+   "rrf5": 1,
+   "llm": 1,
+   "ce": 1
+  },
+  {
+   "id": 62,
+   "set": "fresh2",
+   "rrf20": 2,
+   "rrf5": 2,
+   "llm": 1,
+   "ce": null
+  },
+  {
+   "id": 63,
+   "set": "fresh2",
+   "rrf20": 1,
+   "rrf5": 1,
+   "llm": 1,
+   "ce": 1
+  },
+  {
+   "id": 64,
+   "set": "fresh2",
+   "rrf20": 15,
+   "rrf5": null,
+   "llm": 1,
+   "ce": 2
+  }
+ ]
+}
