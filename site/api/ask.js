@@ -4,12 +4,12 @@
 // kontrola původu požadavku. Nejtvrdší pojistka je limit 0,75 $ přímo na klíči v OpenRouteru.
 const crypto = require("crypto");
 const IDX = require("./_index.json");
+const { store, allowedOrigin } = require("./_store.js");
 
 const PER_IP_PER_DAY = 10;
 const GLOBAL_PER_DAY = 400;        // strop na jednu instanci funkce
 const POW_ZEROS = "0000";          // sha256 musí začínat 4 nulami (~65 000 pokusů v prohlížeči)
 const MAX_LEN = 300;
-const ALLOWED_HOSTS = ["lukas-rag.vercel.app", "localhost", "127.0.0.1"];
 
 // ---------- data ----------
 const N = IDX.chunks.length;
@@ -121,10 +121,6 @@ async function embed(texts) {
 const ipLog = new Map(), seen = new Set();
 let day = "", globalCount = 0;
 function clientIp(req) { return String(req.headers["x-real-ip"] || (req.headers["x-forwarded-for"] || "").split(",")[0] || "?").trim(); }
-function allowedOrigin(req) {
-  const o = req.headers.origin || req.headers.referer || "";
-  try { const h = new URL(o).hostname; return ALLOWED_HOSTS.includes(h) || h.endsWith("-zenkiyeai-5446.vercel.app"); } catch { return false; }
-}
 
 module.exports = async (req, res) => {
   const send = (code, obj) => { res.statusCode = code; res.setHeader("Content-Type", "application/json; charset=utf-8");
@@ -162,6 +158,7 @@ module.exports = async (req, res) => {
     const ctx = hits.map(([i], n) => `[${n + 1}] ${IDX.chunks[i].id} (${IDX.chunks[i].title}${IDX.chunks[i].note || ""}): ${IDX.chunks[i].text}`).join("\n\n");
     let answer = await chat(IDX.system, `Úseky zákona:\n\n${ctx}\n\nOtázka: ${q}`, IDX.llm_answer);   // v3.1: odpověď píše silnější model
     answer = answer.replace(/【(\d+)】/g, "[$1]");
+    await store([["LPUSH", "rag:live", JSON.stringify({ t: new Date().toISOString(), q, nevim: answer.startsWith("Nevím") })], ["LTRIM", "rag:live", "0", "4999"]]);
     return send(200, { q, rewritten, hits, trace, answer, remaining: PER_IP_PER_DAY - used - 1 });
   } catch (e) {
     ipLog.set(ip, Math.max(0, (ipLog.get(ip) || 1) - 1));   // nepovedené volání se nepočítá (souběžné dotazy zůstanou započtené)

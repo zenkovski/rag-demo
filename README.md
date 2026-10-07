@@ -53,6 +53,7 @@ Stejné hledání je napsané třikrát: ručně v Pythonu, v LangChainu a v Jav
 | `tools/rag.py` | celý postup: embeddingy, BM25, RRF, výběr, odpověď |
 | `tools/rag_langchain.py` | stejný postup v LangChainu (LCEL) |
 | `tools/evaluate.py` | měření na 66 otázkách → `RESULTS.md` |
+| `tools/stats.py` | co lidi na webu hledali (anonymní záznam v Upstash Redis) |
 | `tools/rerank_compare.py` | výběr přes LLM proti cross-encoderu (zdarma, z cache) |
 | `tools/build_data.py` | data a rozložení mapy pro web |
 | `site/index.html` | web (jeden soubor, D3 mapa) |
