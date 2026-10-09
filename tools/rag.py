@@ -265,7 +265,7 @@ def search(question, k=TOP_K, mode=MODE, trace=False, allow=None):
         picked = rerank(question, rewritten, cands)
         steps["rerank"] = picked
         # vybrané první, zbytek do 5 doplní pořadí z RRF (model dostane vždy 5 úseků)
-        order = fused + [(i, 0.0) for i in picked if i not in dict(fused)]   # „zjednodušení“: pořadí z RRF má přednost
+        order = [(i, 0.0) for i in picked] + [(i, s) for i, s in fused if i not in picked]
         order = [(i, 0.0) for i in with_refs([i for i, _ in order[:k]])]
     hits = [(int(i), float(d[i])) for i, _ in order[:k]]
     if not trace:
