@@ -47,6 +47,8 @@ otázka
 Stejné hledání je napsané třikrát: ručně v Pythonu, v LangChainu a v JavaScriptu na webu. Všechny tři vrací stejných 5 úseků u 66 z 66 otázek.
 
 ## Měření, bezpečnost a provoz
+Související: [**qa-portfolio**](https://github.com/zenkovski/qa-portfolio), automatizované testy webu a API (Playwright, 4 prohlížeče, přístupnost, bezpečnost, CI), stejný přístup k měření a ke spolehlivosti testů.
+
 
 Kromě řetězce má projekt **měřicí laboratoř**, která odpovídá na otázku „co ze systému opravdu pomáhá a kde selhává?“. Vše běží offline z uložených výsledků, **zdarma a opakovatelně**.
 
