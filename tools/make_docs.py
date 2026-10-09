@@ -260,7 +260,7 @@ def write_gallery(rec: dict) -> Path:
         if rv and not rv.get("ok"):
             kind = "hledání" if "hledání" in rv["note"] else "čtení"
             cat = ["A"] if kind == "hledání" else ["C"]
-            fix = ("Příčina je změřená, oprava zatím není nasazená: viz [ADR-004](decisions/ADR-004-rewrite-a-bm25.md). Přepis otázky odvedl hledání jinam "
+            fix = ("Příčina je změřená, oprava zatím není nasazená: viz [ADR-004](decisions/ADR-004-prepis-a-bm25-otevrena-otazka.md). Přepis otázky odvedl hledání jinam "
                    "(správný odstavec je podle významu původní otázky na 12. místě, podle přepsané na 219., v BM25 přepisu na 106.). Návrh opravy se musí vyzkoušet na nové sadě, ne na této otázce."
                    if kind == "hledání" else
                    "Zatím bez opravy. Návrh: pravidlo v promptu pro podmínky „před / po ukončení“ a test na víc otázek s převrácenou podmínkou; ověřit na nové sadě.")

@@ -1,6 +1,6 @@
 # Výsledky měření
 
-Generuje `tools/experiments.py` + `tools/make_docs.py`. Běh z commitu `175c84b` (necommitované změny), 2026-10-09T20:10:17, offline replay z cache (0 $), trval 45.6 s, cena 0.00 $. Python 3.13.14, numpy 2.5.3, Windows AMD64.
+Generuje `tools/experiments.py` + `tools/make_docs.py`. Běh z commitu `97bdd84` (necommitované změny), 2026-10-09T20:18:16, offline replay z cache (0 $), trval 45.7 s, cena 0.00 $. Python 3.13.14, numpy 2.5.3, Windows AMD64.
 
 **Co je změřené a co ne.** Hledání se tu přehrává z uložených embeddingů a uložených odpovědí LLM (přepis, výběr). Kód hledání je tedy ověřený a běh je opakovatelný, ale **žádné nové volání modelu se neprovedlo**. Odpovědi (sekce 4) jsou z dřívějších měření s ruční kontrolou. Co to neříká, je u každé sekce.
 
@@ -145,7 +145,7 @@ Ruční projití těchto odpovědí: součet (24 + 11 = 35 hodin), polovina (20 
 
 Cena zahrnuje volání odpovědi i AI soudce při měření; ceny z odpovědí OpenRouteru uložených v cache. Celý projekt vyšel asi na 0,66 $ včetně chyb (viz [incident skrytého přemýšlení](incidents/2026-10-06-skryte-premysleni.md)).
 
-Čas samotného výpočtu hledání (matice × vektor, BM25, RRF) z cache: **p50 7.33 ms, p95 14.08 ms**, max 16.58 ms (100 volání, tento počítač). Jen výpočet hledání z cache (matice × vektor, BM25, RRF). Volání LLM a embedding API tu nejsou: p50/p95 celé služby se offline změřit nedá.
+Čas samotného výpočtu hledání (matice × vektor, BM25, RRF) z cache: **p50 7.02 ms, p95 11.92 ms**, max 15.48 ms (100 volání, tento počítač). Jen výpočet hledání z cache (matice × vektor, BM25, RRF). Volání LLM a embedding API tu nejsou: p50/p95 celé služby se offline změřit nedá.
 
 p50/p95/p99 celé služby, propustnost a chybovost pod zátěží **nejsou změřené**. Zátěžový test by běžel proti placenému API a proti limitu 0,75 $ na klíči, takže se nedělal (viz [limitations.md](limitations.md)).
 

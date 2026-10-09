@@ -130,6 +130,6 @@ Z 16 ukázkových otázek na webu jsou dvě špatně. Nechávám je vidět i na 
 - **Skutečné chování:** Pokud jste nemocný, zaměstnavatel vám může dát výpověď, ale jen z některých důvodů. Výpověď z důvodu porušení povinností (např. neuspokojivé pracovní výsledky) je možná pouze do 3 měsíců ode dne, kdy se o důvodu dověděl [4]. Výpověď musí předem projednat s odborovou organizací, pokud u něj působí [3]. Samotná nemoc jako důvod výpovědi v dostupných úsecích uvedena není.
 - **Kategorie:** A (relevantní úsek nebyl nalezen (hledání))
 - **Příčina:** Pořád chyba: § 53 odst. 1 (zákaz výpovědi v době pracovní neschopnosti) se nedostal ani mezi 20 kandidátů. Odpověď proto zavádějícím způsobem tvrdí, že výpověď v nemoci dát lze. Kde se to pokazilo: hledání.
-- **Oprava:** Příčina je změřená, oprava zatím není nasazená: viz [ADR-004](decisions/ADR-004-rewrite-a-bm25.md). Přepis otázky odvedl hledání jinam (správný odstavec je podle významu původní otázky na 12. místě, podle přepsané na 219., v BM25 přepisu na 106.). Návrh opravy se musí vyzkoušet na nové sadě, ne na této otázce.
+- **Oprava:** Příčina je změřená, oprava zatím není nasazená: viz [ADR-004](decisions/ADR-004-prepis-a-bm25-otevrena-otazka.md). Přepis otázky odvedl hledání jinam (správný odstavec je podle významu původní otázky na 12. místě, podle přepsané na 219., v BM25 přepisu na 106.). Návrh opravy se musí vyzkoušet na nové sadě, ne na této otázce.
 - **Důkaz:** není (oprava se zatím neprovedla; nepíšu, že je opraveno).
 
