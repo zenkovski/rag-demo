@@ -1,6 +1,6 @@
 # Výsledky měření
 
-Generuje `tools/experiments.py` + `tools/make_docs.py`. Běh z commitu `88ec093` (necommitované změny), 2026-10-09T19:47:09, offline replay z cache (0 $), trval 42.6 s, cena 0.00 $. Python 3.13.14, numpy 2.5.3, Windows AMD64.
+Generuje `tools/experiments.py` + `tools/make_docs.py`. Běh z commitu `175c84b` (necommitované změny), 2026-10-09T20:10:17, offline replay z cache (0 $), trval 45.6 s, cena 0.00 $. Python 3.13.14, numpy 2.5.3, Windows AMD64.
 
 **Co je změřené a co ne.** Hledání se tu přehrává z uložených embeddingů a uložených odpovědí LLM (přepis, výběr). Kód hledání je tedy ověřený a běh je opakovatelný, ale **žádné nové volání modelu se neprovedlo**. Odpovědi (sekce 4) jsou z dřívějších měření s ruční kontrolou. Co to neříká, je u každé sekce.
 
@@ -14,7 +14,7 @@ Generuje `tools/experiments.py` + `tools/make_docs.py`. Běh z commitu `88ec093`
 | validation | 8 | 47–56 |
 | test | 8 | 57–66 |
 
-Otisky dat: `chunks.json` 69dc954d11e7e746, `splits.json` ab3dc5d7ab7be314, `testset.json` 9c5101df30878390, `testset_holdout.json` 2fa82168ef1ad3c8, `testset_new.json` ab77c9c8cafbb6b7, `testset_fresh.json` b15f4dac0c42b161, `testset_fresh2.json` 28d11cd9e9e9d9ad
+Otisky dat: `chunks.json` 69dc954d11e7e746, `splits.json` ab3dc5d7ab7be314, `testset.json` 9c5101df30878390, `testset_holdout.json` 2fa82168ef1ad3c8, `testset_new.json` ab77c9c8cafbb6b7, `testset_fresh.json` b15f4dac0c42b161, `testset_fresh2.json` 28d11cd9e9e9d9ad, `testset_heldout_v4.json` ef5733a4f6fc453e
 
 Konfigurace: embedding `intfloat/multilingual-e5-large` (v1 `intfloat/multilingual-e5-base`), přepis a výběr `deepseek/deepseek-v4.1-flash`, odpověď `deepseek/deepseek-v4-pro`, 20 kandidátů, 5 úseků pro model, RRF k = 60. Otisky promptů: rewrite `59d04c8035fa`, rerank `401e96680d68`, answer_v3 `e0cfc865f7c2`.
 
@@ -68,7 +68,7 @@ Párové porovnání na stejných otázkách. „A lepší / B lepší“ = u ko
 Co z toho plyne (čísla jsou z tabulek výše):
 
 - **Výběr přes LLM je jediná komponenta s jasným přínosem.** Recall@1 0.54 → 0.85, MRR 0.71 → 0.96, lepší u 9 otázek, horší u 0.
-- **BM25 se v těchto otázkách nevyplatilo.** RRF bez BM25 má Recall@5 0.88 a Recall@20 0.99, RRF s BM25 0.86 a 0.96. Rozdíl není statisticky průkazný, ale směr je opačný, než jsem čekal. Sada neobsahuje otázky na přesná čísla paragrafů a identifikátory, tedy přesně to, v čem má být BM25 silné. Rozhodnutí proto odkládám na novou sadu (viz [limitations.md](limitations.md)).
+- **BM25 se v těchto otázkách nevyplatilo.** RRF bez BM25 má Recall@5 0.88 a Recall@20 0.99, RRF s BM25 0.86 a 0.96. Rozdíl není statisticky průkazný, ale směr je opačný, než se čekalo. Sada neobsahuje otázky na přesná čísla paragrafů a identifikátory, tedy přesně to, v čem má být BM25 silné. Rozhodnutí se proto odkládá na novou sadu (viz [limitations.md](limitations.md)).
 - **Přepis otázky bez BM25 nevadí.** Samotný e5-large: Recall@5 0.86; s přepisem: 0.88. Rozdíl zhruba o dvě otázky, nepůjde rozlišit od náhody.
 - **e5-large proti e5-base:** Recall@5 0.86 proti 0.80.
 - **Laická otázka do BM25 škodí:** 0.58 proti 0.76 po přepisu. Tady přepis zjevně pomáhá (zákon říká „mzda“, ne „výplata“).
@@ -86,7 +86,7 @@ Hodnota k se na výsledku skoro nepozná: intervaly se překrývají. Proto zůs
 
 ### RRF proti váženému součtu skóre
 
-Váhu BM25 jsem vybíral jen na dev otázkách (podle MRR): **0.05**. Na všech otázkách má vážený součet Recall@5 0.88 a MRR 0.76, RRF 0.86 a 0.71. Rozdíl je neprůkazný (p = 0.69). RRF zůstává, protože nepotřebuje ladit váhu a normalizaci skóre. Optimální váha BM25 vyšla velmi nízká, což je stejný signál jako výše: slova hledání moc nepomáhají.
+Váha BM25 se vybírala jen na dev otázkách (podle MRR): **0.05**. Na všech otázkách má vážený součet Recall@5 0.88 a MRR 0.76, RRF 0.86 a 0.71. Rozdíl je neprůkazný (p = 0.69). RRF zůstává, protože nepotřebuje ladit váhu a normalizaci skóre. Optimální váha BM25 vyšla velmi nízká, což je stejný signál jako výše: slova hledání moc nepomáhají.
 
 ## 3. Výběr 5 z 20: žádný, cross-encoder, LLM
 
@@ -102,7 +102,7 @@ LLM proti cross-encoderu: lepší u 4 otázek, horší u 0, p = 0.125. Číslo 5
 
 ## 4. Odpovědi
 
-Zdroj: uložené běhy v1, v2, v3 (v3 = finální) a moje ruční kontrola proti textu zákona (druhý verdikt Claude Opus 5.5, který jsem prošel). Správnost je úsudek, nelze ji spočítat pravidlem. Proto je vedle AI soudce a mojí kontroly přidaná deterministická kontrola (sloupce vpravo), která soudce nepotřebuje.
+Zdroj: uložené běhy v1, v2, v3 (v3 = finální) a ruční kontrola proti textu zákona (druhý verdikt modelu Claude Opus 5.5, který prošel majitel projektu). Správnost je úsudek, nelze ji spočítat pravidlem. Proto je vedle AI soudce a ruční kontroly přidaná deterministická kontrola (sloupce vpravo), která soudce nepotřebuje.
 
 | Verze | Sada | Správně (95% interval) | Zbytečné „nevím“ | Správné „nevím“ | Odpověděl bez zdroje | Čísla mimo citované úseky |
 |---|---|---|---|---|---|---|
@@ -145,7 +145,7 @@ Ruční projití těchto odpovědí: součet (24 + 11 = 35 hodin), polovina (20 
 
 Cena zahrnuje volání odpovědi i AI soudce při měření; ceny z odpovědí OpenRouteru uložených v cache. Celý projekt vyšel asi na 0,66 $ včetně chyb (viz [incident skrytého přemýšlení](incidents/2026-10-06-skryte-premysleni.md)).
 
-Čas samotného výpočtu hledání (matice × vektor, BM25, RRF) z cache: **p50 5.23 ms, p95 8.39 ms**, max 11.2 ms (100 volání, tento počítač). Jen výpočet hledání z cache (matice × vektor, BM25, RRF). Volání LLM a embedding API tu nejsou: p50/p95 celé služby se offline změřit nedá.
+Čas samotného výpočtu hledání (matice × vektor, BM25, RRF) z cache: **p50 7.33 ms, p95 14.08 ms**, max 16.58 ms (100 volání, tento počítač). Jen výpočet hledání z cache (matice × vektor, BM25, RRF). Volání LLM a embedding API tu nejsou: p50/p95 celé služby se offline změřit nedá.
 
 p50/p95/p99 celé služby, propustnost a chybovost pod zátěží **nejsou změřené**. Zátěžový test by běžel proti placenému API a proti limitu 0,75 $ na klíči, takže se nedělal (viz [limitations.md](limitations.md)).
 

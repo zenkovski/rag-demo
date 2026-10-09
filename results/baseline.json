@@ -1,15 +1,15 @@
 {
  "run": {
-  "started": "2026-10-09T19:47:09",
+  "started": "2026-10-09T20:10:17",
   "git": {
-   "commit": "88ec093",
+   "commit": "175c84b",
    "dirty": true
   },
   "mode": "offline replay z cache (0 $)",
   "python": "3.13.14",
   "numpy": "2.5.3",
   "platform": "Windows AMD64",
-  "runtime_s": 42.6,
+  "runtime_s": 45.6,
   "cost_usd": 0.0
  },
  "config": {
@@ -39,7 +39,8 @@
   "testset_holdout.json": "2fa82168ef1ad3c8",
   "testset_new.json": "ab77c9c8cafbb6b7",
   "testset_fresh.json": "b15f4dac0c42b161",
-  "testset_fresh2.json": "28d11cd9e9e9d9ad"
+  "testset_fresh2.json": "28d11cd9e9e9d9ad",
+  "testset_heldout_v4.json": "ef5733a4f6fc453e"
  },
  "n": {
   "questions": 66,
@@ -4133,9 +4134,9 @@
   "cost_note": "cena zahrnuje volání odpovědi i AI soudce při měření; ceny z odpovědí OpenRouteru uložených v cache",
   "retrieval_compute_latency": {
    "calls": 100,
-   "p50_ms": 5.23,
-   "p95_ms": 8.39,
-   "max_ms": 11.2
+   "p50_ms": 7.33,
+   "p95_ms": 14.08,
+   "max_ms": 16.58
   },
   "latency_note": "jen výpočet hledání z cache (matice × vektor, BM25, RRF). Volání LLM a embedding API tu nejsou: p50/p95 celé služby se offline změřit nedá."
  },

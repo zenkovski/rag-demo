@@ -116,7 +116,7 @@ Z 16 ukázkových otázek na webu jsou dvě špatně. Nechávám je vidět i na 
 ### Web: Kolik hodin týdně je normální pracovní doba?
 
 - **Vstup:** Kolik hodin týdně je normální pracovní doba?
-- **Očekávané chování:** viz ruční poznámka níže
+- **Očekávané chování:** 40 hodin týdně; u mladistvého mladšího 15 let nebo toho, kdo NEukončil povinnou školní docházku, nejvýše 35 hodin (§ 79a odst. 1 ZP).
 - **Skutečné chování:** Normální (stanovená) týdenní pracovní doba činí 40 hodin týdně [1]. Pro některé skupiny zaměstnanců je kratší: u mladistvých do 15 let nebo po ukončení povinné školní docházky nesmí překročit 35 hodin týdně [3], u ostatních mladistvých 40 hodin týdně [2]. Dále činí 37,5 hodiny týdně pro zaměstnance v podzemí při těžbě nebo ve vícesměnném či nepřetržitém režimu a 38,75 hodiny týdně pro dvousměnný režim [4].
 - **Kategorie:** C (správný kontext dodán, model ho špatně použil (čtení))
 - **Příčina:** Hlavní číslo správně (40 hodin), ale u mladistvých převrátil podmínku: § 79a odst. 1 platí pro ty, kdo povinnou školní docházku NEukončili, model napsal „po ukončení“. Kde se to pokazilo: čtení.
@@ -126,7 +126,7 @@ Z 16 ukázkových otázek na webu jsou dvě špatně. Nechávám je vidět i na 
 ### Web: Může mi zaměstnavatel dát výpověď, když jsem nemocný?
 
 - **Vstup:** Může mi zaměstnavatel dát výpověď, když jsem nemocný?
-- **Očekávané chování:** viz ruční poznámka níže
+- **Očekávané chování:** Ne, v době dočasné pracovní neschopnosti (ochranná doba) se výpověď zakazuje (§ 53 odst. 1 písm. a) ZP); zákaz se nevztahuje na výjimky v § 54 (např. výpověď pro organizační změny).
 - **Skutečné chování:** Pokud jste nemocný, zaměstnavatel vám může dát výpověď, ale jen z některých důvodů. Výpověď z důvodu porušení povinností (např. neuspokojivé pracovní výsledky) je možná pouze do 3 měsíců ode dne, kdy se o důvodu dověděl [4]. Výpověď musí předem projednat s odborovou organizací, pokud u něj působí [3]. Samotná nemoc jako důvod výpovědi v dostupných úsecích uvedena není.
 - **Kategorie:** A (relevantní úsek nebyl nalezen (hledání))
 - **Příčina:** Pořád chyba: § 53 odst. 1 (zákaz výpovědi v době pracovní neschopnosti) se nedostal ani mezi 20 kandidátů. Odpověď proto zavádějícím způsobem tvrdí, že výpověď v nemoci dát lze. Kde se to pokazilo: hledání.

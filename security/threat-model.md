@@ -32,7 +32,7 @@ Důvěryhodné: kód funkce, zmrazená data, systémový prompt. Nedůvěryhodn�
 
 | ID | Hrozba | Co brání | Ověřeno (test) | Zbytkové riziko |
 |---|---|---|---|---|
-| T1 | **Přímá prompt injekce** v otázce („ignoruj pravidla…“, únik promptu, změna jazyka) | Systémový prompt je oddělená zpráva; otázka je jen ve zprávě uživatele. Mezery a zalomení se sjednotí, takže v otázce nejde vytvořit řádek, který by se tvářil jako blok „Úseky zákona:“ nebo „Otázka:“. Strop 300 znaků. | `test_web_function`: systémový prompt zůstane beze změny, otázka nevloží vlastní blok. **Chování modelu proti injekci jsem nezměřil**: živá sada 14 případů je připravená ([injection_cases.json](injection_cases.json)), ale nespuštěná (stojí ~0,02 $ a klíč webu má zbývající rozpočet jen pár centů). | **Střední a neznámé.** Dokud se živá sada nespustí, nevím, jak se model zachová. Detektory jsou otestované jen na vymyšlených špatných odpovědích. |
+| T1 | **Přímá prompt injekce** v otázce („ignoruj pravidla…“, únik promptu, změna jazyka) | Systémový prompt je oddělená zpráva; otázka je jen ve zprávě uživatele. Mezery a zalomení se sjednotí, takže v otázce nejde vytvořit řádek, který by se tvářil jako blok „Úseky zákona:“ nebo „Otázka:“. Strop 300 znaků. | `test_web_function`: systémový prompt zůstane beze změny, otázka nevloží vlastní blok. **Chování modelu proti injekci nebylo změřeno**: živá sada 14 případů je připravená ([injection_cases.json](injection_cases.json)), ale nespuštěná (stojí ~0,02 $ a klíč webu má zbývající rozpočet jen pár centů). | **Střední a neznámé.** Dokud se živá sada nespustí, nevím, jak se model zachová. Detektory jsou otestované jen na vymyšlených špatných odpovědích. |
 | T2 | **Nepřímá injekce** (instrukce v dokumentu) | Zdrojem je jen zmrazený text zákonů ze zakonyprolidi.cz, žádné nahrávání. Pravidlo 3 v promptu („úsek o jiné situaci nepoužívej“). Otisky dat (`results/…json`) odhalí změnu souborů. | Otisk dat v každém záznamu o běhu. Případ INJ-06 a INJ-07 napodobují úsek s instrukcí v otázce (živě neověřeno). | Nízké dnes, **vysoké, kdyby přibyly uživatelské dokumenty.** Tam by bylo potřeba čistit text a označovat zdroj důvěry. Neimplementováno. |
 | T3 | **Neoprávněný přístup k dokumentům** | Dnes nemá smysl: všechno je veřejné. Jako vzor je v hledací vrstvě `rag.search(..., allow={"ZP"})`: nepovolený předpis nedostane skóre, takže se nedostane k modelu, do kandidátů, stopy ani citací. Prompt o něm vůbec neví. | `test_disallowed_law_never_reaches_model_candidates_or_trace` (20 otázek, i obsah promptu pro výběr kandidátů), `test_filter_really_filters…`, `test_empty_allow_list…`. Mutační kontrola: po vypnutí masky test selže. | Filtr je jen podle **předpisu**, ne podle uživatele. Webová funkce `allow` nepoužívá (nemá komu). Cache odpovědí neexistuje, takže tu není cesta úniku přes cache. **Kdyby se cache přidala, klíč by musel obsahovat množinu povolených dokumentů.** |
 | T4 | **Izolace tenantů** | Neexistují tenanti ani uživatelé. | – | Neřešeno záměrně. Nepředstírám multi-tenant systém, který neexistuje. |
@@ -47,12 +47,12 @@ Důvěryhodné: kód funkce, zmrazená data, systémový prompt. Nedůvěryhodn�
 | T13 | **Nesprávná odpověď o právu** (integrita) | Odpovídá jen z dodaných úseků, každé tvrzení se cituje, „není to právní porada“, chyby jsou veřejně vidět. | Měření kvality ([benchmark-results.md](../docs/benchmark-results.md)). | **Reálné a změřené:** u otázky „Může mi zaměstnavatel dát výpověď, když jsem nemocný?“ web odpovídá zavádějícím způsobem ([galerie chyb](../docs/failure-gallery.md#otevřené-chyby-zatím-neopravené)). |
 | T14 | **Zastaralý nebo změněný zákon** | Data jsou zmrazená k 6. 10. 2026, otisky souborů v záznamu o běhu. Web i README to říkají. | – | Zákony se mění. Automatická aktualizace neexistuje (popsaná v [DESIGN.md](../DESIGN.md#11-co-by-chybělo-do-provozu)). |
 
-## 4. Co jsem NEověřil
+## 4. Co NEbylo ověřeno
 
 - **Chování modelu pod útokem.** Viz T1. Připravená je sada a spouštěč (`tools/security_eval.py --live`), čeká na samostatný klíč s rozpočtem.
 - Žádný penetrační test, žádné skenování závislostí (zranitelnosti knihoven nejsou zkontrolované).
-- Rate limit jsem testoval na jedné instanci funkce. Chování víc instancí na Vercelu jsem nezkoušel.
-- Autorizaci jsem ověřil jen na úrovni hledání nad zmrazenými daty, ne na reálném systému s uživateli.
+- Rate limit se testoval na jedné instanci funkce. Chování víc instancí na Vercelu se nezkoušelo.
+- Autorizace je ověřená jen na úrovni hledání nad zmrazenými daty, ne na reálném systému s uživateli.
 
 ## 5. Jak se to udržuje
 

@@ -95,8 +95,8 @@ def write_benchmark(rec: dict) -> Path:
     L.append(f"- **Výběr přes LLM je jediná komponenta s jasným přínosem.** Recall@1 {gm('rrf_v2', 'recall@1'):.2f} → {gm('v3_llm_rerank', 'recall@1'):.2f}, MRR {gm('rrf_v2', 'mrr'):.2f} → {gm('v3_llm_rerank', 'mrr'):.2f}, "
              f"lepší u {rec['paired_tests_recall5_all']['v3_llm_rerank vs rrf_v2']['a_better']} otázek, horší u {rec['paired_tests_recall5_all']['v3_llm_rerank vs rrf_v2']['b_better']}.")
     L.append(f"- **BM25 se v těchto otázkách nevyplatilo.** RRF bez BM25 má Recall@5 {gm('rrf_dense_rewrite', 'recall@5'):.2f} a Recall@20 {gm('rrf_dense_rewrite', 'recall@20'):.2f}, "
-             f"RRF s BM25 {gm('rrf_v2', 'recall@5'):.2f} a {gm('rrf_v2', 'recall@20'):.2f}. Rozdíl není statisticky průkazný, ale směr je opačný, než jsem čekal. "
-             "Sada neobsahuje otázky na přesná čísla paragrafů a identifikátory, tedy přesně to, v čem má být BM25 silné. Rozhodnutí proto odkládám na novou sadu (viz [limitations.md](limitations.md)).")
+             f"RRF s BM25 {gm('rrf_v2', 'recall@5'):.2f} a {gm('rrf_v2', 'recall@20'):.2f}. Rozdíl není statisticky průkazný, ale směr je opačný, než se čekalo. "
+             "Sada neobsahuje otázky na přesná čísla paragrafů a identifikátory, tedy přesně to, v čem má být BM25 silné. Rozhodnutí se proto odkládá na novou sadu (viz [limitations.md](limitations.md)).")
     L.append(f"- **Přepis otázky bez BM25 nevadí.** Samotný e5-large: Recall@5 {gm('dense_large', 'recall@5'):.2f}; s přepisem: {gm('rrf_dense_rewrite', 'recall@5'):.2f}. Rozdíl zhruba o dvě otázky, nepůjde rozlišit od náhody.")
     L.append(f"- **e5-large proti e5-base:** Recall@5 {gm('dense_large', 'recall@5'):.2f} proti {gm('dense_base', 'recall@5'):.2f}." if "dense_base" in a else "- e5-base: přeskočeno (chybí torch nebo model).")
     L.append(f"- **Laická otázka do BM25 škodí:** {gm('bm25_raw', 'recall@5'):.2f} proti {gm('bm25_rewrite', 'recall@5'):.2f} po přepisu. Tady přepis zjevně pomáhá (zákon říká „mzda“, ne „výplata“).")
@@ -105,7 +105,7 @@ def write_benchmark(rec: dict) -> Path:
         L.append(f"| {k}{' (použito)' if k == '60' else ''} | {_ci(v['recall@5'])} | {_ci(v['mrr'])} |")
     L += ["", "Hodnota k se na výsledku skoro nepozná: intervaly se překrývají. Proto zůstává výchozí 60.", "",
           "### RRF proti váženému součtu skóre", "",
-          f"Váhu BM25 jsem vybíral jen na dev otázkách (podle MRR): **{cfg['weighted_bm25_weight_from_dev']}**. "
+          f"Váha BM25 se vybírala jen na dev otázkách (podle MRR): **{cfg['weighted_bm25_weight_from_dev']}**. "
           f"Na všech otázkách má vážený součet Recall@5 {gm('weighted_v2', 'recall@5'):.2f} a MRR {gm('weighted_v2', 'mrr'):.2f}, RRF {gm('rrf_v2', 'recall@5'):.2f} a {gm('rrf_v2', 'mrr'):.2f}. "
           f"Rozdíl je neprůkazný (p = {rec['paired_tests_recall5_all']['rrf_v2 vs weighted_v2']['p']:.2f}). RRF zůstává, protože nepotřebuje ladit váhu a normalizaci skóre. "
           "Optimální váha BM25 vyšla velmi nízká, což je stejný signál jako výše: slova hledání moc nepomáhají.", ""]
@@ -125,8 +125,8 @@ def write_benchmark(rec: dict) -> Path:
 
     # 4) odpovědi
     L += ["## 4. Odpovědi", "",
-          "Zdroj: uložené běhy v1, v2, v3 (v3 = finální) a moje ruční kontrola proti textu zákona (druhý verdikt Claude Opus 5.5, který jsem prošel). "
-          "Správnost je úsudek, nelze ji spočítat pravidlem. Proto je vedle AI soudce a mojí kontroly přidaná deterministická kontrola (sloupce vpravo), která soudce nepotřebuje.", "",
+          "Zdroj: uložené běhy v1, v2, v3 (v3 = finální) a ruční kontrola proti textu zákona (druhý verdikt modelu Claude Opus 5.5, který prošel majitel projektu). "
+          "Správnost je úsudek, nelze ji spočítat pravidlem. Proto je vedle AI soudce a ruční kontroly přidaná deterministická kontrola (sloupce vpravo), která soudce nepotřebuje.", "",
           "| Verze | Sada | Správně (95% interval) | Zbytečné „nevím“ | Správné „nevím“ | Odpověděl bez zdroje | Čísla mimo citované úseky |", "|---|---|---|---|---|---|---|"]
     for v in ("v1", "v2", "v3"):
         for sp in ("all", "dev", "validation", "test"):
