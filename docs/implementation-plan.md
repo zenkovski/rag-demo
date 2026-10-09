@@ -37,7 +37,7 @@ Nejmenší užitečná: žádný přepis, žádné nové služby. K řetězci p�
 | 5 | Quality gate v CI | lint + typy + testy + srovnání s baseline, selhání ukáže otázky | **hotovo**, demonstrace regrese níže |
 | 6 | Bezpečnost | [model hrozeb](../security/threat-model.md), testy webových funkcí, oprávnění v hledání, XSS, tajemství | **hotovo**; chování modelu pod injekcí **nezměřeno** (živá sada připravená) |
 | 7 | Nová zmrazená sada | 24 otázek, všechny typy ze zadání, zámek jednorázového běhu | **napsáno**, **NEspuštěno** (čeká na rozpočet) |
-| 8 | Incidenty | ≥ 1 od symptomu po důkaz opravy | **hotovo** (3) |
+| 8 | Incidenty | ≥ 1 od symptomu po důkaz opravy | **hotovo** (3: dva z historie, jeden ukázkový v CI) |
 | 9 | ADR | významná rozhodnutí se zdůvodněním a otevřenými otázkami | **hotovo** (6) |
 | 10 | Čistý start podle README | nový klon, instalace, testy, gate | **ověřeno v CI** (GitHub Actions: ubuntu, čistý virtualenv) |
 | – | Tracing po krocích, load test, cache, Docker, agent, trénování modelu | – | **záměrně ne** (důvody v [limitations.md](limitations.md)) |
