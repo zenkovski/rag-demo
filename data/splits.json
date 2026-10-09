@@ -1,0 +1,20 @@
+{
+  "_what": "Role každé sady otázek vůči FINÁLNÍ verzi systému (v3.1) a důkaz, kdy sada vznikla. Vznik je ověřitelný v gitu (commit u každé sady).",
+  "_rules": [
+    "dev = podle chyb na ní se systém ladil (jakákoli změna kódu, promptu nebo modelu po pohledu na její výsledky).",
+    "validation = napsaná před spuštěním dané verze, ale její výsledky pak ovlivnily další změnu. Slouží ke kontrole, ne k důkazu.",
+    "test = napsaná před spuštěním finální verze a od té doby se podle ní nic neměnilo. Smí se pustit jednou. Po pohledu na její chyby se z ní stává dev.",
+    "Sada, podle které se opravilo cokoli, se po opravě už jako test nepoužívá. Role se nikdy nepřepisuje dozadu, jen vpřed.",
+    "Otázky bez odpovědi v zákonech (chunks = []) jsou součástí každé sady a měří se zvlášť (správné „nevím“)."
+  ],
+  "sets": {
+    "test":    {"file": "testset.json",         "ids": "1-20",  "commit": "3f842f0", "written": "2026-10-06 17:28", "role": "dev",        "note": "podle chyb na ní vznikla v2"},
+    "holdout": {"file": "testset_holdout.json", "ids": "21-30", "commit": "bcb47a4", "written": "2026-10-06 18:03", "role": "dev",        "note": "napsaná po návrhu v2, ale podle sad 1-46 pak vznikla v3"},
+    "new":     {"file": "testset_new.json",     "ids": "31-46", "commit": "aea16bf", "written": "2026-10-06 20:58", "role": "dev",        "note": "napsaná po přidání předpisů; 4 chyby v2 na sadách 1-46 vedly k v3"},
+    "fresh":   {"file": "testset_fresh.json",   "ids": "47-56", "commit": "458bb46", "written": "2026-10-06 22:37", "role": "validation", "note": "napsaná před spuštěním v3; její chyby ovlivnily v3.1 (model Pro, pravidlo před „nevím“)"},
+    "fresh2":  {"file": "testset_fresh2.json",  "ids": "57-66", "commit": "b6be14b", "written": "2026-10-07 00:55", "role": "test",       "note": "napsaná před spuštěním v3.1 a od té doby se podle ní nic neměnilo (jeden commit). Že se pustila jen jednou, z gitu dokázat nejde."}
+  },
+  "planned": {
+    "heldout_v4": {"file": "testset_heldout_v4.json", "role": "test", "status": "napsaná, NEspuštěná. Spustí se jednou na zmrazené v3.1, až bude rozpočet na API (viz docs/evaluation-methodology.md)."}
+  }
+}

@@ -8,9 +8,8 @@ langchain-community (kde býval BM25Retriever) se ukončuje, proto jsou retrieve
   .venv/Scripts/python tools/rag_langchain.py "Nezaplatili mi výplatu, můžu odejít?"
   .venv/Scripts/python tools/rag_langchain.py --compare     # stejné výsledky jako rag.py? (56 otázek; --rw i nový přepis)
 """
-import json, os, sys
+import os, sys
 from typing import List
-import numpy as np
 from dotenv import load_dotenv
 from langchain_core.documents import Document
 from langchain_core.embeddings import Embeddings

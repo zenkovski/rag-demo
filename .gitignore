@@ -8,3 +8,5 @@ data/embeddings.npy
 PLAN.md
 .tmp_*
 .pytest_cache/
+results/runs/
+results/security-*.json

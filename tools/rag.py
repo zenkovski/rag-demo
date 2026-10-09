@@ -38,14 +38,27 @@ def embedder():
         _model = SentenceTransformer(EMB_MODEL_V1)
     return _model
 
+class OfflineCacheMiss(RuntimeError):
+    """Offline režim (RAG_OFFLINE=1): chybí uložená odpověď. Žádné volání API se neprovede, takže nic nestojí a běh je opakovatelný."""
+
+def offline():
+    return os.environ.get("RAG_OFFLINE") == "1"
+
+_emb_cache = None
 def embed_api(texts):
     """Embeddingy přes OpenRouter (e5-large). Výsledky se ukládají, opakovaný běh nic nestojí."""
-    import requests
-    from dotenv import load_dotenv
-    load_dotenv(ROOT / ".env")
+    global _emb_cache
     cache_file = ROOT / "data" / "emb_cache.npz"
-    cache = dict(np.load(cache_file)) if cache_file.exists() else {}
+    if _emb_cache is None:                             # soubor se čte jednou, ne při každém dotazu
+        _emb_cache = dict(np.load(cache_file)) if cache_file.exists() else {}
+    cache = _emb_cache
     todo = [t for t in dict.fromkeys(texts) if t not in cache]
+    if todo and offline():
+        raise OfflineCacheMiss(f"embedding chybí v cache ({len(todo)} textů), např. {todo[0][:60]!r}")
+    if todo:                                           # jen když něco chybí, jde se na síť
+        import requests
+        from dotenv import load_dotenv
+        load_dotenv(ROOT / ".env")
     for i in range(0, len(todo), 64):
         batch = todo[i:i + 64]
         r = requests.post("https://openrouter.ai/api/v1/embeddings", timeout=120,
@@ -219,11 +232,23 @@ def rerank(question, rewritten, cands):
     text, _ = llm(RERANK, rerank_prompt(question, rewritten, cands, load_chunks()), reasoning=False)
     return with_odst1([cands[j] for j in parse_pick(text, len(cands))], cands)
 
-def search(question, k=TOP_K, mode=MODE, trace=False):
+def allow_mask(allow):
+    """Vektor 0/1 podle předpisu úseku (c["law"]). allow=None = vše povoleno. Oprávnění se vynucuje TADY, v hledání:
+    nepovolený úsek nedostane skóre, takže se nedostane ani k modelu, do kandidátů, do stopy ani do citací.
+    Prompt ho nezakazuje, prompt o něm vůbec neví."""
+    if allow is None:
+        return None
+    return np.array([1.0 if c["law"] in allow else 0.0 for c in load_chunks()])
+
+def search(question, k=TOP_K, mode=MODE, trace=False, allow=None):
     """Vrátí (hits, přepsaná otázka[, stopa]). hits = [(index úseku, cosine podobnost s otázkou), ...]
-    stopa = mezikroky pro vizualizaci "přemýšlení" na webu (co našel který způsob hledání)."""
+    stopa = mezikroky pro vizualizaci "přemýšlení" na webu (co našel který způsob hledání).
+    allow = množina předpisů ("ZP", …), z nichž smí být výsledky (výchozí: všechny)."""
+    mask = allow_mask(allow)
     model = "base" if mode == "dense" else "large"
     d = dense_scores(question, model)
+    if mask is not None:
+        d = d * mask                                   # nulové skóre = top() úsek vynechá
     rewritten, rankings, steps, fused = None, [], {}, []
     if mode in ("dense", "dense_large"):
         order = [(i, 0.0) for i in top(d, len(d))]
@@ -231,9 +256,9 @@ def search(question, k=TOP_K, mode=MODE, trace=False):
         rankings.append(top(d)); steps["dense_q"] = rankings[-1]           # význam: původní otázka
         if mode in ("hybrid_rewrite", "hybrid_rerank"):
             rewritten = rewrite(question, reasoning=mode != "hybrid_rerank")   # v3 bez skrytého přemýšlení
-            rankings.append(top(dense_scores(rewritten))); steps["dense_rw"] = rankings[-1]   # význam: přepsaná
+            rankings.append(top(dense_scores(rewritten) * (1 if mask is None else mask))); steps["dense_rw"] = rankings[-1]   # význam: přepsaná
         # slova: jen z otázky v jazyce zákona; laická slova ("výplata") v zákoně nejsou a přidávají šum
-        rankings.append(top(bm25_scores(rewritten or question))); steps["bm25"] = rankings[-1]
+        rankings.append(top(bm25_scores(rewritten or question) * (1 if mask is None else mask))); steps["bm25"] = rankings[-1]
         order = fused = rrf(rankings)
     if mode == "hybrid_rerank":
         cands = [i for i, _ in fused[:N_CAND]]
@@ -267,6 +292,8 @@ def llm(system, user, model=None, reasoning=True):
     if key in cache:
         COST += cache[key]["usage"].get("cost") or 0
         return cache[key]["text"], cache[key]["usage"]
+    if offline():
+        raise OfflineCacheMiss(f"odpověď modelu {model} chybí v cache (jiný vstup než při měření)")
     body = {"model": model, "temperature": 0,
             "messages": [{"role": "system", "content": system}, {"role": "user", "content": user}]}
     if not reasoning:
