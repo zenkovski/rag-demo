@@ -1,0 +1,20 @@
+[tool.ruff]
+line-length = 180
+target-version = "py312"
+extend-exclude = [".venv", ".tmp", "data"]
+
+[tool.ruff.lint]
+# F = skutečné chyby (nepoužité/nedefinované názvy), E9 = chyby syntaxe, B023 = chyba smyčky v lambdě.
+# Starší soubory (rag.py, evaluate.py…) mají víc příkazů na řádku; to se nepřepisuje jen kvůli stylu.
+select = ["F", "E9", "B023", "E711", "E712", "E722"]
+
+[tool.mypy]
+python_version = "3.12"
+ignore_missing_imports = true
+warn_unused_ignores = true
+warn_redundant_casts = true
+disallow_untyped_defs = true
+files = ["tools/metrics.py", "tools/answer_checks.py", "tools/diagnose.py", "tools/datasets.py", "tools/security_checks.py"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

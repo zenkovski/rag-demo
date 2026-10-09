@@ -1,7 +1,31 @@
 name: tests
-on: [push, pull_request]
+
+# Každá změna prochází třemi branami:
+#   1. lint + typy       (ruff, mypy)          -> rychlá chyba v kódu
+#   2. testy             (pytest, Node.js)     -> deterministické, bez API a bez klíče
+#   3. quality gate      (experiments --check) -> přehraje hledání z uložených výsledků a porovná s results/baseline.json
+# Brána 3 hlídá KÓD hledání (pořadí správných úseků), ne chování modelu: nové odpovědi LLM by stály peníze a nebyly by
+# opakovatelné. Měření s živým modelem se spouští ručně (tools/evaluate.py) a výsledek se zapisuje do RESULTS.md.
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
 jobs:
-  test:
+  lint-and-types:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: pip
+          cache-dependency-path: requirements-dev.txt
+      - run: pip install numpy -r requirements-dev.txt
+      - run: ruff check .
+      - run: mypy
+
+  tests:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -11,5 +35,19 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
-      - run: pip install numpy pytest
+      - run: pip install numpy requests python-dotenv -r requirements-dev.txt
       - run: python -m pytest tests -v
+
+  quality-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - run: pip install numpy requests python-dotenv
+      - name: Přehrání hledání a porovnání s baseline
+        run: |
+          set -o pipefail
+          python tools/experiments.py --check --no-base | tee gate.txt
+          { echo '### Quality gate'; echo '```'; cat gate.txt; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
