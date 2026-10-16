@@ -1,0 +1,17 @@
+# Do obrazu jde jen to, co Dockerfile výslovně kopíruje. Tohle je pojistka, kdyby někdo přidal "COPY . ."
+.env
+.env.*
+.git
+.venv
+.tmp
+.mypy_cache
+.pytest_cache
+.ruff_cache
+**/__pycache__
+data/raw
+data/embeddings.npy
+data/archive_5temat
+results
+site
+docs
+PLAN.md

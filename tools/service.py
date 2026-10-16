@@ -13,7 +13,7 @@ from __future__ import annotations
 
 import json
 import os
-from collections.abc import Callable
+from collections.abc import Callable, Sequence
 from concurrent.futures import ThreadPoolExecutor
 from concurrent.futures import TimeoutError as FutureTimeout
 from functools import cache
@@ -138,7 +138,7 @@ def _clean_query(text: object) -> str:
     return q
 
 
-def _allow(laws: list[str] | None) -> set[str] | None:
+def _allow(laws: Sequence[str] | None) -> set[str] | None:
     if not laws:
         return None
     known = set(_data()[1])
@@ -183,7 +183,7 @@ def _passage(rank: int, i: int, score: float) -> Passage:
 
 
 # ---------- operace ----------
-def search(query: str, k: int = 5, mode: Mode = "fast", laws: list[str] | None = None, timeout: float = TIMEOUT_S) -> SearchResult:
+def search(query: str, k: int = 5, mode: Mode = "fast", laws: Sequence[str] | None = None, timeout: float = TIMEOUT_S) -> SearchResult:
     """Seřazené úseky zákona k dotazu. mode=fast nepotřebuje jazykový model; mode=full vrátí nejvýše 5 úseků."""
     q = _clean_query(query)
     if not isinstance(k, int) or not 1 <= k <= MAX_K:
@@ -196,7 +196,7 @@ def search(query: str, k: int = 5, mode: Mode = "fast", laws: list[str] | None =
                         passages=[_passage(n, i, s) for n, (i, s) in enumerate(hits, 1)])
 
 
-def ask(question: str, laws: list[str] | None = None, timeout: float = TIMEOUT_S) -> AskResult:
+def ask(question: str, laws: Sequence[str] | None = None, timeout: float = TIMEOUT_S) -> AskResult:
     """Odpověď s citacemi (finální v3: hledání full + odpověď DeepSeek v4 Pro). Stojí peníze, pokud není v cache."""
     q = _clean_query(question)
     allow = _allow(laws)

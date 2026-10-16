@@ -14,7 +14,7 @@ ignore_missing_imports = true
 warn_unused_ignores = true
 warn_redundant_casts = true
 disallow_untyped_defs = true
-files = ["tools/metrics.py", "tools/answer_checks.py", "tools/diagnose.py", "tools/datasets.py", "tools/security_checks.py", "tools/service.py"]
+files = ["tools/metrics.py", "tools/answer_checks.py", "tools/diagnose.py", "tools/datasets.py", "tools/security_checks.py", "tools/service.py", "tools/api.py"]
 
 # rag.py je starší netypovaný kód; service.py ho importuje. Typy se kontrolují v nových modulech, rag.py se kvůli stylu nepřepisuje.
 [[tool.mypy.overrides]]

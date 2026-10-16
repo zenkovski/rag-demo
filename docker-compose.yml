@@ -1,0 +1,14 @@
+# docker compose up --build   ->  http://localhost:8000/docs
+# Výchozí stav je OFFLINE: odpovídá jen z uložených výsledků (82 připravených otázek), nikdy neplatí za volání modelu.
+# Živé dotazy: v .env nastav OPENROUTER_API_KEY a RAG_OFFLINE=0.
+services:
+  api:
+    build: .
+    ports:
+      - "8000:8000"
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      RAG_OFFLINE: ${RAG_OFFLINE:-1}
+      RAG_API_KEYS: ${RAG_API_KEYS:?set RAG_API_KEYS in .env or the shell, e.g. RAG_API_KEYS=my-local-key}

@@ -21,7 +21,7 @@ jobs:
           python-version: "3.13"
           cache: pip
           cache-dependency-path: requirements-dev.txt
-      - run: pip install numpy pydantic -r requirements-dev.txt
+      - run: pip install numpy pydantic fastapi -r requirements-dev.txt
       - run: ruff check .
       - run: mypy
 
@@ -35,7 +35,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
-      - run: pip install numpy requests python-dotenv pydantic -r requirements-dev.txt
+      - run: pip install -r requirements-service.txt -r requirements-dev.txt
       - run: python -m pytest tests -v
 
   quality-gate:
@@ -51,3 +51,22 @@ jobs:
           set -o pipefail
           python tools/experiments.py --check --no-base | tee gate.txt
           { echo '### Quality gate'; echo '```'; cat gate.txt; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
+
+  docker:
+    # Docker se ověřuje tady (na vývojovém PC Docker není). Offline a bez klíče OpenRouteru: nic se neplatí.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: docker compose up
+        env:
+          RAG_API_KEYS: ci-key
+        run: docker compose up --build -d --wait
+      - name: health, hledání z cache, klíč
+        run: |
+          curl -fsS localhost:8000/health
+          curl -fsS -X POST localhost:8000/api/v1/search -H "X-API-Key: ci-key" -H "Content-Type: application/json" \
+            -d '{"query":"Jak dlouhá je výpovědní doba?","k":1}' | tee search.json
+          grep -q '"ZP § 51 odst. 2"' search.json
+          test "$(curl -s -o /dev/null -w '%{http_code}' -X POST localhost:8000/api/v1/search -H 'Content-Type: application/json' -d '{"query":"test dotaz"}')" = 401
+      - if: always()
+        run: docker compose logs; docker compose down
