@@ -1,0 +1,1209 @@
+[
+ {
+  "id": 201,
+  "type": "lay",
+  "level": "snadná",
+  "q": "Dostal jsem od nového šéfa smlouvu jen ústně, na papíře nic. Je to v pořádku?",
+  "gold": "Ne, pracovní smlouva musí být uzavřena písemně.",
+  "chunks": [
+   "ZP § 34 odst. 2"
+  ],
+  "quote": "Pracovní smlouva musí být uzavřena písemně."
+ },
+ {
+  "id": 202,
+  "type": "multi",
+  "level": "střední",
+  "q": "Slíbil jsem, že v pondělí nastoupím do nové práce, ale nepřišel jsem a nikomu jsem nic neřekl. Může firma od smlouvy odstoupit a v jaké formě?",
+  "gold": "Ano, pokud zaměstnanec nenastoupí ve sjednaný den bez překážky v práci a zaměstnavatel se o překážce do týdne nedozví, může zaměstnavatel od pracovní smlouvy odstoupit. Odstoupit lze jen dokud zaměstnanec nenastoupil do práce a odstoupení musí být písemné, jinak se k němu nepřihlíží.",
+  "chunks": [
+   "ZP § 34 odst. 3",
+   "ZP § 34 odst. 4"
+  ],
+  "quote": "Nenastoupí-li zaměstnanec ve sjednaný den do práce, aniž mu v tom bránila překážka v práci … Pro odstoupení od pracovní smlouvy se vyžaduje dodržení písemné formy, jinak se k němu nepřihlíží."
+ },
+ {
+  "id": 203,
+  "type": "lay",
+  "level": "snadná",
+  "q": "Může mě šéf donutit dělat v práci něco úplně jiného, než mám napsané ve smlouvě?",
+  "gold": "Práci jiného druhu nebo v jiném místě, než bylo sjednáno, je zaměstnanec povinen konat jen v případech uvedených v zákoníku práce (§ 40 odst. 2). Takovým případem je např. převedení na jinou práci i bez souhlasu při ztrátě zdravotní způsobilosti, při výpovědi z důvodů § 52 f) a g) nebo k odvrácení mimořádné události či hrozící nehody na nezbytně nutnou dobu (§ 41).",
+  "chunks": [
+   "ZP § 40 odst. 2",
+   "ZP § 41 odst. 1",
+   "ZP § 41 odst. 2",
+   "ZP § 41 odst. 3",
+   "ZP § 41 odst. 4"
+  ],
+  "quote": "Konat práce jiného druhu nebo v jiném místě, než byly sjednány v pracovní smlouvě, je zaměstnanec povinen jen v případech uvedených v tomto zákoně."
+ },
+ {
+  "id": 204,
+  "type": "lay",
+  "level": "snadná",
+  "q": "Šéf mě chce přesunout na pobočku v jiném městě. Musím tam jít?",
+  "gold": "Přeložení do jiného místa výkonu práce, než bylo sjednáno, je možné pouze s jeho souhlasem a v rámci zaměstnavatele, pokud to nezbytně vyžaduje jeho provozní potřeba.",
+  "chunks": [
+   "ZP § 43 odst. 1"
+  ],
+  "quote": "je možné pouze s jeho souhlasem a v rámci zaměstnavatele, pokud to nezbytně vyžaduje jeho provozní potřeba"
+ },
+ {
+  "id": 205,
+  "type": "lay",
+  "level": "střední",
+  "q": "Po jak dlouhé době v práci mě může firma na základě dohody dočasně přidělit k jiné firmě?",
+  "gold": "Dohodu o dočasném přidělení zaměstnance k jinému zaměstnavateli smí zaměstnavatel uzavřít nejdříve po uplynutí 6 měsíců ode dne vzniku pracovního poměru.",
+  "chunks": [
+   "ZP § 43a odst. 1"
+  ],
+  "quote": "smí zaměstnavatel s tímto zaměstnancem uzavřít nejdříve po uplynutí 6 měsíců ode dne vzniku pracovního poměru"
+ },
+ {
+  "id": 206,
+  "type": "lay",
+  "level": "snadná",
+  "q": "Po mateřské se vracím do práce. Musí mi firma dát zpátky moji původní práci a pracoviště?",
+  "gold": "Ano, zaměstnavatel je povinen zařadit zaměstnance na původní práci a pracoviště, nastoupí-li do práce po skončení mateřské dovolené.",
+  "chunks": [
+   "ZP § 47 odst. 1"
+  ],
+  "quote": "Zaměstnavatel je povinen zařadit zaměstnance na původní práci a pracoviště, nastoupí-li do práce po skončení a) dočasné pracovní neschopnosti nebo karantény, b) mateřské dovolené"
+ },
+ {
+  "id": 207,
+  "type": "lay",
+  "level": "těžká",
+  "q": "Šéf mi chce dát výpověď kvůli špatným pracovním výsledkům. Musí mě nejdřív na něco upozornit?",
+  "gold": "Ano, výpověď pro neuspokojivé pracovní výsledky lze dát, jen když byl zaměstnanec v posledních 12 měsících zaměstnavatelem písemně vyzván k jejich odstranění a v přiměřené době je neodstranil.",
+  "chunks": [
+   "ZP § 52"
+  ],
+  "quote": "je možné zaměstnanci z tohoto důvodu dát výpověď, jen jestliže byl zaměstnavatelem v době posledních 12 měsíců písemně vyzván k jejich odstranění a zaměstnanec je v přiměřené době neodstranil"
+ },
+ {
+  "id": 208,
+  "type": "exact",
+  "level": "střední",
+  "q": "Co říká § 62 odst. 1 zákoníku práce o tom, kdy jde o hromadné propouštění?",
+  "gold": "Hromadným propouštěním se rozumí skončení pracovních poměrů v období 30 kalendářních dnů na základě výpovědí z důvodů podle § 52 písm. a) až c) nejméně u 10 zaměstnanců (zaměstnavatel s 20 až 100 zaměstnanci), 10 % zaměstnanců (101 až 300 zaměstnanců) nebo 30 zaměstnanců (více než 300 zaměstnanců).",
+  "chunks": [
+   "ZP § 62 odst. 1"
+  ],
+  "quote": "b) 10 % zaměstnanců u zaměstnavatele zaměstnávajícího od 101 do 300 zaměstnanců, nebo c) 30 zaměstnancům u zaměstnavatele zaměstnávajícího více než 300 zaměstnanců"
+ },
+ {
+  "id": 209,
+  "type": "lay",
+  "level": "střední",
+  "q": "Jsem ve zkušební době a hned první týden jsem onemocněl. Může mě firma v tu chvíli ze zkušební doby propustit?",
+  "gold": "Ne, zaměstnavatel nesmí ve zkušební době zrušit pracovní poměr v době prvních 14 kalendářních dnů trvání dočasné pracovní neschopnosti (karantény) zaměstnance.",
+  "chunks": [
+   "ZP § 66 odst. 1"
+  ],
+  "quote": "Zaměstnavatel nesmí ve zkušební době zrušit pracovní poměr v době prvních 14 kalendářních dnů trvání dočasné pracovní neschopnosti (karantény) zaměstnance."
+ },
+ {
+  "id": 210,
+  "type": "lay",
+  "level": "snadná",
+  "q": "Dal jsem výpověď, ale rozmyslel jsem si to. Můžu ji vzít zpátky?",
+  "gold": "Výpověď může být odvolána pouze se souhlasem druhé smluvní strany a odvolání i souhlas s ním musí být písemné.",
+  "chunks": [
+   "ZP § 50 odst. 5"
+  ],
+  "quote": "Výpověď může být odvolána pouze se souhlasem druhé smluvní strany; odvolání výpovědi i souhlas s jejím odvoláním musí být písemné."
+ },
+ {
+  "id": 211,
+  "type": "lay",
+  "level": "střední",
+  "q": "Šéf mi dal výpověď s jedním důvodem. Může ho u soudu dodatečně vyměnit za jiný?",
+  "gold": "Ne, zaměstnavatel musí důvod ve výpovědi skutkově vymezit tak, aby nešel zaměnit s jiným důvodem, a důvod výpovědi nesmí být dodatečně měněn.",
+  "chunks": [
+   "ZP § 50 odst. 4"
+  ],
+  "quote": "Důvod výpovědi nesmí být dodatečně měněn."
+ },
+ {
+  "id": 212,
+  "type": "lay",
+  "level": "těžká",
+  "q": "Dostal jsem odstupné, ale za pár týdnů mě stejná firma vzala zpátky na dohodu o pracovní činnosti. Musím něco vracet?",
+  "gold": "Ano, začne-li zaměstnanec po skončení pracovního poměru pracovat u dosavadního zaměstnavatele v pracovním poměru nebo na dohodu o pracovní činnosti před uplynutím doby odpovídající počtu násobků průměrných výdělků, z nichž byla odvozena výše odstupného, musí odstupné nebo jeho poměrnou část vrátit.",
+  "chunks": [
+   "ZP § 68 odst. 1"
+  ],
+  "quote": "je povinen tomuto zaměstnavateli vrátit odstupné nebo jeho poměrnou část"
+ },
+ {
+  "id": 213,
+  "type": "multi",
+  "level": "těžká",
+  "q": "Pracoval jsem u firmy rok a půl, odešel, po 4 měsících mě vzali zpět a po roce mě propustili kvůli nadbytečnosti. Počítá se mi do odstupného i ta první doba?",
+  "gold": "Ano, za dobu trvání pracovního poměru se počítá i předchozí pracovní poměr u téhož zaměstnavatele, pokud doba mezi nimi nepřesáhla 6 měsíců. Pracovní poměr tak trval alespoň 2 roky, takže odstupné činí nejméně trojnásobek průměrného výdělku.",
+  "chunks": [
+   "ZP § 67 odst. 2",
+   "ZP § 67 odst. 1"
+  ],
+  "quote": "považuje i doba trvání předchozího pracovního poměru u téhož zaměstnavatele, pokud doba od jeho skončení do vzniku následujícího pracovního poměru nepřesáhla dobu 6 měsíců … c) trojnásobku jeho průměrného výdělku, jestliže jeho pracovní poměr u zaměstnavatele trval alespoň 2 roky"
+ },
+ {
+  "id": 214,
+  "type": "lay",
+  "level": "těžká",
+  "q": "Dostal jsem výpověď, protože na mém pracovišti se škodlivinami mi hygienici určili, že už tam nesmím dál pracovat (dosáhl jsem limitu). Jaké odstupné mi náleží?",
+  "gold": "Zaměstnanci přísluší odstupné ve výši nejméně dvanáctinásobku průměrného výdělku.",
+  "chunks": [
+   "ZP § 67 odst. 3"
+  ],
+  "quote": "přísluší od zaměstnavatele při skončení pracovního poměru odstupné ve výši nejméně dvanáctinásobku průměrného výdělku"
+ },
+ {
+  "id": 215,
+  "type": "lay",
+  "level": "střední",
+  "q": "Pracuju na dohodu o provedení práce a firma mi dala výpověď. Jak dlouhá je výpovědní doba?",
+  "gold": "Není-li sjednán způsob zrušení, lze dát výpověď z jakéhokoli důvodu nebo bez uvedení důvodu s patnáctidenní výpovědní dobou, která začíná dnem doručení výpovědi druhé smluvní straně.",
+  "chunks": [
+   "ZP § 77 odst. 5"
+  ],
+  "quote": "výpovědí danou z jakéhokoli důvodu nebo bez uvedení důvodu s patnáctidenní výpovědní dobou, která začíná dnem, v němž byla výpověď doručena druhé smluvní straně"
+ },
+ {
+  "id": 216,
+  "type": "lay",
+  "level": "těžká",
+  "q": "Za posledních 12 měsíců jsem pro firmu na dohodách (DPP a DPČ) pracoval celkem aspoň 180 dní. Když si písemně řeknu o normální pracovní poměr, musí mi odpovědět?",
+  "gold": "Ano, zaměstnavatel je povinen poskytnout mu nejpozději do 1 měsíce odůvodněnou písemnou odpověď.",
+  "chunks": [
+   "ZP § 77 odst. 4"
+  ],
+  "quote": "je zaměstnavatel povinen poskytnout mu nejpozději do 1 měsíce odůvodněnou písemnou odpověď"
+ },
+ {
+  "id": 217,
+  "type": "exact",
+  "level": "střední",
+  "q": "Co stanoví § 79 odst. 2 zákoníku práce o délce stanovené týdenní pracovní doby u zaměstnanců s vícesměnným nebo dvousměnným režimem?",
+  "gold": "U zaměstnanců s vícesměnným nebo nepřetržitým pracovním režimem činí stanovená týdenní pracovní doba 37,5 hodiny týdně a s dvousměnným pracovním režimem 38,75 hodiny týdně.",
+  "chunks": [
+   "ZP § 79 odst. 2"
+  ],
+  "quote": "b) s vícesměnným nebo nepřetržitým pracovním režimem 37,5 hodiny týdně, c) s dvousměnným pracovním režimem 38,75 hodiny týdně"
+ },
+ {
+  "id": 218,
+  "type": "ambiguous",
+  "level": "střední",
+  "q": "Kolik dní předem mi musí šéf říct, kdy budu pracovat?",
+  "gold": "U zaměstnance musí zaměstnavatel seznámit s rozvrhem týdenní pracovní doby nejpozději 2 týdny před začátkem období (u konta pracovní doby 1 týden); u práce na DPP a DPČ nejpozději 3 dny před začátkem směny nebo období.",
+  "chunks": [
+   "ZP § 84",
+   "ZP § 74 odst. 2"
+  ],
+  "quote": "nejpozději 2 týdny a v případě konta pracovní doby 1 týden před začátkem období, na něž je pracovní doba rozvržena … seznámit s ním nebo s jeho změnou zaměstnance nejpozději 3 dny před začátkem směny nebo období"
+ },
+ {
+  "id": 219,
+  "type": "exact",
+  "level": "těžká",
+  "q": "Co říká § 120 odst. 1 zákoníku práce o stálé měsíční mzdě při uplatnění konta pracovní doby?",
+  "gold": "Při kontu pracovní doby přísluší zaměstnanci za kalendářní měsíce vyrovnávacího období stálá měsíční mzda sjednaná v kolektivní smlouvě nebo stanovená vnitřním předpisem a ta nesmí být nižší než 80 % jeho průměrného výdělku.",
+  "chunks": [
+   "ZP § 120 odst. 1"
+  ],
+  "quote": "Stálá mzda zaměstnance nesmí být nižší než 80 % jeho průměrného výdělku."
+ },
+ {
+  "id": 220,
+  "type": "lay",
+  "level": "střední",
+  "q": "Mám pružnou pracovní dobu a jedu na služební cestu. Můžu si i tam sám zvolit začátek a konec práce?",
+  "gold": "Ne, pružné rozvržení pracovní doby se při pracovní cestě zaměstnance neuplatní.",
+  "chunks": [
+   "ZP § 85 odst. 5"
+  ],
+  "quote": "Pružné rozvržení pracovní doby se neuplatní a) při pracovní cestě zaměstnance"
+ },
+ {
+  "id": 221,
+  "type": "multi",
+  "level": "střední",
+  "q": "Můžu si polední pauzu rozdělit na dvě kratší a počítá se mi pauza do odpracované doby?",
+  "gold": "Pauzu lze rozdělit, ale alespoň jedna její část musí činit nejméně 15 minut. Poskytnuté přestávky na jídlo a oddech se do pracovní doby nezapočítávají.",
+  "chunks": [
+   "ZP § 88 odst. 2",
+   "ZP § 88 odst. 4"
+  ],
+  "quote": "musí alespoň jedna její část činit nejméně 15 minut … Poskytnuté přestávky v práci na jídlo a oddech se nezapočítávají do pracovní doby."
+ },
+ {
+  "id": 222,
+  "type": "lay",
+  "level": "střední",
+  "q": "Můj syn je mladistvý a brigádničí. Po jak dlouhé nepřetržité práci musí dostat pauzu na jídlo?",
+  "gold": "Mladistvému zaměstnanci musí být přestávka na jídlo a oddech poskytnuta nejdéle po 4,5 hodinách nepřetržité práce.",
+  "chunks": [
+   "ZP § 88 odst. 1"
+  ],
+  "quote": "mladistvému zaměstnanci musí být tato přestávka poskytnuta nejdéle po 4,5 hodinách nepřetržité práce"
+ },
+ {
+  "id": 223,
+  "type": "multi",
+  "level": "těžká",
+  "q": "Smí mi šéf nařídit práci v den mého týdenního volna?",
+  "gold": "Práci ve dnech pracovního klidu může zaměstnavatel nařídit jen výjimečně; v den nepřetržitého odpočinku v týdnu jen nutné práce, které nemohou být provedeny v pracovních dnech, např. naléhavé opravné práce, nakládací a vykládací práce, inventurní práce nebo krmení a ošetřování zvířat.",
+  "chunks": [
+   "ZP § 91 odst. 2",
+   "ZP § 91 odst. 3"
+  ],
+  "quote": "Práci ve dnech pracovního klidu může zaměstnavatel nařídit jen výjimečně. … V den nepřetržitého odpočinku v týdnu může zaměstnavatel nařídit zaměstnanci jen výkon těchto nutných prací, které nemohou být provedeny v pracovních dnech"
+ },
+ {
+  "id": 224,
+  "type": "lay",
+  "level": "těžká",
+  "q": "Mám ve smlouvě mzdu, ve které jsou přesčasy už zahrnuté. Na kolik hodin přesčasu za rok se to smí takhle sjednat?",
+  "gold": "Mzdu s přihlédnutím k případné práci přesčas je možné sjednat nejvýše v rozsahu 150 hodin práce přesčas za kalendářní rok (a musí být zároveň sjednán rozsah přesčasu); u vedoucích zaměstnanců v mezích celkového rozsahu práce přesčas podle § 93 odst. 4.",
+  "chunks": [
+   "ZP § 114 odst. 3"
+  ],
+  "quote": "Mzdu s přihlédnutím k případné práci přesčas je možné sjednat nejvýše v rozsahu 150 hodin práce přesčas za kalendářní rok"
+ },
+ {
+  "id": 225,
+  "type": "lay",
+  "level": "střední",
+  "q": "Za přesčas mi šéf nabídl náhradní volno. Do kdy mi ho musí dát, aby mi nemusel platit příplatek?",
+  "gold": "Pokud zaměstnavatel neposkytne náhradní volno v době 3 kalendářních měsíců po výkonu práce přesčas nebo v jinak dohodnuté době, přísluší zaměstnanci k dosažené mzdě příplatek.",
+  "chunks": [
+   "ZP § 114 odst. 2"
+  ],
+  "quote": "Neposkytne-li zaměstnavatel zaměstnanci náhradní volno v době 3 kalendářních měsíců po výkonu práce přesčas nebo v jinak dohodnuté době, přísluší zaměstnanci k dosažené mzdě příplatek"
+ },
+ {
+  "id": 226,
+  "type": "lay",
+  "level": "snadná",
+  "q": "Pracuju v noci. Musí mi firma platit lékařské prohlídky, nebo si je mám hradit sám?",
+  "gold": "Zaměstnavatel je povinen zajistit vyšetření zaměstnance pracujícího v noci poskytovatelem pracovnělékařských služeb a úhrada poskytnutých zdravotních služeb nesmí být na zaměstnanci požadována.",
+  "chunks": [
+   "ZP § 94 odst. 2"
+  ],
+  "quote": "Úhrada poskytnutých zdravotních služeb nesmí být na zaměstnanci požadována."
+ },
+ {
+  "id": 227,
+  "type": "lay",
+  "level": "snadná",
+  "q": "Šéf chce, abych byl o víkendech v pohotovosti pro případ poruchy. Můžu to odmítnout?",
+  "gold": "Pracovní pohotovost může zaměstnavatel na zaměstnanci požadovat, jen jestliže se o tom se zaměstnancem dohodne.",
+  "chunks": [
+   "ZP § 95 odst. 1"
+  ],
+  "quote": "Pracovní pohotovost může zaměstnavatel na zaměstnanci požadovat, jen jestliže se o tom se zaměstnancem dohodne."
+ },
+ {
+  "id": 228,
+  "type": "lay",
+  "level": "snadná",
+  "q": "Můžu si od šéfa vyžádat výpis ze své docházky a z mzdového účtu a kdo zaplatí kopie?",
+  "gold": "Na žádost zaměstnance je zaměstnavatel povinen umožnit mu nahlédnout do účtu pracovní doby nebo evidence pracovní doby a do účtu mzdy a pořizovat z nich výpisy či stejnopisy na náklady zaměstnavatele.",
+  "chunks": [
+   "ZP § 96 odst. 2"
+  ],
+  "quote": "pořizovat si z nich výpisy, popřípadě stejnopisy na náklady zaměstnavatele"
+ },
+ {
+  "id": 229,
+  "type": "lay",
+  "level": "těžká",
+  "q": "Počítají se mi do minimální mzdy i příplatky za noční a přesčasy?",
+  "gold": "Ne, do mzdy nebo odměny z dohody se pro účel minimální mzdy nezahrnuje mzda za práci přesčas, příplatek za práci ve svátek, za noční práci, ve ztíženém pracovním prostředí, za zvýšenou zátěž ve zdravotnictví a za práci v sobotu a v neděli.",
+  "chunks": [
+   "ZP § 111 odst. 1"
+  ],
+  "quote": "Do mzdy nebo odměny z dohody se pro tento účel nezahrnuje mzda za práci přesčas, příplatek za práci ve svátek, za noční práci"
+ },
+ {
+  "id": 230,
+  "type": "ambiguous",
+  "level": "střední",
+  "q": "Jak dlouhá může být moje směna maximálně?",
+  "gold": "Obecně nesmí délka směny přesáhnout 12 hodin; u zaměstnance pracujícího v noci nesmí délka směny překročit 8 hodin v rámci 24 hodin po sobě jdoucích.",
+  "chunks": [
+   "ZP § 83 odst. 1",
+   "ZP § 94 odst. 1"
+  ],
+  "quote": "Délka směny nesmí přesáhnout 12 hodin. … Délka směny zaměstnance pracujícího v noci nesmí překročit 8 hodin v rámci 24 hodin po sobě jdoucích"
+ },
+ {
+  "id": 231,
+  "type": "lay",
+  "level": "snadná",
+  "q": "Nemám zřízený bankovní účet. Jak mi firma vyplatí výplatu?",
+  "gold": "Pokud zaměstnanec nemá platební účet, vyplácí zaměstnavatel mzdu nebo plat v hotovosti v pracovní době a na pracovišti, nebyla-li dohodnuta jiná doba a jiné místo výplaty.",
+  "chunks": [
+   "ZP § 142 odst. 4"
+  ],
+  "quote": "vyplácí zaměstnavatel zaměstnanci mzdu nebo plat v hotovosti v pracovní době a na pracovišti"
+ },
+ {
+  "id": 232,
+  "type": "ambiguous",
+  "level": "střední",
+  "q": "Kolik peněz navíc dostanu, když musím makat o víkendu?",
+  "gold": "Za hodinu práce v sobotu nebo v neděli přísluší příplatek 25 % průměrného hodinového výdělku (§ 126 odst. 1). Pokud jde zároveň o práci přesčas, náleží navíc příplatek za přesčas: u mzdy nejméně 25 % průměrného výdělku (§ 114 odst. 1), u platu 25 % průměrného hodinového výdělku, ve dnech nepřetržitého odpočinku v týdnu 50 % (§ 127 odst. 1), pokud se nedohodlo náhradní volno.",
+  "chunks": [
+   "ZP § 126 odst. 1",
+   "ZP § 114 odst. 1",
+   "ZP § 127 odst. 1"
+  ],
+  "quote": "za hodinu práce v sobotu nebo v neděli příplatek ve výši 25 % průměrného hodinového výdělku"
+ },
+ {
+  "id": 233,
+  "type": "exact",
+  "level": "snadná",
+  "q": "Co přesně stanoví § 130 odst. 2 zákoníku práce o rozdělené směně?",
+  "gold": "Rozdělenou směnou je směna, ve které souvislé přerušení práce nebo jejich souhrn činí alespoň 2 hodiny.",
+  "chunks": [
+   "ZP § 130 odst. 2"
+  ],
+  "quote": "souvislé přerušení práce nebo jejich souhrn činí alespoň 2 hodiny"
+ },
+ {
+  "id": 234,
+  "type": "lay",
+  "level": "těžká",
+  "q": "Může mi firma platit výplatu v eurech?",
+  "gold": "Jen s jeho souhlasem a jen u vybraných skupin, např. zaměstnanců s místem výkonu práce v zahraničí, cizinců s příslušným povolením, občanů jiného členského státu EU bez trvalého pobytu v ČR nebo zaměstnanců, kteří trvale žijí v zahraničí.",
+  "chunks": [
+   "ZP § 143 odst. 1"
+  ],
+  "quote": "s jeho souhlasem mzdu, plat nebo jejich část v dohodnuté cizí měně"
+ },
+ {
+  "id": 235,
+  "type": "lay",
+  "level": "střední",
+  "q": "V jakých případech mi může šéf strhnout peníze z výplaty?",
+  "gold": "Srážky ze mzdy smějí být provedeny jen v případech stanovených zákonem nebo zvláštním zákonem, na základě dohody o srážkách ze mzdy nebo k uspokojení závazků zaměstnance, nebo k úhradě členských příspěvků odborům za stanovených podmínek.",
+  "chunks": [
+   "ZP § 146"
+  ],
+  "quote": "Srážky ze mzdy smějí být provedeny jen a) v případech stanovených tímto zákonem nebo zvláštním zákonem"
+ },
+ {
+  "id": 236,
+  "type": "lay",
+  "level": "snadná",
+  "q": "Kolik stravného mi patří na služební cestě, která trvá 8 hodin?",
+  "gold": "Při pracovní cestě trvající 5 až 12 hodin přísluší stravné nejméně ve výši 155 Kč.",
+  "chunks": [
+   "ZP § 163 odst. 1"
+  ],
+  "quote": "155 Kč, trvá-li pracovní cesta 5 až 12 hodin"
+ },
+ {
+  "id": 237,
+  "type": "multi",
+  "level": "těžká",
+  "q": "Na služební cestě, která trvala 10 hodin, mi hotel dal oběd zdarma. Kolik stravného mi zůstane?",
+  "gold": "Při cestě trvající 5 až 12 hodin činí stravné nejméně 155 Kč a za každé bezplatné jídlo se snižuje až o 70 % stravného.",
+  "chunks": [
+   "ZP § 163 odst. 1",
+   "ZP § 163 odst. 2"
+  ],
+  "quote": "stravné snížené za každé bezplatné jídlo až o hodnotu a) 70 % stravného, trvá-li pracovní cesta 5 až 12 hodin"
+ },
+ {
+  "id": 238,
+  "type": "lay",
+  "level": "střední",
+  "q": "Pracuju z domova a platím si doma internet a elektřinu. Platí mi to firma?",
+  "gold": "Zaměstnavatel hradí prokázané náklady vzniklé s prací na dálku, nebo, bylo-li to písemně sjednáno či stanoveno vnitřním předpisem, paušální částku za každou započatou hodinu práce na dálku.",
+  "chunks": [
+   "ZP § 190a odst. 1",
+   "ZP § 190a odst. 3"
+  ],
+  "quote": "poskytne zaměstnavatel zaměstnanci za každou započatou hodinu práce na dálku paušální částku"
+ },
+ {
+  "id": 239,
+  "type": "lay",
+  "level": "snadná",
+  "q": "Do kolika let dítěte může být táta na rodičovské dovolené?",
+  "gold": "Rodičovská dovolená přísluší otci od narození dítěte, a to v rozsahu, o jaký požádá, ne však déle než do doby, kdy dítě dosáhne věku 3 let; zaměstnavatel ji poskytne na písemnou žádost.",
+  "chunks": [
+   "ZP § 196 odst. 1"
+  ],
+  "quote": "Rodičovská dovolená přísluší matce dítěte po skončení mateřské dovolené a otci od narození dítěte"
+ },
+ {
+  "id": 240,
+  "type": "lay",
+  "level": "střední",
+  "q": "Jsem vedoucí na dětském táboře. Kolik volna si můžu na to vzít z práce?",
+  "gold": "Pracovní volno přísluší v nezbytně nutném rozsahu, nejvýše však 3 týdny v kalendářním roce.",
+  "chunks": [
+   "ZP § 203a odst. 1"
+  ],
+  "quote": "nejvýše však 3 týdny v kalendářním roce"
+ },
+ {
+  "id": 241,
+  "type": "lay",
+  "level": "střední",
+  "q": "Stroj se v práci porouchal, nemohl jsem pracovat a nikam mě nepřeložili. Kolik mi zaplatí?",
+  "gold": "Jde o prostoj a zaměstnanci, který nebyl převeden na jinou práci, přísluší náhrada mzdy nebo platu nejméně ve výši 80 % průměrného výdělku.",
+  "chunks": [
+   "ZP § 207"
+  ],
+  "quote": "přísluší mu náhrada mzdy nebo platu ve výši nejméně 80 % průměrného výdělku"
+ },
+ {
+  "id": 242,
+  "type": "exact",
+  "level": "snadná",
+  "q": "Co říká § 220 zákoníku práce o hromadném čerpání dovolené?",
+  "gold": "Zaměstnavatel může v dohodě s odborovou organizací a se souhlasem rady zaměstnanců určit hromadné čerpání dovolené jen z nezbytných provozních důvodů; nesmí činit více než 2 týdny, u uměleckých souborů 4 týdny.",
+  "chunks": [
+   "ZP § 220"
+  ],
+  "quote": "hromadné čerpání dovolené nesmí činit více než 2 týdny a u uměleckých souborů 4 týdny"
+ },
+ {
+  "id": 243,
+  "type": "lay",
+  "level": "těžká",
+  "q": "Změním práci uprostřed roku. Může mi nový zaměstnavatel dát dovolenou, kterou jsem měl nárok vybrat u starého?",
+  "gold": "Ano, nový zaměstnavatel může dovolenou poskytnout, pokud o to zaměstnanec požádá nejpozději před skončením pracovního poměru u dosavadního zaměstnavatele a oba zaměstnavatelé se dohodnou na úhradě náhrady mzdy.",
+  "chunks": [
+   "ZP § 221"
+  ],
+  "quote": "může mu nový zaměstnavatel poskytnout dovolenou (část dovolené), na kterou mu vzniklo právo u dosavadního zaměstnavatele"
+ },
+ {
+  "id": 244,
+  "type": "lay",
+  "level": "střední",
+  "q": "Onemocněl jsem na dovolené. Počítá se mi ta nemoc jako dovolená?",
+  "gold": "Byl-li zaměstnanec během dovolené uznán dočasně práce neschopným, dovolená se mu přerušuje (nepožádá-li o pokračování v čerpání během karantény apod.).",
+  "chunks": [
+   "ZP § 219 odst. 1"
+  ],
+  "quote": "byl-li uznán dočasně práce neschopným, byla-li mu nařízena karanténa, poskytuje-li dlouhodobou péči"
+ },
+ {
+  "id": 245,
+  "type": "multi",
+  "level": "střední",
+  "q": "Jsem čerstvý absolvent školy. Musí mi firma zajistit praxi a platí se za ni něco?",
+  "gold": "Zaměstnavatel je povinen absolventům zajistit přiměřenou odbornou praxi, která se považuje za výkon práce, za nějž přísluší mzda nebo plat. Absolventem je zaměstnanec, jehož celková praxe po ukončení studia nedosáhla 2 let.",
+  "chunks": [
+   "ZP § 229 odst. 1",
+   "ZP § 229 odst. 2"
+  ],
+  "quote": "odborná praxe se považuje za výkon práce, za který přísluší zaměstnanci mzda nebo plat"
+ },
+ {
+  "id": 246,
+  "type": "lay",
+  "level": "střední",
+  "q": "Firma mi zaplatila školu a chce, abych tam pak zůstal. Jak dlouho mě smí zavázat?",
+  "gold": "Kvalifikační dohoda může zavázat zaměstnance setrvat u zaměstnavatele po sjednanou dobu, nejdéle však 5 let, nebo uhradit náklady na zvýšení kvalifikace.",
+  "chunks": [
+   "ZP § 234 odst. 1"
+  ],
+  "quote": "nejdéle však po dobu 5 let"
+ },
+ {
+  "id": 247,
+  "type": "lay",
+  "level": "střední",
+  "q": "Studuju při práci vysokou školu. Kolik volna mám na každou zkoušku?",
+  "gold": "Pokud není dohodnuto nebo stanoveno více, přísluší pracovní volno s náhradou mzdy 2 pracovní dny na přípravu a vykonání každé zkoušky v rámci studia na vysoké nebo vyšší odborné škole.",
+  "chunks": [
+   "ZP § 232 odst. 1"
+  ],
+  "quote": "2 pracovní dny na přípravu a vykonání každé zkoušky v rámci studia v programu uskutečňovaném vysokou školou nebo vyšší odbornou školou"
+ },
+ {
+  "id": 248,
+  "type": "lay",
+  "level": "střední",
+  "q": "Kojím miminko. Mám nárok na nějaké extra pauzy v práci?",
+  "gold": "Kojící zaměstnankyně pracující stanovenou týdenní dobu má na každé dítě do konce 1 roku jeho věku 2 půlhodinové přestávky a v dalších 3 měsících 1 půlhodinovou přestávku za směnu; při kratší pracovní době (alespoň polovina) jen 1 půlhodinovou přestávku.",
+  "chunks": [
+   "ZP § 242 odst. 2"
+  ],
+  "quote": "přísluší na každé dítě do konce 1 roku jeho věku 2 půlhodinové přestávky a v dalších 3 měsících 1 půlhodinová přestávka za směnu"
+ },
+ {
+  "id": 249,
+  "type": "lay",
+  "level": "snadná",
+  "q": "Mám dítě ve školce a šéf mě chce poslat na služebku do jiného města. Musím jet?",
+  "gold": "Zaměstnanec pečující o dítě mladší než 9 let smí být vyslán na pracovní cestu mimo obvod obce pracoviště nebo bydliště jen se svým souhlasem.",
+  "chunks": [
+   "ZP § 240 odst. 1"
+  ],
+  "quote": "smějí být vysíláni na pracovní cestu mimo obvod obce svého pracoviště nebo bydliště jen se svým souhlasem"
+ },
+ {
+  "id": 250,
+  "type": "lay",
+  "level": "snadná",
+  "q": "Smí šestnáctiletý brigádník pracovat přesčas nebo v noci?",
+  "gold": "Ne, mladistvé zaměstnance se zakazuje zaměstnávat prací přesčas a prací v noci; výjimkou je noční práce nepřesahující 1 hodinu u mladistvých starších 16 let, je-li třeba pro výchovu k povolání.",
+  "chunks": [
+   "ZP § 245 odst. 1"
+  ],
+  "quote": "Zakazuje se zaměstnávat mladistvé zaměstnance prací přesčas a prací v noci"
+ },
+ {
+  "id": 251,
+  "type": "multi",
+  "level": "těžká",
+  "q": "Ztratil jsem nářadí, které jsem si převzal na podpis. Musím zaplatit celou škodu?",
+  "gold": "Zaměstnanec je povinen nahradit škodu způsobenou ztrátou svěřených nástrojů a podobných věcí převzatých na písemné potvrzení, a to v plné výši.",
+  "chunks": [
+   "ZP § 255 odst. 1",
+   "ZP § 259"
+  ],
+  "quote": "je povinen nahradit tuto škodu v plné výši"
+ },
+ {
+  "id": 252,
+  "type": "multi",
+  "level": "těžká",
+  "q": "Věděl jsem, že firmě hrozí škoda, a nic jsem neudělal. Kolik za to můžu nejvíc platit?",
+  "gold": "Zaměstnavatel může požadovat, aby se zaměstnanec podílel na náhradě škody, pokud vědomě neupozornil nadřízeného ani nezakročil; výše náhrady nesmí přesáhnout trojnásobek průměrného měsíčního výdělku zaměstnance.",
+  "chunks": [
+   "ZP § 251 odst. 1",
+   "ZP § 258"
+  ],
+  "quote": "nesmí přesáhnout částku rovnající se trojnásobku průměrného měsíčního výdělku zaměstnance"
+ },
+ {
+  "id": 253,
+  "type": "lay",
+  "level": "snadná",
+  "q": "Může soud snížit částku, kterou mám zaplatit firmě za škodu?",
+  "gold": "Ano, z důvodů zvláštního zřetele hodných může soud výši náhrady škody přiměřeně snížit.",
+  "chunks": [
+   "ZP § 264"
+  ],
+  "quote": "Z důvodů zvláštního zřetele hodných může soud výši náhrady škody přiměřeně snížit."
+ },
+ {
+  "id": 254,
+  "type": "lay",
+  "level": "střední",
+  "q": "Podepsal jsem zákaz konkurence po odchodu z firmy. Jak dlouho platí a musí mi za to firma platit?",
+  "gold": "Konkurenční doložka může trvat nejdéle 1 rok po skončení zaměstnání a zaměstnavatel musí poskytnout přiměřené peněžité vyrovnání, nejméně ve výši jedné poloviny průměrného měsíčního výdělku za každý měsíc.",
+  "chunks": [
+   "ZP § 310 odst. 1"
+  ],
+  "quote": "nejméně však ve výši jedné poloviny průměrného měsíčního výdělku"
+ },
+ {
+  "id": 255,
+  "type": "ambiguous",
+  "level": "střední",
+  "q": "Může mě šéf kontrolovat?",
+  "gold": "Zaměstnavatel může v nezbytném rozsahu kontrolovat věci, které zaměstnanci vnášejí či odnášejí, a provádět prohlídky (s ochranou osobnosti). Soukromí zaměstnance však nesmí bez závažného důvodu ve zvláštní povaze činnosti narušovat otevřeným či skrytým sledováním, odposlechem hovorů ani kontrolou e-mailů či pošty.",
+  "chunks": [
+   "ZP § 248 odst. 2",
+   "ZP § 316 odst. 2"
+  ],
+  "quote": "oprávněn v nezbytném rozsahu provádět kontrolu věcí, které zaměstnanci k němu vnášejí nebo od něho odnášejí, popřípadě provádět prohlídky zaměstnanců"
+ },
+ {
+  "id": 256,
+  "type": "lay",
+  "level": "snadná",
+  "q": "Mám právo nahlédnout do svého osobního spisu?",
+  "gold": "Ano, zaměstnanec má právo nahlížet do svého osobního spisu, činit si výpisky a pořizovat si stejnopisy dokladů, a to na náklady zaměstnavatele.",
+  "chunks": [
+   "ZP § 312 odst. 3"
+  ],
+  "quote": "Zaměstnanec má právo nahlížet do svého osobního spisu"
+ },
+ {
+  "id": 257,
+  "type": "lay",
+  "level": "střední",
+  "q": "S pracovním posudkem od šéfa nesouhlasím. Jak dlouho mám čas to řešit u soudu?",
+  "gold": "Zaměstnanec se může domáhat u soudu úpravy obsahu posudku (nebo potvrzení o zaměstnání) do 3 měsíců ode dne, kdy se o jeho obsahu dověděl.",
+  "chunks": [
+   "ZP § 315"
+  ],
+  "quote": "může se domáhat do 3 měsíců ode dne, kdy se o jejich obsahu dověděl, u soudu"
+ },
+ {
+  "id": 258,
+  "type": "lay",
+  "level": "střední",
+  "q": "Jsem z agentury práce a pracuju ve firmě. Kdo mi tam zadává práci?",
+  "gold": "Po dobu dočasného přidělení ukládá zaměstnanci agentury práce úkoly, řídí a kontroluje jeho práci uživatel, u něhož pracuje; nesmí však jednat jménem agentury práce.",
+  "chunks": [
+   "ZP § 309 odst. 1"
+  ],
+  "quote": "ukládá zaměstnanci agentury práce pracovní úkoly, organizuje, řídí a kontroluje jeho práci"
+ },
+ {
+  "id": 259,
+  "type": "lay",
+  "level": "střední",
+  "q": "Musí mi zaměstnavatel před nástupem do práce dát písemně, kolik budu mít plat?",
+  "gold": "Ano. Zaměstnavatel je povinen před začátkem výkonu práce předat zaměstnanci písemný výměr: při mzdě mzdový výměr (§ 113 odst. 4), při platu platový výměr (§ 136 odst. 1).",
+  "chunks": [
+   "ZP § 113 odst. 4",
+   "ZP § 136 odst. 1"
+  ],
+  "quote": "Zaměstnavatel je povinen před začátkem výkonu práce předat zaměstnanci písemný platový výměr."
+ },
+ {
+  "id": 260,
+  "type": "exact",
+  "level": "těžká",
+  "q": "Co říká § 355 odst. 1 zákoníku práce o pravděpodobném výdělku?",
+  "gold": "Jestliže zaměstnanec v rozhodném období neodpracoval alespoň 21 dnů, použije se pravděpodobný výdělek.",
+  "chunks": [
+   "ZP § 355 odst. 1"
+  ],
+  "quote": "Jestliže zaměstnanec v rozhodném období neodpracoval alespoň 21 dnů, použije se pravděpodobný výdělek."
+ },
+ {
+  "id": 261,
+  "type": "ambiguous",
+  "level": "střední",
+  "q": "Jak dlouho se vlastně vyplácí nemocenská?",
+  "gold": "Obecně podpůrčí doba začíná 15. kalendářním dnem dočasné pracovní neschopnosti (nebo karantény) a trvá nejdéle 380 kalendářních dnů od jejího vzniku. Poživateli starobního nebo invalidního důchodu pro invaliditu třetího stupně se nemocenské vyplácí od 15. dne nejvýše 70 kalendářních dnů.",
+  "chunks": [
+   "ZNP § 26 odst. 1",
+   "ZNP § 28 odst. 1"
+  ],
+  "quote": "podpůrčí doba však trvá nejdéle 380 kalendářních dnů ode dne vzniku dočasné pracovní neschopnosti nebo nařízení karantény"
+ },
+ {
+  "id": 262,
+  "type": "lay",
+  "level": "snadná",
+  "q": "Napil jsem se, upadl na schodech a zlomil si nohu. Dostanu nemocenskou v plné výši?",
+  "gold": "Ne, nemocenské se sníží na 50 % výše stanovené podle § 29, jestliže si pojištěnec přivodil neschopnost jako bezprostřední následek své opilosti nebo zneužití omamných či psychotropních látek.",
+  "chunks": [
+   "ZNP § 31"
+  ],
+  "quote": "Výše nemocenského za kalendářní den činí 50 % výše nemocenského stanoveného podle § 29"
+ },
+ {
+  "id": 263,
+  "type": "lay",
+  "level": "střední",
+  "q": "Dostal jsem výpověď a za tři dny po skončení práce jsem onemocněl. Dostanu ještě nemocenskou?",
+  "gold": "Ano, nemocenské náleží i při vzniku neschopnosti po zániku pojištění v ochranné lhůtě, která činí 7 kalendářních dnů ode dne zániku pojištění (při kratším trvání pojištění jen tolik dnů, kolik pojištění trvalo).",
+  "chunks": [
+   "ZNP § 15 odst. 1"
+  ],
+  "quote": "Ochranná lhůta činí 7 kalendářních dnů ode dne zániku pojištění"
+ },
+ {
+  "id": 264,
+  "type": "lay",
+  "level": "snadná",
+  "q": "Může mi úřad nemocenskou odepřít, když jsem si neschopenku způsobil schválně?",
+  "gold": "Ano, nárok na nemocenské nemá pojištěnec, který si úmyslně přivodil dočasnou pracovní neschopnost.",
+  "chunks": [
+   "ZNP § 25"
+  ],
+  "quote": "Nárok na nemocenské nemá pojištěnec, a) který si úmyslně přivodil dočasnou pracovní neschopnost"
+ },
+ {
+  "id": 265,
+  "type": "multi",
+  "level": "střední",
+  "q": "Jak dlouho se dostává mateřská po porodu a kolik procent z výdělku to je?",
+  "gold": "Peněžitá pomoc v mateřství trvá 28 týdnů u ženy, která dítě porodila (37 týdnů při vícerčatech), a činí 70 % denního vyměřovacího základu.",
+  "chunks": [
+   "ZNP § 33",
+   "ZNP § 37"
+  ],
+  "quote": "Výše peněžité pomoci v mateřství za kalendářní den činí 70 % denního vyměřovacího základu."
+ },
+ {
+  "id": 266,
+  "type": "lay",
+  "level": "střední",
+  "q": "Od kdy nejdřív můžu před porodem nastoupit na mateřskou?",
+  "gold": "Nástup nastává dnem, který pojištěnka určí v období od počátku osmého týdne do počátku šestého týdne před očekávaným dnem porodu; pokud den neurčí, nastává počátkem šestého týdne před očekávaným porodem.",
+  "chunks": [
+   "ZNP § 34 odst. 1"
+  ],
+  "quote": "dnem, který pojištěnka určí v období od počátku osmého týdne do počátku šestého týdne před očekávaným dnem porodu"
+ },
+ {
+  "id": 267,
+  "type": "lay",
+  "level": "snadná",
+  "q": "Čekám dvojčata. Je mateřská delší než u jednoho miminka?",
+  "gold": "Ano, u pojištěnky, která porodila zároveň dvě nebo více dětí, činí podpůrčí doba 37 týdnů místo 28; po uplynutí 28 týdnů ale peněžitá pomoc náleží, jen pokud dále pečuje alespoň o dvě z těchto dětí.",
+  "chunks": [
+   "ZNP § 33"
+  ],
+  "quote": "37 týdnů u pojištěnky, která porodila zároveň dvě nebo více dětí"
+ },
+ {
+  "id": 268,
+  "type": "lay",
+  "level": "těžká",
+  "q": "S partnerkou jsme si do péče vzali pětileté dítě na základě rozhodnutí úřadu. Můžu já jako muž dostat otcovskou?",
+  "gold": "Ano, nárok na otcovskou má pojištěnec, který převzal dítě do péče nahrazující péči rodičů na základě rozhodnutí příslušného orgánu, pokud dítě ke dni převzetí nedosáhlo 7 let věku.",
+  "chunks": [
+   "ZNP § 38a odst. 1"
+  ],
+  "quote": "které převzal do péče nahrazující péči rodičů na základě rozhodnutí příslušného orgánu, pokud dítě ke dni převzetí do této péče nedosáhlo 7 let věku"
+ },
+ {
+  "id": 269,
+  "type": "lay",
+  "level": "střední",
+  "q": "Škola mi kvůli havárii uzavřela a musím zůstat doma s devítiletým dítětem. Mám nárok na ošetřovné?",
+  "gold": "Ano, nárok na ošetřovné má pojištěnec, který nemůže pracovat z důvodu péče o dítě mladší 10 let, protože škola nebo školské zařízení jsou uzavřeny z nařízení příslušného orgánu z důvodu havárie, mimořádného opatření při epidemii nebo jiné nepředvídané události.",
+  "chunks": [
+   "ZNP § 39 odst. 1"
+  ],
+  "quote": "péče o dítě mladší 10 let, protože 1. školské zařízení nebo zvláštní dětské zařízení"
+ },
+ {
+  "id": 270,
+  "type": "lay",
+  "level": "střední",
+  "q": "Jsem na dítě sama. Kolik dní můžu mít ošetřovné, když je dcera nemocná?",
+  "gold": "Podpůrčí doba u ošetřovného činí nejdéle 9 kalendářních dnů, u osamělého pojištěnce s dítětem do 16 let, které neukončilo povinnou školní docházku, nejdéle 16 kalendářních dnů.",
+  "chunks": [
+   "ZNP § 40 odst. 1"
+  ],
+  "quote": "16 kalendářních dnů, jde-li o osamělého pojištěnce"
+ },
+ {
+  "id": 271,
+  "type": "lay",
+  "level": "střední",
+  "q": "Dceři se během ošetřovného stalo 10 let. Přijdu kvůli tomu o ošetřovné?",
+  "gold": "Ne, ošetřovné náleží po celou podpůrčí dobu i v případě, že dítě dosáhne věku 10 let v průběhu podpůrčí doby.",
+  "chunks": [
+   "ZNP § 40 odst. 8"
+  ],
+  "quote": "Ošetřovné náleží pojištěnci po celou podpůrčí dobu podle odstavce 1 i v případě, že dítě dosáhne věku 10 let v průběhu podpůrčí doby."
+ },
+ {
+  "id": 272,
+  "type": "lay",
+  "level": "snadná",
+  "q": "Jak dlouho můžu brát dlouhodobé ošetřovné, když pečuju o maminku po operaci?",
+  "gold": "Podpůrčí doba začíná prvním dnem vzniku potřeby dlouhodobé péče a končí dnem, kdy potřeba péče skončí, trvá však nejdéle 90 kalendářních dnů.",
+  "chunks": [
+   "ZNP § 41e odst. 1"
+  ],
+  "quote": "podpůrčí doba však trvá nejdéle 90 kalendářních dnů"
+ },
+ {
+  "id": 273,
+  "type": "lay",
+  "level": "těžká",
+  "q": "Soused je po těžkém úrazu v nemocnici a bude potřebovat péči doma. Můžu já jako soused dostat dlouhodobé ošetřovné?",
+  "gold": "Jen pokud splním okruh osob v § 41a odst. 4, tedy jsem manžel, příbuzný (v přímé linii, sourozenec, tchyně, tchán atd.), druh/družka ošetřované osoby, nebo jiná osoba žijící s ní v domácnosti; soused bez příbuzenství a společné domácnosti podmínku nesplňuje.",
+  "chunks": [
+   "ZNP § 41a odst. 4"
+  ],
+  "quote": "jinou fyzickou osobou žijící s ošetřovanou osobou v domácnosti"
+ },
+ {
+  "id": 274,
+  "type": "lay",
+  "level": "střední",
+  "q": "Jsem na neschopence a chci na pár dní odjet k rodičům do jiného města. Můžu?",
+  "gold": "Místo pobytu smí pojištěnec změnit jen s předchozím souhlasem ošetřujícího lékaře. Byla-li změna povolena v prvních 14 dnech neschopnosti, musí ji předem prokazatelně oznámit zaměstnavateli.",
+  "chunks": [
+   "ZNP § 56 odst. 3"
+  ],
+  "quote": "Změnit místo pobytu v době dočasné pracovní neschopnosti smí pojištěnec pouze s předchozím souhlasem ošetřujícího lékaře."
+ },
+ {
+  "id": 275,
+  "type": "exact",
+  "level": "střední",
+  "q": "Co říká § 64 odst. 1 zákona o nemocenském pojištění o povinnostech dočasně práce neschopného pojištěnce?",
+  "gold": "Pojištěnec je povinen dodržovat režim dočasně práce neschopného pojištěnce, umožnit kontrolu jeho dodržování a poskytnout součinnost, dostavit se v určeném termínu ke kontrole k lékaři a předkládat potřebné doklady.",
+  "chunks": [
+   "ZNP § 64 odst. 1"
+  ],
+  "quote": "Pojištěnec, který je dočasně práce neschopný, je povinen a) dodržovat režim dočasně práce neschopného pojištěnce"
+ },
+ {
+  "id": 276,
+  "type": "lay",
+  "level": "střední",
+  "q": "Smím si při nemocenské přivydělat prací u stejného zaměstnavatele?",
+  "gold": "Ne, pojištěnec nemá nárok na výplatu nemocenského za dobu, po kterou vykonává v pojištěné činnosti, ze které dávka náleží, práci.",
+  "chunks": [
+   "ZNP § 16"
+  ],
+  "quote": "za dobu, po kterou a) vykonává v pojištěné činnosti, ze které tyto dávky náleží, práci"
+ },
+ {
+  "id": 277,
+  "type": "lay",
+  "level": "těžká",
+  "q": "Mám dohodu o provedení práce. Jsem z ní nemocensky pojištěný?",
+  "gold": "Jen pokud mi byl za kalendářní měsíc zúčtován započitatelný příjem alespoň ve výši 25 % průměrné mzdy (po zaokrouhlení na celé pětisetkoruny dolů); výši částky vyhlašuje Ministerstvo práce a sociálních věcí.",
+  "chunks": [
+   "ZNP § 7a odst. 1"
+  ],
+  "quote": "byl jim zúčtován započitatelný příjem v částce ve výši aspoň 25 % průměrné mzdy"
+ },
+ {
+  "id": 278,
+  "type": "lay",
+  "level": "těžká",
+  "q": "Jsem OSVČ a začala jsem podnikat před dvěma týdny. Dostanu nemocenskou, když teď onemocním?",
+  "gold": "Zpravidla ne, podmínkou nároku z činnosti OSVČ je účast na pojištění OSVČ alespoň 3 měsíce bezprostředně před vznikem neschopnosti; výjimka platí, pokud účast vznikla do 8 dnů po skončení zaměstnání, v němž byla osoba pojištěna jako zaměstnanec aspoň posledních 3 měsíců.",
+  "chunks": [
+   "ZNP § 24"
+  ],
+  "quote": "alespoň po dobu 3 měsíců bezprostředně předcházející dni vzniku dočasné pracovní neschopnosti"
+ },
+ {
+  "id": 279,
+  "type": "lay",
+  "level": "střední",
+  "q": "Končím v práci v pátek. Do kdy se musím přihlásit na úřad práce, aby mě zapsali hned od dalšího dne?",
+  "gold": "Je nutné požádat o zprostředkování zaměstnání nejpozději do 3 pracovních dnů po skončení zaměstnání; pak se člověk zařadí do evidence uchazečů o zaměstnání ode dne následujícího po skončení zaměstnání.",
+  "chunks": [
+   "ZZ § 26 odst. 1"
+  ],
+  "quote": "nejpozději do 3 pracovních dnů po skončení zaměstnání nebo jiných činností"
+ },
+ {
+  "id": 280,
+  "type": "lay",
+  "level": "střední",
+  "q": "Jsem v evidenci na úřadu práce a onemocněl jsem. Co musím udělat?",
+  "gold": "Musím to oznámit úřadu práce nejpozději do 3 kalendářních dnů od vydání potvrzení o neschopnosti (nebo ošetření) a nejpozději do 8 kalendářních dnů to doložit příslušným potvrzením.",
+  "chunks": [
+   "ZZ § 27 odst. 3"
+  ],
+  "quote": "je povinen tyto důvody oznámit krajské pobočce Úřadu práce nejpozději do 3 kalendářních dnů od vydání potvrzení"
+ },
+ {
+  "id": 281,
+  "type": "lay",
+  "level": "těžká",
+  "q": "Vyřadili mě z evidence na úřadu práce. Kdy se tam můžu znovu zaregistrovat?",
+  "gold": "Při vyřazení z důvodů uvedených v § 30 odst. 1 písm. a), b), d), e) a v odst. 2 může být uchazeč na novou písemnou žádost znovu zařazen nejdříve po uplynutí 3 měsíců ode dne vyřazení.",
+  "chunks": [
+   "ZZ § 30 odst. 4"
+  ],
+  "quote": "může být na základě nové písemné žádosti do evidence uchazečů o zaměstnání znovu zařazen nejdříve po uplynutí doby 3 měsíců ode dne vyřazení"
+ },
+ {
+  "id": 282,
+  "type": "lay",
+  "level": "střední",
+  "q": "Můžu pobírat podporu v nezaměstnanosti a zároveň nemocenskou?",
+  "gold": "Ne, podpora v nezaměstnanosti se neposkytuje po dobu poskytování dávek nemocenského pojištění (s výjimkou dávek z činností podle § 25 odst. 3 nebo zaměstnání podle § 25 odst. 6).",
+  "chunks": [
+   "ZZ § 44 odst. 1"
+  ],
+  "quote": "b) poskytování dávek nemocenského pojištění, s výjimkou dávek"
+ },
+ {
+  "id": 283,
+  "type": "lay",
+  "level": "střední",
+  "q": "Zaměstnavatel mě vyhodil za zvlášť hrubé porušení povinností. Dostanu podporu v nezaměstnanosti?",
+  "gold": "Ne, nárok na podporu nemá uchazeč, se kterým byl v posledních 6 měsících před zařazením do evidence zaměstnavatelem skončen pracovněprávní vztah z důvodu zvlášť hrubého porušení povinnosti.",
+  "chunks": [
+   "ZZ § 39 odst. 2"
+  ],
+  "quote": "v době posledních 6 měsíců před zařazením do evidence uchazečů o zaměstnání zaměstnavatelem skončen pracovněprávní vztah z důvodu porušení povinnosti"
+ },
+ {
+  "id": 284,
+  "type": "multi",
+  "level": "těžká",
+  "q": "Jsem přes rok na úřadu práce. Musím přijmout i práci na poloviční úvazek?",
+  "gold": "Obecně je vhodné zaměstnání s délkou pracovní doby nejméně 80 % týdenní doby, ale u uchazeče vedeného v evidenci déle než 1 rok je vhodné i zaměstnání s pracovní dobou nejméně 50 % týdenní doby (při splnění ostatních podmínek, např. doba neurčitá nebo určitá delší než 3 měsíce).",
+  "chunks": [
+   "ZZ § 20 odst. 1",
+   "ZZ § 20 odst. 2"
+  ],
+  "quote": "délka jeho pracovní doby činí nejméně 50 % stanovené týdenní pracovní doby"
+ },
+ {
+  "id": 285,
+  "type": "lay",
+  "level": "snadná",
+  "q": "Agentura práce po mně chce poplatek za to, že mi sehnala práci. Je to v pořádku?",
+  "gold": "Ne, agentura může zprostředkování provádět bezplatně nebo za úhradu, ale od fyzické osoby, které je zaměstnání zprostředkováváno, nemůže být úhrada požadována.",
+  "chunks": [
+   "ZZ § 58 odst. 2"
+  ],
+  "quote": "nemůže být od fyzické osoby, které je zaměstnání zprostředkováváno, požadována úhrada"
+ },
+ {
+  "id": 286,
+  "type": "lay",
+  "level": "střední",
+  "q": "Co znamená, když mě agentura práce přidělí k jiné firmě?",
+  "gold": "Agentura práce s člověkem uzavře pracovní poměr nebo dohodu o pracovní činnosti za účelem výkonu práce u uživatele a může ho k uživateli dočasně přidělit jen na základě písemné dohody o dočasném přidělení uzavřené s uživatelem.",
+  "chunks": [
+   "ZZ § 66",
+   "ZP § 308 odst. 2",
+   "ZP § 309 odst. 2"
+  ],
+  "quote": "uzavření pracovního poměru nebo dohody o pracovní činnosti mezi fyzickou osobou a agenturou práce za účelem výkonu práce u uživatele"
+ },
+ {
+  "id": 287,
+  "type": "exact",
+  "level": "snadná",
+  "q": "Co říká § 78 odst. 1 zákona o zaměstnanosti o chráněném trhu práce?",
+  "gold": "Chráněný trh práce tvoří zaměstnavatelé, kteří zaměstnávají více než 50 % osob se zdravotním postižením z celkového počtu zaměstnanců a s nimiž Úřad práce uzavřel písemnou dohodu o uznání zaměstnavatele.",
+  "chunks": [
+   "ZZ § 78 odst. 1"
+  ],
+  "quote": "kteří zaměstnávají více než 50 % osob se zdravotním postižením z celkového počtu svých zaměstnanců"
+ },
+ {
+  "id": 288,
+  "type": "multi",
+  "level": "střední",
+  "q": "Co musí mít cizinec, aby ho u nás firma mohla zaměstnat?",
+  "gold": "Cizinec musí mít platnou zaměstnaneckou kartu, kartu vnitropodnikově převedeného zaměstnance nebo modrou kartu; případně platné povolení k zaměstnání od krajské pobočky Úřadu práce a platné oprávnění k pobytu v ČR.",
+  "chunks": [
+   "ZZ § 89 odst. 1",
+   "ZZ § 89 odst. 2"
+  ],
+  "quote": "je-li držitelem platné zaměstnanecké karty, karty vnitropodnikově převedeného zaměstnance nebo modré karty"
+ },
+ {
+  "id": 289,
+  "type": "exact",
+  "level": "těžká",
+  "q": "Co říká § 94 odst. 1 zákona o zaměstnanosti o prodloužení povolení k zaměstnání?",
+  "gold": "Úřad práce může na žádost cizince platnost povolení k zaměstnání prodloužit, i opakovaně, vždy nejdéle na 2 roky; o prodloužení lze požádat nejdříve 3 měsíce a nejpozději 30 dnů před uplynutím platnosti.",
+  "chunks": [
+   "ZZ § 94 odst. 1"
+  ],
+  "quote": "nejdříve 3 měsíce a nejpozději 30 dnů před uplynutím doby platnosti vydaného povolení k zaměstnání"
+ },
+ {
+  "id": 290,
+  "type": "lay",
+  "level": "střední",
+  "q": "Chci si sám zvolit rekvalifikační kurz a chtít po úřadu práce, aby ho zaplatil. Kolik maximálně uhradí?",
+  "gold": "Celková částka, kterou může Úřad práce vynaložit na zvolenou rekvalifikaci jednoho uchazeče, nesmí v období 3 po sobě následujících kalendářních let od prvního nástupu přesáhnout 50 000 Kč.",
+  "chunks": [
+   "ZZ § 109a odst. 9"
+  ],
+  "quote": "nesmí v období 3 po sobě následujících kalendářních let ode dne prvního nástupu na zvolenou rekvalifikaci přesáhnout částku 50000 Kč"
+ },
+ {
+  "id": 291,
+  "type": "multi",
+  "level": "těžká",
+  "q": "Dostanu nějaké peníze, když se budu rekvalifikovat, a kolik?",
+  "gold": "Uchazeč o zaměstnání účastnící se rekvalifikace zabezpečované Úřadem práce nebo zvolené rekvalifikace má nárok na podporu při rekvalifikaci (pokud není poživatelem starobního důchodu); činí 80 % průměrného měsíčního čistého výdělku nebo vyměřovacího základu.",
+  "chunks": [
+   "ZZ § 40 odst. 1",
+   "ZZ § 50 odst. 3"
+  ],
+  "quote": "Procentní sazba podpory při rekvalifikaci činí 80 % průměrného měsíčního čistého výdělku nebo vyměřovacího základu."
+ },
+ {
+  "id": 292,
+  "type": "ambiguous",
+  "level": "střední",
+  "q": "Od kdy mi úřad práce začne vyplácet podporu v nezaměstnanosti?",
+  "gold": "Podpora náleží ode dne podání písemné žádosti o ni; požádá-li uchazeč nejpozději do 3 pracovních dnů po skončení zaměstnání, přizná se mu ode dne následujícího po skončení zaměstnání.",
+  "chunks": [
+   "ZZ § 42 odst. 1",
+   "ZZ § 42 odst. 4"
+  ],
+  "quote": "Podpora v nezaměstnanosti náleží uchazeči o zaměstnání při splnění stanovených podmínek ode dne podání písemné žádosti o podporu v nezaměstnanosti."
+ },
+ {
+  "id": 293,
+  "type": "lay",
+  "level": "snadná",
+  "q": "Stěhuju se do nového bytu. Dostanu v práci volno a zaplatí mi ho zaměstnavatel?",
+  "gold": "Pracovní volno se poskytne na nezbytně nutnou dobu, nejvýše na 2 dny, bez náhrady mzdy; jde-li o přestěhování v zájmu zaměstnavatele, poskytne se s náhradou mzdy.",
+  "chunks": [
+   "NV 590 příloha bod 10"
+  ],
+  "quote": "nejvýše na 2 dny při přestěhování zaměstnance, který má vlastní bytové zařízení"
+ },
+ {
+  "id": 294,
+  "type": "lay",
+  "level": "snadná",
+  "q": "Zemřel kolega z práce a chceme jít na pohřeb. Máme nárok na volno?",
+  "gold": "Ano, zaměstnancům, kteří se zúčastní pohřbu spoluzaměstnance, se poskytne pracovní volno s náhradou mzdy na nezbytně nutnou dobu; tyto zaměstnance určí zaměstnavatel (popřípadě v dohodě s odbory).",
+  "chunks": [
+   "NV 590 příloha bod 9"
+  ],
+  "quote": "se poskytne na nezbytně nutnou dobu zaměstnancům, kteří se zúčastní pohřbu spoluzaměstnance"
+ },
+ {
+  "id": 295,
+  "type": "exact",
+  "level": "střední",
+  "q": "Co stanoví příloha nařízení vlády č. 590/2006 Sb. v bodu 3 o zpoždění hromadné dopravy?",
+  "gold": "Pracovní volno bez náhrady mzdy se poskytne na nezbytně nutnou dobu pro nepředvídané přerušení dopravního provozu nebo zpoždění hromadných dopravních prostředků, nemohl-li zaměstnanec dosáhnout včas pracoviště jiným přiměřeným způsobem.",
+  "chunks": [
+   "NV 590 příloha bod 3"
+  ],
+  "quote": "nepředvídané přerušení dopravního provozu nebo zpoždění hromadných dopravních prostředků"
+ },
+ {
+  "id": 296,
+  "type": "unanswerable",
+  "level": "střední",
+  "q": "Kolik činí porodné a komu se vyplácí?",
+  "gold": "Systém má říct, že odpověď v dostupných předpisech (zákoník práce, zákon o zaměstnanosti, zákon o nemocenském pojištění, NV 590/2006) není; jde o dávky státní sociální podpory (porodné).",
+  "chunks": [],
+  "quote": ""
+ },
+ {
+  "id": 297,
+  "type": "unanswerable",
+  "level": "střední",
+  "q": "Jaká pokuta mi hrozí podle GDPR, když zaměstnavatel zneužije moje osobní údaje?",
+  "gold": "Systém má říct, že odpověď v dostupných předpisech (zákoník práce, zákon o zaměstnanosti, zákon o nemocenském pojištění, NV 590/2006) není; jde o ochranu osobních údajů (GDPR).",
+  "chunks": [],
+  "quote": ""
+ },
+ {
+  "id": 298,
+  "type": "unanswerable",
+  "level": "střední",
+  "q": "V kolika letech půjdu do důchodu, když jsem ročník 1985?",
+  "gold": "Systém má říct, že odpověď v dostupných předpisech (zákoník práce, zákon o zaměstnanosti, zákon o nemocenském pojištění, NV 590/2006) není; jde o důchodové pojištění a důchodový věk.",
+  "chunks": [],
+  "quote": ""
+ },
+ {
+  "id": 299,
+  "type": "unanswerable",
+  "level": "střední",
+  "q": "Může mi pronajímatel zvýšit nájem o 20 % za rok?",
+  "gold": "Systém má říct, že odpověď v dostupných předpisech (zákoník práce, zákon o zaměstnanosti, zákon o nemocenském pojištění, NV 590/2006) není; jde o nájem bytu a občanské právo.",
+  "chunks": [],
+  "quote": ""
+ },
+ {
+  "id": 300,
+  "type": "unanswerable",
+  "level": "střední",
+  "q": "Jak mám reklamovat vadný telefon, který jsem koupil v e-shopu?",
+  "gold": "Systém má říct, že odpověď v dostupných předpisech (zákoník práce, zákon o zaměstnanosti, zákon o nemocenském pojištění, NV 590/2006) není; jde o spotřebitelské právo a reklamace.",
+  "chunks": [],
+  "quote": ""
+ },
+ {
+  "id": 301,
+  "type": "unanswerable",
+  "level": "střední",
+  "q": "Do jaké výše je příspěvek zaměstnavatele na penzijní spoření osvobozen od daně?",
+  "gold": "Systém má říct, že odpověď v dostupných předpisech (zákoník práce, zákon o zaměstnanosti, zákon o nemocenském pojištění, NV 590/2006) není; jde o daň z příjmů.",
+  "chunks": [],
+  "quote": ""
+ },
+ {
+  "id": 302,
+  "type": "unanswerable",
+  "level": "střední",
+  "q": "Jaká je minimální záloha na zdravotní pojištění pro OSVČ?",
+  "gold": "Systém má říct, že odpověď v dostupných předpisech (zákoník práce, zákon o zaměstnanosti, zákon o nemocenském pojištění, NV 590/2006) není; jde o zdravotní pojištění OSVČ.",
+  "chunks": [],
+  "quote": ""
+ },
+ {
+  "id": 303,
+  "type": "unanswerable",
+  "level": "střední",
+  "q": "Kolik činí příspěvek na péči pro seniora ve třetím stupni závislosti?",
+  "gold": "Systém má říct, že odpověď v dostupných předpisech (zákoník práce, zákon o zaměstnanosti, zákon o nemocenském pojištění, NV 590/2006) není; jde o příspěvek na péči a sociální služby.",
+  "chunks": [],
+  "quote": ""
+ },
+ {
+  "id": 304,
+  "type": "unanswerable",
+  "level": "střední",
+  "q": "Do kdy musím podat daňové přiznání z příjmů za loňský rok?",
+  "gold": "Systém má říct, že odpověď v dostupných předpisech (zákoník práce, zákon o zaměstnanosti, zákon o nemocenském pojištění, NV 590/2006) není; jde o daň z příjmů a daňové přiznání.",
+  "chunks": [],
+  "quote": ""
+ },
+ {
+  "id": 305,
+  "type": "unanswerable",
+  "level": "střední",
+  "q": "Kolik procent mzdy odvádí zaměstnavatel za zaměstnance na sociální pojištění?",
+  "gold": "Systém má říct, že odpověď v dostupných předpisech (zákoník práce, zákon o zaměstnanosti, zákon o nemocenském pojištění, NV 590/2006) není; jde o pojistné na sociální zabezpečení.",
+  "chunks": [],
+  "quote": ""
+ },
+ {
+  "id": 306,
+  "type": "unanswerable",
+  "level": "střední",
+  "q": "Kolik stojí vydání živnostenského oprávnění?",
+  "gold": "Systém má říct, že odpověď v dostupných předpisech (zákoník práce, zákon o zaměstnanosti, zákon o nemocenském pojištění, NV 590/2006) není; jde o živnostenské právo a správní poplatky.",
+  "chunks": [],
+  "quote": ""
+ },
+ {
+  "id": 307,
+  "type": "unanswerable",
+  "level": "střední",
+  "q": "Kolik činí životní minimum jednotlivce?",
+  "gold": "Systém má říct, že odpověď v dostupných předpisech (zákoník práce, zákon o zaměstnanosti, zákon o nemocenském pojištění, NV 590/2006) není; jde o dávky pomoci v hmotné nouzi a životní minimum.",
+  "chunks": [],
+  "quote": ""
+ },
+ {
+  "id": 308,
+  "type": "unanswerable",
+  "level": "střední",
+  "q": "Jak se počítá vdovský důchod po manželovi?",
+  "gold": "Systém má říct, že odpověď v dostupných předpisech (zákoník práce, zákon o zaměstnanosti, zákon o nemocenském pojištění, NV 590/2006) není; jde o důchodové pojištění (vdovské důchody).",
+  "chunks": [],
+  "quote": ""
+ },
+ {
+  "id": 309,
+  "type": "unanswerable",
+  "level": "střední",
+  "q": "Kolik dostanu na invalidním důchodu prvního stupně?",
+  "gold": "Systém má říct, že odpověď v dostupných předpisech (zákoník práce, zákon o zaměstnanosti, zákon o nemocenském pojištění, NV 590/2006) není; jde o důchodové pojištění (invalidní důchody).",
+  "chunks": [],
+  "quote": ""
+ },
+ {
+  "id": 310,
+  "type": "unanswerable",
+  "level": "střední",
+  "q": "Jak se zdaňuje příjem z pronájmu bytu?",
+  "gold": "Systém má říct, že odpověď v dostupných předpisech (zákoník práce, zákon o zaměstnanosti, zákon o nemocenském pojištění, NV 590/2006) není; jde o daň z příjmů fyzických osob.",
+  "chunks": [],
+  "quote": ""
+ }
+]
