@@ -7,7 +7,7 @@ Vyhledávání (v3) = hybrid + výběr:
   3. tři pořadí spojím metodou RRF (reciprocal rank fusion) -> 20 kandidátů,
   4. LLM z nich vybere 5; pevná pravidla doplní odstavec 1 téhož § a odstavce, na které úsek odkazuje.
 Vyzkoušení:  .venv/Scripts/python tools/rag.py "Nezaplatili mi výplatu, můžu odejít?" """
-import json, math, os, re, sys, unicodedata
+import json, math, os, re, sys, threading, unicodedata
 from collections import Counter
 from pathlib import Path
 import numpy as np
@@ -45,6 +45,7 @@ def offline():
     return os.environ.get("RAG_OFFLINE") == "1"
 
 _emb_cache = None
+_cache_lock = threading.Lock()                   # API a MCP server volají z více vláken najednou
 def embed_api(texts):
     """Embeddingy přes OpenRouter (e5-large). Výsledky se ukládají, opakovaný běh nic nestojí."""
     global _emb_cache
@@ -59,17 +60,17 @@ def embed_api(texts):
         import requests
         from dotenv import load_dotenv
         load_dotenv(ROOT / ".env")
-    for i in range(0, len(todo), 64):
-        batch = todo[i:i + 64]
-        r = requests.post("https://openrouter.ai/api/v1/embeddings", timeout=120,
-                          headers={"Authorization": f"Bearer {os.environ['OPENROUTER_API_KEY']}"},
-                          json={"model": EMB_MODEL, "input": batch})
-        r.raise_for_status()
-        for t, d in zip(batch, r.json()["data"]):
-            v = np.array(d["embedding"], dtype=np.float32)
-            cache[t] = v / np.linalg.norm(v)
-    if todo:
-        np.savez(cache_file, **cache)
+        with _cache_lock:                              # souběžné dotazy (API, MCP) nezapisují soubor naráz
+            for i in range(0, len(todo), 64):
+                batch = todo[i:i + 64]
+                r = requests.post("https://openrouter.ai/api/v1/embeddings", timeout=120,
+                                  headers={"Authorization": f"Bearer {os.environ['OPENROUTER_API_KEY']}"},
+                                  json={"model": EMB_MODEL, "input": batch})
+                r.raise_for_status()
+                for t, d in zip(batch, r.json()["data"]):
+                    v = np.array(d["embedding"], dtype=np.float32)
+                    cache[t] = v / np.linalg.norm(v)
+            np.savez(cache_file, **cache)
     return np.stack([cache[t] for t in texts])
 
 def quantize(vecs):
@@ -84,7 +85,7 @@ def dequantize(q, scale):
     v = q.astype(np.float32) * scale[:, None]
     return (v / np.linalg.norm(v.astype(np.float64), axis=1)[:, None]).astype(np.float32)
 
-_index = {}
+_index: dict = {}
 def index(model="large"):
     """Matice vektorů všech úseků (normalizované -> cosine = skalární součin)."""
     if model not in _index:
@@ -276,6 +277,28 @@ def search(question, k=TOP_K, mode=MODE, trace=False, allow=None):
 
 # ---------- LLM ----------
 COST = 0.0                                       # součet ceny volání (i z cache), pro výpočet ceny měření
+LLM_CACHE = ROOT / "data" / "llm_cache.json"
+_llm_cache = None
+
+def _llm_cache_get():
+    """Cache se čte jednou (dřív při každém volání 1 MB JSON)."""
+    global _llm_cache
+    if _llm_cache is None:
+        _llm_cache = json.loads(LLM_CACHE.read_text(encoding="utf-8")) if LLM_CACHE.exists() else {}
+    return _llm_cache
+
+def _llm_cache_put(key, entry):
+    """Zápis pod zámkem a přes dočasný soubor: dva souběžné dotazy si nepřepíšou záznam a soubor nezůstane rozbitý.
+    Před zápisem se přimíchá stav z disku, kdyby mezitím připsal jiný proces (třeba měření vedle běžícího serveru)."""
+    with _cache_lock:
+        cache = _llm_cache_get()
+        if LLM_CACHE.exists():
+            cache.update({k: v for k, v in json.loads(LLM_CACHE.read_text(encoding="utf-8")).items() if k not in cache})
+        cache[key] = entry
+        tmp = LLM_CACHE.with_suffix(".json.tmp")
+        tmp.write_text(json.dumps(cache, ensure_ascii=False, indent=1), encoding="utf-8")
+        os.replace(tmp, LLM_CACHE)
+
 def llm(system, user, model=None, reasoning=True):
     """Jedno volání jazykového modelu přes OpenRouter. Klíč se čte z .env (nikdy není v kódu).
     reasoning=False vypne skryté přemýšlení modelu (v3): stejná úloha za ~1/10 času i ceny."""
@@ -285,8 +308,7 @@ def llm(system, user, model=None, reasoning=True):
     model = model or LLM_MODEL
     # cache: stejný model + stejný vstup = uložená odpověď (opakovaný běh nic nestojí a čísla se nemění)
     # („|False“ v klíči je pozůstatek staršího parametru; nechávám ho, jinak by se uložené odpovědi musely platit znovu)
-    cache_file = ROOT / "data" / "llm_cache.json"
-    cache = json.loads(cache_file.read_text(encoding="utf-8")) if cache_file.exists() else {}
+    cache = _llm_cache_get()
     global COST
     key = hashlib.sha256((f"{model}|{system}|{user}|False" + ("" if reasoning else "|noreason")).encode()).hexdigest()
     if key in cache:
@@ -307,9 +329,8 @@ def llm(system, user, model=None, reasoning=True):
             continue
         r.raise_for_status()
         text, usage = (data["choices"][0]["message"]["content"] or "").strip(), data.get("usage", {})
-        cache[key] = {"text": text, "usage": usage}
         COST += usage.get("cost") or 0
-        cache_file.write_text(json.dumps(cache, ensure_ascii=False, indent=1), encoding="utf-8")
+        _llm_cache_put(key, {"text": text, "usage": usage})
         return text, usage
     raise RuntimeError(f"OpenRouter: {r.status_code} {r.text[:200]}")
 
