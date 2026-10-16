@@ -428,14 +428,21 @@ details.v1 .old{margin-top:6px;font-size:13px;color:var(--muted);background:var(
 .t-hold .big{font-size:64px}
 .t-cost .big{font-size:48px}
 .t-scale .big{font-size:64px}
-.t-scale .vs{display:flex;gap:18px;margin-top:12px;font-size:13px;color:var(--muted)}
+.t-scale .vs{display:flex;gap:40px;margin-top:12px;font-size:13px;color:var(--muted)}
 .t-scale .vs b{display:block;font-family:var(--display);font-size:26px;color:var(--text)}
 .t-v5 .row5{display:flex;gap:22px;align-items:center;flex-wrap:wrap;margin:10px 0 16px}
 .t-v5 .row5 .split{margin:0;flex:1;min-width:0}
 .t-v5 .big,.t-fail .big,.t-agent .big{font-size:64px}
 .t-fail .fails{grid-template-columns:1fr 1fr;gap:12px 22px}
-.t-agent{grid-column:1/-1;display:flex;align-items:center;gap:32px}
-.t-agent>p{max-width:640px;font-size:14px}
+.t-agent{grid-column:span 1;display:flex;flex-direction:column;gap:10px}
+.t-agtab{grid-column:span 3}
+.tscroll{overflow-x:auto;margin-top:10px}
+.agt{width:100%;border-collapse:collapse;font-size:12.5px;color:var(--muted)}
+.agt th{text-align:left;font-weight:500;color:var(--text);padding:6px 10px;border-bottom:1px solid var(--line-2);white-space:nowrap}
+.agt td{padding:6px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+.agt tr:last-child td{border-bottom:0}
+.agt td.m{font-family:var(--mono);font-size:11.5px;white-space:nowrap}
+.agt .ok{color:var(--accent);font-size:15px}.agt .no{color:var(--bad);font-size:15px}
 .t-v5 .big{color:var(--accent)}
 .fails{list-style:none;margin:12px 0 0;padding:0;display:grid;gap:7px;font-size:12.5px;color:var(--muted)}
 .fails li{padding-left:14px;position:relative;line-height:1.4}
@@ -589,10 +596,13 @@ dialog::backdrop{background:rgba(2,4,5,.8)}
   .fn .d{-webkit-line-clamp:1;min-height:0;font-size:10.5px}
   .apphead #gstat{display:none}
   .bento{grid-template-columns:1fr 1fr;gap:10px}
-  .t-main,.t-wide,.t-fail,.t-agent{grid-column:span 2;grid-row:auto}
+  .t-main,.t-wide,.t-fail,.t-agent,.t-agtab{grid-column:span 2;grid-row:auto}
   .t-fail .fails{grid-template-columns:1fr}
-  .t-agent{display:block}
-  .t-agent>p{margin-top:10px}
+  .t-agtab{grid-column:span 2}
+  .agt td:first-child{min-width:130px}
+  .agt td.m{white-space:normal;font-size:10.5px}
+  .agt th,.agt td{padding:6px 5px}
+  .agt th:last-child,.agt td:last-child{display:none}
   .tile{padding:16px}
   .t-hold .big,.t-v5 .big,.t-fail .big,.t-agent .big{font-size:46px}
   .t-scale .vs{flex-direction:column;gap:6px;margin-top:8px}
@@ -1006,6 +1016,12 @@ const I18N = {
   "velký test ({0} nových)":"big test ({0} new)", "v3, staré otázky":"v3, old questions", "v2, staré otázky":"v2, old questions", "v1, staré otázky":"v1, old questions",
   "na starých otázkách jsem každou verzi ladil, proto tam v3 má plný počet. Poctivé číslo je velký test.":"I tuned each version on the old questions, so v3 gets a full score there. The honest number is the big test.",
   "Hledání na velkém testu":"Retrieval on the big test",
+  "Co agent dělal, otázku po otázce":"What the agent did, question by question", "Otázka":"Question", "Správný §":"Correct §", "Čas":"Time",
+  "nikde (správně „nevím“)":"none (correct “I don't know”)",
+  "v3, otázky napsané předem":"v3, questions written in advance",
+  "Víc zákonů = horší hledání? Ne.":"More laws = worse search? No.",
+  "začátek: 5 témat, 260 odstavců":"start: 5 topics, 260 subsections", "teď: 4 celé zákony, 2 475 odstavců":"now: 4 full laws, 2,475 subsections",
+  "Bál jsem se, že v 10× větším textu se správný paragraf ztratí. U stejných {0} otázek ho hledání našlo mezi 5 výsledky v obou případech {1}×.":"I worried the right section would get lost in 10× more text. For the same {0} questions, search found it among the top 5 {1} times in both cases.",
   "zákon neříká „smíš pracovat“, ale „nemáš nárok na výplatu nemocenského“. Přepis otázky má hledat i ten důsledek.":"the law does not say “you may work” but “you have no right to sickness benefit being paid”. The question rewrite should also search for that consequence.",
   "pravidlo do promptu: nejdřív obecné pravidlo, výjimky až potom.":"a prompt rule: the general rule first, exceptions after.",
   "každou lhůtu a podmínku z textu vypsat přesně, ne „v některých případech“.":"state every deadline and condition from the text exactly, not “in some cases”.",
@@ -1332,12 +1348,13 @@ function renderBento(){
       `<p style="margin-top:8px">${TF("{0} nových otázek, které asistent nikdy předtím neviděl", v5.n)}</p>`+
       `<div class="split"><span class="chip"><b>${v5.top5}/${v5.answerable}</b> ${T("správný § mezi 5 pro model")}</span><span class="chip"><b>${v5.refusals}/${v5.unanswerable}</b> ${T("správně „nevím“")}</span>`+
       `<span class="chip">${TF("95% rozptyl {0}–{1} %", Math.round(v5.correct_ci[0]*100), Math.round(v5.correct_ci[1]*100))}</span></div></div>`+
-      `<div><div class="bars2">${bar(TF("velký test ({0} nových)", v5.n), v5.correct, v5.answerable, "v2")}${bar(T("v3, staré otázky"), v3.correct, v3.n)}${bar(T("v2, staré otázky"), v2.correct, v2.n)}${bar(T("v1, staré otázky"), v1.correct, v1.n)}</div>`+
+      `<div><div class="bars2">${bar(TF("velký test ({0} nových)", v5.n), v5.correct, v5.answerable, "v2")}${bar(T("v3, otázky napsané předem"), fr[2].correct, fr[2].n)}${bar(T("v3, staré otázky"), v3.correct, v3.n)}${bar(T("v2, staré otázky"), v2.correct, v2.n)}${bar(T("v1, staré otázky"), v1.correct, v1.n)}</div>`+
       `<p class="bad-note"><b>${T("Pozor:")}</b> ${T("na starých otázkách jsem každou verzi ladil, proto tam v3 má plný počet. Poctivé číslo je velký test.")}</p>`+
       `<p style="margin-top:8px;font-size:12.5px">${T("Otázky napsal Claude jen z textu zákona a uložil jsem je do gitu před prvním spuštěním. Kroky s AI tu dělal Claude Sonnet se stejnými prompty, ne DeepSeek z webu, abych nepálil kredity.")}</p>`+
       `<button class="linkbtn" id="openRes"><i class="ph ph-list-checks"></i>${T("Celé měření otázku po otázce")}</button></div></div>`)(D.v5) : "")+
-    `<div class="tile t-hold"><h3>${T("Otázky napsané předem")}</h3><div class="big">${fr[2].correct}<span>/${fr[2].n}</span></div><p style="margin-top:10px">${TF("vždy před spuštěním nové verze, bez ladění podle nich. v2 na nich {0}/{1}, v1 {2}/{3}.", fr[1].correct, fr[1].n, fr[0].correct, fr[0].n)}</p></div>`+
-    `<div class="tile t-scale"><h3>${T("10× větší zdroj")}</h3><div class="vs"><span><b>${sc.small}/${sc.n}</b>${T("260 odstavců")}</span><span><b>${sc.big}/${sc.n}</b>${T("2 475 odstavců")}</span></div><p style="margin-top:10px">${TF("správný § mezi 5 nalezenými u stejných otázek. Víc textu hledání {0}.", T(sc.big>=sc.small?"nezhoršilo":"trochu zhoršilo"))}</p></div>`+
+    `<div class="tile t-wide t-scale"><h3>${T("Víc zákonů = horší hledání? Ne.")}</h3>`+
+      `<div class="vs"><span><b>${sc.small}/${sc.n}</b>${T("začátek: 5 témat, 260 odstavců")}</span><span><b>${sc.big}/${sc.n}</b>${T("teď: 4 celé zákony, 2 475 odstavců")}</span></div>`+
+      `<p style="margin-top:12px">${TF("Bál jsem se, že v 10× větším textu se správný paragraf ztratí. U stejných {0} otázek ho hledání našlo mezi 5 výsledky v obou případech {1}×.", sc.n, sc.big)}</p></div>`+
     `<div class="tile t-wide"><h3>${T("Co pomohlo ve vyhledávání")}</h3><p style="margin-bottom:14px">${TF("správný paragraf mezi 5 úseky, které dostane model ({0} otázek)", r.dense.n)}</p><div class="bars2">`+
       bar("e5-base (v1)", r.dense.hit5, r.dense.n)+bar("e5-large", r.dense_large.hit5, r.dense_large.n)+
       bar(T("+ BM25 laicky"), r.hybrid.hit5, r.hybrid.n)+bar(T("+ přepis (v2)"), r.hybrid_rewrite.hit5, r.hybrid_rewrite.n)+
@@ -1353,7 +1370,11 @@ function renderBento(){
         .map(([c,a,b]) => `<li class="${c}">${T(a)}<small><b>${T("Oprava:")}</b> ${T(b)}</small></li>`).join("")}</ul>`+
       `<p class="fixnote">${T("Opravy zatím nejsou udělané. Ověřím je na nových otázkách, ne na těchto, jinak by číslo lhalo.")}</p></div>`)(D.v5) : "")+
     (D.agent ? `<div class="tile t-agent"><div><h3>${T("AI agent přes MCP")}</h3><div class="big">${D.agent.claude_ok}<span>/${D.agent.n}</span></div></div>`+
-      `<p>${TF("Claude jako cizí agent sám hledal přes MCP server. U {0} nových otázek našel správný § nebo správně řekl „nevím“. Shoda s odpovědí DeepSeeku: {1}/{0}.", D.agent.n, D.agent.agree_status)}</p></div>` : "");
+      `<p>${TF("Claude jako cizí agent sám hledal přes MCP server. U {0} nových otázek našel správný § nebo správně řekl „nevím“. Shoda s odpovědí DeepSeeku: {1}/{0}.", D.agent.n, D.agent.agree_status)}</p></div>`+
+      (D.agent.rows ? `<div class="tile t-agtab"><h3>${T("Co agent dělal, otázku po otázce")}</h3><div class="tscroll"><table class="agt"><thead><tr><th>${T("Otázka")}</th><th>${T("Správný §")}</th><th>Claude</th><th>DeepSeek</th><th>${T("Čas")}</th></tr></thead><tbody>`+
+        D.agent.rows.map(r => `<tr><td>${esc(r.q)}</td><td class="m">${r.gold.length ? esc(r.gold.join(", ")) : T("nikde (správně „nevím“)")}</td>`+
+          `<td>${r.claude ? '<i class="ph ph-check ok"></i>' : '<i class="ph ph-x no"></i>'}</td><td>${r.deepseek ? '<i class="ph ph-check ok"></i>' : '<i class="ph ph-x no"></i>'}</td><td class="m">${Math.round(r.s)} s</td></tr>`).join("")+
+        `</tbody></table></div></div>` : "") : "");
   $("#openRes").addEventListener("click", () => $("#dlg").showModal());
 }
 

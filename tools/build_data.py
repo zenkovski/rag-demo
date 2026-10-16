@@ -96,7 +96,10 @@ def big_eval():
     f = ROOT / "results" / "agent_check.json"
     if f.exists():
         s = json.loads(f.read_text(encoding="utf-8"))["summary"]
-        out["agent"] = {k: s[k] for k in ("n", "claude_ok", "deepseek_ok", "agree_status")}
+        rows = json.loads(f.read_text(encoding="utf-8"))["rows"]
+        out["agent"] = {**{k: s[k] for k in ("n", "claude_ok", "deepseek_ok", "agree_status")},
+                        "rows": [{"q": r["q"], "gold": r["gold"], "claude": r["claude_ok"], "deepseek": r["deepseek_ok"],
+                                  "status": r["claude"]["evidence_status"], "s": r["claude"]["seconds"]} for r in rows]}
     return out
 
 
