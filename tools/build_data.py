@@ -80,6 +80,26 @@ def layout(vecs, links, ticks=300, seed=1):
     p -= p.mean(0)
     return [[round(float(a), 1), round(float(b), 1)] for a, b in p]
 
+def big_eval():
+    """Souhrn velkého měření (results/eval_v5.json, 134 otázek) a testu agenta přes MCP (results/agent_check.json) pro web."""
+    out = {}
+    f = ROOT / "results" / "eval_v5.json"
+    if f.exists():
+        s = json.loads(f.read_text(encoding="utf-8"))["summary"]
+        hit = lambda k, n: int(s["retrieval"][k][n].split("/")[0])
+        a = s["answers"]
+        out["v5"] = {"n": s["n"], "answerable": s["answerable"], "unanswerable": s["unanswerable"],
+                     "correct": a["correct"], "partial": a["partial"], "wrong": a["wrong"], "correct_ci": a["correct_wilson95"],
+                     "refusals": a["correct_refusals"], "false_refusals": a["false_refusals"],
+                     "fast5": hit("fast (e5-large, no LLM)", "hit@5"), "hybrid5": hit("hybrid (e5 + BM25, no LLM)", "hit@5"),
+                     "cand20": hit("candidates20 (after rewrite, before pick)", "hit@20"), "top5": hit("v3 top5 (Claude pick)", "hit@5")}
+    f = ROOT / "results" / "agent_check.json"
+    if f.exists():
+        s = json.loads(f.read_text(encoding="utf-8"))["summary"]
+        out["agent"] = {k: s[k] for k in ("n", "claude_ok", "deepseek_ok", "agree_status")}
+    return out
+
+
 def main():
     meta = json.loads((ROOT / "data" / "chunks.json").read_text(encoding="utf-8"))
     chunks = meta["chunks"]
@@ -120,7 +140,7 @@ def main():
             "llm": rag.ANSWER_MODEL, "llm_steps": rag.LLM_MODEL, "llm_v1": E.V1["model"], "embeddings": rag.EMB_MODEL, "top_k": rag.TOP_K,
             "eval": S, "scale": E.scale(),
             "retrieval": {m: {"hit3": rc[m]["hit3"], "hit5": rc[m]["hit5"], "n": rc[m]["n"]} for m in rag.MODES},
-            "cost_usd": ev["v3"].get("cost_usd_full"),
+            "cost_usd": ev["v3"].get("cost_usd_full"), **big_eval(),
             "chunks": [{**{k: c[k] for k in ("id", "law", "title", "topic", "text")}, "p": pos[n]} for n, c in enumerate(chunks)],
             "edges": ed, "questions": questions}
     (ROOT / "site").mkdir(exist_ok=True)

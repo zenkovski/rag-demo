@@ -430,6 +430,14 @@ details.v1 .old{margin-top:6px;font-size:13px;color:var(--muted);background:var(
 .t-scale .big{font-size:64px}
 .t-scale .vs{display:flex;gap:18px;margin-top:12px;font-size:13px;color:var(--muted)}
 .t-scale .vs b{display:block;font-family:var(--display);font-size:26px;color:var(--text)}
+.t-v5 .row5{display:flex;gap:22px;align-items:center;flex-wrap:wrap;margin:10px 0 16px}
+.t-v5 .row5 .split{margin:0;flex:1;min-width:0}
+.t-v5 .big,.t-fail .big,.t-agent .big{font-size:64px}
+.t-v5 .big{color:var(--accent)}
+.fails{list-style:none;margin:12px 0 0;padding:0;display:grid;gap:7px;font-size:12.5px;color:var(--muted)}
+.fails li{padding-left:14px;position:relative;line-height:1.4}
+.fails li::before{content:"";position:absolute;left:0;top:.5em;width:6px;height:6px;border-radius:50%;background:var(--faint)}
+.fails li.w::before{background:var(--bad)}
 .split{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 18px}
 .chip{font-family:var(--mono);font-size:11.5px;border:1px solid var(--line-2);border-radius:999px;padding:4px 10px;color:var(--muted);background:var(--bg)}
 .chip b{color:var(--accent);font-weight:500}
@@ -577,7 +585,7 @@ dialog::backdrop{background:rgba(2,4,5,.8)}
   .bento{grid-template-columns:1fr 1fr;gap:10px}
   .t-main,.t-wide{grid-column:span 2;grid-row:auto}
   .tile{padding:16px}
-  .t-hold .big{font-size:46px}
+  .t-hold .big,.t-v5 .big,.t-fail .big,.t-agent .big{font-size:46px}
   .t-scale .vs{flex-direction:column;gap:6px;margin-top:8px}
   .t-scale .vs b{font-size:22px}
   .tile p{font-size:12.5px}
@@ -970,6 +978,19 @@ const I18N = {
   "nezhoršilo":"did not worsen", "trochu zhoršilo":"slightly worsened",
   "správný paragraf mezi 5 úseky, které dostane model ({0} otázek)":"correct section among the 5 passages the model gets ({0} questions)",
   "+ BM25 laicky":"+ BM25 plain", "+ přepis (v2)":"+ rewriting (v2)", "+ výběr LLM (v3)":"+ LLM selection (v3)",
+  "Velký test: {0} nových otázek":"Big test: {0} new questions", "správných odpovědí":"correct answers",
+  "správný § mezi 5 pro model":"correct § among the 5 for the model", "správně „nevím“":"correct “I don't know”",
+  "95% rozptyl {0}–{1} %":"95% interval {0}–{1}%",
+  "jen význam (bez AI)":"meaning only (no AI)", "+ BM25, bez přepisu":"+ BM25, no rewrite",
+  "20 kandidátů po přepisu":"20 candidates after rewrite", "AI vybere 5 z 20":"AI picks 5 of 20",
+  "Otázky napsal Claude jen z textu zákona a uložil jsem je do gitu před prvním spuštěním. Kroky s AI tu dělal Claude Sonnet se stejnými prompty, ne DeepSeek z webu, abych nepálil kredity.":"Claude wrote the questions from the law text only, and I committed them to git before the first run. The AI steps here were done by Claude Sonnet with the same prompts, not the site's DeepSeek, to save credits.",
+  "AI agent přes MCP":"AI agent via MCP",
+  "Claude jako cizí agent sám hledal přes MCP server. U {0} nových otázek našel správný § nebo správně řekl „nevím“. Shoda s odpovědí DeepSeeku: {1}/{0}.":"Claude, as an outside agent, searched on its own through the MCP server. On {0} new questions it found the correct § or correctly said “I don't know”. Agreement with DeepSeek's answer: {1}/{0}.",
+  "Kde se pletl":"Where it went wrong", "z {0} otázek s odpovědí":"of {0} answerable questions",
+  "hledání: nenašel § o přivýdělku při nemocenské":"search: missed the § on side income during sick leave",
+  "čtení: u rekvalifikace vzal zvláštní případ":"reading: took a special case for retraining",
+  "částečně: nejasná podmínka 14 dní":"partial: vague 14-day condition",
+  "částečně: chyba byla v mé „správné“ odpovědi (§ 118)":"partial: the error was in my “correct” answer (§ 118)",
   "pro":"for", "Tady taková otázka není. Zkus jiné slovo, nebo ji napiš nahoru jako vlastní.":"No such question here. Try another word, or write it above as your own.",
   "předpisy odpověď nemají":"the regulations have no answer", "správný § nalezen":"correct § found", "správný § nenalezen":"correct § not found",
   "Mezi 5 úseky, které model dostal, nebyl odstavec s odpovědí. Model pak nemá z čeho odpovědět.":"Among the 5 passages the model received there was no subsection with the answer. The model then has nothing to answer from.",
@@ -1297,7 +1318,19 @@ function renderBento(){
     `<div class="tile t-wide"><h3>${T("Co pomohlo ve vyhledávání")}</h3><p style="margin-bottom:14px">${TF("správný paragraf mezi 5 úseky, které dostane model ({0} otázek)", r.dense.n)}</p><div class="bars2">`+
       bar("e5-base (v1)", r.dense.hit5, r.dense.n)+bar("e5-large", r.dense_large.hit5, r.dense_large.n)+
       bar(T("+ BM25 laicky"), r.hybrid.hit5, r.hybrid.n)+bar(T("+ přepis (v2)"), r.hybrid_rewrite.hit5, r.hybrid_rewrite.n)+
-      bar(T("+ výběr LLM (v3)"), r.hybrid_rerank.hit5, r.hybrid_rerank.n, "v2")+`</div></div>`;
+      bar(T("+ výběr LLM (v3)"), r.hybrid_rerank.hit5, r.hybrid_rerank.n, "v2")+`</div></div>`+
+    (D.v5 ? (v5 => `<div class="tile t-wide t-v5"><h3>${TF("Velký test: {0} nových otázek", v5.n)}</h3>`+
+      `<div class="row5"><div><div class="big">${v5.correct}<span>/${v5.answerable}</span></div><p>${T("správných odpovědí")}</p></div>`+
+      `<div class="split"><span class="chip"><b>${v5.top5}/${v5.answerable}</b> ${T("správný § mezi 5 pro model")}</span><span class="chip"><b>${v5.refusals}/${v5.unanswerable}</b> ${T("správně „nevím“")}</span>`+
+      `<span class="chip">${TF("95% rozptyl {0}–{1} %", Math.round(v5.correct_ci[0]*100), Math.round(v5.correct_ci[1]*100))}</span></div></div>`+
+      `<div class="bars2">${bar(T("jen význam (bez AI)"), v5.fast5, v5.answerable)}${bar(T("+ BM25, bez přepisu"), v5.hybrid5, v5.answerable)}`+
+      `${bar(T("20 kandidátů po přepisu"), v5.cand20, v5.answerable)}${bar(T("AI vybere 5 z 20"), v5.top5, v5.answerable, "v2")}</div>`+
+      `<p style="margin-top:14px">${T("Otázky napsal Claude jen z textu zákona a uložil jsem je do gitu před prvním spuštěním. Kroky s AI tu dělal Claude Sonnet se stejnými prompty, ne DeepSeek z webu, abych nepálil kredity.")}</p></div>`+
+      `<div class="tile t-fail"><h3>${T("Kde se pletl")}</h3><div class="big">${v5.wrong + v5.partial}<span>/${v5.answerable}</span></div>`+
+      `<ul class="fails"><li class="w">${T("hledání: nenašel § o přivýdělku při nemocenské")}</li><li class="w">${T("čtení: u rekvalifikace vzal zvláštní případ")}</li>`+
+      `<li>${T("částečně: nejasná podmínka 14 dní")}</li><li>${T("částečně: chyba byla v mé „správné“ odpovědi (§ 118)")}</li></ul></div>`)(D.v5) : "")+
+    (D.agent ? `<div class="tile t-agent"><h3>${T("AI agent přes MCP")}</h3><div class="big">${D.agent.claude_ok}<span>/${D.agent.n}</span></div>`+
+      `<p style="margin-top:10px">${TF("Claude jako cizí agent sám hledal přes MCP server. U {0} nových otázek našel správný § nebo správně řekl „nevím“. Shoda s odpovědí DeepSeeku: {1}/{0}.", D.agent.n, D.agent.agree_status)}</p></div>` : "");
   $("#openRes").addEventListener("click", () => $("#dlg").showModal());
 }
 
