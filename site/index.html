@@ -433,6 +433,9 @@ details.v1 .old{margin-top:6px;font-size:13px;color:var(--muted);background:var(
 .t-v5 .row5{display:flex;gap:22px;align-items:center;flex-wrap:wrap;margin:10px 0 16px}
 .t-v5 .row5 .split{margin:0;flex:1;min-width:0}
 .t-v5 .big,.t-fail .big,.t-agent .big{font-size:64px}
+.t-fail .fails{grid-template-columns:1fr 1fr;gap:12px 22px}
+.t-agent{grid-column:1/-1;display:flex;align-items:center;gap:32px}
+.t-agent>p{max-width:640px;font-size:14px}
 .t-v5 .big{color:var(--accent)}
 .fails{list-style:none;margin:12px 0 0;padding:0;display:grid;gap:7px;font-size:12.5px;color:var(--muted)}
 .fails li{padding-left:14px;position:relative;line-height:1.4}
@@ -587,6 +590,9 @@ dialog::backdrop{background:rgba(2,4,5,.8)}
   .apphead #gstat{display:none}
   .bento{grid-template-columns:1fr 1fr;gap:10px}
   .t-main,.t-wide,.t-fail,.t-agent{grid-column:span 2;grid-row:auto}
+  .t-fail .fails{grid-template-columns:1fr}
+  .t-agent{display:block}
+  .t-agent>p{margin-top:10px}
   .tile{padding:16px}
   .t-hold .big,.t-v5 .big,.t-fail .big,.t-agent .big{font-size:46px}
   .t-scale .vs{flex-direction:column;gap:6px;margin-top:8px}
@@ -995,6 +1001,11 @@ const I18N = {
   "částečně: nejasná podmínka 14 dní":"partial: vague 14-day condition",
   "částečně: chyba byla v mé „správné“ odpovědi (§ 118)":"partial: the error was in my “correct” answer (§ 118)",
   "Oprava:":"Fix:",
+  "Testovací otázky správně":"Test questions correct",
+  "{0} nových otázek, které asistent nikdy předtím neviděl":"{0} new questions the assistant had never seen before",
+  "velký test ({0} nových)":"big test ({0} new)", "v3, staré otázky":"v3, old questions", "v2, staré otázky":"v2, old questions", "v1, staré otázky":"v1, old questions",
+  "na starých otázkách jsem každou verzi ladil, proto tam v3 má plný počet. Poctivé číslo je velký test.":"I tuned each version on the old questions, so v3 gets a full score there. The honest number is the big test.",
+  "Hledání na velkém testu":"Retrieval on the big test",
   "zákon neříká „smíš pracovat“, ale „nemáš nárok na výplatu nemocenského“. Přepis otázky má hledat i ten důsledek.":"the law does not say “you may work” but “you have no right to sickness benefit being paid”. The question rewrite should also search for that consequence.",
   "pravidlo do promptu: nejdřív obecné pravidlo, výjimky až potom.":"a prompt rule: the general rule first, exceptions after.",
   "každou lhůtu a podmínku z textu vypsat přesně, ne „v některých případech“.":"state every deadline and condition from the text exactly, not “in some cases”.",
@@ -1317,33 +1328,32 @@ function renderBento(){
   const bar = (l,a,n,cls) => `<span>${l}</span><div class="bar ${cls||""}"><i style="width:${pct(a,n)}%"></i></div><span class="n">${a}/${n}</span>`;
   const money = x => LANG.en ? "$" + x.toFixed(2) : x.toFixed(2).replace(".",",") + " $";
   $("#bento").innerHTML =
-    `<div class="tile t-main"><div><h3>${T("Testovací otázky správně (v3)")}</h3><div class="big">${v3.correct}<span>/${v3.n}</span></div>`+
-      `<div class="split"><span class="chip"><b>${v3.correct_answerable}/${v3.n_answerable}</b> ${T("otázek s odpovědí v předpisech")}</span><span class="chip"><b>${v3.nevim_ok}/${v3.n_unanswerable}</b> ${T("správně „nevím“, když předpisy mlčí")}</span><span class="chip">${T("měření v3 od nuly stojí")} <b>${money(D.cost_usd||0)}</b></span></div></div>`+
-      `<div><div class="bars2">${bar("v1",v1.correct,v1.n)}${bar("v2",v2.correct,v2.n)}${bar("v3",v3.correct,v3.n,"v2")}</div>`+
-      `<p class="bad-note"><b>${T("Pozor:")}</b> ${T("každou verzi jsem ladil podle chyb na starších otázkách, tam jsou čísla nadsazená. Poctivé srovnání je karta „otázky napsané předem“.")}</p>`+
-      `<button class="linkbtn" id="openRes"><i class="ph ph-list-checks"></i>${T("Celé měření otázku po otázce")}</button></div></div>`+
+    (D.v5 ? (v5 => `<div class="tile t-main"><div><h3>${T("Testovací otázky správně")}</h3><div class="big">${v5.correct}<span>/${v5.answerable}</span></div>`+
+      `<p style="margin-top:8px">${TF("{0} nových otázek, které asistent nikdy předtím neviděl", v5.n)}</p>`+
+      `<div class="split"><span class="chip"><b>${v5.top5}/${v5.answerable}</b> ${T("správný § mezi 5 pro model")}</span><span class="chip"><b>${v5.refusals}/${v5.unanswerable}</b> ${T("správně „nevím“")}</span>`+
+      `<span class="chip">${TF("95% rozptyl {0}–{1} %", Math.round(v5.correct_ci[0]*100), Math.round(v5.correct_ci[1]*100))}</span></div></div>`+
+      `<div><div class="bars2">${bar(TF("velký test ({0} nových)", v5.n), v5.correct, v5.answerable, "v2")}${bar(T("v3, staré otázky"), v3.correct, v3.n)}${bar(T("v2, staré otázky"), v2.correct, v2.n)}${bar(T("v1, staré otázky"), v1.correct, v1.n)}</div>`+
+      `<p class="bad-note"><b>${T("Pozor:")}</b> ${T("na starých otázkách jsem každou verzi ladil, proto tam v3 má plný počet. Poctivé číslo je velký test.")}</p>`+
+      `<p style="margin-top:8px;font-size:12.5px">${T("Otázky napsal Claude jen z textu zákona a uložil jsem je do gitu před prvním spuštěním. Kroky s AI tu dělal Claude Sonnet se stejnými prompty, ne DeepSeek z webu, abych nepálil kredity.")}</p>`+
+      `<button class="linkbtn" id="openRes"><i class="ph ph-list-checks"></i>${T("Celé měření otázku po otázce")}</button></div></div>`)(D.v5) : "")+
     `<div class="tile t-hold"><h3>${T("Otázky napsané předem")}</h3><div class="big">${fr[2].correct}<span>/${fr[2].n}</span></div><p style="margin-top:10px">${TF("vždy před spuštěním nové verze, bez ladění podle nich. v2 na nich {0}/{1}, v1 {2}/{3}.", fr[1].correct, fr[1].n, fr[0].correct, fr[0].n)}</p></div>`+
     `<div class="tile t-scale"><h3>${T("10× větší zdroj")}</h3><div class="vs"><span><b>${sc.small}/${sc.n}</b>${T("260 odstavců")}</span><span><b>${sc.big}/${sc.n}</b>${T("2 475 odstavců")}</span></div><p style="margin-top:10px">${TF("správný § mezi 5 nalezenými u stejných otázek. Víc textu hledání {0}.", T(sc.big>=sc.small?"nezhoršilo":"trochu zhoršilo"))}</p></div>`+
     `<div class="tile t-wide"><h3>${T("Co pomohlo ve vyhledávání")}</h3><p style="margin-bottom:14px">${TF("správný paragraf mezi 5 úseky, které dostane model ({0} otázek)", r.dense.n)}</p><div class="bars2">`+
       bar("e5-base (v1)", r.dense.hit5, r.dense.n)+bar("e5-large", r.dense_large.hit5, r.dense_large.n)+
       bar(T("+ BM25 laicky"), r.hybrid.hit5, r.hybrid.n)+bar(T("+ přepis (v2)"), r.hybrid_rewrite.hit5, r.hybrid_rewrite.n)+
       bar(T("+ výběr LLM (v3)"), r.hybrid_rerank.hit5, r.hybrid_rerank.n, "v2")+`</div></div>`+
-    (D.v5 ? (v5 => `<div class="tile t-wide t-v5"><h3>${TF("Velký test: {0} nových otázek", v5.n)}</h3>`+
-      `<div class="row5"><div><div class="big">${v5.correct}<span>/${v5.answerable}</span></div><p>${T("správných odpovědí")}</p></div>`+
-      `<div class="split"><span class="chip"><b>${v5.top5}/${v5.answerable}</b> ${T("správný § mezi 5 pro model")}</span><span class="chip"><b>${v5.refusals}/${v5.unanswerable}</b> ${T("správně „nevím“")}</span>`+
-      `<span class="chip">${TF("95% rozptyl {0}–{1} %", Math.round(v5.correct_ci[0]*100), Math.round(v5.correct_ci[1]*100))}</span></div></div>`+
+    (D.v5 ? (v5 => `<div class="tile t-wide t-v5"><h3>${T("Hledání na velkém testu")}</h3><p style="margin-bottom:14px">${TF("správný paragraf mezi 5 úseky, které dostane model ({0} otázek)", v5.answerable)}</p>`+
       `<div class="bars2">${bar(T("jen význam (bez AI)"), v5.fast5, v5.answerable)}${bar(T("+ BM25, bez přepisu"), v5.hybrid5, v5.answerable)}`+
-      `${bar(T("20 kandidátů po přepisu"), v5.cand20, v5.answerable)}${bar(T("AI vybere 5 z 20"), v5.top5, v5.answerable, "v2")}</div>`+
-      `<p style="margin-top:14px">${T("Otázky napsal Claude jen z textu zákona a uložil jsem je do gitu před prvním spuštěním. Kroky s AI tu dělal Claude Sonnet se stejnými prompty, ne DeepSeek z webu, abych nepálil kredity.")}</p></div>`+
-      `<div class="tile t-fail"><h3>${T("Kde se pletl")}</h3><div class="big">${v5.wrong + v5.partial}<span>/${v5.answerable}</span></div>`+
+      `${bar(T("20 kandidátů po přepisu"), v5.cand20, v5.answerable)}${bar(T("AI vybere 5 z 20"), v5.top5, v5.answerable, "v2")}</div></div>`+
+      `<div class="tile t-wide t-fail"><h3>${T("Kde se pletl")}</h3><div class="big">${v5.wrong + v5.partial}<span>/${v5.answerable}</span></div>`+
       `<ul class="fails">${[["w","hledání: nenašel § o přivýdělku při nemocenské","zákon neříká „smíš pracovat“, ale „nemáš nárok na výplatu nemocenského“. Přepis otázky má hledat i ten důsledek."],
         ["w","čtení: u rekvalifikace vzal zvláštní případ","pravidlo do promptu: nejdřív obecné pravidlo, výjimky až potom."],
         ["","částečně: nejasná podmínka 14 dní","každou lhůtu a podmínku z textu vypsat přesně, ne „v některých případech“."],
         ["","částečně: chyba byla v mé „správné“ odpovědi (§ 118)","doplnit § 118 do klíče správných odpovědí."]]
         .map(([c,a,b]) => `<li class="${c}">${T(a)}<small><b>${T("Oprava:")}</b> ${T(b)}</small></li>`).join("")}</ul>`+
       `<p class="fixnote">${T("Opravy zatím nejsou udělané. Ověřím je na nových otázkách, ne na těchto, jinak by číslo lhalo.")}</p></div>`)(D.v5) : "")+
-    (D.agent ? `<div class="tile t-agent"><h3>${T("AI agent přes MCP")}</h3><div class="big">${D.agent.claude_ok}<span>/${D.agent.n}</span></div>`+
-      `<p style="margin-top:10px">${TF("Claude jako cizí agent sám hledal přes MCP server. U {0} nových otázek našel správný § nebo správně řekl „nevím“. Shoda s odpovědí DeepSeeku: {1}/{0}.", D.agent.n, D.agent.agree_status)}</p></div>` : "");
+    (D.agent ? `<div class="tile t-agent"><div><h3>${T("AI agent přes MCP")}</h3><div class="big">${D.agent.claude_ok}<span>/${D.agent.n}</span></div></div>`+
+      `<p>${TF("Claude jako cizí agent sám hledal přes MCP server. U {0} nových otázek našel správný § nebo správně řekl „nevím“. Shoda s odpovědí DeepSeeku: {1}/{0}.", D.agent.n, D.agent.agree_status)}</p></div>` : "");
   $("#openRes").addEventListener("click", () => $("#dlg").showModal());
 }
 
