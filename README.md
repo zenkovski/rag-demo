@@ -5,7 +5,7 @@
 [![tests](https://github.com/zenkovski/rag-demo/actions/workflows/tests.yml/badge.svg)](https://github.com/zenkovski/rag-demo/actions/workflows/tests.yml)
 
 **A cited-answer RAG service over 4 Czech labour laws, usable by people (web), programs (REST API) and AI agents (MCP).**
-Live demo: **[lukas-rag.vercel.app](https://lukas-rag.vercel.app)** (Czech UI; English toggle in the repo, not deployed yet)
+Live demo: **[lukas-rag.vercel.app](https://lukas-rag.vercel.app)** (Czech UI, English toggle top right)
 
 ![Question, cited answer and a map of the laws where the retrieved paragraphs light up](docs/demo.webp)
 

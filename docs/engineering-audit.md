@@ -59,4 +59,4 @@ Status is updated here at the end of each phase.
 ### Not done / open
 - Docker not run on the dev PC (no Docker installed); verified only in CI.
 - `ask` latency and cost with live calls: not run (offline only).
-- Live demo still runs the old `hit.js`; deploy needs approval.
+- Live demo: `hit.js` fix and EN/CZ toggle deployed 2026-10-16 (approved by the owner).

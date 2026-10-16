@@ -143,7 +143,7 @@ Podrobně: [security/threat-model.md](docs/cs/security/threat-model.md) (14 hroz
 Úplný seznam: [docs/limitations.md](docs/cs/limitations.md).
 
 - Dvě ze 16 ukázkových otázek na webu jsou špatně, nejhorší je „Může mi zaměstnavatel dát výpověď, když jsem nemocný?“ (příčina změřená, oprava zatím není). [Galerie chyb](docs/cs/failure-gallery.md#otevřené-chyby-zatím-neopravené).
-- Oprava počítadla kliků (`hit.js`) je v repozitáři, **na živém webu zatím neběží**.
+- Oprava počítadla kliků (`hit.js`) je od 16. 10. 2026 nasazená na živém webu.
 - Nová sada otázek (24, zmrazená) **ještě nebyla spuštěna**; do té doby je skutečně netknutých jen 10 otázek.
 - Živé otázky na webu nikdo nekontroluje. Model se může splést, proto jsou u odpovědí citace.
 - Asistent nezná výši minimální mzdy. Nařízení 567/2006 je zrušené a výši teď vyhlašuje ministerstvo sdělením.

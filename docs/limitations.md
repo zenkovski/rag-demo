@@ -37,9 +37,9 @@ Abbreviations: ZP = Labour Code, ZZ = Employment Act, ZNP = Sickness Insurance A
 
 Two of the 16 sample questions on the website are wrong. The worst is notice of termination during illness: the website claims it can be given, whereas the law forbids it during the protection period. The cause is measured (the question rewrite led the search elsewhere), the fix is not: [failure-gallery.md](failure-gallery.md#open-failures-not-fixed-yet), [ADR-004](decisions/ADR-004-prepis-a-bm25-otevrena-otazka.md).
 
-## What was fixed but is not deployed
+## Deployed fixes
 
-`site/api/hit.js` (the click counter) now accepts only prepared questions. The fix is in the repository and tested, but **is not running on the live website yet**.
+`site/api/hit.js` (the click counter) accepts only prepared questions. Deployed to the live website on 2026-10-16 together with the EN/CZ toggle (checked: an unknown question returns 204 and is not stored).
 
 ## Operational state that may change
 
