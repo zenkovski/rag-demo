@@ -55,11 +55,11 @@ jobs:
   docker:
     # Docker se ověřuje tady (na vývojovém PC Docker není). Offline a bez klíče OpenRouteru: nic se neplatí.
     runs-on: ubuntu-latest
+    env:
+      RAG_API_KEYS: ci-key
     steps:
       - uses: actions/checkout@v4
       - name: docker compose up
-        env:
-          RAG_API_KEYS: ci-key
         run: docker compose up --build -d --wait
       - name: health, hledání z cache, klíč
         run: |
