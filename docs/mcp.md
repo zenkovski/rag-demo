@@ -85,6 +85,19 @@ Example structured output of `search_knowledge` (`k=2`, text shortened here):
 
 `ask_knowledge` returns `answer`, `evidence_status` (`sufficient` / `insufficient`), `citations` (`marker`, `id`, `excerpt`, `source_url`), `passages_supplied` and deterministic `checks` (`bad_citations`, `unsupported_numbers`).
 
+## Agent check: Claude as the agent, DeepSeek as a second opinion
+
+`tools/agent_check.py` gives Claude Sonnet (via `claude -p`) only `search_knowledge` and `get_document` and lets it answer by itself. The result is compared with the gold paragraphs and with this project's own pipeline (`ask_knowledge`, DeepSeek, from cache).
+
+Run on 2026-10-16, held-out questions 57–66 (8 with an answer, 2 where the law has none), server offline (0 $ OpenRouter; ~1.5 $ equivalent of Claude plan usage):
+
+| | Claude Sonnet as MCP agent | DeepSeek pipeline |
+|---|---|---|
+| Cites the gold paragraph / says "I don't know" when it should | **10 / 10** (Wilson 95 % 0.72–1.00) | **10 / 10** |
+| Same `evidence_status` as the other model | 10 / 10 | |
+
+What this does **not** measure: whether every sentence of the answer is right (no judge was run here), and questions outside this small set. Raw answers: `results/agent_check.json`.
+
 ## Safety
 
 - Every passage `text` is **untrusted data**. The server instructions and the output schema say so; agents should quote it, never follow it. Test: `tests/test_mcp.py` puts an injected instruction inside a passage.

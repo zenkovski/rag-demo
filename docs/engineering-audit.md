@@ -53,4 +53,10 @@ Status is updated here at the end of each phase.
 - [x] Phase B: service layer (`tools/service.py`, baseline equality test for 56 questions in both modes)
 - [x] Phase C: REST API (`tools/api.py`, 26 integration tests, Docker verified in CI run 38828365259)
 - [x] Phase D: MCP server (`tools/mcp_server.py`, stdio e2e test with the SDK client; Claude Code connected and called `search_knowledge` on 2026-10-16, see [mcp.md](mcp.md))
-- [ ] Phase E: README and presentation
+- [x] Phase E: English README, `README.cs.md`, [explain-for-lukas.md](explain-for-lukas.md), GitHub About set. Bad preset "výpověď v nemoci": already not among the quick-question buttons (repo and live site checked 2026-10-16); it stays visible, marked wrong, in the question list and the failure gallery. No fix: any retrieval change invalidates the cached rerank call (not free).
+- [x] Agent check (`tools/agent_check.py`): Claude Sonnet via MCP 10/10 on questions 57–66, DeepSeek pipeline 10/10, agreement 10/10 ([mcp.md](mcp.md#agent-check-claude-as-the-agent-deepseek-as-a-second-opinion)).
+
+### Not done / open
+- Docker not run on the dev PC (no Docker installed); verified only in CI.
+- `ask` latency and cost with live calls: not run (offline only).
+- Live demo still runs the old `hit.js`; deploy needs approval.
