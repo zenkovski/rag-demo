@@ -5,7 +5,7 @@
 [![tests](https://github.com/zenkovski/rag-demo/actions/workflows/tests.yml/badge.svg)](https://github.com/zenkovski/rag-demo/actions/workflows/tests.yml)
 
 **A cited-answer RAG service over 4 Czech labour laws, usable by people (web), programs (REST API) and AI agents (MCP).**
-Live demo: **[lukas-rag.vercel.app](https://lukas-rag.vercel.app)** (UI in Czech)
+Live demo: **[lukas-rag.vercel.app](https://lukas-rag.vercel.app)** (Czech UI; English toggle in the repo, not deployed yet)
 
 ![Question, cited answer and a map of the laws where the retrieved paragraphs light up](docs/demo.webp)
 
@@ -65,13 +65,15 @@ Without Docker: `pip install -r requirements-service.txt`, then `RAG_OFFLINE=1 R
 
 ## Key results
 
+Measured on **134 questions the system was never tuned on** (sets v4 + v5, frozen in git before the run; 112 answerable, 22 where the law has no answer). Details and caveats: [docs/evaluation-v5.md](docs/evaluation-v5.md).
+
 | Measure | Result |
 |---|---|
-| Held-out questions 57–66, written before the final version and never tuned on | **10 / 10** correct answers (95 % Wilson interval 0.72–1.00) |
-| Correct paragraph among the 5 passages the model reads | **56 / 56** answerable questions (tuned on most of them, so optimistic) |
-| Trap questions where the law has no answer, correct is "I don't know" | **10 / 10** |
+| Correct paragraph among the 5 passages the model reads | **111 / 112** (95 % Wilson 0.95–1.00) |
+| Correct answers, judged against hand-checked gold answers | **108 / 112** (0.91–0.99) |
+| "I don't know" when the law has no answer | **21 / 22** (0.78–0.99) |
 
-Small sets, honest numbers: what they do and do not prove is in [docs/evaluation-methodology.md](docs/evaluation-methodology.md), all ablations with intervals and p-values in [docs/benchmark-results.md](docs/benchmark-results.md), known failures in [docs/failure-gallery.md](docs/failure-gallery.md), limits in [docs/limitations.md](docs/limitations.md).
+Honest scope: in this run the LLM steps (rewrite, pick, answer) were done by **Claude Sonnet with the same prompts**, not by the DeepSeek models of the live site, to spend no API credits; questions and judges are also Claude, with a 15-answer spot check. Without any LLM, the `fast` search alone finds the gold paragraph in the top 5 for 101/112. Older measurements (66 questions, ablations with p-values) are in [docs/benchmark-results.md](docs/benchmark-results.md); method in [docs/evaluation-methodology.md](docs/evaluation-methodology.md); known failures in [docs/failure-gallery.md](docs/failure-gallery.md); limits in [docs/limitations.md](docs/limitations.md).
 
 ## How it works
 
@@ -90,7 +92,7 @@ The same retrieval exists in Python, LangChain (LCEL) and JavaScript (live site)
 
 ```bash
 pip install -r requirements-service.txt -r requirements-dev.txt
-python -m pytest tests                                  # 164 tests, offline, network blocked
+python -m pytest tests                                  # 165 tests, offline, network blocked
 ruff check . && mypy
 python tools/experiments.py --check --no-base           # quality gate: retrieval vs results/baseline.json
 ```

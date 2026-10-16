@@ -53,14 +53,14 @@
     "heldout_v4": {
       "file": "testset_heldout_v4.json",
       "role": "test",
-      "status": "napsaná, NEspuštěná. Spustí se jednou na zmrazené v3.1, až bude rozpočet na API (viz docs/evaluation-methodology.md)."
+      "status": "napsaná 2026-10-09. 2026-10-16 spuštěná řetězcem v3 s Claudem místo DeepSeeku spolu s v5 (tools/eval_v5.py, results/eval_v5.json); podle výsledků se nic neměnilo. Běh na produkčním DeepSeeku (tools/run_heldout.py --live) zatím NE."
     },
     "v5": {
       "file": "testset_v5.json",
       "ids": "201-310",
       "role": "test",
       "written": "2026-10-16",
-      "status": "napsaná Claude Sonnet podagenty z textu zákona (bez pohledu na výstupy systému), nezávisle zkontrolovaná dalším podagentem (5 ze 110 opraveno), zmrazená tímto commitem PŘED prvním spuštěním. Spouští se řetězcem v3 s Claudem místo DeepSeeku (tools/eval_v5.py), 0 $ za API."
+      "status": "napsaná Claude Sonnet podagenty z textu zákona (bez pohledu na výstupy systému), nezávisle zkontrolovaná dalším podagentem (5 ze 110 opraveno), zmrazená tímto commitem PŘED prvním spuštěním. Spouští se řetězcem v3 s Claudem místo DeepSeeku (tools/eval_v5.py), 0 $ za API. Spuštěno 2026-10-16: results/eval_v5.json, docs/evaluation-v5.md."
     }
   }
 }

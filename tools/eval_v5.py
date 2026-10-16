@@ -175,8 +175,10 @@ def report() -> None:
     def retr(field: str, k: int) -> dict:
         rec = [M.recall_at_k(r[field], r["gold_chunks"], k) for r in ans]
         mrr = [1 / rk if (rk := M.first_gold_rank(r[field][:k], r["gold_chunks"])) else 0.0 for r in ans]
+        hit = sum(x > 0 for x in mrr)
         m, lo, hi = M.bootstrap_ci(rec)
-        return {"recall@%d" % k: round(m, 4), "ci95": [round(lo, 4), round(hi, 4)], "mrr@%d" % k: round(float(np.mean(mrr)), 4)}
+        return {"recall@%d" % k: round(m, 4), "ci95": [round(lo, 4), round(hi, 4)], "mrr@%d" % k: round(float(np.mean(mrr)), 4),
+                "hit@%d" % k: f"{hit}/{len(ans)}", "hit_wilson95": [round(x, 4) for x in M.wilson_interval(hit, len(ans))[1:]]}
 
     verdicts = {r["id"]: judge.get(str(r["id"]), {}) for r in rows}
     correct = [r for r in ans if verdicts[r["id"]].get("verdict") == "correct"]

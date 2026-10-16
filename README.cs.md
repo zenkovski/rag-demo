@@ -24,6 +24,8 @@ Odpovídá česky na otázky z pracovního práva. Odpovídá jen z textu zákon
 
 ## Výsledky
 
+> **Nové (16. 10. 2026): 134 netknutých otázek** (sady v4 + v5, zamčené v gitu před spuštěním). Správný odstavec mezi 5 u 111 ze 112, správná odpověď u 108 ze 112, správné „nevím“ u 21 ze 22. V tomto běhu dělal kroky s jazykovým modelem Claude Sonnet se stejnými prompty, ne DeepSeek. Podrobně anglicky: [docs/evaluation-v5.md](docs/evaluation-v5.md). Tabulka níže je starší měření na 66 otázkách.
+
 Odpovědi hodnotí AI soudce (DeepSeek). Každou pak ještě jednou porovná s textem zákona Claude Opus 5.5 a já jsem výsledky prošel a schválil. Platí ten druhý verdikt.
 
 | Co měřím | Výsledek |

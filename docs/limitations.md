@@ -27,7 +27,7 @@ Abbreviations: ZP = Labour Code, ZZ = Employment Act, ZNP = Sickness Insurance A
 
 - **The sets are small.** 56 questions with an answer, of which 8 validation and 8 test. Differences of 1–3 questions cannot be distinguished from chance, and most ablations turned out exactly like that.
 - **The dev number is inflated.** "66 of 66" came from tuning on most of the questions.
-- **One frozen set v4 (24 questions)** is written, **not run**. Until then there is no measurement on questions the system has never seen, except for the 10 questions 57–66.
+- **Held-out sets v4 + v5 (134 questions) were run on 2026-10-16 with Claude Sonnet in place of DeepSeek** ([evaluation-v5.md](evaluation-v5.md)): 111/112 gold paragraph in top 5, 108/112 correct answers. The DeepSeek production chain on these questions is **not run** (API credits). Questions, answers and judges are all Claude models; one gold answer (232) was found wrong after the run.
 - **The questions and correct answers were created with an AI assistant**, not by an independent team. They were checked against the text of the law by one additional model and reviewed by the project owner. No independent legal review took place.
 - **The answers are from one stored run.** The model's behaviour fluctuates between runs (see [HISTORY.md](../HISTORY.md): "the cheap model read the same paragraph correctly once and wrongly another time"). Repeated runs with variance were not done.
 - **The number and citation check is not in the live chain**, only in measurement. A live answer with a citation out of range would be displayed; only the measurement catches it.

@@ -126,6 +126,18 @@ Navíc je `tools/agent_check.py`: **Claude Sonnet jako agent** dostane jen MCP n
 3. *Proč dva různé modely na kontrolu?*
    Jeden model může mít stejnou slepou skvrnu jako ten, co odpovídal. Když se dva různé modely shodnou, je to silnější signál. Když se neshodnou, podívám se na tu otázku ručně.
 
+## Nové měření: 134 otázek (16. 10. 2026)
+
+Dřív byla poctivá čísla jen z 10 otázek. Teď je 134 otázek, které systém nikdy neviděl. Podrobně (anglicky): [evaluation-v5.md](evaluation-v5.md).
+
+- **Kdo otázky napsal:** 3 agenti Claude Sonnet z textu zákona. Čtvrtý agent každou zkontroloval (5 ze 110 opravil). Otázky jsem zamkl v gitu **před** prvním spuštěním.
+- **Co běželo:** stejný řetězec v3, ale jazykový model byl Claude Sonnet místo DeepSeeku, se stejnými prompty. Vektory otázek lokálně (stejný model e5-large, ověřeno: shoda 0,9999999). Kredity na API: 0 $.
+- **Výsledky:** správný odstavec mezi 5 u 111 ze 112. Správná odpověď u 108 ze 112. Správné „nevím“ u 21 ze 22.
+- **Chyby:** 276 hledání nenašlo § 16 ZNP. 291 špatná výše podpory při rekvalifikaci. 274 a 232 neúplné. U 232 je navíc chybná správná odpověď (chybí § 118), systém měl pravdu.
+- **Slabina, kterou musíš umět říct:** otázky, odpovědi i soudci jsou Claude. Proto jsem 15 náhodných verdiktů ověřil zvlášť (15 z 15 sedí). DeepSeek na těchto otázkách neběžel.
+
+**Otázka z pohovoru:** *Jak víte, že jste si otázky nepřizpůsobil?* — Otázky psal jiný agent jen z textu zákona, výstupy systému neviděl. Zamkl jsem je v gitu před spuštěním (commit `1e80187`). Po spuštění jsem nic v systému neměnil.
+
 ---
 
 ## Metriky, které v projektu jsou
@@ -145,12 +157,12 @@ Navíc je `tools/agent_check.py`: **Claude Sonnet jako agent** dostane jen MCP n
 2. **Poctivost (30 s).** Ukaž „nevím“ u otázky na minimální mzdu. Řekni: „Když to v zákoně není, řekne nevím. 10 z 10 takových pastí.“
 3. **Agent přes MCP (60 s).** V Claude Code napiš: *„Use search_knowledge: Jak dlouhá je výpovědní doba?“* Ukaž, že Claude sám zavolal nástroj a dostal odstavce s ID. Řekni: „Stejné jádro, jiný vchod. Agent nepotřebuje web.“
 4. **API (30 s).** Otevři `http://localhost:8000/docs`. Ukaž `/api/v1/search` a strukturované chyby.
-5. **Měření (20 s).** Ukaž tabulku v README. Řekni: „10 z 10 na otázkách, které systém nikdy neviděl, ale interval je široký, protože sada je malá. Proto mám připravenou novou zmrazenou sadu.“
+5. **Měření (20 s).** Ukaž tabulku v README. Řekni: „134 otázek, které systém nikdy neviděl: správný odstavec u 111 ze 112, správná odpověď u 108 ze 112. V tomhle běhu odpovídal Claude místo DeepSeeku, to říkám otevřeně.“
 
 Kdyby se zeptali, jestli jsi kód psal ručně: „Systém jsem navrhl a stavbu řídil s Claude Code. Ověřoval jsem ho testy, měřením a code review.“
 
 ## Další 3 nejcennější vylepšení
 
-1. **Spustit zmrazenou sadu 24 otázek** (`tools/run_heldout.py --live`). Dá první větší poctivé číslo. Potřebuje samostatný klíč s ~1 $.
+1. **Pustit 134 otázek i na produkčním DeepSeeku** (stojí asi 0,15–0,30 $ za API). Pak by čísla platila přesně pro živý web.
 2. **Opravit „výpověď v nemoci“** (ZP § 53 se nedostane mezi kandidáty). Nejspíš přidat hledání i nad původní otázkou bez přepisu. Stojí nové měření.
 3. **Limit dotazů na klíč v API** (rate limit) a jednoduché metriky (počet dotazů, chyby, doba odezvy). To je první krok k provozu.
