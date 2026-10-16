@@ -50,7 +50,7 @@ Out of scope (agreed): tracing, run records, `/runs`, dashboard, new experiments
 Status is updated here at the end of each phase.
 
 - [x] Phase A: audit
-- [ ] Phase B: service layer
-- [ ] Phase C: REST API
-- [ ] Phase D: MCP server
+- [x] Phase B: service layer (`tools/service.py`, baseline equality test for 56 questions in both modes)
+- [x] Phase C: REST API (`tools/api.py`, 26 integration tests, Docker verified in CI run 38828365259)
+- [x] Phase D: MCP server (`tools/mcp_server.py`, stdio e2e test with the SDK client; Claude Code connected and called `search_knowledge` on 2026-10-16, see [mcp.md](mcp.md))
 - [ ] Phase E: README and presentation
