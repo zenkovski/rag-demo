@@ -438,6 +438,9 @@ details.v1 .old{margin-top:6px;font-size:13px;color:var(--muted);background:var(
 .fails li{padding-left:14px;position:relative;line-height:1.4}
 .fails li::before{content:"";position:absolute;left:0;top:.5em;width:6px;height:6px;border-radius:50%;background:var(--faint)}
 .fails li.w::before{background:var(--bad)}
+.fails small{display:block;margin-top:3px;font-size:12px;color:var(--muted);opacity:.85;line-height:1.4}
+.fails small b{color:var(--accent);font-weight:500}
+.t-fail .fixnote{margin-top:12px;font-size:11.5px;font-style:italic}
 .split{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 18px}
 .chip{font-family:var(--mono);font-size:11.5px;border:1px solid var(--line-2);border-radius:999px;padding:4px 10px;color:var(--muted);background:var(--bg)}
 .chip b{color:var(--accent);font-weight:500}
@@ -583,7 +586,7 @@ dialog::backdrop{background:rgba(2,4,5,.8)}
   .fn .d{-webkit-line-clamp:1;min-height:0;font-size:10.5px}
   .apphead #gstat{display:none}
   .bento{grid-template-columns:1fr 1fr;gap:10px}
-  .t-main,.t-wide{grid-column:span 2;grid-row:auto}
+  .t-main,.t-wide,.t-fail,.t-agent{grid-column:span 2;grid-row:auto}
   .tile{padding:16px}
   .t-hold .big,.t-v5 .big,.t-fail .big,.t-agent .big{font-size:46px}
   .t-scale .vs{flex-direction:column;gap:6px;margin-top:8px}
@@ -991,6 +994,12 @@ const I18N = {
   "čtení: u rekvalifikace vzal zvláštní případ":"reading: took a special case for retraining",
   "částečně: nejasná podmínka 14 dní":"partial: vague 14-day condition",
   "částečně: chyba byla v mé „správné“ odpovědi (§ 118)":"partial: the error was in my “correct” answer (§ 118)",
+  "Oprava:":"Fix:",
+  "zákon neříká „smíš pracovat“, ale „nemáš nárok na výplatu nemocenského“. Přepis otázky má hledat i ten důsledek.":"the law does not say “you may work” but “you have no right to sickness benefit being paid”. The question rewrite should also search for that consequence.",
+  "pravidlo do promptu: nejdřív obecné pravidlo, výjimky až potom.":"a prompt rule: the general rule first, exceptions after.",
+  "každou lhůtu a podmínku z textu vypsat přesně, ne „v některých případech“.":"state every deadline and condition from the text exactly, not “in some cases”.",
+  "doplnit § 118 do klíče správných odpovědí.":"add § 118 to the answer key.",
+  "Opravy zatím nejsou udělané. Ověřím je na nových otázkách, ne na těchto, jinak by číslo lhalo.":"The fixes are not done yet. I will check them on new questions, not these, or the number would lie.",
   "pro":"for", "Tady taková otázka není. Zkus jiné slovo, nebo ji napiš nahoru jako vlastní.":"No such question here. Try another word, or write it above as your own.",
   "předpisy odpověď nemají":"the regulations have no answer", "správný § nalezen":"correct § found", "správný § nenalezen":"correct § not found",
   "Mezi 5 úseky, které model dostal, nebyl odstavec s odpovědí. Model pak nemá z čeho odpovědět.":"Among the 5 passages the model received there was no subsection with the answer. The model then has nothing to answer from.",
@@ -1327,8 +1336,12 @@ function renderBento(){
       `${bar(T("20 kandidátů po přepisu"), v5.cand20, v5.answerable)}${bar(T("AI vybere 5 z 20"), v5.top5, v5.answerable, "v2")}</div>`+
       `<p style="margin-top:14px">${T("Otázky napsal Claude jen z textu zákona a uložil jsem je do gitu před prvním spuštěním. Kroky s AI tu dělal Claude Sonnet se stejnými prompty, ne DeepSeek z webu, abych nepálil kredity.")}</p></div>`+
       `<div class="tile t-fail"><h3>${T("Kde se pletl")}</h3><div class="big">${v5.wrong + v5.partial}<span>/${v5.answerable}</span></div>`+
-      `<ul class="fails"><li class="w">${T("hledání: nenašel § o přivýdělku při nemocenské")}</li><li class="w">${T("čtení: u rekvalifikace vzal zvláštní případ")}</li>`+
-      `<li>${T("částečně: nejasná podmínka 14 dní")}</li><li>${T("částečně: chyba byla v mé „správné“ odpovědi (§ 118)")}</li></ul></div>`)(D.v5) : "")+
+      `<ul class="fails">${[["w","hledání: nenašel § o přivýdělku při nemocenské","zákon neříká „smíš pracovat“, ale „nemáš nárok na výplatu nemocenského“. Přepis otázky má hledat i ten důsledek."],
+        ["w","čtení: u rekvalifikace vzal zvláštní případ","pravidlo do promptu: nejdřív obecné pravidlo, výjimky až potom."],
+        ["","částečně: nejasná podmínka 14 dní","každou lhůtu a podmínku z textu vypsat přesně, ne „v některých případech“."],
+        ["","částečně: chyba byla v mé „správné“ odpovědi (§ 118)","doplnit § 118 do klíče správných odpovědí."]]
+        .map(([c,a,b]) => `<li class="${c}">${T(a)}<small><b>${T("Oprava:")}</b> ${T(b)}</small></li>`).join("")}</ul>`+
+      `<p class="fixnote">${T("Opravy zatím nejsou udělané. Ověřím je na nových otázkách, ne na těchto, jinak by číslo lhalo.")}</p></div>`)(D.v5) : "")+
     (D.agent ? `<div class="tile t-agent"><h3>${T("AI agent přes MCP")}</h3><div class="big">${D.agent.claude_ok}<span>/${D.agent.n}</span></div>`+
       `<p style="margin-top:10px">${TF("Claude jako cizí agent sám hledal přes MCP server. U {0} nových otázek našel správný § nebo správně řekl „nevím“. Shoda s odpovědí DeepSeeku: {1}/{0}.", D.agent.n, D.agent.agree_status)}</p></div>` : "");
   $("#openRes").addEventListener("click", () => $("#dlg").showModal());
