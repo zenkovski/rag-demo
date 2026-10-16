@@ -1,24 +1,26 @@
-# ADR-003: Oprávnění se vynucuje v hledací vrstvě, ne v promptu
+[Česky](../cs/decisions/ADR-003-opravneni-v-hledani.md)
 
-**Stav:** přijato jako vzor, **v živém webu nezapojeno** · **Datum:** 9. 10. 2026
+# ADR-003: Permissions are enforced in the retrieval layer, not in the prompt
 
-## Kontext
+**Status:** accepted as a pattern, **not wired into the live website** · **Date:** 9 Oct 2026
 
-Kdyby systém hledal nad dokumenty s různými právy, hrozí dva způsoby úniku: model dostane text, který uživatel vidět nesmí, a pak ho (omylem nebo na žádost) zopakuje; nebo se text objeví v citacích či mezivýsledcích.
+## Context
 
-Obrana „v promptu je napsáno, že tohle nesmíš ukázat“ je **nespolehlivá**: prompt jde obejít (viz prompt injection) a model text už viděl.
+If the system searched over documents with different access rights, there are two ways a leak can happen: the model receives text the user must not see and then repeats it (by mistake or on request); or the text appears in citations or intermediate results.
 
-## Rozhodnutí
+The defence "the prompt says you must not show this" is **unreliable**: a prompt can be bypassed (see prompt injection) and the model has already seen the text.
 
-Oprávnění se **vynucuje před modelem**, v hledání: `rag.search(question, allow={"ZP"})` dá nepovoleným předpisům nulové skóre ve všech třech pořadích, takže se nedostanou mezi kandidáty, do výběru, do pěti úseků pro model, do stopy ani do citací. Prompt o nepovolených dokumentech vůbec neví.
+## Decision
 
-## Ověření
+Permissions are **enforced before the model**, in the retrieval: `rag.search(question, allow={"ZP"})` gives disallowed regulations a zero score in all three rankings, so they do not get among the candidates, into the selection, into the five chunks for the model, into the trace or into the citations. The prompt does not know about the disallowed documents at all.
 
-`tests/test_security.py` na 20 otázkách ověřuje, že s `allow={"ZP"}` nepovolený předpis **není** (a) ve výsledku, (b) v žádném mezikroku stopy, (c) v textu promptu, který by dostal model při výběru kandidátů. Falešný model zapisuje, co by dostal. Druhý test dokazuje, že filtr něco dělá (bez filtru se úsek z nemocenského pojištění objeví). Po vypnutí masky test selže (ověřeno).
+## Verification
 
-## Důsledky a limity
+`tests/test_security.py` verifies on 20 questions that with `allow={"ZP"}` a disallowed regulation is **not** (a) in the result, (b) in any intermediate step of the trace, (c) in the prompt text the model would receive when selecting candidates. A fake model records what it would receive. A second test proves the filter does something (without the filter a chunk from the sickness insurance act appears). After switching off the mask the test fails (verified).
 
-- Filtr je podle **předpisu** (`law`), ne podle uživatele. Skutečný systém by potřeboval seznam povolených dokumentů na uživatele a jeho zdroj pravdy (IdP, databáze oprávnění). **Neimplementováno.**
-- Webová funkce `allow` nepoužívá, protože nemá uživatele ani neveřejné dokumenty.
-- **Cache odpovědí neexistuje.** Kdyby se přidala, klíč musí obsahovat množinu povolených dokumentů, jinak by odpověď pro jednoho uživatele mohla vyjít druhému.
-- Neřeší únik přes **vektory**: embedding nepovoleného dokumentu je v indexu. Při hrubém úniku indexu by se z vektorů dal část textu odhadnout. Pro důvěrná data by byl potřeba oddělený index na tenanta.
+## Consequences and limits
+
+- The filter is by **regulation** (`law`), not by user. A real system would need a list of allowed documents per user and its source of truth (IdP, permissions database). **Not implemented.**
+- The web function does not use `allow`, because it has no users or non-public documents.
+- **There is no answer cache.** If one were added, its key must contain the set of allowed documents, otherwise an answer for one user could be served to another.
+- It does not address a leak through **vectors**: the embedding of a disallowed document is in the index. In a gross leak of the index, part of the text could be estimated from the vectors. For confidential data a separate index per tenant would be needed.

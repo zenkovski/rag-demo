@@ -14,12 +14,12 @@ lepší prompt nespraví hledání a lepší hledání nespraví čtení.
 from __future__ import annotations
 
 CATEGORIES = {
-    "A": "relevantní úsek nebyl nalezen (hledání)",
-    "B": "úsek byl nalezen, ale vyřazen před odpovědí (výběr)",
-    "C": "správný kontext dodán, model ho špatně použil (čtení)",
-    "D": "tvrzení bez dostatečné opory v úsecích",
-    "E": "měl odmítnout odpovědět a neodmítl",
-    "F": "odmítl, i když odpověď v zákoně byla",
+    "A": "relevant chunk not found (retrieval)",
+    "B": "chunk found but dropped before answering (selection)",
+    "C": "correct context supplied, model used it wrongly (reading)",
+    "D": "claim without sufficient support in the chunks",
+    "E": "should have refused to answer and did not",
+    "F": "refused although the answer was in the law",
 }
 
 

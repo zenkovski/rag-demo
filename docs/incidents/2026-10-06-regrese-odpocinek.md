@@ -1,54 +1,58 @@
-# Incident: výběr přes LLM zahodil základní pravidlo (odpočinek mezi směnami)
+[Česky](../cs/incidents/2026-10-06-regrese-odpocinek.md)
 
-**Stav:** opraveno, hlídáno testem a quality gate. **Zjištěno:** 6. 10. 2026, měřením po zavedení v3. **Kde se pokazilo:** výběr úseků (krok mezi hledáním a odpovědí).
+# Incident: LLM selection dropped the base rule (rest between shifts)
+
+**Status:** fixed, guarded by a test and the quality gate. **Found:** 6 Oct 2026, by measurement after introducing v3. **Where it broke:** chunk selection (the step between retrieval and the answer).
+
+Abbreviation: ZP = Labour Code. Chunk IDs like `ZP § 90 odst. 1` mean Labour Code, section 90, paragraph 1.
 
 ## Symptom
 
-Po zavedení výběru „LLM vybere 5 z 20 kandidátů“ (commit `458bb46`, v3.0) se celkový výsledek zlepšil (v2 50 → v3 54 z 56), ale jedna otázka, kterou v2 měla správně, přestala fungovat:
+After introducing the selection "the LLM picks 5 of 20 candidates" (commit `458bb46`, v3.0) the overall result improved (v2 50 → v3 54 of 56), but one question that v2 had right stopped working:
 
-> **Kolik hodin odpočinku musím mít mezi dvěma směnami?** Správně: nepřetržitý denní odpočinek alespoň 11 hodin (§ 90 odst. 1 ZP).
+> **„Kolik hodin odpočinku musím mít mezi dvěma směnami?“ ("How many hours of rest must I have between two shifts?")** Correct: an uninterrupted daily rest of at least 11 hours (§ 90 odst. 1 ZP).
 
-Odpověď ve v3.0 základní číslo vůbec nenapsala:
+In v3.0 the answer did not state the basic number at all:
 
-> „Základní pravidlo je v úsecích jen naznačeno (odstavec 1 se cituje, ale není uveden), takže přesnou základní délku odpočinku z dodaných úseků nezjistíme. Jisté je, že za uvedených podmínek může být zkrácen…“
+> "The basic rule is only hinted at in the chunks (paragraph 1 is cited but not given), so we cannot determine the exact basic length of rest from the supplied chunks. What is certain is that under the stated conditions it may be shortened…"
 
-Odpověď byla bezpečná („nevím“), ale k ničemu. Žádná chyba v logu, žádná výjimka. Jen horší odpověď.
+The answer was safe ("I don't know") but useless. No error in the log, no exception. Just a worse answer.
 
-## Jak se to našlo
+## How it was found
 
-Ne čtením odpovědí, ale **porovnáním po otázkách** (v2 → v3) po každé změně: hit@5 klesl na jediné otázce z „ano“ na „ne“, přestože celek rostl. Kdyby se sledoval jen průměr (54 z 56 je lepší než 50), regrese by zmizela v součtu.
+Not by reading the answers, but by **comparing per question** (v2 → v3) after every change: hit@5 dropped on a single question from "yes" to "no", even though the whole improved. Had only the average been watched (54 of 56 is better than 50), the regression would have vanished in the sum.
 
-## Příčina (měřitelná)
+## Cause (measurable)
 
-Správný odstavec **je** mezi 20 kandidáty. Rozhodl krok výběru:
+The correct paragraph **is** among the 20 candidates. The selection step decided:
 
-| Krok | § 90 odst. 1 (pravidlo) | § 90 odst. 2, 3 (výjimky) |
+| Step | § 90 odst. 1 (the rule) | § 90 odst. 2, 3 (the exceptions) |
 |---|---|---|
-| Kandidáti z RRF (20) | ano | ano |
-| **Výběr LLM (v3.0)** | **vyřazeno** | vybráno |
-| Pět úseků pro model | chybí | `ZP § 90 odst. 3`, `odst. 2`, `§ 90a`, … |
+| Candidates from RRF (20) | yes | yes |
+| **LLM selection (v3.0)** | **dropped** | selected |
+| Five chunks for the model | missing | `ZP § 90 odst. 3`, `odst. 2`, `§ 90a`, … |
 
-LLM vybíral úseky, které „odpovídají na otázku o zkrácení odpočinku“, a výjimky vypadají relevantněji než základní pravidlo. Chyba není v modelu ani v promptu jako takovém, je v tom, že **výjimka se bez svého pravidla nedá správně přečíst**. Kategorie podle [galerie chyb](../failure-gallery.md): **B – nalezeno, ale vyřazeno**. Lepší prompt ani lepší hledání by to nespravily jistě; spolehlivě to spraví jen pevné pravidlo.
+The LLM picked chunks that "answer the question about shortening the rest", and the exceptions look more relevant than the basic rule. The error is not in the model or in the prompt as such, it is in the fact that **an exception cannot be read correctly without its rule**. Category by the [failure gallery](../failure-gallery.md): **B – found, but dropped**. A better prompt or better retrieval would not fix it for certain; only a fixed rule fixes it reliably.
 
-Důkaz z dat (`data/eval.json`, commit `458bb46`, otázka 10): pět úseků pro model bylo `ZP § 90 odst. 3`, `odst. 2`, `§ 90a`, `§ 85 odst. 3`, `§ 100 odst. 2`. Odstavec 1 chyběl.
+Evidence from the data (`data/eval.json`, commit `458bb46`, question 10): the five chunks for the model were `ZP § 90 odst. 3`, `odst. 2`, `§ 90a`, `§ 85 odst. 3`, `§ 100 odst. 2`. Paragraph 1 was missing.
 
-## Oprava
+## Fix
 
-Pevné pravidlo **bez AI** (`rag.with_odst1`, commit `1e76718`): k vybranému odstavci 2, 3… se vždy přidá odstavec 1 téhož paragrafu, i když nebyl mezi kandidáty.
+A fixed rule **without AI** (`rag.with_odst1`, commit `1e76718`): to a selected paragraph 2, 3… paragraph 1 of the same section is always added, even if it was not among the candidates.
 
-Proč pravidlo a ne „zakázat LLM vynechat odstavec 1“: LLM je nestabilní a nová formulace promptu by chybu jen přesunula. Pravidlo je deterministické a jde otestovat.
+Why a rule and not "forbid the LLM from omitting paragraph 1": the LLM is unstable and a new prompt wording would only move the error. A rule is deterministic and can be tested.
 
-## Důkaz, že oprava pomohla a nic nerozbila
+## Proof that the fix helped and broke nothing
 
-- Otázka 10 po opravě: pět úseků `ZP § 90 odst. 3`, **`odst. 1`**, `odst. 2`, … Odpověď: „…nepřetržitý denní odpočinek alespoň 11 hodin… Mladistvému alespoň 12 hodin, případně 14 hodin“ (správně).
-- Celkem hit@5 na prvních 48 otázkách s odpovědí: **47 → 48**. Po opravě se změřily **všechny** otázky znovu, ne jen ta jedna: žádná další nezhoršila.
+- Question 10 after the fix: five chunks `ZP § 90 odst. 3`, **`odst. 1`**, `odst. 2`, … Answer: "…an uninterrupted daily rest of at least 11 hours… for a juvenile at least 12 hours, or 14 hours" (correct).
+- Overall hit@5 on the first 48 questions with an answer: **47 → 48**. After the fix, **all** questions were measured again, not just that one: no other got worse.
 
-## Co se z toho stalo trvalé
+## What became permanent
 
-1. **Unit test** `tests/test_rag.py::test_with_odst1_adds_base_rule`: výjimka (§ 90 odst. 2) dostane za sebe odstavec 1.
-2. **Quality gate** (`python tools/experiments.py --check`): pořadí správného úseku u každé otázky je v `results/baseline.json`; kdyby někdo pravidlo odstranil, selže u této otázky, ne až v průměru.
-3. **Postup:** po každé změně se porovnává po otázkách (`transitions` v [benchmark-results.md](../benchmark-results.md)), ne jen součet.
+1. **Unit test** `tests/test_rag.py::test_with_odst1_adds_base_rule`: an exception (§ 90 odst. 2) gets paragraph 1 added after it.
+2. **Quality gate** (`python tools/experiments.py --check`): the rank of the correct chunk for every question is in `results/baseline.json`; if someone removed the rule, it fails on this question, not only in the average.
+3. **Procedure:** after every change, compare per question (`transitions` in [benchmark-results.md](../benchmark-results.md)), not only the sum.
 
-## Co by tomu zabránilo dřív
+## What would have prevented it sooner
 
-Měření po otázkách hned u první verze výběru. Průměr (54 z 56) vypadal jako úspěch a oprava přišla až po prohlédnutí jednotlivých otázek.
+Per-question measurement with the very first version of the selection. The average (54 of 56) looked like a success and the fix came only after inspecting individual questions.

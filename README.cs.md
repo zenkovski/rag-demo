@@ -29,12 +29,12 @@ Odpovědi hodnotí AI soudce (DeepSeek). Každou pak ještě jednou porovná s t
 | Co měřím | Výsledek |
 |---|---|
 | Otázky 57–66: napsané před spuštěním finální verze a od té doby netknuté (skutečný test) | **10 z 10** (95% interval 0,72–1,00) |
-| Otázky 47–66 (u 47–56 se podle chyb ještě ladilo, viz [metodika](docs/evaluation-methodology.md#2-dev-validation-test-a-prevence-úniku)) | 20 z 20 (předchozí verze 18 z 20) |
+| Otázky 47–66 (u 47–56 se podle chyb ještě ladilo, viz [metodika](docs/cs/evaluation-methodology.md#2-dev-validation-test-a-prevence-úniku)) | 20 z 20 (předchozí verze 18 z 20) |
 | Ukázkové otázky mimo testy | **14 z 16** (obě chyby jsou vidět na webu) |
 | Past: odpověď v zákonech není, správně je „nevím“ | **10 z 10** |
-| Správný paragraf mezi 5 úseky, které model dostane | **56 z 56** (cross-encoder pro srovnání 52, viz [DESIGN.md](DESIGN.md#5-výběr-5-z-20-llm-nebo-cross-encoder)) |
+| Správný paragraf mezi 5 úseky, které model dostane | **56 z 56** (cross-encoder pro srovnání 52, viz [DESIGN.md](docs/cs/DESIGN.md#5-výběr-5-z-20-llm-nebo-cross-encoder)) |
 
-Celkem 66 z 66, ale toto číslo je nadsazené: podle většiny otázek se ladilo. Poctivé jsou řádky výše a **ty jsou malé** (8 a 10 otázek). Proto je napsaná a zmrazená nová sada 24 otázek, zatím nespuštěná ([proč a jak](docs/evaluation-methodology.md)). Podrobně: [RESULTS.md](RESULTS.md).
+Celkem 66 z 66, ale toto číslo je nadsazené: podle většiny otázek se ladilo. Poctivé jsou řádky výše a **ty jsou malé** (8 a 10 otázek). Proto je napsaná a zmrazená nová sada 24 otázek, zatím nespuštěná ([proč a jak](docs/cs/evaluation-methodology.md)). Podrobně: [RESULTS.md](RESULTS.md).
 
 ## Jak to funguje
 
@@ -54,30 +54,30 @@ Související: [**qa-portfolio**](https://github.com/zenkovski/qa-portfolio), au
 
 Kromě řetězce má projekt **měřicí laboratoř**, která odpovídá na otázku „co ze systému opravdu pomáhá a kde selhává?“. Vše běží offline z uložených výsledků, **zdarma a opakovatelně**.
 
-| Co | Výsledek (podrobně a s intervaly: [benchmark-results.md](docs/benchmark-results.md)) |
+| Co | Výsledek (podrobně a s intervaly: [benchmark-results.md](docs/cs/benchmark-results.md)) |
 |---|---|
 | **Výběr 5 z 20 přes LLM** je jediná komponenta s průkazným přínosem | Recall@1 0,54 → 0,85, MRR 0,71 → 0,96; lepší u 9 otázek, horší u 0 (p = 0,004) |
-| **BM25 hledání nezlepšilo** | RRF bez BM25 má Recall@5 0,88, s BM25 0,86 (neprůkazné). Sada nemá otázky na přesné odkazy, kde má BM25 vyhrát → [ADR-004](docs/decisions/ADR-004-prepis-a-bm25-otevrena-otazka.md) (otevřené) |
+| **BM25 hledání nezlepšilo** | RRF bez BM25 má Recall@5 0,88, s BM25 0,86 (neprůkazné). Sada nemá otázky na přesné odkazy, kde má BM25 vyhrát → [ADR-004](docs/cs/decisions/ADR-004-prepis-a-bm25-otevrena-otazka.md) (otevřené) |
 | LLM výběr × cross-encoder | 56 proti 52 z 56, ale p = 0,125: směr, ne důkaz |
 | Kontrola citací a čísel bez LLM | našla špatnou citaci, kterou AI soudce přehlédl |
 | Čas výpočtu hledání (bez sítě) | p50 ≈ 7 ms, p95 ≈ 10 ms. Odezva celé služby **není změřená** |
 
-Kde se řetěz přerušil, říká [galerie chyb](docs/failure-gallery.md): A nenalezeno · B vyřazeno · C špatně přečteno · D bez opory · E měl odmítnout · F zbytečné „nevím“. Včetně **dvou chyb, které na webu zatím zůstávají** (např. výpověď v nemoci).
+Kde se řetěz přerušil, říká [galerie chyb](docs/cs/failure-gallery.md): A nenalezeno · B vyřazeno · C špatně přečteno · D bez opory · E měl odmítnout · F zbytečné „nevím“. Včetně **dvou chyb, které na webu zatím zůstávají** (např. výpověď v nemoci).
 
 | Dokument | O čem |
 |---|---|
-| [docs/implementation-plan.md](docs/implementation-plan.md) | audit výchozího stavu, plán, co je hotové a co ne |
-| [docs/architecture.md](docs/architecture.md) | schémata řetězce a měřicí vrstvy |
-| [docs/evaluation-methodology.md](docs/evaluation-methodology.md) | dev / validation / test, prevence úniku, metriky a jejich meze |
-| [docs/benchmark-results.md](docs/benchmark-results.md) | výsledky ablací (generované) |
-| [docs/failure-gallery.md](docs/failure-gallery.md) | skutečná selhání: příčina, oprava, důkaz |
-| [security/threat-model.md](security/threat-model.md) | aktiva, hrozby, obrany, co není ověřeno |
-| [docs/decisions/](docs/decisions/) | 6 rozhodnutí (ADR), jedno z nich otevřené |
-| [docs/incidents/](docs/incidents/) | incidenty od příznaku po důkaz opravy |
-| [docs/limitations.md](docs/limitations.md) | co chybí a proč (agent, load test, dělení textu…) |
-| [docs/ai-assisted-development.md](docs/ai-assisted-development.md) | kdo co ověřil a kde se AI spletla |
+| [docs/implementation-plan.md](docs/cs/implementation-plan.md) | audit výchozího stavu, plán, co je hotové a co ne |
+| [docs/architecture.md](docs/cs/architecture.md) | schémata řetězce a měřicí vrstvy |
+| [docs/evaluation-methodology.md](docs/cs/evaluation-methodology.md) | dev / validation / test, prevence úniku, metriky a jejich meze |
+| [docs/benchmark-results.md](docs/cs/benchmark-results.md) | výsledky ablací (generované) |
+| [docs/failure-gallery.md](docs/cs/failure-gallery.md) | skutečná selhání: příčina, oprava, důkaz |
+| [security/threat-model.md](docs/cs/security/threat-model.md) | aktiva, hrozby, obrany, co není ověřeno |
+| [docs/decisions/](docs/cs/decisions/) | 6 rozhodnutí (ADR), jedno z nich otevřené |
+| [docs/incidents/](docs/cs/incidents/) | incidenty od příznaku po důkaz opravy |
+| [docs/limitations.md](docs/cs/limitations.md) | co chybí a proč (agent, load test, dělení textu…) |
+| [docs/ai-assisted-development.md](docs/cs/ai-assisted-development.md) | kdo co ověřil a kde se AI spletla |
 
-**CI** (GitHub Actions) má tři brány: lint + typy, testy (unit, bezpečnost, vykreslení webu), a **quality gate**, který přehraje hledání a porovná pořadí správných úseků po otázkách s referenčním stavem. Gate hlídá **kód hledání**, ne chování modelu (to by stálo peníze, viz [ADR-001](docs/decisions/ADR-001-offline-quality-gate.md)).
+**CI** (GitHub Actions) má tři brány: lint + typy, testy (unit, bezpečnost, vykreslení webu), a **quality gate**, který přehraje hledání a porovná pořadí správných úseků po otázkách s referenčním stavem. Gate hlídá **kód hledání**, ne chování modelu (to by stálo peníze, viz [ADR-001](docs/cs/decisions/ADR-001-offline-quality-gate.md)).
 
 ## Soubory
 
@@ -103,8 +103,8 @@ Kde se řetěz přerušil, říká [galerie chyb](docs/failure-gallery.md): A ne
 
 Další dokumenty:
 - [RESULTS.md](RESULTS.md): výsledky otázku po otázce.
-- [HISTORY.md](HISTORY.md): co se změnilo ve v1 → v3.1 a proč.
-- [DESIGN.md](DESIGN.md): každé rozhodnutí, proč padlo a co by chybělo do provozu.
+- [HISTORY.md](docs/cs/HISTORY.md): co se změnilo ve v1 → v3.1 a proč.
+- [DESIGN.md](docs/cs/DESIGN.md): každé rozhodnutí, proč padlo a co by chybělo do provozu.
 
 ## Služba pro programy a AI agenty (od 16. 10. 2026)
 
@@ -130,7 +130,7 @@ copy .env.example .env                                   # doplň OPENROUTER_API
 
 ## Ochrana webu
 
-Podrobně: [security/threat-model.md](security/threat-model.md) (14 hrozeb, co je ověřeno testem a co ne).
+Podrobně: [security/threat-model.md](docs/cs/security/threat-model.md) (14 hrozeb, co je ověřeno testem a co ne).
 
 - API klíč je jen v proměnné prostředí na Vercelu a v lokálním `.env` (v `.gitignore`).
 - Max 10 otázek na IP za den. Prohlížeč musí vyřešit proof of work (malý výpočet, 1–3 s), aby roboti nemohli posílat hromadné dotazy.
@@ -138,15 +138,15 @@ Podrobně: [security/threat-model.md](security/threat-model.md) (14 hrozeb, co j
 
 ## Omezení
 
-Úplný seznam: [docs/limitations.md](docs/limitations.md).
+Úplný seznam: [docs/limitations.md](docs/cs/limitations.md).
 
-- Dvě ze 16 ukázkových otázek na webu jsou špatně, nejhorší je „Může mi zaměstnavatel dát výpověď, když jsem nemocný?“ (příčina změřená, oprava zatím není). [Galerie chyb](docs/failure-gallery.md#otevřené-chyby-zatím-neopravené).
+- Dvě ze 16 ukázkových otázek na webu jsou špatně, nejhorší je „Může mi zaměstnavatel dát výpověď, když jsem nemocný?“ (příčina změřená, oprava zatím není). [Galerie chyb](docs/cs/failure-gallery.md#otevřené-chyby-zatím-neopravené).
 - Oprava počítadla kliků (`hit.js`) je v repozitáři, **na živém webu zatím neběží**.
 - Nová sada otázek (24, zmrazená) **ještě nebyla spuštěna**; do té doby je skutečně netknutých jen 10 otázek.
 - Živé otázky na webu nikdo nekontroluje. Model se může splést, proto jsou u odpovědí citace.
 - Asistent nezná výši minimální mzdy. Nařízení 567/2006 je zrušené a výši teď vyhlašuje ministerstvo sdělením.
 - Počítadla limitů jsou v paměti funkce, ne v databázi.
-- Zákony se mění. Data jsou zmrazená k 6. 10. 2026. Pro demo automatická aktualizace není potřeba. Jak by fungovala v provozu: [DESIGN.md](DESIGN.md#11-co-by-chybělo-do-provozu).
+- Zákony se mění. Data jsou zmrazená k 6. 10. 2026. Pro demo automatická aktualizace není potřeba. Jak by fungovala v provozu: [DESIGN.md](docs/cs/DESIGN.md#11-co-by-chybělo-do-provozu).
 
 ## Zdroje a autorství
 

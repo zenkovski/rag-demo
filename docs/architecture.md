@@ -1,74 +1,78 @@
-# Architektura
+[Česky](cs/architecture.md)
 
-Jeden retrieval-augmented řetězec nad 4 českými předpisy (2 475 odstavců) a k němu **měřicí vrstva**, která umí odpovědět na otázku „proč to selhalo a pomohla oprava?“.
-Záměrně malé: jeden Python modul pro řetězec, jedna sada skriptů pro měření, jedna serverová funkce pro web. Co tu **není** (agent, více uživatelů, fronta, vektorová databáze), je v [limitations.md](limitations.md) i s důvodem.
+# Architecture
 
-## 1. Řetězec odpovědi
+One retrieval-augmented chain over 4 Czech regulations (2 475 paragraphs) and a **measurement layer** that can answer the question "why did it fail and did the fix help?".
+Deliberately small: one Python module for the chain, one set of scripts for measurement, one serverless function for the website. What is **not** here (an agent, multiple users, a queue, a vector database) is in [limitations.md](limitations.md), with the reason.
+
+Abbreviations: ZP = Labour Code, ZZ = Employment Act, ZNP = Sickness Insurance Act, NV 590 = Government Decree 590/2006.
+
+## 1. The answer chain
 
 ```mermaid
 flowchart LR
-  Q[otázka] --> RW["přepis do jazyka zákona<br/>(LLM, flash)"]
-  Q --> D1["význam: e5-large<br/>původní otázka"]
-  RW --> D2["význam: e5-large<br/>přepsaná otázka"]
-  RW --> B["slova: BM25<br/>přepsaná otázka"]
-  D1 & D2 & B --> F["spojení RRF<br/>→ 20 kandidátů"]
-  F --> R["výběr 5 z 20<br/>(LLM, flash)"]
-  R --> P["pevná pravidla bez AI<br/>+ odstavec 1, + odkazované odstavce"]
-  P --> A["odpověď z 5 úseků<br/>s citacemi [n] (LLM, pro)"]
-  A --> V["kontrola: citace v rozsahu,<br/>čísla v úsecích"]
-  V --> O[odpověď / „nevím“]
+  Q[question] --> RW["rewrite into the language of the law<br/>(LLM, flash)"]
+  Q --> D1["meaning: e5-large<br/>original question"]
+  RW --> D2["meaning: e5-large<br/>rewritten question"]
+  RW --> B["words: BM25<br/>rewritten question"]
+  D1 & D2 & B --> F["RRF fusion<br/>→ 20 candidates"]
+  F --> R["pick 5 of 20<br/>(LLM, flash)"]
+  R --> P["fixed rules without AI<br/>+ paragraph 1, + referenced paragraphs"]
+  P --> A["answer from 5 chunks<br/>with citations [n] (LLM, pro)"]
+  A --> V["check: citations in range,<br/>numbers in the chunks"]
+  V --> O[answer / "I don't know"]
 ```
 
-| Krok | Kde | Co dělá | Co se může pokazit (kategorie v [galerii chyb](failure-gallery.md)) |
+| Step | Where | What it does | What can go wrong (categories in the [failure gallery](failure-gallery.md)) |
 |---|---|---|---|
-| přepis | `rag.rewrite` | „výplata“ → „mzda“ | přepis odvede hledání jinam (A) |
-| hledání | `rag.dense_scores`, `rag.bm25_scores`, `rag.rrf` | význam + slova, spojení pořadí | správný odstavec není mezi 20 (A) |
-| výběr | `rag.rerank` | LLM vybere 5 z 20 | vyřadí správný odstavec (B) |
-| pravidla | `rag.with_odst1`, `rag.with_refs` | výjimka dostane svůj základ, odkaz se dohledá | – (deterministické, testované) |
-| odpověď | `rag.answer` | jen z 5 úseků, citace, „nevím“ | špatné přečtení (C), tvrzení bez opory (D), neměl odpovědět (E), zbytečné „nevím“ (F) |
-| kontrola | `tools/answer_checks.py` | citace v rozsahu, čísla v citovaném úseku | **jen v měření, ne v živém řetězci** (viz limity) |
+| rewrite | `rag.rewrite` | „výplata“ → „mzda“ ("pay" → "wage") | the rewrite leads the search elsewhere (A) |
+| search | `rag.dense_scores`, `rag.bm25_scores`, `rag.rrf` | meaning + words, fusion of rankings | the correct paragraph is not among the 20 (A) |
+| selection | `rag.rerank` | LLM picks 5 of 20 | drops the correct paragraph (B) |
+| rules | `rag.with_odst1`, `rag.with_refs` | an exception gets its base rule, a reference is looked up | – (deterministic, tested) |
+| answer | `rag.answer` | only from 5 chunks, citations, "I don't know" | misread (C), claim without support (D), should not have answered (E), needless "I don't know" (F) |
+| check | `tools/answer_checks.py` | citations in range, numbers in the cited chunk | **only in measurement, not in the live chain** (see limitations) |
 
-Každý krok jde vypnout a změřit zvlášť (`rag.MODES`), proto jde u každé chyby říct, **kde se řetěz přerušil**.
+Every step can be switched off and measured separately (`rag.MODES`), so for every error you can say **where the chain broke**.
 
-## 2. Tři kopie hledání (a proč)
+## 2. Three copies of the search (and why)
 
-Python (`tools/rag.py`, na něm se měří), JavaScript (`site/api/ask.js`, běží na webu jako serverová funkce) a LangChain (`tools/rag_langchain.py`, ukázka frameworku).
-Riziko tří kopií je, že se rozejdou. Brání tomu test `test_web_matches_python` (JS a Python dávají stejné pořadí) a paritní kontrola LangChainu (`rag_langchain.py --compare`). Rozhodnutí a jeho cena: [DESIGN.md §9](../DESIGN.md#9-proč-je-hledání-napsané-třikrát).
+Python (`tools/rag.py`, this is what is measured), JavaScript (`site/api/ask.js`, runs on the website as a serverless function) and LangChain (`tools/rag_langchain.py`, a framework demonstration).
+The risk of three copies is that they drift apart. This is prevented by the test `test_web_matches_python` (JS and Python give the same ranking) and the LangChain parity check (`rag_langchain.py --compare`). The decision and its cost: [DESIGN.md §9](../DESIGN.md#9-why-the-retrieval-is-written-three-times).
 
-## 3. Měřicí vrstva
+## 3. The measurement layer
 
 ```mermaid
 flowchart TB
-  S["data/splits.json<br/>role sad dev / validation / test<br/>+ commit, kdy vznikly"] --> E
-  C["uložené výsledky<br/>emb_cache.npz, llm_cache.json"] --> RP["tools/replay.py<br/>offline přehrání, 0 $"]
-  RP --> E["tools/experiments.py<br/>ablace · metriky s CI · párové testy"]
-  M["tools/metrics.py<br/>Recall@k, MRR, nDCG, bootstrap, znaménkový test"] --> E
-  E --> R["results/runs/*.json<br/>config · otisky dat · runtime · cena · regrese"]
+  S["data/splits.json<br/>roles of sets dev / validation / test<br/>+ commit when they were created"] --> E
+  C["stored results<br/>emb_cache.npz, llm_cache.json"] --> RP["tools/replay.py<br/>offline replay, $0"]
+  RP --> E["tools/experiments.py<br/>ablations · metrics with CI · paired tests"]
+  M["tools/metrics.py<br/>Recall@k, MRR, nDCG, bootstrap, sign test"] --> E
+  E --> R["results/runs/*.json<br/>config · data fingerprints · runtime · cost · regressions"]
   E --> G{"--check<br/>vs results/baseline.json"}
-  G -- regrese --> X["CI červená<br/>seznam otázek"]
+  G -- regression --> X["CI red<br/>list of questions"]
   R --> D["tools/make_docs.py"] --> BR["docs/benchmark-results.md<br/>docs/failure-gallery.md"]
-  H["tools/run_heldout.py<br/>jednorázově, zámek"] -.-> N["data/testset_heldout_v4.json<br/>(zmrazená, zatím NEspuštěná)"]
+  H["tools/run_heldout.py<br/>one-off, locked"] -.-> N["data/testset_heldout_v4.json<br/>(frozen, NOT yet run)"]
 ```
 
-Dvě měření se **záměrně dělí**:
-- **Offline přehrání** (CI, zdarma): ověřuje, že se nezměnil KÓD hledání. Opakovatelné na bit.
-- **Živé měření** (`tools/evaluate.py`, `tools/run_heldout.py`, `tools/security_eval.py`): ověřuje CHOVÁNÍ MODELU. Stojí peníze, není deterministické, spouští se ručně a zapisuje se do dokumentů.
+Two measurements are **deliberately separate**:
+- **Offline replay** (CI, free): verifies that the search CODE has not changed. Bit-for-bit repeatable.
+- **Live measurement** (`tools/evaluate.py`, `tools/run_heldout.py`, `tools/security_eval.py`): verifies the MODEL'S BEHAVIOUR. It costs money, is not deterministic, is run by hand and is recorded in documents.
 
-Proč: viz [ADR-001](decisions/ADR-001-offline-quality-gate.md).
+Why: see [ADR-001](decisions/ADR-001-offline-quality-gate.md).
 
-## 4. Web a ochrana
+## 4. Website and protection
 
-`site/index.html` (jeden soubor, D3 mapa), `site/api/ask.js` (živá otázka: proof of work, 10 otázek na IP, rozpočet na klíči), `site/api/hit.js` (počítadlo kliků, jen připravené otázky). Hrozby a obrany: [security/threat-model.md](../security/threat-model.md).
+`site/index.html` (a single file, D3 map), `site/api/ask.js` (live question: proof of work, 10 questions per IP, budget on the key), `site/api/hit.js` (click counter, prepared questions only). Threats and defences: [security/threat-model.md](../security/threat-model.md).
 
-## 5. Verze, které jdou vystopovat
+## 5. Versions that can be traced
 
-| Co | Kde je verze |
+| What | Where the version is |
 |---|---|
-| Kód | git commit v záznamu o běhu |
-| Data a sady | otisky souborů v záznamu o běhu (`datasets`) |
-| Modely | `config` v záznamu o běhu (embedding, přepis/výběr, odpověď) |
-| Prompty | otisky `prompt_hashes` v záznamu o běhu |
-| Role sad | `data/splits.json` (commit, kdy sada vznikla) |
+| Code | git commit in the run record |
+| Data and sets | file fingerprints in the run record (`datasets`) |
+| Models | `config` in the run record (embedding, rewrite/selection, answer) |
+| Prompts | `prompt_hashes` fingerprints in the run record |
+| Roles of sets | `data/splits.json` (commit when the set was created) |
 
-**Návrat ke starší konfiguraci:** git (`git checkout <commit> -- tools/rag.py data/`) a porovnání `results/baseline.json`. Indexy se neverzují zvlášť, protože embeddingy jsou odvozené z `data/chunks.json` a cache podle obsahu textu; jiný model embeddingů = nová cache (stojí API).
-Neimplementováno: pojmenované verze konfigurace s přepínačem za běhu.
+**Returning to an older configuration:** git (`git checkout <commit> -- tools/rag.py data/`) and comparing `results/baseline.json`. Indexes are not versioned separately, because the embeddings are derived from `data/chunks.json` and a cache keyed by text content; a different embedding model = a new cache (costs API calls).
+Not implemented: named configuration versions with a runtime switch.

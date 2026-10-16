@@ -1,30 +1,32 @@
-# Incident (ukázkový): „zjednodušení“ řazení rozbilo výběr, lint ani unit testy nic nehlásily
+[Česky](../cs/incidents/2026-10-09-rozbite-razeni.md)
 
-**Stav:** opraveno, hlídáno novým testem. **Druh:** záměrně vyrobený incident pro doložení CI (rozbitou změnu napsal AI asistent, aby se ukázalo, co CI zachytí). Příznaky, diagnóza a oprava jsou skutečné, opravdu proběhly v CI.
+# Incident (demonstration): a "simplification" of the ordering broke the selection, lint and unit tests reported nothing
 
-| | Odkaz |
+**Status:** fixed, guarded by a new test. **Kind:** a deliberately manufactured incident to demonstrate CI (the broken change was written by an AI assistant to show what CI catches). The symptoms, diagnosis and fix are real, they really happened in CI.
+
+| | Link |
 |---|---|
-| Rozbitá změna (commit `2d71aaa`) | [PR #1](https://github.com/zenkovski/rag-demo/pull/1), větev `incident/rozbite-razeni` |
-| CI na rozbité změně: **červená** | [run 37971647801](https://github.com/zenkovski/rag-demo/actions/runs/37971647801) |
-| Oprava (commit `9a6afce`) | stejná větev |
-| CI po opravě: **zelená** | [run 37971901553](https://github.com/zenkovski/rag-demo/actions/runs/37971901553) |
+| Broken change (commit `2d71aaa`) | [PR #1](https://github.com/zenkovski/rag-demo/pull/1), branch `incident/rozbite-razeni` |
+| CI on the broken change: **red** | [run 37971647801](https://github.com/zenkovski/rag-demo/actions/runs/37971647801) |
+| Fix (commit `9a6afce`) | same branch |
+| CI after the fix: **green** | [run 37971901553](https://github.com/zenkovski/rag-demo/actions/runs/37971901553) |
 
 ## Symptom
 
-Změna v `rag.search()` vypadala jako úklid: pořadí z RRF má přednost a vybrané úseky se jen „doplní“. CI ukázala:
+The change in `rag.search()` looked like a cleanup: the RRF order takes precedence and the selected chunks are merely "added". CI showed:
 
-| Brána | Výsledek |
+| Gate | Result |
 |---|---|
-| lint (ruff) | **zelená** |
-| typy (mypy) | **zelená** |
-| testy (112) | **zelená** |
-| **quality gate** | **červená** |
+| lint (ruff) | **green** |
+| types (mypy) | **green** |
+| tests (112) | **green** |
+| **quality gate** | **red** |
 
-Žádná výjimka, žádný pád, odpovědi pořád vypadaly rozumně. Systém jen odpovídal horší.
+No exception, no crash, the answers still looked reasonable. The system just answered worse.
 
-## Detekce a diagnóza
+## Detection and diagnosis
 
-Quality gate porovnal pořadí správného úseku **po otázkách** s `results/baseline.json` a vypsal 23 otázek:
+The quality gate compared the rank of the correct chunk **per question** with `results/baseline.json` and listed 23 questions (the output lines are verbatim from the tool, in Czech: "otázka" = question, "správný úsek" = correct chunk, "pořadí" = rank):
 
 ```
 REGRESE:
@@ -37,36 +39,36 @@ REGRESE:
   - all: v3 mrr 0.9643 -> 0.7006
 ```
 
-Z výpisu se dala vyvodit příčina, než se otevřel jediný soubor:
+From the output the cause could be inferred before a single file was opened:
 
-1. **Skoro všechny otázky klesaly z 1. místa.** Chyba se tedy netýká toho, jestli se správný úsek najde, ale **jak se seřadí**.
-2. **Gate neskončil hláškou „nelze přehrát“** (viz [ADR-001](../decisions/ADR-001-offline-quality-gate.md)). Kandidáti pro výběr LLM zůstali stejní, protože uložené odpovědi modelu seděly. Tím se vyloučilo hledání (BM25, RRF, embeddingy) a zbylo to, co se děje **po výběru**.
-3. **Šest otázek vypadlo z pěti úseků úplně**, ostatní jen klesly. To odpovídá tomu, že se výběr LLM přestal respektovat a prvních pět se bere z pořadí RRF.
-4. Mezi vypadlými je **otázka 10** (odpočinek mezi směnami) z [incidentu 6. 10.](2026-10-06-regrese-odpocinek.md): znovu se ztratil základní odstavec, tentokrát jiným mechanismem.
+1. **Almost all questions dropped from 1st place.** So the error is not about whether the correct chunk is found, but **how it is ordered**.
+2. **The gate did not end with the message "cannot replay"** (see [ADR-001](../decisions/ADR-001-offline-quality-gate.md)). The candidates for the LLM selection stayed the same, because the stored model answers fit. This ruled out retrieval (BM25, RRF, embeddings) and left what happens **after the selection**.
+3. **Six questions dropped out of the five chunks entirely**, the others only fell. This matches the LLM selection no longer being respected and the first five being taken from the RRF order.
+4. Among those that dropped out is **question 10** (rest between shifts) from the [incident of 6 Oct](2026-10-06-regrese-odpocinek.md): the base paragraph was lost again, this time by a different mechanism.
 
-## Příčina
+## Cause
 
 ```diff
 -        order = [(i, 0.0) for i in picked] + [(i, s) for i, s in fused if i not in picked]
-+        order = fused + [(i, 0.0) for i in picked if i not in dict(fused)]   # „zjednodušení“
++        order = fused + [(i, 0.0) for i in picked if i not in dict(fused)]   # "simplification"
 ```
 
-Původní řádek dává **vybrané úseky první a zbytek doplní z RRF**. „Zjednodušená“ verze dá první RRF a vybrané se přidají za něj (a většinou tam už jsou, protože je mezi kandidáty). Výběr LLM tak přestal ovlivňovat, co model dostane.
+The original line puts the **selected chunks first and fills the rest from RRF**. The "simplified" version puts RRF first and the selected ones are added after it (and mostly they are already there, since they are among the candidates). The LLM selection thus stopped influencing what the model receives.
 
-## Proč to unit testy nezachytily
+## Why the unit tests did not catch it
 
-112 testů zkoumá **jednotlivé části** (RRF, BM25, `parse_pick`, odstavec 1, odkazy…), ne jejich **složení** do finálního pořadí. Všechny části byly správně; špatné bylo jejich spojení. K tomu je potřeba kontrola celku proti něčemu, co víme, že je správně: u quality gate jsou to pořadí z měření.
+The 112 tests examine **individual parts** (RRF, BM25, `parse_pick`, paragraph 1, references…), not their **composition** into the final order. All the parts were correct; the wrong thing was their joining. For that you need a check of the whole against something known to be correct: for the quality gate, that is the ranks from the measurement.
 
-## Oprava a důkaz
+## Fix and proof
 
-Vráceno beze zbytku (`git revert`). CI po opravě je zelená ve všech třech branách a `v3 recall@5 0.9866 / mrr 0.9643` je zase přesně baseline.
+Reverted completely (`git revert`). CI after the fix is green on all three gates and `v3 recall@5 0.9866 / mrr 0.9643` is again exactly the baseline.
 
-## Co se z toho stalo trvalé
+## What became permanent
 
-1. **Nový unit test** `tests/test_search_order.py::test_final_order_puts_llm_picks_first`: falešný model vybere 3. a 1. kandidáta, první pro model musí být 3. Ověřeno: **na rozbité verzi selže, na opravené projde.** Chyba se tak příště zachytí už mezi unit testy za sekundy.
-2. Quality gate zůstává jako druhá síť pro chyby, které nikdo předem nenapadne.
+1. **A new unit test** `tests/test_search_order.py::test_final_order_puts_llm_picks_first`: a fake model picks the 3rd and 1st candidate, the first one for the model must be the 3rd. Verified: **it fails on the broken version, passes on the fixed one.** The error will thus be caught next time already among the unit tests in seconds.
+2. The quality gate stays as a second net for errors nobody thinks of in advance.
 
-## Co tato ukázka NEdokazuje
+## What this demonstration does NOT prove
 
-- Že gate zachytí **každou** regresi. Hlídá kód hledání a řazení nad uloženými odpověďmi modelu; **horší prompt nebo jiný model nezachytí** (to je živé měření, ruční a placené).
-- Že by tuhle chybu AI asistent neudělala sám. Naopak: je to přesně ten typ „vypadá to jako úklid“ změny, kterou umí napsat i nesledovaný asistent.
+- That the gate catches **every** regression. It guards the retrieval and ordering code over stored model answers; **a worse prompt or a different model it does not catch** (that is the live measurement, manual and paid).
+- That an AI assistant would not have made this error on its own. On the contrary: it is exactly the type of "looks like a cleanup" change that even an unsupervised assistant can write.

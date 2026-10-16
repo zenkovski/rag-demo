@@ -127,7 +127,7 @@ def run(with_base: bool = True) -> dict:
     # --- reranking: žádný / cross-encoder / LLM (uložené výsledky, 20 kandidátů z RRF) ---
     rc = json.loads((datasets.DATA / "rerank_compare.json").read_text(encoding="utf-8"))
     rerank = {}
-    for key, label in (("rrf5", "bez výběru (prvních 5 z RRF)"), ("ce", "cross-encoder bge-reranker-v2-m3"), ("llm", "LLM výběr (deepseek-v4.1-flash)")):
+    for key, label in (("rrf5", "no selection (first 5 from RRF)"), ("ce", "cross-encoder bge-reranker-v2-m3"), ("llm", "LLM selection (deepseek-v4.1-flash)")):
         hit = [float(r[key] is not None) for r in rc["rows"]]
         mrr = [(1.0 / r[key]) if r[key] else 0.0 for r in rc["rows"]]
         rerank[key] = {"label": label, "n": len(hit), "hit@5": dict(zip(("mean", "ci95"), (lambda m, lo, hi: (round(m, 4), [round(lo, 4), round(hi, 4)]))(*M.bootstrap_ci(hit)))),
@@ -180,14 +180,14 @@ def run(with_base: bool = True) -> dict:
     n_q = len(qs)
     ops = {
         "cost_per_question_usd": {v: round(answers[v]["cost_usd_full_run"] / n_q, 5) for v in evaluate.VERSIONS},
-        "cost_note": "cena zahrnuje volání odpovědi i AI soudce při měření; ceny z odpovědí OpenRouteru uložených v cache",
+        "cost_note": "cost includes the answer calls and the AI judge during measurement; prices taken from OpenRouter responses stored in the cache",
         "retrieval_compute_latency": replay.retrieval_latency(sample),
-        "latency_note": "jen výpočet hledání z cache (matice × vektor, BM25, RRF). Volání LLM a embedding API tu nejsou: p50/p95 celé služby se offline změřit nedá.",
+        "latency_note": "only the retrieval computation from cache (matrix × vector, BM25, RRF). LLM and embedding API calls are not included: p50/p95 of the whole service cannot be measured offline.",
     }
 
     # --- záznam o běhu ---
     record = {
-        "run": {"started": datetime.now().isoformat(timespec="seconds"), "git": git_info(), "mode": "offline replay z cache (0 $)",
+        "run": {"started": datetime.now().isoformat(timespec="seconds"), "git": git_info(), "mode": "offline replay from cache ($0)",
                 "python": platform.python_version(), "numpy": np.__version__, "platform": f"{platform.system()} {platform.machine()}",
                 "runtime_s": None, "cost_usd": 0.0},
         "config": {"embedding": rag.EMB_MODEL, "embedding_v1": rag.EMB_MODEL_V1, "llm_rewrite_rerank": rag.LLM_MODEL, "llm_answer": rag.ANSWER_MODEL,
@@ -215,9 +215,9 @@ def regressions(rec: dict, base: dict) -> list[str]:
         ra = a.get(i)
         found_b, found_a = rb is not None and rb <= rag.TOP_K, ra is not None and ra <= rag.TOP_K
         if found_b and not found_a:
-            out.append(f"otázka {i}: správný úsek byl v 5 úsecích pro model a teď tam není (pořadí {rb} -> {ra})")
+            out.append(f"question {i}: the correct chunk was among the 5 chunks for the model and is no longer there (rank {rb} -> {ra})")
         elif found_b and found_a and ra > rb:
-            out.append(f"otázka {i}: správný úsek klesl z pořadí {rb} na {ra}")
+            out.append(f"question {i}: the correct chunk dropped from rank {rb} to {ra}")
     for sp in SPLITS:
         for m in ("recall@5", "mrr"):
             x = rec["retrieval"][sp]["v3_llm_rerank"]["metrics"][m]["mean"]

@@ -1,60 +1,64 @@
-# Vývoj verzí
+[Česky](docs/cs/HISTORY.md)
 
-Co se v každé verzi změnilo, proč a jestli to pomohlo. Čísla otázku po otázce: [RESULTS.md](RESULTS.md).
+# Version history
 
-| Verze | Hlavní změna | Správně (66 otázek) | Správný § mezi 5 úseky (56) |
+What changed in each version, why, and whether it helped. Numbers question by question: [RESULTS.md](RESULTS.md).
+
+Abbreviations: ZP = Labour Code, ZZ = Employment Act, ZNP = Sickness Insurance Act, NV 590 = Government Decree 590/2006. DPČ / DPP = the two kinds of work-outside-employment agreements under Czech law (agreement to perform a job / agreement to complete a job).
+
+| Version | Main change | Correct (66 questions) | Correct § among 5 chunks (56) |
 |---|---|---|---|
-| v1 | e5-base lokálně, free model `nemotron-3-super` | 54 | 47 |
-| v2 | přepis otázky, BM25 + RRF, e5-large přes API, `deepseek-v4.1-flash` | 60 | 53 |
-| v3 | LLM vybere 5 z 20 kandidátů, poznámka mzda × plat, doptání | 65 | 56 |
-| v3.1 | odpověď píše `deepseek-v4-pro`, užitečné „nevím“ | 66 | 56 |
+| v1 | e5-base locally, free model `nemotron-3-super` | 54 | 47 |
+| v2 | question rewrite, BM25 + RRF, e5-large via API, `deepseek-v4.1-flash` | 60 | 53 |
+| v3 | LLM picks 5 of 20 candidates, mzda × plat (wage × salary) note, follow-up lookup | 65 | 56 |
+| v3.1 | the answer is written by `deepseek-v4-pro`, useful "I don't know" | 66 | 56 |
 
-## v1 → v2: hledání
+## v1 → v2: retrieval
 
-| Problém ve v1 | Úprava ve v2 |
+| Problem in v1 | Change in v2 |
 |---|---|
-| Lidé píšou „výplata“ a „odejít“, zákon „mzda“ a „okamžitě zrušit“. | **Přepis otázky** do jazyka zákona (LLM). |
-| Hledání podle významu občas mine přesné slovo. | **BM25** (hledání podle slov) nad přepsanou otázkou, spojené metodou **RRF**. |
-| Model si u DPČ přidal „300 hodin ročně“ (platí jen pro DPP). | **Přísnější pravidla** v promptu. |
-| e5-base běží jen lokálně (1 GB), na webu ne. | **e5-large přes API**, stejný model při měření i na webu. |
+| People write „výplata“ ("pay") and „odejít“ ("to leave"), the law says „mzda“ ("wage") and „okamžitě zrušit“ ("terminate with immediate effect"). | **Question rewrite** into the language of the law (LLM). |
+| Search by meaning sometimes misses the exact word. | **BM25** (word-based search) over the rewritten question, combined with **RRF**. |
+| For DPČ the model added "300 hours a year" (that applies only to DPP). | **Stricter rules** in the prompt. |
+| e5-base runs only locally (1 GB), not on the website. | **e5-large via API**, the same model in the measurements and on the website. |
 
-Hledání po krocích (správný § mezi 5 úseky, 56 otázek):
+Retrieval step by step (correct § among 5 chunks, 56 questions):
 
-| Krok | hit@5 |
+| Step | hit@5 |
 |---|---|
 | e5-base | 47 |
 | e5-large | 50 |
-| + BM25 nad laickou otázkou | **44** (zhoršení: slovo „výplata“ v zákoně není) |
-| + přepis otázky, BM25 nad přepisem | 53 |
-| + výběr přes LLM, odstavec 1 a odkazy | 56 |
+| + BM25 over the lay question | **44** (worse: the word „výplata“ is not in the law) |
+| + question rewrite, BM25 over the rewrite | 53 |
+| + selection via LLM, paragraph 1 and references | 56 |
 
-## v2 → v3: chyby podle kroku
+## v2 → v3: errors by step
 
-Každá chyba vznikne buď v **hledání** (model nedostal správný odstavec), nebo ve **čtení** (dostal ho, ale špatně použil).
+Every error arises either in **retrieval** (the model did not get the correct paragraph) or in **reading** (it got it but used it wrongly).
 
-| Chyba ve v2 | Krok | Oprava |
+| Error in v2 | Step | Fix |
 |---|---|---|
-| Nemocenská: kolik peněz | hledání (§ 29 ZNP až 11.) | LLM vybere 5 z 20 + dohledání „podle odstavce 2“ |
-| Otcovská: délka i výše | hledání (§ 38c až 10.) | LLM vybere 5 z 20 |
-| Noční práce 20 % místo 10 % | čtení (mzda × plat) | úsek nese poznámku „platí pro mzdu / plat“ |
-| Posudek „nesmí“ místo „nemusí“ | čtení | pravidlo „není povinen“ = nemusí; stabilně až s modelem Pro (v3.1) |
+| Sickness benefit: how much money | retrieval (§ 29 ZNP only 11th) | LLM picks 5 of 20 + lookup of "according to paragraph 2" |
+| Paternity benefit: length and amount | retrieval (§ 38c only 10th) | LLM picks 5 of 20 |
+| Night work 20 % instead of 10 % | reading (mzda × plat) | the chunk carries the note "applies to mzda / plat" |
+| Assessment (posudek) "must not" instead of "need not" | reading | rule „není povinen“ ("is not obliged to") = need not; stable only with the Pro model (v3.1) |
 
-Dvě pevná pravidla bez AI:
-- K vybranému odstavci 2, 3… se přidá odstavec 1 téhož §. Opravilo regresi u odpočinku mezi směnami.
-- Dohledají se odstavce, na které úsek odkazuje („ve výši podle odstavce 2“).
+Two fixed rules without AI:
+- For a selected paragraph 2, 3… paragraph 1 of the same § is added. This fixed the regression on rest between shifts.
+- Paragraphs that a chunk refers to ("in the amount according to paragraph 2") are looked up.
 
-## v3 → v3.1: nestabilní čtení a zbytečné „nevím“
+## v3 → v3.1: unstable reading and needless "I don't know"
 
-- Levný model četl stejný odstavec jednou správně, jindy špatně. Stačila změna pátého úseku v podkladech.
-- Často říkal „nevím“, i když odpověď měl před sebou („Mám nárok na lékaře?“).
-- Pokus na 5 problémových otázkách: nové zadání samo spravilo 3, silnější model sám 3, oba dohromady 5.
-- Proto odpověď píše `deepseek-v4-pro`. Přepis a výběr dál dělá levný Flash.
-- Nevýhoda: Pro cituje méně často, ne za každou větu.
+- The cheap model read the same paragraph correctly once and wrongly another time. Changing the fifth chunk in the context was enough.
+- It often said "I don't know" even though it had the answer in front of it („Mám nárok na lékaře?“ / "Am I entitled to a doctor?").
+- Experiment on 5 problem questions: the new prompt alone fixed 3, a stronger model alone 3, both together 5.
+- That is why `deepseek-v4-pro` writes the answer. The rewrite and selection are still done by the cheap Flash.
+- Drawback: Pro cites less often, not after every sentence.
 
-## Skryté přemýšlení modelu
+## Hidden reasoning of the model
 
-DeepSeek Flash před odpovědí tiše „přemýšlel“, u výběru úseků až 4 800 tokenů. Krok trval 30 s a stál 10× víc. Od v3 je vypnuté (`reasoning: {enabled: false}`): krok trvá 1,5 s a kvalita se nezhoršila. Většina z celkových 0,66 $ padla na tohle, než jsem to našel.
+Before answering, DeepSeek Flash silently "thought", up to 4 800 tokens in the chunk selection. The step took 30 s and cost 10× more. Since v3 it is turned off (`reasoning: {enabled: false}`): the step takes 1.5 s and quality did not get worse. Most of the total $0.66 was spent on this before I found it.
 
-## Větší zdroj
+## A larger source
 
-První verze měla 5 témat zákoníku práce (260 odstavců). Teď 4 předpisy (2 475 odstavců). Na stejných 24 otázkách hledání nezhoršilo (24 z 24). Měření první verze: `data/archive_5temat/`.
+The first version had 5 topics of the Labour Code (260 paragraphs). Now 4 regulations (2 475 paragraphs). On the same 24 questions retrieval did not get worse (24 of 24). Measurement of the first version: `data/archive_5temat/`.

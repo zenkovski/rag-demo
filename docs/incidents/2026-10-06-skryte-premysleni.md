@@ -1,36 +1,38 @@
-# Incident: skryté „přemýšlení“ modelu spálilo většinu rozpočtu
+[Česky](../cs/incidents/2026-10-06-skryte-premysleni.md)
 
-**Stav:** opraveno (vypnuté), poučení zapsané. **Zjištěno:** 6. 10. 2026 při zavádění v3, po utracení většiny z celkových ~0,66 $.
+# Incident: hidden model "reasoning" burned most of the budget
+
+**Status:** fixed (turned off), lesson recorded. **Found:** 6 Oct 2026 while introducing v3, after most of the total ~$0.66 had been spent.
 
 ## Symptom
 
-Krok „LLM vybere 5 z 20 kandidátů“ trval **kolem 30 s** na otázku a celé měření stálo násobně víc, než odpovídal odhad. Odpovědi vypadaly normálně, žádná chyba, žádný timeout.
+The step "LLM picks 5 of 20 candidates" took **around 30 s** per question and the whole measurement cost several times more than the estimate. The answers looked normal, no error, no timeout.
 
-## Příčina
+## Cause
 
-Model `deepseek-v4.1-flash` přes OpenRouter před odpovědí tiše generuje „reasoning“ tokeny, které se neukazují v odpovědi, ale **platí se a trvají**. U výběru úseků to bylo až **4 800 tokenů** na jedno volání, přitom odpověď měla pár znaků („3, 1, 7“).
+The model `deepseek-v4.1-flash` via OpenRouter silently generates "reasoning" tokens before answering, which do not appear in the answer but are **paid for and take time**. In the chunk selection it was up to **4 800 tokens** per call, while the answer was a few characters ("3, 1, 7").
 
-Nikdo to nečekal, protože výstup byl krátký. Cena a čas se skrývaly v poli `usage`, které se nekontrolovalo.
+Nobody expected it, because the output was short. The cost and time were hidden in the `usage` field, which was not being checked.
 
-## Oprava
+## Fix
 
-`reasoning: {"enabled": false}` u kroků, které to nepotřebují (přepis, výběr; v kódu parametr `reasoning=False`, v klíči cache je odlišen příponou `|noreason`, aby se staré uložené odpovědi nepletly s novými).
+`reasoning: {"enabled": false}` for the steps that do not need it (rewrite, selection; in the code the parameter `reasoning=False`, distinguished in the cache key by the suffix `|noreason`, so old stored answers are not mixed up with new ones).
 
-| | S přemýšlením | Bez |
+| | With reasoning | Without |
 |---|---|---|
-| Čas kroku výběru | ~30 s | ~1,5 s |
-| Cena kroku | ~10× víc | základ |
-| Kvalita výběru | – | **nezhoršila se** (podle zápisu v [HISTORY.md](../../HISTORY.md); samostatné srovnání před/po neuchovávám) |
+| Time of the selection step | ~30 s | ~1.5 s |
+| Cost of the step | ~10× more | baseline |
+| Quality of the selection | – | **did not get worse** (per the note in [HISTORY.md](../../HISTORY.md); I do not keep a separate before/after comparison) |
 
-(Zdroj čísel: [HISTORY.md](../../HISTORY.md#skryté-přemýšlení-modelu). Čas a cena jsou odhady z doby incidentu; změřený rozdíl před/po jsem do dat neuložil, to je slabina.)
+(Source of the numbers: [HISTORY.md](../../HISTORY.md#hidden-reasoning-of-the-model). Time and cost are estimates from the time of the incident; the measured before/after difference was not saved in the data, which is a weakness.)
 
-## Poučení (a co se změnilo)
+## Lesson (and what changed)
 
-1. **Před hromadným během změřit jedno volání** včetně času a počtu tokenů z `usage`, ne jen délky výstupu.
-2. Každý běh ukládá cenu (`cost_usd` v `data/eval.json`) a od teď i do záznamu o běhu (`results/…json`, pole `ops.cost_per_question_usd`).
-3. Odpovědi modelů se **ukládají do cache podle vstupu**, takže opakované měření nestojí nic. Kvůli tomu je teď možné pouštět měření a quality gate zdarma (viz [ADR-001](../decisions/ADR-001-offline-quality-gate.md)).
-4. **Pevný limit na klíči** u poskytovatele (0,75 $) je nejtvrdší pojistka. Tento incident ji nespustil, ale ukázal, proč tam musí být.
+1. **Before a bulk run, measure one call**, including time and the token count from `usage`, not just the length of the output.
+2. Every run stores the cost (`cost_usd` in `data/eval.json`) and from now on also in the run record (`results/…json`, field `ops.cost_per_question_usd`).
+3. Model answers are **cached by input**, so repeated measurement costs nothing. That is why it is now possible to run the measurement and the quality gate for free (see [ADR-001](../decisions/ADR-001-offline-quality-gate.md)).
+4. A **hard limit on the key** at the provider ($0.75) is the toughest safeguard. This incident did not trigger it, but it showed why it must be there.
 
-## Co to NEdokazuje
+## What this does NOT prove
 
-Že reasoning je vždy zbytečný. U odpovědi na těžké otázky může pomoci; tady se to nezkoušelo (odpověď píše silnější model bez reasoningu a kvalita se měří). Rozhodlo se podle změřeného času, ceny a kvality na těchto 56 otázkách.
+That reasoning is always unnecessary. For answering hard questions it may help; that was not tried here (the answer is written by a stronger model without reasoning and the quality is measured). The decision was made on the measured time, cost and quality on these 56 questions.

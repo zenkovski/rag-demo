@@ -1,97 +1,101 @@
-# Metodika měření
+[Česky](cs/evaluation-methodology.md)
 
-Jak se měří, co čísla znamenají a co z nich **nelze** vyvodit. Výsledky jsou v [benchmark-results.md](benchmark-results.md) (generované), chyby v [failure-gallery.md](failure-gallery.md).
+# Evaluation methodology
 
-## 1. Datová sada
+How measurement is done, what the numbers mean and what they **cannot** be used to conclude. The results are in [benchmark-results.md](benchmark-results.md) (generated), the errors in [failure-gallery.md](failure-gallery.md).
 
-**Schéma** (`data/testset*.json`, jeden záznam = jedna otázka):
+Abbreviations: ZP = Labour Code, ZZ = Employment Act, ZNP = Sickness Insurance Act, NV 590 = Government Decree 590/2006. Chunk IDs like `ZP § 56 odst. 1` mean Labour Code, section 56, paragraph 1.
 
-| Pole | Význam |
+## 1. The dataset
+
+**Schema** (`data/testset*.json`, one record = one question):
+
+| Field | Meaning |
 |---|---|
-| `id` | číslo otázky, v rámci projektu unikátní (1–66, nová sada 101–124) |
-| `q` | otázka tak, jak by ji napsal laik |
-| `gold` | věcně správná odpověď (ručně napsaná podle textu zákona) |
-| `chunks` | ID správných odstavců (`ZP § 56 odst. 1`). **Prázdný seznam = v předpisech odpověď není a správně je „nevím“.** Při dvou správných odstavcích se Recall počítá jako podíl nalezených |
-| `level`, `type` | obtížnost, u nové sady typ případu (přesný odkaz, více odstavců, nejednoznačná, zastaralá, injekce…) |
-| `canary` | (jen útoky) řetězec, který se v odpovědi nesmí objevit |
+| `id` | question number, unique within the project (1–66, new set 101–124) |
+| `q` | the question as a layperson would write it |
+| `gold` | the factually correct answer (written by hand from the text of the law) |
+| `chunks` | IDs of the correct paragraphs (`ZP § 56 odst. 1`). **An empty list = the regulations do not contain the answer and the correct reply is "I don't know" („nevím“).** With two correct paragraphs, Recall is computed as the share found |
+| `level`, `type` | difficulty; for the new set the type of case (exact reference, multiple paragraphs, ambiguous, outdated, injection…) |
+| `canary` | (attacks only) a string that must not appear in the answer |
 
-**Původ dat.** Otázky a správné odpovědi vznikaly s AI asistentem (Claude Code) podle textu zákona, majitel projektu je prošel. U nové sady v4 se správné odstavce hledaly prostým prohledáním dat a čtením textu, **ne podle výstupu systému**; jejich správnost nemá nezávislou právní kontrolu. Správné odstavce se kontrolují testem (`test_gold_chunks_exist`: každý musí v datech být).
+**Origin of the data.** The questions and correct answers were created with an AI assistant (Claude Code) from the text of the law, and the project owner went through them. For the new set v4, the correct paragraphs were found by plainly searching the data and reading the text, **not from the system's output**; their correctness has no independent legal review. The correct paragraphs are checked by a test (`test_gold_chunks_exist`: each must be in the data).
 
-**Co v sadách je a není.** 66 otázek: 56 s odpovědí, 10 záměrně bez ní. Všechny jsou formulované jako otázky laika. **Chybí** přesné odkazy na paragrafy, otázky přes více odstavců a nejednoznačné otázky, tedy typy, kde se mají projevit rozdíly mezi BM25 a embeddingy. Proto je napsaná nová sada (viz 4).
+**What the sets contain and do not contain.** 66 questions: 56 with an answer, 10 deliberately without one. All are phrased as a layperson's questions. **Missing** are exact references to sections, questions spanning several paragraphs and ambiguous questions, i.e. the types where differences between BM25 and embeddings should show up. That is why a new set has been written (see 4).
 
-## 2. Dev, validation, test a prevence úniku
+## 2. Dev, validation, test and leakage prevention
 
-**Problém.** Podle chyb na otázkách se systém opakovaně upravoval (v2, v3, v3.1). Číslo naměřené na otázkách, podle kterých se ladilo, je **nadsazené**: systém se mohl přizpůsobit právě jim. Tomu se říká únik (data leakage) a vyhnout se mu jde jen tak, že se sada, na které se číslo uvádí, předem zamkne.
+**The problem.** The system was repeatedly changed based on errors on questions (v2, v3, v3.1). A number measured on the questions it was tuned on is **inflated**: the system could have adapted to exactly those. This is called data leakage, and it can be avoided only by locking in advance the set on which the number is reported.
 
-**Pravidla** (`data/splits.json`, platí vůči *finální* verzi v3.1):
+**Rules** (`data/splits.json`, valid with respect to the *final* version v3.1):
 
-| Role | Definice | Sady | Otázek s odpovědí |
+| Role | Definition | Sets | Questions with an answer |
 |---|---|---|---|
-| **dev** | podle chyb na ní se kód, prompt nebo model měnil | 1–46 | 40 |
-| **validation** | napsaná před spuštěním verze, ale její výsledky ovlivnily další změnu | 47–56 | 8 |
-| **test** | napsaná před spuštěním finální verze, od té doby se podle ní nic neměnilo | 57–66 | 8 |
-| **test v4** *(plánovaná)* | napsaná, zmrazená, **zatím nespuštěná**; pustí se jednou | 101–124 | 17 |
+| **dev** | code, prompt or model was changed based on errors on it | 1–46 | 40 |
+| **validation** | written before the version was run, but its results influenced the next change | 47–56 | 8 |
+| **test** | written before the final version was run, nothing was changed based on it since | 57–66 | 8 |
+| **test v4** *(planned)* | written, frozen, **not yet run**; will be run once | 101–124 | 17 |
 
-1. Role se přidělují při psaní sady a **nikdy zpětně**: sada, podle které se cokoli opravilo, už není test.
-2. Důkaz, kdy sada vznikla: commit v gitu (sloupec `commit` v `splits.json`). Tím se dá ověřit pořadí „sada → verze“.
-3. Vážený součet v ablaci se ladí **jen na dev** (`select_weight`), výsledek se hlásí na všech rolích zvlášť.
-4. Jednorázovost sady v4 vynucuje `tools/run_heldout.py`: před prvním voláním zapíše zámek s otisky kódu a promptů; druhý běh odmítne.
+1. Roles are assigned when a set is written and **never retroactively**: a set based on which anything was fixed is no longer a test.
+2. Proof of when a set was created: a git commit (the `commit` column in `splits.json`). This makes the order "set → version" verifiable.
+3. The weighted sum in the ablation is tuned **only on dev** (`select_weight`), and the result is reported on each role separately.
+4. The one-off nature of set v4 is enforced by `tools/run_heldout.py`: before the first call it writes a lock with fingerprints of the code and prompts; a second run is refused.
 
-**Poctivá oprava dřívějšího tvrzení.** README uvádělo „20 z 20 na otázkách napsaných před spuštěním verze“. Přesně vzato: otázky 47–56 byly napsané před spuštěním v3, ale jejich chyby ovlivnily v3.1 (silnější model, pravidlo před „nevím“). **Skutečně netknutých je 10 otázek (57–66)**, a 10 z 10 má dolní mez 95% intervalu spolehlivosti kolem 0,72. Číslo „66 z 66“ je nadsazené a tak je i označené.
+**An honest correction of an earlier claim.** The README stated "20 of 20 on questions written before the version was run". Strictly speaking: questions 47–56 were written before v3 was run, but their errors influenced v3.1 (a stronger model, a rule before "I don't know"). **Truly untouched are 10 questions (57–66)**, and 10 of 10 has a lower bound of the 95 % confidence interval of about 0.72. The number "66 of 66" is inflated and is labelled as such.
 
-## 3. Metriky
+## 3. Metrics
 
-Podrobně v `tools/metrics.py` (každá funkce má test na ručně spočítaném příkladu).
+Details in `tools/metrics.py` (every function has a test on a hand-computed example).
 
-| Metrika | Co měří | Co z ní NEvyplývá |
+| Metric | What it measures | What does NOT follow from it |
 |---|---|---|
-| **Recall@k** | jaký podíl správných odstavců je mezi prvními k | nic o pořadí uvnitř k; že odstavec stačí k odpovědi |
-| **hit@k** | je mezi prvními k aspoň jeden správný odstavec | u otázky se dvěma správnými odstavci skryje, že jeden chybí (starší ukazatel v RESULTS.md) |
-| **MRR** | průměr 1 / pořadí prvního správného odstavce | silně odměňuje 1. místo; o druhém správném odstavci neví |
-| **nDCG@k** | pořadí s důrazem na horní místa, správné odstavce stejně důležité | nerozlišuje „stačí“ a „potřebné“ |
-| **Správnost odpovědi** | věcná shoda se `gold`, ruční kontrola proti textu zákona | je to úsudek; AI soudce se mýlí (viz galerii), proto platí druhý verdikt a moje kontrola |
-| **Správné „nevím“ / zbytečné „nevím“ / odpověď bez zdroje** | odmítnutí tam, kde zdroj mlčí / odmítnutí, i když zdroj byl / odpověď na otázku, kterou zákon neřeší | „nevím“ samo není úspěch: systém, který vždy odmítne, má 100 % správných odmítnutí |
-| **Kontrola citací a čísel** (`answer_checks.py`) | citace míří na dodaný úsek, číslo v odpovědi je v citovaném úseku | netvrdí, že věta z úseku vyplývá; hlásí **podezření**, ne chybu (odvozené součty jsou správně, ale nedoložené) |
-| **Kontext** (pokrytí, relevance, duplicity) | – | **neměří se.** Pokrytí by šlo spočítat z `chunks`, duplicity ne. Neimplementováno. |
-| **Latence, cena** | cena z uložených odpovědí OpenRouteru; čas výpočtu hledání z cache | **p50/p95 celé služby nejsou změřené**, protože by to vyžadovalo živá volání; viz [limitations.md](limitations.md) |
+| **Recall@k** | what share of the correct paragraphs is among the first k | nothing about the order within k; that a paragraph is sufficient for the answer |
+| **hit@k** | whether at least one correct paragraph is among the first k | for a question with two correct paragraphs, it hides that one is missing (an older indicator in RESULTS.md) |
+| **MRR** | mean of 1 / rank of the first correct paragraph | strongly rewards 1st place; knows nothing about a second correct paragraph |
+| **nDCG@k** | ranking with emphasis on the top places, correct paragraphs equally important | does not distinguish "sufficient" from "needed" |
+| **Answer correctness** | factual agreement with `gold`, manual check against the text of the law | it is a judgement; the AI judge is wrong at times (see the gallery), so the second verdict and my check apply |
+| **Correct "I don't know" / needless "I don't know" / answer without a source** | refusal where the source is silent / refusal although the source was there / an answer to a question the law does not address | "I don't know" alone is not a success: a system that always refuses has 100 % correct refusals |
+| **Citation and number check** (`answer_checks.py`) | the citation points to a supplied chunk, the number in the answer is in the cited chunk | does not claim that the sentence follows from the chunk; reports a **suspicion**, not an error (derived sums are correct but not documented) |
+| **Context** (coverage, relevance, duplicates) | – | **not measured.** Coverage could be computed from `chunks`, duplicates could not. Not implemented. |
+| **Latency, cost** | cost from stored OpenRouter responses; search compute time from the cache | **p50/p95 of the whole service are not measured**, because that would require live calls; see [limitations.md](limitations.md) |
 
-**Proč ne samotný LLM-as-a-judge.** Soudce (DeepSeek) přehlédl několik chybných „nevím“ a občas označil správnou odpověď za chybu. Proto se každá odpověď ještě jednou porovná s textem zákona (Claude Opus 5.5), tento verdikt prošel majitel projektu, a vedle toho jsou deterministické kontroly, které žádný model nepotřebují. Soudce tedy **není zdroj pravdy**, je to první filtr.
+**Why not an LLM-as-a-judge alone.** The judge (DeepSeek) overlooked several wrong "I don't know" answers and at times marked a correct answer as an error. That is why every answer is compared once more with the text of the law (Claude Opus 5.5), this verdict was reviewed by the project owner, and alongside it there are deterministic checks that need no model. The judge is therefore **not the source of truth**, it is a first filter.
 
-## 4. Statistika a nejistota
+## 4. Statistics and uncertainty
 
-- **Interval spolehlivosti (95 %).** Bootstrap přes otázky (10 000 losování, pevný seed). Ukazuje, jak by se číslo změnilo s jinou sadou podobných otázek. **Neukazuje** náhodnost modelu.
-- **Wilson** pro podíly (správných odpovědí): funguje i u 10 z 10 (≈ 0,72–1,00).
-- **Párový znaménkový test** pro porovnání dvou systémů na stejných otázkách: počítají se jen otázky, kde se liší. Rozdíl 5 : 0 dává p = 0,0625, tedy ještě **ne** významné. Rozdíl 9 : 0 (výběr LLM proti RRF) dává p = 0,004.
-- **Co se neříká.** U rozdílu o 1–3 otázky z 56 se netvrdí „lepší“, jen „neprůkazný rozdíl“. Takhle dopadly BM25, přepis, vážený součet i srovnání e5-base a e5-large.
-- **Opakované běhy stochastických částí.** LLM volání mají teplotu 0, ale ani tak není nové volání vždy stejné. Čísla odpovědí platí pro **jeden uložený běh**. Opakované běhy s rozptylem se **nedělaly** (stály by peníze). Slabina je zapsaná v [limitations.md](limitations.md).
+- **Confidence interval (95 %).** Bootstrap over questions (10 000 draws, fixed seed). It shows how the number would change with a different set of similar questions. It does **not** show the randomness of the model.
+- **Wilson** for proportions (correct answers): works even for 10 of 10 (≈ 0.72–1.00).
+- **Paired sign test** for comparing two systems on the same questions: only questions where they differ are counted. A difference of 5 : 0 gives p = 0.0625, so still **not** significant. A difference of 9 : 0 (LLM selection versus RRF) gives p = 0.004.
+- **What is not claimed.** For a difference of 1–3 questions out of 56, "better" is not claimed, only "inconclusive difference". That is how BM25, the rewrite, the weighted sum and the comparison of e5-base and e5-large turned out.
+- **Repeated runs of the stochastic parts.** The LLM calls have temperature 0, but even so a new call is not always the same. The answer numbers apply to **one stored run**. Repeated runs with variance were **not done** (they would cost money). The weakness is recorded in [limitations.md](limitations.md).
 
-## 5. Experimenty (ablace)
+## 5. Experiments (ablations)
 
-Spouští se jedním příkazem (`python tools/experiments.py`), běží offline z uložených výsledků a **nestojí nic**. Každý běh uloží konfiguraci, otisky dat a promptů, verze modelů, metriky, runtime, cenu a seznam regresí.
+Run with one command (`python tools/experiments.py`), offline from stored results, and it **costs nothing**. Every run saves the configuration, fingerprints of data and prompts, model versions, metrics, runtime, cost and a list of regressions.
 
-| Otázka z ablace | Jak se zkoumá | Stav |
+| Question from the ablation | How it is examined | Status |
 |---|---|---|
-| dense × BM25 × hybrid | 9 systémů, Recall@k, MRR, nDCG, CI | hotovo |
-| RRF × vážený součet | váha ladí jen dev; párový test | hotovo |
-| parametr k v RRF | k = 10, 30, 60, 100 | hotovo |
-| přepis otázky zapnutý/vypnutý | `rrf_dense_bm25` × `rrf_v2` | hotovo |
-| bez výběru × cross-encoder × LLM | z uložených výsledků | hotovo |
-| e5-base × e5-large | lokálně přes `sentence-transformers` | hotovo (jen lokálně, CI přeskakuje) |
-| **velikost a strategie dělení** | – | **neděláno**: vyžaduje znovu spočítat embeddingy (placené API) |
-| **jiné embedding modely, kvantizace** | – | **neděláno**, stejný důvod; int8 kvantizace je ověřená jinde (DESIGN.md §3) |
+| dense × BM25 × hybrid | 9 systems, Recall@k, MRR, nDCG, CI | done |
+| RRF × weighted sum | weight tuned on dev only; paired test | done |
+| parameter k in RRF | k = 10, 30, 60, 100 | done |
+| question rewrite on/off | `rrf_dense_bm25` × `rrf_v2` | done |
+| no selection × cross-encoder × LLM | from stored results | done |
+| e5-base × e5-large | locally via `sentence-transformers` | done (local only, CI skips it) |
+| **chunk size and strategy** | – | **not done**: requires recomputing embeddings (paid API) |
+| **other embedding models, quantisation** | – | **not done**, same reason; int8 quantisation is verified elsewhere (DESIGN.md §3) |
 
-## 6. Co se pouští živě a kdy
+## 6. What is run live and when
 
-| Měření | Příkaz | Cena | Kdy |
+| Measurement | Command | Cost | When |
 |---|---|---|---|
-| celá sada v1–v3 s odpověďmi a soudcem | `tools/evaluate.py` | ~0,07 $ | po změně promptu nebo modelu |
-| **nová zmrazená sada v4** | `tools/run_heldout.py --live` | ~0,03 $ | **jednou**, na zmrazeném kódu |
-| bezpečnostní injekce | `tools/security_eval.py --live` | ~0,02 $ | po změně promptu nebo funkce; **zatím nespuštěno** |
+| the whole set v1–v3 with answers and judge | `tools/evaluate.py` | ~$0.07 | after changing a prompt or model |
+| **the new frozen set v4** | `tools/run_heldout.py --live` | ~$0.03 | **once**, on the frozen code |
+| security injections | `tools/security_eval.py --live` | ~$0.02 | after changing a prompt or function; **not yet run** |
 
-Všechno ostatní běží zdarma a při každém pushi.
+Everything else runs for free and on every push.
 
-## 7. Co by změnilo závěry
+## 7. What would change the conclusions
 
-- Dostatek otázek na **přesné odkazy** a **čísla paragrafů**: BM25 by tu mohl vyhrát a tabulka v sekci 2 benchmarku by se musela přepsat (ADR-004 je vedený jako otevřený).
-- Víc než 56 otázek s odpovědí: intervaly se zúží, rozdíly o 1–3 otázky by se daly rozlišit.
-- Jiný zdroj než zákon (PDF s tabulkami, verze dokumentů): závěry o dělení textu a hledání se nepřenesou (viz [DESIGN.md §11](../DESIGN.md#11-co-by-chybělo-do-provozu)).
+- Enough questions on **exact references** and **section numbers**: BM25 might win there and the table in section 2 of the benchmark would have to be rewritten (ADR-004 is kept as open).
+- More than 56 questions with an answer: the intervals would narrow, differences of 1–3 questions could be distinguished.
+- A source other than a law (PDFs with tables, document versions): the conclusions about chunking and retrieval do not transfer (see [DESIGN.md §11](../DESIGN.md#11-what-would-be-missing-for-production)).

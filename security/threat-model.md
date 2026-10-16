@@ -1,61 +1,63 @@
-# Model hrozeb
+[Česky](../docs/cs/security/threat-model.md)
 
-Co chráním, před kým, čím a co zůstává otevřené. Platí pro **tohle demo** (veřejná data, žádní uživatelé, žádné nahrávání dokumentů),
-ne pro obecnou „AI platformu“. Kde bezpečnostní vlastnost v projektu **není**, je to napsané. Nic tu netvrdí „je to bezpečné“:
-testy dokazují jen to, co zkoušejí (sloupec „Ověřeno“).
+# Threat model
 
-Související: [testy](../tests/test_security.py) · [živá sada injekcí](injection_cases.json) · [ADR-003](../docs/decisions/ADR-003-opravneni-v-hledani.md) · [limity](../docs/limitations.md)
+What I protect, from whom, with what, and what remains open. It applies to **this demo** (public data, no users, no document uploads),
+not to a general "AI platform". Where a security property is **not** in the project, it says so. Nothing here claims "it is secure":
+the tests prove only what they try (the "Verified" column).
 
-## 1. Co chráním (aktiva)
+Related: [tests](../tests/test_security.py) · [live injection set](injection_cases.json) · [ADR-003](../docs/decisions/ADR-003-opravneni-v-hledani.md) · [limitations](../docs/limitations.md)
 
-| # | Aktivum | Proč na něm záleží |
+## 1. What I protect (assets)
+
+| # | Asset | Why it matters |
 |---|---|---|
-| A1 | OpenRouter API klíč a jeho rozpočet (limit 0,75 $, ke dni 9. 10. 2026 zbývá ~0,09 $) | únik = cizí útrata; vyčerpání = demo přestane odpovídat |
-| A2 | Správnost odpovědí | lidé mohou věřit nesprávné právní informaci |
-| A3 | Dostupnost živého dema | je to ukázka pro zaměstnavatele |
-| A4 | Otázky návštěvníků (ukládají se do Upstash Redis) | volný text může obsahovat osobní údaje |
-| A5 | Přístup do Upstash a Vercelu (tokeny) | zápis do databáze, nasazení |
-| A6 | Zdrojové texty zákonů | veřejné, důvěrnost nehraje roli; záleží na **celistvosti** (kdo je změní, změní odpovědi) |
+| A1 | OpenRouter API key and its budget (limit $0.75, as of 9 Oct 2026 ~$0.09 remains) | leak = someone else's spending; exhaustion = the demo stops answering |
+| A2 | Correctness of answers | people may trust incorrect legal information |
+| A3 | Availability of the live demo | it is a showcase for employers |
+| A4 | Visitors' questions (stored in Upstash Redis) | free text may contain personal data |
+| A5 | Access to Upstash and Vercel (tokens) | writing to the database, deployment |
+| A6 | Source texts of the laws | public, confidentiality plays no role; what matters is **integrity** (whoever changes them changes the answers) |
 
-## 2. Hranice důvěry
+## 2. Trust boundaries
 
 ```
-prohlížeč (nedůvěryhodný) ──► Vercel funkce ask.js / hit.js ──► OpenRouter (cizí služba, dostane text otázky)
-                                    │                         └► Upstash Redis (počítadla, vlastní otázky)
-                                    └► _index.json (zmrazená data zákonů, součást nasazení)
-výstup modelu = NEDŮVĚRYHODNÝ (může obsahovat cokoli, i HTML)
+browser (untrusted) ──► Vercel function ask.js / hit.js ──► OpenRouter (third-party service, receives the question text)
+                                    │                      └► Upstash Redis (counters, custom questions)
+                                    └► _index.json (frozen law data, part of the deployment)
+model output = UNTRUSTED (may contain anything, even HTML)
 ```
 
-Důvěryhodné: kód funkce, zmrazená data, systémový prompt. Nedůvěryhodné: všechno z prohlížeče (včetně hlaviček `Origin` a `x-rag-client`, které jde padělat) a všechno, co vrátí model.
+Trusted: the function code, the frozen data, the system prompt. Untrusted: everything from the browser (including the `Origin` and `x-rag-client` headers, which can be forged) and everything the model returns.
 
-## 3. Hrozby, obrany a zbytková rizika
+## 3. Threats, defences and residual risks
 
-| ID | Hrozba | Co brání | Ověřeno (test) | Zbytkové riziko |
+| ID | Threat | What prevents it | Verified (test) | Residual risk |
 |---|---|---|---|---|
-| T1 | **Přímá prompt injekce** v otázce („ignoruj pravidla…“, únik promptu, změna jazyka) | Systémový prompt je oddělená zpráva; otázka je jen ve zprávě uživatele. Mezery a zalomení se sjednotí, takže v otázce nejde vytvořit řádek, který by se tvářil jako blok „Úseky zákona:“ nebo „Otázka:“. Strop 300 znaků. | `test_web_function`: systémový prompt zůstane beze změny, otázka nevloží vlastní blok. **Chování modelu proti injekci nebylo změřeno**: živá sada 14 případů je připravená ([injection_cases.json](injection_cases.json)), ale nespuštěná (stojí ~0,02 $ a klíč webu má zbývající rozpočet jen pár centů). | **Střední a neznámé.** Dokud se živá sada nespustí, nevím, jak se model zachová. Detektory jsou otestované jen na vymyšlených špatných odpovědích. |
-| T2 | **Nepřímá injekce** (instrukce v dokumentu) | Zdrojem je jen zmrazený text zákonů ze zakonyprolidi.cz, žádné nahrávání. Pravidlo 3 v promptu („úsek o jiné situaci nepoužívej“). Otisky dat (`results/…json`) odhalí změnu souborů. | Otisk dat v každém záznamu o běhu. Případ INJ-06 a INJ-07 napodobují úsek s instrukcí v otázce (živě neověřeno). | Nízké dnes, **vysoké, kdyby přibyly uživatelské dokumenty.** Tam by bylo potřeba čistit text a označovat zdroj důvěry. Neimplementováno. |
-| T3 | **Neoprávněný přístup k dokumentům** | Dnes nemá smysl: všechno je veřejné. Jako vzor je v hledací vrstvě `rag.search(..., allow={"ZP"})`: nepovolený předpis nedostane skóre, takže se nedostane k modelu, do kandidátů, stopy ani citací. Prompt o něm vůbec neví. | `test_disallowed_law_never_reaches_model_candidates_or_trace` (20 otázek, i obsah promptu pro výběr kandidátů), `test_filter_really_filters…`, `test_empty_allow_list…`. Mutační kontrola: po vypnutí masky test selže. | Filtr je jen podle **předpisu**, ne podle uživatele. Webová funkce `allow` nepoužívá (nemá komu). Cache odpovědí neexistuje, takže tu není cesta úniku přes cache. **Kdyby se cache přidala, klíč by musel obsahovat množinu povolených dokumentů.** |
-| T4 | **Izolace tenantů** | Neexistují tenanti ani uživatelé. | – | Neřešeno záměrně. Nepředstírám multi-tenant systém, který neexistuje. |
-| T5 | **Únik tajemství** | Klíč jen v proměnné prostředí na Vercelu a v lokálním `.env` (v `.gitignore`). Nasazuje se jen složka `site/`. Odpověď funkce klíč nikdy nevrací. | `test_no_secrets_in_tracked_files` (vzory klíčů ve všech sledovaných souborech), `test_env_example_has_no_value`, harness: klíč se neobjeví v odpovědi ani v ničem, co jde klientovi; jde jen na `openrouter.ai` v hlavičce. | Model klíč nikdy nedostane, takže ho nemůže vyzradit. Nasazuje se jen složka `site/`; že v ní ani jinde ve sledovaných souborech žádné tajemství není, hlídá test. Nepokrývá soubory mimo git (lokální `.env` a `.tmp/`). |
-| T6 | **Zneužití nástrojů agenta** | Žádný agent ani nástroje neexistují. | – | N/A. |
-| T7 | **Denial-of-wallet** (cizí útrata) | 10 otázek na IP a den, strop 400 na instanci funkce, proof of work (4 nuly SHA-256, 1–3 s v prohlížeči), 300 znaků, vypnuté skryté přemýšlení modelu (cena), **pevný limit 0,75 $ přímo na klíči u poskytovatele** (nejtvrdší pojistka). | Harness: 11. otázka z jedné IP → 429 a **žádné volání modelu**; stejný proof of work podruhé → 400; jedna otázka = právě 4 volání modelu; neúspěšné volání se do limitu nepočítá. `test_worst_case_daily_cost_fits_into_key_limit`: 400 × 0,00112 $ = 0,45 $. | Počítadla jsou **v paměti funkce**, ne v databázi: víc instancí = víc povolených otázek. Útočník s mnoha IP a výpočtem může vyčerpat zbývajících ~0,09 $ za den. Peníze jsou chráněné (strop je tvrdý), dostupnost ne: web pak ukáže „Rozpočet na živé otázky je vyčerpaný“. |
-| T8 | **Škodlivý vstup a výstup (XSS)** | Odpověď modelu se před vykreslením escapuje (`esc`) a až potom se dělá tučné písmo, zalomení a tlačítka citací. | `test_rendered_answer_cannot_inject_html` spouští **skutečný kód** `esc()` a `fmt()` z `site/index.html` na 5 škodlivých řetězcích. Mutační kontrola: po rozbití `esc` test selže. | Žádný Content-Security-Policy, takže kdyby `esc` někdo rozbil, prohlížeč nic nezachytí. Neřešeno. |
-| T9 | **Zneužití analytiky** (`hit.js`) | **Nalezeno při auditu:** `hit.js` zapisoval do Redisu libovolný řetězec z požadavku (stačí padělaná hlavička `Origin`), šlo ho zaplnit unikátními klíči. Oprava: počítají se jen otázky ze seznamu připravených (`site/api/_presets.json`, generuje `tools/make_presets.py`). | Harness: cizí řetězec se do databáze nezapíše, připravená otázka ano. | **Oprava je v repozitáři, ale není nasazená.** Do nasazení na Vercel se stará verze chová jako dřív. |
-| T10 | **Padělání původu požadavku** | Hlavičky `Origin` a `x-rag-client` jdou padělat z jakéhokoli skriptu. Neberu je jako ochranu, jen jako filtr nejjednodušších robotů. Skutečnou ochranou jsou proof of work, limity a rozpočet. | Harness: cizí původ → 403 (ověřuje, že filtr dělá, co dělá, ne že je neprolomitelný). | Viz T7. |
-| T11 | **Soukromí vlastních otázek** | Ukládá se text otázky, čas a příznak „nevím“, bez IP, posledních 5 000 záznamů (LTRIM). Stránka to říká v patičce. | – | „Anonymně“ je nadsazené: volný text může obsahovat jména a jiné osobní údaje, které tam návštěvník napíše. Chybí filtr a pevná doba uchování. |
-| T12 | **Podvržený skript z CDN** | D3 se načítá z cdnjs s pevnou verzí, ikony z unpkg (verze 2.1.1). | – | **Bez Subresource Integrity.** Kdyby CDN vydala jiný obsah, běžel by na stránce. Oprava: SRI hash nebo vlastní kopie souboru. Neprovedeno. |
-| T13 | **Nesprávná odpověď o právu** (integrita) | Odpovídá jen z dodaných úseků, každé tvrzení se cituje, „není to právní porada“, chyby jsou veřejně vidět. | Měření kvality ([benchmark-results.md](../docs/benchmark-results.md)). | **Reálné a změřené:** u otázky „Může mi zaměstnavatel dát výpověď, když jsem nemocný?“ web odpovídá zavádějícím způsobem ([galerie chyb](../docs/failure-gallery.md#otevřené-chyby-zatím-neopravené)). |
-| T14 | **Zastaralý nebo změněný zákon** | Data jsou zmrazená k 6. 10. 2026, otisky souborů v záznamu o běhu. Web i README to říkají. | – | Zákony se mění. Automatická aktualizace neexistuje (popsaná v [DESIGN.md](../DESIGN.md#11-co-by-chybělo-do-provozu)). |
+| T1 | **Direct prompt injection** in the question ("ignore the rules…", prompt leak, language switch) | The system prompt is a separate message; the question is only in the user message. Whitespace and line breaks are normalised, so the question cannot create a line that pretends to be the block "Úseky zákona:" (law chunks) or "Otázka:" (question). Limit of 300 characters. | `test_web_function`: the system prompt stays unchanged, the question does not insert its own block. **The model's behaviour against injection has not been measured**: a live set of 14 cases is prepared ([injection_cases.json](injection_cases.json)) but not run (it costs ~$0.02 and the website key has only a few cents of budget left). | **Medium and unknown.** Until the live set is run, I do not know how the model behaves. The detectors are tested only on made-up bad answers. |
+| T2 | **Indirect injection** (instructions in a document) | The source is only the frozen text of the laws from zakonyprolidi.cz, no uploads. Rule 3 in the prompt ("do not use a chunk about a different situation"). Data fingerprints (`results/…json`) reveal a change of files. | A data fingerprint in every run record. Cases INJ-06 and INJ-07 imitate a chunk with an instruction inside the question (not verified live). | Low today, **high if user documents were added.** There the text would need to be sanitised and the trust source labelled. Not implemented. |
+| T3 | **Unauthorised access to documents** | Pointless today: everything is public. As a pattern there is `rag.search(..., allow={"ZP"})` in the retrieval layer: a disallowed regulation gets no score, so it does not reach the model, candidates, trace or citations. The prompt does not know about it at all. | `test_disallowed_law_never_reaches_model_candidates_or_trace` (20 questions, including the content of the prompt for candidate selection), `test_filter_really_filters…`, `test_empty_allow_list…`. Mutation check: after switching off the mask the test fails. | The filter is only by **regulation**, not by user. The web function does not use `allow` (no one to use it for). There is no answer cache, so there is no leak path through a cache. **If a cache were added, its key would have to contain the set of allowed documents.** |
+| T4 | **Tenant isolation** | There are no tenants or users. | – | Deliberately not addressed. I do not pretend to be a multi-tenant system that does not exist. |
+| T5 | **Secret leakage** | The key only in an environment variable on Vercel and in the local `.env` (in `.gitignore`). Only the `site/` folder is deployed. The function's response never returns the key. | `test_no_secrets_in_tracked_files` (key patterns in all tracked files), `test_env_example_has_no_value`, harness: the key does not appear in the response or in anything that goes to the client; it goes only to `openrouter.ai` in a header. | The model never receives the key, so it cannot reveal it. Only the `site/` folder is deployed; the test guards that there is no secret in it or elsewhere in tracked files. It does not cover files outside git (the local `.env` and `.tmp/`). |
+| T6 | **Misuse of agent tools** | There is no agent or tools. | – | N/A. |
+| T7 | **Denial-of-wallet** (someone else's spending) | 10 questions per IP per day, a cap of 400 per function instance, proof of work (4 zeros of SHA-256, 1–3 s in the browser), 300 characters, hidden model reasoning turned off (cost), **a hard limit of $0.75 directly on the key at the provider** (the toughest safeguard). | Harness: the 11th question from one IP → 429 and **no model call**; the same proof of work a second time → 400; one question = exactly 4 model calls; a failed call is not counted towards the limit. `test_worst_case_daily_cost_fits_into_key_limit`: 400 × $0.00112 = $0.45. | The counters are **in the function's memory**, not in the database: more instances = more allowed questions. An attacker with many IPs and computing power can exhaust the remaining ~$0.09 in a day. The money is protected (the cap is hard), availability is not: the website then shows "The budget for live questions is exhausted" („Rozpočet na živé otázky je vyčerpaný“). |
+| T8 | **Malicious input and output (XSS)** | The model's answer is escaped (`esc`) before rendering and only then are bold text, line breaks and citation buttons produced. | `test_rendered_answer_cannot_inject_html` runs the **real code** `esc()` and `fmt()` from `site/index.html` on 5 malicious strings. Mutation check: after breaking `esc` the test fails. | No Content-Security-Policy, so if someone broke `esc`, the browser would catch nothing. Not addressed. |
+| T9 | **Misuse of analytics** (`hit.js`) | **Found during the audit:** `hit.js` wrote an arbitrary string from the request to Redis (a forged `Origin` header was enough), and it could be filled with unique keys. Fix: only questions from the list of prepared ones are counted (`site/api/_presets.json`, generated by `tools/make_presets.py`). | Harness: a foreign string is not written to the database, a prepared question is. | **The fix is in the repository but is not deployed.** Until deployed to Vercel, the old version behaves as before. |
+| T10 | **Forged request origin** | The `Origin` and `x-rag-client` headers can be forged from any script. I do not treat them as protection, only as a filter against the simplest bots. The real protection is proof of work, limits and the budget. | Harness: a foreign origin → 403 (verifies that the filter does what it does, not that it is unbreakable). | See T7. |
+| T11 | **Privacy of custom questions** | The question text, time and the "I don't know" flag are stored, without IP, the last 5 000 records (LTRIM). The page says so in the footer. | – | "Anonymous" is overstated: free text may contain names and other personal data that the visitor types in. A filter and a fixed retention period are missing. |
+| T12 | **A forged script from a CDN** | D3 is loaded from cdnjs with a pinned version, icons from unpkg (version 2.1.1). | – | **No Subresource Integrity.** If the CDN served different content, it would run on the page. Fix: an SRI hash or your own copy of the file. Not done. |
+| T13 | **Incorrect answer about the law** (integrity) | It answers only from the supplied chunks, every claim is cited, "this is not legal advice", errors are publicly visible. | Quality measurement ([benchmark-results.md](../docs/benchmark-results.md)). | **Real and measured:** for the question „Může mi zaměstnavatel dát výpověď, když jsem nemocný?“ ("Can my employer give me notice when I am ill?") the website answers in a misleading way ([failure gallery](../docs/failure-gallery.md#open-failures-not-fixed-yet)). |
+| T14 | **An outdated or changed law** | The data are frozen as of 6 Oct 2026, file fingerprints in the run record. The website and README say so. | – | Laws change. There is no automatic update (described in [DESIGN.md](../DESIGN.md#11-what-would-be-missing-for-production)). |
 
-## 4. Co NEbylo ověřeno
+## 4. What has NOT been verified
 
-- **Chování modelu pod útokem.** Viz T1. Připravená je sada a spouštěč (`tools/security_eval.py --live`), čeká na samostatný klíč s rozpočtem.
-- Žádný penetrační test, žádné skenování závislostí (zranitelnosti knihoven nejsou zkontrolované).
-- Rate limit se testoval na jedné instanci funkce. Chování víc instancí na Vercelu se nezkoušelo.
-- Autorizace je ověřená jen na úrovni hledání nad zmrazenými daty, ne na reálném systému s uživateli.
+- **The model's behaviour under attack.** See T1. The set and the runner (`tools/security_eval.py --live`) are prepared, waiting for a separate key with a budget.
+- No penetration test, no dependency scanning (vulnerabilities of libraries have not been checked).
+- The rate limit was tested on one instance of the function. The behaviour of multiple instances on Vercel was not tried.
+- Authorisation is verified only at the level of retrieval over frozen data, not on a real system with users.
 
-## 5. Jak se to udržuje
+## 5. How this is maintained
 
-- `python -m pytest tests` (zahrnuje všechny bezpečnostní testy, 9 s, bez klíče) běží v CI při každém pushi.
-- Nová funkce webu, která volá model nebo píše do databáze, musí přidat řádek do tohoto souboru a test do `tests/js_harness.cjs`.
-- Po změně obrany se vždy zkusí **obranu rozbít** a ověřit, že test selže. Test, který nikdy neselže, nic neříká. (Provedeno pro masku oprávnění, `hit.js`, `esc` a limit na IP.)
+- `python -m pytest tests` (includes all the security tests, 9 s, no key) runs in CI on every push.
+- A new website feature that calls the model or writes to the database must add a row to this file and a test to `tests/js_harness.cjs`.
+- After changing a defence, always try to **break the defence** and verify the test fails. A test that never fails says nothing. (Done for the permission mask, `hit.js`, `esc` and the per-IP limit.)

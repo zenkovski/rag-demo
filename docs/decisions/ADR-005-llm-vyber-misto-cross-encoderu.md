@@ -1,29 +1,31 @@
-# ADR-005: LLM výběr místo cross-encoderu
+[Česky](../cs/decisions/ADR-005-llm-vyber-misto-cross-encoderu.md)
 
-**Stav:** přijato, k přehodnocení · **Datum:** 9. 10. 2026 (původní volba 6.–7. 10. 2026)
+# ADR-005: LLM selection instead of a cross-encoder
 
-## Kontext
+**Status:** accepted, to be reconsidered · **Date:** 9 Oct 2026 (original choice 6–7 Oct 2026)
 
-Spojení RRF dává 20 kandidátů. Model dostane jen 5. Kdo vybere ty správné? Tři možnosti na stejných 56 otázkách a stejných 20 kandidátech (uložené výsledky `tools/rerank_compare.py`):
+## Context
 
-| Způsob | Hit@5 (95 %) | MRR@5 (95 %) | Cena a čas |
+The RRF fusion gives 20 candidates. The model gets only 5. Who picks the right ones? Three options on the same 56 questions and the same 20 candidates (stored results of `tools/rerank_compare.py`):
+
+| Method | Hit@5 (95 %) | MRR@5 (95 %) | Cost and time |
 |---|---|---|---|
-| prvních 5 z RRF | 0,88 (0,79–0,95) | 0,70 | 0 |
-| cross-encoder `bge-reranker-v2-m3`, lokálně | 0,93 (0,86–0,98) | 0,81 | 0 $, ~15 s na otázku (CPU) |
-| **LLM výběr** (`deepseek-v4.1-flash`) | **1,00** | **0,96 (0,93–0,99)** | ~0,0001 $, ~1,5 s |
+| first 5 from RRF | 0.88 (0.79–0.95) | 0.70 | 0 |
+| cross-encoder `bge-reranker-v2-m3`, local | 0.93 (0.86–0.98) | 0.81 | $0, ~15 s per question (CPU) |
+| **LLM selection** (`deepseek-v4.1-flash`) | **1.00** | **0.96 (0.93–0.99)** | ~$0.0001, ~1.5 s |
 
-## Rozhodnutí
+## Decision
 
-**LLM výběr.**
+**LLM selection.**
 
-## Důvody a poctivé výhrady
+## Reasons and honest reservations
 
-- Nejvyšší MRR, správný odstavec skoro vždy na prvním místě. LLM vidí **všech 20 najednou** a pozná, že odpověď potřebuje dva odstavce (délka i výše dávky). Cross-encoder hodnotí dvojice otázka–úsek zvlášť.
-- **Výhrada:** LLM proti cross-encoderu: lepší u 4 otázek, horší u 0, **p = 0,125**. „56 proti 52 z 56“ ukazuje směr, ale na 56 otázkách ho nelze považovat za prokázané.
-- **Výhrada:** výběr přes LLM je jediná komponenta s průkazným přínosem proti RRF bez výběru (9 : 0, p = 0,004). Že je lepší než cross-encoder, průkazné není.
-- LLM výběr může zahodit základní pravidlo a nechat jen výjimky: viz [incident](../incidents/2026-10-06-regrese-odpocinek.md). Opraveno pevným pravidlem.
+- Highest MRR, the correct paragraph almost always in first place. The LLM sees **all 20 at once** and recognises that the answer needs two paragraphs (both the length and the amount of the benefit). The cross-encoder scores question–chunk pairs separately.
+- **Reservation:** LLM versus cross-encoder: better on 4 questions, worse on 0, **p = 0.125**. "56 versus 52 of 56" shows a direction, but on 56 questions it cannot be considered proven.
+- **Reservation:** LLM selection is the only component with a conclusive benefit over RRF without selection (9 : 0, p = 0.004). That it is better than the cross-encoder is not conclusive.
+- LLM selection can drop the base rule and leave only exceptions: see the [incident](../incidents/2026-10-06-regrese-odpocinek.md). Fixed by a fixed rule.
 
-## Důsledky
+## Consequences
 
-- Cena za každý dotaz, nedeterminismus, závislost na promptu. Cross-encoder je deterministický a zdarma.
-- Přehodnotit, když: (a) nová sada v4 přinese rozdíl, nebo (b) výběr půjde dělat cross-encoderem na GPU v desítkách ms. Zvažovaný hybrid: cross-encoder jako první síto a LLM jen pro nejisté případy.
+- A cost for every query, non-determinism, dependence on the prompt. The cross-encoder is deterministic and free.
+- Reconsider when: (a) the new set v4 brings a difference, or (b) the selection can be done by a cross-encoder on a GPU in tens of ms. A hybrid under consideration: the cross-encoder as a first filter and the LLM only for uncertain cases.

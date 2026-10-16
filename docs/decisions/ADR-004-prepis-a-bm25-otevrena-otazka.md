@@ -1,60 +1,62 @@
-# ADR-004: Přepis otázky a BM25: přínos není prokázán
+[Česky](../cs/decisions/ADR-004-prepis-a-bm25-otevrena-otazka.md)
 
-**Stav:** **otevřené** · **Datum:** 9. 10. 2026
+# ADR-004: Question rewrite and BM25: benefit not proven
 
-## Kontext
+**Status:** **open** · **Date:** 9 Oct 2026
 
-v2 přidala (a) přepis laické otázky do jazyka zákona a (b) BM25 nad přepsanou otázkou, spojené RRF. Původní zdůvodnění: BM25 vyhraje u přesných termínů a čísel, přepis překládá „výplatu“ na „mzdu“.
+## Context
 
-## Co ukazují data
+v2 added (a) a rewrite of the layperson's question into the language of the law and (b) BM25 over the rewritten question, combined with RRF. Original justification: BM25 wins on exact terms and numbers, the rewrite translates „výplata“ ("pay") into „mzda“ ("wage").
 
-Offline ablace na 56 otázkách s odpovědí ([benchmark-results.md](../benchmark-results.md)):
+## What the data show
 
-| Systém | Recall@5 | Recall@20 |
+Offline ablation on 56 questions with an answer ([benchmark-results.md](../benchmark-results.md)):
+
+| System | Recall@5 | Recall@20 |
 |---|---|---|
-| jen e5-large (význam) | 0,86 | 0,97 |
-| RRF: e5-large nad otázkou i přepisem, **bez BM25** | **0,88** | **0,99** |
-| RRF + BM25 nad přepisem (v2, současný stav) | 0,86 | 0,96 |
+| e5-large only (meaning) | 0.86 | 0.97 |
+| RRF: e5-large over the question and the rewrite, **without BM25** | **0.88** | **0.99** |
+| RRF + BM25 over the rewrite (v2, current state) | 0.86 | 0.96 |
 
-- **BM25 hledání nezlepšilo**, nepatrně zhoršilo. Párový test je neprůkazný (3 : 5, p = 0,73), ale **směr je opačný, než se čekalo**. Optimální váha BM25 ve váženém součtu vyšla 0,05.
-- **Přepis pomáhá BM25** (laická otázka 0,58 → přepsaná 0,76), ale **embeddingy přepis nepotřebují** (jen e5-large 0,86, s přepisem 0,88; neprůkazné).
+- **BM25 did not improve retrieval**, it made it marginally worse. The paired test is inconclusive (3 : 5, p = 0.73), but **the direction is the opposite of what was expected**. The optimal BM25 weight in the weighted sum came out at 0.05.
+- **The rewrite helps BM25** (lay question 0.58 → rewritten 0.76), but **embeddings do not need the rewrite** (e5-large only 0.86, with the rewrite 0.88; inconclusive).
 
-## Skutečná chyba, která s tím souvisí
+## A real error connected to this
 
-Web na otázku „Může mi zaměstnavatel dát výpověď, když jsem nemocný?“ odpovídá zavádějícím způsobem ([galerie chyb](../failure-gallery.md#otevřené-chyby-zatím-neopravené)). Správný odstavec (ZP § 53 odst. 1, zákaz výpovědi v ochranné době) je v pořadí:
+For the question „Může mi zaměstnavatel dát výpověď, když jsem nemocný?“ ("Can my employer give me notice when I am ill?") the website answers in a misleading way ([failure gallery](../failure-gallery.md#open-failures-not-fixed-yet)). The correct paragraph (ZP § 53 odst. 1, the ban on notice during the protection period; ZP = Labour Code) ranks as follows:
 
-| Pořadí | Místo správného odstavce |
+| Ranking | Place of the correct paragraph |
 |---|---|
-| význam, **původní** otázka | **12.** |
-| význam, **přepsaná** otázka | 219. |
-| BM25, přepsaná otázka | 106. |
-| BM25, laická otázka | 10. |
+| meaning, **original** question | **12th** |
+| meaning, **rewritten** question | 219th |
+| BM25, rewritten question | 106th |
+| BM25, lay question | 10th |
 
-Přepis („…rozvázat pracovní poměr výpovědí, nachází-li se zaměstnanec v dočasné pracovní neschopnosti?“) odvedl hledání k obecným odstavcům o skončení poměru. Po spojení RRF skončil správný odstavec na 45. místě, tedy mimo 20 kandidátů.
+The rewrite („…rozvázat pracovní poměr výpovědí, nachází-li se zaměstnanec v dočasné pracovní neschopnosti?“ / "…terminate the employment relationship by notice if the employee is on temporary incapacity for work?") led the search to general paragraphs about termination of the relationship. After the RRF fusion the correct paragraph ended up in 45th place, i.e. outside the 20 candidates.
 
-## Zkoumané varianty (offline, jen kandidáti: Recall@20)
+## Variants examined (offline, candidates only: Recall@20)
 
-| Spojení | Recall@20 (56 otázek) | pořadí § 53 v demu |
+| Fusion | Recall@20 (56 questions) | rank of § 53 in the demo |
 |---|---|---|
-| současné (otázka, přepis, BM25 přepisu) | 0,964 | 45 |
-| + BM25 laické otázky | 0,973 | 23 |
-| otázka + přepis, bez BM25 | 0,991 | 31 |
-| otázka + BM25 laické + přepis | 0,987 | **14** (uvnitř 20) |
+| current (question, rewrite, BM25 of the rewrite) | 0.964 | 45 |
+| + BM25 of the lay question | 0.973 | 23 |
+| question + rewrite, without BM25 | 0.991 | 31 |
+| question + BM25 of the lay question + rewrite | 0.987 | **14** (within 20) |
 
-## Rozhodnutí
+## Decision
 
-**Zatím neměnit.** Varianty výše **nejdou poctivě posoudit na těchto datech**: vznikly podle chyby, kterou už znám, a posuzují se na týchž otázkách, podle kterých se už jednou ladilo. Na dev, validation i test sadě jsou rozdíly o 1–2 otázky.
+**Do not change for now.** The variants above **cannot be judged honestly on this data**: they arose from an error I already know and are judged on the same questions that were already used for tuning. On the dev, validation and test sets the differences are 1–2 questions.
 
-## Co rozhodne
+## What will decide
 
-Zmrazená sada v4 ([testset_heldout_v4.json](../../data/testset_heldout_v4.json)) obsahuje **přesné odkazy na paragrafy a čísla**, přesně ten případ, kde má BM25 vyhrát, a **nejednoznačné a chybně napsané otázky**, kde má pomoci přepis. Postup:
+The frozen set v4 ([testset_heldout_v4.json](../../data/testset_heldout_v4.json)) contains **exact references to sections and numbers**, exactly the case where BM25 should win, and **ambiguous and wrongly written questions**, where the rewrite should help. Procedure:
 
-1. Před spuštěním se zafixuje seznam variant výše (nic dalšího se nepřidá).
-2. Varianty se pustí **živě jednou** na v4 (vyžaduje ~0,03 $ na variantu, nový klíč).
-3. Změna se přijme jen když zlepší Recall@20 **bez zhoršení** Recall@5 a MRR a rozdíl vyjde průkazně, nebo když aspoň není horší a je jednodušší.
+1. Before running, the list of variants above is fixed (nothing else is added).
+2. The variants are run **live once** on v4 (requires ~$0.03 per variant, a new key).
+3. A change is accepted only if it improves Recall@20 **without worsening** Recall@5 and MRR and the difference is conclusive, or if it is at least not worse and is simpler.
 
-Do té doby zůstává otevřená chyba „výpověď v nemoci“ zapsaná jako známá.
+Until then the open error "notice of termination during illness" stays recorded as known.
 
-## Důsledky
+## Consequences
 
-- Přiznáno, že část architektury (BM25) není podložená měřením. Důvod, proč tu je: původní předpoklad a úspěch u přesných termínů, který tato sada nemá jak ukázat.
+- It is admitted that part of the architecture (BM25) is not backed by measurement. The reason it is here: the original assumption and success on exact terms, which this set has no way to show.

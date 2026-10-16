@@ -1,34 +1,36 @@
-# ADR-001: Quality gate přehrává uložené výsledky, nevolá model
+[Česky](../cs/decisions/ADR-001-offline-quality-gate.md)
 
-**Stav:** přijato · **Datum:** 9. 10. 2026
+# ADR-001: The quality gate replays stored results, it does not call the model
 
-## Kontext
+**Status:** accepted · **Date:** 9 Oct 2026
 
-Chci, aby každý pull request odhalil regresi kvality hledání. Dvě věci tomu brání:
+## Context
 
-1. Volání modelu stojí peníze (klíč živého dema má strop 0,75 $, z toho zbývá ~0,09 $) a výsledek není při opakování přesně stejný.
-2. CI, které selhává náhodně, se přestane brát vážně a lidé ho ignorují.
+I want every pull request to reveal a regression in retrieval quality. Two things stand in the way:
 
-## Rozhodnutí
+1. Calling the model costs money (the live demo key has a cap of $0.75, of which ~$0.09 remains) and the result is not exactly the same when repeated.
+2. CI that fails randomly stops being taken seriously and people ignore it.
 
-Quality gate (`tools/experiments.py --check`) **přehrává** hledání z uložených embeddingů a uložených odpovědí modelu (`data/emb_cache.npz`, `data/llm_cache.json`) a porovnává pořadí správných úseků po otázkách s `results/baseline.json`. Nikdy nevolá API (`RAG_OFFLINE=1`, chybějící cache = chyba, ne volání).
+## Decision
 
-Gate **hlídá kód hledání**: BM25, RRF, pravidla odstavců, řazení výběru. Je deterministický, trvá desítky sekund a nestojí nic. Tolerance je nulová: jakýkoli pokles pořadí správného úseku je změna kódu, ne šum.
+The quality gate (`tools/experiments.py --check`) **replays** retrieval from stored embeddings and stored model answers (`data/emb_cache.npz`, `data/llm_cache.json`) and compares the ranking of the correct chunks per question with `results/baseline.json`. It never calls the API (`RAG_OFFLINE=1`, a missing cache = an error, not a call).
 
-**Změna, která změní kandidáty** (např. jiné RRF), změní i vstup výběru LLM. Uložená odpověď se pak nehodí. Gate v tom případě **selže s jasnou zprávou** („nelze přehrát: ověřit jen živým měřením“) místo aby hádal. Taková změna se musí změřit živě (`tools/evaluate.py`) a baseline se přegeneruje vědomě (`--save-baseline`).
+The gate **guards the retrieval code**: BM25, RRF, paragraph rules, selection ordering. It is deterministic, takes tens of seconds and costs nothing. The tolerance is zero: any drop in the rank of a correct chunk is a code change, not noise.
 
-## Důsledky
+**A change that alters the candidates** (e.g. a different RRF) also alters the input of the LLM selection. The stored answer then no longer fits. In that case the gate **fails with a clear message** ("cannot replay: verify only by live measurement") instead of guessing. Such a change must be measured live (`tools/evaluate.py`) and the baseline is regenerated deliberately (`--save-baseline`).
 
-- (+) Opakovatelné, zdarma, rychlé, bez falešných poplachů.
-- (+) Při regresi gate vypíše konkrétní otázky a pořadí před a po.
-- (−) **Nehlídá chování modelu.** Horší prompt nebo jiný model gate nezachytí. Na to je živé měření, ruční a placené.
-- (−) Změna kandidátů vyžaduje živé měření, takže u ní CI nemůže rozhodnout sám.
-- (−) Baseline zamrzne i chyby: pořadí „správně“ znamená „stejně jako dřív“, ne „správně v absolutním smyslu“.
+## Consequences
 
-## Zvažované alternativy
+- (+) Repeatable, free, fast, no false alarms.
+- (+) On a regression the gate prints the specific questions and the rank before and after.
+- (−) **It does not guard the model's behaviour.** A worse prompt or a different model is not caught by the gate. For that there is the live measurement, manual and paid.
+- (−) A change of candidates requires a live measurement, so CI cannot decide on its own.
+- (−) The baseline also freezes errors: a rank "correct" means "same as before", not "correct in an absolute sense".
 
-| Alternativa | Proč ne |
+## Alternatives considered
+
+| Alternative | Why not |
 |---|---|
-| Živé měření v CI při každém PR | stojí peníze, nedeterministické, vyčerpalo by klíč |
-| Živé měření s prahem „nesmí klesnout o 2 body“ | na 56 otázkách je 2 body méně než jedna otázka; práh by nebyl rozlišitelný od šumu |
-| Mockovaný model (falešné odpovědi) | testuje mock, ne systém. Falešné modely se používají v testech *bezpečnosti* a *oprávnění*, kde jde o tok dat, ne o kvalitu |
+| Live measurement in CI on every PR | costs money, non-deterministic, would exhaust the key |
+| Live measurement with a threshold "must not drop by 2 points" | on 56 questions 2 points is less than one question; the threshold would be indistinguishable from noise |
+| A mocked model (fake answers) | tests the mock, not the system. Fake models are used in the *security* and *permission* tests, where the data flow matters, not quality |
