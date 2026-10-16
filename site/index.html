@@ -116,6 +116,12 @@ a{color:inherit}
 .pal .menu small{display:block;font-size:11px;color:var(--muted)}
 .nav .gh{display:flex;align-items:center;gap:6px;background:var(--text);color:var(--bg);border-radius:999px;padding:7px 14px;font-size:13.5px;font-weight:600;text-decoration:none;margin-left:6px}
 .nav .gh:hover{background:#fff}
+.langbtn{display:flex;align-items:center;justify-content:center;margin-left:4px;background:var(--panel-2);border:1px solid var(--line-2);border-radius:999px;padding:6px 11px;font-family:var(--mono);font-size:12.5px;font-weight:600;letter-spacing:.02em;color:var(--soft)}
+.langbtn:hover{color:var(--text);border-color:rgb(var(--accent-rgb) / .5)}
+.langnote{max-width:640px;margin:-8px auto 26px;padding:10px 16px;border:1px solid rgb(var(--accent-rgb) / .35);background:rgb(var(--accent-rgb) / .08);border-radius:14px;font-size:13.5px;line-height:1.55;color:var(--soft)}
+.langnote b{color:var(--text);font-weight:600}
+.langnote[hidden]{display:none}
+#app > .langnote{margin:0 0 14px;max-width:none}
 
 /* ---------- úvod s aurorou ---------- */
 .hero{position:relative;overflow:hidden;margin-top:-62px;padding:150px 0 70px;isolation:isolate}
@@ -472,6 +478,7 @@ footer strong{color:var(--bad);font-weight:500}
 .dock a:hover .tip,.dock button:hover .tip{opacity:1}
 .dock{transition:transform .35s ease,opacity .35s ease}
 .dock.hide{transform:translate(-50%,160%);opacity:0;pointer-events:none}
+.dock button.lang{font-family:var(--mono);font-size:13px;font-weight:600;letter-spacing:.02em}
 .dock .sep{width:1px;height:30px;background:var(--line-2);align-self:center;margin:0 3px}
 @media (prefers-reduced-motion:reduce){ .dock a,.dock button,.dock,.nav{transition:none} }
 
@@ -555,6 +562,7 @@ dialog::backdrop{background:rgba(2,4,5,.8)}
   .dock{bottom:10px;gap:4px;padding:6px}
   .dock a,.dock button{width:40px;height:40px;font-size:19px}
   .dock a:hover,.dock button:hover{width:40px;height:40px}
+  .dock button.lang{font-size:12px}
   .dock .tip{display:none}
 }
 @media (max-width:560px){
@@ -648,6 +656,7 @@ dialog::backdrop{background:rgba(2,4,5,.8)}
   .nav .pill{padding:5px 5px 5px 8px;gap:6px}
   .nav .logo .hide-m{display:inline!important;color:var(--muted);font-weight:600}
   .nav .pal{margin-left:0;order:2}
+  .nav .langbtn{order:2;width:36px;height:36px;padding:0;margin:0;border-radius:50%;font-size:12px}
   .nav .pal > button{width:36px;height:36px;padding:0;justify-content:center;border-radius:50%}
   .nav .gh{order:3;width:36px;height:36px;padding:0;margin:0;justify-content:center;border-radius:50%;background:var(--panel-2);color:var(--text);border:1px solid var(--line-2);font-size:17px}
   .nav .gh:hover{background:var(--panel-2)}
@@ -682,6 +691,7 @@ dialog::backdrop{background:rgba(2,4,5,.8)}
     <a class="l" href="#proc">Proč věřit</a>
     <a class="l" href="#stack">Stack</a>
     <div class="pal" id="pal"><button id="palBtn" aria-haspopup="true" aria-expanded="false" title="Barevná paleta"><span class="sw" id="palSw"></span><span class="hide-m">Paleta</span></button><div class="menu" id="palMenu" role="menu"></div></div>
+    <button class="langbtn" id="langBtn" type="button" title="Switch to English" aria-label="Switch to English">EN</button>
     <a class="gh" href="https://github.com/zenkovski/rag-demo"><i class="ph ph-github-logo"></i><span class="hide-m">GitHub</span></a>
   </div>
 </nav>
@@ -691,6 +701,7 @@ dialog::backdrop{background:rgba(2,4,5,.8)}
   <div class="wrap">
     <h1>Zeptej se na pracovní právo. <span>Každá věta má zdroj.</span></h1>
     <p class="lead"><span class="hide-m">Asistent prohledá celý zákoník práce, zákon o zaměstnanosti, nemocenské pojištění a nařízení o překážkách v práci. Najde odstavce, které k otázce patří, odpoví jen z nich a označí, odkud co má. Když v textu odpověď není, řekne „nevím“.</span><span class="only-m">Prohledá celý zákoník práce a další 3 předpisy. Najde odstavce, které k otázce patří, odpoví jen z nich a ke každé větě dá zdroj. Když odpověď v zákoně není, řekne „nevím“.</span></p>
+    <div class="langnote" hidden><b>Czech law, Czech data:</b> this assistant searches 4 Czech labour laws (Labour Code, Employment Act, Sickness Insurance Act, Government Decree 590/2006). Law texts, prepared questions and answers stay in Czech. Questions work best in Czech.</div>
     <div class="hstats" aria-label="Velikost zdroje"><button type="button" aria-expanded="false"><b>4</b><span>předpisy</span></button><button type="button" aria-expanded="false"><b>841</b><span>paragrafů</span></button><button type="button" aria-expanded="false"><b>2 475</b><span>odstavců</span></button><button type="button" aria-expanded="false"><b>~570</b><span>stran textu</span></button></div>
     <div class="hsinfo" id="hsinfo" aria-live="polite" hidden></div>
     <div class="askbig">
@@ -708,6 +719,7 @@ dialog::backdrop{background:rgba(2,4,5,.8)}
 </header>
 
 <section class="wrap" id="app" style="scroll-margin-top:16px">
+  <div class="langnote" hidden><b>Czech law, Czech data:</b> this assistant searches 4 Czech labour laws (Labour Code, Employment Act, Sickness Insurance Act, Government Decree 590/2006). Law texts, prepared questions and answers stay in Czech. Questions work best in Czech.</div>
   <div class="app">
     <div class="apphead"><span class="dot"></span><span>rag-demo / pracovní právo</span><span class="sp"></span><span class="pill2 hide-m" id="modelName"></span><span class="pill2" id="gstat"></span></div>
 
@@ -729,7 +741,7 @@ dialog::backdrop{background:rgba(2,4,5,.8)}
       <section class="chat">
         <div class="ph2"><span>Otázka a odpověď</span><span class="leftCount"></span></div>
         <div class="log" id="log">
-          <div class="intro"><strong>Zeptej se vlastními slovy</strong>, nebo vyber připravenou otázku. U připravených je změřené, jestli je odpověď správně: zelená tečka = správně, oranžová = chyba. V mapě uprostřed uvidíš, jak asistent hledá.</div>
+          <div class="intro" data-t="intro"><strong>Zeptej se vlastními slovy</strong>, nebo vyber připravenou otázku. U připravených je změřené, jestli je odpověď správně: zelená tečka = správně, oranžová = chyba. V mapě uprostřed uvidíš, jak asistent hledá.</div>
         </div>
         <div class="ask">
           <div class="livemini">
@@ -755,7 +767,7 @@ dialog::backdrop{background:rgba(2,4,5,.8)}
 
       <section class="card">
         <div class="ph2"><span>Zdroj</span><span id="srcmeta"></span><button class="sheetx only-m" id="sheetx" aria-label="Zavřít"><i class="ph ph-x"></i></button></div>
-        <div class="src" id="src"><p class="placeholder"><b>Tady uvidíš původní text.</b> Klikni na citaci [1] v odpovědi nebo na tečku v mapě.</p></div>
+        <div class="src" id="src"><p class="placeholder" data-t="srcph"><b>Tady uvidíš původní text.</b> Klikni na citaci [1] v odpovědi nebo na tečku v mapě.</p></div>
       </section>
     </div>
     <details class="tlbox" id="tlbox"><summary><i class="ph ph-palette"></i>Legenda mapy<span class="hide-m"> · co znamenají barvy</span><i class="ph ph-caret-down car"></i></summary><div class="tlegend" id="tlegend"></div></details>
@@ -774,9 +786,9 @@ dialog::backdrop{background:rgba(2,4,5,.8)}
       <div class="qgrid" id="qs"></div>
     </div></div>
     <details class="qnote" id="qnote"><summary>Jak číst barvy: <span class="ok">●</span> správně · <span class="bad">●</span> chyba · <span class="nvk">○</span> test „nevím“</summary><div>
-      <p>Barva je výsledek <b>kontroly proti textu zákona</b>: zelená = odpověď je správně, oranžová = asistent se spletl. Prázdné kolečko je <b>test „nevím“</b>: otázka, na kterou zákony odpověď nemají (daně, nájem bytu…). Správně je přiznat, že neví, a nic si nevymyslet.</p>
-      <p><b>Proč tu nechávám chyby?</b> Aby bylo vidět, kde se asistent plete. Chyba vznikne v jednom ze dvou kroků: při <b>hledání</b> (nenašel správný odstavec) nebo při <b>čtení</b> (odstavec měl, ale špatně ho pochopil, třeba zaměnil mzdu a plat). U každé chyby uvidíš, kde se stala, a ten krok ve schématu zčervená.</p>
-      <p>Připravené otázky jsou předpočítané. Nic nestojí a nepočítají se do tvého limitu.</p>
+      <p data-t="qn1">Barva je výsledek <b>kontroly proti textu zákona</b>: zelená = odpověď je správně, oranžová = asistent se spletl. Prázdné kolečko je <b>test „nevím“</b>: otázka, na kterou zákony odpověď nemají (daně, nájem bytu…). Správně je přiznat, že neví, a nic si nevymyslet.</p>
+      <p data-t="qn2"><b>Proč tu nechávám chyby?</b> Aby bylo vidět, kde se asistent plete. Chyba vznikne v jednom ze dvou kroků: při <b>hledání</b> (nenašel správný odstavec) nebo při <b>čtení</b> (odstavec měl, ale špatně ho pochopil, třeba zaměnil mzdu a plat). U každé chyby uvidíš, kde se stala, a ten krok ve schématu zčervená.</p>
+      <p data-t="qn3">Připravené otázky jsou předpočítané. Nic nestojí a nepočítají se do tvého limitu.</p>
     </div></details>
   </div>
 </section>
@@ -797,7 +809,7 @@ dialog::backdrop{background:rgba(2,4,5,.8)}
       <p>Model dostane jen 5 nalezených odstavců a za každou větu napíše, ze kterého čerpal. Klikem na číslo vidíš původní text.</p>
       <div class="demo-cite" id="demoCite"></div>
     </div>
-    <div class="feat"><div class="ic"><i class="ph ph-hand-palm"></i></div><h3>Řekne „nevím“</h3><p>Když předpisy odpověď nemají (daně, rodičovský příspěvek, nájem bytu…), asistent to přizná. Měřím to zvlášť: <span id="nvStat"></span> otázek bez odpovědi.</p></div>
+    <div class="feat"><div class="ic"><i class="ph ph-hand-palm"></i></div><h3>Řekne „nevím“</h3><p data-t="nvp">Když předpisy odpověď nemají (daně, rodičovský příspěvek, nájem bytu…), asistent to přizná. Měřím to zvlášť: <span id="nvStat"></span> otázek bez odpovědi.</p></div>
     <div class="feat"><div class="ic"><i class="ph ph-gauge"></i></div><h3>Měří se hledání i odpověď</h3><p>Zvlášť: jestli hledání najde správný paragraf, a jestli je odpověď správně. Tak vím, co opravovat.</p></div>
     <div class="feat"><div class="ic"><i class="ph ph-user-check"></i></div><h3>Soudce má dvojí kontrolu</h3><p>AI soudce je taky model a ve starší verzi přehlédl chybu (DPČ a „300 hodin“). Proto každý verdikt ještě ověřuje druhý model, Claude Opus 5.5, proti textu zákona, a já ho procházím a schvaluji. I u ukázek.</p></div>
     <div class="feat"><div class="ic"><i class="ph ph-shield-check"></i></div><h3>Bez klíče na webu</h3><p>Klíč je jen na serveru, limit 10 otázek na IP a den, test proti robotům a pevný strop 0,75 $.</p></div>
@@ -811,7 +823,7 @@ dialog::backdrop{background:rgba(2,4,5,.8)}
     <svg id="hubwires" aria-hidden="true"></svg>
     <div class="core"><i class="ph ph-scales"></i></div>
   </div>
-  <p class="demonote"><b>Je to ukázka.</b> 4 předpisy a 2 475 odstavců stačí, aby šlo poctivě změřit, jak dobře asistent hledá a odpovídá. Stejný postup zvládne i celou sbírku zákonů. Přibyla by jen databáze na vektory (pgvector nebo Qdrant) a automatická aktualizace při změně zákona.</p>
+  <p class="demonote" data-t="demonote"><b>Je to ukázka.</b> 4 předpisy a 2 475 odstavců stačí, aby šlo poctivě změřit, jak dobře asistent hledá a odpovídá. Stejný postup zvládne i celou sbírku zákonů. Přibyla by jen databáze na vektory (pgvector nebo Qdrant) a automatická aktualizace při změně zákona.</p>
 </section>
 
 <footer>
@@ -832,6 +844,7 @@ dialog::backdrop{background:rgba(2,4,5,.8)}
   <button id="dockRes"><i class="ph ph-chart-bar"></i><span class="tip">Celé měření</span></button>
   <a href="#stack"><i class="ph ph-stack"></i><span class="tip">Stack</span></a>
   <span class="sep"></span>
+  <button class="lang" id="dockLang" type="button" aria-label="Switch to English"><span class="lt">EN</span><span class="tip">English</span></button>
   <a href="https://github.com/zenkovski/rag-demo"><i class="ph ph-github-logo"></i><span class="tip">GitHub</span></a>
 </nav>
 
@@ -852,12 +865,236 @@ dialog::backdrop{background:rgba(2,4,5,.8)}
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
 <script>
+/* ---------- jazyk: CZ (výchozí) / EN ----------
+   Překládá se jen rozhraní. Texty zákonů, ID paragrafů, připravené otázky a odpovědi z data.json zůstávají česky.
+   - statické HTML: I18N (přesný text uzlu -> EN), I18N_H (delší bloky s tagy, atribut data-t), atributy title/aria-label/placeholder
+   - texty skládané v JS: T("česky") / TF("česky s {0}", hodnota); po přepnutí se překreslí přes refreshDyn() */
+const LANG = {en:false};
+try {
+  const u = new URLSearchParams(location.search).get("lang");
+  if (u){ LANG.en = u.toLowerCase()==="en"; try { localStorage.setItem("ragLang", LANG.en ? "en" : "cs"); } catch(e) {} }
+  else LANG.en = localStorage.getItem("ragLang")==="en";
+} catch(e) {}
+const I18N = {
+  // meta, navigace
+  "Pracovní právo RAG":"Czech Labour Law RAG",
+  "AI asistent nad 4 pracovněprávními předpisy (2 475 odstavců). Odpovídá z textu zákona s citacemi, nebo řekne „nevím“. Mapa hledání a poctivé měření kvality.":"AI assistant over 4 Czech labour-law regulations (2,475 subsections). It answers from the text of the law with citations, or says “I don't know”. A map of the search and an honest quality measurement.",
+  "Hlavní menu":"Main menu", "Vyzkoušet":"Try it", "Výsledky":"Results", "Proč věřit":"Why trust it",
+  "Barevná paleta":"Colour palette", "Paleta":"Palette", "·zákony":"·laws",
+  // úvod
+  "Zeptej se na pracovní právo.":"Ask about labour law.", "Každá věta má zdroj.":"Every sentence has a source.",
+  "Asistent prohledá celý zákoník práce, zákon o zaměstnanosti, nemocenské pojištění a nařízení o překážkách v práci. Najde odstavce, které k otázce patří, odpoví jen z nich a označí, odkud co má. Když v textu odpověď není, řekne „nevím“.":"The assistant searches the entire Labour Code, the Employment Act, sickness insurance and the decree on obstacles to work. It finds the subsections that belong to the question, answers only from them and marks where each statement comes from. When the answer is not in the text, it says “I don't know”.",
+  "Prohledá celý zákoník práce a další 3 předpisy. Najde odstavce, které k otázce patří, odpoví jen z nich a ke každé větě dá zdroj. Když odpověď v zákoně není, řekne „nevím“.":"It searches the entire Labour Code and 3 more regulations. It finds the subsections that belong to the question, answers only from them and gives a source for every sentence. When the answer is not in the law, it says “I don't know”.",
+  "2 475":"2,475", "Velikost zdroje":"Size of the source", "předpisy":"regulations", "paragrafů":"sections", "odstavců":"subsections", "stran textu":"pages of text",
+  "Rychlá otázka: napíše a položí jednu z připravených otázek":"Quick question: types and asks one of the prepared questions",
+  "Rychlá otázka":"Quick question",
+  "Např. Nezaplatili mi výplatu, můžu hned odejít?":"Ask in Czech, e.g. Nezaplatili mi výplatu…",
+  "Tvoje otázka":"Your question", "Zeptat se":"Ask",
+  "Není to právní porada. Je to technická ukázka RAG a měření kvality.":"This is not legal advice. It is a technical demo of RAG and quality measurement.",
+  // aplikace, schéma
+  "rag-demo / pracovní právo":"rag-demo / labour law",
+  "Otázka":"Question", "laická otázka česky":"plain-language question in Czech",
+  "Přepis":"Rewrite", "do jazyka zákona":"into the language of the law",
+  "LLM: „výplata“ → „mzda“":"LLM: “výplata” → “mzda” (pay → wage)",
+  "Vektory · význam":"Vectors · meaning", "Význam":"Meaning", "e5-large, kosinová podobnost":"e5-large, cosine similarity",
+  "Full-text · slova":"Full-text · words", "Slova":"Words", "BM25 nad přepsanou otázkou":"BM25 over the rewritten question",
+  "RRF + výběr LLM":"RRF + LLM selection", "Výběr 5":"Pick 5", "20 kandidátů → vybere 5":"20 candidates → picks 5",
+  "Odpověď":"Answer", "s citacemi":"with citations", "jen z nalezených úseků":"only from the retrieved passages",
+  "Otázka a odpověď":"Question and answer",
+  "Napiš vlastní otázku…":"Write your own question…", "Vlastní otázka":"Your own question",
+  "nebo vyber rychlou otázku":"or pick a quick question", "pod oknem":"below the window", "níže":"below",
+  "Mapa předpisů":"Map of regulations", "· tečka = odstavec · zoomem uvidíš názvy":"· dot = subsection · zoom in to see names",
+  "přehrát přemýšlení":"replay thinking",
+  "Graf odstavců zákona a jejich podobnosti":"Graph of law subsections and their similarity",
+  "Přiblížit":"Zoom in", "Oddálit":"Zoom out", "Celý graf":"Whole graph", "Zdroj":"Source", "Zavřít":"Close",
+  "Legenda mapy":"Map legend", "· co znamenají barvy":"· what the colours mean",
+  "Rychlé otázky":"Quick questions", "Hledej ve všech, např. dovolená":"Search all, e.g. dovolená (in Czech)", "Hledat otázku":"Search questions",
+  "Kategorie otázek":"Question categories",
+  "vše":"all", "testovací":"test", "kontrolní":"control", "nové předpisy":"new regulations", "po opravě":"after fix", "po v3.1":"after v3.1", "ukázky":"demos",
+  "Jak číst barvy:":"How to read the colours:", "správně ·":"correct ·", "chyba ·":"error ·", "test „nevím“":"“I don't know” test",
+  // výsledky, proč věřit, stack
+  "Měřím to.":"I measure it.", "Včetně chyb.":"Including the errors.",
+  "Každá testovací otázka má známou správnou odpověď. Odpovědi hodnotí AI soudce (DeepSeek). Pak každou ještě jednou porovná s textem zákona Claude Opus 5.5 a já jsem výsledky prošel a schválil. Platí tenhle druhý verdikt.":"Every test question has a known correct answer. The answers are graded by an AI judge (DeepSeek). Then Claude Opus 5.5 compares each one once more with the text of the law, and I went through the results and approved them. This second verdict is the one that counts.",
+  "Proč tomu":"Why", "věřit":"trust it", "(a kdy ne)":"(and when not to)",
+  "U práva je špatná sebevědomá odpověď horší než žádná. Proto tu jsou čtyři pojistky.":"In law, a confidently wrong answer is worse than none. That is why there are four safeguards here.",
+  "Každá věta má citaci":"Every sentence has a citation",
+  "Model dostane jen 5 nalezených odstavců a za každou větu napíše, ze kterého čerpal. Klikem na číslo vidíš původní text.":"The model gets only 5 retrieved subsections and writes, for every sentence, which one it drew from. Click the number to see the original text.",
+  "Řekne „nevím“":"Says “I don't know”",
+  "Měří se hledání i odpověď":"Both retrieval and the answer are measured",
+  "Zvlášť: jestli hledání najde správný paragraf, a jestli je odpověď správně. Tak vím, co opravovat.":"Separately: whether the search finds the correct section, and whether the answer is correct. That way I know what to fix.",
+  "Soudce má dvojí kontrolu":"The judge is double-checked",
+  "AI soudce je taky model a ve starší verzi přehlédl chybu (DPČ a „300 hodin“). Proto každý verdikt ještě ověřuje druhý model, Claude Opus 5.5, proti textu zákona, a já ho procházím a schvaluji. I u ukázek.":"The AI judge is also a model, and in an earlier version it overlooked an error (DPČ and “300 hours”). That is why every verdict is also checked by a second model, Claude Opus 5.5, against the text of the law, and I go through it and approve it. Demos included.",
+  "Bez klíče na webu":"No key on the website",
+  "Klíč je jen na serveru, limit 10 otázek na IP a den, test proti robotům a pevný strop 0,75 $.":"The key lives only on the server, with a limit of 10 questions per IP per day, an anti-bot test and a hard cap of $0.75.",
+  "Z čeho je":"What it is", "postavený":"built from",
+  "Žádná krabicová platforma. Každý díl jde vysvětlit a vyměnit.":"No boxed platform. Every part can be explained and replaced.",
+  // patička, dock, dialog
+  "Není to právní porada.":"This is not legal advice.",
+  "v3.1 · 4 předpisy · 2 475 odstavců · měřeno na 66 otázkách":"v3.1 · 4 regulations · 2,475 subsections · measured on 66 questions",
+  "Návštěvnost měří Vercel Analytics bez cookies. Vlastní otázky a kliky na připravené otázky se ukládají anonymně, bez IP adresy.":"Traffic is measured by Vercel Analytics without cookies. Custom questions and clicks on prepared questions are stored anonymously, without an IP address.",
+  "Postaveno s Claude Code (Opus 5.5).":"Built with Claude Code (Opus 5.5).",
+  "Kód napsala AI. Já jsem řídil, co se staví, nechal kód prověřit code-review skilly a dalšími review agenty, testoval a hlídal výsledky měření.":"The code was written by AI. I directed what gets built, had the code checked by code-review skills and other review agents, tested it and watched the measurement results.",
+  "Rychlá navigace":"Quick navigation", "Nahoru":"Top", "Celé měření":"Full evaluation",
+  "zavřít ✕":"close ✕",
+  "Každá otázka má zlatou (správnou) odpověď a správné paragrafy. Odpovědi hodnotí AI soudce (DeepSeek). Pak každou ještě jednou porovná s textem zákona Claude Opus 5.5 a já jsem výsledky prošel a schválil. Platí tenhle druhý verdikt.":"Every question has a gold (correct) answer and the correct sections. The answers are graded by an AI judge (DeepSeek). Then Claude Opus 5.5 compares each one once more with the text of the law, and I went through the results and approved them. This second verdict is the one that counts.",
+  "v1 → v2 → v3 na 66 testovacích otázkách":"v1 → v2 → v3 on 66 test questions",
+  "Co pomohlo ve vyhledávání":"What helped in retrieval",
+  "Správný paragraf mezi 5 úseky, které dostane model (56 otázek s odpovědí).":"Correct section among the 5 passages the model gets (56 questions with an answer).",
+  "Otázka po otázce":"Question by question",
+  // texty skládané v JS (T / TF)
+  "Smlouva a zkušební doba":"Contract and probation period", "Výpověď a odstupné":"Termination and severance pay",
+  "DPP a DPČ":"DPP and DPČ (work agreements)", "Pracovní doba a přesčasy":"Working time and overtime", "Dovolená":"Annual leave",
+  "Mzda, náhrady a překážky":"Wages, compensation and obstacles to work", "Nemoc a rodičovství":"Sickness and parenthood",
+  "Nezaměstnanost a úřad práce":"Unemployment and labour office", "Další části zákoníku práce":"Other parts of the Labour Code",
+  "Mimo předpisy":"Outside the regulations",
+  "zákoník práce":"Labour Code", "zákon o zaměstnanosti":"Employment Act", "zákon o nemocenském pojištění":"Sickness Insurance Act", "nařízení o překážkách v práci":"Decree on obstacles to work",
+  "Smaragd":"Emerald", "Písek":"Sand", "Papír":"Paper", "paleta":"palette", "světlá: teplý papír + tmavý smaragd":"light: warm paper + dark emerald",
+  "test":"test", "kontrolní otázka":"control question", "nový předpis":"new regulation", "otázka po opravě":"question after fix", "otázka po v3.1":"question after v3.1",
+  "správně":"correct", "chyba":"error", "ověřeno":"verified", "hledání":"retrieval", "čtení":"reading",
+  "dnes zbývá {0}":"{0} left today", "{0} úseků":"{0} passages", "{0} úseků · {1} vazeb":"{0} passages · {1} links",
+  "Zdroj:":"Source:", "znění":"current text", "staženo":"downloaded", "{0} z {1}":"{0} of {1}",
+  "bez přepisu":"no rewrite", "{0} kandidátů podle významu":"{0} candidates by meaning", "{0} kandidátů podle slov":"{0} candidates by words",
+  "řekl „nevím“":"said “I don't know”", "otázka":"question", "otázka:":"question:",
+  "Odpověď správně":"Answer correct", "… otázky s odpovědí":"… questions with an answer", "… správně „nevím“":"… correctly “I don't know”",
+  "Správný § mezi 5 pro model":"Correct § among the 5 for the model", "Správný § mezi 3 prvními":"Correct § among the top 3", "AI soudce = druhá kontrola":"AI judge = second check",
+  "v1: {0} (zdarma), jen embeddingy e5-base. v2: {1}, e5-large + BM25 + přepis otázky. v3: navíc LLM vybere 5 z 20 kandidátů, dohledá odkazy, odpověď píše DeepSeek v4 Pro a rozliší mzdu a plat.":"v1: {0} (free), only e5-base embeddings. v2: {1}, e5-large + BM25 + question rewriting. v3: additionally an LLM picks 5 of 20 candidates, looks up references, DeepSeek v4 Pro writes the answer and tells wage (mzda) and salary (plat) apart.",
+  "Testovací otázky správně (v3)":"Test questions correct (v3)", "otázek s odpovědí v předpisech":"questions with an answer in the regulations",
+  "správně „nevím“, když předpisy mlčí":"correctly “I don't know” when the regulations are silent", "měření v3 od nuly stojí":"measuring v3 from scratch costs",
+  "Pozor:":"Note:",
+  "každou verzi jsem ladil podle chyb na starších otázkách, tam jsou čísla nadsazená. Poctivé srovnání je karta „otázky napsané předem“.":"I tuned each version on the errors from the older questions, so the numbers there are inflated. The honest comparison is the “questions written in advance” card.",
+  "Celé měření otázku po otázce":"Full evaluation, question by question",
+  "Otázky napsané předem":"Questions written in advance",
+  "vždy před spuštěním nové verze, bez ladění podle nich. v2 na nich {0}/{1}, v1 {2}/{3}.":"always before launching a new version, with no tuning on them. v2 scored {0}/{1} on them, v1 {2}/{3}.",
+  "10× větší zdroj":"10× larger source", "260 odstavců":"260 subsections", "2 475 odstavců":"2,475 subsections",
+  "správný § mezi 5 nalezenými u stejných otázek. Víc textu hledání {0}.":"correct § among the 5 retrieved for the same questions. More text {0} retrieval.",
+  "nezhoršilo":"did not worsen", "trochu zhoršilo":"slightly worsened",
+  "správný paragraf mezi 5 úseky, které dostane model ({0} otázek)":"correct section among the 5 passages the model gets ({0} questions)",
+  "+ BM25 laicky":"+ BM25 plain", "+ přepis (v2)":"+ rewriting (v2)", "+ výběr LLM (v3)":"+ LLM selection (v3)",
+  "pro":"for", "Tady taková otázka není. Zkus jiné slovo, nebo ji napiš nahoru jako vlastní.":"No such question here. Try another word, or write it above as your own.",
+  "předpisy odpověď nemají":"the regulations have no answer", "správný § nalezen":"correct § found", "správný § nenalezen":"correct § not found",
+  "Mezi 5 úseky, které model dostal, nebyl odstavec s odpovědí. Model pak nemá z čeho odpovědět.":"Among the 5 passages the model received there was no subsection with the answer. The model then has nothing to answer from.",
+  "Správný odstavec model měl, ale špatně ho použil nebo přečetl.":"The model had the correct subsection, but used or read it wrongly.",
+  "opraveno ve v3":"fixed in v3", "Kde se to pokazilo:":"Where it went wrong:", "porovnat s v2 ({0})":"compare with v2 ({0})", "porovnat s v1 ({0})":"compare with v1 ({0})",
+  "živá odpověď · neověřeno":"live answer · unverified",
+  "Tahle odpověď vznikla teď. Neprošla měřením ani kontrolou, tak si ji ověř kliknutím na citace.":"This answer was generated just now. It has not been through measurement or checking, so verify it by clicking the citations.",
+  "ukázka: {0}":"demo: {0}", "Čtu otázku…":"Reading the question…",
+  "Správně „nevím“:":"Correctly “I don't know”:",
+  "tohle v těchto 4 předpisech není. Asistent zná celý zákoník práce, zákon o zaměstnanosti, nemocenské pojištění a nařízení o překážkách v práci.":"this is not in these 4 regulations. The assistant knows the entire Labour Code, the Employment Act, sickness insurance and the decree on obstacles to work.",
+  "Tohle jsem v předpisech nenašel.":"I did not find this in the regulations.",
+  "Znám celý zákoník práce, zákon o zaměstnanosti, nemocenské pojištění a nařízení o překážkách v práci. Daně, nájem bytu nebo dávky státní sociální podpory v nich nejsou. Pokud odpověď čekáš, zkus otázku napsat jinak nebo konkrétněji.":"I know the entire Labour Code, the Employment Act, sickness insurance and the decree on obstacles to work. Taxes, apartment rent or state social support benefits are not in them. If you expect an answer, try phrasing the question differently or more specifically.",
+  "nejbližší nalezené odstavce":"closest retrieved subsections", "podobné otázky, na které umím odpovědět":"similar questions I can answer",
+  "pořadí {0} z {1} · podobnost s otázkou {2}":"rank {0} of {1} · similarity to the question {2}", "citováno":"cited", "nepoužito":"unused",
+  "nalezené úseky k otázce":"passages retrieved for the question", "správný":"correct",
+  "Čtu otázku":"Reading the question", "přepis do jazyka zákona: {0}":"rewritten into the language of the law: {0}",
+  "Hledám podle významu · {0} odstavců":"Searching by meaning · {0} subsections",
+  "embeddingy původní i přepsané otázky; nejpodobnější svítí nejvíc":"embeddings of the original and the rewritten question; the most similar glow brightest",
+  "Hledám podle slov · {0} odstavců":"Searching by words · {0} subsections",
+  "BM25: odstavce se stejnými slovy jako přepsaná otázka (bílé)":"BM25: subsections sharing words with the rewritten question (white)",
+  "Spojuji pořadí (RRF) · {0} kandidátů":"Merging the rankings (RRF) · {0} candidates",
+  "AI model z nich vybere {0}, které k otázce opravdu patří":"an AI model picks {0} of them that really belong to the question",
+  "vyhrává odstavec, který je vysoko ve více seznamech":"the subsection that ranks high in several lists wins",
+  "Odpověď: „nevím“":"Answer: “I don't know”", "Odpověď hotová · {0} {1}":"Answer ready · {0} {1}",
+  "chyba v kroku: {0}":"error in step: {0}", "svítí odstavce, které model opravdu ocitoval":"the subsections the model actually cited are lit",
+  "Ověřuji, že nejsi robot…":"Checking that you are not a robot…",
+  "Přepisuji otázku, hledám v zákoně a píšu odpověď… (10–25 s)":"Rewriting the question, searching the law and writing the answer… (10–25 s)",
+  "Server neodpověděl.":"The server did not respond.", "Něco se pokazilo.":"Something went wrong.", "Spojení se nepovedlo. Zkus to znovu.":"Connection failed. Try again.",
+  "Jen POST.":"POST only.", "Požadavek nepřišel ze stránky.":"The request did not come from the page.",
+  "Dnešní limit pro celý web je vyčerpaný. Zkus to zítra.":"Today's limit for the whole site is used up. Try again tomorrow.",
+  "Neplatný požadavek.":"Invalid request.", "Ověření vypršelo, zkus to znovu.":"The check expired, try again.", "Ověření se nepovedlo, zkus to znovu.":"The check failed, try again.",
+  "Rozpočet na živé otázky je vyčerpaný. Předpočítané otázky fungují dál.":"The budget for live questions is used up. The precomputed questions keep working.",
+  "Model teď neodpovídá, zkus to za chvíli.":"The model is not responding right now, try again in a moment.",
+  "Hledání:":"Search:", "význam · citace":"meaning · citation",
+  "4 předpisy":"4 regulations", "2 475 odstavců: ZP, ZZ, ZNP, NV 590":"2,475 subsections: ZP, ZZ, ZNP, NV 590",
+  "multilingual-e5, embeddingy":"multilingual-e5, embeddings", "hledání podle slov, bez knihovny":"word-based search, no library",
+  "spojí pořadí více hledání":"merges the rankings of several searches", "Flash přepisuje a vybírá, Pro odpovídá":"Flash rewrites and selects, Pro answers",
+  "jeden API klíč na modely":"one API key for the models", "Měření":"Evaluation", "66 otázek, AI soudce + kontrola Claude Opus 5.5":"66 questions, AI judge + Claude Opus 5.5 check",
+  "mapa předpisů, web + serverová funkce":"map of the regulations, web + serverless function", "stejný postup v LCEL, shoda 66/66":"the same pipeline in LCEL, 66/66 agreement",
+  "Klepni na ikonu a uvidíš, z čeho se asistent skládá.":"Tap an icon to see what the assistant is made of.",
+  "+ BM25 nad laickou otázkou":"+ BM25 over the plain-language question", "+ přepis otázky (v2)":"+ question rewriting (v2)", "+ výběr LLM z 20 (v3)":"+ LLM selection from 20 (v3)",
+  "Laická slova jako „výplata“ v zákoně nejsou, proto hledání podle slov běží až nad otázkou přepsanou do jazyka zákona.":"Plain-language words such as “výplata” (pay) do not appear in the law, so the word-based search runs only over the question rewritten into the language of the law.",
+  "otázka a poznámka k v3":"question and note on v3", "sada":"set"
+};
+const I18N_H = {
+  intro:`<strong>Ask in your own words</strong>, or pick a prepared question. For the prepared ones it has been measured whether the answer is correct: green dot = correct, orange = error. The map in the middle shows how the assistant searches.`,
+  srcph:`<b>Here you will see the original text.</b> Click a citation [1] in the answer or a dot on the map.`,
+  qn1:`The colour is the result of a <b>check against the text of the law</b>: green = the answer is correct, orange = the assistant got it wrong. The empty circle is an <b>“I don't know” test</b>: a question the laws have no answer to (taxes, apartment rent…). The correct behaviour is to admit it does not know and not make anything up.`,
+  qn2:`<b>Why do I leave the errors here?</b> So you can see where the assistant goes wrong. An error arises in one of two steps: during <b>retrieval</b> (it did not find the correct subsection) or during <b>reading</b> (it had the subsection but misunderstood it, for example confused wage (mzda) and salary (plat)). For each error you can see where it happened, and that step in the diagram turns red.`,
+  qn3:`The prepared questions are precomputed. They cost nothing and do not count towards your limit.`,
+  nvp:`When the regulations have no answer (taxes, parental allowance, apartment rent…), the assistant admits it. I measure this separately: <span id="nvStat"></span> questions without an answer.`,
+  demonote:`<b>This is a demo.</b> 4 regulations and 2,475 subsections are enough to measure honestly how well the assistant searches and answers. The same approach can handle the whole collection of laws. Only a vector database (pgvector or Qdrant) and automatic updates when a law changes would be added.`
+};
+const T = s => LANG.en && Object.hasOwn(I18N, s) ? I18N[s] : s;
+const TF = (s, ...a) => T(s).replace(/\{(\d)\}/g, (m, i) => a[+i]);
+const PL_EN = {"otázka":["question","questions"], "citace":["citation","citations"]};
+const plural = (n,a,b,c) => LANG.en && PL_EN[a] ? PL_EN[a][n===1?0:1] : (n===1?a:(n>=2&&n<=4?b:c));
+// chybové hlášky ze serveru (api/ask.js) jsou česky; dvě mají v textu číslo
+function tErr(s){
+  if (!s || !LANG.en) return s;
+  let m = s.match(/^Dnešní limit (\d+) otázek je vyčerpaný\. Zkus to zítra, nebo si vyber z předpočítaných otázek\.$/);
+  if (m) return `Today's limit of ${m[1]} questions is used up. Try again tomorrow, or pick one of the prepared questions.`;
+  m = s.match(/^Otázka musí mít 8 až (\d+) znaků\.$/);
+  if (m) return `The question must be 8 to ${m[1]} characters long.`;
+  return T(s);
+}
+// co překládá obecný průchod DOM: jen statické HTML. Vše, co skládá JS (a česká data), se přeskočí.
+const I18N_SKIP = "script,style,svg,[data-t],.msg,.cite,#src .id,#src h3,#src blockquote,#qs,#cats,#bento,#rows,#demoCite,#hub,#hubinfo,#tlegend,#hsinfo,#chips,#cmpTable2,#ablation,#qtitle,.nh,.leftCount,#gstatus,#gstat,#srcinfo,#modelName,#srcmeta,#palMenu,#langBtn,#dockLang";
+const I18N_SKIP_ATTR = ".msg,#src,#qs,#rows,#demoCite,#chips,.nh,.cite,#langBtn,#dockLang";
+function applyLang(){
+  const en = LANG.en;
+  document.documentElement.lang = en ? "en" : "cs";
+  for (const el of document.querySelectorAll("[data-t]")){
+    if (en){ if (el.__czh === undefined) el.__czh = el.innerHTML; el.innerHTML = I18N_H[el.dataset.t]; }
+    else if (el.__czh !== undefined){ el.innerHTML = el.__czh; delete el.__czh; }
+  }
+  const w = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT), nodes = [];
+  for (let n; (n = w.nextNode());) nodes.push(n);
+  for (const n of nodes){
+    const p = n.parentElement; if (!p || p.closest(I18N_SKIP)) continue;
+    const orig = n.__cz !== undefined ? n.__cz : n.nodeValue, key = orig.trim();
+    if (!key) continue;
+    if (en){ if (Object.hasOwn(I18N, key)){ n.__cz = orig; n.nodeValue = orig.replace(key, () => I18N[key]); } }
+    else if (n.__cz !== undefined){ n.nodeValue = n.__cz; delete n.__cz; }
+  }
+  for (const el of document.querySelectorAll("[title],[aria-label],[placeholder]")){
+    if (el.closest(I18N_SKIP_ATTR)) continue;
+    el.__cza = el.__cza || {};
+    for (const a of ["title","aria-label","placeholder"]){
+      if (!el.hasAttribute(a)) continue;
+      const cur = el.__cza[a] !== undefined ? el.__cza[a] : el.getAttribute(a);
+      if (en && Object.hasOwn(I18N, cur)){ el.__cza[a] = cur; el.setAttribute(a, I18N[cur]); }
+      else if (!en && el.__cza[a] !== undefined){ el.setAttribute(a, el.__cza[a]); delete el.__cza[a]; }
+    }
+  }
+  const dm = document.querySelector('meta[name=description]');
+  if (document.__t0 === undefined){ document.__t0 = document.title; document.__d0 = dm ? dm.content : ""; }
+  document.title = en ? I18N[document.__t0] : document.__t0;
+  if (dm) dm.content = en ? I18N[document.__d0] : document.__d0;
+  // přepínač: ukazuje jazyk, na který se přepne
+  const lb = document.getElementById("langBtn"), dl = document.getElementById("dockLang");
+  const lab = en ? "Přepnout do češtiny" : "Switch to English";
+  if (lb){ lb.textContent = en ? "CZ" : "EN"; lb.title = lab; lb.setAttribute("aria-label", lab); }
+  if (dl){ dl.querySelector(".lt").textContent = en ? "CZ" : "EN"; dl.querySelector(".tip").textContent = en ? "Čeština" : "English"; dl.setAttribute("aria-label", lab); }
+  document.querySelectorAll(".langnote").forEach(e => e.hidden = !en);
+  if (typeof D !== "undefined" && D) refreshDyn();
+}
+function setLang(en){
+  LANG.en = en;
+  try { localStorage.setItem("ragLang", en ? "en" : "cs"); } catch(e) {}
+  try { const u = new URL(location.href); if (u.searchParams.has("lang")){ u.searchParams.delete("lang"); history.replaceState(null, "", u); } } catch(e) {}
+  applyLang();
+}
+
 // palety z Lukášovy sbírky (knowledge-base: color-palettes-collection); volba se pamatuje v prohlížeči
 const PALETY = [
   ["14","Smaragd","Bright Leaf + Emerald Green",["#203D43","#CDFF9B","#9fd8e0"]],
   ["1","Písek","Charcoal Navy + Sandy Tan + Steel Blue",["#27262E","#E19C63","#8BA5BE"]],
   ["30","Papír","světlá: teplý papír + tmavý smaragd",["#f5f2ec","#0f7a5c","#2f6aa3"]],
 ];
+function renderPalMenu(){
+  $("#palMenu").innerHTML = PALETY.map(([id,n,d,c]) => `<button role="menuitemradio" data-p="${id}"><span class="sw">${c.map(x => `<i style="background:${x}"></i>`).join("")}</span><span>${T(n)}<small>${T("paleta")} ${id} · ${T(d)}</small></span></button>`).join("");
+  $$("#palMenu button").forEach(b => b.addEventListener("click", () => { setPaleta(b.dataset.p); $("#pal").classList.remove("open"); $("#palBtn").setAttribute("aria-expanded","false"); }));
+  const cp = document.documentElement.dataset.paleta || "14"; $$("#palMenu button").forEach(b => b.classList.toggle("on", b.dataset.p===cp));
+}
 function setPaleta(id){
   if (id === "14") delete document.documentElement.dataset.paleta; else document.documentElement.dataset.paleta = id;
   try { localStorage.setItem("ragPaleta3", id); } catch(e) {}
@@ -872,7 +1109,6 @@ const $ = s => document.querySelector(s);
 const $$ = s => [...document.querySelectorAll(s)];
 const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const short = m => m.split("/").pop().replace(":free","");
-const plural = (n,a,b,c) => n===1?a:(n>=2&&n<=4?b:c);
 const pct = (a,b) => Math.round(100*a/b);
 const REDUCED = matchMedia("(prefers-reduced-motion: reduce)").matches;
 let D, cur = null, cat = null, setF = "all", G = {};
@@ -893,6 +1129,9 @@ const LAWS = {"ZP":"zákoník práce","ZZ":"zákon o zaměstnanosti","ZNP":"zák
 const areaColor = t => (CATS.find(c => c[1]===t) || CATS[8])[3];
 
 fetch("data.json").then(r => r.json()).then(d => { D = d; init(); });
+applyLang();
+$("#langBtn").addEventListener("click", () => setLang(!LANG.en));
+$("#dockLang").addEventListener("click", () => setLang(!LANG.en));
 
 function init(){
   const topicOf = id => (D.chunks.find(c => c.id===id) || {}).topic;
@@ -907,14 +1146,12 @@ function init(){
   D.nTests = D.questions.filter(q => q.test).length;
   renderBento(); renderQuestions(); renderDialog(); drawGraph(); renderHub(); renderChips(); renderDemoCite();
   $("#modelName").textContent = short(D.llm);
-  $("#srcinfo").textContent = "Zdroj: " + D.sources.map(x => `${x.number} (${x.version.replace("Aktuální znění ","znění ").replace(/ \(verze \d+\)/,"")})`).join(", ") + `, staženo ${D.downloaded}`;
-  const nv = D.eval.v2.all; $("#nvStat").textContent = `${nv.nevim_ok} z ${nv.n_unanswerable}`;
+  fillMeta();
   $("#filter").addEventListener("input", renderQuestions);
   $$("#setf button").forEach(b => b.addEventListener("click", () => {
     setF = b.dataset.s; $$("#setf button").forEach(x => x.classList.toggle("on", x===b)); renderQuestions(); }));
   $("#dlgClose").addEventListener("click", () => $("#dlg").close());
-  $("#palMenu").innerHTML = PALETY.map(([id,n,d,c]) => `<button role="menuitemradio" data-p="${id}"><span class="sw">${c.map(x => `<i style="background:${x}"></i>`).join("")}</span><span>${n}<small>paleta ${id} · ${d}</small></span></button>`).join("");
-  $$("#palMenu button").forEach(b => b.addEventListener("click", () => { setPaleta(b.dataset.p); $("#pal").classList.remove("open"); $("#palBtn").setAttribute("aria-expanded","false"); }));
+  renderPalMenu();
   $("#palBtn").addEventListener("click", e => { e.stopPropagation(); const o = $("#pal").classList.toggle("open"); $("#palBtn").setAttribute("aria-expanded", o); });
   document.addEventListener("click", e => { if (!$("#pal").contains(e.target)) $("#pal").classList.remove("open"); });
   setPaleta(document.documentElement.dataset.paleta || "14");
@@ -928,17 +1165,26 @@ function init(){
   $("#heroForm").addEventListener("submit", e => { e.preventDefault(); liveAsk($("#heroForm")); });
   // rychlá otázka: hvězdička napíše do pole jednu z připravených (ověřených) otázek a položí ji; nic nestojí
   // dlaždice v úvodu: klepnutí rozbalí, co číslo znamená (znovu = zavře)
-  const HS = [
+  const HS_CS = [
     `<span class="t">4 předpisy</span><ul><li><b>Zákoník práce</b> (262/2006 Sb.): smlouva, zkušební doba, výpověď, dovolená, mzda, přesčasy</li><li><b>Zákon o zaměstnanosti</b> (435/2004 Sb.): úřad práce, podpora v nezaměstnanosti</li><li><b>Zákon o nemocenském pojištění</b> (187/2006 Sb.): nemocenská, mateřská, otcovská</li><li><b>Nařízení vlády 590/2006 Sb.</b>: volno na svatbu, pohřeb nebo k lékaři</li></ul>`,
     `<span class="t">841 paragrafů</span>Zákoník práce 425, nemocenské pojištění 238, zákon o zaměstnanosti 175, nařízení 3. Vynechal jsem jen závěrečná ustanovení: seznamy zrušených zákonů a účinnost. K otázkám lidí nic nepřidají.`,
     `<span class="t">2 475 odstavců</span>Asistent hledá po odstavcích. Každý odstavec je jedna tečka v mapě níž a má vlastní adresu, třeba <b>ZP § 56 odst. 1</b>, takže citace vede přesně na místo v zákoně. Na každou otázku vybere 5 odstavců a odpoví jen z nich.`,
     `<span class="t">~570 stran textu</span>Přes milion znaků, asi 150 000 slov. Člověku by čtení zabralo kolem 10 hodin. Asistent v tom najde správné odstavce za pár sekund.`,
   ];
+  const HS_EN = [
+    `<span class="t">4 regulations</span><ul><li><b>Labour Code</b> (262/2006 Coll.): contract, probation period, termination, annual leave, wages, overtime</li><li><b>Employment Act</b> (435/2004 Coll.): labour office, unemployment benefit</li><li><b>Sickness Insurance Act</b> (187/2006 Coll.): sick pay, maternity, paternity</li><li><b>Government Decree 590/2006 Coll.</b>: time off for a wedding, a funeral or a doctor's visit</li></ul>`,
+    `<span class="t">841 sections</span>Labour Code 425, sickness insurance 238, Employment Act 175, decree 3. I left out only the final provisions: lists of repealed laws and the effective date. They add nothing to people's questions.`,
+    `<span class="t">2,475 subsections</span>The assistant searches by subsection. Each subsection is one dot in the map below and has its own address, for example <b>ZP § 56 odst. 1</b>, so a citation leads to the exact place in the law. For each question it picks 5 subsections and answers only from them.`,
+    `<span class="t">~570 pages of text</span>Over a million characters, about 150,000 words. A person would need around 10 hours to read it. The assistant finds the right subsections in it in a few seconds.`,
+  ];
+  window.hsText = k => (LANG.en ? HS_EN : HS_CS)[k];
+  G.hs = -1;
   $$(".hstats > button").forEach((b, k) => b.addEventListener("click", () => {
     const open = b.getAttribute("aria-expanded") !== "true";
     $$(".hstats > button").forEach(x => x.setAttribute("aria-expanded", "false"));
     b.setAttribute("aria-expanded", String(open));
-    $("#hsinfo").hidden = !open; if (open) $("#hsinfo").innerHTML = HS[k];
+    G.hs = open ? k : -1;
+    $("#hsinfo").hidden = !open; if (open) $("#hsinfo").innerHTML = hsText(k);
   }));
   let qaLast = -1;
   const quickAsk = async (btn, inp) => {
@@ -963,7 +1209,22 @@ function init(){
   drawWires(); new ResizeObserver(drawWires).observe($("#flow"));
   new ResizeObserver(renderHubWires).observe($("#hub"));
 }
-function setLeft(n){ $$(".leftCount").forEach(e => e.textContent = `dnes zbývá ${n}`); }
+function setLeft(n){ G.left = n; $$(".leftCount").forEach(e => e.textContent = TF("dnes zbývá {0}", n)); }
+function fillMeta(){
+  $("#srcinfo").textContent = T("Zdroj:") + " " + D.sources.map(x => `${LANG.en ? x.number.replace(" Sb."," Coll.") : x.number} (${x.version.replace("Aktuální znění ", T("znění") + " ").replace(/ \(verze \d+\)/,"")})`).join(", ") + `, ${T("staženo")} ${D.downloaded}`;
+  const nv = D.eval.v2.all; $("#nvStat").textContent = TF("{0} z {1}", nv.nevim_ok, nv.n_unanswerable);
+  $("#gstat").textContent = TF("{0} úseků · {1} vazeb", D.chunks.length, D.edges.length);
+}
+// po přepnutí jazyka překreslí vše, co skládá JS (statické HTML řeší applyLang)
+function refreshDyn(){
+  fillMeta(); renderBento(); renderQuestions(); renderDialog(); renderDemoCite(); renderLegend(); renderPalMenu();
+  $$("#hub .it").forEach(e => e.remove()); { const hi = $("#hubinfo"); if (hi) hi.remove(); } renderHub();
+  if (G.left !== undefined) setLeft(G.left);
+  if (G.lbl) G.lbl.selectAll("text.lbl.q").text(T("otázka"));
+  setFlow(G.flowStage || 0, G.flowQ);
+  if (G.curChunk !== undefined) showChunk(G.curChunk);
+  if (G.hs >= 0 && !$("#hsinfo").hidden) $("#hsinfo").innerHTML = hsText(G.hs);
+}
 
 /* ---------- schéma postupu ---------- */
 function drawWires(){
@@ -983,7 +1244,7 @@ function drawWires(){
 }
 function setFlow(stage, q){
   // stage: 0 nic, 1 otázka, 2 přepis + vektory, 3 slova, 4 RRF, 5 odpověď
-  G.flowStage = stage;
+  G.flowStage = stage; if (q) G.flowQ = q;
   const nodes = {q:"#f-q", rw:"#f-rw", vec:"#f-vec", bm:"#f-bm", rrf:"#f-rrf", ans:"#f-ans"};
   const on = {1:["q"], 2:["rw","vec"], 3:["bm"], 4:["rrf"], 5:["ans"]}[stage] || [];
   const done = {2:["q"], 3:["q","rw","vec"], 4:["q","rw","vec","bm"], 5:["q","rw","vec","bm","rrf"]}[stage] || [];
@@ -996,14 +1257,14 @@ function setFlow(stage, q){
   if (q){
     const n = citedSet(q).size;
     $("#f-q .d").textContent = q.q;
-    $("#f-rw .d").textContent = q.rewritten || "bez přepisu";
+    $("#f-rw .d").textContent = q.rewritten || T("bez přepisu");
     if (q.trace){
       const dense = new Set([...(q.trace.dense_q||[]), ...(q.trace.dense_rw||[])]);
-      $("#f-vec .d").textContent = `${dense.size} kandidátů podle významu`;
-      $("#f-bm .d").textContent = `${(q.trace.bm25||[]).length} kandidátů podle slov`;
+      $("#f-vec .d").textContent = TF("{0} kandidátů podle významu", dense.size);
+      $("#f-bm .d").textContent = TF("{0} kandidátů podle slov", (q.trace.bm25||[]).length);
     }
     $("#f-rrf .d").textContent = q.hits.map(h => D.chunks[h[0]].id).join(", ");
-    $("#f-ans .d").textContent = q.answer.startsWith("Nevím") ? "řekl „nevím“" : `${short(D.llm)} · ${n} ${plural(n,"citace","citace","citací")}`;
+    $("#f-ans .d").textContent = q.answer.startsWith("Nevím") ? T("řekl „nevím“") : `${short(D.llm)} · ${n} ${plural(n,"citace","citace","citací")}`;
   }
 }
 
@@ -1012,30 +1273,31 @@ function cmpRows(){
   const [a1,a2,a3] = ["v1","v2","v3"].map(v => D.eval[v].all);
   const row = (l,k,nk) => `<span>${l}</span><span class="v mut">${a1[k]}/${a1[nk]}</span><span class="v mut">${a2[k]}/${a2[nk]}</span><span class="v ${a3[k]>a2[k]?"up":""}">${a3[k]}/${a3[nk]}</span>`;
   return `<span class="hd"></span><span class="hd v">v1</span><span class="hd v">v2</span><span class="hd v">v3</span>`+
-    row("Odpověď správně","correct","n")+
-    row("… otázky s odpovědí","correct_answerable","n_answerable")+
-    row("… správně „nevím“","nevim_ok","n_unanswerable")+
+    row(T("Odpověď správně"),"correct","n")+
+    row(T("… otázky s odpovědí"),"correct_answerable","n_answerable")+
+    row(T("… správně „nevím“"),"nevim_ok","n_unanswerable")+
     `<span class="sep"></span>`+
-    row("Správný § mezi 5 pro model","hit5","n_answerable")+
-    row("Správný § mezi 3 prvními","hit3","n_answerable")+
-    row("AI soudce = druhá kontrola","judge_agree","n")+
-    `<span class="sep"></span><span class="mut" style="grid-column:1/-1;font-size:12.5px">v1: ${esc(short(D.llm_v1))} (zdarma), jen embeddingy e5-base. v2: ${esc(short(D.llm))}, e5-large + BM25 + přepis otázky. v3: navíc LLM vybere 5 z 20 kandidátů, dohledá odkazy, odpověď píše DeepSeek v4 Pro a rozliší mzdu a plat.</span>`;
+    row(T("Správný § mezi 5 pro model"),"hit5","n_answerable")+
+    row(T("Správný § mezi 3 prvními"),"hit3","n_answerable")+
+    row(T("AI soudce = druhá kontrola"),"judge_agree","n")+
+    `<span class="sep"></span><span class="mut" style="grid-column:1/-1;font-size:12.5px">${TF("v1: {0} (zdarma), jen embeddingy e5-base. v2: {1}, e5-large + BM25 + přepis otázky. v3: navíc LLM vybere 5 z 20 kandidátů, dohledá odkazy, odpověď píše DeepSeek v4 Pro a rozliší mzdu a plat.", esc(short(D.llm_v1)), esc(short(D.llm)))}</span>`;
 }
 function renderBento(){
   const [v1,v2,v3] = ["v1","v2","v3"].map(v => D.eval[v].all), fr = ["v1","v2","v3"].map(v => ({correct: D.eval[v].fresh.correct + D.eval[v].fresh2.correct, n: D.eval[v].fresh.n + D.eval[v].fresh2.n})), r = D.retrieval, sc = D.scale;
   const bar = (l,a,n,cls) => `<span>${l}</span><div class="bar ${cls||""}"><i style="width:${pct(a,n)}%"></i></div><span class="n">${a}/${n}</span>`;
+  const money = x => LANG.en ? "$" + x.toFixed(2) : x.toFixed(2).replace(".",",") + " $";
   $("#bento").innerHTML =
-    `<div class="tile t-main"><div><h3>Testovací otázky správně (v3)</h3><div class="big">${v3.correct}<span>/${v3.n}</span></div>`+
-      `<div class="split"><span class="chip"><b>${v3.correct_answerable}/${v3.n_answerable}</b> otázek s odpovědí v předpisech</span><span class="chip"><b>${v3.nevim_ok}/${v3.n_unanswerable}</b> správně „nevím“, když předpisy mlčí</span><span class="chip">měření v3 od nuly stojí <b>${(D.cost_usd||0).toFixed(2).replace(".",",")} $</b></span></div></div>`+
+    `<div class="tile t-main"><div><h3>${T("Testovací otázky správně (v3)")}</h3><div class="big">${v3.correct}<span>/${v3.n}</span></div>`+
+      `<div class="split"><span class="chip"><b>${v3.correct_answerable}/${v3.n_answerable}</b> ${T("otázek s odpovědí v předpisech")}</span><span class="chip"><b>${v3.nevim_ok}/${v3.n_unanswerable}</b> ${T("správně „nevím“, když předpisy mlčí")}</span><span class="chip">${T("měření v3 od nuly stojí")} <b>${money(D.cost_usd||0)}</b></span></div></div>`+
       `<div><div class="bars2">${bar("v1",v1.correct,v1.n)}${bar("v2",v2.correct,v2.n)}${bar("v3",v3.correct,v3.n,"v2")}</div>`+
-      `<p class="bad-note"><b>Pozor:</b> každou verzi jsem ladil podle chyb na starších otázkách, tam jsou čísla nadsazená. Poctivé srovnání je karta „otázky napsané předem“.</p>`+
-      `<button class="linkbtn" id="openRes"><i class="ph ph-list-checks"></i>Celé měření otázku po otázce</button></div></div>`+
-    `<div class="tile t-hold"><h3>Otázky napsané předem</h3><div class="big">${fr[2].correct}<span>/${fr[2].n}</span></div><p style="margin-top:10px">vždy před spuštěním nové verze, bez ladění podle nich. v2 na nich ${fr[1].correct}/${fr[1].n}, v1 ${fr[0].correct}/${fr[0].n}.</p></div>`+
-    `<div class="tile t-scale"><h3>10× větší zdroj</h3><div class="vs"><span><b>${sc.small}/${sc.n}</b>260 odstavců</span><span><b>${sc.big}/${sc.n}</b>2 475 odstavců</span></div><p style="margin-top:10px">správný § mezi 5 nalezenými u stejných otázek. Víc textu hledání ${sc.big>=sc.small?"nezhoršilo":"trochu zhoršilo"}.</p></div>`+
-    `<div class="tile t-wide"><h3>Co pomohlo ve vyhledávání</h3><p style="margin-bottom:14px">správný paragraf mezi 5 úseky, které dostane model (${r.dense.n} otázek)</p><div class="bars2">`+
+      `<p class="bad-note"><b>${T("Pozor:")}</b> ${T("každou verzi jsem ladil podle chyb na starších otázkách, tam jsou čísla nadsazená. Poctivé srovnání je karta „otázky napsané předem“.")}</p>`+
+      `<button class="linkbtn" id="openRes"><i class="ph ph-list-checks"></i>${T("Celé měření otázku po otázce")}</button></div></div>`+
+    `<div class="tile t-hold"><h3>${T("Otázky napsané předem")}</h3><div class="big">${fr[2].correct}<span>/${fr[2].n}</span></div><p style="margin-top:10px">${TF("vždy před spuštěním nové verze, bez ladění podle nich. v2 na nich {0}/{1}, v1 {2}/{3}.", fr[1].correct, fr[1].n, fr[0].correct, fr[0].n)}</p></div>`+
+    `<div class="tile t-scale"><h3>${T("10× větší zdroj")}</h3><div class="vs"><span><b>${sc.small}/${sc.n}</b>${T("260 odstavců")}</span><span><b>${sc.big}/${sc.n}</b>${T("2 475 odstavců")}</span></div><p style="margin-top:10px">${TF("správný § mezi 5 nalezenými u stejných otázek. Víc textu hledání {0}.", T(sc.big>=sc.small?"nezhoršilo":"trochu zhoršilo"))}</p></div>`+
+    `<div class="tile t-wide"><h3>${T("Co pomohlo ve vyhledávání")}</h3><p style="margin-bottom:14px">${TF("správný paragraf mezi 5 úseky, které dostane model ({0} otázek)", r.dense.n)}</p><div class="bars2">`+
       bar("e5-base (v1)", r.dense.hit5, r.dense.n)+bar("e5-large", r.dense_large.hit5, r.dense_large.n)+
-      bar("+ BM25 laicky", r.hybrid.hit5, r.hybrid.n)+bar("+ přepis (v2)", r.hybrid_rewrite.hit5, r.hybrid_rewrite.n)+
-      bar("+ výběr LLM (v3)", r.hybrid_rerank.hit5, r.hybrid_rerank.n, "v2")+`</div></div>`;
+      bar(T("+ BM25 laicky"), r.hybrid.hit5, r.hybrid.n)+bar(T("+ přepis (v2)"), r.hybrid_rewrite.hit5, r.hybrid_rewrite.n)+
+      bar(T("+ výběr LLM (v3)"), r.hybrid_rerank.hit5, r.hybrid_rerank.n, "v2")+`</div></div>`;
   $("#openRes").addEventListener("click", () => $("#dlg").showModal());
 }
 
@@ -1049,19 +1311,20 @@ function renderQuestions(){
   const nf = norm($("#filter").value.trim());
   const pool = D.questions.map((q,i)=>({q,i})).filter(o => o.q.group!=="live" && (setF==="all" || o.q.group===setF) && (!nf || norm(o.q.q).includes(nf)));
   // karty kategorií: počet a tečky výsledků; při hledání se ztlumí ty bez shody
-  $("#cats").innerHTML = CATS.map(([id,name,icon,col,law]) => { const qs = pool.filter(o => o.q.cat===id); name = name || "Mimo předpisy";
+  $("#cats").innerHTML = CATS.map(([id,name,icon,col,law]) => { const qs = pool.filter(o => o.q.cat===id); name = T(name || "Mimo předpisy");
     const dots = qs.map(({q}) => `<i class="${q.test && !q.test.gold_chunks.length ? "nv" : qStatus(q)}"></i>`).join("");
     return `<button class="cat${cat===id?" on":""}${nf && !qs.length?" dim":""}" data-c="${id}" role="tab" aria-selected="${cat===id}">`+
-      `<span class="top"><i class="ph ${icon}"${col && cat===id ? ` style="color:${col}"` : ""}></i><span class="cnt">${qs.length}</span></span><b>${name}</b><span class="law">${law}</span><span class="dots">${dots}</span></button>`; }).join("");
+      `<span class="top"><i class="ph ${icon}"${col && cat===id ? ` style="color:${col}"` : ""}></i><span class="cnt">${qs.length}</span></span><b>${name}</b><span class="law">${T(law)}</span><span class="dots">${dots}</span></button>`; }).join("");
   $$("#cats .cat").forEach(b => b.addEventListener("click", () => openCat(b.dataset.c)));
   const list = pool.filter(o => nf ? true : o.q.cat===cat);
   const open = !!(cat || nf);
   $("#qpanel").classList.toggle("open", open);
   const c = CATS.find(x => x[0]===cat);
-  $("#qtitle").innerHTML = nf ? `<b>${list.length}</b> ${plural(list.length,"otázka","otázky","otázek")} pro „${esc($("#filter").value.trim())}“` : c ? `<b>${c[1] || "Mimo předpisy"}</b> · ${list.length} ${plural(list.length,"otázka","otázky","otázek")}` : "";
+  const qo = LANG.en ? "“" : "„", qc = LANG.en ? "”" : "“";
+  $("#qtitle").innerHTML = nf ? `<b>${list.length}</b> ${plural(list.length,"otázka","otázky","otázek")} ${T("pro")} ${qo}${esc($("#filter").value.trim())}${qc}` : c ? `<b>${T(c[1] || "Mimo předpisy")}</b> · ${list.length} ${plural(list.length,"otázka","otázky","otázek")}` : "";
   $("#qs").innerHTML = list.length ? list.map(({q,i},k) =>
-    `<button class="qb${q.done?" done":""}" style="--d:${k}" data-i="${i}"><span class="dot ${qStatus(q)}"></span><span class="n">${qLabel(q,i)}</span><span>${esc(q.q)}</span>${q.test && !q.test.gold_chunks.length ? '<span class="nt">test „nevím“</span>' : ""}</button>`).join("")
-    : `<div class="empty">Tady taková otázka není. Zkus jiné slovo, nebo ji napiš nahoru jako vlastní.</div>`;
+    `<button class="qb${q.done?" done":""}" style="--d:${k}" data-i="${i}"><span class="dot ${qStatus(q)}"></span><span class="n">${qLabel(q,i)}</span><span>${esc(q.q)}</span>${q.test && !q.test.gold_chunks.length ? '<span class="nt">' + T("test „nevím“") + '</span>' : ""}</button>`).join("")
+    : `<div class="empty">${T("Tady taková otázka není. Zkus jiné slovo, nebo ji napiš nahoru jako vlastní.")}</div>`;
   $$("#qs .qb").forEach(b => b.addEventListener("click", () => ask(+b.dataset.i, true)));
 }
 function renderChips(){
@@ -1072,7 +1335,7 @@ function renderChips(){
 function renderDemoCite(){
   const q = D.questions.find(q => q.test && q.test.id===15);
   if (!q) return;
-  $("#demoCite").innerHTML = `<div class="q2">otázka: ${esc(q.q)}</div>${fmt(q.answer, q)}`;
+  $("#demoCite").innerHTML = `<div class="q2">${T("otázka:")} ${esc(q.q)}</div>${fmt(q.answer, q)}`;
 }
 
 function fmt(text, q){
@@ -1087,31 +1350,32 @@ function ask(i, scroll, src = "preset"){
   if (!q.live) try { navigator.sendBeacon("api/hit", JSON.stringify({q: q.q, src})); } catch(e) {} q.done = true; cur = q;
   let verdict = "";
   if (q.test){
-    const t = q.test;
-    const r = t.hit5===null ? "předpisy odpověď nemají" : (q.hits.some(h => t.gold_chunks.includes(D.chunks[h[0]].id)) ? "správný § nalezen" : "správný § nenalezen");
+    const ts = q.test;
+    const r = ts.hit5===null ? "předpisy odpověď nemají" : (q.hits.some(h => ts.gold_chunks.includes(D.chunks[h[0]].id)) ? "správný § nalezen" : "správný § nenalezen");
     const WHY = {"hledání": "Mezi 5 úseky, které model dostal, nebyl odstavec s odpovědí. Model pak nemá z čeho odpovědět.",
                  "čtení": "Správný odstavec model měl, ale špatně ho použil nebo přečetl."};
-    verdict = `<div class="verdict"><div class="tags"><span class="tag ${t.correct?"ok":"bad"}">${SETS[t.set][1]} ${t.id}: ${t.correct?"správně":"chyba"}</span>`+
-      `<span class="tag ${r==="správný § nenalezen"?"bad":"ok"}">${r}</span>`+
-      (t.correct && t.v2_correct===false ? `<span class="tag ok">opraveno ve v3</span>` : "")+`</div>`+
-      (t.fail ? `<div class="where">Kde se to pokazilo: <b>${t.fail}</b>. ${WHY[t.fail]}</div>` : "")+esc(t.note)+
-      (t.v2_answer && t.v2_answer!==q.answer ? `<details class="v1"><summary>porovnat s v2 (${t.v2_correct?"správně":"chyba"})</summary><div class="old">${fmt(t.v2_answer,null)}${t.v2_note?`<div style="margin-top:6px;font-size:12px">${esc(t.v2_note)}</div>`:""}</div></details>` : "")+
-      (t.v1_answer ? `<details class="v1"><summary>porovnat s v1 (${t.v1_correct?"správně":"chyba"})</summary><div class="old">${fmt(t.v1_answer,null)}</div></details>` : "")+`</div>`;
+    const ok = b => T(b ? "správně" : "chyba");
+    verdict = `<div class="verdict"><div class="tags"><span class="tag ${ts.correct?"ok":"bad"}">${T(SETS[ts.set][1])} ${ts.id}: ${ok(ts.correct)}</span>`+
+      `<span class="tag ${r==="správný § nenalezen"?"bad":"ok"}">${T(r)}</span>`+
+      (ts.correct && ts.v2_correct===false ? `<span class="tag ok">${T("opraveno ve v3")}</span>` : "")+`</div>`+
+      (ts.fail ? `<div class="where">${T("Kde se to pokazilo:")} <b>${T(ts.fail)}</b>. ${T(WHY[ts.fail])}</div>` : "")+esc(ts.note)+
+      (ts.v2_answer && ts.v2_answer!==q.answer ? `<details class="v1"><summary>${TF("porovnat s v2 ({0})", ok(ts.v2_correct))}</summary><div class="old">${fmt(ts.v2_answer,null)}${ts.v2_note?`<div style="margin-top:6px;font-size:12px">${esc(ts.v2_note)}</div>`:""}</div></details>` : "")+
+      (ts.v1_answer ? `<details class="v1"><summary>${TF("porovnat s v1 ({0})", ok(ts.v1_correct))}</summary><div class="old">${fmt(ts.v1_answer,null)}</div></details>` : "")+`</div>`;
   } else if (q.live){
-    verdict = `<div class="verdict"><div class="tags"><span class="tag">živá odpověď · neověřeno</span></div>Tahle odpověď vznikla teď. Neprošla měřením ani kontrolou, tak si ji ověř kliknutím na citace.</div>`;
+    verdict = `<div class="verdict"><div class="tags"><span class="tag">${T("živá odpověď · neověřeno")}</span></div>${T("Tahle odpověď vznikla teď. Neprošla měřením ani kontrolou, tak si ji ověř kliknutím na citace.")}</div>`;
   } else if (q.review){
-    verdict = `<div class="verdict"><div class="tags"><span class="tag ${q.review.ok?"ok":"bad"}">ukázka: ${q.review.ok?"ověřeno":"chyba"}</span></div>${esc(q.review.note)}</div>`;
+    verdict = `<div class="verdict"><div class="tags"><span class="tag ${q.review.ok?"ok":"bad"}">${TF("ukázka: {0}", T(q.review.ok?"ověřeno":"chyba"))}</span></div>${esc(q.review.note)}</div>`;
   }
   if (q.answer.startsWith("Nevím")) verdict = nevimHelp(q) + verdict;
   const log = $("#log");
   // odpověď se ukáže až na konci „přemýšlení“, souběžně se schématem a mapou (ne hned na začátku)
-  log.insertAdjacentHTML("beforeend", `<div class="msg user">${esc(q.q)}</div><div class="msg wait" id="thinkMsg"><i class="ph ph-circle-notch"></i><span>Čtu otázku…</span></div>`);
+  log.insertAdjacentHTML("beforeend", `<div class="msg user">${esc(q.q)}</div><div class="msg wait" id="thinkMsg"><i class="ph ph-circle-notch"></i><span>${T("Čtu otázku…")}</span></div>`);
   log.scrollTop = log.scrollHeight;
   renderQuestions();
   pendingReveal = () => {
     pendingReveal = null;
     const w = $("#thinkMsg"); if (!w) return;
-    w.outerHTML = `<div class="msg bot"><div class="meta"><span><i class="ph ph-sparkle"></i> ${short(D.llm)}</span><span>${q.hits.length} úseků</span></div><p>${fmt(q.answer,q)}</p>${verdict}</div>`;
+    w.outerHTML = `<div class="msg bot"><div class="meta"><span><i class="ph ph-sparkle"></i> ${short(D.llm)}</span><span>${TF("{0} úseků", q.hits.length)}</span></div><p>${fmt(q.answer,q)}</p>${verdict}</div>`;
     const last = log.querySelector(".msg.bot:last-child");
     last.querySelectorAll(".cite,.nh .para").forEach(b => b.addEventListener("click", () => showChunk(+b.dataset.c, true)));
     last.querySelectorAll(".nh .sim").forEach(b => b.addEventListener("click", () => { cat = D.questions[+b.dataset.i].cat; ask(+b.dataset.i, true, "sim"); }));
@@ -1139,10 +1403,10 @@ function nevimHelp(q){
   const sim = similarQuestions(q, 3);
   const expected = q.test && !q.test.gold_chunks.length;
   return `<div class="outside">`+
-    (expected ? `<b>Správně „nevím“:</b> tohle v těchto 4 předpisech není. Asistent zná celý zákoník práce, zákon o zaměstnanosti, nemocenské pojištění a nařízení o překážkách v práci.`
-              : `<b>Tohle jsem v předpisech nenašel.</b> Znám celý zákoník práce, zákon o zaměstnanosti, nemocenské pojištění a nařízení o překážkách v práci. Daně, nájem bytu nebo dávky státní sociální podpory v nich nejsou. Pokud odpověď čekáš, zkus otázku napsat jinak nebo konkrétněji.`)+
-    `<div class="nh"><span>nejbližší nalezené odstavce</span>${q.hits.slice(0,3).map(h => `<button class="para" data-c="${h[0]}">${esc(D.chunks[h[0]].id)}</button>`).join("")}</div>`+
-    (sim.length ? `<div class="nh"><span>podobné otázky, na které umím odpovědět</span>${sim.map(({o,i}) => `<button class="sim" data-i="${i}">${esc(o.q)}</button>`).join("")}</div>` : "")+
+    (expected ? `<b>${T("Správně „nevím“:")}</b> ${T("tohle v těchto 4 předpisech není. Asistent zná celý zákoník práce, zákon o zaměstnanosti, nemocenské pojištění a nařízení o překážkách v práci.")}`
+              : `<b>${T("Tohle jsem v předpisech nenašel.")}</b> ${T("Znám celý zákoník práce, zákon o zaměstnanosti, nemocenské pojištění a nařízení o překážkách v práci. Daně, nájem bytu nebo dávky státní sociální podpory v nich nejsou. Pokud odpověď čekáš, zkus otázku napsat jinak nebo konkrétněji.")}`)+
+    `<div class="nh"><span>${T("nejbližší nalezené odstavce")}</span>${q.hits.slice(0,3).map(h => `<button class="para" data-c="${h[0]}">${esc(D.chunks[h[0]].id)}</button>`).join("")}</div>`+
+    (sim.length ? `<div class="nh"><span>${T("podobné otázky, na které umím odpovědět")}</span>${sim.map(({o,i}) => `<button class="sim" data-i="${i}">${esc(o.q)}</button>`).join("")}</div>` : "")+
     `</div>`;
 }
 
@@ -1155,14 +1419,14 @@ function showChunk(ci, user){
   if (cur){
     const cs = citedSet(cur), gold = new Set(cur.test ? cur.test.gold_chunks : []);
     const h = cur.hits.find(h => h[0]===ci);
-    if (h) extra += `<div class="score2">pořadí ${cur.hits.indexOf(h)+1} z ${cur.hits.length} · podobnost s otázkou ${h[1].toFixed(3)}${cs.has(ci)?" · citováno":""}</div>`;
-    extra += `<div class="hits"><div class="lab">nalezené úseky k otázce</div>${cur.hits.map((h,k) => {
+    if (h) extra += `<div class="score2">${TF("pořadí {0} z {1} · podobnost s otázkou {2}", cur.hits.indexOf(h)+1, cur.hits.length, h[1].toFixed(3))}${cs.has(ci)?" · "+T("citováno"):""}</div>`;
+    extra += `<div class="hits"><div class="lab">${T("nalezené úseky k otázce")}</div>${cur.hits.map((h,k) => {
       const id = D.chunks[h[0]].id;
-      return `<button data-c="${h[0]}" class="${h[0]===ci?"on":""}"><span>[${k+1}] ${esc(id)}${gold.has(id)?' <span class="g">✓ správný</span>':""}</span><span class="${cs.has(h[0])?"c":""}">${cs.has(h[0])?"citováno":"nepoužito"}</span></button>`; }).join("")}</div>`;
+      return `<button data-c="${h[0]}" class="${h[0]===ci?"on":""}"><span>[${k+1}] ${esc(id)}${gold.has(id)?` <span class="g">✓ ${T("správný")}</span>`:""}</span><span class="${cs.has(h[0])?"c":""}">${cs.has(h[0])?T("citováno"):T("nepoužito")}</span></button>`; }).join("")}</div>`;
   }
-  $("#src").innerHTML = `<div class="id">${esc(c.id)}</div><h3>${esc(c.title)}</h3><div class="topic"><i style="display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px;background:${areaColor(c.topic)}"></i>${esc(LAWS[c.law])} · ${esc(c.topic)}</div>`+
+  $("#src").innerHTML = `<div class="id">${esc(c.id)}</div><h3>${esc(c.title)}</h3><div class="topic"><i style="display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px;background:${areaColor(c.topic)}"></i>${esc(T(LAWS[c.law]))} · ${esc(T(c.topic))}</div>`+
     `<blockquote>${esc(c.text).replace(/([,:]) ([a-z]\)) /g,"$1\n$2 ")}</blockquote>${extra}`;
-  $("#srcmeta").textContent = LAWS[c.law];
+  $("#srcmeta").textContent = T(LAWS[c.law]); G.curChunk = ci;
   $$("#src .hits button").forEach(b => b.addEventListener("click", () => showChunk(+b.dataset.c, true)));
   const last = document.querySelector("#log .msg.bot:last-child");
   $$("#log .cite").forEach(b => b.classList.toggle("on", +b.dataset.c===ci && b.closest(".msg")===last));
@@ -1171,10 +1435,13 @@ function showChunk(ci, user){
 }
 
 /* ---------- mapa ---------- */
+function renderLegend(){
+  $("#tlegend").innerHTML = CATS.filter(c => c[1]).map(c => `<span><i style="background:${c[3]}"></i>${esc(T(c[1]))}</span>`).join("") +
+    `<span class="sp"></span><b>${T("Hledání:")}</b><span><i style="background:var(--accent);box-shadow:0 0 6px var(--accent)"></i>${T("význam · citace")}</span><span><i style="background:var(--ice)"></i>${T("slova")}</span>`;
+}
 function drawGraph(){
   const svg = d3.select("#graph");
-  $("#tlegend").innerHTML = CATS.filter(c => c[1]).map(c => `<span><i style="background:${c[3]}"></i>${esc(c[1])}</span>`).join("") +
-    `<span class="sp"></span><b>Hledání:</b><span><i style="background:var(--accent);box-shadow:0 0 6px var(--accent)"></i>význam · citace</span><span><i style="background:var(--ice)"></i>slova</span>`;
+  renderLegend();
   const deg = new Array(D.chunks.length).fill(0); D.edges.forEach(([a,b]) => { deg[a]++; deg[b]++; });
   // rozložení je spočítané předem v Pythonu (tools/build_data.py), mapa proto funguje hned i bez animací
   const nodes = D.chunks.map((c,i) => ({i, topic:c.topic, deg:deg[i], x:c.p[0], y:c.p[1]}));
@@ -1197,7 +1464,6 @@ function drawGraph(){
   $("#zout").onclick = () => svg.call(zoom.scaleBy, 1/1.4);
   $("#zfit").onclick = () => fit(G.all);
   fit(nodes);
-  $("#gstat").textContent = `${nodes.length} úseků · ${links.length} vazeb`;
   new ResizeObserver(() => fit(cur ? G.focus : nodes)).observe($("#graph"));
 }
 
@@ -1247,7 +1513,7 @@ function highlight(q){
   G.q.selectAll("line").data(q.hits).join("line").attr("class",h => "qlink"+(cs.has(h[0])?"":" near"))
     .attr("x1",qx).attr("y1",qy).attr("x2",h=>G.nodesData[h[0]].x).attr("y2",h=>G.nodesData[h[0]].y);
   G.q.append("circle").attr("class","qnode").attr("cx",qx).attr("cy",qy);
-  G.lbl.append("text").attr("class","lbl q").attr("x",qx+10).attr("y",qy+4).text("otázka");
+  G.lbl.append("text").attr("class","lbl q").attr("x",qx+10).attr("y",qy+4).text(T("otázka"));
   G.lbl.selectAll("text.h").data(q.hits).join("text").attr("class","lbl h")
     .attr("x",h=>G.nodesData[h[0]].x+8).attr("y",h=>G.nodesData[h[0]].y-7).text(h => D.chunks[h[0]].id);
   G.nodes.filter(d => all.has(d.i) || gold.has(d.i)).raise();
@@ -1282,20 +1548,20 @@ function think(q, done){
   G.q.selectAll("*").remove(); G.lbl.selectAll("*").remove();
   G.svg.classed("dimmed", true);
   G.q.append("circle").attr("class","qnode").attr("cx",qx).attr("cy",qy);
-  G.lbl.append("text").attr("class","lbl q").attr("x",qx+10).attr("y",qy+4).text("otázka");
+  G.lbl.append("text").attr("class","lbl q").attr("x",qx+10).attr("y",qy+4).text(T("otázka"));
   fit(G.all); scaleMarks(d3.zoomTransform(G.svg.node()).k);
   setFlow(1, q);
-  status(1, "Čtu otázku", q.rewritten ? `přepis do jazyka zákona: ${esc(q.rewritten)}` : "");
+  status(1, T("Čtu otázku"), q.rewritten ? TF("přepis do jazyka zákona: {0}", esc(q.rewritten)) : "");
   // fáze 1: hledání podle významu
   at(stepMs, () => { setFlow(2, q);
     G.nodes.classed("a1", d => dense.includes(d.i)).style("opacity", d => dense.includes(d.i) ? rankOp(dense, d.i) : null);
     syn(dense, "d");
-    status(2, `Hledám podle významu · ${dense.length} odstavců`, "embeddingy původní i přepsané otázky; nejpodobnější svítí nejvíc"); });
+    status(2, TF("Hledám podle významu · {0} odstavců", dense.length), T("embeddingy původní i přepsané otázky; nejpodobnější svítí nejvíc")); });
   // fáze 2: hledání podle slov
   at(stepMs*2, () => { setFlow(3, q);
     G.nodes.classed("a2", d => words.includes(d.i) && !dense.includes(d.i));
     syn(words, "w");
-    status(2, `Hledám podle slov · ${words.length} odstavců`, "BM25: odstavce se stejnými slovy jako přepsaná otázka (bílé)"); });
+    status(2, TF("Hledám podle slov · {0} odstavců", words.length), T("BM25: odstavce se stejnými slovy jako přepsaná otázka (bílé)")); });
   // fáze 3: spojení pořadí
   at(stepMs*3, () => { setFlow(4, q);
     G.q.selectAll("line.syn").remove();
@@ -1303,15 +1569,15 @@ function think(q, done){
     scaleMarks(d3.zoomTransform(G.svg.node()).k);
     G.q.selectAll("line.syn.f").data(fused).join("line").attr("class","syn f")
       .attr("x1",qx).attr("y1",qy).attr("x2",i=>P[i].x).attr("y2",i=>P[i].y).style("stroke-opacity", i => top5.has(i) ? .8 : .25);
-    status(3, `Spojuji pořadí (RRF) · ${fused.length} kandidátů`, t.rerank ? `AI model z nich vybere ${q.hits.length}, které k otázce opravdu patří` : "vyhrává odstavec, který je vysoko ve více seznamech"); });
+    status(3, TF("Spojuji pořadí (RRF) · {0} kandidátů", fused.length), t.rerank ? TF("AI model z nich vybere {0}, které k otázce opravdu patří", q.hits.length) : T("vyhrává odstavec, který je vysoko ve více seznamech")); });
   // fáze 4: odpověď a citace
   at(stepMs*4, () => { setFlow(5, q);
     done && done();
     G.nodes.classed("a3", false);
     highlight(q);
     const n = citedSet(q).size;
-    status(4, q.answer.startsWith("Nevím") ? "Odpověď: „nevím“" : `Odpověď hotová · ${n} ${plural(n,"citace","citace","citací")}`,
-      q.test && q.test.fail ? `chyba v kroku: ${q.test.fail}` : "svítí odstavce, které model opravdu ocitoval");
+    status(4, q.answer.startsWith("Nevím") ? T("Odpověď: „nevím“") : TF("Odpověď hotová · {0} {1}", n, plural(n,"citace","citace","citací")),
+      q.test && q.test.fail ? TF("chyba v kroku: {0}", T(q.test.fail)) : T("svítí odstavce, které model opravdu ocitoval"));
     at(REDUCED ? 3500 : 2600, () => $("#gstatus").className = "gstatus"); });
 }
 
@@ -1333,18 +1599,18 @@ async function liveAsk(form){
   busy = true; $$(".go").forEach(b => b.disabled = true);
   const log = $("#log");
   $("#app").scrollIntoView({block:"start", behavior: REDUCED ? "auto" : "smooth"});
-  log.insertAdjacentHTML("beforeend", `<div class="msg user">${esc(q)}</div><div class="msg wait" id="waitMsg"><i class="ph ph-circle-notch"></i><span>Ověřuji, že nejsi robot…</span></div>`);
+  log.insertAdjacentHTML("beforeend", `<div class="msg user">${esc(q)}</div><div class="msg wait" id="waitMsg"><i class="ph ph-circle-notch"></i><span>${T("Ověřuji, že nejsi robot…")}</span></div>`);
   log.scrollTop = log.scrollHeight;
   setFlow(1, {q, hits:[], answer:"", rewritten:"…"});
   try {
     const {ts, nonce} = await pow(q);
-    $("#waitMsg span").textContent = "Přepisuji otázku, hledám v zákoně a píšu odpověď… (10–25 s)";
+    $("#waitMsg span").textContent = T("Přepisuji otázku, hledám v zákoně a píšu odpověď… (10–25 s)");
     const r = await fetch("api/ask", {method:"POST", headers:{"Content-Type":"application/json","X-Rag-Client":"web"},
       body: JSON.stringify({q, ts, nonce, website: form.website.value})});
-    const d = await r.json().catch(() => ({error:"Server neodpověděl."}));
+    const d = await r.json().catch(() => ({error:T("Server neodpověděl.")}));
     $("#waitMsg").remove();
     if (typeof d.remaining === "number"){ setLeft(d.remaining); try { localStorage.setItem("ragLeft", d.remaining); } catch(e) {} }
-    if (!r.ok || d.error){ setFlow(0); log.insertAdjacentHTML("beforeend", `<div class="msg err">${esc(d.error || "Něco se pokazilo.")}</div>`); log.scrollTop = log.scrollHeight; return; }
+    if (!r.ok || d.error){ setFlow(0); log.insertAdjacentHTML("beforeend", `<div class="msg err">${esc(tErr(d.error) || T("Něco se pokazilo."))}</div>`); log.scrollTop = log.scrollHeight; return; }
     log.lastElementChild.remove();                       // otázku vypíše ask() znovu i s odpovědí
     D.questions.push({q, answer:d.answer, rewritten:d.rewritten, hits:d.hits, trace:d.trace, live:true, group:"live"});
     form.q.value = "";
@@ -1352,7 +1618,7 @@ async function liveAsk(form){
   } catch(err){
     const w = $("#waitMsg"); if (w) w.remove();
     setFlow(0);
-    log.insertAdjacentHTML("beforeend", `<div class="msg err">Spojení se nepovedlo. Zkus to znovu.</div>`);
+    log.insertAdjacentHTML("beforeend", `<div class="msg err">${T("Spojení se nepovedlo. Zkus to znovu.")}</div>`);
   } finally { busy = false; $$(".go").forEach(b => b.disabled = false); }
 }
 
@@ -1370,15 +1636,15 @@ const STACK = [
 ];
 function renderHub(){
   $("#hub").insertAdjacentHTML("beforeend", STACK.map(([ic,t,s,x,y]) =>
-    `<div class="it" style="left:${x*100}%;top:${y*100}%"><i class="ph ${ic}"></i><div><b>${t}</b><span>${s}</span></div></div>`).join(""));
+    `<div class="it" style="left:${x*100}%;top:${y*100}%"><i class="ph ${ic}"></i><div><b>${T(t)}</b><span>${T(s)}</span></div></div>`).join(""));
   // mobil: pod kruhem popis dílu, na který se klepne
-  $("#hub").insertAdjacentHTML("afterend", `<div class="hubinfo" id="hubinfo" aria-live="polite">Klepni na ikonu a uvidíš, z čeho se asistent skládá.</div>`);
+  $("#hub").insertAdjacentHTML("afterend", `<div class="hubinfo" id="hubinfo" aria-live="polite">${T("Klepni na ikonu a uvidíš, z čeho se asistent skládá.")}</div>`);
   $$("#hub .it").forEach((el, k) => el.addEventListener("click", () => {
     if (!matchMedia("(max-width:900px)").matches) return;
     const [ic, t, d] = STACK[k];
     $$("#hub .it").forEach((x, j) => x.classList.toggle("on", j === k));
     $$("#hubwires .ray").forEach((x, j) => x.classList.toggle("on", j === k));
-    $("#hubinfo").innerHTML = `<i class="ph ${ic}"></i><div><b>${t}</b>${d}</div>`;
+    $("#hubinfo").innerHTML = `<i class="ph ${ic}"></i><div><b>${T(t)}</b>${T(d)}</div>`;
   }));
   renderHubWires();
 }
@@ -1412,16 +1678,16 @@ function renderHubWires(){
 /* ---------- dialog ---------- */
 function renderDialog(){
   $("#cmpTable2").innerHTML = cmpRows();
-  const r = D.retrieval, names = {dense:"e5-base (v1)", dense_large:"e5-large", hybrid:"+ BM25 nad laickou otázkou", hybrid_rewrite:"+ přepis otázky (v2)", hybrid_rerank:"+ výběr LLM z 20 (v3)"};
+  const r = D.retrieval, names = {dense:"e5-base (v1)", dense_large:"e5-large", hybrid:T("+ BM25 nad laickou otázkou"), hybrid_rewrite:T("+ přepis otázky (v2)"), hybrid_rerank:T("+ výběr LLM z 20 (v3)")};
   $("#ablation").innerHTML = Object.keys(names).map(m =>
     `<span>${names[m]}</span><div class="bar ${m==="hybrid_rerank"?"v2":""}"><i style="width:${pct(r[m].hit5,r[m].n)}%"></i></div><span class="n">${r[m].hit5}/${r[m].n}</span>`).join("") +
-    `<span class="mut" style="grid-column:1/-1;font-size:12.5px">Laická slova jako „výplata“ v zákoně nejsou, proto hledání podle slov běží až nad otázkou přepsanou do jazyka zákona.</span>`;
+    `<span class="mut" style="grid-column:1/-1;font-size:12.5px">${T("Laická slova jako „výplata“ v zákoně nejsou, proto hledání podle slov běží až nad otázkou přepsanou do jazyka zákona.")}</span>`;
   const tests = D.questions.map((q,i)=>({q,i})).filter(o => o.q.test);
-  const st = ok => ok===null||ok===undefined ? `<span class="mut">–</span>` : `<span class="${ok?"ok":"bad"}">${ok?"správně":"chyba"}</span>`;
-  $("#rows").innerHTML = `<tr><th>#</th><th>otázka a poznámka k v3</th><th class="hide-m">sada</th><th>v1</th><th>v2</th><th>v3</th></tr>` +
+  const st = ok => ok===null||ok===undefined ? `<span class="mut">–</span>` : `<span class="${ok?"ok":"bad"}">${T(ok?"správně":"chyba")}</span>`;
+  $("#rows").innerHTML = `<tr><th>#</th><th>${T("otázka a poznámka k v3")}</th><th class="hide-m">${T("sada")}</th><th>v1</th><th>v2</th><th>v3</th></tr>` +
     tests.map(({q,i}) => { const t=q.test;
       return `<tr class="click" data-i="${i}"><td class="st mut">${t.id}</td><td><div>${esc(q.q)}</div><div class="note">${esc(t.note)}</div></td>`+
-        `<td class="st mut hide-m">${SETS[t.set][1]}</td><td class="st">${st(t.v1_correct)}</td><td class="st">${st(t.v2_correct)}</td><td class="st">${st(t.correct)}</td></tr>`; }).join("");
+        `<td class="st mut hide-m">${T(SETS[t.set][1])}</td><td class="st">${st(t.v1_correct)}</td><td class="st">${st(t.v2_correct)}</td><td class="st">${st(t.correct)}</td></tr>`; }).join("");
   $$("#rows tr.click").forEach(r => r.addEventListener("click", () => {
     $("#dlg").close(); const q = D.questions[+r.dataset.i];
     cat = q.cat;
